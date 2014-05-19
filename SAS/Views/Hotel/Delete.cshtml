@@ -1,0 +1,39 @@
+﻿@model SAS.Models.hotel_info
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>hotel_info</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_name_cn)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_name_cn)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_location_cn)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_location_cn)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_description_cn)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_description_cn)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
