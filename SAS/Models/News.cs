@@ -12,6 +12,8 @@ namespace SAS.Models
         public int ID { get; set; }
         public string Ttitle { get; set; }
         public string Descripiton{ get; set; }
+        public string newId;
+        public string test;
     }
     public class NewsDBContent:DbContext
     {
