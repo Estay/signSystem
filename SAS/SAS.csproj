@@ -175,6 +175,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Public\img\favicon_128.png" />
+    <Content Include="Content\Public\img\footer_logo.png" />
+    <Content Include="Content\Public\img\logo.png" />
+    <Content Include="Content\Public\script\jquery\jquery-1.8.3.js" />
+    <Content Include="Content\Public\script\jquery\jquery-1.8.3.min.js" />
+    <Content Include="Content\Public\style\main.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -203,7 +209,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\" />
     <Folder Include="Images\" />
     <Folder Include="Scripts\" />
   </ItemGroup>
