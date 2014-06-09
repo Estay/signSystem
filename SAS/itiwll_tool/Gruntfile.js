@@ -10,7 +10,8 @@ module.exports = function(grunt) {
 		},
 		css_files = {
 			'../Content/public/style/main.css' : [
-				"src/style/base.css"
+				"src/style/base.css",
+				"src/style/header_and_footer.css"
 			]
 		};
 

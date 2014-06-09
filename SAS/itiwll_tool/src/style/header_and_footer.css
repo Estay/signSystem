@@ -1,0 +1,32 @@
+/*header*/
+#header {
+	color: #003897;
+	background: #FFF;
+	padding: 15px 0;
+}
+#logo_tittle {
+	color: #003897;
+	font-size: 14px;
+	padding: 50px 0 0 30px;
+}
+#header .float_r {
+  line-height: 27px;
+  text-align: right;
+}
+.phone_text {
+	padding-top: 16px;
+}
+.phone_text span {
+	color: #8e7b47;
+	font-size: 28px;
+	text-shadow: 0 1px 2px #ccc;
+}
+.warp{
+	background: #003897;
+}
+.warp h1 {
+  color: #FFF;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 50px;
+}

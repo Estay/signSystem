@@ -16,6 +16,9 @@ a {
   text-decoration: none;
   color: #003C90;
 }
+a:hover {
+  color: #205ca0;
+}
 ul {
   list-style: none;
 }
@@ -26,6 +29,45 @@ pre {
   font: normal 13px/1.5 "Microsoft Yahei", "微软雅黑", Tahoma, Arial, STHeiti, sans-serif;
   white-space: pre-wrap;
 }
+h1 {
+  color: #878787;
+}
+input[type="text"],input[type="password"],select {
+  border:1px solid #595757;
+  height: 20px;
+}
+input[type="radio"] {
+  display: none;
+}
+select {
+  height: 22px;
+}
+table {
+  width: 100%;
+  border: 1px solid #595757;
+
+}
+tr {
+  background-color: #E6E6E6;
+}
+tr:nth-child(odd){
+  background:#fff;
+}
+tr:hover {
+  background: #A9CDFF;
+}
+th {
+  background: #003C91;
+  color: #FFF;
+  font-size: 16px;
+  line-height: 30px;
+}
+td {
+  font-size: 12px;
+  color: #595757;
+  text-align: center;
+  line-height: 30px;
+}
 
 /*常用组件*/
 
@@ -35,8 +77,58 @@ pre {
     margin-left: auto;
     margin-right: auto;
 }
+.float_r {
+  float: right;
+}
+.float_l {
+  float: left;
+}
+.clear {
+  *zoom: 1; 
+}
+.clear:before,
+.clear:after {
+  display: table;
+  content: "";
+}
+.clear:after {
+  clear: both;
+}
+
+/*盒子*/
+.box_a {
+  padding: 20px;
+  margin-bottom: 20px;
+  background: #FFF;
+  border: 1px solid #868686;
+  border-top: 2px solid #003C8F;
+}
+.box_a h2 {
+  color: #003C8F;
+  font-size: 18px;
+  padding-bottom:  20px;
+  border-bottom: #003C8F solid 1px;
+}
+.box_a h2 a.float_r {
+  font-size: 12px;
+}
+
+.box_b {
+  border: #595757 solid 1px;
+  border-radius: 0 5px 5px 5px;
+  padding: 20px;
+}
+.box_b h2 {
+  font-size: 16px;
+  color: #003C90;
+  padding-bottom:  20px;
+  border-bottom: #003C8F solid 1px;
+}
 
 /*按钮*/
+.set {
+  cursor: default;
+}
 .btn_a {
     background-color:#003C90;
     color:#FFF;
@@ -46,6 +138,7 @@ pre {
 }
 .btn_a:hover {
     background-color: #225Ea2;
+    color: #FFF;
 }
 
 .btn_b {
@@ -60,6 +153,7 @@ pre {
 .btn_b:hover {
   background: #225EB1;
   background: linear-gradient(to bottom, #227FFF, #225EB1);
+  color: #FFF;
 }
 
 .btn_Disabled.btn_a,
@@ -68,6 +162,7 @@ pre {
 .btn_Disabled.btn_b:hover{
   cursor: not-allowed;
   background: #CCC;
+  color: #FFF;
 }
 
 .btn_c {
@@ -79,15 +174,46 @@ pre {
   border-radius: 5px 5px 0 0;
   color: #595757;
   font-size: 16px;
+  margin-right: 20px;
   padding: 2px 20px 3px 20px;
-  transition-duration: 0.4s;
   text-align: center;
   width: 140px;
+  position: relative;
+  top: 1px;
 }
 .btn_c:hover,
 .btn_c.set {
   background: #003C8F;
   background: linear-gradient(to bottom, #005DDE, #003C8F);
-  border-color: #FFF;
+  border-color: #003C8F;
   color: #FFF;
+  border-bottom:1px solid #003C8F;
 }
+.btn_d {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  background: #FFF;  
+  border:1px solid #595757;
+  border-radius: 5px 5px 0 0;
+  color: #595757;
+  font-size: 16px;
+  margin-right: 20px;
+  padding: 2px 20px 3px 20px;
+  transition-duration: 0.4s;
+  text-align: center;
+  width: 100px;
+  position: relative;
+  top: 1px;
+}
+.btn_d:hover,
+.btn_d.set {
+  border-bottom: none;
+  border-bottom:1px solid #FFF;
+}
+
+/*单选input*/
+.radio {
+  margin-right: 20px;
+}
+
