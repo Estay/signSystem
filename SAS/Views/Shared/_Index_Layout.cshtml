@@ -9,12 +9,7 @@
 <body>
     @Html.Partial("_header")
 	<div id="content" class="mainlayout clear">
-		<div id="nav_box" class="float_l">
-			@Html.Partial("_main_nav")
-		</div>
-		<div id="main_box" class="float_l">
-		    @RenderBody()
-		</div>
+        @RenderBody()
 	</div>
 </body>
 </html>

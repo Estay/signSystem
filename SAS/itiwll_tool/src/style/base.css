@@ -42,6 +42,9 @@ input[type="radio"] {
 select {
   height: 22px;
 }
+textarea {
+  border: 1px solid #595757;
+}
 table {
   width: 100%;
   border: 1px solid #595757;
@@ -69,13 +72,31 @@ td {
   line-height: 30px;
 }
 
+/*辅助*/
+.hide {
+  display: none;
+}
+.no_bor {
+  border: none;
+}
+
+.m_b50 {
+  margin-bottom: 50px;
+}
+
 /*常用组件*/
 
 /*布局*/
+#content {
+  margin-top: 30px;
+}
 .mainlayout {
     width: 1180px;
     margin-left: auto;
     margin-right: auto;
+}
+.from_path {
+  margin-bottom: 50px;
 }
 .float_r {
   float: right;
@@ -107,7 +128,8 @@ td {
   color: #003C8F;
   font-size: 18px;
   padding-bottom:  20px;
-  border-bottom: #003C8F solid 1px;
+  border-bottom: #595757 solid 1px;
+  margin-bottom: 20px;
 }
 .box_a h2 a.float_r {
   font-size: 12px;
@@ -197,7 +219,7 @@ td {
   border:1px solid #595757;
   border-radius: 5px 5px 0 0;
   color: #595757;
-  font-size: 16px;
+  font-size: 12px;
   margin-right: 20px;
   padding: 2px 20px 3px 20px;
   transition-duration: 0.4s;
@@ -212,8 +234,17 @@ td {
   border-bottom:1px solid #FFF;
 }
 
-/*单选input*/
-.radio {
-  margin-right: 20px;
+/*文字 颜色*/
+.label {
+  width: 100px;
+  text-align: right;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  margin-right: 10px;
+  font-weight: bold;
+}
+.col_red {
+  color: red;
 }
 

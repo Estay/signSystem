@@ -18,7 +18,7 @@ namespace SAS.Controllers
 
         public ActionResult Index()
         {
-            return View(db.hotel.ToList());
+            return View();
         }
 
         //
