@@ -42,6 +42,8 @@
 .input_line .col_red {
 	margin-left: 10px;
 }
+
+/*---添加公寓---*/
 #hotel_class,
 #hotel_theme {
 	width: 80px;
@@ -120,4 +122,11 @@
 	*zoom: 1;
 	vertical-align: bottom;
 	margin-right: 20px;
+}
+
+/*---添加房型---*/
+#room_count,
+#room_area,
+#room_floor {
+	width: 50px;
 }
