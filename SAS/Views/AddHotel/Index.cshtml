@@ -27,6 +27,12 @@
     hotel_services.Add(1,"XXXXXXXXX");
     hotel_services.Add(2,"XXXXXXXXXXXXXXX");
     hotel_services.Add(3,"XXXXXXXXXXXXXXXXXXXXXXXX");
+
+    Dictionary<int,String> room_facilitys = new Dictionary<int,string>();
+    room_facilitys.Add(0,"XXX");
+    room_facilitys.Add(1,"XX");
+    room_facilitys.Add(2,"XXXXXXXXXXXXXXX");
+    room_facilitys.Add(3,"XXXXXXXXXXXXXXXXXXXXXXXX");
 }
 
 
@@ -174,9 +180,7 @@
 		</div>
 		<div class="clear">
 			<div class="float_l">
-				<p class="input_line">
-					<label for="hotel_place"><span class="label">交通位置</span></label>
-				</p>
+				<label for="hotel_place"><span class="label">交通位置</span></label>
 			</div>
 			<div class="float_l">
 				<p class="input_line">
@@ -224,6 +228,9 @@
 			</div>
 		</div>
 	</div>
+	<div class="btn_box">
+		<a href="" id="save_hotel_info" class="btn_a btn_save_step">保存进入下一步</a>
+	</div>
 </div>
 <div class="box_a">
 	<div class="from_path">
@@ -251,7 +258,7 @@
 				<span class="label">数量</span>
 				<input type="text" id="room_count" name="room_count">
 				<span class="col_red">*</span>
-				<span>数量为房量的默认值</span>
+				<span>将会设置房量的默认值</span>
 			</label>
 			<label for="room_area">
 				<span class="label">面积</span>
@@ -264,5 +271,58 @@
 				<span class="cpl_red">*</span>
 			</label>
 		</p>
+		<p class="input_line">
+			<label for="bedroom">
+				<span class="label">户型</span></label><input type="text" id="bedroom" name="bedroom" value="0">	
+				室
+				<input type="text" id="saloon" name="saloon" value="0">
+				厅
+				<input type="text" id="toilet" name="toilet" value="0">
+				卫
+				<input type="text" id="bookroom" name="bookroom" value="0">
+				书房
+		</p>
+		<div class="clear">
+			<div class="float_l">
+				<!-- <p class="input_line"> -->
+					<label for="room_info"><span class="label">房型描述</span></label>
+				<!-- </p> -->
+			</div>
+			<div class="float_l">
+				<p class="input_line">
+					<textarea name="room_describ" id="room_describ" cols="80" rows="5"></textarea>
+					<span class="col_red">*</span>
+				</p>
+			</div>
+		</div>
+		<div class="clear">
+			<div class="float_l">
+				<p class="input_line">
+					<label for="room_remarks"><span class="label">房型备注</span></label>
+				</p>
+			</div>
+			<div class="float_l">
+				<p class="input_line">
+					<input type="text" id="room_remarks" name="remarks">
+					<span class="col_red">*</span>
+				</p>
+			</div>
+		</div>
+		<div class="clear">
+			<div class="float_l">
+				<div class="input_line"><span class="label">房型设施</span></div>
+			</div>
+			<div class="float_l">
+				<p class="input_line">
+					@foreach(var facility in room_facilitys){   
+				        <label><input type="checkbox" name="room_facilitys" value="@facility.Key"><span class="room_facility">@facility.Value</span></label>
+	                }					
+				</p>
+			</div>
+		</div>
+		<a href="" class="btn_b" id="btn_add_room">确定添加房型</a>
+	</div>
+	<div class="btn_box">
+		<a href="" id="save_room_info" class="btn_a btn_save_step">保存进入下一步</a>
 	</div>
 </div>

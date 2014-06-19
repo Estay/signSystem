@@ -33,6 +33,7 @@
 }
 
 /*正文表单*/
+/*布局*/
 #main_box {
 	width: 1023px;
 }
@@ -41,6 +42,11 @@
 }
 .input_line .col_red {
 	margin-left: 10px;
+}
+.btn_box {
+	text-align: center;
+	margin-top: 50px;
+	padding-bottom: 50px;
 }
 
 /*---添加公寓---*/
@@ -127,6 +133,22 @@
 /*---添加房型---*/
 #room_count,
 #room_area,
-#room_floor {
+#room_floor,
+#bedroom,
+#saloon,
+#toilet,
+#bookroom {
 	width: 50px;
+}
+#saloon,
+#toilet,
+#bookroom {
+	margin-left: 10px;
+}
+#btn_add_room {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	margin-top: 30px;
+	margin-left: 118px;
 }
