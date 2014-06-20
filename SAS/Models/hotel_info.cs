@@ -22,6 +22,26 @@ namespace SAS.Models
       
         public hotel_room_info room;
         public hotel_room_picture_info roomImage;
+
+        public hotel_theme_info theme;
+        //get all Theme
+        public static List<hotel_info> AllTheme()
+        {
+            List<hotel_info> list = new List<hotel_info>();
+            hotel_infoDBContent db = new hotel_infoDBContent();
+            var themes = db.hotel.ToList();
+            foreach (var t in themes)
+            {
+                hotel_info theme = new hotel_info()
+                {
+                    hotel_id = t.hotel_id,
+                    h_name_cn = t.h_name_cn,
+
+                };
+                list.Add(theme);
+            }
+            return list;
+        }
     }
     public class hotel_infoDBContent : DbContext
     {
