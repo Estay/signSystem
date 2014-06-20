@@ -30,6 +30,7 @@ namespace SAS.Controllers
            ViewData["Category"] = DBhelp.GetSelectDataByTable("Hotel_theme_type_info"); ;//Category
            ViewData["facilities"] = DBhelp.GetSelectDataByTable("Facilities_info");//facilities
            ViewData["services"] = DBhelp.GetSelectDataByTable("GeneralAmenities_info");//services
+           ViewData["provice"] = DBhelp.GetSelectDataByTable("province_info");//provice
             //hotel_info.AllTheme();
             return View(new hotel_info());
         }

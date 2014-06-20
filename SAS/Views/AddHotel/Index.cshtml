@@ -9,8 +9,8 @@
     Dictionary<int, String> hotel_class = ViewData["Category"] as Dictionary<int, string>;
     
     Dictionary<int, String> hotel_theme = ViewData["Themes"] as Dictionary<int,string>;
-    
-    Array hotel_province = new string[]{ "所在省份", "ddddd" };
+
+    Dictionary<int, String> hotel_province = ViewData["provice"] as Dictionary<int, string>;
     Array hotel_city = new string[]{ "所在城市", "ddddd" };
     Array hotel_area = new string[]{ "所在行政区", "ddddd" };
     Array hotel_district = new string[]{ "所在商圈", "ddddd" };
@@ -68,7 +68,7 @@
 		<p class="input_line">
 			<span class="label">地址及所在商区</span><select name="hotel_province" id="hotel_province">
 				@foreach(var opt in hotel_province){
-					<option value="@opt">@opt</option>                    
+					<option value="@opt">@opt.Value</option>                    
 				}
 			</select>
 			<select name="hotel_city" id="hotel_city">
