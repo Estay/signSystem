@@ -1,12 +1,15 @@
-﻿@model IEnumerable<SAS.Models.hotel_info>
+﻿@*@model IEnumerable<SAS.Models.hotel_info>*@
+@model SAS.Models.hotel_info
 
 @{
     ViewBag.Title = "新建公寓-录入基本信息";
     ViewBag.Description = "新建公寓";
     ViewBag.Keywords = "新建公寓";
 
-    Array hotel_class = new string[]{ "请选择", "一二三四五六七" };
-    Array hotel_theme = new string[]{ "请选择", "ddddd" };
+    Dictionary<int, String> hotel_class = ViewData["Category"] as Dictionary<int, string>;
+    
+    Dictionary<int, String> hotel_theme = ViewData["Themes"] as Dictionary<int,string>;
+    
     Array hotel_province = new string[]{ "所在省份", "ddddd" };
     Array hotel_city = new string[]{ "所在城市", "ddddd" };
     Array hotel_area = new string[]{ "所在行政区", "ddddd" };
@@ -16,17 +19,11 @@
     Array hotel_decoration_time_year = new string[]{ "2014年", "ddddd" };
     Array hotel_decoration_time_month = new string[]{ "5月", "ddddd" };
 
-    Dictionary<int,String> hotel_facilitys = new Dictionary<int,string>();
-    hotel_facilitys.Add(0,"XXX");
-    hotel_facilitys.Add(1,"XX");
-    hotel_facilitys.Add(2,"XXXXXXXXXXXXXXX");
-    hotel_facilitys.Add(3,"XXXXXXXXXXXXXXXXXXXXXXXX");
+    Dictionary<int, String> hotel_facilitys = ViewData["facilities"] as Dictionary<int, string>;
+ 
 
-    Dictionary<int,String> hotel_services = new Dictionary<int,string>();
-    hotel_services.Add(0,"XXXXXXXXX");
-    hotel_services.Add(1,"XXXXXXXXX");
-    hotel_services.Add(2,"XXXXXXXXXXXXXXX");
-    hotel_services.Add(3,"XXXXXXXXXXXXXXXXXXXXXXXX");
+    Dictionary<int, String> hotel_services = ViewData["services"] as Dictionary<int, string>;
+   
 }
 
 
@@ -45,16 +42,19 @@
 				<span class="label">所属类别</span>
 				<select name="hotel_class" id="hotel_class">
 					@foreach(var opt in hotel_class){
-	                    <option value="@opt">@opt</option>                    
+	                    <option value="@opt">@opt.Value</option>                    
 	                }
 				</select>
 				<span class="col_red">*</span>
 			</label>
 			<label for="hotel_theme">
 				<span class="label">公寓主题</span>
+                 
+            @*@Html.DropDownListFor(m=>m.theme.hotel_theme_title,ViewData["sl"] as SelectList);*@
+
 				<select name="hotel_theme" id="hotel_theme">
 					@foreach(var opt in hotel_theme){
-	                    <option value="@opt">@opt</option>                    
+	                    <option value="@opt">@opt.Value</option>                    
 	                }
 				</select>
 				<span class="col_red">*</span>
