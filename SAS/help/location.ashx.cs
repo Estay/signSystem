@@ -18,8 +18,8 @@ namespace SAS.help
            string type= context.Request.QueryString["type"];
            string value = context.Request.QueryString["value"];
            
-            context.Response.Write("Hello World");
-            var settings = new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore };
+            //context.Response.Write("Hello World");
+            //var settings = new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore };
             //settings.Converters.Add(enumConverter);
             context.Response.Write(getValue(type,value));
         }

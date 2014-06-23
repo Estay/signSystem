@@ -172,7 +172,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="help\DBhelp.cs" />
+    <Compile Include="help\location.ashx.cs">
+      <DependentUpon>location.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Location.cs" />
     <Compile Include="Models\hotel_info.cs" />
     <Compile Include="Models\hotel_room_info.cs" />
     <Compile Include="Models\hotel_room_picture_info.cs" />
@@ -256,6 +260,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_Index_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="help\location.ashx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
