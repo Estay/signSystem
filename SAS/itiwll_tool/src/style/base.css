@@ -131,6 +131,12 @@ td {
   border-bottom: #595757 solid 1px;
   margin-bottom: 20px;
 }
+.box_a h2 span{
+  font-size: 14px;
+  font-weight: normal;
+  margin-left: 20px;
+  color: #595757;
+}
 .box_a h2 a.float_r {
   font-size: 12px;
 }
@@ -242,6 +248,9 @@ td {
   *display: inline;
   *zoom: 1;
   margin-right: 10px;
+  font-weight: bold;
+}
+.fw_b {
   font-weight: bold;
 }
 .col_red {

@@ -152,3 +152,18 @@
 	margin-top: 30px;
 	margin-left: 118px;
 }
+
+/*---录入价格---*/
+.input_room_rp_name {
+	font-weight: bold;
+	color: #003C8F;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	-ms-text-overflow: ellipsis;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	width:10em;
+	overflow: hidden;
+	vertical-align: bottom;
+}
