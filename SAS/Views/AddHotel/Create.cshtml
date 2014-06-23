@@ -1,51 +1,334 @@
-﻿@model SAS.Models.hotel_info
+﻿@*@model IEnumerable<SAS.Models.hotel_info>*@
+@model SAS.Models.hotel_info
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "新建公寓-录入基本信息";
+    ViewBag.Description = "新建公寓";
+    ViewBag.Keywords = "新建公寓";
+
+    Dictionary<int, String> hotel_class = ViewData["Category"] as Dictionary<int, string>;
+    
+    Dictionary<int, String> hotel_theme = ViewData["Themes"] as Dictionary<int,string>;
+
+    Dictionary<int, String> hotel_province = ViewData["provice"] as Dictionary<int, string>;
+    Array hotel_city = new string[]{ "所在城市", "ddddd" };
+    Array hotel_area = new string[]{ "所在行政区", "ddddd" };
+    Array hotel_district = new string[]{ "所在商圈", "ddddd" };
+    Array hotel_built_year = new string[]{ "2014年", "ddddd" };
+    Array hotel_built_month = new string[]{ "5月", "ddddd" };
+    Array hotel_decoration_time_year = new string[]{ "2014年", "ddddd" };
+    Array hotel_decoration_time_month = new string[]{ "5月", "ddddd" };
+
+    Dictionary<int, String> hotel_facilitys = ViewData["facilities"] as Dictionary<int, string>;
+ 
+
+    Dictionary<int, String> hotel_services = ViewData["services"] as Dictionary<int, string>;
+
+
+    Dictionary<int, String> room_facilitys = new Dictionary<int, string>();
+    room_facilitys.Add(0, "XXX");
+    room_facilitys.Add(1, "XX");
+    room_facilitys.Add(2, "XXXXXXXXXXXXXXX");
+    room_facilitys.Add(3, "XXXXXXXXXXXXXXXXXXXXXXXX");
+   
 }
 
-<h2>Create</h2>
-
-@using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>hotel_info</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.h_name_cn)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.h_name_cn)
-            @Html.ValidationMessageFor(model => model.h_name_cn)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.h_location_cn)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.h_location_cn)
-            @Html.ValidationMessageFor(model => model.h_location_cn)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.h_description_cn)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.h_description_cn)
-            @Html.ValidationMessageFor(model => model.h_description_cn)
-        </div>
-
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+@using(Html.BeginForm("Create","AddHotel",FormMethod.Post))
+{
+<div id="flag_box">
+	<a href="" class="btn_c set">1 录入公寓信息</a>
+	<a href="" class="btn_c">2 录入房型</a>
+	<a href="" class="btn_c">3 录入房价</a>
+	<a href="" class="btn_c">4 录入图片</a>
 </div>
+<div class="box_a">
+	<div class="from_path">
+		<h2>录入基本信息</h2>
+		<p class="input_line">
+			<label for="hotel_name"><span class="label">名称</span><input name="@Html.DisplayNameFor(model => model.h_name_cn)" type="text"><span class="col_red">*</span></label>
+             @Html.ValidationMessageFor(model => model.h_name_cn)
+			<label for="hotel_class">
+				<span class="label">所属类别</span>
+				<select name="hotel_class" id="hotel_class">
+					@foreach(var opt in hotel_class){
+	                    <option value="@opt">@opt.Value</option>                    
+	                }
+				</select>
+				<span class="col_red">*</span>
+			</label>
+			<label for="hotel_theme">
+				<span class="label">公寓主题</span>
+                 
+            @*@Html.DropDownListFor(m=>m.theme.hotel_theme_title,ViewData["sl"] as SelectList);*@
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+				<select name="@Html.DisplayNameFor(model => model.hotel_theme_id)" id="hotel_theme">
+					@foreach(var opt in hotel_theme){
+	                    <option value="@opt">@opt.Value</option>                    
+	                }
+				</select>
+				<span class="col_red">*</span>
+			</label>
+			<label for="phone_area_code">
+				<span class="label">电话</span>
+				<input type="text" id="phone_area_code" name="@Html.DisplayNameFor(model => model.h_tel)">-<input type="text" id="hotel_phone" name="hotel_phone">
+				<span class="col_red">*</span>
+                @Html.ValidationMessageFor(model => model.h_tel)
+			</label>
+		</p>
+		<p class="input_line">
+			<span class="label">地址及所在商区</span><select name="hotel_province" id="hotel_province">
+				@foreach(var opt in hotel_province){
+					<option value="@opt">@opt.Value</option>                    
+				}
+			</select>
+			<select name="hotel_city" id="hotel_city">
+				@foreach(var opt in hotel_city){
+					<option value="@opt">@opt</option>                    
+				}
+			</select>
+			<select name="hotel_area" id="hotel_area">
+				@foreach(var opt in hotel_area){
+					<option value="@opt">@opt</option>                    
+				}
+			</select>
+			<select name="hotel_district" id="hotel_district">
+				@foreach(var opt in hotel_district){
+					<option value="@opt">@opt</option>                    
+				}
+			</select>
+			<span class="col_red">*</span>
+			<label for="hotel_telautogram">
+				<span class="label">传真</span>
+				<input type="text" name="hotel_telautogram">
+			</label>
+		</p>
+		<p class="input_line">
+			<label for="hotel_address">
+				<span class="label">详细街道地址</span><input type="text" id="hotel_address" name="hotel_address">
+				<span class="col_red">*</span>
+			</label>
+		</p>
+		<div class="clear">
+			<div class="float_l">
+				<p class="input_line">
+					<span class="label">地图位置</span>
+				</p>
+			</div>
+			<div id="location_box" class="float_l">
+				<a href="" class="btn_d set">在地图上定位</a><a href="" class="btn_d">输入经纬底定位</a>
+				<div class="box_b">
+					<div id="maps_input_box"></div>
+					<div id="location_input_box">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="from_path">
+		<h2>录入详细信息</h2>
+		<p class="input_line">
+			<label for="hotel_built">
+				<span class="label">开业时间</span><select name="hotel_built_year" id="hotel_built_year">
+					@foreach(var opt in hotel_built_year){
+						<option value="@opt">@opt</option>                    
+					}
+				</select>
+				<select name="hotel_built_month" id="hotel_built_month">
+					@foreach(var opt in hotel_built_month){
+						<option value="@opt">@opt</option>                    
+					}
+				</select>
+			</label>
+			<label for="hotel_decoration_time_year">
+				<span class="label">装修时间</span><select name="hotel_decoration_time_year" id="hotel_decoration_time_year">
+					@foreach(var opt in hotel_decoration_time_year){
+						<option value="@opt">@opt</option>                    
+					}
+				</select>
+				<select name="hotel_decoration_time_month" id="hotel_decoration_time_month">
+					@foreach(var opt in hotel_decoration_time_month){
+						<option value="@opt">@opt</option>                    
+					}
+				</select>
+			</label>
+			<label for="hotel_building">
+				<span class="label">公寓楼高</span><input type="text" id="hotel_building" name="hotel_building">
+				<span class="col_red">*</span>
+			</label>
+			<label for="hotel_room_count">
+				<span class="label">房间总数</span>
+				<input type="text" id="hotel_room_count" name="hotel_room_count">
+				<span class="col_red">*</span>
+			</label>
+		</p>
+		<p class="input_line"><label for="hotel_specialty">
+				<span class="label">公寓特色</span><input type="text" id="hotel_specialty" name="hotel_specialty">
+				<span class="col_red">*</span>
+			</label>
+		</p>
+		<div class="clear">
+			<div class="float_l">
+				<p class="input_line">
+					<label for="hotel_abstract"><span class="label">公寓简介</span></label>
+				</p>
+			</div>
+			<div class="float_l">
+				<p class="input_line">
+					<textarea name="hotel_abstract" id="hotel_abstract" cols="80" rows="5"></textarea>
+				</p>
+			</div>
+			<div class="float_l">
+				<p class="input_line"><span class="col_red">*</span></p>
+			</div>
+		</div>
+		<div class="clear">
+			<div class="float_l">
+				<label for="hotel_place"><span class="label">交通位置</span></label>
+			</div>
+			<div class="float_l">
+				<p class="input_line">
+					<textarea name="hotel_place" id="hotel_place" cols="80" rows="5"></textarea>
+				</p>
+			</div>
+			<div class="float_l">
+				<p class="input_line"><span class="col_red">*</span></p>
+			</div>
+		</div>
+		<p class="input_line">
+			<span class="label">可接受的信用卡</span>
+			<label for="visa"><input id="visa" type="checkbox" name="visa" value="visa"><span class="card visa"></span></label>
+			<label for="master"><input id="master" type="checkbox" name="hotel_card" value="master"><span class="card master"></span></label>
+			<label for="amex"><input id="amex" type="checkbox" name="hotel_card" value="amex"><span class="card amex"></span></label>
+			<label for="jcb"><input id="jcb" type="checkbox" name="hotel_card" value="jcb"><span class="card jcb"></span></label>
+			<label for="unionpay"><input id="unionpay" type="checkbox" name="hotel_card" value="unionpay"><span class="card unionpay"></span></label>
+			<label for="dinersclub"><input id="dinersclub" type="checkbox" name="hotel_card" value="dinersclub"><span class="card dinersclub"></span></label>
+		</p>
+	</div>
+	<div class="from_path">
+		<h2>录入设施与服务</h2>
+		<div class="clear">
+			<div class="float_l">
+				<div class="input_line"><span class="label">公寓配套</span></div>
+			</div>
+			<div class="float_l">
+                <input type="text" name="@Html.DisplayNameFor(model => model.h_name_cn)" value="hh,hh" />
+					@foreach(var facility in hotel_facilitys){   
+				        <label><input type="checkbox" name="Facilit" value="@facility.Key"><span class="hotel_facility">@facility.Value</span></label>
+	                }					
+				@*</p>*@
+			</div>
+		</div>
+		<div class="clear">
+			<div class="float_l">
+				<div class="input_line"><span class="label">公寓服务</span></div>
+			</div>
+			<div class="float_l">
+				<p class="input_line">
+					@foreach(var service in hotel_services){   
+				        <label><input type="checkbox" name="service" value="@service.Key"><span class="hotel_service">@service.Value</span></label>
+	                }					
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="btn_box">
+		<a href="" id="save_hotel_info" class="btn_a btn_save_step">保存进入下一步</a>
+        <input type="submit"  value="Create" />
+	</div>
+</div>
+<div class="box_a">
+	<div class="from_path">
+		<h2>房型列表</h2>
+		<table id="room_list" cellspacing="0">
+			<tbody>
+				<tr>
+					<th>房型编号</th>
+					<th>名称</th>
+					<th>操作</th>
+				</tr>
+				<tr>
+					<td>0001</td>
+					<td>大床</td>
+					<td><a href="">修改</a>|<a href="">删除</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="from_path">
+		<h2>添加房型</h2>
+		<p class="input_line">
+			<label for="room_name"><span class="label">房型名称</span><input type="text" id="room_name" name="room_name"><span class="col_red">*</span></label>
+			<label for="room_count">
+				<span class="label">数量</span>
+				<input type="text" id="room_count" name="room_count">
+				<span class="col_red">*</span>
+				<span>将会设置房量的默认值</span>
+			</label>
+			<label for="room_area">
+				<span class="label">面积</span>
+				<input type="text" id="room_area" name="room_area">
+				<span class="col_red">*</span>
+			</label>
+			<label for="room_floor">
+				<span class="label">楼层</span>
+				<input type="text" id="room_floor" name="room_floor">
+				<span class="cpl_red">*</span>
+			</label>
+		</p>
+		<p class="input_line">
+			<label for="bedroom">
+				<span class="label">户型</span></label><input type="text" id="bedroom" name="bedroom" value="0">	
+				室
+				<input type="text" id="saloon" name="saloon" value="0">
+				厅
+				<input type="text" id="toilet" name="toilet" value="0">
+				卫
+				<input type="text" id="bookroom" name="bookroom" value="0">
+				书房
+		</p>
+		<div class="clear">
+			<div class="float_l">
+				<!-- <p class="input_line"> -->
+					<label for="room_info"><span class="label">房型描述</span></label>
+				<!-- </p> -->
+			</div>
+			<div class="float_l">
+				<p class="input_line">
+					<textarea name="room_describ" id="room_describ" cols="80" rows="5"></textarea>
+					<span class="col_red">*</span>
+				</p>
+			</div>
+		</div>
+		<div class="clear">
+			<div class="float_l">
+				<p class="input_line">
+					<label for="room_remarks"><span class="label">房型备注</span></label>
+				</p>
+			</div>
+			<div class="float_l">
+				<p class="input_line">
+					<input type="text" id="room_remarks" name="remarks">
+					<span class="col_red">*</span>
+				</p>
+			</div>
+		</div>
+		<div class="clear">
+			<div class="float_l">
+				<div class="input_line"><span class="label">房型设施</span></div>
+			</div>
+			<div class="float_l">
+				<p class="input_line">
+					@foreach(var facility in room_facilitys){   
+				        <label><input type="checkbox" name="room_facilitys" value="@facility.Key"><span class="room_facility">@facility.Value</span></label>
+	                }					
+				</p>
+			</div>
+		</div>
+		<a href="" class="btn_b" id="btn_add_room">确定添加房型</a>
+	</div>
+	<div class="btn_box">
+		<a href="" id="save_room_info" class="btn_a btn_save_step">保存进入下一步</a>
+	</div>
+</div>
 }

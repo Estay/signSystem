@@ -17,7 +17,7 @@ obj/
 [Bb]in/*.xml
 [Bb]in/Release/
 /readme.txt
-bin/
+/bin/Debug/
 **/Properties/PublishProfiles/*.pubxml          # 记录发布的文件 ！
 
 
