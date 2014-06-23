@@ -3,11 +3,10 @@ module.exports = function(grunt) {
 
 	var date = new Date(),
 		date_str = "/*" + date.getFullYear() + '年' + (date.getMonth() + 1) + '月' + date.getDate() + '日' + date.toLocaleTimeString() + "*/",
-		js_files = {
-			'../Content/public/script/main.js': [
+		js_files = [
+				"src/script/plug-in/input_tip.js",
 				"src/script/main.js"
-			]
-		},
+			],
 		css_files = {
 			'../Content/public/style/main.css' : [
 				"src/style/main.css",
@@ -28,7 +27,9 @@ module.exports = function(grunt) {
 					beautify: true,
 					sourceMap: true
 				},
-				files: js_files
+				files: {
+					'../Content/public/script/main.js' : js_files
+				}
 			},
 			dev_js: {
 				options: {
@@ -79,7 +80,7 @@ module.exports = function(grunt) {
 				}
 			},
 			js: {
-				files: ["script/*.js"],
+				files: js_files,
 				tasks: ["uglify:debug"],
 				options: {
 					//刷新浏览器
