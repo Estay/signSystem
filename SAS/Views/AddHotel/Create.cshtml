@@ -76,35 +76,35 @@
 			</label>
 		</p>
 		<p class="input_line">
-			<span class="label">地址及所在商区</span><select name="hotel_province" id="hotel_province">
+			<span class="label">地址及所在商区</span><select name="@Html.DisplayNameFor(model => model.h_province)" id="hotel_province">
 				@foreach(var opt in hotel_province){
 					<option value="@opt">@opt.Value</option>                    
 				}
 			</select>
-			<select name="hotel_city" id="hotel_city">
+			<select name="hotel_city" id="@Html.DisplayNameFor(model => model.h_city)">
 				@foreach(var opt in hotel_city){
 					<option value="@opt">@opt</option>                    
 				}
 			</select>
-			<select name="hotel_area" id="hotel_area">
+			<select name="hotel_area" id="@Html.DisplayNameFor(model => model.h_administrative_region)">
 				@foreach(var opt in hotel_area){
 					<option value="@opt">@opt</option>                    
 				}
 			</select>
-			<select name="hotel_district" id="hotel_district">
+			<select name="hotel_district" id="@Html.DisplayNameFor(model => model.h_business_zone)">
 				@foreach(var opt in hotel_district){
 					<option value="@opt">@opt</option>                    
 				}
 			</select>
 			<span class="col_red">*</span>
-			<label for="hotel_telautogram">
+			<label for="@Html.DisplayNameFor(model => model.h_fax)">
 				<span class="label">传真</span>
 				<input type="text" name="hotel_telautogram">
 			</label>
 		</p>
 		<p class="input_line">
 			<label for="hotel_address">
-				<span class="label">详细街道地址</span><input type="text" id="hotel_address" name="hotel_address">
+				<span class="label">详细街道地址</span><input type="text" id="hotel_address" name="@Html.DisplayNameFor(model => model.h_location_cn)">
 				<span class="col_red">*</span>
 			</label>
 		</p>
@@ -129,7 +129,7 @@
 		<h2>录入详细信息</h2>
 		<p class="input_line">
 			<label for="hotel_built">
-				<span class="label">开业时间</span><select name="hotel_built_year" id="hotel_built_year">
+				<span class="label">开业时间</span><select name="@Html.DisplayNameFor(model => model.h_opening_time)" id="hotel_built_year">
 					@foreach(var opt in hotel_built_year){
 						<option value="@opt">@opt</option>                    
 					}
@@ -141,7 +141,7 @@
 				</select>
 			</label>
 			<label for="hotel_decoration_time_year">
-				<span class="label">装修时间</span><select name="hotel_decoration_time_year" id="hotel_decoration_time_year">
+				<span class="label">装修时间</span><select name="@Html.DisplayNameFor(model => model.DecorateTime)" id="hotel_decoration_time_year">
 					@foreach(var opt in hotel_decoration_time_year){
 						<option value="@opt">@opt</option>                    
 					}
@@ -153,17 +153,17 @@
 				</select>
 			</label>
 			<label for="hotel_building">
-				<span class="label">公寓楼高</span><input type="text" id="hotel_building" name="hotel_building">
+				<span class="label">公寓楼高</span><input type="text" id="hotel_building" name="@Html.DisplayNameFor(model => model.Floor)">
 				<span class="col_red">*</span>
 			</label>
 			<label for="hotel_room_count">
 				<span class="label">房间总数</span>
-				<input type="text" id="hotel_room_count" name="hotel_room_count">
+				<input type="text" id="hotel_room_count" name="@Html.DisplayNameFor(model => model.h_room_count)">
 				<span class="col_red">*</span>
 			</label>
 		</p>
 		<p class="input_line"><label for="hotel_specialty">
-				<span class="label">公寓特色</span><input type="text" id="hotel_specialty" name="hotel_specialty">
+				<span class="label">公寓特色</span><input type="text" id="hotel_specialty" name="@Html.DisplayNameFor(model => model.Features)">
 				<span class="col_red">*</span>
 			</label>
 		</p>
@@ -175,7 +175,7 @@
 			</div>
 			<div class="float_l">
 				<p class="input_line">
-					<textarea name="hotel_abstract" id="hotel_abstract" cols="80" rows="5"></textarea>
+					<textarea name="@Html.DisplayNameFor(model => model.IntroEditor)" id="hotel_abstract" cols="80" rows="5"></textarea>
 				</p>
 			</div>
 			<div class="float_l">
@@ -188,7 +188,7 @@
 			</div>
 			<div class="float_l">
 				<p class="input_line">
-					<textarea name="hotel_place" id="hotel_place" cols="80" rows="5"></textarea>
+					<textarea name="@Html.DisplayNameFor(model => model.h_traffic_position)" id="hotel_place" cols="80" rows="5"></textarea>
 				</p>
 			</div>
 			<div class="float_l">
@@ -225,7 +225,7 @@
 				<div class="input_line"><span class="label">公寓服务</span></div>
 			</div>
 			<div class="float_l checkbox_box">
-                <input class="hide" type="text" name="@Html.DisplayNameFor(model => model.h_name_cn)" value="" />
+                <input class="hide" type="text" name="@Html.DisplayNameFor(model => model.GeneralAmenities)" value="" />
 				<p class="input_line">
 					@foreach(var service in hotel_services){
 				        <label class="w_sn"><input class="multiple" type="checkbox" name="service" value="@service.Key"><span class="hotel_service" title="@service.Value">@service.Value</span></label>

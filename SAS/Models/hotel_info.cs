@@ -74,6 +74,20 @@ namespace SAS.Models
         private string _features;
         private string _helpfultips;
         private string _hotel_theme_id;
+        private DateTime decorateTime;
+        private int floor;
+
+        public int Floor
+        {
+            get { return floor; }
+            set { floor = value; }
+        }
+
+        public DateTime DecorateTime
+        {
+            get { return decorateTime; }
+            set { decorateTime = value; }
+        }
         /// <summary>
         /// 
         /// </summary>
