@@ -211,30 +211,32 @@
 			<div class="float_l">
 				<div class="input_line"><span class="label">公寓配套</span></div>
 			</div>
-			<div class="float_l">
-                <input type="text" name="@Html.DisplayNameFor(model => model.h_name_cn)" value="hh,hh" />
+			<div class="float_l checkbox_box">
+                <input class="hide" type="text" name="@Html.DisplayNameFor(model => model.h_name_cn)" value="" />
+                <p class="input_line">
 					@foreach(var facility in hotel_facilitys){   
-				        <label><input type="checkbox" name="Facilit" value="@facility.Key"><span class="hotel_facility">@facility.Value</span></label>
+				        <label class="w_sn"><input class="facilit" type="checkbox" name="Facilit" value="@facility.Key"><span class="hotel_facility" title="@facility.Value">@facility.Value</span></label>
 	                }					
-				@*</p>*@
+            	</p>
 			</div>
 		</div>
 		<div class="clear">
 			<div class="float_l">
 				<div class="input_line"><span class="label">公寓服务</span></div>
 			</div>
-			<div class="float_l">
+			<div class="float_l checkbox_box">
+                <input class="hide" type="text" name="@Html.DisplayNameFor(model => model.h_name_cn)" value="" />
 				<p class="input_line">
-					@foreach(var service in hotel_services){   
-				        <label><input type="checkbox" name="service" value="@service.Key"><span class="hotel_service">@service.Value</span></label>
+					@foreach(var service in hotel_services){
+				        <label class="w_sn"><input type="checkbox" name="service" value="@service.Key"><span class="hotel_service" title="@service.Value">@service.Value</span></label>
 	                }					
 				</p>
 			</div>
 		</div>
 	</div>
 	<div class="btn_box">
-		<a href="" id="save_hotel_info" class="btn_a btn_save_step">保存进入下一步</a>
-        <input type="submit"  value="Create" />
+		<a href="" id="save_hotel_info" class="btn_a btn_save_step" onclick="javascript:document.forms[0].submit()">保存进入下一步</a>
+        <input class="hide" type="submit"  value="Create" />
 	</div>
 </div>
 <div class="box_a">

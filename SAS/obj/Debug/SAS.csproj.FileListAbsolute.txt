@@ -189,3 +189,6 @@ E:\project\第三方签约\signSystem\SAS\obj\Debug\SAS.pdb
 E:\project\第三方签约\signSystem\SAS\bin\EntityFramework.SqlServer.dll
 E:\project\第三方签约\signSystem\SAS\bin\EntityFramework.SqlServer.xml
 E:\project\第三方签约\signSystem\SAS\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
+E:\estay.cn\poj\signSystem\SAS\bin\EntityFramework.SqlServer.dll
+E:\estay.cn\poj\signSystem\SAS\bin\EntityFramework.SqlServer.xml
+E:\estay.cn\poj\signSystem\SAS\bin\zh-Hans\EntityFramework.SqlServer.resources.dll

@@ -84,6 +84,10 @@ td {
   margin-bottom: 50px;
 }
 
+.w_sn {
+  white-space: nowrap;
+}
+
 /*常用组件*/
 
 /*布局*/
@@ -97,6 +101,9 @@ td {
 }
 .from_path {
   margin-bottom: 50px;
+}
+.checkbox_box {
+  width: 830px;
 }
 .float_r {
   float: right;
