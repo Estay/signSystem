@@ -1,4 +1,4 @@
-/*2014年6月23日17:38:50*/
+/*2014年6月24日10:52:56*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = "请输入";
@@ -13,4 +13,14 @@
 })(jQuery);
 
 $(".tip_input").e_input_tip();
+
+$(".multiple").change(function(event) {
+    var input = $(this).parents(".input_line").prev(".hide"), vals = input.val(), val = $(this).val();
+    if (vals.indexOf(val) > -1) {
+        vals = vals.replace(RegExp("^" + val + ",|," + val + "|^" + val + "$", "ig"), "");
+    } else {
+        vals = vals ? vals + "," + val : val;
+    }
+    input.val(vals);
+});
 //# sourceMappingURL=main.map
