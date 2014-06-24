@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using SAS.Models;
 using System.Data.SqlClient;
+using Newtonsoft.Json;
 
 namespace SAS.help
 {
@@ -27,6 +28,25 @@ namespace SAS.help
                 }
             }
             return list;
+        }
+
+        public static string GetJsonBySQL(string sql)
+        {
+
+            List<Location> list = new List<Location>();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    list.Add(new Location(dr[0], dr[1]));
+                }
+            }
+            var settings = new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore };
+            string str = JsonConvert.SerializeObject(list, settings);
+            return str;
         }
     }
 }
