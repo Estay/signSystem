@@ -25,14 +25,14 @@ $(".multiple").change(function(event) {
 });
 
 $("#hotel_province").change(function(event) {
-    map.centerAndZoom($(this).val().match(/,(\s\S+)]/)[0]);
+    map.centerAndZoom($(this).text());
     $.ajax({
         url: "/help/location.ashx",
         type: "GET",
         dataType: "json",
         type: "city",
-        value: $(this).val().match(/(\d+),/)[0]
-    }).done(function(data) {
+        value: $(this).val()
+    }).done(function (data) {
         console.log("data");
     }).fail(function() {
         console.log("error");
