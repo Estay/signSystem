@@ -19,3 +19,26 @@ $(".multiple").change(function(event) {
 	};
 	input.val(vals);
 });
+
+// 设置省份
+$("#hotel_province").change(function(event) {
+	// 地图同步
+	map.centerAndZoom($(this).val().match(/,(\s\S+)]/)[0]);
+	$.ajax({
+		url: '/help/location.ashx',
+		type: 'GET',
+		dataType: 'json',
+		type : "city",
+		value: $(this).val().match(/(\d+),/)[0]
+	})
+	.done(function(data) {
+		console.log("data");
+	})
+	.fail(function() {
+		console.log("error");
+	})
+	.always(function() {
+		console.log("complete");
+	});
+	
+});

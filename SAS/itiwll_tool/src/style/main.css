@@ -77,6 +77,12 @@
 	height: 348px;
 	width: 741px;
 }
+#map_lon,
+#map_lat {
+	width: 200px;
+	margin-right: 20px;
+}
+
 #hotel_building,
 #hotel_room_count {
 	width: 40px;

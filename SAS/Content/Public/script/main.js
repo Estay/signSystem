@@ -1,4 +1,4 @@
-/*2014年6月24日10:52:56*/
+/*2014年6月25日15:23:32*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = "请输入";
@@ -22,5 +22,22 @@ $(".multiple").change(function(event) {
         vals = vals ? vals + "," + val : val;
     }
     input.val(vals);
+});
+
+$("#hotel_province").change(function(event) {
+    map.centerAndZoom($(this).val().match(/,(\s\S+)]/)[0]);
+    $.ajax({
+        url: "/help/location.ashx",
+        type: "GET",
+        dataType: "json",
+        type: "city",
+        value: $(this).val().match(/(\d+),/)[0]
+    }).done(function(data) {
+        console.log("data");
+    }).fail(function() {
+        console.log("error");
+    }).always(function() {
+        console.log("complete");
+    });
 });
 //# sourceMappingURL=main.map
