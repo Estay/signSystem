@@ -1,4 +1,4 @@
-/*2014年6月25日16:28:49*/
+/*2014年6月25日16:30:41*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = "请输入";
@@ -80,5 +80,9 @@ $("#h_city").change(function(event) {
             $("#h_business_zone").append(option);
         }
     }).fail(function() {}).always(function() {});
+});
+
+$("#h_administrative_region,#h_business_zone").change(function(event) {
+    map.centerAndZoom($(this).find(":selected").text());
 });
 //# sourceMappingURL=main.map

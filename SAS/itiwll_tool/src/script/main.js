@@ -100,3 +100,6 @@ $("#h_city").change(function(event) {
 	.always(function() {
 	});
 });
+$("#h_administrative_region,#h_business_zone").change(function(event) {
+	map.centerAndZoom($(this).find(':selected').text());
+});
