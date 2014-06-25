@@ -34,13 +34,69 @@ $("#hotel_province").change(function(event) {
 		}
 	})
 	.done(function(data) {
-		console.log("data");
+		$("#h_city").children().slice(1).remove();
+		$("#h_administrative_region").children().slice(1).remove();
+		$("#h_business_zone").children().slice(1).remove();
+		for (var i = 0; i < data.length; i++) {
+			var city = data[i];
+			var option = '<option value="'+city.id+'">'+city.name+'</option>';
+			$("#h_city").append(option);
+		};
 	})
 	.fail(function() {
-		console.log("error");
 	})
 	.always(function() {
-		console.log("complete");
 	});
 	
+});
+// 设置城市
+$("#h_city").change(function(event) {
+	//地图同步
+	map.centerAndZoom($(this).find(':selected').text());
+
+	// 加载行政区数据
+	$.ajax({
+		url: '/help/location.ashx',
+		type: 'GET',
+		dataType: 'json',
+		data : {
+			type : "region",
+			value: $(this).val()
+		}
+	})
+	.done(function(data) {
+		$("#h_administrative_region").children().slice(1).remove();
+		for (var i = 0; i < data.length; i++) {
+			var city = data[i];
+			var option = '<option value="'+city.id+'">'+city.name+'</option>';
+			$("#h_administrative_region").append(option);
+		};
+	})
+	.fail(function() {
+	})
+	.always(function() {
+	});
+
+	// 加载商圈数据
+	$.ajax({
+		url: '/help/location.ashx',
+		type: 'GET',
+		dataType: 'json',
+		data : {
+			type : "commercial",
+			value: $(this).val()
+		}
+	})
+	.done(function(data) {
+		$("#h_business_zone").children().slice(1).remove();
+		for (var i = 0; i < data.length; i++) {
+			var city = data[i];
+			var option = '<option value="'+city.id+'">'+city.name+'</option>';
+			$("#h_business_zone").append(option);
+		};
+	})
+	.fail(function() {
+	})
+	.always(function() {
+	});
 });

@@ -1,4 +1,4 @@
-/*2014年6月25日15:53:56*/
+/*2014年6月25日16:28:49*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = "请输入";
@@ -35,11 +35,50 @@ $("#hotel_province").change(function(event) {
             value: $(this).val()
         }
     }).done(function(data) {
-        console.log("data");
-    }).fail(function() {
-        console.log("error");
-    }).always(function() {
-        console.log("complete");
-    });
+        $("#h_city").children().slice(1).remove();
+        $("#h_administrative_region").children().slice(1).remove();
+        $("#h_business_zone").children().slice(1).remove();
+        for (var i = 0; i < data.length; i++) {
+            var city = data[i];
+            var option = '<option value="' + city.id + '">' + city.name + "</option>";
+            $("#h_city").append(option);
+        }
+    }).fail(function() {}).always(function() {});
+});
+
+$("#h_city").change(function(event) {
+    map.centerAndZoom($(this).find(":selected").text());
+    $.ajax({
+        url: "/help/location.ashx",
+        type: "GET",
+        dataType: "json",
+        data: {
+            type: "region",
+            value: $(this).val()
+        }
+    }).done(function(data) {
+        $("#h_administrative_region").children().slice(1).remove();
+        for (var i = 0; i < data.length; i++) {
+            var city = data[i];
+            var option = '<option value="' + city.id + '">' + city.name + "</option>";
+            $("#h_administrative_region").append(option);
+        }
+    }).fail(function() {}).always(function() {});
+    $.ajax({
+        url: "/help/location.ashx",
+        type: "GET",
+        dataType: "json",
+        data: {
+            type: "commercial",
+            value: $(this).val()
+        }
+    }).done(function(data) {
+        $("#h_business_zone").children().slice(1).remove();
+        for (var i = 0; i < data.length; i++) {
+            var city = data[i];
+            var option = '<option value="' + city.id + '">' + city.name + "</option>";
+            $("#h_business_zone").append(option);
+        }
+    }).fail(function() {}).always(function() {});
 });
 //# sourceMappingURL=main.map
