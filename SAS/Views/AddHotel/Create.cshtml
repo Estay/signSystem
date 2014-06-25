@@ -116,10 +116,12 @@
 			</div>
 			<div id="location_box" class="float_l">
 				<a href="" class="btn_d set">在地图上定位</a><a href="" class="btn_d">输入经纬底定位</a>
+				<p class="float_r"><span id="map_lon_text">--</span>,<span id="map_lat_text">--</span></p>
 				<div class="box_b">
+					<input id="map_lon_input" class="hide" type="text" name="@Html.DisplayNameFor(model => model.BaiduLon)"><input id="map_lat_input" class="hide" type="text" name="@Html.DisplayNameFor(model => model.BaiduLat)">
 					<div id="maps_input_box"></div>
-					<div id="location_input_box">
-						
+					<div id="location_input_box" class="hide">
+						经度：<input id="map_lon" type="text">纬度：<input id="map_lat" type="text">
 					</div>
 				</div>
 			</div>
@@ -239,6 +241,75 @@
         <input class="hide" type="submit"  value="Create" />
 	</div>
 </div>
+
+<!-- 地图 -->
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=XvswfQtzH5kPt2s7GPYAuTIF"></script>
+<script type="text/javascript">
+
+    var sContent = "<div>" + "<p>可以拖动，请放置在房屋所在位置。</p>" + "</div>";
+    // 百度地图API功能
+    var map = new BMap.Map("maps_input_box");
+    map.addControl(new BMap.NavigationControl({ anchor: BMAP_ANCHOR_TOP_LEFT, type: BMAP_NAVIGATION_CONTROL_SMALL }));  //右上角，仅包含平移和缩放按钮。
+    var point = new BMap.Point(116.400244, 39.92556);
+    map.centerAndZoom(point, 12);
+    var marker = new BMap.Marker(point);  // 创建标注
+    map.addOverlay(marker);              // 将标注添加到地图中
+    marker.enableDragging();    //可拖拽
+    map.enableScrollWheelZoom();//可以鼠标滚动 缩放比例尺
+  
+
+    map.addEventListener("click", function (e) { mapClick(e.point.lng, e.point.lat); });
+
+
+
+    function mapClick(lng, lat) {
+
+        map.clearOverlays();
+        var currentPoint = new BMap.Point(lng, lat);
+        var marker = new BMap.Marker(currentPoint);
+        marker.enableDragging();
+        $("#Longtitude").val(lng);
+        $("#Latitude").val(lat);
+        $("#HasLatLong").val("True");
+
+        marker.addEventListener("dragend", function (e) {
+            var currentZoom = map.getZoom();
+            var cp = new BMap.Point(e.point.lng, e.point.lat);
+            map.setCenter(cp);
+            $("#Longtitude").val(e.point.lng);
+            $("#Latitude").val(e.point.lat);
+            $("#HasLatLong").val("True");
+            var p = marker.getPosition();//获取marker的位置
+            set_map_val(p);
+            // alert("marker的位置是" + p.lng + "," + p.lat);
+        });
+        map.addOverlay(marker);
+        var infoWindow = new BMap.InfoWindow(sContent);
+        marker.addEventListener("click", function () {
+            this.openInfoWindow(infoWindow);
+        });
+        var p = marker.getPosition();//获取marker的位置
+        set_map_val(p);
+        // alert("marker的位置是" + p.lng + "," + p.lat);
+        //setTimeout(function () { marker.openInfoWindow(infoWindow); }, 1000);
+        //map.setCenter(currentPoint);
+    }
+
+    function set_map_val (p) {
+    	$("#map_lon_input").val(p.lng);
+    	$("#map_lat_input").val(p.lat);
+    	$("#map_lon_text").text(p.lng);
+    	$("#map_lat_text").text(p.lat);
+    }
+</script>
+
+
+
+
+
+
+
+<!-- *************************************************************************************************************** -->
 <div class="box_a">
 	<div class="from_path">
 		<h2>房型列表</h2>
