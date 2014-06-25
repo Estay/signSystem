@@ -23,13 +23,15 @@ $(".multiple").change(function(event) {
 // 设置省份
 $("#hotel_province").change(function(event) {
 	// 地图同步
-	map.centerAndZoom($(this).val().match(/,(\s\S+)]/)[0]);
+	map.centerAndZoom($(this).find(':selected').text());
 	$.ajax({
 		url: '/help/location.ashx',
 		type: 'GET',
 		dataType: 'json',
-		type : "city",
-		value: $(this).val().match(/(\d+),/)[0]
+		data : {
+			type : "city",
+			value: $(this).val()
+		}
 	})
 	.done(function(data) {
 		console.log("data");

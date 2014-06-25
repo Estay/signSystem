@@ -1,4 +1,4 @@
-/*2014年6月25日15:23:32*/
+/*2014年6月25日15:53:56*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = "请输入";
@@ -25,14 +25,16 @@ $(".multiple").change(function(event) {
 });
 
 $("#hotel_province").change(function(event) {
-    map.centerAndZoom($(this).text());
+    map.centerAndZoom($(this).find(":selected").text());
     $.ajax({
         url: "/help/location.ashx",
         type: "GET",
         dataType: "json",
-        type: "city",
-        value: $(this).val()
-    }).done(function (data) {
+        data: {
+            type: "city",
+            value: $(this).val()
+        }
+    }).done(function(data) {
         console.log("data");
     }).fail(function() {
         console.log("error");
