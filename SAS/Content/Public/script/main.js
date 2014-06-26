@@ -1,4 +1,4 @@
-/*2014年6月26日15:03:37*/
+/*2014年6月26日15:44:10*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = "请输入";
@@ -56,8 +56,14 @@
 
 $(".tip_input").e_input_tip();
 
+$("#phone_area_code,#hotel_phonehotel_phone").keyup(function(event) {
+    $("#phone").val($("#phone_area_code") + "-" + $("#hotel_phonehotel_phone"));
+});
+
 $(".multiple").change(function(event) {
-    var input = $(this).parents(".input_line").prev(".hide"), vals = input.val(), val = $(this).val();
+    var input = $(this).parents(".input_line").prev(".hide");
+    input = input.length ? input : $(this).parents(".input_line").find(".hide");
+    var vals = input.val(), val = $(this).val();
     if (vals.indexOf(val) > -1) {
         vals = vals.replace(RegExp("^" + val + ",|," + val + "|^" + val + "$", "ig"), "");
     } else {

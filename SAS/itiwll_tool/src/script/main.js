@@ -7,10 +7,16 @@
 // 输入框提示文字
 $(".tip_input").e_input_tip();
 
-//录入设施与服务 值处理
+//电话值处理
+$("#phone_area_code,#hotel_phonehotel_phone").keyup(function(event) {
+	$("#phone").val($("#phone_area_code")+"-"+$("#hotel_phonehotel_phone"));
+});
+
+//多选值处理
 $(".multiple").change(function(event) {
-	var input = $(this).parents(".input_line").prev(".hide"),
-		vals = input.val(),
+	var input = $(this).parents(".input_line").prev(".hide");
+	input = input.length?input : $(this).parents(".input_line").find(".hide");
+	var	vals = input.val(),
 		val = $(this).val();
 	if (vals.indexOf(val) > -1) {
 		vals =  vals.replace(RegExp("^" + val + ",|," + val + "|^" + val + "$", "ig"), '');
