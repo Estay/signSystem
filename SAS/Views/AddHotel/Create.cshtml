@@ -49,7 +49,7 @@
              @Html.ValidationMessageFor(model => model.h_name_cn)
 			<label for="hotel_class">
 				<span class="label">所属类别</span>
-				<select name="@Html.DisplayNameFor(model => model.h_t_id)"id="hotel_class">
+				<select name="@Html.DisplayNameFor(model => model.h_t_id)" id="hotel_class">
 					@foreach(var opt in hotel_class){
 	                    <option value="@opt.Key" >@opt.Value</option>                    
 	                }
@@ -81,17 +81,17 @@
 					<option value="@opt.Key">@opt.Value</option>                    
 				}
 			</select>
-			<select id="hotel_city" name="@Html.DisplayNameFor(model => model.h_city)">
+			<select id="h_city" name="@Html.DisplayNameFor(model => model.h_city)">
 				@foreach(var opt in hotel_city){
 					<option value="@opt">@opt</option>                    
 				}
 			</select>
-			<select id="hotel_area" name="@Html.DisplayNameFor(model => model.h_administrative_region)">
+			<select id="h_administrative_region" name="@Html.DisplayNameFor(model => model.h_administrative_region)">
 				@foreach(var opt in hotel_area){
 					<option value="@opt">@opt</option>                    
 				}
 			</select>
-			<select id="hotel_district" name="@Html.DisplayNameFor(model => model.h_business_zone)">
+			<select id="h_business_zone" name="@Html.DisplayNameFor(model => model.h_business_zone)">
 				@foreach(var opt in hotel_district){
 					<option value="@opt">@opt</option>                    
 				}
