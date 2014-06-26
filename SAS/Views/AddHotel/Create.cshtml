@@ -199,13 +199,13 @@
 		</div>
 		<p class="input_line">
 			<span class="label">可接受的信用卡</span>
-                      <input class="hide" type="text" name="@Html.DisplayNameFor(model => model.CreditCards)" value="" />
-			<label for="visa"><input id="visa" type="checkbox" name="visa" value="visa"><span class="card visa"></span></label>
-			<label for="master"><input id="master" type="checkbox" name="hotel_card" value="master"><span class="card master"></span></label>
-			<label for="amex"><input id="amex" type="checkbox" name="hotel_card" value="amex"><span class="card amex"></span></label>
-			<label for="jcb"><input id="jcb" type="checkbox" name="hotel_card" value="jcb"><span class="card jcb"></span></label>
-			<label for="unionpay"><input id="unionpay" type="checkbox" name="hotel_card" value="unionpay"><span class="card unionpay"></span></label>
-			<label for="dinersclub"><input id="dinersclub" type="checkbox" name="hotel_card" value="dinersclub"><span class="card dinersclub"></span></label>
+          	<input id="cards" class="hide" type="text" name="@Html.DisplayNameFor(model => model.CreditCards)" value="" />
+			<label for="visa"><input id="visa" class="multiple" type="checkbox" name="visa" value="visa"><span class="card visa"></span></label>
+			<label for="master"><input id="master" class="multiple" type="checkbox" name="hotel_card" value="master"><span class="card master"></span></label>
+			<label for="amex"><input id="amex" class="multiple" type="checkbox" name="hotel_card" value="amex"><span class="card amex"></span></label>
+			<label for="jcb"><input id="jcb" class="multiple" type="checkbox" name="hotel_card" value="jcb"><span class="card jcb"></span></label>
+			<label for="unionpay"><input id="unionpay" class="multiple" type="checkbox" name="hotel_card" value="unionpay"><span class="card unionpay"></span></label>
+			<label for="dinersclub"><input id="dinersclub" class="multiple" type="checkbox" name="hotel_card" value="dinersclub"><span class="card dinersclub"></span></label>
 		</p>
 	</div>
 	<div class="from_path">
