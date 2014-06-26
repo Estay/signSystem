@@ -5,6 +5,7 @@ module.exports = function(grunt) {
 		date_str = "/*" + date.getFullYear() + '年' + (date.getMonth() + 1) + '月' + date.getDate() + '日' + date.toLocaleTimeString() + "*/",
 		js_files = [
 				"src/script/plug-in/input_tip.js",
+				"src/script/plug-in/tab_switch.js",
 				"src/script/main.js"
 			],
 		css_files = {
