@@ -14,7 +14,7 @@ namespace SAS.help
 
         public void ProcessRequest(HttpContext context)
         {
-            context.Response.ContentType = "text/plain";
+           context.Response.ContentType = "text/plain";
            string type= context.Request.QueryString["type"];
            string value = context.Request.QueryString["value"];
            
@@ -32,7 +32,7 @@ namespace SAS.help
                 case "city":
                     sql = string.Format("select city_id,city_name from city_info where province_id={0}", value);
                     break;
-                case "commerical":
+                case "commercial":
                     sql = string.Format("select id,Locations_name from commerical_locations_info where city_id={0}", value);
                     break;
                 default:

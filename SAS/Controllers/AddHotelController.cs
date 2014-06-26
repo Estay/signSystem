@@ -67,6 +67,8 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult Create(hotel_info hotel_info)
         {
+                 
+            
             if (ModelState.IsValid)
             {
                 db.hotel.Add(hotel_info);
