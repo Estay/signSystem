@@ -67,15 +67,18 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult Create(hotel_info hotel_info)
         {
-                 
+            hotel_info.h_ctime = DateTime.Now;
+            hotel_info.source_id = 5;
+            hotel_info.h_id = "001";
             
+            var errors = ModelState.Values.SelectMany(v => v.Errors); 
             if (ModelState.IsValid)
             {
                 db.hotel.Add(hotel_info);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+          
             return View(hotel_info);
         }
 

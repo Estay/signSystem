@@ -15,9 +15,10 @@ namespace SAS.Models
         public string h_r_p_title;
         public string h_r_p_pic_original_url;
 
-        public class RoomImageDBContent : DbContext
-        {
-            public DbSet<hotel_room_picture_info> hotel { get; set; }
-        }
+        
+    }
+    public class RoomImageDBContent : DbContext
+    {
+        public DbSet<hotel_room_picture_info> hotel { get; set; }
     }
 }
