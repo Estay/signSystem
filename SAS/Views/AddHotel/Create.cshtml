@@ -11,9 +11,9 @@
     Dictionary<int, String> hotel_theme = ViewData["Themes"] as Dictionary<int,string>;
 
     Dictionary<int, String> hotel_province = ViewData["provice"] as Dictionary<int, string>;
-    Array hotel_city = new string[]{ "所在城市", "ddddd" };
-    Array hotel_area = new string[]{ "所在行政区", "ddddd" };
-    Array hotel_district = new string[]{ "所在商圈", "ddddd" };
+    Array hotel_city = new string[] { "所在城市", "ddddd" };
+    Array hotel_area = new string[] { "所在行政区", "ddddd" };
+    Array hotel_district = new string[] { "所在商圈", "ddddd" };
     Array hotel_built_year = new string[]{ "2014年", "ddddd" };
     Array hotel_built_month = new string[]{ "5月", "ddddd" };
     Array hotel_decoration_time_year = new string[]{ "2014年", "ddddd" };
@@ -81,17 +81,17 @@
 					<option value="@opt.Key">@opt.Value</option>                    
 				}
 			</select>
-			<select name="hotel_city" id="@Html.DisplayNameFor(model => model.h_city)">
+			<select id="hotel_city" name="@Html.DisplayNameFor(model => model.h_city)">
 				@foreach(var opt in hotel_city){
 					<option value="@opt">@opt</option>                    
 				}
 			</select>
-			<select name="hotel_area" id="@Html.DisplayNameFor(model => model.h_administrative_region)">
+			<select id="hotel_area" name="@Html.DisplayNameFor(model => model.h_administrative_region)">
 				@foreach(var opt in hotel_area){
 					<option value="@opt">@opt</option>                    
 				}
 			</select>
-			<select name="hotel_district" id="@Html.DisplayNameFor(model => model.h_business_zone)">
+			<select id="hotel_district" name="@Html.DisplayNameFor(model => model.h_business_zone)">
 				@foreach(var opt in hotel_district){
 					<option value="@opt">@opt</option>                    
 				}
