@@ -241,12 +241,12 @@ td {
   position: relative;
   top: 1px;
 }
-.btn_d:hover,
-.btn_d.set {
+.btn_d:hover {
   border-bottom: none;
+}
+.btn_d.set {
   border-bottom:1px solid #FFF;
 }
-
 /*文字 颜色*/
 .label {
   width: 100px;

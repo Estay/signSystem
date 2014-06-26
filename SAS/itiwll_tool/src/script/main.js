@@ -47,8 +47,8 @@ $("#hotel_province").change(function(event) {
 	})
 	.always(function() {
 	});
-	
 });
+
 // 设置城市
 $("#h_city").change(function(event) {
 	//地图同步
@@ -102,4 +102,15 @@ $("#h_city").change(function(event) {
 });
 $("#h_administrative_region,#h_business_zone").change(function(event) {
 	map.centerAndZoom($(this).find(':selected').text());
+});
+
+// 地图输入方式切换
+$("#location_box").e_tab_switch();
+$("#map_lon").keyup(function(event) {
+	$("#map_lon_input").val($(this).val());
+	$("#map_lon_text").text($(this).val());
+});
+$("#map_lat").keyup(function(event) {
+	$("#map_lat_input").val($(this).val());
+	$("#map_lat_text").text($(this).val());
 });

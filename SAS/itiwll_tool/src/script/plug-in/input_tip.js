@@ -9,8 +9,8 @@
 		return this.each(function() {
 			var el = $(this);
 			var text = options ? options : defaults,
-				tip_text = $(this).attr("tip_text");
-			text = tip_text ? tip_text : text;
+				tip_text = $(this).attr("tip_text"),
+				text = tip_text ? tip_text : text;
 			el.addClass('col_gray');
 			el.val(text);
 			el.focusin(function(event) {

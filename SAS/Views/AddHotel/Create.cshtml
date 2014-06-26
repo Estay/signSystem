@@ -112,18 +112,17 @@
 			<div class="float_l">
 				<p class="input_line">
 					<span class="label">地图位置</span>
-                       
 				</p>
 			</div>
 			<div id="location_box" class="float_l">
-				<a href="" class="btn_d set">在地图上定位</a><a href="" class="btn_d">输入经纬底定位</a>
+				<a href="" class="e_tab btn_d set">在地图上定位</a><a href="" class="e_tab btn_d">输入经纬底定位</a>
+				<input id="map_lon_input" class="hide" type="text" name="@Html.DisplayNameFor(model => model.BaiduLon)"><input id="map_lat_input" class="hide" type="text" name="@Html.DisplayNameFor(model => model.BaiduLat)">
 				<p class="float_r"><span id="map_lon_text">--</span>,<span id="map_lat_text">--</span></p>
-				<div class="box_b">
-					<input id="map_lon_input" class="hide" type="text" name="@Html.DisplayNameFor(model => model.BaiduLon)"><input id="map_lat_input" class="hide" type="text" name="@Html.DisplayNameFor(model => model.BaiduLat)">
+				<div class="box_b e_tab_box">
 					<div id="maps_input_box"></div>
-					<div id="location_input_box" class="hide">
-						经度：<input id="map_lon" type="text">纬度：<input id="map_lat" type="text">
-					</div>
+				</div>
+				<div id="location_input_box" class="box_b e_tab_box hide">
+					经度：<input id="map_lon" type="text">纬度：<input id="map_lat" type="text">
 				</div>
 			</div>
 		</div>

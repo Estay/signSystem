@@ -1,11 +1,10 @@
-/*2014年6月26日09:31:31*/
+/*2014年6月26日15:03:37*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = "请输入";
         return this.each(function() {
             var el = $(this);
-            var text = options ? options : defaults, tip_text = $(this).attr("tip_text");
-            text = tip_text ? tip_text : text;
+            var text = options ? options : defaults, tip_text = $(this).attr("tip_text"), text = tip_text ? tip_text : text;
             el.addClass("col_gray");
             el.val(text);
             el.focusin(function(event) {
@@ -24,6 +23,34 @@
                 }
             });
         });
+    };
+})(jQuery);
+
+(function($) {
+    $.fn.e_tab_switch = function(options) {
+        if (!this.length) {
+            return this;
+        }
+        var opts = $.extend(true, {}, $.fn.e_tab_switch.defaults, options);
+        this.each(function() {
+            var $this = $(this), el_tabs = $this.find("." + opts.tab_class), el_boxs = $this.find("." + opts.box_class);
+            el_tabs.click(function(event) {
+                event.preventDefault();
+                var index = el_tabs.index($(this));
+                $(this).addClass("set");
+                el_tabs.not($(this)).removeClass("set");
+                el_boxs.hide().eq(index).show();
+                if (opts.callback) {
+                    opts.callback();
+                }
+            });
+        });
+        return this;
+    };
+    $.fn.e_tab_switch.defaults = {
+        tab_class: "e_tab",
+        box_class: "e_tab_box",
+        callback: null
     };
 })(jQuery);
 
@@ -99,5 +126,17 @@ $("#h_city").change(function(event) {
 
 $("#h_administrative_region,#h_business_zone").change(function(event) {
     map.centerAndZoom($(this).find(":selected").text());
+});
+
+$("#location_box").e_tab_switch();
+
+$("#map_lon").keyup(function(event) {
+    $("#map_lon_input").val($(this).val());
+    $("#map_lon_text").text($(this).val());
+});
+
+$("#map_lat").keyup(function(event) {
+    $("#map_lat_input").val($(this).val());
+    $("#map_lat_text").text($(this).val());
 });
 //# sourceMappingURL=main.map
