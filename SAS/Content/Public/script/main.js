@@ -1,4 +1,4 @@
-/*2014年6月26日15:44:10*/
+/*2014年6月26日15:54:22*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = "请输入";
@@ -57,7 +57,7 @@
 $(".tip_input").e_input_tip();
 
 $("#phone_area_code,#hotel_phonehotel_phone").keyup(function(event) {
-    $("#phone").val($("#phone_area_code") + "-" + $("#hotel_phonehotel_phone"));
+    $("#phone").val($("#phone_area_code").val() + "-" + $("#hotel_phonehotel_phone").val());
 });
 
 $(".multiple").change(function(event) {

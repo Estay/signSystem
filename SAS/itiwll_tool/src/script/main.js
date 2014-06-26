@@ -9,7 +9,7 @@ $(".tip_input").e_input_tip();
 
 //电话值处理
 $("#phone_area_code,#hotel_phonehotel_phone").keyup(function(event) {
-	$("#phone").val($("#phone_area_code")+"-"+$("#hotel_phonehotel_phone"));
+	$("#phone").val($("#phone_area_code").val()+"-"+$("#hotel_phonehotel_phone").val());
 });
 
 //多选值处理
