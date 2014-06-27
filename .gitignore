@@ -166,6 +166,3 @@ UpgradeLog*.XML
 
 
 /SAS/itiwll_tool/node_modules
-SAS/bin/
-SAS/bin/
-SAS/obj/

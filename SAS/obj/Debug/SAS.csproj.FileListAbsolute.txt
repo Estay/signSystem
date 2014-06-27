@@ -133,7 +133,6 @@ E:\project\第三方签约\signSystem\SAS\bin\DotNetOpenAuth.OAuth.Consumer.dll
 E:\project\第三方签约\signSystem\SAS\bin\DotNetOpenAuth.OAuth.dll
 E:\project\第三方签约\signSystem\SAS\bin\DotNetOpenAuth.OpenId.dll
 E:\project\第三方签约\signSystem\SAS\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
-E:\project\第三方签约\signSystem\SAS\bin\EntityFramework.dll
 E:\project\第三方签约\signSystem\SAS\bin\Microsoft.Web.Infrastructure.dll
 E:\project\第三方签约\signSystem\SAS\bin\Microsoft.Web.WebPages.OAuth.dll
 E:\project\第三方签约\signSystem\SAS\bin\Newtonsoft.Json.dll
@@ -186,9 +185,6 @@ E:\project\第三方签约\signSystem\SAS\bin\zh-Hans\Microsoft.Web.WebPages.OAu
 E:\project\第三方签约\signSystem\SAS\bin\zh-Hans\WebMatrix.WebData.resources.dll
 E:\project\第三方签约\signSystem\SAS\obj\Debug\SAS.dll
 E:\project\第三方签约\signSystem\SAS\obj\Debug\SAS.pdb
-E:\project\第三方签约\signSystem\SAS\bin\EntityFramework.SqlServer.dll
-E:\project\第三方签约\signSystem\SAS\bin\EntityFramework.SqlServer.xml
-E:\project\第三方签约\signSystem\SAS\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
 E:\estay.cn\poj\signSystem\SAS\bin\EntityFramework.SqlServer.dll
 E:\estay.cn\poj\signSystem\SAS\bin\EntityFramework.SqlServer.xml
 E:\estay.cn\poj\signSystem\SAS\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
