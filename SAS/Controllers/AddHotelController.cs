@@ -69,13 +69,15 @@ namespace SAS.Controllers
         {
             hotel_info.h_ctime = DateTime.Now;
             hotel_info.source_id = 5;
-            hotel_info.h_id = "001";
+            hotel_info.h_id = Guid.NewGuid().ToString();
             
             var errors = ModelState.Values.SelectMany(v => v.Errors); 
             if (ModelState.IsValid)
             {
                 db.hotel.Add(hotel_info);
                 db.SaveChanges();
+                var ddh = db.hotel.Select(h => h.h_id == hotel_info.h_id);
+
                 return RedirectToAction("Index");
             }
           
