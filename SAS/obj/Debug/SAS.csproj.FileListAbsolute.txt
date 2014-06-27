@@ -70,7 +70,6 @@ E:\estay.cn\poj\signSystem\SAS\bin\DotNetOpenAuth.OAuth.Consumer.dll
 E:\estay.cn\poj\signSystem\SAS\bin\DotNetOpenAuth.OAuth.dll
 E:\estay.cn\poj\signSystem\SAS\bin\DotNetOpenAuth.OpenId.dll
 E:\estay.cn\poj\signSystem\SAS\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
-E:\estay.cn\poj\signSystem\SAS\bin\EntityFramework.dll
 E:\estay.cn\poj\signSystem\SAS\bin\Microsoft.Web.Infrastructure.dll
 E:\estay.cn\poj\signSystem\SAS\bin\Microsoft.Web.WebPages.OAuth.dll
 E:\estay.cn\poj\signSystem\SAS\bin\Newtonsoft.Json.dll
