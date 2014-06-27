@@ -169,3 +169,8 @@ UpgradeLog*.XML
 SAS/bin/
 SAS/bin/
 SAS/obj/
+SAS/bin/SAS.dll
+SAS/bin/SAS.pdb
+SAS/obj/Debug/SAS.dll
+SAS/obj/Debug/SAS.pdb
+SAS/SAS.csproj
