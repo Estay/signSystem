@@ -42,7 +42,7 @@ namespace SAS.Models
         /// 我库房型编号
         /// </summary>
         /// 
-        [KeyAttribute]
+       [KeyAttribute]
         public int room_id
         {
             set { _room_id = value; }
