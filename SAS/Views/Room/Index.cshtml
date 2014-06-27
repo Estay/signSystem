@@ -1,0 +1,183 @@
+﻿@model IEnumerable<SAS.Models.hotel_room_info>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.h_r_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hotel_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.h_r_name_cn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.h_r_name_en)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.h_r_description_cn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.h_r_description_en)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.h_r_acreage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.h_r_people_number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.h_r_bedroom_number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.h_r_house_number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.h_r_reserve)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.h_r_bed_number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.h_r_bed_type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.h_r_bathroom_number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.h_r_floor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.h_r_least_day)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.h_r_longest_day)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.h_r_ctime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.h_r_utime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.h_r_state)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.h_r_sort)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BroadnetAccess)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BroadnetFee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Capacity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.house_service)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.h_r_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hotel_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.h_r_name_cn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.h_r_name_en)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.h_r_description_cn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.h_r_description_en)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.h_r_acreage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.h_r_people_number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.h_r_bedroom_number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.h_r_house_number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.h_r_reserve)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.h_r_bed_number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.h_r_bed_type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.h_r_bathroom_number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.h_r_floor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.h_r_least_day)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.h_r_longest_day)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.h_r_ctime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.h_r_utime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.h_r_state)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.h_r_sort)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BroadnetAccess)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BroadnetFee)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Capacity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.house_service)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.room_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.room_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.room_id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,197 @@
+﻿@model SAS.Models.hotel_room_info
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>hotel_room_info</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_r_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_r_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.hotel_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.hotel_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_r_name_cn)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_r_name_cn)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_r_name_en)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_r_name_en)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_r_description_cn)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_r_description_cn)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_r_description_en)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_r_description_en)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_r_acreage)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_r_acreage)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_r_people_number)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_r_people_number)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_r_bedroom_number)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_r_bedroom_number)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_r_house_number)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_r_house_number)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_r_reserve)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_r_reserve)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_r_bed_number)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_r_bed_number)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_r_bed_type)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_r_bed_type)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_r_bathroom_number)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_r_bathroom_number)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_r_floor)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_r_floor)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_r_least_day)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_r_least_day)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_r_longest_day)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_r_longest_day)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_r_ctime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_r_ctime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_r_utime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_r_utime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_r_state)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_r_state)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_r_sort)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_r_sort)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BroadnetAccess)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BroadnetAccess)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BroadnetFee)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BroadnetFee)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Comments)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Comments)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Capacity)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Capacity)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.house_service)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.house_service)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.room_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
