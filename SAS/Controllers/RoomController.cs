@@ -79,7 +79,7 @@ namespace SAS.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(hotel_room_info).State = EntityState.Modified;
+                //db.Entry(hotel_room_info).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
