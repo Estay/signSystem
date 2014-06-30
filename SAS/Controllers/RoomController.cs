@@ -40,6 +40,8 @@ namespace SAS.Controllers
 
         public ActionResult Create(string hotelId)
         {
+            hotelId = "48385";
+            getRooms(Convert.ToInt32(hotelId));
             string f = hotelId;
             getfacilities();
             return View();
@@ -72,11 +74,14 @@ namespace SAS.Controllers
             }
             db.room.Add(hotel_room_info);
             db.SaveChanges();
-            List<hotel_room_info> roomsList = (from r in db.room where r.hotel_id == hotel_room_info.hotel_id select r).ToList();        
-            ViewData["rooms"] = roomsList; 
+            getRooms(hotel_room_info.hotel_id);
             return View();
         }
-
+        public void getRooms(int hotel_id)
+        {
+            List<hotel_room_info> roomsList = (from r in db.room where r.hotel_id == hotel_id select r).ToList();
+            ViewData["rooms"] = roomsList; 
+        }
         //
         // GET: /Room/Edit/5
 
