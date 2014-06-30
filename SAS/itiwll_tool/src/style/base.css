@@ -80,6 +80,10 @@ td {
   border: none;
 }
 
+.w50 {
+  width: 50px;
+}
+
 .m_b50 {
   margin-bottom: 50px;
 }

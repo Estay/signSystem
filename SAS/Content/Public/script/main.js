@@ -1,4 +1,4 @@
-/*2014年6月26日15:54:22*/
+/*2014年6月30日10:57:07*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = "请输入";
@@ -54,95 +54,90 @@
     };
 })(jQuery);
 
-$(".tip_input").e_input_tip();
-
-$("#phone_area_code,#hotel_phonehotel_phone").keyup(function(event) {
-    $("#phone").val($("#phone_area_code").val() + "-" + $("#hotel_phonehotel_phone").val());
-});
-
-$(".multiple").change(function(event) {
-    var input = $(this).parents(".input_line").prev(".hide");
-    input = input.length ? input : $(this).parents(".input_line").find(".hide");
-    var vals = input.val(), val = $(this).val();
-    if (vals.indexOf(val) > -1) {
-        vals = vals.replace(RegExp("^" + val + ",|," + val + "|^" + val + "$", "ig"), "");
-    } else {
-        vals = vals ? vals + "," + val : val;
-    }
-    input.val(vals);
-});
-
-$("#hotel_province").change(function(event) {
-    map.centerAndZoom($(this).find(":selected").text());
-    $.ajax({
-        url: "/help/location.ashx",
-        type: "GET",
-        dataType: "json",
-        data: {
-            type: "city",
-            value: $(this).val()
+(function($) {
+    var estay_sas = {};
+    $(".tip_input").e_input_tip();
+    $("#phone_area_code,#hotel_phonehotel_phone").keyup(function(event) {
+        $("#phone").val($("#phone_area_code").val() + "-" + $("#hotel_phonehotel_phone").val());
+    });
+    $(".multiple").change(function(event) {
+        var input = $(this).parents(".input_line").prev(".hide");
+        input = input.length ? input : $(this).parents(".input_line").find(".hide");
+        var vals = input.val(), val = $(this).val();
+        if (vals.indexOf(val) > -1) {
+            vals = vals.replace(RegExp("^" + val + ",|," + val + "|^" + val + "$", "ig"), "");
+        } else {
+            vals = vals ? vals + "," + val : val;
         }
-    }).done(function(data) {
-        $("#h_city").children().slice(1).remove();
-        $("#h_administrative_region").children().slice(1).remove();
-        $("#h_business_zone").children().slice(1).remove();
-        for (var i = 0; i < data.length; i++) {
-            var city = data[i];
-            var option = '<option value="' + city.id + '">' + city.name + "</option>";
-            $("#h_city").append(option);
-        }
-    }).fail(function() {}).always(function() {});
-});
-
-$("#h_city").change(function(event) {
-    map.centerAndZoom($(this).find(":selected").text());
-    $.ajax({
-        url: "/help/location.ashx",
-        type: "GET",
-        dataType: "json",
-        data: {
-            type: "region",
-            value: $(this).val()
-        }
-    }).done(function(data) {
-        $("#h_administrative_region").children().slice(1).remove();
-        for (var i = 0; i < data.length; i++) {
-            var city = data[i];
-            var option = '<option value="' + city.id + '">' + city.name + "</option>";
-            $("#h_administrative_region").append(option);
-        }
-    }).fail(function() {}).always(function() {});
-    $.ajax({
-        url: "/help/location.ashx",
-        type: "GET",
-        dataType: "json",
-        data: {
-            type: "commercial",
-            value: $(this).val()
-        }
-    }).done(function(data) {
-        $("#h_business_zone").children().slice(1).remove();
-        for (var i = 0; i < data.length; i++) {
-            var city = data[i];
-            var option = '<option value="' + city.id + '">' + city.name + "</option>";
-            $("#h_business_zone").append(option);
-        }
-    }).fail(function() {}).always(function() {});
-});
-
-$("#h_administrative_region,#h_business_zone").change(function(event) {
-    map.centerAndZoom($(this).find(":selected").text());
-});
-
-$("#location_box").e_tab_switch();
-
-$("#map_lon").keyup(function(event) {
-    $("#map_lon_input").val($(this).val());
-    $("#map_lon_text").text($(this).val());
-});
-
-$("#map_lat").keyup(function(event) {
-    $("#map_lat_input").val($(this).val());
-    $("#map_lat_text").text($(this).val());
-});
+        input.val(vals);
+    });
+    $("#hotel_province").change(function(event) {
+        map.centerAndZoom($(this).find(":selected").text());
+        $.ajax({
+            url: "/help/location.ashx",
+            type: "GET",
+            dataType: "json",
+            data: {
+                type: "city",
+                value: $(this).val()
+            }
+        }).done(function(data) {
+            $("#h_city").children().slice(1).remove();
+            $("#h_administrative_region").children().slice(1).remove();
+            $("#h_business_zone").children().slice(1).remove();
+            for (var i = 0; i < data.length; i++) {
+                var city = data[i];
+                var option = '<option value="' + city.id + '">' + city.name + "</option>";
+                $("#h_city").append(option);
+            }
+        }).fail(function() {}).always(function() {});
+    });
+    $("#h_city").change(function(event) {
+        map.centerAndZoom($(this).find(":selected").text());
+        $.ajax({
+            url: "/help/location.ashx",
+            type: "GET",
+            dataType: "json",
+            data: {
+                type: "region",
+                value: $(this).val()
+            }
+        }).done(function(data) {
+            $("#h_administrative_region").children().slice(1).remove();
+            for (var i = 0; i < data.length; i++) {
+                var city = data[i];
+                var option = '<option value="' + city.id + '">' + city.name + "</option>";
+                $("#h_administrative_region").append(option);
+            }
+        }).fail(function() {}).always(function() {});
+        $.ajax({
+            url: "/help/location.ashx",
+            type: "GET",
+            dataType: "json",
+            data: {
+                type: "commercial",
+                value: $(this).val()
+            }
+        }).done(function(data) {
+            $("#h_business_zone").children().slice(1).remove();
+            for (var i = 0; i < data.length; i++) {
+                var city = data[i];
+                var option = '<option value="' + city.id + '">' + city.name + "</option>";
+                $("#h_business_zone").append(option);
+            }
+        }).fail(function() {}).always(function() {});
+    });
+    $("#h_administrative_region,#h_business_zone").change(function(event) {
+        map.centerAndZoom($(this).find(":selected").text());
+    });
+    $("#location_box").e_tab_switch();
+    $("#map_lon").keyup(function(event) {
+        $("#map_lon_input").val($(this).val());
+        $("#map_lon_text").text($(this).val());
+    });
+    $("#map_lat").keyup(function(event) {
+        $("#map_lat_input").val($(this).val());
+        $("#map_lat_text").text($(this).val());
+    });
+})(jQuery);
 //# sourceMappingURL=main.map

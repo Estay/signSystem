@@ -155,6 +155,9 @@
 #bookroom {
 	margin-left: 10px;
 }
+#people_number {
+	width: 50px;
+}
 #btn_add_room {
 	display: inline-block;
 	*display: inline;
