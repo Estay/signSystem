@@ -5,10 +5,7 @@
     List<SAS.Models.hotel_room_info> roomList =ViewData["rooms"] as List<SAS.Models.hotel_room_info>;
     int hotel_id = 0;
     Dictionary<int, String> room_facilitys = ViewData["facilities"] as Dictionary<int, string>;
-    //room_facilitys.Add(0, "XXX");
-    //room_facilitys.Add(1, "XX");
-    //room_facilitys.Add(2, "XXXXXXXXXXXXXXX");
-    //room_facilitys.Add(3, "XXXXXXXXXXXXXXXXXXXXXXXX");
+    int[] number = new int[] { 0, 1, 2, 3, 4, 8, 6, 7, 8, 9, 10 };
 }
 
  @*   @Html.ValidationSummary(true)*@
@@ -63,15 +60,43 @@
     		</p>
     		<p class="input_line">
     			<label for="bedroom">
-    				<span class="label">户型</span></label><input type="text" id="bedroom" name="bedroom" value="0">	
+    				<span class="label">户型</span></label>
+                    <select name="???">
+                        @foreach (var item in number)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
     				室
-    				<input type="text" id="saloon" name="saloon" value="0">
+                    <select name="???">
+                        @foreach (var item in number)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
     				厅
-    				<input type="text" id="toilet" name="toilet" value="0">
+                    <select name="???">
+                        @foreach (var item in number)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
     				卫
-    				<input type="text" id="bookroom" name="bookroom" value="0">
+                    <select name="???">
+                        @foreach (var item in number)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
     				书房
-                <label for="people_number"><span class="label">宜住人数</span><input id="people_number" type="text" name="?????" ></label>
+                <label for="people_number"><span class="label">宜住人数</span>
+                    <select name="???">
+                        @foreach (var item in number)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>              
+                </label>
     		</p>
     		<div class="clear">
     			<div class="float_l">
@@ -103,11 +128,11 @@
     			<div class="float_l">
     				<div class="input_line"><span class="label">房型设施</span></div>
     			</div>
-    			<div class="float_l">
+    			<div class="float_l checkbox_box">
     				<p class="input_line">
                         <input type="text" class="hide" name="@Html.DisplayNameFor(model => model.house_service)">
     					@foreach(var facility in room_facilitys){   
-    				        <label><input type="checkbox" class="multiple"  name="room_facilitys" value="@facility.Key"><span class="room_facility">@facility.Value</span></label>
+    				        <label class="w_sn"><input type="checkbox" class="multiple"  name="room_facilitys" value="@facility.Key"><span class="room_facility">@facility.Value</span></label>
     	                }					
     				</p>
     			</div>
