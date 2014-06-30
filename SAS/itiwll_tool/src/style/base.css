@@ -37,7 +37,7 @@ input[type="text"],input[type="password"],select {
   height: 20px;
 }
 input[type="radio"] {
-  display: none;
+  vertical-align: middle;
 }
 select {
   height: 22px;
@@ -84,6 +84,9 @@ td {
   width: 50px;
 }
 
+.m_20 {
+  margin-right: 20px;
+}
 .m_b50 {
   margin-bottom: 50px;
 }
