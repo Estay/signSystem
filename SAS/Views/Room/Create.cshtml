@@ -28,11 +28,14 @@
 					<th>名称</th>
 					<th>操作</th>
 				</tr>
-				<tr>
-					<td>0001</td>
-					<td>大床</td>
-					<td><a href="">修改</a>|<a href="">删除</a></td>
-				</tr>
+                @foreach (var item in roomList)
+                {
+				    <tr>
+					    <td>@item.room_id</td>
+					    <td>@item.h_r_bed_type</td>
+					    <td><a href="">修改</a>|<a href="">删除</a></td>
+				    </tr>
+                }
 			</tbody>
 		</table>
 	</div>
