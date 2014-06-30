@@ -83,8 +83,10 @@ td {
 .w50 {
   width: 50px;
 }
-
-.m_20 {
+.m_t20 {
+  margin-top: 20px;
+}
+.m_r20 {
   margin-right: 20px;
 }
 .m_b50 {
@@ -256,7 +258,7 @@ td {
 }
 /*文字 颜色*/
 .label {
-  width: 100px;
+  width: 7em;
   text-align: right;
   display: inline-block;
   *display: inline;
