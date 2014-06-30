@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SAS.help;
 using SAS.Models;
 
 namespace SAS.Controllers
@@ -40,7 +41,8 @@ namespace SAS.Controllers
         public ActionResult Create(string hotelId)
         {
             string f = hotelId;
-            return View(db.room.ToList());
+            ViewData["facilities"] = DBhelp.GetSelectDataByTable("Facilities_info");//facilities
+            return View();
         }
 
         //

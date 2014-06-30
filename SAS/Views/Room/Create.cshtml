@@ -4,16 +4,16 @@
     ViewBag.Title = "Create";
 
     int hotel_id = 0;
-    Dictionary<int, String> room_facilitys = new Dictionary<int, string>();
-    room_facilitys.Add(0, "XXX");
-    room_facilitys.Add(1, "XX");
-    room_facilitys.Add(2, "XXXXXXXXXXXXXXX");
-    room_facilitys.Add(3, "XXXXXXXXXXXXXXXXXXXXXXXX");
+    Dictionary<int, String> room_facilitys = ViewData["facilities"] as Dictionary<int, string>;
+    //room_facilitys.Add(0, "XXX");
+    //room_facilitys.Add(1, "XX");
+    //room_facilitys.Add(2, "XXXXXXXXXXXXXXX");
+    //room_facilitys.Add(3, "XXXXXXXXXXXXXXXXXXXXXXXX");
 }
 
+ @*   @Html.ValidationSummary(true)*@
+@using(Html.BeginForm("Create","Room",FormMethod.Post)) {
 
-@using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
 <div id="flag_box">
 	<a href="" class="btn_c">1 录入公寓信息</a>
 	<a href="" class="btn_c set">2 录入房型</a>
@@ -111,7 +111,7 @@
 				</p>
 			</div>
 		</div>
-		<a href="" class="btn_b" id="btn_add_room">确定添加房型</a>
+		<a href="" class="btn_b" id="btn_add_room">确定添加房型</a> 
 	</div>
 	<div class="btn_box">
 		<a href="" class="previou btn_a">上一步</a>
