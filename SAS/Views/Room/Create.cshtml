@@ -107,12 +107,12 @@
     				<p class="input_line">
                         <input type="text" class="hide" name="@Html.DisplayNameFor(model => model.house_service)">
     					@foreach(var facility in room_facilitys){   
-    				        <label><input type="checkbox" name="room_facilitys" value="@facility.Key"><span class="room_facility multiple">@facility.Value</span></label>
+    				        <label><input type="checkbox" class="multiple"  name="room_facilitys" value="@facility.Key"><span class="room_facility">@facility.Value</span></label>
     	                }					
     				</p>
     			</div>
     		</div>
-		<a href="" class="btn_b" id="btn_add_room">确定添加房型</a>
+		<a href="javascript:document.forms[0].submit()" class="btn_b" id="btn_add_room">确定添加房型</a>
             
         </div>
 	</div>
