@@ -103,7 +103,7 @@
 			</div>
 			<div class="float_l">
 				<p class="input_line">
-                    <input type="text" class="hide" name="">
+                    <input type="text" class="hide" name="@Html.DisplayNameFor(model => model.house_service)">
 					@foreach(var facility in room_facilitys){   
 				        <label><input type="checkbox" name="room_facilitys" value="@facility.Key"><span class="room_facility multiple">@facility.Value</span></label>
 	                }					
