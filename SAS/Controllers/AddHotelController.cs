@@ -76,11 +76,12 @@ namespace SAS.Controllers
             {
                 db.hotel.Add(hotel_info);
                 db.SaveChanges();
-                var ddh = db.hotel.Select(h => h.h_id == hotel_info.h_id);
+                var ddh = db.hotel.Select(h => new { h.hotel_id,h.h_id }).Single(h=>h.h_id == hotel_info.h_id);
 
-                return RedirectToAction("Index");
+               // return RedirectToAction("Room/Create/"+ddh.hotel_id);
+                return RedirectToAction("Create", "Room", new { hotelId = ddh.hotel_id });
             }
-          
+            
             return View(hotel_info);
         }
 
