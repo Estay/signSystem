@@ -41,24 +41,38 @@ namespace SAS.Controllers
         public ActionResult Create(string hotelId)
         {
             string f = hotelId;
-            ViewData["facilities"] = DBhelp.GetSelectDataByTable("Facilities_info");//facilities
+            getfacilities();
             return View();
         }
-
+        public void getfacilities()
+        {
+            ViewData["facilities"] = DBhelp.GetSelectDataByTable("Facilities_info");//facilities
+        }
         //
         // POST: /Room/Create
 
         [HttpPost]
         public ActionResult Create(hotel_room_info hotel_room_info)
         {
+            getfacilities();
+            hotel_room_info.hotel_id = 48385;
+            hotel_room_info.h_r_id = "004";
+            hotel_room_info.h_r_utime = DateTime.Now;
+            hotel_room_info.h_r_ctime = DateTime.Now;
+            hotel_room_info.h_r_bed_type = "大床房";
+            hotel_room_info.h_r_bed_number = "1";
+            hotel_room_info.h_r_state = true;
+            hotel_room_info.h_r_reserve = 3;
+            var errors = ModelState.Values.SelectMany(v => v.Errors); 
             if (ModelState.IsValid)
             {
-                db.room.Add(hotel_room_info);
-                db.SaveChanges();
+               
                 return RedirectToAction("Index");
             }
+            db.room.Add(hotel_room_info);
+            db.SaveChanges();
 
-            return View(hotel_room_info);
+            return View();
         }
 
         //
