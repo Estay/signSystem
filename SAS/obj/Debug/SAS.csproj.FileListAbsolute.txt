@@ -86,7 +86,6 @@ E:\estay.cn\poj\signSystem\SAS\bin\System.Web.WebPages.Razor.dll
 E:\estay.cn\poj\signSystem\SAS\bin\WebGrease.dll
 E:\estay.cn\poj\signSystem\SAS\bin\WebMatrix.Data.dll
 E:\estay.cn\poj\signSystem\SAS\bin\WebMatrix.WebData.dll
-E:\estay.cn\poj\signSystem\SAS\bin\EntityFramework.xml
 E:\estay.cn\poj\signSystem\SAS\bin\Newtonsoft.Json.xml
 E:\estay.cn\poj\signSystem\SAS\bin\System.Net.Http.Formatting.xml
 E:\estay.cn\poj\signSystem\SAS\bin\System.Web.Helpers.xml
@@ -106,7 +105,6 @@ E:\estay.cn\poj\signSystem\SAS\bin\DotNetOpenAuth.OAuth.Consumer.xml
 E:\estay.cn\poj\signSystem\SAS\bin\DotNetOpenAuth.OAuth.xml
 E:\estay.cn\poj\signSystem\SAS\bin\DotNetOpenAuth.OpenId.xml
 E:\estay.cn\poj\signSystem\SAS\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
-E:\estay.cn\poj\signSystem\SAS\bin\zh-Hans\EntityFramework.resources.dll
 E:\estay.cn\poj\signSystem\SAS\bin\zh-Hans\System.Net.Http.Formatting.resources.dll
 E:\estay.cn\poj\signSystem\SAS\bin\zh-Hans\System.Web.Helpers.resources.dll
 E:\estay.cn\poj\signSystem\SAS\bin\zh-Hans\System.Web.Http.resources.dll
