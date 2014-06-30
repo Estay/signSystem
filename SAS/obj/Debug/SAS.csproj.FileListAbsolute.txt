@@ -148,7 +148,6 @@ E:\project\第三方签约\signSystem\SAS\bin\System.Web.WebPages.Razor.dll
 E:\project\第三方签约\signSystem\SAS\bin\WebGrease.dll
 E:\project\第三方签约\signSystem\SAS\bin\WebMatrix.Data.dll
 E:\project\第三方签约\signSystem\SAS\bin\WebMatrix.WebData.dll
-E:\project\第三方签约\signSystem\SAS\bin\EntityFramework.xml
 E:\project\第三方签约\signSystem\SAS\bin\Newtonsoft.Json.xml
 E:\project\第三方签约\signSystem\SAS\bin\System.Net.Http.Formatting.xml
 E:\project\第三方签约\signSystem\SAS\bin\System.Web.Helpers.xml
@@ -168,7 +167,6 @@ E:\project\第三方签约\signSystem\SAS\bin\DotNetOpenAuth.OAuth.Consumer.xml
 E:\project\第三方签约\signSystem\SAS\bin\DotNetOpenAuth.OAuth.xml
 E:\project\第三方签约\signSystem\SAS\bin\DotNetOpenAuth.OpenId.xml
 E:\project\第三方签约\signSystem\SAS\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
-E:\project\第三方签约\signSystem\SAS\bin\zh-Hans\EntityFramework.resources.dll
 E:\project\第三方签约\signSystem\SAS\bin\zh-Hans\System.Net.Http.Formatting.resources.dll
 E:\project\第三方签约\signSystem\SAS\bin\zh-Hans\System.Web.Helpers.resources.dll
 E:\project\第三方签约\signSystem\SAS\bin\zh-Hans\System.Web.Http.resources.dll
@@ -188,3 +186,6 @@ E:\estay.cn\poj\signSystem\SAS\bin\EntityFramework.SqlServer.dll
 E:\estay.cn\poj\signSystem\SAS\bin\EntityFramework.SqlServer.xml
 E:\estay.cn\poj\signSystem\SAS\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
 E:\project\第三方签约\signSystem\SAS\obj\Debug\SAS.csprojResolveAssemblyReference.cache
+E:\project\第三方签约\signSystem\SAS\bin\EntityFramework.SqlServer.dll
+E:\project\第三方签约\signSystem\SAS\bin\EntityFramework.SqlServer.xml
+E:\project\第三方签约\signSystem\SAS\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
