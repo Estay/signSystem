@@ -40,78 +40,81 @@
 		</table>
 	</div>
 	<div class="from_path">
-		<h2>添加房型</h2>
-		<p class="input_line">
-			<label for="room_name"><span class="label">房型名称</span><input type="text" id="room_name" name="@Html.DisplayNameFor(model => model.h_r_name_cn)"><span class="col_red">*</span></label>
-			<label for="room_count">
-				<span class="label">数量</span>
-				<input type="text" id="room_count" name="@Html.DisplayNameFor(model => model.h_r_house_number)">
-				<span class="col_red">*</span>
-				<span>将会设置房量的默认值</span>
-			</label>
-			<label for="room_area">
-				<span class="label">面积</span>
-				<input type="text" id="room_area" name="@Html.DisplayNameFor(model => model.h_r_acreage)">
-				<span class="col_red">*</span>
-			</label>
-			<label for="room_floor">
-				<span class="label">楼层</span>
-				<input type="text" id="room_floor" name="@Html.DisplayNameFor(model => model.h_r_floor)">
-				<span class="cpl_red">*</span>
-			</label>
-		</p>
-		<p class="input_line">
-			<label for="bedroom">
-				<span class="label">户型</span></label><input type="text" id="bedroom" name="bedroom" value="0">	
-				室
-				<input type="text" id="saloon" name="saloon" value="0">
-				厅
-				<input type="text" id="toilet" name="toilet" value="0">
-				卫
-				<input type="text" id="bookroom" name="bookroom" value="0">
-				书房
-            <label for="people_number"><span class="label">宜住人数</span><input id="people_number" type="text" name="?????" ></label>
-		</p>
-		<div class="clear">
-			<div class="float_l">
-				<!-- <p class="input_line"> -->
-					<label for="room_info"><span class="label">房型描述</span></label>
-				<!-- </p> -->
-			</div>
-			<div class="float_l">
-				<p class="input_line">
-					<textarea name="@Html.DisplayNameFor(model => model.h_r_description_cn)" id="room_describ" cols="80" rows="5"></textarea>
-					<span class="col_red">*</span>
-				</p>
-			</div>
-		</div>
-		<div class="clear">
-			<div class="float_l">
-				<p class="input_line">
-					<label for="room_remarks"><span class="label">房型备注</span></label>
-				</p>
-			</div>
-			<div class="float_l">
-				<p class="input_line">
-					<input type="text" id="room_remarks" name="@Html.DisplayNameFor(model => model.Comments)">
-					<span class="col_red">*</span>
-				</p>
-			</div>
-		</div>
-		<div class="clear">
-			<div class="float_l">
-				<div class="input_line"><span class="label">房型设施</span></div>
-			</div>
-			<div class="float_l">
-				<p class="input_line">
-                    <input type="text" class="hide" name="@Html.DisplayNameFor(model => model.house_service)">
-					@foreach(var facility in room_facilitys){   
-				        <label><input type="checkbox" name="room_facilitys" value="@facility.Key"><span class="room_facility multiple">@facility.Value</span></label>
-	                }					
-				</p>
-			</div>
-		</div>
-		<a href="" class="btn_b" id="btn_add_room">确定添加房型</a>
+		<span class="btn_d set">添加房型</span>
+        <div class="box_b">
+    		<p class="input_line">
+    			<label for="room_name"><span class="label">房型名称</span><input type="text" id="room_name" name="@Html.DisplayNameFor(model => model.h_r_name_cn)"><span class="col_red">*</span></label>
+    			<label for="room_count">
+    				<span class="label">数量</span>
+    				<input type="text" id="room_count" name="@Html.DisplayNameFor(model => model.h_r_house_number)">
+    				<span class="col_red">*</span>
+    				<span>将会设置房量的默认值</span>
+    			</label>
+    			<label for="room_area">
+    				<span class="label">面积</span>
+    				<input type="text" id="room_area" name="@Html.DisplayNameFor(model => model.h_r_acreage)">
+    				<span class="col_red">*</span>
+    			</label>
+    			<label for="room_floor">
+    				<span class="label">楼层</span>
+    				<input type="text" id="room_floor" name="@Html.DisplayNameFor(model => model.h_r_floor)">
+    				<span class="cpl_red">*</span>
+    			</label>
+    		</p>
+    		<p class="input_line">
+    			<label for="bedroom">
+    				<span class="label">户型</span></label><input type="text" id="bedroom" name="bedroom" value="0">	
+    				室
+    				<input type="text" id="saloon" name="saloon" value="0">
+    				厅
+    				<input type="text" id="toilet" name="toilet" value="0">
+    				卫
+    				<input type="text" id="bookroom" name="bookroom" value="0">
+    				书房
+                <label for="people_number"><span class="label">宜住人数</span><input id="people_number" type="text" name="?????" ></label>
+    		</p>
+    		<div class="clear">
+    			<div class="float_l">
+    				<!-- <p class="input_line"> -->
+    					<label for="room_info"><span class="label">房型描述</span></label>
+    				<!-- </p> -->
+    			</div>
+    			<div class="float_l">
+    				<p class="input_line">
+    					<textarea name="@Html.DisplayNameFor(model => model.h_r_description_cn)" id="room_describ" cols="80" rows="5"></textarea>
+    					<span class="col_red">*</span>
+    				</p>
+    			</div>
+    		</div>
+    		<div class="clear">
+    			<div class="float_l">
+    				<p class="input_line">
+    					<label for="room_remarks"><span class="label">房型备注</span></label>
+    				</p>
+    			</div>
+    			<div class="float_l">
+    				<p class="input_line">
+    					<input type="text" id="room_remarks" name="@Html.DisplayNameFor(model => model.Comments)">
+    					<span class="col_red">*</span>
+    				</p>
+    			</div>
+    		</div>
+    		<div class="clear">
+    			<div class="float_l">
+    				<div class="input_line"><span class="label">房型设施</span></div>
+    			</div>
+    			<div class="float_l">
+    				<p class="input_line">
+                        <input type="text" class="hide" name="@Html.DisplayNameFor(model => model.house_service)">
+    					@foreach(var facility in room_facilitys){   
+    				        <label><input type="checkbox" name="room_facilitys" value="@facility.Key"><span class="room_facility multiple">@facility.Value</span></label>
+    	                }					
+    				</p>
+    			</div>
+    		</div>
+    		<a href="" class="btn_b" id="btn_add_room">确定添加房型</a>
+            
+        </div>
 	</div>
 	<div class="btn_box">
 		<a href="" class="previou btn_a">上一步</a>
@@ -120,7 +123,7 @@
 </div>
 
 <!-- 录入房价 -->
-<div class="box_a">
+<div id="price_input" class="box_a">
     <div class="from_path">
         <h2>录入价格<span>如需修改价格，请再录入完成后进入<a href="">房价管理</a>修改。</span></h2>
         <p class="input_line">
@@ -144,33 +147,64 @@
     </div>
     <div class="from_path">
         <h2>担保</h2>
-        <table id="advance_list" cellspacing="0">
-            <tbody>
-                <tr>
-                    <th>但保规则</th>
-                    <th>担保日期</th>
-                    <th>变更/取消规则</th>
-                    <th>操作</th>
-                </tr>
-                <tr>
-                    <td>首晚房费</td>
-                    <td>2014-06-20至2014-06-20</td>
-                    <td>不允许变更/取消</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>全部房费</td>
-                    <td>2014-06-20至2014-06-20</td>
-                    <td>允许变更/取消，需在最早到店时间前 48 小时通知</td>
-                    <td>2014-06-20至2014-06-20</td>
-                </tr>
-            </tbody>
-        </table>
-        <p class="input_line">
-                <span class="label">担保金额</span>
-                <label class="mr20"><input type="radio" name="???" value="？">首晚房费</label>
-                <label><input type="radio" name="???" value="？？">全额房费</label>
-        </p>
+        <div class="from_path">
+            <table id="advance_list" cellspacing="0">
+                <tbody>
+                    <tr>
+                        <th>但保规则</th>
+                        <th>担保日期</th>
+                        <th>变更/取消规则</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr>
+                        <td>首晚房费</td>
+                        <td>2014-06-20至2014-06-20</td>
+                        <td>不允许变更/取消</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>全部房费</td>
+                        <td>2014-06-20至2014-06-20</td>
+                        <td>允许变更/取消，需在最早到店时间前 48 小时通知</td>
+                        <td>2014-06-20至2014-06-20</td>
+                    </tr>
+                </tbody>
+            </table>            
+        </div>
+        <div class="from_path">
+            <span class="btn_d set">添加担保</span>
+            <div class="box_b"> 
+                <p class="input_line">
+                    <span class="label">担保金额</span>
+                    <label class="m_r20"><input type="radio" name="???" value="？">首晚房费</label>
+                    <label><input type="radio" name="???" value="？？">全额房费</label>
+                    <span class="col_red">*</span>
+                </p>
+                <p class="input_line">
+                    <span class="label">设置担保日期</span>
+                    <input type="text" name="???">到
+                    <input type="text" name="???">
+                </p>
+                <div class="clear">
+                    <div class="float_l">
+                        <p class="input_line"><span class="label">设置变更/取消规则</span></p>
+                    </div>
+                    <div class="float_l">
+                        <p class="input_line">
+                            <label><input type="radio" name="???" value="????">不允许变更/取消</label>
+                        </p>
+                        <p class="input_line">
+                            <label><input type="radio" name="???" value="???">允许变更/取消，需在最早到店时间前<input class="w50" type="text" name="???">小时通知</label>
+                        </p>
+                    </div>
+                </div>
+                <a href="" class="btn_b" id="btn_add_danbao">确定添加担保</a>
+            </div>           
+        </div>
+    </div>
+    <div class="btn_box">
+        <a href="" class="previou btn_a">上一步</a>
+        <a href="" id="save_price_info" class="btn_a btn_save_step">保存进入下一步</a>
     </div>
 </div>
     
