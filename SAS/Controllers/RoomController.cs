@@ -55,6 +55,7 @@ namespace SAS.Controllers
         public ActionResult Create(hotel_room_info hotel_room_info)
         {
             getfacilities();
+           
             hotel_room_info.hotel_id = 48385;
             hotel_room_info.h_r_id = "004";
             hotel_room_info.h_r_utime = DateTime.Now;
@@ -71,7 +72,8 @@ namespace SAS.Controllers
             }
             db.room.Add(hotel_room_info);
             db.SaveChanges();
-
+            List<hotel_room_info> roomsList = (from r in db.room where r.hotel_id == hotel_room_info.hotel_id select r).ToList();        
+            ViewData["rooms"] = roomsList; 
             return View();
         }
 

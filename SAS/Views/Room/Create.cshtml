@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Create";
-
+    List<SAS.Models.hotel_room_info> roomList =ViewData["rooms"] as List<SAS.Models.hotel_room_info>;
     int hotel_id = 0;
     Dictionary<int, String> room_facilitys = ViewData["facilities"] as Dictionary<int, string>;
     //room_facilitys.Add(0, "XXX");
