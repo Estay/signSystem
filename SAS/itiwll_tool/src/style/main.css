@@ -128,7 +128,8 @@
   width: 43px;
 }
 .hotel_facility,
-.hotel_service {
+.hotel_service,
+.room_facility {
 	display: inline-block;
 	*display: inline;
 	*zoom: 1;
