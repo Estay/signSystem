@@ -16,7 +16,7 @@ namespace SAS.Controllers
         //
         // GET: /Room/
 
-        public ActionResult Index()
+        public ActionResult Index(object t)
         {
             return View(db.room.ToList());
         }
@@ -37,9 +37,10 @@ namespace SAS.Controllers
         //
         // GET: /Room/Create
 
-        public ActionResult Create()
+        public ActionResult Create(string hotelId)
         {
-            return View();
+            string f = hotelId;
+            return View(db.room.ToList());
         }
 
         //
