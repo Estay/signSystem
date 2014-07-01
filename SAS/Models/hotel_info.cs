@@ -561,5 +561,6 @@ namespace SAS.Models
     public class hotel_infoDBContent : DbContext
     {
         public DbSet<hotel_info> hotel { get; set; }
+       
     }
 }

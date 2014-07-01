@@ -6,6 +6,7 @@
     int hotel_id = 0;
     Dictionary<int, String> room_facilitys = ViewData["facilities"] as Dictionary<int, string>;
     int[] number = new int[] { 0, 1, 2, 3, 4, 8, 6, 7, 8, 9, 10 };
+    int id = 0;
 }
 
  @*   @Html.ValidationSummary(true)*@
@@ -30,9 +31,9 @@
 				</tr>
                 @foreach (var item in roomList)
                 {
-				    <tr>
+				    <tr> 
 					    <td>@item.room_id</td>
-					    <td>@item.h_r_bed_type</td>
+					    <td>@item.h_r_name_cn</td>
 					    <td><a href="">修改</a>|<a href="">删除</a></td>
 				    </tr>
                 }
