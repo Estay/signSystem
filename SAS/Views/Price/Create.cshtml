@@ -4,9 +4,110 @@
     ViewBag.Title = "Create";
 }
 
+<!-- 录入房价 -->
+<div id="price_input" class="box_a">
+    <div class="from_path">
+        <h2>录入价格<span>如需修改价格，请再录入完成后进入<a href="">房价管理</a>修改。</span></h2>
+        <p class="input_line">
+            <span class="input_room_rp_name">大床房大床房大床房大床房</span>
+            <label for="?????">
+                <span class="label">标准价</span>
+                <span class="label">每晚</span>
+                <input class="w50" type="text" name="?????">
+                <span>元</span><span class="col_red">*</span>
+            </label>
+        </p>
+        <p class="input_line">
+            <span class="input_room_rp_name">大床房大床房大床房大床房</span>
+            <label for="">
+                <span class="label">标准价</span>
+                <span class="label">每晚</span>
+                <input class="w50" type="text">
+                <span>元</span><span class="col_red">*</span>
+            </label>
+        </p>
+    </div>
+    <div class="from_path">
+        <h2>担保</h2>
+        <div class="from_path">
+            <table id="advance_list" cellspacing="0">
+                <tbody>
+                    <tr>
+                        <th>但保规则</th>
+                        <th>担保日期</th>
+                        <th>变更/取消规则</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr>
+                        <td>首晚房费</td>
+                        <td>2014-06-20至2014-06-20</td>
+                        <td>不允许变更/取消</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>全部房费</td>
+                        <td>2014-06-20至2014-06-20</td>
+                        <td>允许变更/取消，需在最早到店时间前 48 小时通知</td>
+                        <td>2014-06-20至2014-06-20</td>
+                    </tr>
+                </tbody>
+            </table>            
+        </div>
+        <div class="from_path">
+            <span class="btn_d set">添加担保</span>
+            <div class="box_b"> 
+                <p class="input_line">
+                    <span class="label">担保金额</span>
+                    <label class="m_r20"><input type="radio" name="???" value="？">首晚房费</label>
+                    <label><input type="radio" name="???" value="？？">全额房费</label>
+                    <span class="col_red">*</span>
+                </p>
+                <p class="input_line">
+                    <span class="label">设置担保日期</span>
+                    <input type="text" name="???">到
+                    <input type="text" name="???">
+                </p>
+                <div class="clear">
+                    <div class="float_l">
+                        <p class="input_line"><span class="label">设置变更/取消规则</span></p>
+                    </div>
+                    <div class="float_l">
+                        <p class="input_line">
+                            <label><input type="radio" name="???" value="????">不允许变更/取消</label>
+                        </p>
+                        <p class="input_line">
+                            <label><input type="radio" name="???" value="???">允许变更/取消，需在最早到店时间前<input class="w50" type="text" name="???">小时通知</label>
+                        </p>
+                    </div>
+                </div>
+                <a href="" class="btn_b" id="btn_add_danbao">确定添加担保</a>
+            </div>           
+        </div>
+    </div>
+    <div class="btn_box">
+        <a href="" class="previou btn_a">上一步</a>
+        <a href="" id="save_price_info" class="btn_a btn_save_step">保存进入下一步</a>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
 <h2>Create</h2>
 
 @using (Html.BeginForm()) {
+
+
+
+
     @Html.ValidationSummary(true)
 
     <fieldset>
