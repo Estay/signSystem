@@ -5,7 +5,7 @@
     ViewBag.Title = "新建公寓-录入基本信息";
     ViewBag.Description = "新建公寓";
     ViewBag.Keywords = "新建公寓";
-
+    string f = Model.h_name_cn;
     Dictionary<int, String> hotel_class = ViewData["Category"] as Dictionary<int, string>;
     
     Dictionary<int, String> hotel_theme = ViewData["Themes"] as Dictionary<int,string>;
@@ -45,7 +45,7 @@
 	<div class="from_path">
 		<h2>录入基本信息</h2>
 		<p class="input_line">
-			<label for="hotel_name"><span class="label">名称</span><input name="@Html.DisplayNameFor(model => model.h_name_cn)" type="text" class="tip_input"><span class="col_red">*</span></label>
+			<label for="hotel_name"><span class="label">名称</span><input name="@Html.DisplayNameFor(model => model.h_name_cn)" type="text"  value="@Model.h_name_cn" class="tip_input"><span class="col_red">*</span></label>
              @Html.ValidationMessageFor(model => model.h_name_cn)
 			<label for="hotel_class">
 				<span class="label">所属类别</span>
@@ -309,6 +309,7 @@
     	$("#map_lon_text").text(p.lng);
     	$("#map_lat_text").text(p.lat);
     }
+
 </script>
 
 }

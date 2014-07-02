@@ -17,14 +17,24 @@ namespace SAS.Controllers
         //
         // GET: /AddHotel/
 
-        public ActionResult Index()
+        public ActionResult Index(string hotelId)
         {
+            hotel_info hotel = new hotel_info();
             //khotel_theme_infoDBContent db = new khotel_theme_infoDBContent();
                // var themes = db..ToList();
            var list  =hotel_theme_info.AllTheme();
            var Categorylist = Hotel_theme_type_info.allCategory();
            //IEnumerable<hotel_theme_info> accessIDs = list;
+           if (hotelId != null)
+           {
+               int id = Convert.ToInt32(hotelId);
+               if (id > 0)
+               {
 
+                   hotel = (from h in db.hotel where h.hotel_id == id select h).Single();
+
+               }
+           }
 
            ViewData["Themes"] = DBhelp.GetSelectDataByTable("hotel_theme_info");  //Theme
            ViewData["Category"] = DBhelp.GetSelectDataByTable("Hotel_theme_type_info"); ;//Category
@@ -32,7 +42,7 @@ namespace SAS.Controllers
            ViewData["services"] = DBhelp.GetSelectDataByTable("GeneralAmenities_info");//services
            ViewData["provice"] = DBhelp.GetSelectDataByTable("province_info");//provice
             //hotel_info.AllTheme();
-            return View(new hotel_info());
+           return View(hotel);
         }
 
         //
@@ -51,14 +61,30 @@ namespace SAS.Controllers
         //
         // GET: /AddHotel/Create
 
-        public ActionResult Create()
+        public ActionResult Create(string hotelId)
         {
+            hotel_info hotel = new hotel_info();
+            //khotel_theme_infoDBContent db = new khotel_theme_infoDBContent();
+            // var themes = db..ToList();
+            
+            //IEnumerable<hotel_theme_info> accessIDs = list;
+            if (hotelId != null)
+            {
+                int id = Convert.ToInt32(hotelId);
+                if (id > 0)
+                {
+
+                    hotel = (from h in db.hotel where h.hotel_id == id select h).Single();
+
+                }
+            }
+
             ViewData["Themes"] = DBhelp.GetSelectDataByTable("hotel_theme_info");  //Theme
             ViewData["Category"] = DBhelp.GetSelectDataByTable("Hotel_theme_type_info"); ;//Category
             ViewData["facilities"] = DBhelp.GetSelectDataByTable("Facilities_info");//facilities
             ViewData["services"] = DBhelp.GetSelectDataByTable("GeneralAmenities_info");//services
             ViewData["provice"] = DBhelp.GetSelectDataByTable("province_info");//provice
-            return View();
+            return View(hotel);
         }
 
         //
@@ -83,6 +109,13 @@ namespace SAS.Controllers
             }
             
             return View(hotel_info);
+        }
+     
+        public ActionResult Forward(string hotelId)
+        {
+            int id = Convert.ToInt32(hotelId);
+            hotel_info hotel = (from h in db.hotel where h.hotel_id ==id select h).Single();
+            return View(hotel);
         }
 
         //
