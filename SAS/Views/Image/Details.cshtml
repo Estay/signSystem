@@ -1,0 +1,78 @@
+﻿@model SAS.Models.hotel_picture_info
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>hotel_picture_info</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.hotel_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.hotel_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_p_title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_p_title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_p_pic_original_url)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_p_pic_original_url)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_p_pic_thumb_url)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_p_pic_thumb_url)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_p_sort)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_p_sort)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_p_time)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_p_time)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_p_tag)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_p_tag)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_p_type)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_p_type)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_p_size)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_p_size)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.h_p_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

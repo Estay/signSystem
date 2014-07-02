@@ -1,0 +1,81 @@
+﻿@model IEnumerable<SAS.Models.hotel_picture_info>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.hotel_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.h_p_title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.h_p_pic_original_url)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.h_p_pic_thumb_url)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.h_p_sort)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.h_p_time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.h_p_tag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.h_p_type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.h_p_size)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.hotel_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.h_p_title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.h_p_pic_original_url)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.h_p_pic_thumb_url)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.h_p_sort)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.h_p_time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.h_p_tag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.h_p_type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.h_p_size)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.h_p_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.h_p_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.h_p_id })
+        </td>
+    </tr>
+}
+
+</table>

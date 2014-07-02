@@ -1,0 +1,81 @@
+﻿@model SAS.Models.hotel_picture_info
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>hotel_picture_info</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.hotel_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.hotel_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_p_title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_p_title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_p_pic_original_url)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_p_pic_original_url)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_p_pic_thumb_url)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_p_pic_thumb_url)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_p_sort)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_p_sort)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_p_time)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_p_time)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_p_tag)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_p_tag)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_p_type)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_p_type)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_p_size)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_p_size)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
