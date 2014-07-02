@@ -46,6 +46,32 @@ namespace SAS.Controllers
             getfacilities();
             return View();
         }
+        //修改房型
+        public ActionResult update(string roomId)
+        {
+            int RId = Convert.ToInt32(roomId);
+            //getRooms(Convert.ToInt32(hotelId));
+            //string f = hotelId;
+            getfacilities();
+             hotel_room_info room= (from h in db.room where h.room_id == RId select h).Single();
+             getRooms(room.hotel_id);
+             return View("Create", room);
+        }
+        //删除房型
+        public ActionResult remove(string roomId)
+        {
+            int RId = Convert.ToInt32(roomId);
+            //getRooms(Convert.ToInt32(hotelId));
+            //string f = hotelId;
+            getfacilities();
+            hotel_room_info room = db.room.Find(Convert.ToInt32(roomId));
+
+            db.room.Remove(room);
+            db.SaveChanges();
+           
+            getRooms(room.hotel_id);
+            return View("Create", new hotel_room_info());
+        }
         public void getfacilities()
         {
             ViewData["facilities"] = DBhelp.GetSelectDataByTable("Facilities_info");//facilities

@@ -6,7 +6,8 @@
     int hotel_id = 0;
     Dictionary<int, String> room_facilitys = ViewData["facilities"] as Dictionary<int, string>;
     int[] number = new int[] { 0, 1, 2, 3, 4, 8, 6, 7, 8, 9, 10 };
-    int id = 0;
+    int identity = 1;
+    int temp = 0;
 }
 
  @*   @Html.ValidationSummary(true)*@
@@ -31,12 +32,13 @@
 				</tr>
                 @foreach (var item in roomList)
                 {
-				    <tr> 
-					    <td>@item.room_id</td>
+				    <tr>                     
+                        <td>@Convert.ToInt32(identity++)</td>
 					    <td>@item.h_r_name_cn</td>
-					    <td><a href="">修改</a>|<a href="">删除</a></td>
+					    <td><a href="/Room/update?roomId=@item.room_id">修改</a>|<a href="/Room/remove?roomId=@item.room_id">删除</a></td>
 				    </tr>
                 }
+                    
 			</tbody>
 		</table>
 	</div>
