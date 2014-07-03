@@ -48,16 +48,17 @@ namespace SAS.Controllers
         // POST: /Price/Create
 
         [HttpPost]
-        public ActionResult Create(hotel_room_RP_price_info hotel_room_rp_price_info)
+        //public ActionResult Create(hotel_room_RP_price_info hotel_room_rp_price_info)
+        public ActionResult Create(IEnumerable<hotel_room_RP_price_info>  hotel_room_rp_price_info)
         {
-            if (ModelState.IsValid)
-            {
-                db.price.Add(hotel_room_rp_price_info);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(hotel_room_rp_price_info);
+            //if (ModelState.IsValid)
+            //{
+            //    db.price.Add(hotel_room_rp_price_info);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
+           // hotel_room_rp_price_info
+            return View();
         }
         public void getRooms(int hotel_id)
         {
