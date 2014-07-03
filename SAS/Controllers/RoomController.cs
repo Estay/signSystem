@@ -41,6 +41,8 @@ namespace SAS.Controllers
         public ActionResult Create(string hotelId)
         {
             hotelId = "48385";
+            ViewBag.HoltelId = hotelId;
+          
             getRooms(Convert.ToInt32(hotelId));
             string f = hotelId;
             getfacilities();
@@ -105,8 +107,8 @@ namespace SAS.Controllers
         }
         public void getRooms(int hotel_id)
         {
-            List<hotel_room_info> roomsList = (from r in db.room where r.hotel_id == hotel_id select r).ToList();
-            ViewData["rooms"] = roomsList; 
+            //List<hotel_room_info> roomsList = (from r in db.room where r.hotel_id == hotel_id select r).ToList();
+            ViewData["rooms"] = DBhelp.getRooms(hotel_id); 
         }
         //
         // GET: /Room/Edit/5

@@ -48,5 +48,11 @@ namespace SAS.help
             string str = JsonConvert.SerializeObject(list, settings);
             return str;
         }
+        public static List<hotel_room_info> getRooms(int hotel_id)
+        {
+              hotel_room_infoDBContent db = new hotel_room_infoDBContent();
+            List<hotel_room_info> roomsList = (from r in db.room where r.hotel_id == hotel_id select r).ToList();
+            return roomsList;
+        }
     }
 }
