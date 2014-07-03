@@ -4,6 +4,7 @@
     ViewBag.Title = "Create";
     //对应的所有房型
     List<SAS.Models.hotel_room_info> roomList = ViewData["rooms"] as List<SAS.Models.hotel_room_info>;
+    int i = 0;
 }
 <div id="flag_box">
 	<a href="" class="btn_c">1 录入公寓信息</a>
@@ -15,26 +16,21 @@
 <div id="price_input" class="box_a">
     <div class="from_path">
         <h2>录入价格<span>如需修改价格，请再录入完成后进入<a href="">房价管理</a>修改。</span></h2>
+        @foreach (var room in roomList)
+        {
         <p class="input_line">
             <span class="input_room_rp_name">大床房大床房大床房大床房</span>
             <label for="?????">
-                <span class="label">标准价</span>
+                <span class="label">@room.h_r_name_cn</span>
                 <span class="label">每晚</span>
-                <input class="w50" type="text" name="?????">
+                <input class="w50" type="text" name="[@i]@Html.DisplayNameFor(m=>m.PriceID)" >
+                 @Convert.ToInt32( i++)
                 <span>元</span><span class="col_red">*</span>
             </label>
-        </p>
-        <p class="input_line">
-            <span class="input_room_rp_name">大床房大床房大床房大床房</span>
-            <label for="">
-                <span class="label">标准价</span>
-                <span class="label">每晚</span>
-                <input class="w50" type="text">
-                <span>元</span><span class="col_red">*</span>
-            </label>
-        </p>
+        </p> 
+        }
     </div>
-    <div class="from_path">
+@*    <div class="from_path">
         <h2>担保</h2>
         <div class="from_path">
             <table id="advance_list" cellspacing="0">
@@ -90,7 +86,7 @@
                 <a href="" class="btn_b" id="btn_add_danbao">确定添加担保</a>
             </div>           
         </div>
-    </div>
+    </div>*@
     <div class="btn_box">
         <a href="" class="previou btn_a">上一步</a>
         <a href="" id="save_price_info" class="btn_a btn_save_step">保存进入下一步</a>
