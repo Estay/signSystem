@@ -84,6 +84,9 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult Create(hotel_room_info hotel_room_info)
         {
+            
+           
+
             getfacilities();
            
             hotel_room_info.hotel_id = 48385;
@@ -103,6 +106,7 @@ namespace SAS.Controllers
             db.room.Add(hotel_room_info);
             db.SaveChanges();
             getRooms(hotel_room_info.hotel_id);
+            ViewBag.HoltelId = hotel_room_info.hotel_id;
             return View();
         }
         public void getRooms(int hotel_id)

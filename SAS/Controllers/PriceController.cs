@@ -49,7 +49,8 @@ namespace SAS.Controllers
 
         [HttpPost]
         //public ActionResult Create(hotel_room_RP_price_info hotel_room_rp_price_info)
-        public ActionResult Create(IEnumerable<hotel_room_RP_price_info>  hotel_room_rp_price_info)
+        //[AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Create(List<hotel_room_RP_price_info>  hotel_room_rp_price_info)
         {
             //if (ModelState.IsValid)
             //{

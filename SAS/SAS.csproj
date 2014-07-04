@@ -166,6 +166,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AddHotelController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
+    <Compile Include="Controllers\PriceController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -175,6 +177,8 @@
     <Compile Include="help\location.ashx.cs">
       <DependentUpon>location.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Models\hotel_picture_info.cs" />
+    <Compile Include="Models\hotel_room_RP_price_info.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\hotel_info.cs" />
     <Compile Include="Models\hotel_room_info.cs" />
@@ -295,6 +299,36 @@
     <Content Include="Views\Room\Details.cshtml" />
     <Content Include="Views\Room\Edit.cshtml" />
     <Content Include="Views\Room\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Price\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Price\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Price\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Price\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Price\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Image\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Image\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Image\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Image\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Image\Delete.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

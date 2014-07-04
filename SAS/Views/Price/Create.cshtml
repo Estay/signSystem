@@ -6,6 +6,7 @@
     List<SAS.Models.hotel_room_info> roomList = ViewData["rooms"] as List<SAS.Models.hotel_room_info>;
     int i = 0;
 }
+@using(Html.BeginForm("Create","Price",FormMethod.Post)) {
 <div id="flag_box">
 	<a href="" class="btn_c">1 录入公寓信息</a>
 	<a href="" class="btn_c">2 录入房型</a>
@@ -23,8 +24,8 @@
             <label for="?????">
                 <span class="label">@room.h_r_name_cn</span>
                 <span class="label">每晚</span>
-                <input class="w50" type="text" name="[@i]@Html.DisplayNameFor(m=>m.PriceID)" >
-                 @Convert.ToInt32( i++)
+                <input class="w50" type="text" name="hotel_room_RP_price_info[@Convert.ToInt32(i++)].room_rp_price"  tabindex="true" >
+                @* <input class="w50" type="text" name="@Html.DisplayNameFor(h=>h.room_rp_price)[1]" >*@
                 <span>元</span><span class="col_red">*</span>
             </label>
         </p> 
@@ -89,160 +90,8 @@
     </div>*@
     <div class="btn_box">
         <a href="" class="previou btn_a">上一步</a>
-        <a href="" id="save_price_info" class="btn_a btn_save_step">保存进入下一步</a>
+        <a href="javascript:document.forms[0].submit()" id="save_price_info" class="btn_a btn_save_step">保存进入下一步</a>
     </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-<h2>Create</h2>
-
-@using (Html.BeginForm()) {
-
-
-
-
-  
-
-    <fieldset>
-        <legend>hotel_room_RP_price_info</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.h_room_rp_id)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.h_room_rp_id)
-            @Html.ValidationMessageFor(model => model.h_room_rp_id)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.PriceID)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.PriceID)
-            @Html.ValidationMessageFor(model => model.PriceID)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.room_id)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.room_id)
-            @Html.ValidationMessageFor(model => model.room_id)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.RoomTypeId)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.RoomTypeId)
-            @Html.ValidationMessageFor(model => model.RoomTypeId)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.room_rp_start_time)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.room_rp_start_time)
-            @Html.ValidationMessageFor(model => model.room_rp_start_time)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.room_rp_end_time)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.room_rp_end_time)
-            @Html.ValidationMessageFor(model => model.room_rp_end_time)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.room_rp_price)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.room_rp_price)
-            @Html.ValidationMessageFor(model => model.room_rp_price)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Weekend)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Weekend)
-            @Html.ValidationMessageFor(model => model.Weekend)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.MemberCost)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.MemberCost)
-            @Html.ValidationMessageFor(model => model.MemberCost)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.WeekendCost)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.WeekendCost)
-            @Html.ValidationMessageFor(model => model.WeekendCost)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.room_rp_time)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.room_rp_time)
-            @Html.ValidationMessageFor(model => model.room_rp_time)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Status)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Status)
-            @Html.ValidationMessageFor(model => model.Status)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.CurrencyCode)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.CurrencyCode)
-            @Html.ValidationMessageFor(model => model.CurrencyCode)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.AddBed)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.AddBed)
-            @Html.ValidationMessageFor(model => model.AddBed)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.hotel_id)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.hotel_id)
-            @Html.ValidationMessageFor(model => model.hotel_id)
-        </div>
-
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
