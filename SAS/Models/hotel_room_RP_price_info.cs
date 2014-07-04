@@ -19,8 +19,8 @@ namespace SAS.Models
         private DateTime _room_rp_end_time;
         private decimal _room_rp_price;
         private decimal? _weekend;
-        private decimal? _membercost;
-        private decimal? _weekendcost;
+        private decimal? _membercost=-1;
+        private decimal? _weekendcost=-1;
         private DateTime _room_rp_time;
         private bool _status = true;
         private string _currencycode;

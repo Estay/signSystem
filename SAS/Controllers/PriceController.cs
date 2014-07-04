@@ -48,10 +48,17 @@ namespace SAS.Controllers
         // POST: /Price/Create
 
         [HttpPost]
-        //public ActionResult Create(hotel_room_RP_price_info hotel_room_rp_price_info)
-        //[AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(List<hotel_room_RP_price_info>  hotel_room_rp_price_info)
+        public ActionResult Create(List<hotel_room_RP_price_info> hotel_room_RP_price_info)
         {
+            // string tableName = TableHotel_Info;
+            string tableName = "hotel_room_rp_price_info";
+            //存储变化的酒店信息(空表)
+            DataTable dtPrice = new DBhelp().getDataTable(DBhelp.getTStructByTName("hotel_room_rp_price_info"));
+            foreach (var p in hotel_room_RP_price_info)
+            {
+                DBhelp.InserDataTable(ref dtPrice, typeof(hotel_room_RP_price_info), p);
+            }
+            DBhelp.copyDataToServer(dtPrice, tableName);
             //if (ModelState.IsValid)
             //{
             //    db.price.Add(hotel_room_rp_price_info);
@@ -59,6 +66,7 @@ namespace SAS.Controllers
             //    return RedirectToAction("Index");
             //}
            // hotel_room_rp_price_info
+          
             return View();
         }
         public void getRooms(int hotel_id)
