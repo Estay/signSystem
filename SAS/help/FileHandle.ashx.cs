@@ -51,6 +51,7 @@ namespace SAS.help
                         string showImagePath = "..\\" + fileI;
                         ;
                         context.Response.Write(showImagePath);            //返回文件存储后的路径，用于回显。
+                        context.Response.End();
                         break;
 
                     }
