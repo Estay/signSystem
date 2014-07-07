@@ -136,9 +136,12 @@
 			console.log($(this));
 			console.log(filename);
 			$(this).siblings('.upload_img_btn').text("上传中...");
+			// return {
+			// 	room_id : $(this).attr('room_id')
+			// };
 		},
 		onComplete: function(filename, response) {
-			$(".upload_img_box").append(
+			$(this).parent(".upload_img_box").append(
 				$("<img />").attr("src", filename).attr("width", 200)
 			);
 		}

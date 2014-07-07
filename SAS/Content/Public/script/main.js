@@ -1,4 +1,4 @@
-/*2014年7月7日13:47:32*/
+/*2014年7月7日14:08:57*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = "请输入";
@@ -224,7 +224,7 @@
             $(this).siblings(".upload_img_btn").text("上传中...");
         },
         onComplete: function(filename, response) {
-            $(".upload_img_box").append($("<img />").attr("src", filename).attr("width", 200));
+            $(this).parent(".upload_img_box").append($("<img />").attr("src", filename).attr("width", 200));
         }
     });
 })(jQuery);

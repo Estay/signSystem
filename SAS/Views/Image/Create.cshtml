@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "录入图片";
+    List<SAS.Models.hotel_room_info> roomList = ViewData["rooms"] as List<SAS.Models.hotel_room_info>;
 }
 
 
@@ -17,7 +18,7 @@
 		<h2>公寓设施 <span>为了更好的展示公寓，图片至少上传5张，包括外景、大堂、吧台、走廊、设置。</span></h2>
 		<div class="clear">
 			<div class="upload_img_box">
-				<input type="file" class="hide upload_img_input" >
+				<input type="file" name="file" class="hide upload_img_input" >
 				<a href="" class="upload_img_btn">选择图片</a>
 				<br>
 				<input type="text" class="upload_img_info">
@@ -25,18 +26,22 @@
 			</div>
 		</div>
 	</div>
-	<div class="from_path">
-		<h2>公寓设施 <span>为了更好的展示公寓，图片至少上传5张，包括外景、大堂、吧台、走廊、设置。</span></h2>
+    @foreach (var room in roomList)
+    {
+	<div class="from_path" room_id="@room.room_id">
+		<h2>@room.h_r_name_cn<span>为了更好的展示公寓，图片至少上传5张，包括客厅、卧室、卫生间、厨房、床。</span></h2>
 		<div class="clear">
 			<div class="upload_img_box">
-				<input type="file" class="hide upload_img_input" >
+				<input type="file" name="" room_id="@room.room_id" class="hide upload_img_input" >
 				<a href="" class="upload_img_btn">选择图片</a>
 				<br>
 				<input type="text" class="upload_img_info">
 
 			</div>
 		</div>
-	</div>  
+	</div> 
+    }
+
  
 	<div class="btn_box">
 		<a href="" id="save_room_info" class="btn_a btn_save_step">完成</a>
