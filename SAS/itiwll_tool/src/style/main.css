@@ -206,3 +206,6 @@
 .upload_img_info {
 	width: 240px;
 }
+.upload_img_input {
+	display: none;
+}

@@ -124,27 +124,18 @@
 	});
 
 	// 触发图片选择
-	$(".upload_img_box").on('click', '.upload_img_btn', function(event) {
-		event.preventDefault();
-		$(this).siblings('.upload_img_input').click();
-	});
+	// $(".upload_img_box").on('click', '.upload_img_btn', function(event) {
+	// 	event.preventDefault();
+	// 	$(this).siblings('.upload_img_input').click();
+	// });
 
 	//上传图片
-	$(".upload_img_input").AjaxFileUpload({
+	$(".upload_img_input").ajaxfileupload({
 		action: "/help/FileHandle.ashx",
-		onSubmit: function(filename) {
-			console.log($(this));
-			console.log(filename);
-			$(this).siblings('.upload_img_btn').text("上传中...");
-			// return {
-			// 	room_id : $(this).attr('room_id')
-			// };
-		},
-		onComplete: function(filename, response) {
-			$(this).parent(".upload_img_box").append(
-				$("<img />").attr("src", filename).attr("width", 200)
-			);
-		}
+		onComplete: function(response) {
+	        console.log('custom handler for file:');
+	        alert(JSON.stringify(response));
+      }
 	});
 })(jQuery);
 
