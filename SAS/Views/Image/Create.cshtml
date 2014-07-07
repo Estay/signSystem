@@ -1,99 +1,25 @@
 ﻿@model SAS.Models.hotel_picture_info
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "录入图片";
 }
 
-<h2>Create</h2>
 
-@using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>hotel_picture_info</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.hotel_id)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.hotel_id)
-            @Html.ValidationMessageFor(model => model.hotel_id)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.h_p_title)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.h_p_title)
-            @Html.ValidationMessageFor(model => model.h_p_title)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.h_p_pic_original_url)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.h_p_pic_original_url)
-            @Html.ValidationMessageFor(model => model.h_p_pic_original_url)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.h_p_pic_thumb_url)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.h_p_pic_thumb_url)
-            @Html.ValidationMessageFor(model => model.h_p_pic_thumb_url)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.h_p_sort)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.h_p_sort)
-            @Html.ValidationMessageFor(model => model.h_p_sort)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.h_p_time)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.h_p_time)
-            @Html.ValidationMessageFor(model => model.h_p_time)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.h_p_tag)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.h_p_tag)
-            @Html.ValidationMessageFor(model => model.h_p_tag)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.h_p_type)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.h_p_type)
-            @Html.ValidationMessageFor(model => model.h_p_type)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.h_p_size)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.h_p_size)
-            @Html.ValidationMessageFor(model => model.h_p_size)
-        </div>
-
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div id="flag_box">
+	<a href="" class="btn_c">1 录入公寓信息</a>
+	<a href="" class="btn_c">2 录入房型</a>
+	<a href="" class="btn_c">3 录入房价</a>
+	<a href="" class="btn_c set">4 录入图片</a>
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+<!-- 录入房型 -->
+<div class="box_a">
+	<div class="from_path">
+		
+	</div>
+  
+ 
+	<div class="btn_box">
+		<a href="" id="save_room_info" class="btn_a btn_save_step">保存</a>
+	</div>
+    
+</div>

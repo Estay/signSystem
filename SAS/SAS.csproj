@@ -188,12 +188,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Public\img\bank.png" />
+    <Content Include="Content\Public\img\duoxuan.jpg" />
     <Content Include="Content\Public\img\favicon_128.png" />
     <Content Include="Content\Public\img\footer_logo.png" />
     <Content Include="Content\Public\img\logo.png" />
     <Content Include="Content\Public\script\jquery\jquery-1.8.3.js" />
     <Content Include="Content\Public\script\jquery\jquery-1.8.3.min.js" />
     <Content Include="Content\Public\style\main.css" />
+    <Content Include="FakesAssemblies\EntityFramework.6.0.0.0.Fakes.dll" />
+    <Content Include="FakesAssemblies\EntityFramework.6.0.0.0.Fakes.xml" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="itiwll_tool\Gruntfile.js" />
@@ -232,6 +236,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Fakes\" />
     <Folder Include="Images\" />
     <Folder Include="Scripts\" />
   </ItemGroup>
@@ -329,6 +334,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Image\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FakesAssemblies\EntityFramework.6.0.0.0.Fakes.fakesconfig" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
