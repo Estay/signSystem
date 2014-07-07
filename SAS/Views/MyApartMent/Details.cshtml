@@ -1,0 +1,428 @@
+﻿@model SAS.Models.hotel_info
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>hotel_info</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Floor)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Floor)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DecorateTime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DecorateTime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.u_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.u_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_t_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_t_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_name_cn)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_name_cn)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_name_en)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_name_en)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_location_cn)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_location_cn)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_location_en)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_location_en)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_description_cn)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_description_cn)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_description_en)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_description_en)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_star)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_star)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_organization)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_organization)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_tel)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_tel)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_mobile_phone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_mobile_phone)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_fax)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_fax)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_contact)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_contact)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_price_range)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_price_range)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_traffic_position)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_traffic_position)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_longitude)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_longitude)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_latitude)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_latitude)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_check_in)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_check_in)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_check_out)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_check_out)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_opening_time)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_opening_time)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_room_count)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_room_count)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_province)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_province)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_city)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_city)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_administrative_region)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_administrative_region)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_business_zone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_business_zone)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.district)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.district)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_postcode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_postcode)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_outer_network_display)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_outer_network_display)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_state)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_state)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_state_reason)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_state_reason)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_hotel_website)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_hotel_website)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_ctime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_ctime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_utime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_utime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_sort)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_sort)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.source_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.source_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GeneralAmenities)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GeneralAmenities)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RoomAmenities)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RoomAmenities)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.diningAmenities)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.diningAmenities)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.recreationAmenities)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.recreationAmenities)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.availPolicy)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.availPolicy)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.commentTotal)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.commentTotal)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.commentGood)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.commentGood)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.commentBad)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.commentBad)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CreditCards)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreditCards)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.score)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.score)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IntroEditor)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IntroEditor)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Facilities)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Facilities)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BaiduLat)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BaiduLat)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BaiduLon)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BaiduLon)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BrandId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BrandId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Surroundings)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Surroundings)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Features)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Features)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HelpfulTips)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HelpfulTips)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.hotel_theme_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.hotel_theme_id)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.hotel_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -167,6 +167,7 @@
     <Compile Include="Controllers\AddHotelController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
+    <Compile Include="Controllers\MyApartMentController.cs" />
     <Compile Include="Controllers\PriceController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -177,7 +178,9 @@
     <Compile Include="help\location.ashx.cs">
       <DependentUpon>location.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Models\hotel_picture_info.cs" />
+    <Compile Include="Models\hotel_picture_info.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Models\hotel_room_RP_price_info.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\hotel_info.cs" />
@@ -337,6 +340,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FakesAssemblies\EntityFramework.6.0.0.0.Fakes.fakesconfig" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MyApartMent\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MyApartMent\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MyApartMent\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MyApartMent\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MyApartMent\Delete.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

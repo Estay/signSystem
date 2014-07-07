@@ -151,6 +151,7 @@ namespace SAS.Controllers
 
         public ActionResult Delete(int id = 0)
         {
+         
             hotel_info hotel_info = db.hotel.Find(id);
             if (hotel_info == null)
             {
