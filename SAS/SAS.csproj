@@ -175,6 +175,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="help\DBhelp.cs" />
+    <Compile Include="help\FileHandle.ashx.cs">
+      <DependentUpon>FileHandle.ashx</DependentUpon>
+    </Compile>
     <Compile Include="help\location.ashx.cs">
       <DependentUpon>location.ashx</DependentUpon>
     </Compile>
@@ -355,6 +358,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\MyApartMent\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="help\FileHandle.ashx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
