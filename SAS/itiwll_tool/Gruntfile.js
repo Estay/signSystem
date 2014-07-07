@@ -6,6 +6,7 @@ module.exports = function(grunt) {
 		js_files = [
 				"src/script/plug-in/input_tip.js",
 				"src/script/plug-in/tab_switch.js",
+				"src/script/plug-in/jquery.ajaxfileupload.js",
 				"src/script/main.js"
 			],
 		css_files = {

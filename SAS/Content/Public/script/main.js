@@ -1,4 +1,4 @@
-/*2014年6月30日10:57:07*/
+/*2014年7月7日13:34:12*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = "请输入";
@@ -51,6 +51,79 @@
         tab_class: "e_tab",
         box_class: "e_tab_box",
         callback: null
+    };
+})(jQuery);
+
+(function($) {
+    $.fn.AjaxFileUpload = function(options) {
+        var defaults = {
+            action: "upload.php",
+            onChange: function(filename) {},
+            onSubmit: function(filename) {},
+            onComplete: function(filename, response) {}
+        }, settings = $.extend({}, defaults, options), randomId = function() {
+            var id = 0;
+            return function() {
+                return "_AjaxFileUpload" + id++;
+            };
+        }();
+        return this.each(function() {
+            var $this = $(this);
+            if ($this.is("input") && $this.attr("type") === "file") {
+                $this.bind("change", onChange);
+            }
+        });
+        function onChange(e) {
+            var $element = $(e.target), id = $element.attr("id"), $clone = $element.removeAttr("id").clone().attr("id", id).AjaxFileUpload(options), filename = $element.val().replace(/.*(\/|\\)/, ""), iframe = createIframe(), form = createForm(iframe);
+            $clone.insertBefore($element);
+            settings.onChange.call($clone[0], filename);
+            iframe.bind("load", {
+                element: $clone,
+                form: form,
+                filename: filename
+            }, onComplete);
+            form.append($element).bind("submit", {
+                element: $clone,
+                iframe: iframe,
+                filename: filename
+            }, onSubmit).submit();
+        }
+        function onSubmit(e) {
+            var data = settings.onSubmit.call(e.data.element, e.data.filename);
+            if (data === false) {
+                $(e.target).remove();
+                e.data.iframe.remove();
+                return false;
+            } else {
+                for (var variable in data) {
+                    $("<input />").attr("type", "hidden").attr("name", variable).val(data[variable]).appendTo(e.target);
+                }
+            }
+        }
+        function onComplete(e) {
+            var $iframe = $(e.target), doc = ($iframe[0].contentWindow || $iframe[0].contentDocument).document, response = doc.body.innerHTML;
+            if (response) {
+                response = $.parseJSON(response);
+            } else {
+                response = {};
+            }
+            settings.onComplete.call(e.data.element, e.data.filename, response);
+            e.data.form.remove();
+            $iframe.remove();
+        }
+        function createIframe() {
+            var id = randomId();
+            $("body").append('<iframe src="javascript:false;" name="' + id + '" id="' + id + '" style="display: none;"></iframe>');
+            return $("#" + id);
+        }
+        function createForm(iframe) {
+            return $("<form />").attr({
+                method: "post",
+                action: settings.action,
+                enctype: "multipart/form-data",
+                target: iframe[0].name
+            }).hide().appendTo("body");
+        }
     };
 })(jQuery);
 
@@ -138,6 +211,21 @@
     $("#map_lat").keyup(function(event) {
         $("#map_lat_input").val($(this).val());
         $("#map_lat_text").text($(this).val());
+    });
+    $(".upload_img_box").on("click", ".upload_img_btn", function(event) {
+        event.preventDefault();
+        $(this).siblings(".upload_img_input").click();
+    });
+    $(".upload_img_input").AjaxFileUpload({
+        action: "/itiwll_tool/upload_img_test_ok.json",
+        onSubmit: function(filename) {
+            console.log($(this));
+            console.log(filename);
+            $(this).siblings(".upload_img_btn").text("上传中...");
+        },
+        onComplete: function(filename, response) {
+            $(".upload_img_box").append($("<img />").attr("src", filename).attr("width", 200));
+        }
     });
 })(jQuery);
 //# sourceMappingURL=main.map

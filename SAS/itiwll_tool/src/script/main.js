@@ -122,6 +122,27 @@
 		$("#map_lat_input").val($(this).val());
 		$("#map_lat_text").text($(this).val());
 	});
+
+	// 触发图片选择
+	$(".upload_img_box").on('click', '.upload_img_btn', function(event) {
+		event.preventDefault();
+		$(this).siblings('.upload_img_input').click();
+	});
+
+	//上传图片
+	$(".upload_img_input").AjaxFileUpload({
+		action: "/itiwll_tool/upload_img_test_ok.json",
+		onSubmit: function(filename) {
+			console.log($(this));
+			console.log(filename);
+			$(this).siblings('.upload_img_btn').text("上传中...");
+		},
+		onComplete: function(filename, response) {
+			$(".upload_img_box").append(
+				$("<img />").attr("src", filename).attr("width", 200)
+			);
+		}
+	});
 })(jQuery);
 
 
