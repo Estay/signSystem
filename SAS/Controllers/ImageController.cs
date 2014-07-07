@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SAS.help;
 using SAS.Models;
 
 namespace SAS.Controllers
@@ -37,8 +38,12 @@ namespace SAS.Controllers
         //
         // GET: /Image/Create
 
-        public ActionResult Create()
+        public ActionResult Create(string hotelId)
         {
+            hotelId = "48385";
+            ViewBag.HoltelId = hotelId;
+
+            getRooms(Convert.ToInt32(hotelId));
             return View();
         }
 
@@ -115,6 +120,11 @@ namespace SAS.Controllers
         {
             db.Dispose();
             base.Dispose(disposing);
+        }
+        public void getRooms(int hotel_id)
+        {
+            //List<hotel_room_info> roomsList = (from r in db.room where r.hotel_id == hotel_id select r).ToList();
+            ViewData["rooms"] = DBhelp.getRooms(hotel_id);
         }
     }
 }
