@@ -1,4 +1,4 @@
-/*2014年7月7日13:34:12*/
+/*2014年7月7日13:47:32*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = "请输入";
@@ -217,7 +217,7 @@
         $(this).siblings(".upload_img_input").click();
     });
     $(".upload_img_input").AjaxFileUpload({
-        action: "/itiwll_tool/upload_img_test_ok.json",
+        action: "/help/FileHandle.ashx",
         onSubmit: function(filename) {
             console.log($(this));
             console.log(filename);

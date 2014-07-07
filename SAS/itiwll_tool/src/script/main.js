@@ -131,7 +131,7 @@
 
 	//上传图片
 	$(".upload_img_input").AjaxFileUpload({
-		action: "/itiwll_tool/upload_img_test_ok.json",
+		action: "/help/FileHandle.ashx",
 		onSubmit: function(filename) {
 			console.log($(this));
 			console.log(filename);
