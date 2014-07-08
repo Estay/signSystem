@@ -1,4 +1,4 @@
-/*2014年7月7日15:40:47*/
+/*2014年7月8日17:19:24*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = "请输入";
@@ -240,9 +240,18 @@
     });
     $(".upload_img_input").ajaxfileupload({
         action: "/help/FileHandle.ashx",
+        params: {
+            roomid: $(this).attr("room_id")
+        },
+        onStart: function() {
+            var box = this.parent().parent().parent();
+            box.clone(false, true).appendTo(box.parent());
+            this.next(".upload_img_btn").text("上传中...");
+        },
         onComplete: function(response) {
             console.log("custom handler for file:");
-            alert(JSON.stringify(response));
+            $(this).next(".upload_img_btn").hide();
+            $("<img />").width(240).attr("src", response).appendTo($(this).parent());
         }
     });
 })(jQuery);
