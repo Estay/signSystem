@@ -1,4 +1,4 @@
-/*2014年7月8日17:19:24*/
+/*2014年7月8日18:19:29*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = "请输入";
@@ -238,21 +238,25 @@
         $("#map_lat_input").val($(this).val());
         $("#map_lat_text").text($(this).val());
     });
-    $(".upload_img_input").ajaxfileupload({
-        action: "/help/FileHandle.ashx",
-        params: {
-            roomid: $(this).attr("room_id")
-        },
-        onStart: function() {
-            var box = this.parent().parent().parent();
-            box.clone(false, true).appendTo(box.parent());
-            this.next(".upload_img_btn").text("上传中...");
-        },
-        onComplete: function(response) {
-            console.log("custom handler for file:");
-            $(this).next(".upload_img_btn").hide();
-            $("<img />").width(240).attr("src", response).appendTo($(this).parent());
-        }
-    });
+    function upload_img(el) {
+        var o = "";
+        el.ajaxfileupload({
+            action: "/help/FileHandle.ashx",
+            params: {
+                roomid: $(this).attr("room_id")
+            },
+            onStart: function() {
+                var box = this.parent().parent().parent();
+                o = box.clone(false, false);
+                upload_img(o.appendTo(box.parent()).find(".upload_img_input"));
+                this.next(".upload_img_btn").text("上传中...");
+            },
+            onComplete: function(response) {
+                $(this).parent("label").hide();
+                $("<img />").width(240).attr("src", response).appendTo($(this).parent().siblings(".img_box"));
+            }
+        });
+    }
+    upload_img($(".upload_img_input"));
 })(jQuery);
 //# sourceMappingURL=main.map
