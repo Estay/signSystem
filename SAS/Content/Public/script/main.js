@@ -1,4 +1,4 @@
-/*2014年7月9日10:40:55*/
+/*2014年7月9日16:20:04*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = "请输入";
@@ -209,22 +209,54 @@
     });
     function upload_img(els) {
         els.each(function(index, el) {
-            var el = $(el), box = el.parents(".upload_img_box"), conta = box.parent(), label = box.find("label"), img_box = box.find(".img_box"), box_clone = box.clone();
+            var el = $(el), box = el.parents(".from_path").find(".img_show_box"), label = box.find("label");
+            var html = "";
+            html += '<div class="upload_img_box">';
+            html += '<div class="img_box"><img /></div>';
+            html += '<p class="img_set">';
+            html += '<input type="text" class="upload_img_info">';
+            html += '<select name="img_type">';
+            html += '<option value="大堂">大堂</option>';
+            html += "</select>";
+            html += "</p>";
+            html += '<p class="img_del"><a href="">删除</a></p>';
+            html += "</div>";
             el.AjaxFileUpload({
                 action: "/help/FileHandle.ashx",
                 onSubmit: function() {
-                    upload_img(box_clone.appendTo(conta).find(".upload_img_input"));
+                    label.find("span").text("上传中...");
                     return {
                         roomid: this.attr("room_id")
                     };
                 },
                 onComplete: function(file, response) {
-                    label.hide();
-                    $("<img />").attr("src", response).appendTo(img_box.show());
+                    var data = response.split("&");
+                    $(html).appendTo(box).find("img").attr("src", data[0]).data("pid", data[1]);
                 }
             });
         });
     }
     upload_img($(".upload_img_input"));
+    function upload_imginfo(els) {
+        els.each(function(index, el) {
+            var el = $(el), pid = el.attr("pid");
+            el.focusout(function(event) {
+                $.ajax({
+                    url: "/path/to/file",
+                    type: "default GET (Other values: POST)",
+                    dataType: "default: Intelligent Guess (Other values: xml, json, script, or html)",
+                    data: {
+                        param1: "value1"
+                    }
+                }).done(function() {
+                    console.log("success");
+                }).fail(function() {
+                    console.log("error");
+                }).always(function() {
+                    console.log("complete");
+                });
+            });
+        });
+    }
 })(jQuery);
 //# sourceMappingURL=main.map
