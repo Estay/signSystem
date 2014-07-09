@@ -110,7 +110,7 @@ namespace SAS.Controllers
             
             return View(hotel_info);
         }
-     
+       //上一步
         public ActionResult Forward(string hotelId)
         {
             int id = Convert.ToInt32(hotelId);
@@ -140,7 +140,7 @@ namespace SAS.Controllers
             if (ModelState.IsValid)
             {
                 //db.Entry(hotel_info).State = EntityState.Modified;
-                db.SaveChanges();
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(hotel_info);
