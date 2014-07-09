@@ -42,7 +42,7 @@ namespace SAS.Controllers
         {
             hotelId = "48385";
             ViewBag.HoltelId = hotelId;
-
+            ViewData["ImageTypes"] = new hotel_picture_info().getImageType();
             getRooms(Convert.ToInt32(hotelId));
             return View();
         }

@@ -22,6 +22,20 @@ namespace SAS.Models
         private string _h_p_tag;
         private int? _h_p_type;
         private int _h_p_size;
+        private int width;
+
+        public int Width
+        {
+            get { return width; }
+            set { width = value; }
+        }
+        private int height;
+
+        public int Height
+        {
+            get { return height; }
+            set { height = value; }
+        }
         /// <summary>
         /// 酒店图片编号
         /// </summary>
@@ -105,6 +119,17 @@ namespace SAS.Models
             get { return _h_p_size; }
         }
         #endregion Model
+
+        public Dictionary<string, int> getImageType()
+        {
+            Dictionary<string, int> dic = new Dictionary<string, int>();
+            string[] str = System.Configuration.ConfigurationManager.AppSettings["ImageType"].Split(',');
+            for (int i =0 ; i <str.Length; i++)
+            {
+                dic.Add(str[i], i);
+            }
+            return dic;
+        }
     }
     public class PictureDBContent : DbContext
     {

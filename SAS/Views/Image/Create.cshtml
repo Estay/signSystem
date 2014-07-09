@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "录入图片";
     List<SAS.Models.hotel_room_info> roomList = ViewData["rooms"] as List<SAS.Models.hotel_room_info>;
+    Dictionary<string, int> ImageTypes = ViewData["ImageTypes"] as  Dictionary<string, int>;
 }
 
 
@@ -15,6 +16,7 @@
 <!-- 录入房型 -->
 <div class="box_a">
 
+					<input type="file" name="file" class="upload_img_input" room_id="123321">
     @foreach (var room in roomList)
     {
 	<div class="from_path" room_id="@room.room_id">

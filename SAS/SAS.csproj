@@ -178,6 +178,7 @@
     <Compile Include="help\FileHandle.ashx.cs">
       <DependentUpon>FileHandle.ashx</DependentUpon>
     </Compile>
+    <Compile Include="help\Image.cs" />
     <Compile Include="help\ImageDel.ashx.cs">
       <DependentUpon>ImageDel.ashx</DependentUpon>
     </Compile>
