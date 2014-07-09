@@ -178,6 +178,9 @@
     <Compile Include="help\FileHandle.ashx.cs">
       <DependentUpon>FileHandle.ashx</DependentUpon>
     </Compile>
+    <Compile Include="help\ImageDel.ashx.cs">
+      <DependentUpon>ImageDel.ashx</DependentUpon>
+    </Compile>
     <Compile Include="help\ImageDes.ashx.cs">
       <DependentUpon>ImageDes.ashx</DependentUpon>
     </Compile>
@@ -367,6 +370,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="help\ImageDes.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="help\ImageDel.ashx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
