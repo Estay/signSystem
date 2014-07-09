@@ -1,4 +1,4 @@
-﻿# I Want Say Clear...
+# I Want Say Clear...
 # User-specific files
 *.suo
 *.user
@@ -166,3 +166,4 @@ UpgradeLog*.XML
 
 
 /SAS/itiwll_tool/node_modules
+SAS/bin/SAS.dll
