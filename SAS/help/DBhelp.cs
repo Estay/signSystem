@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using Newtonsoft.Json;
 using System.Data;
 using System.Reflection;
+using System.IO;
 
 namespace SAS.help
 {
@@ -182,6 +183,38 @@ namespace SAS.help
             }
             return true;
 
+        }
+        //记录日志
+        public static void log(string content)
+        {
+
+            string directory ="";
+
+            if (!Directory.Exists(directory))
+            {
+                // Create the directory it does not exist.
+                Directory.CreateDirectory(directory);
+            }
+            string path = directory + "\\log.txt";
+            StreamWriter sw = null;
+
+            //指定日志文件的目录
+            if (!File.Exists(path))
+            {
+                sw = File.CreateText(path);
+
+            }
+            else
+            {
+                sw = new StreamWriter(path, true);
+                sw.BaseStream.Seek(0, SeekOrigin.End);
+            }
+
+            sw.WriteLine(DateTime.Now + "---The date is:------" + content);
+
+            //sw.WriteLine(ex);
+            //sw.WriteLine();
+            sw.Close();
         }
     }
 }

@@ -14,14 +14,25 @@ namespace SAS.help
         private PictureDBContent db = new PictureDBContent();
         public void ProcessRequest(HttpContext context)
         {
-            int PID=Convert.ToInt32(context.Request.Form[0]);
-            string DescText = context.Request.Form[0];
-            var p = (from i in db.room where i.h_p_id == PID select i).Single();
-            p.h_p_title = DescText;
-            if (db.SaveChanges() > 0)
-                context.Response.Write(1);
-            else
-                context.Response.Write(0);
+            try
+            {
+                 int PID=Convert.ToInt32(context.Request.Form[0]);
+                 string DescText = context.Request.Form[0];
+                 var p = (from i in db.room where i.h_p_id == PID select i).Single();
+                 p.h_p_title = DescText;
+                 if (db.SaveChanges() > 0)
+                    context.Response.Write(1);
+                else
+                {
+                    context.Response.Write(0);
+                    DBhelp.log("图片修改失败PID" + PID);
+                }
+             }
+            catch (Exception ex)
+            {
+                
+              DBhelp.log("修改图片"+ex.ToString());
+            }
            
         }
 
