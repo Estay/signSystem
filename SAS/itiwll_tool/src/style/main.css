@@ -190,31 +190,34 @@
 }
 
 /*录入图片*/
-.upload_img_box {
-	float: left;
-	margin-right: 5px;
-	margin-bottom: 10px;
-}
 .upload_img_btn {
 	background: #D9DADA;
 	vertical-align: middle;
 	text-align: center;
 	display: block;
-	line-height: 160px;
-	height: 160px;
-	width: 230px;
+	line-height: 30px;
+	height: 30px;
+	width: 150px;
 	cursor: pointer;
 }
-.upload_img_info {
-	width: 230px;
-}
-.upload_img_input {
+
+.img_show_box {
+	margin-left: 30px;
+	border: 1px solid #CCC;
+	width: 820px;
 	display: none;
+}
+.upload_img_box {
+	float: left;
+	margin-right: 5px;
+	margin-bottom: 10px;
+}
+.upload_img_info {
+	width: 150px;
 }
 .upload_img_box .img_box {
-	width: 230px;
+	width: 200px;
 	height: 160px;
-	display: none;
 }
 .upload_img_box .img_box img {
 	width: 100%;
