@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "录入图片";
     List<SAS.Models.hotel_room_info> roomList = ViewData["rooms"] as List<SAS.Models.hotel_room_info>;
+    Dictionary<string, int> ImageTypes = ViewData["ImageTypes"] as  Dictionary<string, int>;
 }
 
 
@@ -20,7 +21,7 @@
 		<div class="clear">
 			<div class="upload_img_box">
 				<label>
-					<input type="file" name="file" class="upload_img_input" room_id="123321">
+					<input type="file"  multiple  name="file" class="upload_img_input" room_id="123321">
 					<span class="upload_img_btn">选择图片</span>
 				</label>
 				<div class="img_box"></div>
