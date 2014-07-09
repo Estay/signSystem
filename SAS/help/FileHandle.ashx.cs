@@ -49,7 +49,7 @@ namespace SAS.help
                         ////将上传来的 文件数据 保存在 对应的 物理路径上   
                         //hpFile.SaveAs(filePath);
                         string showImagePath = "..\\" + fileI;
-                        ;
+                        
                         context.Response.Write(showImagePath);            //返回文件存储后的路径，用于回显。
                         context.Response.End();
                         break;
