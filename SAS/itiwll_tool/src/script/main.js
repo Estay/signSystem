@@ -130,31 +130,30 @@
 	// });
 
 	//上传图片
-	function upload_img(el) {
-		var o = "";
-
-		// todo 更换ajaxfileupload
-		el.ajaxfileupload({
-			action: "/help/FileHandle.ashx",
-			params: {
-				roomid: $(this).attr('room_id')
-			},
-			onStart: function() {
-
-				// 增加按钮
-				var box = this.parent().parent().parent();
-				o = box.clone(false, false);
-				upload_img(o.appendTo(box.parent()).find('.upload_img_input'));
-
-				this.next(".upload_img_btn").text("上传中...");
-			},
-			onComplete: function(response) {
-				// alert(JSON.stringify(response));
-				$(this).parent("label").hide();
-				$("<img />").width(240).attr('src', response).appendTo($(this).parent().siblings('.img_box'));
+	function upload_img(els) {
+		els.each(function(index, el) {
+			var el = $(el),
+				box = el.parents(".upload_img_box"),
+				conta = box.parent(),
+				label = box.find('label'),
+				img_box = box.find('.img_box'),
+				box_clone = box.clone();
 
 
-			}
+			el.AjaxFileUpload({
+				action: "/help/FileHandle.ashx",
+				onSubmit: function() {
+					upload_img(box_clone.appendTo(conta).find('.upload_img_input'));
+					return {
+						roomid: this.attr('room_id')
+					}
+				},
+				onComplete: function(file, response) {
+					// alert(JSON.stringify(response));
+					label.hide();
+					$("<img />").attr('src', response).appendTo(img_box.show());
+				}
+			});
 		});
 	}
 

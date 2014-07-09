@@ -1,4 +1,4 @@
-/*2014年7月8日18:19:29*/
+/*2014年7月9日10:40:55*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = "请输入";
@@ -55,101 +55,70 @@
 })(jQuery);
 
 (function($) {
-    $.fn.ajaxfileupload = function(options) {
-        var settings = {
-            params: {},
-            action: "",
-            onStart: function() {
-                console.log("starting upload");
-                console.log(this);
-            },
-            onComplete: function(response) {
-                console.log("got response: ");
-                console.log(response);
-                console.log(this);
-            },
-            onCancel: function() {
-                console.log("cancelling: ");
-                console.log(this);
-            },
-            validate_extensions: true,
-            valid_extensions: [ "gif", "png", "jpg", "jpeg" ],
-            submit_button: null
-        };
-        var uploading_file = false;
-        if (options) {
-            $.extend(settings, options);
-        }
+    $.fn.AjaxFileUpload = function(options) {
+        var defaults = {
+            action: "upload.php",
+            onChange: function(filename) {},
+            onSubmit: function(filename) {},
+            onComplete: function(filename, response) {}
+        }, settings = $.extend({}, defaults, options), randomId = function() {
+            var id = 0;
+            return function() {
+                return "_AjaxFileUpload" + id++;
+            };
+        }();
         return this.each(function() {
-            var $element = $(this);
-            if ($element.data("ajaxUploader-setup") === true) return;
-            $element.change(function() {
-                uploading_file = false;
-                if (settings.submit_button == null) {
-                    upload_file();
-                }
-            });
-            if (settings.submit_button == null) {} else {
-                settings.submit_button.click(function(e) {
-                    e.preventDefault();
-                    if (!uploading_file) {
-                        upload_file();
-                    }
-                });
+            var $this = $(this);
+            if ($this.is("input") && $this.attr("type") === "file") {
+                $this.bind("change", onChange);
             }
-            var upload_file = function() {
-                if ($element.val() == "") return settings.onCancel.apply($element, [ settings.params ]);
-                var ext = $element.val().split(".").pop().toLowerCase();
-                if (true === settings.validate_extensions && $.inArray(ext, settings.valid_extensions) == -1) {
-                    settings.onComplete.apply($element, [ {
-                        status: false,
-                        message: "The select file type is invalid. File must be " + settings.valid_extensions.join(", ") + "."
-                    }, settings.params ]);
-                } else {
-                    uploading_file = true;
-                    wrapElement($element);
-                    var ret = settings.onStart.apply($element, [ settings.params ]);
-                    if (ret !== false) {
-                        $element.parent("form").submit(function(e) {
-                            e.stopPropagation();
-                        }).submit();
-                    }
-                }
-            };
-            $element.data("ajaxUploader-setup", true);
-            var handleResponse = function(loadedFrame, element) {
-                var response, responseStr = loadedFrame.contentWindow.document.body.innerHTML;
-                try {
-                    response = JSON.parse(responseStr);
-                } catch (e) {
-                    response = responseStr;
-                }
-                element.siblings().remove();
-                element.unwrap();
-                uploading_file = false;
-                settings.onComplete.apply(element, [ response, settings.params ]);
-            };
-            var wrapElement = function(element) {
-                var frame_id = "ajaxUploader-iframe-" + Math.round(new Date().getTime() / 1e3);
-                $("body").after('<iframe width="0" height="0" style="display:none;" name="' + frame_id + '" id="' + frame_id + '"/>');
-                $("#" + frame_id).load(function() {
-                    handleResponse(this, element);
-                });
-                element.wrap(function() {
-                    return '<form action="' + settings.action + '" method="POST" enctype="multipart/form-data" target="' + frame_id + '" />';
-                }).before(function() {
-                    var key, html = "";
-                    for (key in settings.params) {
-                        var paramVal = settings.params[key];
-                        if (typeof paramVal === "function") {
-                            paramVal = paramVal();
-                        }
-                        html += '<input type="hidden" name="' + key + '" value="' + paramVal + '" />';
-                    }
-                    return html;
-                });
-            };
         });
+        function onChange(e) {
+            var $element = $(e.target), id = $element.attr("id"), $clone = $element.removeAttr("id").clone().attr("id", id).AjaxFileUpload(options), filename = $element.val().replace(/.*(\/|\\)/, ""), iframe = createIframe(), form = createForm(iframe);
+            $clone.insertBefore($element);
+            settings.onChange.call($clone[0], filename);
+            iframe.bind("load", {
+                element: $clone,
+                form: form,
+                filename: filename
+            }, onComplete);
+            form.append($element).bind("submit", {
+                element: $clone,
+                iframe: iframe,
+                filename: filename
+            }, onSubmit).submit();
+        }
+        function onSubmit(e) {
+            var data = settings.onSubmit.call(e.data.element, e.data.filename);
+            if (data === false) {
+                $(e.target).remove();
+                e.data.iframe.remove();
+                return false;
+            } else {
+                for (var variable in data) {
+                    $("<input />").attr("type", "hidden").attr("name", variable).val(data[variable]).appendTo(e.target);
+                }
+            }
+        }
+        function onComplete(e) {
+            var $iframe = $(e.target), doc = ($iframe[0].contentWindow || $iframe[0].contentDocument).document, response = doc.body.innerHTML;
+            settings.onComplete.call(e.data.element, e.data.filename, response);
+            e.data.form.remove();
+            $iframe.remove();
+        }
+        function createIframe() {
+            var id = randomId();
+            $("body").append('<iframe src="javascript:false;" name="' + id + '" id="' + id + '" style="display: none;"></iframe>');
+            return $("#" + id);
+        }
+        function createForm(iframe) {
+            return $("<form />").attr({
+                method: "post",
+                action: settings.action,
+                enctype: "multipart/form-data",
+                target: iframe[0].name
+            }).hide().appendTo("body");
+        }
     };
 })(jQuery);
 
@@ -238,23 +207,22 @@
         $("#map_lat_input").val($(this).val());
         $("#map_lat_text").text($(this).val());
     });
-    function upload_img(el) {
-        var o = "";
-        el.ajaxfileupload({
-            action: "/help/FileHandle.ashx",
-            params: {
-                roomid: $(this).attr("room_id")
-            },
-            onStart: function() {
-                var box = this.parent().parent().parent();
-                o = box.clone(false, false);
-                upload_img(o.appendTo(box.parent()).find(".upload_img_input"));
-                this.next(".upload_img_btn").text("上传中...");
-            },
-            onComplete: function(response) {
-                $(this).parent("label").hide();
-                $("<img />").width(240).attr("src", response).appendTo($(this).parent().siblings(".img_box"));
-            }
+    function upload_img(els) {
+        els.each(function(index, el) {
+            var el = $(el), box = el.parents(".upload_img_box"), conta = box.parent(), label = box.find("label"), img_box = box.find(".img_box"), box_clone = box.clone();
+            el.AjaxFileUpload({
+                action: "/help/FileHandle.ashx",
+                onSubmit: function() {
+                    upload_img(box_clone.appendTo(conta).find(".upload_img_input"));
+                    return {
+                        roomid: this.attr("room_id")
+                    };
+                },
+                onComplete: function(file, response) {
+                    label.hide();
+                    $("<img />").attr("src", response).appendTo(img_box.show());
+                }
+            });
         });
     }
     upload_img($(".upload_img_input"));
