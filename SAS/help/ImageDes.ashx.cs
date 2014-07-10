@@ -16,8 +16,8 @@ namespace SAS.help
         {
             try
             {
-                 int PID=Convert.ToInt32(context.Request.Form[0]);
-                 string DescText = context.Request.Form[0];
+                 int PID=Convert.ToInt32(context.Request.QueryString[0]);
+                 string DescText = context.Request.QueryString[1];
                  var p = (from i in db.room where i.h_p_id == PID select i).Single();
                  p.h_p_title = DescText;
                  if (db.SaveChanges() > 0)
