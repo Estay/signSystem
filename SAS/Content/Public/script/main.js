@@ -301,11 +301,11 @@
         var pid = $(this).parents(".upload_img_box").data("pid"), v = $(this).val();
         if (v) {
             $.ajax({
-                url: "/help/ImageDes.ashx",
+                url: "/ImageProperty/ImageDes",
                 type: "GET",
                 data: {
                     PID: pid,
-                    Description: v
+                    text: v
                 }
             }).done(function(data) {
                 if (data == 0) {
@@ -318,7 +318,7 @@
         var pid = $(this).parents(".upload_img_box").data("pid"), v = $(this).val();
         if (v) {
             $.ajax({
-                url: "/help/ImageDes.ashx",
+                url: "/ImageProperty/ImageDes",
                 type: "GET",
                 data: {
                     PID: pid
@@ -337,10 +337,10 @@
         event.preventDefault();
         var box = $(this).parents(".upload_img_box"), pid = box.data("pid"), url = box.find(".upload_img").attr("src"), data = {
             PID: pid == "error" ? 0 : pid,
-            URL: url
+            text: url
         };
         $.ajax({
-            url: "/help/ImageDel.ashx",
+            url: "/ImageProperty/ImageDel",
             type: "GET",
             data: data
         }).done(function(data) {
