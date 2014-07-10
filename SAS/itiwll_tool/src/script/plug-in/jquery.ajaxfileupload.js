@@ -41,9 +41,9 @@
 				iframe   = createIframe(),
 				form     = createForm(iframe);
 
-			// itiwll 多文件支持
+			// @itiwll 20140710 多文件支持
 			if($element.attr('multiple')){
-				var files = $element.prop("file");
+				var files = $element.prop("files");
 				if (files) {		
 					filename = "";
 					for (var i = 0; i < files.length; i++) {

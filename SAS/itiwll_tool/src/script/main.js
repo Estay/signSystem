@@ -218,10 +218,12 @@
 
 	// 设置图片类型
 	$("#add_img").on('change',".upload_img_type", function(event) {
-		var pid = $(this).parents(".upload_img_box").data('pid'),
-			v = $(this).val();
+		var el = $(this),
+			pid = el.parents(".upload_img_box").data('pid'),
+			v = el.val();
 
 		if (v) {
+			$(this).prop('disabled',true);
 
 			//提交类型
 			$.ajax({
@@ -235,17 +237,20 @@
 			.done(function(data) {
 				if (data==0) {
 					alert("设置图片类型失败");
-					$(this)[0].selectedIndex=0;
+					el[0].selectedIndex=0;
 				};
 			})
 			.fail(function(data) {
 				alert("提交图片类型错误！错误代码："+data.status+","+data.statusText+"。");
+			})
+			.always(function() {
+				el.removeAttr('disabled');
 			});
 		};
 	});
 
 	// 删除图片按钮
-	$("#add_img").on('click', '.img_del', function(event) {
+	$("#add_img").on('click', '.img_del a', function(event) {
 		event.preventDefault();
 		var box = $(this).parents(".upload_img_box"),
 			pid = box.data('pid'),
@@ -273,6 +278,8 @@
 		});
 		
 	});
+
+
 	
 
 })(jQuery);
