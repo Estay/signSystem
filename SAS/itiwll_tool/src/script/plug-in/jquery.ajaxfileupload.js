@@ -41,6 +41,18 @@
 				iframe   = createIframe(),
 				form     = createForm(iframe);
 
+			// itiwll 多文件支持
+			if($element.attr('multiple')){
+				var files = $element.prop("files");
+				filename = "";
+				for (var i = 0; i < files.length; i++) {
+					filename += files[i].name;
+					filename += "，";
+				};
+				filename = filename.slice(0, -1);
+			}
+			console.log(filename);
+
 			// We append a clone since the original input will be destroyed
 			$clone.insertBefore($element);
 

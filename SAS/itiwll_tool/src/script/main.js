@@ -134,50 +134,52 @@
 		els.each(function(index, el) {
 			var el = $(el),
 				box = el.parents(".from_path").find('.img_show_box'),
-				label = box.find('label');
+				label = el.parents(".from_path").find('label');
 
-			var html = '';
-				html +=			'<div class="upload_img_box">';
-				html +=				'<div class="img_box"><img /></div>';
+			var	html =			'<div class="upload_img_box">';
+				html +=				'<div class="img_box"><img class="upload_img" /></div>';
 				html +=				'<p class="img_set">';
 				html +=					'<input type="text" class="upload_img_info">';
 				html +=					'<select class="upload_img_type" name="img_type">';
-				html +=						'<option value="大堂">大堂</option>';
 				html +=					'</select>';
 				html +=				'</p>';
 				html +=				'<p class="img_del"><a href="">删除</a></p>';
 				html +=			'</div>';
 
+			var upload_tip =  '<div class="upload_img_box upload_info_box">';
+				upload_tip +=		'<div class="img_box">';
+				upload_tip +=			'<p></p>';
+				upload_tip +=		'</div>';
+				upload_tip += '</div>';
+
 
 			el.AjaxFileUpload({
 				action: "/help/FileHandle.ashx",
-				onSubmit: function() {
+				onSubmit: function(filename) {
 
+					$(upload_tip).appendTo(box).find('p').text(filename+"正在上传中...");
 
-
-					label.find('span').text('上传中...');
 					return {
 						roomid: this.attr('room_id')
 					}
 				},
 				onComplete: function(file, response) {
 					// alert(JSON.stringify(response));
-					if (response.length) {
-						box.show();
-					};
 					for (var i = 0; i < response.length; i++) {
 						var img = response[i];
 						var a = $(html).appendTo(box);
-							a.find('img').attr('src', img.URL).e_img_siz("",true);
+
+						a.find('img').attr('src', img.URL).e_img_siz("",true);
 						if (img.PID) {
 							a.data('pid', img.PID);
 							a.find('select').html($("#img_type_sel").html());
 						}else {
 							a.data('pid', "error");
-							a.find('.img_set').remove();
+							a.find('.img_set').addClass('col_red').html(img.Message);
 						}
 						
 					};
+					box.find('.upload_info_box').remove();
 				}
 			});
 		});
@@ -185,14 +187,15 @@
 
 	upload_img($(".upload_img_input"));
 
-	// 设置图片类型
+	// 设置图片描述
 	$("#add_img").on('focusout',".upload_img_info", function(event) {
 		var pid = $(this).parents(".upload_img_box").data('pid'),
 			v = $(this).val();
 
 
 		if (v) {
-			console.log(v);
+
+			//提交描述
 			$.ajax({
 				url: '/help/ImageDes.ashx',
 				type: 'GET',
@@ -201,18 +204,65 @@
 					Description: v}
 			})
 			.done(function(data) {
-				console.log(data);
-
-			})
-			.fail(function() {
-				console.log("error");
-			})
-			.always(function() {
-				console.log("complete");
-			});			
+				if (data==0) {
+					alert("描述提交失败");
+				};
+			});	
 		};
+	});
+
+	// 设置图片类型
+	$("#add_img").on('change',".upload_img_type", function(event) {
+		var pid = $(this).parents(".upload_img_box").data('pid'),
+			v = $(this).val();
+
+		if (v) {
+
+			//提交类型
+			$.ajax({
+				url: '/help/ImageDes.ashx',
+				type: 'GET',
+				data: {
+					PID: pid,
+					// todo 参数
+				}
+			})
+			.done(function(data) {
+				if (data==0) {
+					alert("设置图片类型失败");
+					$(this)[0].selectedIndex=0;
+				};
+			});	
+		};
+	});
+
+	// 删除图片按钮
+	$("#add_img").on('click', '.img_del', function(event) {
+		event.preventDefault();
+		var box = $(this).parents(".upload_img_box"),
+			pid = box.data('pid'),
+			url = box.find('.upload_img').attr('src'),
+			data = {
+				PID : pid=="error"?0:pid,
+				URL : url
+			};
+
+		//删除图片请求
+		$.ajax({
+			url: '/help/ImageDel.ashx',
+			type: 'GET',
+			data: data
+		})
+		.done(function(data) {
+			if (data==0) {
+				alert("删除图片失败");
+			}else {
+				box.remove();
+			}
+		});	
 		
 	});
+
 
 })(jQuery);
 
