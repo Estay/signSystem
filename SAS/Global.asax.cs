@@ -19,9 +19,6 @@ namespace SAS
         protected void Application_Start()
         {
             //add(al)
-           
-
-
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);

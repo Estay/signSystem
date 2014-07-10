@@ -167,7 +167,6 @@
     <Compile Include="Controllers\AddHotelController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
-    <Compile Include="Controllers\ImagePropertyController.cs" />
     <Compile Include="Controllers\MyApartMentController.cs" />
     <Compile Include="Controllers\PriceController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
