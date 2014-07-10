@@ -187,7 +187,7 @@ namespace SAS.help
         //记录日志
         public static void log(string content)
         {
-
+            return;
             string directory ="";
 
             if (!Directory.Exists(directory))

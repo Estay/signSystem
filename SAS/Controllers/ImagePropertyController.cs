@@ -45,18 +45,19 @@ namespace SAS.Controllers
         }
         public int ImageDel(string PID, string text)
         {
-            string path=text;
+            string pth=System.Web. HttpContext.Current.Server.MapPath("..");
+            string path = pth+text;
             hotel_picture_info p = null;
             int ID = Convert.ToInt32(PID);
             if (ID == 0)
-                path = text;
+                path =pth+ text;
             else
             {
                 p = (from i in db.room where i.h_p_id == ID select i).Single();
-                path=p.h_p_pic_original_url;
+                path = pth+p.h_p_pic_original_url;
 
-            }         
-           
+            }
+           path= path.Remove(path.IndexOf(".."), 2);
             if (f.File.Exists(path))
             {
                 f.File.Delete(path);
