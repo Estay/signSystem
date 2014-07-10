@@ -134,7 +134,7 @@
 		els.each(function(index, el) {
 			var el = $(el),
 				box = el.parents(".from_path").find('.img_show_box'),
-				label = el.parents(".from_path").find('label');
+				info_box = "";
 
 			var	html =			'<div class="upload_img_box">';
 				html +=				'<div class="img_box"><img class="upload_img" /></div>';
@@ -148,7 +148,7 @@
 
 			var upload_tip =  '<div class="upload_img_box upload_info_box">';
 				upload_tip +=		'<div class="img_box">';
-				upload_tip +=			'<p></p>';
+				upload_tip +=			'<p style=“margin-top: 20px;”></p>';
 				upload_tip +=		'</div>';
 				upload_tip += '</div>';
 
@@ -157,7 +157,8 @@
 				action: "/help/FileHandle.ashx",
 				onSubmit: function(filename) {
 
-					$(upload_tip).appendTo(box).find('p').text(filename+"正在上传中...");
+					info_box = $(upload_tip).appendTo(box);
+					info_box.find('p').text(filename+"正在上传中...");
 
 					return {
 						roomid: this.attr('room_id')
@@ -179,7 +180,7 @@
 						}
 						
 					};
-					box.find('.upload_info_box').remove();
+					info_box.remove();
 				}
 			});
 		});
@@ -207,7 +208,10 @@
 				if (data==0) {
 					alert("描述提交失败");
 				};
-			});	
+			})
+			.fail(function(data) {
+				alert("描述提交错误！错误代码："+data.status+","+data.statusText"。");
+			});
 		};
 	});
 
@@ -232,7 +236,10 @@
 					alert("设置图片类型失败");
 					$(this)[0].selectedIndex=0;
 				};
-			});	
+			})
+			.fail(function(data) {
+				alert("提交图片类型错误！错误代码："+data.status+","+data.statusText"。");
+			});
 		};
 	});
 
@@ -259,10 +266,13 @@
 			}else {
 				box.remove();
 			}
-		});	
+		})
+		.fail(function(data) {
+			alert("删除图片错误！错误代码："+data.status+","+data.statusText+"。");
+		});
 		
 	});
-
+	
 
 })(jQuery);
 

@@ -43,13 +43,15 @@
 
 			// itiwll 多文件支持
 			if($element.attr('multiple')){
-				var files = $element.prop("files");
-				filename = "";
-				for (var i = 0; i < files.length; i++) {
-					filename += files[i].name;
-					filename += "，";
-				};
-				filename = filename.slice(0, -1);
+				var files = $element.prop("file");
+				if (files) {		
+					filename = "";
+					for (var i = 0; i < files.length; i++) {
+						filename += files[i].name;
+						filename += "，";
+					};
+					filename = filename.slice(0, -1);
+				}
 			}
 			console.log(filename);
 
