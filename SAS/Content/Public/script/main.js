@@ -1,4 +1,4 @@
-/*2014年7月10日12:46:36*/
+/*2014年7月10日13:48:36*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = "请输入";
@@ -104,13 +104,15 @@
         function onChange(e) {
             var $element = $(e.target), id = $element.attr("id"), $clone = $element.removeAttr("id").clone().attr("id", id).AjaxFileUpload(options), filename = $element.val().replace(/.*(\/|\\)/, ""), iframe = createIframe(), form = createForm(iframe);
             if ($element.attr("multiple")) {
-                var files = $element.prop("files");
-                filename = "";
-                for (var i = 0; i < files.length; i++) {
-                    filename += files[i].name;
-                    filename += "，";
+                var files = $element.prop("file");
+                if (files) {
+                    filename = "";
+                    for (var i = 0; i < files.length; i++) {
+                        filename += files[i].name;
+                        filename += "，";
+                    }
+                    filename = filename.slice(0, -1);
                 }
-                filename = filename.slice(0, -1);
             }
             console.log(filename);
             $clone.insertBefore($element);
@@ -252,7 +254,7 @@
     });
     function upload_img(els) {
         els.each(function(index, el) {
-            var el = $(el), box = el.parents(".from_path").find(".img_show_box"), label = el.parents(".from_path").find("label");
+            var el = $(el), box = el.parents(".from_path").find(".img_show_box"), info_box = "";
             var html = '<div class="upload_img_box">';
             html += '<div class="img_box"><img class="upload_img" /></div>';
             html += '<p class="img_set">';
@@ -270,7 +272,8 @@
             el.AjaxFileUpload({
                 action: "/help/FileHandle.ashx",
                 onSubmit: function(filename) {
-                    $(upload_tip).appendTo(box).find("p").text(filename + "正在上传中...");
+                    info_box = $(upload_tip).appendTo(box);
+                    info_box.find("p").text(filename + "正在上传中...");
                     return {
                         roomid: this.attr("room_id")
                     };
@@ -288,7 +291,7 @@
                             a.find(".img_set").addClass("col_red").html(img.Message);
                         }
                     }
-                    box.find(".upload_info_box").remove();
+                    info_box.remove();
                 }
             });
         });
@@ -325,6 +328,8 @@
                     alert("设置图片类型失败");
                     $(this)[0].selectedIndex = 0;
                 }
+            }).fail(function(data) {
+                alert("错误！错误代码：" + data.status + "," + data.statusText);
             });
         }
     });
@@ -344,6 +349,8 @@
             } else {
                 box.remove();
             }
+        }).fail(function(data) {
+            alert("错误！错误代码：" + data.status + "," + data.statusText);
         });
     });
 })(jQuery);

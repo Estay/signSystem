@@ -134,7 +134,7 @@
 		els.each(function(index, el) {
 			var el = $(el),
 				box = el.parents(".from_path").find('.img_show_box'),
-				label = el.parents(".from_path").find('label');
+				info_box = "";
 
 			var	html =			'<div class="upload_img_box">';
 				html +=				'<div class="img_box"><img class="upload_img" /></div>';
@@ -148,7 +148,7 @@
 
 			var upload_tip =  '<div class="upload_img_box upload_info_box">';
 				upload_tip +=		'<div class="img_box">';
-				upload_tip +=			'<p></p>';
+				upload_tip +=			'<p style=“margin-top: 20px;”></p>';
 				upload_tip +=		'</div>';
 				upload_tip += '</div>';
 
@@ -157,7 +157,8 @@
 				action: "/help/FileHandle.ashx",
 				onSubmit: function(filename) {
 
-					$(upload_tip).appendTo(box).find('p').text(filename+"正在上传中...");
+					info_box = $(upload_tip).appendTo(box);
+					info_box.find('p').text(filename+"正在上传中...");
 
 					return {
 						roomid: this.attr('room_id')
@@ -179,7 +180,7 @@
 						}
 						
 					};
-					box.find('.upload_info_box').remove();
+					info_box.remove();
 				}
 			});
 		});
@@ -190,13 +191,14 @@
 	// 设置图片描述
 	$("#add_img").on('focusout',".upload_img_info", function(event) {
 		var pid = $(this).parents(".upload_img_box").data('pid'),
-			v = $(this).val();
+			v = $(this).val(),
+			ajax_load = "";
 
 
 		if (v) {
 
 			//提交描述
-			$.ajax({
+			ajax_load = $.ajax({
 				url: '/help/ImageDes.ashx',
 				type: 'GET',
 				data: {
@@ -207,7 +209,10 @@
 				if (data==0) {
 					alert("描述提交失败");
 				};
-			});	
+			})
+			.fail(function(data) {
+				alert("描述提交错误！错误代码："+data.status+","+data.statusText"。");
+			});
 		};
 	});
 
@@ -224,7 +229,7 @@
 				type: 'GET',
 				data: {
 					PID: pid,
-					// todo 参数
+					text : v
 				}
 			})
 			.done(function(data) {
@@ -232,7 +237,10 @@
 					alert("设置图片类型失败");
 					$(this)[0].selectedIndex=0;
 				};
-			});	
+			})
+			.fail(function(data) {
+				alert("提交图片类型错误！错误代码："+data.status+","+data.statusText"。");
+			});
 		};
 	});
 
@@ -259,10 +267,13 @@
 			}else {
 				box.remove();
 			}
-		});	
+		})
+		.fail(function(data) {
+			alert("删除图片错误！错误代码："+data.status+","+data.statusText+"。");
+		});
 		
 	});
-
+	
 
 })(jQuery);
 

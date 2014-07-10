@@ -199,8 +199,16 @@
 	height: 30px;
 	width: 150px;
 	cursor: pointer;
+	position: relative;
+	top: -20px;
 }
-
+.upload_img_input {
+	width: 10px;
+	height: 5px;
+}
+.upload_help {
+	width: 150px;
+}
 .img_show_box {
 	margin-left: 30px;
 	/*border: 1px solid #CCC;*/
