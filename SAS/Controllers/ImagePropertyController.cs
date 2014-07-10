@@ -45,30 +45,40 @@ namespace SAS.Controllers
         }
         public int ImageDel(string PID, string text)
         {
-            string pth=System.Web. HttpContext.Current.Server.MapPath("..");
-            string path = pth+text;
-            hotel_picture_info p = null;
-            int ID = Convert.ToInt32(PID);
-            if (ID == 0)
-                path =pth+ text;
-            else
+            try
             {
-                p = (from i in db.room where i.h_p_id == ID select i).Single();
-                path = pth+p.h_p_pic_original_url;
-
+                 string pth=System.Web. HttpContext.Current.Server.MapPath("..");
+                string path = pth+text;
+                hotel_picture_info p = null;
+                int ID = Convert.ToInt32(PID);
+                if (ID == 0)
+                    path =pth+ text;
+                else
+                {
+                    p = (from i in db.room where i.h_p_id == ID select i).Single();
+                    path = pth+p.h_p_pic_original_url;
+                    if (p != null)
+                        db.room.Remove(p);
+                    if (db.SaveChanges() > 0)
+                        sign = 1;
+                    else
+                        sign = 0;
+                }
+               path= path.Remove(path.IndexOf(".."), 2);
+               if (f.File.Exists(path))
+               {
+                   f.File.Delete(path);
+                   sign = 1;
+               }
             }
-           path= path.Remove(path.IndexOf(".."), 2);
-            if (f.File.Exists(path))
+            catch (Exception ex)
             {
-                f.File.Delete(path);
 
-            }
-            if(p!=null)
-            db.room.Remove(p);
-            if (db.SaveChanges() > 0)
-                sign = 1;
-            else
                 sign = 0;
+                DBhelp.log("删除图片" + ex.ToString());
+            }
+
+            
            
             return sign;
         }
