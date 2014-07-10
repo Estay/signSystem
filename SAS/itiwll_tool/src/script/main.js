@@ -141,7 +141,7 @@
 				html +=				'<div class="img_box"><img /></div>';
 				html +=				'<p class="img_set">';
 				html +=					'<input type="text" class="upload_img_info">';
-				html +=					'<select name="img_type">';
+				html +=					'<select class="upload_img_type" name="img_type">';
 				html +=						'<option value="大堂">大堂</option>';
 				html +=					'</select>';
 				html +=				'</p>';
@@ -162,8 +162,22 @@
 				},
 				onComplete: function(file, response) {
 					// alert(JSON.stringify(response));
-					var data = response.split("&");
-					$(html).appendTo(box).find('img').attr('src', data[0]).data('pid', data[1]);
+					if (response.length) {
+						box.show();
+					};
+					for (var i = 0; i < response.length; i++) {
+						var img = response[i];
+						var a = $(html).appendTo(box);
+							a.find('img').attr('src', img.URL).e_img_siz("",true);
+						if (img.PID) {
+							a.data('pid', img.PID);
+							a.find('select').html($("#img_type_sel").html());
+						}else {
+							a.data('pid', "error");
+							a.find('.img_set').remove();
+						}
+						
+					};
 				}
 			});
 		});
@@ -171,31 +185,34 @@
 
 	upload_img($(".upload_img_input"));
 
-	// 上传图片说明
-	function upload_imginfo (els) {
-		els.each(function(index, el) {
-			var el = $(el),
-				pid = el.attr('pid');
-			el.focusout(function(event) {
-				$.ajax({
-					url: '/path/to/file',
-					type: 'default GET (Other values: POST)',
-					dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
-					data: {param1: 'value1'},
-				})
-				.done(function() {
-					console.log("success");
-				})
-				.fail(function() {
-					console.log("error");
-				})
-				.always(function() {
-					console.log("complete");
-				});
-				
-			});
-		});
-	}
+	// 设置图片类型
+	$("#add_img").on('focusout',".upload_img_info", function(event) {
+		var pid = $(this).parents(".upload_img_box").data('pid'),
+			v = $(this).val();
+
+
+		if (v) {
+			console.log(v);
+			$.ajax({
+				url: '/help/ImageDes.ashx',
+				type: 'GET',
+				data: {
+					PID: pid,
+					Description: v}
+			})
+			.done(function(data) {
+				console.log(data);
+
+			})
+			.fail(function() {
+				console.log("error");
+			})
+			.always(function() {
+				console.log("complete");
+			});			
+		};
+		
+	});
 
 })(jQuery);
 

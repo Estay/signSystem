@@ -1,4 +1,4 @@
-/*2014年7月9日16:20:04*/
+/*2014年7月10日11:00:34*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = "请输入";
@@ -23,6 +23,34 @@
                 }
             });
         });
+    };
+})(jQuery);
+
+(function($) {
+    $.fn.e_img_siz = function(parentClass, mod) {
+        parentClass = parentClass ? parentClass : "img_box";
+        return this.each(function(index, el) {
+            if (this.complete) {
+                $.fn.e_img_siz.img_size($(this), parentClass, mod);
+            } else {
+                $(this).load(function() {
+                    $.fn.e_img_siz.img_size($(this), parentClass, mod);
+                });
+            }
+        });
+    };
+    $.fn.e_img_siz.defaults = {};
+    $.fn.e_img_siz.img_size = function(el, parentClass, mod) {
+        var parent = el.parents("." + parentClass);
+        a = el.height() / el.width() - parent.height() / parent.width();
+        if (mod) {
+            a = -a;
+        }
+        if (a < 0) {
+            el.height(parent.height());
+        } else {
+            el.width(parent.width());
+        }
     };
 })(jQuery);
 
@@ -102,6 +130,11 @@
         }
         function onComplete(e) {
             var $iframe = $(e.target), doc = ($iframe[0].contentWindow || $iframe[0].contentDocument).document, response = doc.body.innerHTML;
+            if (response) {
+                response = $.parseJSON(response);
+            } else {
+                response = {};
+            }
             settings.onComplete.call(e.data.element, e.data.filename, response);
             e.data.form.remove();
             $iframe.remove();
@@ -215,7 +248,7 @@
             html += '<div class="img_box"><img /></div>';
             html += '<p class="img_set">';
             html += '<input type="text" class="upload_img_info">';
-            html += '<select name="img_type">';
+            html += '<select class="upload_img_type" name="img_type">';
             html += '<option value="大堂">大堂</option>';
             html += "</select>";
             html += "</p>";
@@ -230,33 +263,45 @@
                     };
                 },
                 onComplete: function(file, response) {
-                    var data = response.split("&");
-                    $(html).appendTo(box).find("img").attr("src", data[0]).data("pid", data[1]);
+                    if (response.length) {
+                        box.show();
+                    }
+                    for (var i = 0; i < response.length; i++) {
+                        var img = response[i];
+                        var a = $(html).appendTo(box);
+                        a.find("img").attr("src", img.URL).e_img_siz("", true);
+                        if (img.PID) {
+                            a.data("pid", img.PID);
+                            a.find("select").html($("#img_type_sel").html());
+                        } else {
+                            a.data("pid", "error");
+                            a.find(".img_set").remove();
+                        }
+                    }
                 }
             });
         });
     }
     upload_img($(".upload_img_input"));
-    function upload_imginfo(els) {
-        els.each(function(index, el) {
-            var el = $(el), pid = el.attr("pid");
-            el.focusout(function(event) {
-                $.ajax({
-                    url: "/path/to/file",
-                    type: "default GET (Other values: POST)",
-                    dataType: "default: Intelligent Guess (Other values: xml, json, script, or html)",
-                    data: {
-                        param1: "value1"
-                    }
-                }).done(function() {
-                    console.log("success");
-                }).fail(function() {
-                    console.log("error");
-                }).always(function() {
-                    console.log("complete");
-                });
+    $("#add_img").on("focusout", ".upload_img_info", function(event) {
+        var pid = $(this).parents(".upload_img_box").data("pid"), v = $(this).val();
+        if (v) {
+            console.log(v);
+            $.ajax({
+                url: "/help/ImageDes.ashx",
+                type: "GET",
+                data: {
+                    PID: pid,
+                    Description: v
+                }
+            }).done(function(data) {
+                console.log(data);
+            }).fail(function() {
+                console.log("error");
+            }).always(function() {
+                console.log("complete");
             });
-        });
-    }
+        }
+    });
 })(jQuery);
 //# sourceMappingURL=main.map

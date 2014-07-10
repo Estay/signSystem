@@ -78,11 +78,11 @@
 				response = doc.body.innerHTML;
 
 			// 返回结果处理 itiwll注释
-			// if (response) {
-			// 	response = $.parseJSON(response);
-			// } else {
-			// 	response = {};
-			// }
+			if (response) {
+				response = $.parseJSON(response);
+			} else {
+				response = {};
+			}
 
 			settings.onComplete.call(e.data.element, e.data.filename, response);
 			

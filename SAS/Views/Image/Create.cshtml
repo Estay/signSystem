@@ -13,10 +13,18 @@
 	<a href="" class="btn_c">3 录入房价</a>
 	<a href="" class="btn_c set">4 录入图片</a>
 </div>
-<!-- 录入房型 -->
-<div class="box_a">
+<!-- 录入房型图片 -->
+<div class="box_a" id="add_img">
+	<select id="img_type_sel" class="hide">
+        <option value="" >选择类型</option>                    
 
-					<input type="file" name="file" class="upload_img_input" room_id="123321">
+	@foreach (var opt in ImageTypes)
+ {
+	            <option value="@opt.Value" >@opt.Key</option>                    
+	}
+	</select>
+
+
     @foreach (var room in roomList)
     {
 	<div class="from_path" room_id="@room.room_id">
@@ -24,7 +32,7 @@
 		<div class="clear">
 			<div class="float_l">
 				<label>
-					<input type="file" name="file" room_id="@room.room_id" class="hide upload_img_input" >
+					<input type="file" name="file" multiple room_id="@room.room_id" class="hide upload_img_input" >
 					<span class="upload_img_btn">选择图片</span>
 				</label>
 			</div>

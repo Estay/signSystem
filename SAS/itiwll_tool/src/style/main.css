@@ -203,22 +203,27 @@
 
 .img_show_box {
 	margin-left: 30px;
-	border: 1px solid #CCC;
-	width: 820px;
+	/*border: 1px solid #CCC;*/
+	width: 780px;
 	display: none;
 }
 .upload_img_box {
 	float: left;
-	margin-right: 5px;
+	margin-right: 10px;
 	margin-bottom: 10px;
+	padding: 5px;
+	border: 1px solid #BBB;
 }
 .upload_img_info {
-	width: 150px;
+	width: 160px;
+}
+.upload_img_type {
+	margin-left: 10px;
+	width: 60px;
 }
 .upload_img_box .img_box {
-	width: 200px;
-	height: 160px;
-}
-.upload_img_box .img_box img {
-	width: 100%;
+	width: 237px;
+	height: 150px;
+	text-align: center;
+	vertical-align: middle;
 }
