@@ -191,13 +191,14 @@
 	// 设置图片描述
 	$("#add_img").on('focusout',".upload_img_info", function(event) {
 		var pid = $(this).parents(".upload_img_box").data('pid'),
-			v = $(this).val();
+			v = $(this).val(),
+			ajax_load = "";
 
 
 		if (v) {
 
 			//提交描述
-			$.ajax({
+			ajax_load = $.ajax({
 				url: '/help/ImageDes.ashx',
 				type: 'GET',
 				data: {
@@ -228,7 +229,7 @@
 				type: 'GET',
 				data: {
 					PID: pid,
-					// todo 参数
+					text : v
 				}
 			})
 			.done(function(data) {
