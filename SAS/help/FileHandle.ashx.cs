@@ -23,6 +23,7 @@ namespace SAS.help
             context.Response.ContentType = "text/html";
             HttpFileCollection files = context.Request.Files;              // From中获取文件对象
             string tag = Guid.NewGuid().ToString();
+            int roomId=Convert.ToInt32(context.Request.Form[0]);
             List<Image> list1 = new List<Image>();
             if (files.Count > 0)
             {
@@ -63,11 +64,12 @@ namespace SAS.help
                         //hpFile.SaveAs(filePath);
                         string showImagePath = "..\\" + fileI;
                         // && w > 500 && h > 300
-                        if (size < maxSize )
+                        if (size < maxSize && w > 500 && h > 300 )
                         {
                             hotel_picture_info pic = new hotel_picture_info();
                             pic.h_p_pic_original_url = showImagePath;
                             pic.Width = w;
+                            pic.hotel_id = roomId;
                             pic.Height = h;
                             pic.h_p_tag = tag;
                             pic.h_p_time = DateTime.Now;
