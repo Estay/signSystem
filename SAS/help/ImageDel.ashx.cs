@@ -14,21 +14,7 @@ namespace SAS.help
         private PictureDBContent db = new PictureDBContent();
         public void ProcessRequest(HttpContext context)
         {
-            int PID = Convert.ToInt32(context.Request.Form[0]);
-            var p = (from i in db.room where i.h_p_id == PID select i).Single();
-            string path = "";
-            if (File.Exists(path))
-            {
-                File.Delete(path);
-                
-            }
-            db.room.Remove(p);
-            if (db.SaveChanges() > 0)
-                context.Response.Write("1");
-            else
-            {
-                context.Response.Write("0");
-            }
+         
             context.Response.ContentType = "text/plain";
             context.Response.Write("Hello World");
         }
