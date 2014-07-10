@@ -209,6 +209,7 @@
     <Content Include="Content\Public\img\logo.png" />
     <Content Include="Content\Public\script\jquery\jquery-1.8.3.js" />
     <Content Include="Content\Public\script\jquery\jquery-1.8.3.min.js" />
+    <Content Include="Content\Public\script\main.js" />
     <Content Include="Content\Public\style\main.css" />
     <Content Include="FakesAssemblies\EntityFramework.6.0.0.0.Fakes.dll" />
     <Content Include="FakesAssemblies\EntityFramework.6.0.0.0.Fakes.xml" />
@@ -375,6 +376,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="help\ImageDel.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Public\script\main.map" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
