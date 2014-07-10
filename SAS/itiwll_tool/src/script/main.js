@@ -211,7 +211,7 @@
 				};
 			})
 			.fail(function(data) {
-				alert("描述提交错误！错误代码："+data.status+","+data.statusText"。");
+				alert("描述提交错误！错误代码：" + data.status + ","+data.statusText + "。");
 			});
 		};
 	});
@@ -239,7 +239,7 @@
 				};
 			})
 			.fail(function(data) {
-				alert("提交图片类型错误！错误代码："+data.status+","+data.statusText"。");
+				alert("提交图片类型错误！错误代码："+data.status+","+data.statusText+"。");
 			});
 		};
 	});

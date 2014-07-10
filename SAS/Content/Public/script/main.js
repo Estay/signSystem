@@ -1,4 +1,4 @@
-/*2014年7月10日13:48:36*/
+/*2014年7月10日14:17:44*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = "请输入";
@@ -266,7 +266,7 @@
             html += "</div>";
             var upload_tip = '<div class="upload_img_box upload_info_box">';
             upload_tip += '<div class="img_box">';
-            upload_tip += "<p></p>";
+            upload_tip += "<p style=“margin-top: 20px;”></p>";
             upload_tip += "</div>";
             upload_tip += "</div>";
             el.AjaxFileUpload({
@@ -298,19 +298,21 @@
     }
     upload_img($(".upload_img_input"));
     $("#add_img").on("focusout", ".upload_img_info", function(event) {
-        var pid = $(this).parents(".upload_img_box").data("pid"), v = $(this).val();
+        var pid = $(this).parents(".upload_img_box").data("pid"), v = $(this).val(), ajax_load = "";
         if (v) {
-            $.ajax({
-                url: "/ImageProperty/ImageDes",
+            ajax_load = $.ajax({
+                url: "/help/ImageDes.ashx",
                 type: "GET",
                 data: {
                     PID: pid,
-                    text: v
+                    Description: v
                 }
             }).done(function(data) {
                 if (data == 0) {
                     alert("描述提交失败");
                 }
+            }).fail(function(data) {
+                alert("描述提交错误！错误代码：" + data.status + "," + data.statusText + "。");
             });
         }
     });
@@ -318,10 +320,11 @@
         var pid = $(this).parents(".upload_img_box").data("pid"), v = $(this).val();
         if (v) {
             $.ajax({
-                url: "/ImageProperty/ImageDes",
+                url: "/help/ImageDes.ashx",
                 type: "GET",
                 data: {
-                    PID: pid
+                    PID: pid,
+                    text: v
                 }
             }).done(function(data) {
                 if (data == 0) {
@@ -329,7 +332,7 @@
                     $(this)[0].selectedIndex = 0;
                 }
             }).fail(function(data) {
-                alert("错误！错误代码：" + data.status + "," + data.statusText);
+                alert("提交图片类型错误！错误代码：" + data.status + "," + data.statusText + "。");
             });
         }
     });
@@ -337,10 +340,10 @@
         event.preventDefault();
         var box = $(this).parents(".upload_img_box"), pid = box.data("pid"), url = box.find(".upload_img").attr("src"), data = {
             PID: pid == "error" ? 0 : pid,
-            text: url
+            URL: url
         };
         $.ajax({
-            url: "/ImageProperty/ImageDel",
+            url: "/help/ImageDel.ashx",
             type: "GET",
             data: data
         }).done(function(data) {
@@ -350,7 +353,7 @@
                 box.remove();
             }
         }).fail(function(data) {
-            alert("错误！错误代码：" + data.status + "," + data.statusText);
+            alert("删除图片错误！错误代码：" + data.status + "," + data.statusText + "。");
         });
     });
 })(jQuery);
