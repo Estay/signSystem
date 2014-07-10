@@ -199,11 +199,11 @@
 
 			//提交描述
 			ajax_load = $.ajax({
-				url: '/help/ImageDes.ashx',
+				url: '/ImageProperty/ImageDes',
 				type: 'GET',
 				data: {
 					PID: pid,
-					Description: v}
+					text: v}
 			})
 			.done(function(data) {
 				if (data==0) {
@@ -227,7 +227,7 @@
 
 			//提交类型
 			$.ajax({
-				url: '/help/ImageDes.ashx',
+				url: '/ImageProperty/ImageDes',
 				type: 'GET',
 				data: {
 					PID: pid,
@@ -257,12 +257,12 @@
 			url = box.find('.upload_img').attr('src'),
 			data = {
 				PID : pid=="error"?0:pid,
-				URL : url
+				text : url
 			};
 
 		//删除图片请求
 		$.ajax({
-			url: '/help/ImageDel.ashx',
+			url: '/ImageProperty/ImageDel',
 			type: 'GET',
 			data: data
 		})
