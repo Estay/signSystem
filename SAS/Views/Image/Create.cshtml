@@ -15,11 +15,18 @@
 </div>
 <!-- 录入房型图片 -->
 <div class="box_a" id="add_img">
+	<div class="from_path">
+		<p><b>图片上传注意事项：</b></p>
+		<p>请使用现代浏览器（支持多图片选择上传）。</p>
+		<p>为了更好的展示公寓，图片至少上传5张，包括客厅、卧室、卫生间、厨房、床。</p>
+	</div>
+
+
 	<select id="img_type_sel" class="hide">
-        <option value="" >选择类型</option>                    
+        <option value="" >选择类型</option>                  
 
 	@foreach (var opt in ImageTypes)
- {
+	 {
 	            <option value="@opt.Value" >@opt.Key</option>                    
 	}
 	</select>
@@ -28,14 +35,13 @@
     @foreach (var room in roomList)
     {
 	<div class="from_path" room_id="@room.room_id">
-		<h2>@room.h_r_name_cn<span>为了更好的展示公寓，图片至少上传5张，包括客厅、卧室、卫生间、厨房、床。</span></h2>
+		<h2>@room.h_r_name_cn</h2>
 		<div class="clear">
 			<div class="float_l">
 				<label>
 					<input type="file" name="file" multiple room_id="@room.room_id" class="upload_img_input" >
 					<span class="upload_img_btn">选择图片</span>
 				</label>
-				<p class="upload_help">建议使用现代浏览器（支持一次选择多张图片上传）</p>
 			</div>
 			<div class="float_l">
 				<div class="clear img_show_box">

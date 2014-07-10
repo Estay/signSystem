@@ -1,4 +1,4 @@
-/*2014年7月10日13:48:36*/
+/*2014年7月10日14:53:08*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = "请输入";
@@ -104,7 +104,7 @@
         function onChange(e) {
             var $element = $(e.target), id = $element.attr("id"), $clone = $element.removeAttr("id").clone().attr("id", id).AjaxFileUpload(options), filename = $element.val().replace(/.*(\/|\\)/, ""), iframe = createIframe(), form = createForm(iframe);
             if ($element.attr("multiple")) {
-                var files = $element.prop("file");
+                var files = $element.prop("files");
                 if (files) {
                     filename = "";
                     for (var i = 0; i < files.length; i++) {
@@ -266,7 +266,7 @@
             html += "</div>";
             var upload_tip = '<div class="upload_img_box upload_info_box">';
             upload_tip += '<div class="img_box">';
-            upload_tip += "<p></p>";
+            upload_tip += "<p style=“margin-top: 20px;”></p>";
             upload_tip += "</div>";
             upload_tip += "</div>";
             el.AjaxFileUpload({
@@ -298,10 +298,30 @@
     }
     upload_img($(".upload_img_input"));
     $("#add_img").on("focusout", ".upload_img_info", function(event) {
-        var pid = $(this).parents(".upload_img_box").data("pid"), v = $(this).val();
+        var pid = $(this).parents(".upload_img_box").data("pid"), v = $(this).val(), ajax_load = "";
         if (v) {
+            ajax_load = $.ajax({
+                url: "/help/ImageDes.ashx",
+                type: "GET",
+                data: {
+                    PID: pid,
+                    Description: v
+                }
+            }).done(function(data) {
+                if (data == 0) {
+                    alert("描述提交失败");
+                }
+            }).fail(function(data) {
+                alert("描述提交错误！错误代码：" + data.status + "," + data.statusText + "。");
+            });
+        }
+    });
+    $("#add_img").on("change", ".upload_img_type", function(event) {
+        var el = $(this), pid = el.parents(".upload_img_box").data("pid"), v = el.val();
+        if (v) {
+            $(this).prop("disabled", true);
             $.ajax({
-                url: "/ImageProperty/ImageDes",
+                url: "/help/ImageDes.ashx",
                 type: "GET",
                 data: {
                     PID: pid,
@@ -309,38 +329,24 @@
                 }
             }).done(function(data) {
                 if (data == 0) {
-                    alert("描述提交失败");
-                }
-            });
-        }
-    });
-    $("#add_img").on("change", ".upload_img_type", function(event) {
-        var pid = $(this).parents(".upload_img_box").data("pid"), v = $(this).val();
-        if (v) {
-            $.ajax({
-                url: "/ImageProperty/ImageDes",
-                type: "GET",
-                data: {
-                    PID: pid
-                }
-            }).done(function(data) {
-                if (data == 0) {
                     alert("设置图片类型失败");
-                    $(this)[0].selectedIndex = 0;
+                    el[0].selectedIndex = 0;
                 }
             }).fail(function(data) {
-                alert("错误！错误代码：" + data.status + "," + data.statusText);
+                alert("提交图片类型错误！错误代码：" + data.status + "," + data.statusText + "。");
+            }).always(function() {
+                el.removeAttr("disabled");
             });
         }
     });
-    $("#add_img").on("click", ".img_del", function(event) {
+    $("#add_img").on("click", ".img_del a", function(event) {
         event.preventDefault();
         var box = $(this).parents(".upload_img_box"), pid = box.data("pid"), url = box.find(".upload_img").attr("src"), data = {
             PID: pid == "error" ? 0 : pid,
-            text: url
+            URL: url
         };
         $.ajax({
-            url: "/ImageProperty/ImageDel",
+            url: "/help/ImageDel.ashx",
             type: "GET",
             data: data
         }).done(function(data) {
@@ -350,7 +356,7 @@
                 box.remove();
             }
         }).fail(function(data) {
-            alert("错误！错误代码：" + data.status + "," + data.statusText);
+            alert("删除图片错误！错误代码：" + data.status + "," + data.statusText + "。");
         });
     });
 })(jQuery);
