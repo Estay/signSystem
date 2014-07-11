@@ -58,8 +58,8 @@
     @using (Html.BeginForm("CreateSub", "Image", FormMethod.Post))
     {
 	<div class="btn_box">
-        <input type="text" hide id="room_remarks" name="hotelId" value="@hotelId">
-        @hotelId
+        <input  type="hidden"  id="room_remarks" name="hotelId" value="@hotelId">
+      
 		<a href="javascript:document.forms[0].submit()" id="save_room_info" class="btn_a btn_save_step">完成</a>
 	</div>
     }
