@@ -24,7 +24,7 @@
 				el_tabs.not($(this)).removeClass("set");
 				el_boxs.hide().eq(index).show();
 				if(opts.callback){
-					opts.callback();
+					opts.callback(index);
 				}
 			});
 		});

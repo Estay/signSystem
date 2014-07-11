@@ -209,7 +209,15 @@
 	});
 
 	// 地图输入方式切换
-	$("#location_box").e_tab_switch();
+	$("#location_box").e_tab_switch({
+		callback: function(index) {
+			if (index == 0) {
+				$("#map_lon,#map_lat").e_window_kill();
+			} else {
+				// todo 地图验证逻辑
+			}
+		}
+	});
 	$("#map_lon").keyup(function(event) {
 		$("#map_lon_input").val($(this).val());
 		$("#map_lon_text").text($(this).val());
@@ -217,6 +225,19 @@
 	$("#map_lat").keyup(function(event) {
 		$("#map_lat_input").val($(this).val());
 		$("#map_lat_text").text($(this).val());
+	});
+
+	$("#map_lon").e_input_tip({
+		space : "输入经度",
+		need: false,
+		error : "格式不正确",
+		rule : /^\d{3}$|^\d{3}.\d+/		
+	});
+	$("#map_lat").e_input_tip({
+		space : "输入维度",
+		need: false,
+		error : "格式不正确",
+		rule : /^\d{3}$|^\d{3}.\d+/		
 	});
 
 	// 触发图片选择

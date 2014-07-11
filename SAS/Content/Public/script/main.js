@@ -1,4 +1,4 @@
-/*2014年7月11日16:57:27*/
+/*2014年7月11日17:29:26*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -127,7 +127,7 @@
                 el_tabs.not($(this)).removeClass("set");
                 el_boxs.hide().eq(index).show();
                 if (opts.callback) {
-                    opts.callback();
+                    opts.callback(index);
                 }
             });
         });
@@ -451,7 +451,13 @@
     $("#h_administrative_region,#h_business_zone").change(function(event) {
         map.centerAndZoom($(this).find(":selected").text());
     });
-    $("#location_box").e_tab_switch();
+    $("#location_box").e_tab_switch({
+        callback: function(index) {
+            if (index == 0) {
+                $("#map_lon,#map_lat").e_window_kill();
+            } else {}
+        }
+    });
     $("#map_lon").keyup(function(event) {
         $("#map_lon_input").val($(this).val());
         $("#map_lon_text").text($(this).val());
@@ -459,6 +465,18 @@
     $("#map_lat").keyup(function(event) {
         $("#map_lat_input").val($(this).val());
         $("#map_lat_text").text($(this).val());
+    });
+    $("#map_lon").e_input_tip({
+        space: "输入经度",
+        need: false,
+        error: "格式不正确",
+        rule: /^\d{3}$|^\d{3}.\d+/
+    });
+    $("#map_lat").e_input_tip({
+        space: "输入维度",
+        need: false,
+        error: "格式不正确",
+        rule: /^\d{3}$|^\d{3}.\d+/
     });
     function upload_img(els) {
         els.each(function(index, el) {
