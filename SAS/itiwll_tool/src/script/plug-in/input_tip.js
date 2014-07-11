@@ -7,60 +7,120 @@
 	$.fn.e_input_tip = function(options) {
 		var defaults = {
 			need: true,
+			need_text: "必需输入",
 			space :"请输入",
-			rule : /^[\S\s]{2,}$/ig,
+			rule : null,
 			error : "格式不正确",
 			error_callback : function (el,error) {
 				el.e_window({
-					html: error
+					top: 5,
+					width: "auto",
+					html: "<div class='red_tip_box'>"+error+"</div>"
 				})
 			},
 			success_callback : function(el) {
-				el.e_window_kill()
+				el.e_window_kill();
 			}
 		};
 		var settings = $.extend({}, defaults, options);
 		return this.each(function() {
 			var el = $(this);
 
-			var text = settings.space,
-				tip_text = $(this).attr("tip_text"),
-				text = tip_text ? tip_text : text;
-			
-			// 默认文字	
-			el.addClass('col_gray').val(text);
+			init(el);
 
 
 
-			// 获得焦点调整样式
+			// 获得焦点
 			el.focusin(function(event) {
 				var el = $(this);
-				if (el.val()==text) {
-					el.val("").removeClass('col_gray');
-				};
+
+				// 进入输入状态
+				focusin(el);
 			})
-			// 失去焦点 调整样式 验证规则 错误提示
+			// 失去焦点 调整样式 验证规则 
 			.focusout(function(event) {
 				var el = $(this);
-				if(el.val()=="" || el.val()==text){
-					el.val(text).addClass('col_gray');
+
+				if(el.val()=="" || el.val()==settings.space){
+					//为空回到初始状态
+					init(el);
+					//必需输入提示
+					if(settings.need){
+						settings.error_callback.call(this,el,settings.need_text);
+					}
 				}else {
-					// todo 验证规则
+					// 不为空验证规则
+					ruleValidate(el,el.val());
 				}
 			})
 			// 输入时调整样式 去除错误提示
 			.keyup(function(event) {
 				var el = $(this);
-				if (el.val()==text) {
+				if (el.val()==settings.space) {
 					el.addClass('col_gray');
 				}else {
 					el.removeClass('col_gray');
 				};
 			});
 
-			// 验证规则
-			function rule_validate() {
-				if (typeof settings.rule) {};
+			// 初始化的状态
+			function init (el) {
+
+				var tip_text = $(this).attr("tip_text");
+				settings.space = tip_text ? tip_text : settings.space;
+				
+				// 默认文字	
+				el.addClass('col_gray').val(settings.space);
+
+				// 据need标记是否通过规则
+				if (settings.need) {
+					el.attr('rules_error');
+				}else{
+					el.removeAttr('rules_error');	
+				}
+			}
+
+			// 输入中的状态
+			function focusin(el){
+				if (el.val()=="" || el.val()== settings.space) {
+					el.val("").removeClass('col_gray');
+				};
+				settings.success_callback.call(el[0],el);
+			}
+
+			function success(el) {
+				
+			}
+
+			function error(el,error) {
+				settings.error_callback.call(el[0],el,settings.error);
+			}
+
+			// 验证规则 错误提示
+			function ruleValidate(el,val) {
+				if(isRegExp(settings.rule)){
+					if (!settings.rule.exec(val)) {
+						// 没通过规则 进入错误状态
+						error(el,settings.error);
+					};
+				}else if(settings.rule instanceof Function){
+					settings.rule.call(
+						el[0],
+
+						// 验证规则 错误回调
+						function(el,error_text,text){
+							settings.error_callback.call(el[0],error_text?error_text:settings.error);
+						}
+					);
+				}else {
+					return val?true:false;
+				}
+			}
+
+
+			// 判断是不是正则对象
+			function isRegExp(o){
+				return o && Object.prototype.toString.call(o) === '[object RegExp]';
 			}
 		});
 	}

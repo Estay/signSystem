@@ -7,7 +7,26 @@
 	var estay_sas = {};
 
 	// 输入框提示文字
-	$(".tip_input").e_input_tip();
+	$(".tip_input").e_input_tip({
+		space : "请输入公寓名称",
+		rule: function(error_callback,error) {
+
+			$.ajax({
+				url: 'AddHotel/IsOk/',
+				dataType: 'text',
+				data: {text:$(this).val() },
+			})
+			.done(function() {
+				error_callback($(this).val());
+			})
+			.fail(function() {
+				alert("服务器验证公寓名称失败");
+			})
+			.always(function() {
+				console.log("complete");
+			});			
+		}
+	});
 
 	//电话值处理
 	$("#phone_area_code,#hotel_phonehotel_phone").keyup(function(event) {
@@ -278,8 +297,6 @@
 		});
 		
 	});
-
-	
 
 })(jQuery);
 

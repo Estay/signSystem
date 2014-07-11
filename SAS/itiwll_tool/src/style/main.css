@@ -49,6 +49,12 @@
 	padding-bottom: 50px;
 }
 
+/*提示样式*/
+.red_tip_box {
+	border: 1px solid red;
+	color: red;
+}
+
 /*---添加公寓---*/
 #hotel_class,
 #hotel_theme {
