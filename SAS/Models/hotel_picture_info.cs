@@ -23,6 +23,13 @@ namespace SAS.Models
         private int? _h_p_type;
         private int _h_p_size;
         private int width;
+        private bool status;
+
+        public bool Status
+        {
+            get { return status; }
+            set { status = value; }
+        }
 
         public int Width
         {
