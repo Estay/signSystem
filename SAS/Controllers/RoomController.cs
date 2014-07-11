@@ -67,9 +67,12 @@ namespace SAS.Controllers
             //string f = hotelId;
             getfacilities();
             hotel_room_info room = db.room.Find(Convert.ToInt32(roomId));
+            if (room != null)
+            {
 
-            db.room.Remove(room);
-            db.SaveChanges();
+                db.room.Remove(room);
+                db.SaveChanges();
+            }
            
             getRooms(room.hotel_id);
             return View("Create", new hotel_room_info());
