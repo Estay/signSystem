@@ -339,13 +339,13 @@
     <Content Include="Views\Image\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Image\Details.cshtml" />
+    <Content Include="Views\Image\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Image\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Image\Edit.cshtml" />
+    <Content Include="Views\Image\Faiture.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Image\Delete.cshtml" />

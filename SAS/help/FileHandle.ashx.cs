@@ -73,6 +73,7 @@ namespace SAS.help
                             pic.Height = h;
                             pic.h_p_tag = tag;
                             pic.h_p_time = DateTime.Now;
+                            pic.Status = false;
                             db.room.Add(pic);
                             db.SaveChanges();
                         }
