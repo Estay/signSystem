@@ -1,14 +1,17 @@
-/*2014年7月11日09:53:13*/
+/*2014年7月11日14:04:27*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
             need: true,
+            need_text: "必需输入",
             space: "请输入",
-            rule: /^[\S\s]{2,}$/gi,
+            rule: null,
             error: "格式不正确",
             error_callback: function(el, error) {
                 el.e_window({
-                    html: error
+                    top: 5,
+                    width: "auto",
+                    html: "<div class='red_tip_box'>" + error + "</div>"
                 });
             },
             success_callback: function(el) {
@@ -18,28 +21,63 @@
         var settings = $.extend({}, defaults, options);
         return this.each(function() {
             var el = $(this);
-            var text = settings.space, tip_text = $(this).attr("tip_text"), text = tip_text ? tip_text : text;
-            el.addClass("col_gray").val(text);
+            init(el);
             el.focusin(function(event) {
                 var el = $(this);
-                if (el.val() == text) {
-                    el.val("").removeClass("col_gray");
-                }
+                focusin(el);
             }).focusout(function(event) {
                 var el = $(this);
-                if (el.val() == "" || el.val() == text) {
-                    el.val(text).addClass("col_gray");
-                } else {}
+                if (el.val() == "" || el.val() == settings.space) {
+                    init(el);
+                    if (settings.need) {
+                        settings.error_callback.call(this, el, settings.need_text);
+                    }
+                } else {
+                    ruleValidate(el, el.val());
+                }
             }).keyup(function(event) {
                 var el = $(this);
-                if (el.val() == text) {
+                if (el.val() == settings.space) {
                     el.addClass("col_gray");
                 } else {
                     el.removeClass("col_gray");
                 }
             });
-            function rule_validate() {
-                if (typeof settings.rule) {}
+            function init(el) {
+                var tip_text = $(this).attr("tip_text");
+                settings.space = tip_text ? tip_text : settings.space;
+                el.addClass("col_gray").val(settings.space);
+                if (settings.need) {
+                    el.attr("rules_error");
+                } else {
+                    el.removeAttr("rules_error");
+                }
+            }
+            function focusin(el) {
+                if (el.val() == "" || el.val() == settings.space) {
+                    el.val("").removeClass("col_gray");
+                }
+                settings.success_callback.call(el[0], el);
+            }
+            function success(el) {}
+            function error(el, error) {
+                settings.error_callback.call(el[0], el, settings.error);
+            }
+            function ruleValidate(el, val) {
+                if (isRegExp(settings.rule)) {
+                    if (!settings.rule.exec(val)) {
+                        error(el, settings.error);
+                    }
+                } else if (settings.rule instanceof Function) {
+                    settings.rule.call(el[0], function(el, error_text, text) {
+                        settings.error_callback.call(el[0], error_text ? error_text : settings.error);
+                    });
+                } else {
+                    return val ? true : false;
+                }
+            }
+            function isRegExp(o) {
+                return o && Object.prototype.toString.call(o) === "[object RegExp]";
             }
         });
     };
@@ -265,7 +303,24 @@
 
 (function($) {
     var estay_sas = {};
-    $(".tip_input").e_input_tip();
+    $(".tip_input").e_input_tip({
+        space: "请输入公寓名称",
+        rule: function(error_callback, error) {
+            $.ajax({
+                url: "AddHotel/IsOk/",
+                dataType: "text",
+                data: {
+                    text: $(this).val()
+                }
+            }).done(function() {
+                error_callback($(this).val());
+            }).fail(function() {
+                alert("服务器验证公寓名称失败");
+            }).always(function() {
+                console.log("complete");
+            });
+        }
+    });
     $("#phone_area_code,#hotel_phonehotel_phone").keyup(function(event) {
         $("#phone").val($("#phone_area_code").val() + "-" + $("#hotel_phonehotel_phone").val());
     });
