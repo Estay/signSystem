@@ -2,10 +2,15 @@
 
 @{
     ViewBag.Title = "录入图片";
+    string hotelId= ViewBag.HotelId;
+    //房型列表
     List<SAS.Models.hotel_room_info> roomList = ViewData["rooms"] as List<SAS.Models.hotel_room_info>;
+    //图片类型
     Dictionary<string, int> ImageTypes = ViewData["ImageTypes"] as  Dictionary<string, int>;
+    //上传的所有图片
+    Dictionary<string, int> Images = ViewData["Image"] as Dictionary<string, int>;
 }
-@using(Html.BeginForm("Create","Image",FormMethod.Post)) {
+
 
 <div id="flag_box">
 	<a href="" class="btn_c">1 录入公寓信息</a>
@@ -50,10 +55,13 @@
 		</div>
 	</div>
     }
-
+    @using (Html.BeginForm("CreateSub", "Image", FormMethod.Post))
+    {
 	<div class="btn_box">
+        <input  type="hidden"  id="room_remarks" name="hotelId" value="@hotelId">
+      
 		<a href="javascript:document.forms[0].submit()" id="save_room_info" class="btn_a btn_save_step">完成</a>
 	</div>
-    
+    }
 </div>
-}
+

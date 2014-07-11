@@ -216,5 +216,20 @@ namespace SAS.help
             //sw.WriteLine();
             sw.Close();
         }
+
+
+        public static int ExcuteTableBySQL(string sql)
+        {
+            int rows = 0;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sql, connection);
+
+                rows = command.ExecuteNonQuery();
+
+            }
+            return rows;
+        }
     }
 }

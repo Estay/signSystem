@@ -41,7 +41,7 @@ namespace SAS.Controllers
         public ActionResult Create(string hotelId)
         {
             hotelId = "48385";
-            ViewBag.HoltelId = hotelId;
+            ViewBag.HotelId = hotelId;
             ViewData["ImageTypes"] = new hotel_picture_info().getImageType();
             getRooms(Convert.ToInt32(hotelId));
             return View();
@@ -51,16 +51,45 @@ namespace SAS.Controllers
         // POST: /Image/Create
 
         [HttpPost]
-        public ActionResult Create(hotel_picture_info hotel_picture_info)
+        public ActionResult CreateSub(string hotelId)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.room.Add(hotel_picture_info);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                int hotel_id;
+                if (int.TryParse(hotelId, out hotel_id))
+                {
+                    if ((from h in new hotel_infoDBContent().hotel where h.hotel_id == hotel_id select h).Count() > 0)
+                    {
+                        string sql = string.Format("update hotel_picture_info set status=1 where hotel_id in(select room_id from hotel_room_info where hotel_id in({0}))", hotel_id);
+                        if (DBhelp.ExcuteTableBySQL(sql) > 0)
+                            return View("Success");
+                        else
+                            DBhelp.log("图片提交失败" + hotelId); return View("Faiture");
 
-            return View(hotel_picture_info);
+
+                    }
+                }
+                else
+                {
+                    DBhelp.log("图片提交转换出错");
+                    return View("Faiture");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                DBhelp.log("图片提交" + ex.ToString());
+                return View("Faiture");
+            }
+         
+            //if (ModelState.IsValid)
+            //{
+            //    db.room.Add(hotel_picture_info);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
+
+            return View(new hotel_picture_info());
         }
 
         //
