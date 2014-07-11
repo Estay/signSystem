@@ -84,7 +84,7 @@ namespace SAS.help
                             string message = string.Empty;
                             if (size > maxSize)
                                 message = "图片大小必须小于10M";
-                            if (w < 500 && h < 300)
+                            if (w < 500 ||h < 300)
                             {
                                 if (message == string.Empty)
                                     message += "图片像素宽应该大于500px,高应该大于300px";
