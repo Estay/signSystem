@@ -11,8 +11,8 @@
 			space :"请输入",
 			rule : null,
 			error : "格式不正确",
-			error_callback : function (el,error) {
-				el.e_window({
+			error_callback : function (error,el) {
+				$(this).e_window({
 					top: 5,
 					width: "auto",
 					html: "<div class='red_tip_box'>"+error+"</div>"
@@ -20,7 +20,8 @@
 			},
 			success_callback : function(el) {
 				el.e_window_kill();
-			}
+			},
+			init : function() {}
 		};
 		var settings = $.extend({}, defaults, options);
 		return this.each(function() {
@@ -46,7 +47,7 @@
 					init(el);
 					//必需输入提示
 					if(settings.need){
-						settings.error_callback.call(this,el,settings.need_text);
+						settings.error_callback.call(this,settings.need_text,el);
 					}
 				}else {
 					// 不为空验证规则
@@ -72,9 +73,11 @@
 				// 默认文字	
 				el.addClass('col_gray').val(settings.space);
 
+				settings.init.call(el[0]);
+
 				// 据need标记是否通过规则
 				if (settings.need) {
-					el.attr('rules_error');
+					el.attr('rules_error',"");
 				}else{
 					el.removeAttr('rules_error');	
 				}
@@ -88,12 +91,9 @@
 				settings.success_callback.call(el[0],el);
 			}
 
-			function success(el) {
-				
-			}
 
 			function error(el,error) {
-				settings.error_callback.call(el[0],el,settings.error);
+				settings.error_callback.call(el[0],settings.error,el);
 			}
 
 			// 验证规则 错误提示
@@ -108,9 +108,11 @@
 						el[0],
 
 						// 验证规则 错误回调
-						function(el,error_text,text){
-							settings.error_callback.call(el[0],error_text?error_text:settings.error);
-						}
+						function(error_text,el){
+							// 没通过规则 进入错误状态
+							error(el,settings.error);
+						},
+						el.val()
 					);
 				}else {
 					return val?true:false;

@@ -45,7 +45,7 @@
 	<div class="from_path">
 		<h2>录入基本信息</h2>
 		<p class="input_line">
-			<label for="hotel_name"><span class="label">名称</span><input name="@Html.DisplayNameFor(model => model.h_name_cn)" type="text"  value="@Model.h_name_cn" class="tip_input"><span class="col_red">*</span></label>
+			<label for="hotel_name"><span class="label">名称</span><input name="@Html.DisplayNameFor(model => model.h_name_cn)" type="text"  value="@Model.h_name_cn" id="hotel_name"><span class="col_red">*</span></label>
              @Html.ValidationMessageFor(model => model.h_name_cn)
 			<label for="hotel_class">
 				<span class="label">所属类别</span>
@@ -81,33 +81,28 @@
 			</label>
 			<label for="@Html.DisplayNameFor(model => model.h_fax)">
 				<span class="label">传真</span>
-				<input type="text" name="@Html.DisplayNameFor(model => model.h_fax)">
+				<input id="hotel_fax" type="text" name="@Html.DisplayNameFor(model => model.h_fax)">
 			</label>
 			<label for="****改成name****">
 				<span class="label">手机号码</span>
-				<input type="text" name="****改成name****">
+				<input id="mobeli_phone" type="text" name="****改成name****">
 			</label>
 		</p>
 		<p class="input_line">
 			<span class="label">地址及所在商区</span><select name="@Html.DisplayNameFor(model => model.h_province)" id="hotel_province">
+	            <option value="" >请选择</option>
 				@foreach(var opt in hotel_province){
 					<option value="@opt.Key">@opt.Value</option>                    
 				}
 			</select>
-			<select id="h_city" name="@Html.DisplayNameFor(model => model.h_city)">
-				@foreach(var opt in hotel_city){
-					<option value="@opt">@opt</option>                    
-				}
+			<select id="h_city" name="@Html.DisplayNameFor(model => model.h_city)" disabled>
+	            <option value="" >所在城市</option>
 			</select>
-			<select id="h_administrative_region" name="@Html.DisplayNameFor(model => model.h_administrative_region)">
-				@foreach(var opt in hotel_area){
-					<option value="@opt">@opt</option>                    
-				}
+			<select id="h_administrative_region" name="@Html.DisplayNameFor(model => model.h_administrative_region)" disabled>
+	            <option value="" >所在行政区</option>
 			</select>
-			<select id="h_business_zone" name="@Html.DisplayNameFor(model => model.h_business_zone)">
-				@foreach(var opt in hotel_district){
-					<option value="@opt">@opt</option>                    
-				}
+			<select id="h_business_zone" name="@Html.DisplayNameFor(model => model.h_business_zone)" disabled>
+	            <option value="" >所在商圈</option>
 			</select>
 			<span class="col_red">*</span>
 		</p>

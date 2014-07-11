@@ -6,31 +6,74 @@
 (function($) {
 	var estay_sas = {};
 
-	// 输入框提示文字
-	$(".tip_input").e_input_tip({
+	// 城市输入提示和验证
+	$("#hotel_name").e_input_tip({
 		space : "请输入公寓名称",
-		rule: function(error_callback,error) {
+		rule: function(error_callback,val) {
+			var el = $(this);
+
+			if (!val.match(/^[\s\S]{3,}$/)) {
+				error_callback("请输入三个以上的字符",el);
+			};
+
 
 			$.ajax({
-				url: 'AddHotel/IsOk/',
+				url: '/AddHotel/IsOk/',
 				dataType: 'text',
-				data: {text:$(this).val() },
+				data: {text:val }
 			})
-			.done(function() {
-				error_callback($(this).val());
+			.done(function(data) {
+				if(data==0){
+					error_callback("此公寓已存在",el);
+				}
 			})
 			.fail(function() {
 				alert("服务器验证公寓名称失败");
-			})
-			.always(function() {
-				console.log("complete");
-			});			
+			});	
 		}
 	});
+
+	// 所属类别 公寓主题 地址及所在商区 选择验证和提示
+	$("#hotel_class,#hotel_theme,#hotel_province,#h_city,#h_administrative_region,#h_business_zone").e_input_tip({
+		need_text :"必需选择"
+	});
+
+
 
 	//电话值处理
 	$("#phone_area_code,#hotel_phonehotel_phone").keyup(function(event) {
 		$("#phone").val($("#phone_area_code").val()+"-"+$("#hotel_phonehotel_phone").val());
+	});
+
+	// 电话提示和验证
+	$("#phone_area_code").e_input_tip({
+		space : "区号",
+		need_text : "必填",
+		error : "错误",
+		rule : /^\d{3,4}$/
+	});
+	$("#hotel_phone").e_input_tip({
+		space : "座机号码",
+		need_text : "必需填写",
+		error : "格式不正确",
+		rule : /^\d{7,8}$/
+	});
+	$("#hotel_fax").e_input_tip({
+		space : "传真号码(带区号)",
+		need: false,
+		error : "格式不正确",
+		rule : /^\d{3,4}\-?\d{7,8}$/
+	});
+	$("#mobeli_phone").e_input_tip({
+		space : "11位手机号码",
+		need: false,
+		error : "格式不正确",
+		rule : /^1\d{10}$/
+	});
+	$("#hotel_address").e_input_tip({
+		space : "公寓详细地址",
+		error : "格式不正确",
+		rule : /^[\s\S]+$/
 	});
 
 	//多选值处理
@@ -51,81 +94,115 @@
 	$("#hotel_province").change(function(event) {
 		// 地图同步
 		map.centerAndZoom($(this).find(':selected').text());
-		$.ajax({
-			url: '/help/location.ashx',
-			type: 'GET',
-			dataType: 'json',
-			data : {
-				type : "city",
-				value: $(this).val()
-			}
-		})
-		.done(function(data) {
+
+
+		$("#h_city,#h_administrative_region,#h_business_zone").attr('disabled', '');
+
+		if ($(this).val()) {
+			$.ajax({
+				url: '/help/location.ashx',
+				type: 'GET',
+				dataType: 'json',
+				data : {
+					type : "city",
+					value: $(this).val()
+				}
+			})
+			.done(function(data) {
+				$("#h_city").children().slice(1).remove();
+				$("#h_administrative_region").children().slice(1).remove();
+				$("#h_business_zone").children().slice(1).remove();
+				for (var i = 0; i < data.length; i++) {
+					var city = data[i];
+					var option = '<option value="'+city.id+'">'+city.name+'</option>';
+					$("#h_city").append(option);
+				};
+
+				$("#h_city").removeAttr('disabled');
+
+			})
+			.fail(function() {
+				alert("加载城市数据错误");
+			})
+			.always(function() {
+			});
+		}else{
 			$("#h_city").children().slice(1).remove();
-			$("#h_administrative_region").children().slice(1).remove();
-			$("#h_business_zone").children().slice(1).remove();
-			for (var i = 0; i < data.length; i++) {
-				var city = data[i];
-				var option = '<option value="'+city.id+'">'+city.name+'</option>';
-				$("#h_city").append(option);
-			};
-		})
-		.fail(function() {
-		})
-		.always(function() {
-		});
+		}
 	});
 
 	// 设置城市
 	$("#h_city").change(function(event) {
-		//地图同步
-		map.centerAndZoom($(this).find(':selected').text());
 
-		// 加载行政区数据
-		$.ajax({
-			url: '/help/location.ashx',
-			type: 'GET',
-			dataType: 'json',
-			data : {
-				type : "region",
-				value: $(this).val()
-			}
-		})
-		.done(function(data) {
-			$("#h_administrative_region").children().slice(1).remove();
-			for (var i = 0; i < data.length; i++) {
-				var city = data[i];
-				var option = '<option value="'+city.id+'">'+city.name+'</option>';
-				$("#h_administrative_region").append(option);
-			};
-		})
-		.fail(function() {
-		})
-		.always(function() {
-		});
 
-		// 加载商圈数据
-		$.ajax({
-			url: '/help/location.ashx',
-			type: 'GET',
-			dataType: 'json',
-			data : {
-				type : "commercial",
-				value: $(this).val()
-			}
-		})
-		.done(function(data) {
-			$("#h_business_zone").children().slice(1).remove();
-			for (var i = 0; i < data.length; i++) {
-				var city = data[i];
-				var option = '<option value="'+city.id+'">'+city.name+'</option>';
-				$("#h_business_zone").append(option);
-			};
-		})
-		.fail(function() {
-		})
-		.always(function() {
-		});
+		$("#h_administrative_region,#h_business_zone").attr('disabled', '');
+
+		
+		if($(this).val()){
+
+			//地图同步
+			map.centerAndZoom($(this).find(':selected').text());
+
+			// 加载行政区数据
+			$.ajax({
+				url: '/help/location.ashx',
+				type: 'GET',
+				dataType: 'json',
+				data : {
+					type : "region",
+					value: $(this).val()
+				}
+			})
+			.done(function(data) {
+				$("#h_administrative_region").children().slice(1).remove();
+				for (var i = 0; i < data.length; i++) {
+					var city = data[i];
+					var option = '<option value="'+city.id+'">'+city.name+'</option>';
+					$("#h_administrative_region").append(option);
+				};
+			})
+			.fail(function() {
+				alert("加载行政区数据错误");
+			})
+			.always(function() {
+			});
+
+			// 加载商圈数据
+			$.ajax({
+				url: '/help/location.ashx',
+				type: 'GET',
+				dataType: 'json',
+				data : {
+					type : "commercial",
+					value: $(this).val()
+				}
+			})
+			.done(function(data) {
+				$("#h_business_zone").children().slice(1).remove();
+				for (var i = 0; i < data.length; i++) {
+					var city = data[i];
+					var option = '<option value="'+city.id+'">'+city.name+'</option>';
+					$("#h_business_zone").append(option);
+				};
+			})
+			.fail(function() {
+				alert("加载商圈数据错误");
+			})
+			.always(function() {
+			});
+
+			// 启用选择
+			$("#h_administrative_region,#h_business_zone").removeAttr('disabled');
+		}else {
+				$("#h_administrative_region,#h_business_zone").each(function(index, el) {
+					el.children().slice(1).remove();
+				});
+
+		}
+
+		
+
+
 	});
 	$("#h_administrative_region,#h_business_zone").change(function(event) {
 		map.centerAndZoom($(this).find(':selected').text());
