@@ -7,6 +7,7 @@ module.exports = function(grunt) {
 				"src/script/plug-in/input_tip.js",
 				"src/script/plug-in/e_img_siz.js",
 				"src/script/plug-in/tab_switch.js",
+				"src/script/plug-in/e_window.js",
 				"src/script/plug-in/jquery.ajaxfileupload.js",
 				"src/script/main.js"
 			],

@@ -1,27 +1,46 @@
-/*2014年7月10日15:40:49*/
+/*2014年7月11日09:53:13*/
 (function($) {
     $.fn.e_input_tip = function(options) {
-        var defaults = "请输入";
+        var defaults = {
+            need: true,
+            space: "请输入",
+            rule: /^[\S\s]{2,}$/gi,
+            error: "格式不正确",
+            error_callback: function(el, error) {
+                el.e_window({
+                    html: error
+                });
+            },
+            success_callback: function(el) {
+                el.e_window_kill();
+            }
+        };
+        var settings = $.extend({}, defaults, options);
         return this.each(function() {
             var el = $(this);
-            var text = options ? options : defaults, tip_text = $(this).attr("tip_text"), text = tip_text ? tip_text : text;
-            el.addClass("col_gray");
-            el.val(text);
+            var text = settings.space, tip_text = $(this).attr("tip_text"), text = tip_text ? tip_text : text;
+            el.addClass("col_gray").val(text);
             el.focusin(function(event) {
+                var el = $(this);
                 if (el.val() == text) {
                     el.val("").removeClass("col_gray");
                 }
             }).focusout(function(event) {
-                if (el.val() == "") {
+                var el = $(this);
+                if (el.val() == "" || el.val() == text) {
                     el.val(text).addClass("col_gray");
-                }
+                } else {}
             }).keyup(function(event) {
+                var el = $(this);
                 if (el.val() == text) {
                     el.addClass("col_gray");
                 } else {
                     el.removeClass("col_gray");
                 }
             });
+            function rule_validate() {
+                if (typeof settings.rule) {}
+            }
         });
     };
 })(jQuery);
@@ -79,6 +98,83 @@
         tab_class: "e_tab",
         box_class: "e_tab_box",
         callback: null
+    };
+})(jQuery);
+
+(function($) {
+    $.fn.e_window = function(options) {
+        var defaults = {
+            position_mod: "relative",
+            relative_mod: "bottom",
+            top: 0,
+            left: 0,
+            width: "400",
+            marginTop: 0,
+            marginRight: 0,
+            box_id: "",
+            html: "<p>弹出层 by itiwll@estay</p>"
+        }, opt = $.extend(defaults, options);
+        return this.each(function() {
+            var el = $(this);
+            if (el.attr("e_tip_id")) return;
+            opt.box_id = opt.box_id ? opt.box_id : "e_box" + new Date().getTime();
+            el.attr("e_tip_id", opt.box_id);
+            if (opt.position_mod == "center") {
+                opt.left = $(window).width() / 2 - opt.width / 2;
+            } else if (opt.position_mod == "relative") {
+                if (opt.relative_mod == "bottom") {
+                    opt.top = el.offset().top + el.height() + opt.top;
+                    opt.left = el.offset().left + opt.left;
+                } else if (opt.relative_mod == "right") {
+                    opt.top = el.offset().top + opt.top;
+                    opt.left = el.offset().left + el.width() + opt.left;
+                } else if (opt.relative_mod == "top") {
+                    opt.top = el.offset().top - opt.top;
+                    opt.left = el.offset().left + opt.left;
+                } else if (opt.relative_mod == "left") {
+                    opt.top = el.offset().top + opt.top;
+                    opt.left = el.offset().left + opt.left;
+                }
+            }
+            var win_box = $("<div/>").attr("id", opt.box_id).css({
+                position: "absolute",
+                left: opt.left,
+                top: opt.top,
+                marginTop: opt.marginTop,
+                marginLight: opt.marginLight,
+                width: opt.width
+            }).html(opt.html).appendTo("body");
+            if (opt.position_mod == "center") win_box.find("img").load(function() {
+                win_box.css("top", $(window).height() / 2 - win_box.height() / 2);
+            });
+            if (opt.position_mod == "relative" && opt.relative_mod == "top") {
+                if (win_box.find("img").length) {
+                    win_box.find("img").load(function() {
+                        win_box.css("top", win_box.offset().top - win_box.height());
+                    });
+                } else {
+                    win_box.css("top", win_box.offset().top - win_box.height());
+                }
+            }
+            if (opt.position_mod == "relative" && opt.relative_mod == "left") {
+                if (win_box.find("img").length) {
+                    win_box.find("img").load(function() {
+                        win_box.css("left", win_box.offset().left - win_box.width());
+                    });
+                } else {
+                    win_box.css("left", win_box.offset().left - win_box.width());
+                }
+            }
+            if ($(window).width() - win_box.offset().left - win_box.width() < 0) {
+                win_box.css("left", $(window).width() - win_box.width());
+            }
+        });
+    };
+    $.fn.e_window_kill = function() {
+        return this.each(function() {
+            $("#" + $(this).attr("e_tip_id")).remove();
+            $(this).removeAttr("e_tip_id");
+        });
     };
 })(jQuery);
 
