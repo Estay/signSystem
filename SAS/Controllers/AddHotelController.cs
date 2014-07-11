@@ -110,6 +110,13 @@ namespace SAS.Controllers
             
             return View(hotel_info);
         }
+        public int IsOk(string text)
+        {
+            if ((from h in db.hotel where h.h_name_cn == text select h).Count() > 0)
+                return 0;
+            else
+                return 1;
+        }
        //上一步
         public ActionResult Forward(string hotelId)
         {
