@@ -55,22 +55,31 @@ namespace SAS.Controllers
         {
             try
             {
-                int hotel_id =int.Parse(hotelId); 
-                if((from h in new hotel_infoDBContent().hotel where h.hotel_id==hotel_id select h).Count()>0)
+                int hotel_id;
+                if (int.TryParse(hotelId, out hotel_id))
                 {
-                    string sql = string.Format("update hotel_picture_info set status=1 where hotel_id in(select room_id from hotel_room_info where hotel_id in({0}))", hotelId);
-                    if (DBhelp.ExcuteTableBySQL(sql) > 0)
-                        return View("Success");
-                    else
-                        DBhelp.log("图片提交失败"+hotelId); return View("Faiture");
-                
+                    if ((from h in new hotel_infoDBContent().hotel where h.hotel_id == hotel_id select h).Count() > 0)
+                    {
+                        string sql = string.Format("update hotel_picture_info set status=1 where hotel_id in(select room_id from hotel_room_info where hotel_id in({0}))", hotel_id);
+                        if (DBhelp.ExcuteTableBySQL(sql) > 0)
+                            return View("Success");
+                        else
+                            DBhelp.log("图片提交失败" + hotelId); return View("Faiture");
 
+
+                    }
+                }
+                else
+                {
+                    DBhelp.log("图片提交转换出错");
+                    return View("Faiture");
                 }
             }
             catch (Exception ex)
             {
 
                 DBhelp.log("图片提交" + ex.ToString());
+                return View("Faiture");
             }
          
             //if (ModelState.IsValid)
