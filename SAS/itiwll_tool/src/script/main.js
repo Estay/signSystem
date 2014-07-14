@@ -6,10 +6,12 @@
 (function($) {
 	var estay_sas = {};
 
+	//////////////////////////////////新建酒店/////////////////////////////////////////////
+
 	// 城市输入提示和验证
 	$("#hotel_name").e_input_tip({
 		space : "请输入公寓名称",
-		rule: function(error_callback,val) {
+		rule: function(success_callback,error_callback,val) {
 			var el = $(this);
 
 			if (!val.match(/^[\s\S]{3,}$/)) {
@@ -25,6 +27,8 @@
 			.done(function(data) {
 				if(data==0){
 					error_callback("此公寓已存在",el);
+				}else{
+					success_callback(el);
 				}
 			})
 			.fail(function() {
@@ -190,7 +194,7 @@
 		}
 	});
 
-
+	// 设置城市
 	$("#h_administrative_region,#h_business_zone").change(function(event) {
 		map.centerAndZoom($(this).find(':selected').text());
 	});
@@ -291,6 +295,8 @@
 				})
 			}
 	});
+
+	//////////////////////////////////添加房型/////////////////////////////////////////////
 
 
 	
@@ -491,7 +497,7 @@
 		event.preventDefault();
 		var status = true;
 		var input = $(this).parents(".box_a").find('input[type=text],select[name],textarea[name]').focusout().each(function(index, el) {
-			if (!$(this).attr('rules_error')) {
+			if ($(this).attr('rules_error')||$(this).attr('rules_error')=="") {
 				return status = false;
 			};
 		});

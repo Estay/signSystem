@@ -37,6 +37,7 @@
 
 				// 进入输入状态
 				focusin(el);
+
 			})
 			// 失去焦点 调整样式 验证规则 
 			.focusout(function(event) {
@@ -96,6 +97,12 @@
 				settings.error_callback.call(el[0],error,el);
 			}
 
+			// 通过验证的状态
+			function success(el) {
+				el.removeAttr('rules_error');
+				settings.success_callback.call(el[0],el);
+			}
+
 			// 验证规则 错误提示
 			function ruleValidate(el,val) {
 				if (/[\<\>\&]+/.exec(val)) {
@@ -103,17 +110,25 @@
 					return ;
 				};
 
+				if (!settings.rule) {
+					success(el);
+					return ;
+				};
+
 				if(isRegExp(settings.rule)){
 					if (!settings.rule.exec(val)) {
 						// 没通过规则 进入错误状态
 						error(el,settings.error);
-					};
+					}else {
+						success(el);
+					}
 				}else if(settings.rule instanceof Function){
 					settings.rule.call(
 						el[0],
-
-						// 验证规则 错误回调
-						function(error_text,el){
+						function (el) { // 验证通过 回调
+							success(el);
+						},
+						function(error_text,el){ // 验证规则 错误回调
 							// 没通过规则 进入错误状态
 							error(el,settings.error);
 						},

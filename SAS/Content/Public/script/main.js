@@ -1,4 +1,4 @@
-/*2014年7月14日15:58:41*/
+/*2014年7月14日16:50:46*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -64,17 +64,29 @@
             function error(el, error) {
                 settings.error_callback.call(el[0], error, el);
             }
+            function success(el) {
+                el.removeAttr("rules_error");
+                settings.success_callback.call(el[0], el);
+            }
             function ruleValidate(el, val) {
                 if (/[\<\>\&]+/.exec(val)) {
                     error(el, "不能包含“<”,“>”,“&”等特殊字符");
                     return;
                 }
+                if (!settings.rule) {
+                    success(el);
+                    return;
+                }
                 if (isRegExp(settings.rule)) {
                     if (!settings.rule.exec(val)) {
                         error(el, settings.error);
+                    } else {
+                        success(el);
                     }
                 } else if (settings.rule instanceof Function) {
-                    settings.rule.call(el[0], function(error_text, el) {
+                    settings.rule.call(el[0], function(el) {
+                        success(el);
+                    }, function(error_text, el) {
                         error(el, settings.error);
                     }, el.val());
                 } else {
@@ -310,7 +322,7 @@
     var estay_sas = {};
     $("#hotel_name").e_input_tip({
         space: "请输入公寓名称",
-        rule: function(error_callback, val) {
+        rule: function(success_callback, error_callback, val) {
             var el = $(this);
             if (!val.match(/^[\s\S]{3,}$/)) {
                 error_callback("请输入三个以上的字符", el);
@@ -324,6 +336,8 @@
             }).done(function(data) {
                 if (data == 0) {
                     error_callback("此公寓已存在", el);
+                } else {
+                    success_callback(el);
                 }
             }).fail(function() {
                 alert("服务器验证公寓名称失败");
@@ -659,7 +673,7 @@
         event.preventDefault();
         var status = true;
         var input = $(this).parents(".box_a").find("input[type=text],select[name],textarea[name]").focusout().each(function(index, el) {
-            if (!$(this).attr("rules_error")) {
+            if ($(this).attr("rules_error") || $(this).attr("rules_error") == "") {
                 return status = false;
             }
         });
