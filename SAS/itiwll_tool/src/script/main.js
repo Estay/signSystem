@@ -239,6 +239,12 @@
 		error : "格式不正确",
 		rule : /^\d+$/
 	});
+	// 开业时间 装修时间
+	$("#hotel_built_year,#hotel_decoration_time_year").siblings('select').change(function(event) {
+		var p = $(this).parent(), 
+			val = p.find('.select_yeae').val()+p.find('.select_month').val();
+		p.find('input.hide').val(val);
+	});
 
 	// 公寓特色
 	$("#hotel_specialty").e_input_tip({
@@ -484,7 +490,7 @@
 	$(".btn_save_step").click(function(event) {
 		event.preventDefault();
 		var status = true;
-		var input = $(this).parents(".box_a").find('input[name],select[name],textarea[name]').focusout().each(function(index, el) {
+		var input = $(this).parents(".box_a").find('input[type=text],select[name],textarea[name]').focusout().each(function(index, el) {
 			if (!$(this).attr('rules_error')) {
 				return status = false;
 			};

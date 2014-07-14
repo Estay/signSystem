@@ -130,26 +130,34 @@
 		<h2>录入详细信息</h2>
 		<p class="input_line">
 			<label for="hotel_built">
-				<span class="label">开业时间</span><select name="@Html.DisplayNameFor(model => model.h_opening_time)" id="hotel_built_year">
+				<input  id="hotel_built_year" type="text" name="@Html.DisplayNameFor(model => model.h_opening_time)" class="hide">
+				<span class="label">开业时间</span>
+				<select class="select_yeae">
+		            <option value="" >请选择</option>
 					@foreach (var opt in DTimes)
                     {
-						<option value="@opt 年">@opt 年</option>                    
+						<option value="@opt">@opt</option>                    
 					}
 				</select>
-				<select name="hotel_built_month" id="hotel_built_month">
+				<select class="select_month">
+		            <option value="" >请选择</option>
 					@foreach(var opt in month){
 						<option value="@opt">@opt</option>                    
 					}
 				</select>
 			</label>
 			<label for="hotel_decoration_time_year">
-				<span class="label">装修时间</span><select name="@Html.DisplayNameFor(model => model.DecorateTime)" id="hotel_decoration_time_year">
+				<input id="hotel_decoration_time_year" class="hide" type="text" name="@Html.DisplayNameFor(model => model.DecorateTime)" >
+				<span class="label">装修时间</span>
+				<select class="select_yeae">
+		            <option value="" >请选择</option>
 					@foreach (var opt in DTimes)
-     {
-						<option value="@opt 年">@opt 年</option>                    
+				    {
+						<option value="@opt">@opt</option>                 
 					}
 				</select>
-				<select name="hotel_decoration_time_month" id="hotel_decoration_time_month">
+				<select class="select_month">
+		            <option value="" >请选择</option>
 					@foreach(var opt in month){
 						<option value="@opt">@opt</option>                    
 					}
