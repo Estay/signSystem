@@ -15,7 +15,7 @@
    
     Dictionary<int, String> hotel_province = ViewData["provice"] as Dictionary<int, string>;
 
-    Array month = new string[]{ "1", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "11月", "12月" };
+    Array month = new string[]{ "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "11月", "12月" };
 
     Dictionary<int, String> hotel_facilitys = ViewData["facilities"] as Dictionary<int, string>;
  
@@ -133,7 +133,7 @@
 				<span class="label">开业时间</span><select name="@Html.DisplayNameFor(model => model.h_opening_time)" id="hotel_built_year">
 					@foreach (var opt in DTimes)
                     {
-						<option value="@opt;年">@opt;年</option>                    
+						<option value="@opt 年">@opt 年</option>                    
 					}
 				</select>
 				<select name="hotel_built_month" id="hotel_built_month">
@@ -146,7 +146,7 @@
 				<span class="label">装修时间</span><select name="@Html.DisplayNameFor(model => model.DecorateTime)" id="hotel_decoration_time_year">
 					@foreach (var opt in DTimes)
      {
-						<option value="@opt; 年">@opt; 年</option>                    
+						<option value="@opt 年">@opt 年</option>                    
 					}
 				</select>
 				<select name="hotel_decoration_time_month" id="hotel_decoration_time_month">
