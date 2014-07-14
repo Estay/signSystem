@@ -76,19 +76,7 @@
 		rule : /^[\s\S]+$/
 	});
 
-	//多选值处理
-	$(".multiple").change(function(event) {
-		var input = $(this).parents(".input_line").prev(".hide");
-		input = input.length?input : $(this).parents(".input_line").find(".hide");
-		var	vals = input.val(),
-			val = $(this).val();
-		if (vals.indexOf(val) > -1) {
-			vals =  vals.replace(RegExp("^" + val + ",|," + val + "|^" + val + "$", "ig"), '');
-		}else{
-			vals = vals ? vals + "," + val : val;
-		};
-		input.val(vals);
-	});
+
 
 	// 设置省份
 	$("#hotel_province").change(function(event) {
@@ -230,13 +218,13 @@
 		space : "输入经度",
 		need: false,
 		error : "格式不正确",
-		rule : /^\-{0,1}\d{1,3}$|^\-{0,1}\d{3}.\d+/		
+		rule : /^\-{0,1}\d{1,3}$|^\-{0,1}\d{3}.\d+$/		
 	});
 	$("#map_lat").e_input_tip({
 		space : "输入维度",
 		need: false,
 		error : "格式不正确",
-		rule : /^\-{0,1}\d{1,3}$|^\-{0,1}\d{3}.\d+/
+		rule : /^\-{0,1}\d{1,3}$|^\-{0,1}\d{3}.\d+$/
 	});
 
 	// 触发图片选择
@@ -244,6 +232,59 @@
 	// 	event.preventDefault();
 	// 	$(this).siblings('.upload_img_input').click();
 	// });
+
+	// 公寓楼高 房间总数
+	$("#hotel_building,#hotel_room_count").e_input_tip({
+		space : "0",
+		error : "格式不正确",
+		rule : /^\d+$/
+	});
+
+	// 公寓特色
+	$("#hotel_specialty").e_input_tip({
+		space : "请输入公寓的特色",
+		need : false,
+		error : "格式不正确(15字以上)",
+		rule : /^[\S\s]{15,}$/,
+		error_callback : function (error,el) {
+				$(this).e_window({
+					relative_mod : "right",
+					left : 10,
+					width: "auto",
+					html: "<div class='red_tip_box'>"+error+"</div>"
+				})
+			}
+	});
+
+	// 公寓简介
+	$("#hotel_abstract").e_input_tip({
+		space : "请输入公寓简介",
+		error : "格式不正确(15个字以上)",
+		rule : /^[\S\s]{15,}$/,
+		error_callback : function (error,el) {
+				$(this).e_window({
+					relative_mod : "right",
+					left : 30,
+					width: "auto",
+					html: "<div class='red_tip_box'>"+error+"</div>"
+				})
+			}
+	});
+
+	// 交通位置
+	$("#hotel_place").e_input_tip({
+		space : "请输入交通位置",
+		error : "格式不正确(5个字以上)",
+		rule : /^[\S\s]{5,}$/,
+		error_callback : function (error,el) {
+				$(this).e_window({
+					relative_mod : "right",
+					left : 30,
+					width: "auto",
+					html: "<div class='red_tip_box'>"+error+"</div>"
+				})
+			}
+	});
 
 
 	
@@ -368,6 +409,10 @@
 		};
 	});
 
+
+
+
+
 	// 删除图片按钮
 	$("#add_img").on('click', '.img_del a', function(event) {
 		event.preventDefault();
@@ -396,6 +441,66 @@
 			alert("删除图片错误！错误代码："+data.status+","+data.statusText+"。");
 		});
 		
+	});
+
+
+	//多选值处理
+	$(".multiple").change(function(event) {
+		var checkbox_box = $(this).parents(".checkbox_box"),
+
+			input = $(this).parents(".input_line").prev(".hide"),
+			vals = "";
+		input = input.length?input : $(this).parents(".input_line").find(".hide");
+		checkbox_box.find('.multiple').each(function(index, el) {
+			if ($(this).attr('checked')) {
+				vals += ($(this).val()+",");
+			};
+		});
+		vals = vals.slice(0, -1);
+		input.val(vals);
+	});
+	// 全选
+	$(".all_set").click(function(event) {
+		event.preventDefault();
+		$(this).parents(".checkbox_box").find('.multiple').each(function(index, el) {
+			$(this).attr('checked',"").change();
+		});
+	});
+	// 反选
+	$(".reverse_set").click(function(event) {
+		event.preventDefault();
+		$(this).parents(".checkbox_box").find('.multiple').each(function(index, el) {
+			if($(this).attr('checked')){
+				$(this).removeAttr('checked');
+			}else {
+				$(this).attr('checked',"");
+			}
+			$(this).change();
+		});
+	});
+
+
+	// 提交表单
+	$(".btn_save_step").click(function(event) {
+		event.preventDefault();
+		var status = true;
+		var input = $(this).parents(".box_a").find('input[name],select[name],textarea[name]').focusout().each(function(index, el) {
+			if (!$(this).attr('rules_error')) {
+				return status = false;
+			};
+		});
+		if (status) {
+			document.forms[0].submit()
+		}else {
+			var a = $(this).e_window({
+				top : 30,
+				width: "auto",
+				html: "<div class='red_tip_box'>填写的信息没有通过验证，请检查。</div>"
+			});
+			setTimeout(function() {
+				a.e_window_kill();
+			}, 5000);
+		}
 	});
 
 })(jQuery);

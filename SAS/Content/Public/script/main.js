@@ -1,4 +1,4 @@
-/*2014年7月14日11:01:26*/
+/*2014年7月14日14:27:04*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -62,9 +62,13 @@
                 settings.success_callback.call(el[0], el);
             }
             function error(el, error) {
-                settings.error_callback.call(el[0], settings.error, el);
+                settings.error_callback.call(el[0], error, el);
             }
             function ruleValidate(el, val) {
+                if (/[\<\>\&]+/.exec(val)) {
+                    error(el, "不能包含“<”,“>”,“&”等特殊字符");
+                    return;
+                }
                 if (isRegExp(settings.rule)) {
                     if (!settings.rule.exec(val)) {
                         error(el, settings.error);
@@ -361,17 +365,6 @@
         error: "格式不正确",
         rule: /^[\s\S]+$/
     });
-    $(".multiple").change(function(event) {
-        var input = $(this).parents(".input_line").prev(".hide");
-        input = input.length ? input : $(this).parents(".input_line").find(".hide");
-        var vals = input.val(), val = $(this).val();
-        if (vals.indexOf(val) > -1) {
-            vals = vals.replace(RegExp("^" + val + ",|," + val + "|^" + val + "$", "ig"), "");
-        } else {
-            vals = vals ? vals + "," + val : val;
-        }
-        input.val(vals);
-    });
     $("#hotel_province").change(function(event) {
         map.centerAndZoom($(this).find(":selected").text());
         $("#h_city,#h_administrative_region,#h_business_zone").attr("disabled", "");
@@ -470,13 +463,58 @@
         space: "输入经度",
         need: false,
         error: "格式不正确",
-        rule: /^\-{0,1}\d{1,3}$|^\-{0,1}\d{3}.\d+/
+        rule: /^\-{0,1}\d{1,3}$|^\-{0,1}\d{3}.\d+$/
     });
     $("#map_lat").e_input_tip({
         space: "输入维度",
         need: false,
         error: "格式不正确",
-        rule: /^\-{0,1}\d{1,3}$|^\-{0,1}\d{3}.\d+/
+        rule: /^\-{0,1}\d{1,3}$|^\-{0,1}\d{3}.\d+$/
+    });
+    $("#hotel_building,#hotel_room_count").e_input_tip({
+        space: "0",
+        error: "格式不正确",
+        rule: /^\d+$/
+    });
+    $("#hotel_specialty").e_input_tip({
+        space: "请输入公寓的特色",
+        need: false,
+        error: "格式不正确(15字以上)",
+        rule: /^[\S\s]{15,}$/,
+        error_callback: function(error, el) {
+            $(this).e_window({
+                relative_mod: "right",
+                left: 10,
+                width: "auto",
+                html: "<div class='red_tip_box'>" + error + "</div>"
+            });
+        }
+    });
+    $("#hotel_abstract").e_input_tip({
+        space: "请输入公寓简介",
+        error: "格式不正确(15个字以上)",
+        rule: /^[\S\s]{15,}$/,
+        error_callback: function(error, el) {
+            $(this).e_window({
+                relative_mod: "right",
+                left: 30,
+                width: "auto",
+                html: "<div class='red_tip_box'>" + error + "</div>"
+            });
+        }
+    });
+    $("#hotel_place").e_input_tip({
+        space: "请输入交通位置",
+        error: "格式不正确(5个字以上)",
+        rule: /^[\S\s]{5,}$/,
+        error_callback: function(error, el) {
+            $(this).e_window({
+                relative_mod: "right",
+                left: 30,
+                width: "auto",
+                html: "<div class='red_tip_box'>" + error + "</div>"
+            });
+        }
     });
     function upload_img(els) {
         els.each(function(index, el) {
@@ -584,6 +622,55 @@
         }).fail(function(data) {
             alert("删除图片错误！错误代码：" + data.status + "," + data.statusText + "。");
         });
+    });
+    $(".multiple").change(function(event) {
+        var checkbox_box = $(this).parents(".checkbox_box"), input = $(this).parents(".input_line").prev(".hide"), vals = "";
+        input = input.length ? input : $(this).parents(".input_line").find(".hide");
+        checkbox_box.find(".multiple").each(function(index, el) {
+            if ($(this).attr("checked")) {
+                vals += $(this).val() + ",";
+            }
+        });
+        vals = vals.slice(0, -1);
+        input.val(vals);
+    });
+    $(".all_set").click(function(event) {
+        event.preventDefault();
+        $(this).parents(".checkbox_box").find(".multiple").each(function(index, el) {
+            $(this).attr("checked", "").change();
+        });
+    });
+    $(".reverse_set").click(function(event) {
+        event.preventDefault();
+        $(this).parents(".checkbox_box").find(".multiple").each(function(index, el) {
+            if ($(this).attr("checked")) {
+                $(this).removeAttr("checked");
+            } else {
+                $(this).attr("checked", "");
+            }
+            $(this).change();
+        });
+    });
+    $(".btn_save_step").click(function(event) {
+        event.preventDefault();
+        var status = true;
+        var input = $(this).parents(".box_a").find("input[name],select[name],textarea[name]").focusout().each(function(index, el) {
+            if (!$(this).attr("rules_error")) {
+                return status = false;
+            }
+        });
+        if (status) {
+            document.forms[0].submit();
+        } else {
+            var a = $(this).e_window({
+                top: 30,
+                width: "auto",
+                html: "<div class='red_tip_box'>填写的信息没有通过验证，请检查。</div>"
+            });
+            setTimeout(function() {
+                a.e_window_kill();
+            }, 5e3);
+        }
     });
 })(jQuery);
 //# sourceMappingURL=main.map

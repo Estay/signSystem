@@ -91,13 +91,18 @@
 				settings.success_callback.call(el[0],el);
 			}
 
-
+			// 错误的状态
 			function error(el,error) {
-				settings.error_callback.call(el[0],settings.error,el);
+				settings.error_callback.call(el[0],error,el);
 			}
 
 			// 验证规则 错误提示
 			function ruleValidate(el,val) {
+				if (/[\<\>\&]+/.exec(val)) {
+					error(el,"不能包含“<”,“>”,“&”等特殊字符");
+					return ;
+				};
+
 				if(isRegExp(settings.rule)){
 					if (!settings.rule.exec(val)) {
 						// 没通过规则 进入错误状态

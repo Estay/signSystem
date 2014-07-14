@@ -53,6 +53,12 @@
 .red_tip_box {
 	border: 1px solid red;
 	color: red;
+	background: #FFF;
+}
+
+/*特殊按钮样式*/
+.all_set {
+	margin-right: 20px;
 }
 
 /*---添加公寓---*/

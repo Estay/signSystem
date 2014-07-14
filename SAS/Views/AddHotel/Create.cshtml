@@ -163,7 +163,6 @@
 		</p>
 		<p class="input_line"><label for="hotel_specialty">
 				<span class="label">公寓特色</span><input type="text" id="hotel_specialty" name="@Html.DisplayNameFor(model => model.Features)">
-				<span class="col_red">*</span>
 			</label>
 		</p>
 		<div class="clear">
@@ -191,7 +190,7 @@
 				</p>
 			</div>
 			<div class="float_l">
-				<p class="input_line"><span class="col_red">*</span></p>
+				<span class="col_red">&nbsp;&nbsp;&nbsp;*</span>
 			</div>
 		</div>
 		<p class="input_line">
@@ -212,6 +211,7 @@
 				<div class="input_line"><span class="label">公寓配套</span></div>
 			</div>
 			<div class="float_l checkbox_box">
+				<p class="input_line"><a class="all_set" href="">全选</a><a class="reverse_set" href="">反选</a></p>
                 <input class="hide" type="text" name="@Html.DisplayNameFor(model => model.Facilities)" value="" />
                 <p class="input_line">
 					@foreach(var facility in hotel_facilitys){   
@@ -225,6 +225,7 @@
 				<div class="input_line"><span class="label">公寓服务</span></div>
 			</div>
 			<div class="float_l checkbox_box">
+				<p class="input_line"><a class="all_set" href="">全选</a><a class="reverse_set" href="">反选</a></p>
                 <input class="hide" type="text" name="@Html.DisplayNameFor(model => model.GeneralAmenities)" value="" />
 				<p class="input_line">
 					@foreach(var service in hotel_services){
