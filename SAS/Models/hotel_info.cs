@@ -556,9 +556,15 @@ namespace SAS.Models
         #endregion Model
 
         public hotel_theme_info theme;
-        public List<DateTime> getDecorationTime()
+        //装修时间
+        public List<int> getDecorationTime()
         {
-           return  new List<DateTime>();
+            List<int> list = new List<int>();
+            for (int i = 0; i < 30; i++)
+            {
+                list.Add(DateTime.Now.Date.AddYears(-i).Year);
+            }
+            return list;
         }
         
     }
