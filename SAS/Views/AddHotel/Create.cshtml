@@ -17,10 +17,7 @@
     Array hotel_city = new string[] { "所在城市", "ddddd" };
     Array hotel_area = new string[] { "所在行政区", "ddddd" };
     Array hotel_district = new string[] { "所在商圈", "ddddd" };
-    Array hotel_built_year = new string[]{ "2014年", "ddddd" };
-    Array hotel_built_month = new string[]{ "5月", "ddddd" };
-    Array hotel_decoration_time_year = new string[]{ "2014年", "ddddd" };
-    Array hotel_decoration_time_month = new string[]{ "5月", "ddddd" };
+    Array month = new string[]{ "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "11月", "12月" };
 
     Dictionary<int, String> hotel_facilitys = ViewData["facilities"] as Dictionary<int, string>;
  
@@ -39,10 +36,10 @@
 @using(Html.BeginForm("Create","AddHotel",FormMethod.Post))
 {
 <div id="flag_box">
-	<a href="" class="btn_c set">1 录入公寓信息</a>
-	<a href="" class="btn_c">2 录入房型</a>
-	<a href="" class="btn_c">3 录入房价</a>
-	<a href="" class="btn_c">4 录入图片</a>
+	<span href="" class="btn_c set">1 录入公寓信息</span>
+	<span href="" class="btn_c">2 录入房型</span>
+	<span href="" class="btn_c">3 录入房价</span>
+	<span href="" class="btn_c">4 录入图片</span>
 </div>
 <div class="box_a">
 	<div class="from_path">
@@ -141,24 +138,18 @@
 		<p class="input_line">
 			<label for="hotel_built">
 				<span class="label">开业时间</span><select name="@Html.DisplayNameFor(model => model.h_opening_time)" id="hotel_built_year">
-					@foreach(var opt in hotel_built_year){
-						<option value="@opt">@opt</option>                    
-					}
 				</select>
 				<select name="hotel_built_month" id="hotel_built_month">
-					@foreach(var opt in hotel_built_month){
+					@foreach(var opt in month){
 						<option value="@opt">@opt</option>                    
 					}
 				</select>
 			</label>
 			<label for="hotel_decoration_time_year">
 				<span class="label">装修时间</span><select name="@Html.DisplayNameFor(model => model.DecorateTime)" id="hotel_decoration_time_year">
-					@foreach(var opt in hotel_decoration_time_year){
-						<option value="@opt">@opt</option>                    
-					}
 				</select>
 				<select name="hotel_decoration_time_month" id="hotel_decoration_time_month">
-					@foreach(var opt in hotel_decoration_time_month){
+					@foreach(var opt in month){
 						<option value="@opt">@opt</option>                    
 					}
 				</select>

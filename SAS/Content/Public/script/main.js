@@ -1,4 +1,4 @@
-/*2014年7月11日17:29:26*/
+/*2014年7月14日11:01:26*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -470,13 +470,13 @@
         space: "输入经度",
         need: false,
         error: "格式不正确",
-        rule: /^\d{3}$|^\d{3}.\d+/
+        rule: /^\-{0,1}\d{1,3}$|^\-{0,1}\d{3}.\d+/
     });
     $("#map_lat").e_input_tip({
         space: "输入维度",
         need: false,
         error: "格式不正确",
-        rule: /^\d{3}$|^\d{3}.\d+/
+        rule: /^\-{0,1}\d{1,3}$|^\-{0,1}\d{3}.\d+/
     });
     function upload_img(els) {
         els.each(function(index, el) {
