@@ -225,7 +225,7 @@ td {
   position: relative;
   top: 1px;
 }
-.btn_c:hover,
+/*.btn_c:hover,*/
 .btn_c.set {
   background: #003C8F;
   background: linear-gradient(to bottom, #005DDE, #003C8F);

@@ -95,7 +95,7 @@
 		// 地图同步
 		map.centerAndZoom($(this).find(':selected').text());
 
-
+		// 禁用 城市 商圈 行政区选择 
 		$("#h_city,#h_administrative_region,#h_business_zone").attr('disabled', '');
 
 		if ($(this).val()) {
@@ -118,6 +118,7 @@
 					$("#h_city").append(option);
 				};
 
+				// 启用城市选择
 				$("#h_city").removeAttr('disabled');
 
 			})
@@ -191,7 +192,7 @@
 			.always(function() {
 			});
 
-			// 启用选择
+			// 启用行政区商圈选择
 			$("#h_administrative_region,#h_business_zone").removeAttr('disabled');
 		}else {
 				$("#h_administrative_region,#h_business_zone").each(function(index, el) {
@@ -199,11 +200,9 @@
 				});
 
 		}
-
-		
-
-
 	});
+
+
 	$("#h_administrative_region,#h_business_zone").change(function(event) {
 		map.centerAndZoom($(this).find(':selected').text());
 	});
@@ -231,13 +230,13 @@
 		space : "输入经度",
 		need: false,
 		error : "格式不正确",
-		rule : /^\d{3}$|^\d{3}.\d+/		
+		rule : /^\-{0,1}\d{1,3}$|^\-{0,1}\d{3}.\d+/		
 	});
 	$("#map_lat").e_input_tip({
 		space : "输入维度",
 		need: false,
 		error : "格式不正确",
-		rule : /^\d{3}$|^\d{3}.\d+/		
+		rule : /^\-{0,1}\d{1,3}$|^\-{0,1}\d{3}.\d+/
 	});
 
 	// 触发图片选择
@@ -245,6 +244,9 @@
 	// 	event.preventDefault();
 	// 	$(this).siblings('.upload_img_input').click();
 	// });
+
+
+	
 
 	//上传图片
 	function upload_img(els) {
