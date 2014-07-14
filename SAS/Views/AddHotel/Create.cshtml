@@ -14,10 +14,8 @@
     List<DateTime> DTimes = ViewData["DTime"] as List<DateTime>;
    
     Dictionary<int, String> hotel_province = ViewData["provice"] as Dictionary<int, string>;
-    Array hotel_city = new string[] { "所在城市", "ddddd" };
-    Array hotel_area = new string[] { "所在行政区", "ddddd" };
-    Array hotel_district = new string[] { "所在商圈", "ddddd" };
-    Array month = new string[]{ "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "11月", "12月" };
+
+    Array month = new string[]{ "1", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "11月", "12月" };
 
     Dictionary<int, String> hotel_facilitys = ViewData["facilities"] as Dictionary<int, string>;
  
@@ -25,11 +23,6 @@
     Dictionary<int, String> hotel_services = ViewData["services"] as Dictionary<int, string>;
 
 
-    Dictionary<int, String> room_facilitys = new Dictionary<int, string>();
-    room_facilitys.Add(0, "XXX");
-    room_facilitys.Add(1, "XX");
-    room_facilitys.Add(2, "XXXXXXXXXXXXXXX");
-    room_facilitys.Add(3, "XXXXXXXXXXXXXXXXXXXXXXXX");
    
 }
 
@@ -138,6 +131,10 @@
 		<p class="input_line">
 			<label for="hotel_built">
 				<span class="label">开业时间</span><select name="@Html.DisplayNameFor(model => model.h_opening_time)" id="hotel_built_year">
+					@foreach (var opt in DTimes)
+                    {
+						<option value="@opt;年">@opt;年</option>                    
+					}
 				</select>
 				<select name="hotel_built_month" id="hotel_built_month">
 					@foreach(var opt in month){
@@ -147,6 +144,10 @@
 			</label>
 			<label for="hotel_decoration_time_year">
 				<span class="label">装修时间</span><select name="@Html.DisplayNameFor(model => model.DecorateTime)" id="hotel_decoration_time_year">
+					@foreach (var opt in DTimes)
+     {
+						<option value="@opt; 年">@opt; 年</option>                    
+					}
 				</select>
 				<select name="hotel_decoration_time_month" id="hotel_decoration_time_month">
 					@foreach(var opt in month){
