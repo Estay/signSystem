@@ -556,6 +556,10 @@ namespace SAS.Models
         #endregion Model
 
         public hotel_theme_info theme;
+        public List<DateTime> getDecorationTime()
+        {
+           return  new List<DateTime>();
+        }
         
     }
     public class hotel_infoDBContent : DbContext

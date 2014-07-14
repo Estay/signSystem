@@ -10,6 +10,9 @@
     
     Dictionary<int, String> hotel_theme = ViewData["Themes"] as Dictionary<int,string>;
 
+    //装修时间
+    List<DateTime> DTimes = ViewData["DTime"] as List<DateTime>;
+   
     Dictionary<int, String> hotel_province = ViewData["provice"] as Dictionary<int, string>;
     Array hotel_city = new string[] { "所在城市", "ddddd" };
     Array hotel_area = new string[] { "所在行政区", "ddddd" };
