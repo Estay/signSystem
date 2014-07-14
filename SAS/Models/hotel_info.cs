@@ -557,12 +557,12 @@ namespace SAS.Models
 
         public hotel_theme_info theme;
         //装修时间
-        public List<int> getDecorationTime()
+        public List<string> getDecorationTime()
         {
-            List<int> list = new List<int>();
+            List<string> list = new List<string>();
             for (int i = 0; i < 30; i++)
             {
-                list.Add(DateTime.Now.Date.AddYears(-i).Year);
+                list.Add(DateTime.Now.Date.AddYears(-i).Year+"年");
             }
             return list;
         }
