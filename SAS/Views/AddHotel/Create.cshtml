@@ -11,11 +11,11 @@
     Dictionary<int, String> hotel_theme = ViewData["Themes"] as Dictionary<int,string>;
 
     //装修时间
-    List<string> DTimes = ViewData["DTime"] as List<string>;
+    List<int> DTimes = ViewData["DTime"] as List<int>;
    
     Dictionary<int, String> hotel_province = ViewData["provice"] as Dictionary<int, string>;
 
-    Array month = new string[]{ "1", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "11月", "12月" };
+    Array month = new string[]{ "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "11月", "12月" };
 
     Dictionary<int, String> hotel_facilitys = ViewData["facilities"] as Dictionary<int, string>;
  
@@ -130,26 +130,34 @@
 		<h2>录入详细信息</h2>
 		<p class="input_line">
 			<label for="hotel_built">
-				<span class="label">开业时间</span><select name="@Html.DisplayNameFor(model => model.h_opening_time)" id="hotel_built_year">
+				<input  id="hotel_built_year" type="text" name="@Html.DisplayNameFor(model => model.h_opening_time)" class="hide">
+				<span class="label">开业时间</span>
+				<select class="select_yeae">
+		            <option value="" >请选择</option>
 					@foreach (var opt in DTimes)
                     {
 						<option value="@opt">@opt</option>                    
 					}
 				</select>
-				<select name="hotel_built_month" id="hotel_built_month">
+				<select class="select_month">
+		            <option value="" >请选择</option>
 					@foreach(var opt in month){
 						<option value="@opt">@opt</option>                    
 					}
 				</select>
 			</label>
 			<label for="hotel_decoration_time_year">
-				<span class="label">装修时间</span><select name="@Html.DisplayNameFor(model => model.DecorateTime)" id="hotel_decoration_time_year">
+				<input id="hotel_decoration_time_year" class="hide" type="text" name="@Html.DisplayNameFor(model => model.DecorateTime)" >
+				<span class="label">装修时间</span>
+				<select class="select_yeae">
+		            <option value="" >请选择</option>
 					@foreach (var opt in DTimes)
-                    {               
-						<option value="@opt">@opt</option>                    
+				    {
+						<option value="@opt">@opt</option>                 
 					}
 				</select>
-				<select name="hotel_decoration_time_month" id="hotel_decoration_time_month">
+				<select class="select_month">
+		            <option value="" >请选择</option>
 					@foreach(var opt in month){
 						<option value="@opt">@opt</option>                    
 					}
