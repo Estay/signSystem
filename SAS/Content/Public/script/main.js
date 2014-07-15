@@ -1,4 +1,4 @@
-/*2014年7月14日16:50:46*/
+/*2014年7月15日09:54:10*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -87,7 +87,7 @@
                     settings.rule.call(el[0], function(el) {
                         success(el);
                     }, function(error_text, el) {
-                        error(el, settings.error);
+                        error(el, error_text ? error_text : settings.error);
                     }, el.val());
                 } else {
                     return val ? true : false;
@@ -326,6 +326,7 @@
             var el = $(this);
             if (!val.match(/^[\s\S]{3,}$/)) {
                 error_callback("请输入三个以上的字符", el);
+                return;
             }
             $.ajax({
                 url: "/AddHotel/IsOk/",
@@ -534,6 +535,15 @@
             });
         }
     });
+    $("#room_name").e_input_tip({
+        space: "请输入房型名称",
+        rule: /^[\s\S]{2,}$/
+    });
+    $("#room_count").e_input_tip({
+        space: 0,
+        rule: /^\d+$/
+    });
+    $("#bedroom select").e_input_tip({});
     function upload_img(els) {
         els.each(function(index, el) {
             var el = $(el), box = el.parents(".from_path").find(".img_show_box"), info_box = "";

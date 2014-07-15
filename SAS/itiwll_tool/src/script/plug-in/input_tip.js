@@ -130,7 +130,7 @@
 						},
 						function(error_text,el){ // 验证规则 错误回调
 							// 没通过规则 进入错误状态
-							error(el,settings.error);
+							error(el,error_text?error_text:settings.error);
 						},
 						el.val()
 					);

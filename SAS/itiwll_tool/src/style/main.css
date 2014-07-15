@@ -171,6 +171,13 @@
 #people_number {
 	width: 50px;
 }
+
+#bed_box {
+}
+.bed_item {
+	margin-bottom: 5px;
+}
+
 #btn_add_room {
 	display: inline-block;
 	*display: inline;

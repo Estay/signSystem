@@ -54,20 +54,11 @@
     				<span class="col_red">*</span>
     				<span>将会设置房量的默认值</span>
     			</label>
-    			<label for="room_area">
-    				<span class="label">面积</span>
-    				<input type="text" id="room_area" name="@Html.DisplayNameFor(model => model.h_r_acreage)">
-    				<span class="col_red">*</span>
-    			</label>
-    			<label for="room_floor">
-    				<span class="label">楼层</span>
-    				<input type="text" id="room_floor" name="@Html.DisplayNameFor(model => model.h_r_floor)">
-    				<span class="cpl_red">*</span>
-    			</label>
     		</p>
     		<p class="input_line">
     			<label for="bedroom">
-    				<span class="label">户型</span></label>
+    				<span class="label">户型</span>
+                </label>
                     <select name="???">
                         @foreach (var item in number)
                         {
@@ -75,37 +66,89 @@
                         }
                     </select>
     				室
-                    <select name="???">
+                    <select id="saloon" name="???">
                         @foreach (var item in number)
                         {
                             <option value="@item">@item</option>
                         }
                     </select>
     				厅
-                    <select name="???">
+                    <select id="toilet" name="???">
                         @foreach (var item in number)
                         {
                             <option value="@item">@item</option>
                         }
                     </select>
     				卫
-                    <select name="???">
+                    <select id="bookroom" name="???">
                         @foreach (var item in number)
                         {
                             <option value="@item">@item</option>
                         }
                     </select>
     				书房
+                    <select id="bookroom" name="???">
+                        @foreach (var item in number)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
+                    阳台
+                    <select id="bookroom" name="???">
+                        @foreach (var item in number)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
+                    厨房
+            </p>
+            <p class="input_line">
                 <label for="people_number"><span class="label">宜住人数</span>
                     <select name="???">
                         @foreach (var item in number)
                         {
                             <option value="@item">@item</option>
                         }
-                    </select>              
+                    </select>
+                    人          
+                </label>
+                <label for="room_area">
+                    <span class="label">面积</span>
+                    <input type="text" id="room_area" name="@Html.DisplayNameFor(model => model.h_r_acreage)">平米
+                    <span class="col_red">*</span>
+                </label>
+                <label for="room_floor">
+                    <span class="label">楼层</span>
+                    <input type="text" id="room_floor" name="@Html.DisplayNameFor(model => model.h_r_floor)">
+                    <span class="col_red">*</span>
                 </label>
     		</p>
-    		<div class="clear">
+            <div class="clear m_t10">
+                <div class="float_l">
+                    <!-- <p class="input_line"> -->
+                        <label for="room_info"><span class="label">床型</span></label>
+                    <!-- </p> -->
+                </div>
+                <div class="float_l">
+                    <div id="bed_box">
+                        <div class="bed_item">
+                            <select class="bed">
+                                <option value="1">122</option>
+                            </select>
+                            <select class="number">
+                                <option value="">选择床型</option>
+                                @foreach (var item in number)
+                                {
+                                <option value="@item">@item</option>
+                                }
+                            </select>
+                            <a href="" class="bed_del">删除</a>
+                        </div>
+                        <a href="" class="bed_add">添加</a>
+                    </div>
+                </div>
+            </div>
+    		<div class="clear m_t20">
     			<div class="float_l">
     				<!-- <p class="input_line"> -->
     					<label for="room_info"><span class="label">房型描述</span></label>
