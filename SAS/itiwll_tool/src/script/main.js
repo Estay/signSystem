@@ -311,9 +311,62 @@
 	});
 
 	// 宜住人数
-	$("#bedroom select").e_input_tip({
-		
+	$("#people_number").e_input_tip({
+		need_text:"必须选择"
 	});
+
+	// 添加床型
+	$(".bed_add").click(function(event) {
+		event.preventDefault();
+		var clone = $(".bed_item.hide").clone().removeClass('hide');
+		$(this).before(clone);
+	});
+
+
+
+	(function() {
+
+		// 删除床型
+		$("#bed_box").on('click', '.bed_del', function(event) {
+			event.preventDefault();
+			$(this).parents(".bed_item").remove();
+			setBedInput();
+		});
+
+		$("#bed_box").on('change', 'select', function(event) {
+			// var n = 0;
+			setBedInput();
+		});
+
+		function setBedInput () {
+			var bed_input = $("#bed_input"),
+				text = "";
+			$("#bed_box").find('.bed_item').each(function(index, el) {
+				if ($(this).find('bed').val()&&$(this).find('number').val()) {
+					n++;
+					text = $(this).find('bed').val()+"x"+$(this).find('number').val()+";";
+				};
+			});
+			bed_input.val(text);
+		}
+	})();
+
+
+	// 房型描述
+
+	$("#room_describ").e_input_tip({
+		space:"请输入房型描述",
+		rule: /^[\s\S]{5,}&/
+	});
+
+	// 房型备注
+	$("#room_remarks").e_input_tip({
+		space:"请输入房型描述",
+		rule: /^[\s\S]{2,}&/
+	})
+
+
+
 	
 
 	//上传图片

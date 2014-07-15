@@ -1,4 +1,4 @@
-/*2014年7月15日09:54:10*/
+/*2014年7月15日15:50:06*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -543,7 +543,42 @@
         space: 0,
         rule: /^\d+$/
     });
-    $("#bedroom select").e_input_tip({});
+    $("#people_number").e_input_tip({
+        need_text: "必须选择"
+    });
+    $(".bed_add").click(function(event) {
+        event.preventDefault();
+        var clone = $(".bed_item.hide").clone().removeClass("hide");
+        $(this).before(clone);
+    });
+    (function() {
+        $("#bed_box").on("click", ".bed_del", function(event) {
+            event.preventDefault();
+            $(this).parents(".bed_item").remove();
+            setBedInput();
+        });
+        $("#bed_box").on("change", "select", function(event) {
+            setBedInput();
+        });
+        function setBedInput() {
+            var bed_input = $("#bed_input"), text = "";
+            $("#bed_box").find(".bed_item").each(function(index, el) {
+                if ($(this).find("bed").val() && $(this).find("number").val()) {
+                    n++;
+                    text = $(this).find("bed").val() + "x" + $(this).find("number").val() + ";";
+                }
+            });
+            bed_input.val(text);
+        }
+    })();
+    $("#room_describ").e_input_tip({
+        space: "请输入房型描述",
+        rule: /^[\s\S]{5,}&/
+    });
+    $("#room_remarks").e_input_tip({
+        space: "请输入房型描述",
+        rule: /^[\s\S]{2,}&/
+    });
     function upload_img(els) {
         els.each(function(index, el) {
             var el = $(el), box = el.parents(".from_path").find(".img_show_box"), info_box = "";

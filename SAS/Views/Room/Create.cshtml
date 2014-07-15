@@ -106,7 +106,9 @@
             </p>
             <p class="input_line">
                 <label for="people_number"><span class="label">宜住人数</span>
-                    <select name="???">
+                    <select id="people_number" name="???">
+                        <option value="">请选择</option>                     
+
                         @foreach (var item in number)
                         {
                             <option value="@item">@item</option>
@@ -132,13 +134,27 @@
                     <!-- </p> -->
                 </div>
                 <div class="float_l">
+                    <input id="bed_input" type="text" class="hide" name="???">
                     <div id="bed_box">
-                        <div class="bed_item">
+                        <div class="bed_item hide">
                             <select class="bed">
-                                <option value="1">122</option>
+                                <option value="">选择床型</option>                     
                             </select>
                             <select class="number">
-                                <option value="">选择床型</option>
+                                <option value="">选择数量</option>
+                                @foreach (var item in number)
+                                {
+                                <option value="@item">@item</option>
+                                }
+                            </select>
+                            <a href="" class="bed_del">删除</a>
+                        </div>
+                        <div class="bed_item">
+                            <select class="bed">
+                                <option value="">选择床型</option>                     
+                            </select>
+                            <select class="number">
+                                <option value="">选择数量</option>
                                 @foreach (var item in number)
                                 {
                                 <option value="@item">@item</option>

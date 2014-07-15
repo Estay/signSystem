@@ -168,14 +168,14 @@
 #bookroom {
 	margin-left: 10px;
 }
-#people_number {
-	width: 50px;
-}
 
 #bed_box {
 }
 .bed_item {
 	margin-bottom: 5px;
+	margin-right: 20px;
+}
+.bed_add {
 }
 
 #btn_add_room {
