@@ -423,7 +423,7 @@
 				html +=				'<p class="img_del"><a href="">删除</a></p>';
 				html +=			'</div>';
 
-			var upload_tip =  '<div class="upload_img_box upload_info_box">';
+			var upload_tip =  '<div class="upload_img_box">';
 				upload_tip +=		'<div class="img_box">';
 				upload_tip +=			'<p style=“margin-top: 20px;”></p>';
 				upload_tip +=		'</div>';
@@ -600,24 +600,31 @@
 	// 验证表单
 	$(".checking_btn").click(function(event) {
 		event.preventDefault();
-		var status = true;
+		var status = 0;
 		var input = $(this).parents(".box_a").find('input[type=text],select[name],textarea[name]').focusout().each(function(index, el) {
 			if ($(this).attr('rules_error')||$(this).attr('rules_error')=="") {
-				return status = false;
+				status = 1;
+				return false;
 			};
 		});
-		if (status) {
-			document.forms[0].submit()
-		}else {
+		$(".room_img_item").each(function(index, el) {
+			if($(this).find('.img_set').length<5){
+				status = 2;
+			}
+		});
+		if (status == 0) {
+			document.forms[0].submit();
+		}else if(status == 1 || status == 2){
+			var Message = status==1?"填写的信息没有通过验证，请检查。":"每个房型图片不能少于5张。";
 			var a = $(this).e_window({
 				top : 30,
 				width: "auto",
-				html: "<div class='red_tip_box'>填写的信息没有通过验证，请检查。</div>"
+				html: "<div class='red_tip_box'>"+ Message +"</div>"
 			});
 			setTimeout(function() {
 				a.e_window_kill();
 			}, 5000);
-		}
+		};
 	});
 
 })(jQuery);

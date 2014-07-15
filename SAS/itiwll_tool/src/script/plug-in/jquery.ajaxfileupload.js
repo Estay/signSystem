@@ -41,6 +41,8 @@
 				iframe   = createIframe(),
 				form     = createForm(iframe);
 
+
+
 			// @itiwll 20140710 多文件支持
 			if($element.attr('multiple')){
 				var files = $element.prop("files");
@@ -53,7 +55,7 @@
 					filename = filename.slice(0, -1);
 				}
 			}
-			console.log(filename);
+			// console.log(filename);
 
 			// We append a clone since the original input will be destroyed
 			$clone.insertBefore($element);

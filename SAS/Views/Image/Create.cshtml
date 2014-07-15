@@ -24,6 +24,7 @@
 		<p><b>图片上传注意事项：</b></p>
 		<p>请使用现代浏览器（支持多图片选择上传）。</p>
 		<p>为了更好的展示公寓，图片至少上传5张，包括客厅、卧室、卫生间、厨房、床。</p>
+		<p>图片最小宽度500px，最小高度300px。</p>
 	</div>
 
 
@@ -41,10 +42,10 @@
     {
 	<div class="from_path" room_id="@room.room_id">
 		<h2>@room.h_r_name_cn</h2>
-		<div class="clear">
+		<div class="clear room_img_item">
 			<div class="float_l">
 				<label>
-					<input type="file" name="file" multiple room_id="@room.room_id" class="upload_img_input" >
+					<input type="file" name="file" multiple room_id="@room.room_id" class="upload_img_input" accept="image/gif, image/jpeg, image/bmp, image/png">
 					<span class="upload_img_btn">选择图片</span>
 				</label>
 			</div>
@@ -60,7 +61,7 @@
 	<div class="btn_box">
         <input  type="hidden"  id="room_remarks" name="hotelId" value="@hotelId">
       
-		<a href="javascript:document.forms[0].submit()" id="save_room_info" class="btn_a btn_save_step">完成</a>
+		<a href="javascript:document.forms[0].submit()" id="save_room_img" class="btn_a btn_save_step checking_btn">完成</a>
 	</div>
     }
 </div>
