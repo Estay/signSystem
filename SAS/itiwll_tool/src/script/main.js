@@ -255,8 +255,8 @@
 	$("#hotel_specialty").e_input_tip({
 		space : "请输入公寓的特色",
 		need : false,
-		error : "格式不正确(15字以上)",
-		rule : /^[\S\s]{15,}$/,
+		error : "最大可输入2000个字符",
+		rule : /^[\S\s]{0,2000}$/,
 		error_callback : function (error,el) {
 				$(this).e_window({
 					relative_mod : "right",
@@ -270,8 +270,8 @@
 	// 公寓简介
 	$("#hotel_abstract").e_input_tip({
 		space : "请输入公寓简介",
-		error : "格式不正确(15个字以上)",
-		rule : /^[\S\s]{15,}$/,
+		error : "最大可输入2000个字符",
+		rule : /^[\S\s]{0,2000}$/,
 		error_callback : function (error,el) {
 				$(this).e_window({
 					relative_mod : "right",
@@ -285,8 +285,9 @@
 	// 交通位置
 	$("#hotel_place").e_input_tip({
 		space : "请输入交通位置",
-		error : "格式不正确(5个字以上)",
-		rule : /^[\S\s]{5,}$/,
+		error : "最大可输入2000个字符",
+		error : "最大可输入2000个字符",
+		rule : /^[\S\s]{0,2000}$/,
 		error_callback : function (error,el) {
 				$(this).e_window({
 					relative_mod : "right",
@@ -313,6 +314,18 @@
 	// 宜住人数
 	$("#people_number").e_input_tip({
 		need_text:"必须选择"
+	});
+
+	// 面积
+	$("#room_area").e_input_tip({
+		space :0,
+		rule : /^\d+$/
+	});
+
+	// 楼层
+	$("#room_floor").e_input_tip({
+		space : "",
+		rule : /^[\s\S]+$/
 	});
 
 	// 添加床型
@@ -355,18 +368,42 @@
 	// 房型描述
 
 	$("#room_describ").e_input_tip({
+		error : "最大可输入2000个字符",
 		space:"请输入房型描述",
-		rule: /^[\s\S]{5,}&/
+		rule: /^[\s\S]{0,2000}$/
 	});
 
 	// 房型备注
 	$("#room_remarks").e_input_tip({
+		error : "最大可输入2000个字符",
 		space:"请输入房型描述",
-		rule: /^[\s\S]{2,}&/
+		need: false,
+		rule: /^[\s\S]{0,2000}$/
 	})
 
 
+	// 保存房型
+	$("#save_room_info").click(function(event) {
+		if (!$(".room_item").length) {
+			event.preventDefault();
+			var a = $(this).e_window({
+				top : 30,
+				width: "auto",
+				html: "<div class='red_tip_box'>请添加房型。</div>"
+			});
+			setTimeout(function() {
+				a.e_window_kill();
+			}, 5000);
+		}
+	});
 
+
+
+	//房价
+	$(".room_pr").e_input_tip({
+		space : 0,
+		rule : /^\d+$/
+	})
 	
 
 	//上传图片
@@ -560,8 +597,8 @@
 	});
 
 
-	// 提交表单
-	$(".btn_save_step").click(function(event) {
+	// 验证表单
+	$(".checking_btn").click(function(event) {
 		event.preventDefault();
 		var status = true;
 		var input = $(this).parents(".box_a").find('input[type=text],select[name],textarea[name]').focusout().each(function(index, el) {
