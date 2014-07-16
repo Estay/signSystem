@@ -1,4 +1,4 @@
-/*2014年7月16日16:04:00*/
+/*2014年7月16日16:17:39*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -599,10 +599,13 @@
         }
     })();
     (function() {
-        var room_facilitys = $("#room_facilitys"), val_arr = room_facilitys.val().split(",");
-        for (var i = 0; i < val_arr.length; i++) {
-            var f = val_arr[i];
-            $(".room_f[value='" + f + "']").attr("checked", true);
+        var val = $("#room_facilitys").val();
+        if (val) {
+            val_arr = val.split(",");
+            for (var i = 0; i < val_arr.length; i++) {
+                var f = val_arr[i];
+                $(".room_f[value='" + f + "']").attr("checked", true);
+            }
         }
     })();
     $("#room_describ").e_input_tip({

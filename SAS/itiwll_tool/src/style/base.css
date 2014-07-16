@@ -196,6 +196,7 @@ td {
   background: linear-gradient(to bottom, #005DDE, #003C8F);
   border-radius: 5px;
   color: #FFF;
+  display: inline-block;
   font-size: 16px;
   padding: 2px 20px 3px 20px;
   transition-duration: 0.4s;
