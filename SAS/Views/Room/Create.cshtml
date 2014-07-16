@@ -60,28 +60,28 @@
     			<label for="bedroom">
     				<span class="label">户型</span>
                 </label>
-                    <select name="???">
+                    <select name="@Html.DisplayNameFor(model => model.h_r_bedroom_number)">
                         @foreach (var item in number)
                         {
                             <option value="@item">@item</option>
                         }
                     </select>
     				室
-                    <select id="saloon" name="???">
+                    <select id="saloon" name="@Html.DisplayNameFor(model => model.Sitting_room)">
                         @foreach (var item in number)
                         {
                             <option value="@item">@item</option>
                         }
                     </select>
     				厅
-                    <select id="toilet" name="???">
+                    <select id="toilet" name="@Html.DisplayNameFor(model => model.h_r_bathroom_number)">
                         @foreach (var item in number)
                         {
                             <option value="@item">@item</option>
                         }
                     </select>
     				卫
-                    <select id="bookroom" name="???">
+                    <select id="bookroom" name="@Html.DisplayNameFor(model => model.Study)">
                         @foreach (var item in number)
                         {
                             <option value="@item">@item</option>
@@ -95,7 +95,7 @@
                         }
                     </select>
                     阳台
-                    <select id="bookroom" name="???">
+                    <select id="bookroom" name="@Html.DisplayNameFor(model => model.Balcony)">
                         @foreach (var item in number)
                         {
                             <option value="@item">@item</option>
@@ -105,7 +105,7 @@
             </p>
             <p class="input_line">
                 <label for="people_number"><span class="label">宜住人数</span>
-                    <select id="people_number" name="???">
+                    <select id="people_number" name="@Html.DisplayNameFor(model => model.Kitchen)">
                         <option value="">请选择</option>                     
 
                         @foreach (var item in number)
