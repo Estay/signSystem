@@ -56,6 +56,7 @@
 					el.removeClass('col_gray');
 				};
 			})
+			// 绑定触发验证
 			.bind("input_tip_checking",function () {
 				var el = $(this);
 

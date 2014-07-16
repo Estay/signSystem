@@ -355,9 +355,8 @@
 			var bed_input = $("#bed_input"),
 				text = "";
 			$("#bed_box").find('.bed_item').each(function(index, el) {
-				if ($(this).find('bed').val()&&$(this).find('number').val()) {
-					n++;
-					text = $(this).find('bed').val()+"|"+$(this).find('number').val()+",";
+				if ($(this).find('.bed').val()&&$(this).find('.number').val()) {
+					text = text + $(this).find('.bed').val()+"|"+$(this).find('.number').val()+",";
 				};
 			});
 			bed_input.val(text);
@@ -603,7 +602,8 @@
 	// 验证表单
 	$(".checking_btn").click(function(event) {
 		event.preventDefault();
-		var status = 0;
+		var el = $(this),
+			status = 0;
 		var input = $(this).parents(".box_a").find('input[type=text],select[name],textarea[name]').trigger("input_tip_checking");
 		setTimeout(function() {
 			input.each(function(index, el) {
@@ -622,13 +622,13 @@
 				document.forms[0].submit();
 			}else if(status == 1 || status == 2){
 				var Message = status==1?"填写的信息没有通过验证，请检查。":"每个房型图片不能少于5张。";
-				var a = $(this).e_window({
+				el.e_window({
 					top : 30,
 					width: "auto",
 					html: "<div class='red_tip_box'>"+ Message +"</div>"
 				});
 				setTimeout(function() {
-					a.e_window_kill();
+					el.e_window_kill();
 				}, 5000);
 			};				
 		}, 200);
