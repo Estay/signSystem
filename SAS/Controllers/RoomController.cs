@@ -27,6 +27,7 @@ namespace SAS.Controllers
 
         public ActionResult Details(int id = 0)
         {
+            ViewBag.sign = 1;
             hotel_room_info hotel_room_info = db.room.Find(id);
             if (hotel_room_info == null)
             {
@@ -40,6 +41,8 @@ namespace SAS.Controllers
 
         public ActionResult Create(string hotelId)
         {
+            ViewData["Tag"] = "增加房型";
+            ViewBag.sign = 3;
             hotelId = "48385";
             ViewBag.HoltelId = hotelId;
             ViewBag.Tag = "增加房型";
@@ -72,7 +75,10 @@ namespace SAS.Controllers
             {
 
                 db.room.Remove(room);
-                db.SaveChanges();
+                if (db.SaveChanges() > 0)
+                    ViewBag.sign = 1;
+                else
+                    ViewBag.sign = 0;
             }
            
             getRooms(room.hotel_id);
@@ -101,28 +107,42 @@ namespace SAS.Controllers
 
             
 
-            getfacilities();
            
-            hotel_room_info.hotel_id = 48385;
-            hotel_room_info.h_r_id = "004";
-            hotel_room_info.h_r_utime = DateTime.Now;
-            hotel_room_info.h_r_ctime = DateTime.Now;
-            hotel_room_info.h_r_bed_type = "大床房";
-            hotel_room_info.h_r_bed_number = "1";
-            hotel_room_info.h_r_state = true;
-            hotel_room_info.h_r_reserve = 3;
-            var errors = ModelState.Values.SelectMany(v => v.Errors); 
-            //if (ModelState.IsValid)
-            //{
+            if ((from r in db.room where r.room_id == hotel_room_info.room_id select r).Count() > 0)
+            {
+                db.Entry(hotel_room_info).State = System.Data.EntityState.Modified;
+                
+                
+            }
+            else
+            {
+                hotel_room_info.hotel_id = 48385;
+                hotel_room_info.h_r_id = "004";
+                hotel_room_info.h_r_utime = DateTime.Now;
+                hotel_room_info.h_r_ctime = DateTime.Now;
+                hotel_room_info.h_r_bed_type = "大床房";
+                hotel_room_info.h_r_bed_number = "1";
+                hotel_room_info.h_r_state = true;
+                hotel_room_info.h_r_reserve = 3;
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                //if (ModelState.IsValid)
+                //{
+
+                //    return RedirectToAction("Index");
+                //}
+                db.room.Add(hotel_room_info);
                
-            //    return RedirectToAction("Index");
-            //}
-            db.room.Add(hotel_room_info);
-            db.SaveChanges();
+            }
+            if (db.SaveChanges() > 0)
+                ViewBag.sign = 1;
+            else
+                ViewBag.sign = 0;
+            getfacilities();
             getRooms(hotel_room_info.hotel_id);
             ViewBag.HoltelId = hotel_room_info.hotel_id;
             ViewBag.Tag = "增加房型";
-            return View();
+         
+            return View(new hotel_room_info());
         }
         public void getRooms(int hotel_id)
         {
@@ -152,7 +172,7 @@ namespace SAS.Controllers
             //db.Entry(hotel_room_info).State=e
             if (ModelState.IsValid)
             {
-                //db.Entry(hotel_room_info).State = EntityState.Modified;
+                db.Entry(hotel_room_info).State = System.Data.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
