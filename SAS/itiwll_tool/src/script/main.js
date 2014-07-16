@@ -623,7 +623,8 @@
 			}else if(status == 1 || status == 2){
 				var Message = status==1?"填写的信息没有通过验证，请检查。":"每个房型图片不能少于5张。";
 				el.e_window({
-					top : 30,
+					relative_mod : "right",
+					left : 30,
 					width: "auto",
 					html: "<div class='red_tip_box'>"+ Message +"</div>"
 				});

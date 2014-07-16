@@ -1,4 +1,4 @@
-/*2014年7月16日13:22:34*/
+/*2014年7月16日13:39:39*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -22,7 +22,9 @@
         var settings = $.extend({}, defaults, options);
         return this.each(function() {
             var el = $(this);
-            init(el);
+            if (!el.val()) {
+                init(el);
+            }
             el.focusin(function(event) {
                 var el = $(this);
                 focusin(el);
@@ -766,7 +768,8 @@
             } else if (status == 1 || status == 2) {
                 var Message = status == 1 ? "填写的信息没有通过验证，请检查。" : "每个房型图片不能少于5张。";
                 el.e_window({
-                    top: 30,
+                    relative_mod: "right",
+                    left: 30,
                     width: "auto",
                     html: "<div class='red_tip_box'>" + Message + "</div>"
                 });

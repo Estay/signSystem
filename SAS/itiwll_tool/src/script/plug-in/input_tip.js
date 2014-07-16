@@ -27,7 +27,9 @@
 		return this.each(function() {
 			var el = $(this);
 
-			init(el);
+			if (!el.val()) {
+				init(el);
+			};
 
 
 

@@ -44,13 +44,13 @@
 		</table>
 	</div>
 	<div class="from_path">
-		<span class="btn_d set">添加房型</span>
+		<span class="btn_d set">@ViewBag.Tag</span>
         <div class="box_b">
     		<p class="input_line">
-    			<label for="room_name"><span class="label">房型名称</span><input type="text" id="room_name" name="@Html.DisplayNameFor(model => model.h_r_name_cn)"><span class="col_red">*</span></label>
+    			<label for="room_name"><span class="label">房型名称</span><input type="text" id="room_name" name="@Html.DisplayNameFor(model => model.h_r_name_cn)" value="@Model.h_r_name_cn"><span class="col_red">*</span></label>
     			<label for="room_count">
     				<span class="label">数量</span>
-    				<input type="text" id="room_count" name="@Html.DisplayNameFor(model => model.h_r_house_number)">
+    				<input type="text" id="room_count" name="@Html.DisplayNameFor(model => model.h_r_house_number)" value="@Model.h_r_house_number">
     				<span class="col_red">*</span>
     				<span>将会设置房量的默认值</span>
     			</label>
@@ -62,42 +62,72 @@
                     <select name="@Html.DisplayNameFor(model => model.h_r_bedroom_number)">
                         @foreach (var item in number)
                         {
-                            <option value="@item">@item</option>
+                            if (item == Model.h_r_bedroom_number)
+                            {
+                                <option value="@item" selected>@item</option>                                
+                            }else{
+                                <option value="@item">@item</option>
+                            }
                         }
                     </select>
     				室
                     <select id="saloon" name="@Html.DisplayNameFor(model => model.Sitting_room)">
                         @foreach (var item in number)
                         {
-                            <option value="@item">@item</option>
+                            if (item == Model.Sitting_room)
+                            {
+                                <option value="@item" selected>@item</option>                                
+                            }else{
+                                <option value="@item">@item</option>
+                            }
                         }
                     </select>
     				厅
                     <select id="toilet" name="@Html.DisplayNameFor(model => model.h_r_bathroom_number)">
                         @foreach (var item in number)
                         {
-                            <option value="@item">@item</option>
+                            if (item == Model.h_r_bathroom_number)
+                            {
+                                <option value="@item" selected>@item</option>                                
+                            }else{
+                                <option value="@item">@item</option>
+                            }
                         }
                     </select>
     				卫
                     <select id="bookroom" name="@Html.DisplayNameFor(model => model.Study)">
                         @foreach (var item in number)
                         {
-                            <option value="@item">@item</option>
+                            if (item == Model.Study)
+                            {
+                                <option value="@item" selected>@item</option>                                
+                            }else{
+                                <option value="@item">@item</option>
+                            }
                         }
                     </select>
     				书房
                     <select id="bookroom" name="@Html.DisplayNameFor(model => model.Balcony)">
                         @foreach (var item in number)
                         {
-                            <option value="@item">@item</option>
+                            if (item == Model.Balcony)
+                            {
+                                <option value="@item" selected>@item</option>                                
+                            }else{
+                                <option value="@item">@item</option>
+                            }
                         }
                     </select>
                     阳台
                     <select id="bookroom" name="@Html.DisplayNameFor(model => model.Balcony)">
                         @foreach (var item in number)
                         {
-                            <option value="@item">@item</option>
+                            if (item == Model.Balcony)
+                            {
+                                <option value="@item" selected>@item</option>                                
+                            }else{
+                                <option value="@item">@item</option>
+                            }
                         }
                     </select>
                     厨房
@@ -105,23 +135,27 @@
             <p class="input_line">
                 <label for="people_number"><span class="label">宜住人数</span>
                     <select id="people_number" name="@Html.DisplayNameFor(model => model.Kitchen)">
-                        <option value="">请选择</option>                     
-
+                        <option value="">请选择</option>         
                         @foreach (var item in number)
                         {
-                            <option value="@item">@item</option>
+                            if (item == Model.Kitchen)
+                            {
+                                <option value="@item" selected>@item</option>                                
+                            }else{
+                                <option value="@item">@item</option>
+                            }
                         }
                     </select>
                     人          
                 </label>
                 <label for="room_area">
                     <span class="label">面积</span>
-                    <input type="text" id="room_area" name="@Html.DisplayNameFor(model => model.h_r_acreage)">平米
+                    <input type="text" id="room_area" name="@Html.DisplayNameFor(model => model.h_r_acreage)" value="@Model.h_r_acreage">平米
                     <span class="col_red">*</span>
                 </label>
                 <label for="room_floor">
                     <span class="label">楼层</span>
-                    <input type="text" id="room_floor" name="@Html.DisplayNameFor(model => model.h_r_floor)">
+                    <input type="text" id="room_floor" name="@Html.DisplayNameFor(model => model.h_r_floor)" value="@Model.h_r_floor">
                     <span class="col_red">*</span>
                 </label>
     		</p>
@@ -132,7 +166,7 @@
                     <!-- </p> -->
                 </div>
                 <div class="float_l">
-                    <input id="bed_input" type="text" class="hide" name="@Html.DisplayNameFor(model => model.h_r_bed_type)">
+                    <input id="bed_input" type="text" class="hide" name="@Html.DisplayNameFor(model => model.h_r_bed_type)" value="@Model.h_r_bed_type">
                     <div id="bed_box">
                         <div class="bed_item hide">
                             <select class="bed">
@@ -180,7 +214,7 @@
     			</div>
     			<div class="float_l">
     				<p class="input_line">
-    					<textarea name="@Html.DisplayNameFor(model => model.h_r_description_cn)" id="room_describ" cols="80" rows="5"></textarea>
+    					<textarea name="@Html.DisplayNameFor(model => model.h_r_description_cn)" id="room_describ" cols="80" rows="5">@Model.h_r_description_cn</textarea>
     					<span class="col_red">*</span>
     				</p>
     			</div>
@@ -193,8 +227,7 @@
     			</div>
     			<div class="float_l">
     				<p class="input_line">
-    					<input type="text" id="room_remarks" name="@Html.DisplayNameFor(model => model.Comments)">
-    					<span class="col_red">*</span>
+    					<input type="text" id="room_remarks" name="@Html.DisplayNameFor(model => model.Comments)" value="@Model.Comments">
     				</p>
     			</div>
     		</div>
@@ -204,14 +237,14 @@
     			</div>
     			<div class="float_l checkbox_box">
     				<p class="input_line">
-                        <input type="text" class="hide" name="@Html.DisplayNameFor(model => model.house_service)">
+                        <input type="text" class="hide" name="@Html.DisplayNameFor(model => model.house_service)" value="@Model.house_service">
     					@foreach(var facility in room_facilitys){   
     				        <label class="w_sn"><input type="checkbox" class="multiple"  name="room_facilitys" value="@facility.Key"><span class="room_facility">@facility.Value</span></label>
     	                }					
     				</p>
     			</div>
     		</div>
-		<a href="javascript:document.forms[0].submit()" class="btn_b  checking_btn" id="btn_add_room">确定添加房型</a>
+		<a href="javascript:document.forms[0].submit()" class="btn_b  checking_btn" id="btn_add_room">确定<span>@ViewBag.Tag</span></a>
             
         </div>
 	</div>
