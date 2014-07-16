@@ -82,7 +82,7 @@ namespace SAS.Controllers
                 else
                     ViewBag.sign = 0;
             }
-           
+            ViewBag.HoltelId = room.hotel_id;
             getRooms(room.hotel_id);
             return View("Create", new hotel_room_info());
         }
