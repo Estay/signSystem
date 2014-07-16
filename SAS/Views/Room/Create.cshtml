@@ -242,9 +242,9 @@
     			</div>
     			<div class="float_l checkbox_box">
     				<p class="input_line">
-                        <input type="text" class="hide" name="@Html.DisplayNameFor(model => model.house_service)" value="@Model.house_service">
+                        <input id="room_facilitys" type="text" class="hide" name="@Html.DisplayNameFor(model => model.house_service)" value="@Model.house_service">
     					@foreach(var facility in room_facilitys){   
-    				        <label class="w_sn"><input type="checkbox" class="multiple"  name="room_facilitys" value="@facility.Key"><span class="room_facility">@facility.Value</span></label>
+    				        <label class="w_sn"><input type="checkbox" class="multiple room_f"  value="@facility.Key"><span class="room_facility">@facility.Value</span></label>
     	                }					
     				</p>
     			</div>

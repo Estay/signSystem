@@ -1,4 +1,4 @@
-/*2014年7月16日14:58:18*/
+/*2014年7月16日16:04:00*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -569,10 +569,10 @@
         var bed_input = $("#bed_input"), bed_val = bed_input.val();
         if (bed_val) {
             var bed_arr = bed_val.split(",");
+            $(".bed_item").eq(1).remove();
             for (var i = 0; i < bed_arr.length; i++) {
                 if (bed_arr[i]) {
                     var bed = bed_arr[i].split("|");
-                    $(".bed_item").eq(1).remove();
                     var clone = $(".bed_item.hide").clone().removeClass("hide");
                     clone.find(".bed").val(bed[0]);
                     clone.find(".number").val(bed[1]);
@@ -596,6 +596,13 @@
                 }
             });
             bed_input.val(text);
+        }
+    })();
+    (function() {
+        var room_facilitys = $("#room_facilitys"), val_arr = room_facilitys.val().split(",");
+        for (var i = 0; i < val_arr.length; i++) {
+            var f = val_arr[i];
+            $(".room_f[value='" + f + "']").attr("checked", true);
         }
     })();
     $("#room_describ").e_input_tip({
