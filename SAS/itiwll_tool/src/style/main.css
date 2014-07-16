@@ -262,3 +262,11 @@
 	vertical-align: middle;
 	margin-bottom: 10px;
 }
+
+
+.end_box {
+	min-height: 400px;
+}
+.end_box p{
+	margin-top: 100px;
+}
