@@ -54,6 +54,7 @@ namespace SAS.Controllers
         //修改房型
         public ActionResult update(string roomId)
         {
+
             ViewBag.Tag = "修改房型";
             int RId = Convert.ToInt32(roomId);
             //getRooms(Convert.ToInt32(hotelId));
@@ -61,6 +62,7 @@ namespace SAS.Controllers
             getfacilities();
              hotel_room_info room= (from h in db.room where h.room_id == RId select h).Single();
              getRooms(room.hotel_id);
+             ViewBag.HoltelId = room.hotel_id;
              return View("Create", room);
         }
         //删除房型
@@ -106,12 +108,29 @@ namespace SAS.Controllers
         {
 
             
-
+            
            
-            if ((from r in db.room where r.room_id == hotel_room_info.room_id select r).Count() > 0)
+            if ( hotel_room_info.room_id> 0)
             {
-                db.Entry(hotel_room_info).State = System.Data.EntityState.Modified;
-                db.SaveChanges();
+                var room=(from r in db.room where r.room_id == hotel_room_info.room_id select r).Single();
+                if (room!=null)
+                {
+                    room.h_r_name_cn = hotel_room_info.h_r_name_cn;
+                    room.h_r_bed_type = hotel_room_info.h_r_bed_type;
+                    room.h_r_description_cn = hotel_room_info.h_r_description_cn;
+                    room.h_r_floor = hotel_room_info.h_r_floor;
+                    room.Comments = hotel_room_info.Comments;
+                    room.house_service = hotel_room_info.house_service;
+                    room.Sitting_room = hotel_room_info.Sitting_room;
+                    room.Study = room.Study;
+                    room.Kitchen = room.Kitchen;
+                    room.h_r_utime = DateTime.Now;
+                    room.h_r_people_number = hotel_room_info.h_r_people_number;
+                    room.h_r_house_number = hotel_room_info.h_r_house_number;
+                    room.h_r_bedroom_number = hotel_room_info.h_r_bedroom_number;
+                    room.h_r_acreage = hotel_room_info.h_r_acreage;
+                   // db.SaveChanges();
+                }
                 
             }
             else
@@ -140,7 +159,7 @@ namespace SAS.Controllers
             getRooms(hotel_room_info.hotel_id);
             ViewBag.HoltelId = hotel_room_info.hotel_id;
             ViewBag.Tag = "增加房型";
-         
+            getRooms(hotel_room_info.hotel_id);
             return View(new hotel_room_info());
         }
         public void getRooms(int hotel_id)
