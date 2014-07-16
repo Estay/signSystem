@@ -249,7 +249,11 @@
     				</p>
     			</div>
     		</div>
-		<a href="javascript:document.forms[0].submit()" class="btn_b  checking_btn" id="btn_add_room">确定<span>@ViewBag.Tag</span></a>
+        <a href="javascript:document.forms[0].submit()" class="btn_b  checking_btn" id="btn_add_room">确定<span>@ViewBag.Tag</span></a>
+        @if (ViewBag.Tag == "修改房型")
+        {
+   		<a href="/Room/Create?hotelId=@hotelId" class="btn_b">取消修改</a>
+        }
             
         </div>
 	</div>
@@ -258,7 +262,7 @@
 	<div class="btn_box">
 		<!-- <a href="/AddHotel/Create?hotelId=@hotelId" class="previou btn_a">上一步</a> -->
         
-		<a href="/Price/Create?hotelId=@hotelId" id="save_room_info" class="btn_a btn_save_step">保存进入下一步</a>
+        <a href="/Price/Create?hotelId=@hotelId" id="save_room_info" class="btn_a btn_save_step">保存进入下一步</a>
 	</div>
     
 </div>
