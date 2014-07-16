@@ -196,7 +196,7 @@
     <Compile Include="Models\hotel_room_RP_price_info.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\hotel_info.cs" />
-    <Compile Include="Models\Hotel_room_info.cs" />
+    <Compile Include="Models\hotel_room_info.cs" />
     <Compile Include="Models\hotel_room_picture_info.cs" />
     <Compile Include="Models\hotel_theme_info.cs" />
     <Compile Include="Models\Hotel_theme_type_info.cs" />

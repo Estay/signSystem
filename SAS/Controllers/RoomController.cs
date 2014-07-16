@@ -28,7 +28,7 @@ namespace SAS.Controllers
         public ActionResult Details(int id = 0)
         {
             ViewBag.sign = 1;
-            Hotel_room_info hotel_room_info = db.room.Find(id);
+            hotel_room_info hotel_room_info = db.room.Find(id);
             if (hotel_room_info == null)
             {
                 return HttpNotFound();
@@ -49,7 +49,7 @@ namespace SAS.Controllers
             getRooms(Convert.ToInt32(hotelId));
             string f = hotelId;
             getfacilities();
-            return View(new Hotel_room_info());
+            return View(new hotel_room_info());
         }
         //修改房型
         public ActionResult update(string roomId)
@@ -59,7 +59,7 @@ namespace SAS.Controllers
             //getRooms(Convert.ToInt32(hotelId));
             //string f = hotelId;
             getfacilities();
-             Hotel_room_info room= (from h in db.room where h.room_id == RId select h).Single();
+             hotel_room_info room= (from h in db.room where h.room_id == RId select h).Single();
              getRooms(room.hotel_id);
              return View("Create", room);
         }
@@ -70,7 +70,7 @@ namespace SAS.Controllers
             //getRooms(Convert.ToInt32(hotelId));
             //string f = hotelId;
             getfacilities();
-            Hotel_room_info room = db.room.Find(Convert.ToInt32(roomId));
+            hotel_room_info room = db.room.Find(Convert.ToInt32(roomId));
             if (room != null)
             {
 
@@ -82,7 +82,7 @@ namespace SAS.Controllers
             }
            
             getRooms(room.hotel_id);
-            return View("Create", new Hotel_room_info());
+            return View("Create", new hotel_room_info());
         }
         //验证房型是否存在
         public int IsOk(string hotelId,string text)
@@ -102,7 +102,7 @@ namespace SAS.Controllers
         // POST: /Room/Create
 
         [HttpPost]
-        public ActionResult Create(Hotel_room_info hotel_room_info)
+        public ActionResult Create(hotel_room_info hotel_room_info)
         {
 
             
@@ -141,20 +141,20 @@ namespace SAS.Controllers
             ViewBag.HoltelId = hotel_room_info.hotel_id;
             ViewBag.Tag = "增加房型";
          
-            return View(new Hotel_room_info());
+            return View(new hotel_room_info());
         }
         public void getRooms(int hotel_id)
         {
             //List<hotel_room_info> roomsList = (from r in db.room where r.hotel_id == hotel_id select r).ToList();
             ViewData["rooms"] = DBhelp.getRooms(hotel_id);
-            ViewData["bedTypes"] = new Hotel_room_info().getBedType();
+            ViewData["bedTypes"] = new hotel_room_info().getBedType();
         }
         //
         // GET: /Room/Edit/5
 
         public ActionResult Edit(int id = 0)
         {
-            Hotel_room_info hotel_room_info = db.room.Find(id);
+            hotel_room_info hotel_room_info = db.room.Find(id);
             if (hotel_room_info == null)
             {
                 return HttpNotFound();
@@ -166,7 +166,7 @@ namespace SAS.Controllers
         // POST: /Room/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(Hotel_room_info hotel_room_info)
+        public ActionResult Edit(hotel_room_info hotel_room_info)
         {
             //db.Entry(hotel_room_info).State=e
             if (ModelState.IsValid)
@@ -183,7 +183,7 @@ namespace SAS.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            Hotel_room_info hotel_room_info = db.room.Find(id);
+            hotel_room_info hotel_room_info = db.room.Find(id);
             if (hotel_room_info == null)
             {
                 return HttpNotFound();
@@ -197,7 +197,7 @@ namespace SAS.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Hotel_room_info hotel_room_info = db.room.Find(id);
+            hotel_room_info hotel_room_info = db.room.Find(id);
             db.room.Remove(hotel_room_info);
             db.SaveChanges();
             return RedirectToAction("Index");
