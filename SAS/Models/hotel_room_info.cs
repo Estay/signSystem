@@ -25,7 +25,7 @@ namespace SAS.Models
         private int _h_r_reserve = 1;
         private string _h_r_bed_number = "1";
         private string _h_r_bed_type;
-        private string _h_r_bathroom_number;
+        private int _h_r_bathroom_number;
         private string _h_r_floor;
         private int? _h_r_least_day = 1;
         private int? _h_r_longest_day;
@@ -185,7 +185,7 @@ namespace SAS.Models
         /// <summary>
         /// 卫生间数(暂不用)
         /// </summary>
-        public string h_r_bathroom_number
+        public int h_r_bathroom_number
         {
             set { _h_r_bathroom_number = value; }
             get { return _h_r_bathroom_number; }

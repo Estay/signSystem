@@ -42,7 +42,7 @@ namespace SAS.Controllers
         {
             hotelId = "48385";
             ViewBag.HoltelId = hotelId;
-          
+            ViewBag.Tag = "增加房型";
             getRooms(Convert.ToInt32(hotelId));
             string f = hotelId;
             getfacilities();
@@ -51,6 +51,7 @@ namespace SAS.Controllers
         //修改房型
         public ActionResult update(string roomId)
         {
+            ViewBag.Tag = "修改房型";
             int RId = Convert.ToInt32(roomId);
             //getRooms(Convert.ToInt32(hotelId));
             //string f = hotelId;
@@ -147,6 +148,7 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult Edit(hotel_room_info hotel_room_info)
         {
+            //db.Entry(hotel_room_info).State=e
             if (ModelState.IsValid)
             {
                 //db.Entry(hotel_room_info).State = EntityState.Modified;
