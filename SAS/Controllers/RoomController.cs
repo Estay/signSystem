@@ -40,13 +40,13 @@ namespace SAS.Controllers
 
         public ActionResult Create(string hotelId)
         {
-            //hotelId = "48385";
+            hotelId = "48385";
             ViewBag.HoltelId = hotelId;
           
             getRooms(Convert.ToInt32(hotelId));
             string f = hotelId;
             getfacilities();
-            return View();
+            return View(new hotel_room_info());
         }
         //修改房型
         public ActionResult update(string roomId)
@@ -111,11 +111,11 @@ namespace SAS.Controllers
             hotel_room_info.h_r_state = true;
             hotel_room_info.h_r_reserve = 3;
             var errors = ModelState.Values.SelectMany(v => v.Errors); 
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                
-                return RedirectToAction("Index");
-            }
+            //    return RedirectToAction("Index");
+            //}
             db.room.Add(hotel_room_info);
             db.SaveChanges();
             getRooms(hotel_room_info.hotel_id);
