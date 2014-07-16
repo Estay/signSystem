@@ -1,9 +1,9 @@
-﻿@model SAS.Models.hotel_room_info
+﻿@model SAS.Models.Hotel_room_info
 
 @{
     ViewBag.Title = "录入房型";
     object  hotelId=ViewBag.HoltelId;
-    List<SAS.Models.hotel_room_info> roomList =ViewData["rooms"] as List<SAS.Models.hotel_room_info>;
+    List<SAS.Models.Hotel_room_info> roomList = ViewData["rooms"] as List<SAS.Models.Hotel_room_info>;
     int hotel_id = 0;
     Dictionary<int, String> room_facilitys = ViewData["facilities"] as Dictionary<int, string>;
     int[] number = new int[] { 0, 1, 2, 3, 4, 8, 6, 7, 8, 9, 10 };

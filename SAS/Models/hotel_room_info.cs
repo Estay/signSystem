@@ -7,7 +7,7 @@ using System.Data.Entity;
 
 namespace SAS.Models
 {
-    public class hotel_room_info
+    public class Hotel_room_info
     {
         
         #region Model
@@ -301,6 +301,6 @@ namespace SAS.Models
     }
     public class hotel_room_infoDBContent : DbContext
     {
-        public DbSet<hotel_room_info> room { get; set; }
+        public DbSet<Hotel_room_info> room { get; set; }
     }
 }

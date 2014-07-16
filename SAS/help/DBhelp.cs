@@ -51,7 +51,7 @@ namespace SAS.help
             string str = JsonConvert.SerializeObject(list, settings);
             return str;
         }
-        public static List<hotel_room_info> getRooms(int hotel_id)
+        public static List<Hotel_room_info> getRooms(int hotel_id)
         {
             return (from r in new hotel_room_infoDBContent().room where r.hotel_id == hotel_id select r).ToList();
         }
