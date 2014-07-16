@@ -639,16 +639,28 @@
 					return false;
 				};
 			});
-
 			$(".room_img_item").each(function(index, el) {
 				if($(this).find('.img_set').length<5){
 					status = 2;
 				}
 			});
+			$("#bed_input").each(function() {
+				if(!$(this).val()){
+					status = 3;
+				}
+			});
 			if (status == 0) {
 				document.forms[0].submit();
-			}else if(status == 1 || status == 2){
-				var Message = status==1?"填写的信息没有通过验证，请检查。":"每个房型图片不能少于5张。";
+			}else {
+				if(status == 1){
+					var Message = "填写的信息没有通过验证，请检查。";
+				};
+				if(status == 2){
+					var Message = "每个房型图片不能少于5张。";
+				};
+				if(status == 3) {
+					var Message = "必须设置房型";
+				};
 				el.e_window({
 					relative_mod : "right",
 					left : 30,
