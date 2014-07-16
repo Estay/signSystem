@@ -39,8 +39,24 @@
 				focusin(el);
 
 			})
-			// 失去焦点 调整样式 验证规则 
+			// 失去焦点 调整样式
 			.focusout(function(event) {
+
+				if(el.val()=="" || el.val()==settings.space){
+					//为空回到初始状态
+					init(el);
+				}
+			})
+			// 输入时调整样式 去除错误提示
+			.keyup(function(event) {
+				var el = $(this);
+				if (el.val()==settings.space) {
+					el.addClass('col_gray');
+				}else {
+					el.removeClass('col_gray');
+				};
+			})
+			.bind("input_tip_checking",function () {
 				var el = $(this);
 
 				if(el.val()=="" || el.val()==settings.space){
@@ -55,15 +71,6 @@
 					ruleValidate(el,el.val());
 				}
 			})
-			// 输入时调整样式 去除错误提示
-			.keyup(function(event) {
-				var el = $(this);
-				if (el.val()==settings.space) {
-					el.addClass('col_gray');
-				}else {
-					el.removeClass('col_gray');
-				};
-			});
 
 			// 初始化的状态
 			function init (el) {

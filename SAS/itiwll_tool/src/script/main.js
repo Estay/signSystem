@@ -357,7 +357,7 @@
 			$("#bed_box").find('.bed_item').each(function(index, el) {
 				if ($(this).find('bed').val()&&$(this).find('number').val()) {
 					n++;
-					text = $(this).find('bed').val()+"x"+$(this).find('number').val()+";";
+					text = $(this).find('bed').val()+"|"+$(this).find('number').val()+",";
 				};
 			});
 			bed_input.val(text);
@@ -399,14 +399,14 @@
 
 
 
-	//房价
+	/////////////////////////////房价///////////////////////////////////////
 	$(".room_pr").e_input_tip({
 		space : 0,
 		rule : /^\d+$/
 	})
 	
 
-	//上传图片
+	///////////////////////////////////////上传图片/////////////////////////
 	function upload_img(els) {
 		els.each(function(index, el) {
 			var el = $(el),
@@ -561,6 +561,9 @@
 	});
 
 
+
+	//////////////////////////////////功能按钮//////////////////////////////////////	
+
 	//多选值处理
 	$(".multiple").change(function(event) {
 		var checkbox_box = $(this).parents(".checkbox_box"),
@@ -601,30 +604,34 @@
 	$(".checking_btn").click(function(event) {
 		event.preventDefault();
 		var status = 0;
-		var input = $(this).parents(".box_a").find('input[type=text],select[name],textarea[name]').focusout().each(function(index, el) {
-			if ($(this).attr('rules_error')||$(this).attr('rules_error')=="") {
-				status = 1;
-				return false;
-			};
-		});
-		$(".room_img_item").each(function(index, el) {
-			if($(this).find('.img_set').length<5){
-				status = 2;
-			}
-		});
-		if (status == 0) {
-			document.forms[0].submit();
-		}else if(status == 1 || status == 2){
-			var Message = status==1?"填写的信息没有通过验证，请检查。":"每个房型图片不能少于5张。";
-			var a = $(this).e_window({
-				top : 30,
-				width: "auto",
-				html: "<div class='red_tip_box'>"+ Message +"</div>"
+		var input = $(this).parents(".box_a").find('input[type=text],select[name],textarea[name]').trigger("input_tip_checking");
+		setTimeout(function() {
+			input.each(function(index, el) {
+				if ($(this).attr('rules_error')||$(this).attr('rules_error')=="") {
+					status = 1;
+					return false;
+				};
 			});
-			setTimeout(function() {
-				a.e_window_kill();
-			}, 5000);
-		};
+
+			$(".room_img_item").each(function(index, el) {
+				if($(this).find('.img_set').length<5){
+					status = 2;
+				}
+			});
+			if (status == 0) {
+				document.forms[0].submit();
+			}else if(status == 1 || status == 2){
+				var Message = status==1?"填写的信息没有通过验证，请检查。":"每个房型图片不能少于5张。";
+				var a = $(this).e_window({
+					top : 30,
+					width: "auto",
+					html: "<div class='red_tip_box'>"+ Message +"</div>"
+				});
+				setTimeout(function() {
+					a.e_window_kill();
+				}, 5000);
+			};				
+		}, 200);
 	});
 
 })(jQuery);
