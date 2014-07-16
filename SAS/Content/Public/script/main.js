@@ -1,4 +1,4 @@
-/*2014年7月16日13:39:39*/
+/*2014年7月16日14:53:20*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -566,6 +566,20 @@
         $(this).before(clone);
     });
     (function() {
+        var bed_input = $("#bed_input"), bed_val = bed_input.val();
+        if (bed_val) {
+            var bed_arr = bed_val.split(",");
+            for (var i = 0; i < bed_arr.length; i++) {
+                if (bed_arr[i]) {
+                    var bed = bed_arr[i].split("|");
+                    $(".bed_item").eq(1).remove();
+                    var clone = $(".bed_item.hide").clone().removeClass("hide");
+                    clone.find(".bed").val(bed[0]);
+                    clone.find(".number").val(bed[1]);
+                    $(".bed_add").before(clone);
+                }
+            }
+        }
         $("#bed_box").on("click", ".bed_del", function(event) {
             event.preventDefault();
             $(this).parents(".bed_item").remove();
@@ -575,7 +589,7 @@
             setBedInput();
         });
         function setBedInput() {
-            var bed_input = $("#bed_input"), text = "";
+            var text = "";
             $("#bed_box").find(".bed_item").each(function(index, el) {
                 if ($(this).find(".bed").val() && $(this).find(".number").val()) {
                     text = text + $(this).find(".bed").val() + "|" + $(this).find(".number").val() + ",";

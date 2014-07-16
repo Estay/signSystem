@@ -338,6 +338,22 @@
 
 
 	(function() {
+		var bed_input = $("#bed_input"),
+			bed_val = bed_input.val();
+
+		if (bed_val) {
+			var bed_arr = bed_val.split(",");
+			for (var i = 0; i < bed_arr.length; i++) {
+				if(bed_arr[i]){
+					var bed = bed_arr[i].split("|");
+					$(".bed_item").eq(1).remove();
+					var clone = $(".bed_item.hide").clone().removeClass('hide');
+					clone.find(".bed").val(bed[0]);
+					clone.find(".number").val(bed[1]);
+					$(".bed_add").before(clone);
+				}
+			};
+		};
 
 		// 删除床型
 		$("#bed_box").on('click', '.bed_del', function(event) {
@@ -352,8 +368,7 @@
 		});
 
 		function setBedInput () {
-			var bed_input = $("#bed_input"),
-				text = "";
+			var text = "";
 			$("#bed_box").find('.bed_item').each(function(index, el) {
 				if ($(this).find('.bed').val()&&$(this).find('.number').val()) {
 					text = text + $(this).find('.bed').val()+"|"+$(this).find('.number').val()+",";
