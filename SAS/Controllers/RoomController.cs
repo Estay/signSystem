@@ -117,11 +117,10 @@ namespace SAS.Controllers
             else
             {
                 hotel_room_info.hotel_id = 48385;
-                hotel_room_info.h_r_id = "004";
+                //hotel_room_info.h_r_id = "004";
                 hotel_room_info.h_r_utime = DateTime.Now;
                 hotel_room_info.h_r_ctime = DateTime.Now;
-                hotel_room_info.h_r_bed_type = "大床房";
-                hotel_room_info.h_r_bed_number = "1";
+            ;
                 hotel_room_info.h_r_state = true;
                 hotel_room_info.h_r_reserve = 3;
                 var errors = ModelState.Values.SelectMany(v => v.Errors);
