@@ -154,7 +154,11 @@
                         </div>
                         <div class="bed_item">
                             <select class="bed">
-                                <option value="">选择床型</option>                     
+                                <option value="">选择床型</option>
+                                @foreach (var item in bedTypes)
+                                {
+                                <option value="@item">@item</option>
+                                }  
                             </select>
                             <select class="number">
                                 <option value="">选择数量</option>
