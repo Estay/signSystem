@@ -38,6 +38,36 @@ namespace SAS.Models
         private string _comments;
         private int? _capacity = 0;
         private string _house_service;
+        private int sitting_room;
+
+        public int Sitting_room
+        {
+            get { return sitting_room; }
+            set { sitting_room = value; }
+        }
+        private int study;
+
+        public int Study
+        {
+            get { return study; }
+            set { study = value; }
+        }
+        private int balcony;
+
+        public int Balcony
+        {
+            get { return balcony; }
+            set { balcony = value; }
+        }
+        private int kitchen;
+
+        public int Kitchen
+        {
+            get { return kitchen; }
+            set { kitchen = value; }
+        }
+
+
         /// <summary>
         /// 我库房型编号
         /// </summary>
@@ -257,6 +287,17 @@ namespace SAS.Models
             get { return _house_service; }
         }
         #endregion Model   
+        //床型
+        public List<string> getBedType()
+        {
+            List<string> dic = new  List<string>();
+            string[] str = System.Configuration.ConfigurationManager.AppSettings["BedType"].Split(',');
+            for (int i = 0; i < str.Length; i++)
+            {
+                dic.Add(str[i].Trim());
+            }
+            return dic;
+        }
     }
     public class hotel_room_infoDBContent : DbContext
     {
