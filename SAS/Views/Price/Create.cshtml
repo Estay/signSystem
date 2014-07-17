@@ -21,9 +21,9 @@
         {
             int index = Convert.ToInt32(@Convert.ToInt32(i++));
         <p class="input_line">
-            <span class="input_room_rp_name">大床房大床房大床房大床房</span>
+            <span class="input_room_rp_name">@room.h_r_name_cn</span>
             <label for="?????">
-                <span class="label">@room.h_r_name_cn</span>
+                <span class="label">标准价</span>
                 <input id="roomId" class="hide" type="text" name="hotel_room_RP_price_info[@index].room_id" value="@room.room_id">
                 <input id="hotelId" class="hide" type="text" name="hotel_room_RP_price_info[@index].hotel_id" value="@room.hotel_id">            
                 <input id="weekend" class="hide" type="text" name="hotel_room_RP_price_info[@index].weekend" value="120">   

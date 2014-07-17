@@ -40,7 +40,7 @@ namespace SAS.Controllers
 
         public ActionResult Create(string hotelId)
         {
-            hotelId = "48385";
+           // hotelId = "48385";
             ViewBag.HotelId = hotelId;
             ViewData["ImageTypes"] = new hotel_picture_info().getImageType();
             getRooms(Convert.ToInt32(hotelId));

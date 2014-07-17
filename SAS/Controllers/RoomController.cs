@@ -43,7 +43,7 @@ namespace SAS.Controllers
         {
             ViewData["Tag"] = "增加房型";
             ViewBag.sign = 3;
-            hotelId = "48385";
+            //hotelId = "48385";
             ViewBag.HoltelId = hotelId;
             ViewBag.Tag = "增加房型";
             getRooms(Convert.ToInt32(hotelId));
@@ -106,9 +106,7 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult Create(hotel_room_info hotel_room_info)
         {
-
-            
-            
+       
            
             if ( hotel_room_info.room_id> 0)
             {
@@ -135,7 +133,7 @@ namespace SAS.Controllers
             }
             else
             {
-                hotel_room_info.hotel_id = 48385;
+                //hotel_room_info.hotel_id = 48385;
                 hotel_room_info.h_r_id = "004";
                 hotel_room_info.h_r_utime = DateTime.Now;
                 hotel_room_info.h_r_ctime = DateTime.Now;
