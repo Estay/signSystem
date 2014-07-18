@@ -167,6 +167,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AddHotelController.cs" />
+    <Compile Include="Controllers\ComentController.cs" />
     <Compile Include="Controllers\DrrRuleController.cs" />
     <Compile Include="Controllers\GiftController.cs" />
     <Compile Include="Controllers\GuaranteeController.cs" />
@@ -199,6 +200,7 @@
     <Compile Include="Models\DrrRule.cs" />
     <Compile Include="Models\Gift.cs" />
     <Compile Include="Models\GuaranteeRule.cs" />
+    <Compile Include="Models\Hotel_comment_info.cs" />
     <Compile Include="Models\hotel_picture_info.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -399,6 +401,11 @@
     <Content Include="Views\Order\Create.cshtml" />
     <Content Include="Views\Order\Edit.cshtml" />
     <Content Include="Views\Order\Delete.cshtml" />
+    <Content Include="Views\Coment\Index.cshtml" />
+    <Content Include="Views\Coment\Details.cshtml" />
+    <Content Include="Views\Coment\Create.cshtml" />
+    <Content Include="Views\Coment\Edit.cshtml" />
+    <Content Include="Views\Coment\Delete.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,189 @@
+﻿@model SAS.Models.Hotel_comment_info
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Hotel_comment_info</legend>
+
+        @Html.HiddenFor(model => model.commentId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.guid)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.guid)
+            @Html.ValidationMessageFor(model => model.guid)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.orderID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.orderID)
+            @Html.ValidationMessageFor(model => model.orderID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.commentSourceId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.commentSourceId)
+            @Html.ValidationMessageFor(model => model.commentSourceId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.content)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.content)
+            @Html.ValidationMessageFor(model => model.content)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.createTime)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.createTime)
+            @Html.ValidationMessageFor(model => model.createTime)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.locations)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.locations)
+            @Html.ValidationMessageFor(model => model.locations)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.userName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.userName)
+            @Html.ValidationMessageFor(model => model.userName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.tel_mobile)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.tel_mobile)
+            @Html.ValidationMessageFor(model => model.tel_mobile)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.recommendType)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.recommendType)
+            @Html.ValidationMessageFor(model => model.recommendType)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.room_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.room_id)
+            @Html.ValidationMessageFor(model => model.room_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.room_name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.room_name)
+            @Html.ValidationMessageFor(model => model.room_name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.title)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.title)
+            @Html.ValidationMessageFor(model => model.title)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.hotel_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.hotel_id)
+            @Html.ValidationMessageFor(model => model.hotel_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.commentTypeId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.commentTypeId)
+            @Html.ValidationMessageFor(model => model.commentTypeId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.approve_count)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.approve_count)
+            @Html.ValidationMessageFor(model => model.approve_count)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.status)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.status)
+            @Html.ValidationMessageFor(model => model.status)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IsReply)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsReply)
+            @Html.ValidationMessageFor(model => model.IsReply)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.answer)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.answer)
+            @Html.ValidationMessageFor(model => model.answer)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.answer_time)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.answer_time)
+            @Html.ValidationMessageFor(model => model.answer_time)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.sign)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.sign)
+            @Html.ValidationMessageFor(model => model.sign)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
