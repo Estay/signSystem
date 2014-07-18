@@ -1,7 +1,12 @@
-﻿@model SAS.Models.hotel_picture_info
+﻿@model IEnumerable<SAS.Models.hotel_picture_info>
 
 @{
     ViewBag.Title = "Image";
 }
 
 <h2>Image</h2>
+@foreach (var item in Model) {
+   
+            @Html.DisplayFor(modelItem => item.h_p_id)
+        
+        }

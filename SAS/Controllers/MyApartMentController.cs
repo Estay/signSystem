@@ -12,14 +12,35 @@ namespace SAS.Controllers
     public class MyApartMentController : Controller
     {
         private hotel_infoDBContent db = new hotel_infoDBContent();
-
-        //
+        private hotel_infoDBContent dbHotel = new hotel_infoDBContent();
+        private PictureDBContent dbImage = new PictureDBContent();
+        private hotel_room_infoDBContent dbRoom = new hotel_room_infoDBContent();
         // GET: /MyApartMent/
 
-        public ActionResult Index()
+        //酒店信息
+        public ActionResult Hotel(string hotelId)
         {
-            return View(db.hotel.ToList());
+            int hotel_id=0;
+            int.TryParse(hotelId, out hotel_id);                     
+            return View(dbHotel.hotel.Single(h=>h.hotel_id==hotel_id));
         }
+        //房型
+        public ActionResult Room(string hotelId)
+        {
+            int hotel_id = 0;
+            int.TryParse(hotelId, out hotel_id);         
+            return View((dbRoom.room.ToList().Where(r=>r.hotel_id==hotel_id)).ToList());
+        }
+        //图片
+        public ActionResult Image(string hotelId)
+        {
+            int hotel_id = 0;
+            int.TryParse(hotelId, out hotel_id);
+            int[]rf = (from r in dbRoom.room where r.hotel_id == hotel_id select r.room_id).ToArray();           
+            return View((from image in dbImage.room where rf.Contains(image.hotel_id) select image).ToList()); 
+        }
+
+    
 
         //
         // GET: /MyApartMent/Details/5

@@ -1,7 +1,12 @@
-﻿@model SAS.Models.hotel_room_info
+﻿@model IEnumerable<SAS.Models.hotel_room_info>
 
 @{
-    ViewBag.Title = "Room";
+    ViewBag.Title = "Index";
 }
 
+@foreach (var item in Model) {
+   
+            @Html.DisplayFor(modelItem => item.h_r_name_cn)
+        
+        }
 <h2>Room</h2>
