@@ -167,12 +167,17 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AddHotelController.cs" />
+    <Compile Include="Controllers\DrrRuleController.cs" />
+    <Compile Include="Controllers\GiftController.cs" />
+    <Compile Include="Controllers\GuaranteeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\ImagePropertyController.cs" />
     <Compile Include="Controllers\MyApartMentController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\PriceController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
+    <Compile Include="Controllers\RStatusController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -191,6 +196,9 @@
     <Compile Include="help\location.ashx.cs">
       <DependentUpon>location.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Models\DrrRule.cs" />
+    <Compile Include="Models\Gift.cs" />
+    <Compile Include="Models\GuaranteeRule.cs" />
     <Compile Include="Models\hotel_picture_info.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -201,6 +209,8 @@
     <Compile Include="Models\hotel_room_picture_info.cs" />
     <Compile Include="Models\hotel_theme_info.cs" />
     <Compile Include="Models\Hotel_theme_type_info.cs" />
+    <Compile Include="Models\Order_info.cs" />
+    <Compile Include="Models\Room_status_info.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -347,21 +357,6 @@
     <Content Include="Views\Image\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\MyApartMent\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\MyApartMent\Details.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\MyApartMent\Create.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\MyApartMent\Edit.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\MyApartMent\Delete.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="help\FileHandle.ashx" />
   </ItemGroup>
   <ItemGroup>
@@ -375,6 +370,35 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\sas.pubxml" />
+    <Content Include="Views\MyApartMent\Hotel.cshtml" />
+    <Content Include="Views\MyApartMent\Room.cshtml" />
+    <Content Include="Views\MyApartMent\Price.cshtml" />
+    <Content Include="Views\MyApartMent\Image.cshtml" />
+    <Content Include="Views\DrrRule\Index.cshtml" />
+    <Content Include="Views\DrrRule\Details.cshtml" />
+    <Content Include="Views\DrrRule\Create.cshtml" />
+    <Content Include="Views\DrrRule\Edit.cshtml" />
+    <Content Include="Views\DrrRule\Delete.cshtml" />
+    <Content Include="Views\Gift\Index.cshtml" />
+    <Content Include="Views\Gift\Details.cshtml" />
+    <Content Include="Views\Gift\Create.cshtml" />
+    <Content Include="Views\Gift\Edit.cshtml" />
+    <Content Include="Views\Gift\Delete.cshtml" />
+    <Content Include="Views\Guarantee\Index.cshtml" />
+    <Content Include="Views\Guarantee\Details.cshtml" />
+    <Content Include="Views\Guarantee\Create.cshtml" />
+    <Content Include="Views\Guarantee\Edit.cshtml" />
+    <Content Include="Views\Guarantee\Delete.cshtml" />
+    <Content Include="Views\RStatus\Index.cshtml" />
+    <Content Include="Views\RStatus\Details.cshtml" />
+    <Content Include="Views\RStatus\Create.cshtml" />
+    <Content Include="Views\RStatus\Edit.cshtml" />
+    <Content Include="Views\RStatus\Delete.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Order\Details.cshtml" />
+    <Content Include="Views\Order\Create.cshtml" />
+    <Content Include="Views\Order\Edit.cshtml" />
+    <Content Include="Views\Order\Delete.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

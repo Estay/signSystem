@@ -1,0 +1,129 @@
+﻿@model IEnumerable<SAS.Models.DrrRule>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TypeCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DayNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckInNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EveryCheckInNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastDayNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WhichDayNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CashScale)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeductNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WeekSet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FeeType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hotel_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.h_room_rp_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RatePlanId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TypeCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DayNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckInNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EveryCheckInNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastDayNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WhichDayNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CashScale)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeductNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WeekSet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FeeType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hotel_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.h_room_rp_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RatePlanId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

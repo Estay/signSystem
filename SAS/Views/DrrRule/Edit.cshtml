@@ -1,0 +1,167 @@
+﻿@model SAS.Models.DrrRule
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>DrrRule</legend>
+
+        @Html.HiddenFor(model => model.id)
+
+        @Html.HiddenFor(model => model.DrrRuleId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TypeCode)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TypeCode)
+            @Html.ValidationMessageFor(model => model.TypeCode)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DateType)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DateType)
+            @Html.ValidationMessageFor(model => model.DateType)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StartDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.StartDate)
+            @Html.ValidationMessageFor(model => model.StartDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EndDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EndDate)
+            @Html.ValidationMessageFor(model => model.EndDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DayNum)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DayNum)
+            @Html.ValidationMessageFor(model => model.DayNum)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CheckInNum)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CheckInNum)
+            @Html.ValidationMessageFor(model => model.CheckInNum)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EveryCheckInNum)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EveryCheckInNum)
+            @Html.ValidationMessageFor(model => model.EveryCheckInNum)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LastDayNum)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LastDayNum)
+            @Html.ValidationMessageFor(model => model.LastDayNum)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.WhichDayNum)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.WhichDayNum)
+            @Html.ValidationMessageFor(model => model.WhichDayNum)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CashScale)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CashScale)
+            @Html.ValidationMessageFor(model => model.CashScale)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DeductNum)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DeductNum)
+            @Html.ValidationMessageFor(model => model.DeductNum)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.WeekSet)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.WeekSet)
+            @Html.ValidationMessageFor(model => model.WeekSet)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FeeType)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FeeType)
+            @Html.ValidationMessageFor(model => model.FeeType)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.hotel_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.hotel_id)
+            @Html.ValidationMessageFor(model => model.hotel_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.h_room_rp_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.h_room_rp_id)
+            @Html.ValidationMessageFor(model => model.h_room_rp_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RatePlanId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RatePlanId)
+            @Html.ValidationMessageFor(model => model.RatePlanId)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

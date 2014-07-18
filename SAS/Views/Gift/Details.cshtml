@@ -1,0 +1,120 @@
+﻿@model SAS.Models.Gift
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Gift</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HotelGiftId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HotelGiftId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HotelCode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HotelCode)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateType)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateType)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.WeekSet)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.WeekSet)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GiftContent)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GiftContent)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GiftContentEn)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GiftContentEn)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GiftTypes)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GiftTypes)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HourType)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HourType)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HourNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HourNumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.WayOfGiving)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.WayOfGiving)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.WayOfGivingOther)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.WayOfGivingOther)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.WayOfGivingOtherEn)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.WayOfGivingOtherEn)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.hotel_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.hotel_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_room_rp_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_room_rp_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RatePlanId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RatePlanId)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.GiftId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

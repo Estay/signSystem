@@ -1,0 +1,354 @@
+﻿@model SAS.Models.Order_info
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Order_info</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.o_SerialId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.o_SerialId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.hotel_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.hotel_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.hotel_name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.hotel_name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.hotel_address)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.hotel_address)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.hotel_Tel)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.hotel_Tel)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.hotel_description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.hotel_description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.u_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.u_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.o_userFromdb)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.o_userFromdb)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.room_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.room_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.room_name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.room_name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.room_descript)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.room_descript)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.r_number_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.r_number_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.h_room_rp_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.h_room_rp_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.rp_name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.rp_name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.rp_description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.rp_description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.rp_price_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.rp_price_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.rp_price_description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.rp_price_description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.o_state_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.o_state_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.o_state_change_log)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.o_state_change_log)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.o_title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.o_title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.o_number)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.o_number)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.o_total_price)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.o_total_price)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.o_unit_price)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.o_unit_price)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.o_isbuy)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.o_isbuy)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.o_ctime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.o_ctime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.o_buy_time)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.o_buy_time)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.o_user_name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.o_user_name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.o_user_phone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.o_user_phone)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.o_user_email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.o_user_email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.o_check_in_date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.o_check_in_date)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.o_check_out_date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.o_check_out_date)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.o_night)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.o_night)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.o_buy_type)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.o_buy_type)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.o_other_guest_info)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.o_other_guest_info)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.order_from_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.order_from_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.o_guest_remark)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.o_guest_remark)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.o_remark)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.o_remark)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.o_associateOrderID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.o_associateOrderID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.lastestArriveTime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.lastestArriveTime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.earliestArriveTime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.earliestArriveTime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.o_IsInstantOrder)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.o_IsInstantOrder)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.o_guaranteePrice)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.o_guaranteePrice)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.o_roomRetain)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.o_roomRetain)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.o_orderWay)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.o_orderWay)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.payLasestTime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.payLasestTime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.orderCreateOperatorGuid)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.orderCreateOperatorGuid)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.orderCreateOperator)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.orderCreateOperator)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.channelID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.channelID)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

@@ -1,0 +1,92 @@
+﻿@model SAS.Models.Room_status_info
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Room_status_info</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.room_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.room_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RoomTypeId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RoomTypeId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.r_s_time)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.r_s_time)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EndDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EndDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.r_s_number)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.r_s_number)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OverBooking)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OverBooking)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.r_s_utime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.r_s_utime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.r_s_ctime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.r_s_ctime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.r_s_status)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.r_s_status)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.hotel_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.hotel_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HotelCode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HotelCode)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.r_s_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
