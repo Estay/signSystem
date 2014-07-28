@@ -659,7 +659,7 @@
 					var Message = "每个房型图片不能少于5张。";
 				};
 				if(status == 3) {
-					var Message = "必须设置房型";
+					var Message = "必须设置床型";
 				};
 				el.e_window({
 					relative_mod : "right",
