@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SAS.help;
 using SAS.Models;
 
 namespace SAS.Controllers
@@ -20,7 +21,13 @@ namespace SAS.Controllers
         //酒店信息
         public ActionResult Hotel(string hotelId)
         {
-            int.TryParse(hotelId, out hotel_id);                     
+            int.TryParse(hotelId, out hotel_id);
+            ViewData["DTime"] = new hotel_info().getDecorationTime();  //Theme
+            ViewData["Themes"] = DBhelp.GetSelectDataByTable("hotel_theme_info");  //Theme
+            ViewData["Category"] = DBhelp.GetSelectDataByTable("Hotel_theme_type_info"); ;//Category
+            ViewData["facilities"] = DBhelp.GetSelectDataByTable("Facilities_info");//facilities
+            ViewData["services"] = DBhelp.GetSelectDataByTable("GeneralAmenities_info");//services
+            ViewData["provice"] = DBhelp.GetSelectDataByTable("province_info");//provice     
             return View(dbHotel.hotel.Single(h=>h.hotel_id==hotel_id));
         }
         //房型
