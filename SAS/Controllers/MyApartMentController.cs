@@ -43,6 +43,7 @@ namespace SAS.Controllers
             
             int.TryParse(hotelId, out hotel_id);
             ViewData["rooms"] = DBhelp.getRooms(hotel_id);
+            ViewData["ImageTypes"] = new hotel_picture_info().getImageType();
             int[]rf = (from r in dbRoom.room where r.hotel_id == hotel_id select r.room_id).ToArray();           
             return View((from image in dbImage.room where rf.Contains(image.hotel_id) select image).ToList()); 
         }

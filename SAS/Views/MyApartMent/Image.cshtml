@@ -2,8 +2,10 @@
 
 @{
     ViewBag.Title = "Image";
+    //房型
     List<SAS.Models.hotel_room_info> roomList = ViewData["rooms"] as List<SAS.Models.hotel_room_info>;
-    
+    //图片类型
+    Dictionary<string, int> ImageTypes = ViewData["ImageTypes"] as Dictionary<string, int>;
 }
 
 <h2>Image</h2>
