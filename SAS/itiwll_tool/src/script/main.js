@@ -51,18 +51,32 @@
 	});
 
 	// 电话提示和验证
-	$("#phone_area_code").e_input_tip({
-		space : "区号",
-		need_text : "必填",
-		error : "错误",
-		rule : /^\d{3,4}$/
-	});
-	$("#hotel_phone").e_input_tip({
-		space : "座机号码",
-		need_text : "必需填写",
-		error : "格式不正确",
-		rule : /^\d{7,8}$/
-	});
+	(function($){
+		var phone = $("#phone"),
+			area = $("#phone_area_code"),
+			fixed_phone =$("#hotel_phone");
+		if (phone.val()) {
+			var p = phone.val().split("-");
+			area.val(p[0]);
+			fixed_phone.val(p[1]);
+		};
+
+		area.e_input_tip({
+			space : "区号",
+			need_text : "必填",
+			error : "错误",
+			rule : /^\d{3,4}$/
+		});
+		fixed_phone.e_input_tip({
+			space : "座机号码",
+			need_text : "必需填写",
+			error : "格式不正确",
+			rule : /^\d{7,8}$/
+		});
+
+	})($)
+
+
 	$("#hotel_fax").e_input_tip({
 		space : "传真号码(带区号)",
 		need: false,
@@ -71,7 +85,7 @@
 	});
 	$("#mobeli_phone").e_input_tip({
 		space : "11位手机号码",
-		need: false,
+		need_text: "必填,接收预订信息",
 		error : "格式不正确",
 		rule : /^1\d{10}$/
 	});
@@ -80,6 +94,8 @@
 		error : "格式不正确",
 		rule : /^[\s\S]+$/
 	});
+
+
 
 
 
