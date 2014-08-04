@@ -40,8 +40,9 @@ namespace SAS.Controllers
         //图片
         public ActionResult Image(string hotelId)
         {
-          
+            
             int.TryParse(hotelId, out hotel_id);
+            ViewData["rooms"] = DBhelp.getRooms(hotel_id);
             int[]rf = (from r in dbRoom.room where r.hotel_id == hotel_id select r.room_id).ToArray();           
             return View((from image in dbImage.room where rf.Contains(image.hotel_id) select image).ToList()); 
         }
