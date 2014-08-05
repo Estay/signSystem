@@ -14,7 +14,7 @@ namespace SAS.Controllers
     {
         private hotel_infoDBContent db = new hotel_infoDBContent();
         private hotel_infoDBContent dbHotel = new hotel_infoDBContent();
-        private PictureDBContent dbImage = new PictureDBContent();
+        private RoomImageDBContent dbImage = new RoomImageDBContent();
         private hotel_room_infoDBContent dbRoom = new hotel_room_infoDBContent();
         // GET: /MyApartMent/
         int hotel_id = 0;
@@ -45,7 +45,7 @@ namespace SAS.Controllers
             ViewData["rooms"] = DBhelp.getRooms(hotel_id);
             ViewData["ImageTypes"] = new hotel_picture_info().getImageType();
             int[]rf = (from r in dbRoom.room where r.hotel_id == hotel_id select r.room_id).ToArray();           
-            return View((from image in dbImage.room where rf.Contains(image.hotel_id) select image).ToList()); 
+            return View((from image in dbImage.RoomImage where rf.Contains(image.room_id) select image).ToList()); 
         }
 
     

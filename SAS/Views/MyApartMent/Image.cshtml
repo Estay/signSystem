@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SAS.Models.hotel_picture_info>
+﻿@model IEnumerable<SAS.Models.hotel_room_picture_info>
 
 @{
     ViewBag.Title = "Image";
@@ -9,8 +9,18 @@
 }
 
 <h2>Image</h2>
-@foreach (var item in Model) {
+@foreach (var r in roomList)
+{
+    IEnumerable<SAS.Models.hotel_room_picture_info> Images = Model.Where(o => o.room_id == r.room_id);
+    //RoomId 的所用图片
+    foreach(var p in Images)
+    {
+       
+    }
+}
+@*@foreach (var item in Model) {
    
             @Html.DisplayFor(modelItem => item.h_p_id)
-        
-        }
+    
+        }*@
+
