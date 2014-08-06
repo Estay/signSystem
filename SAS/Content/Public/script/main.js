@@ -1,4 +1,4 @@
-/*2014年8月6日13:51:03*/
+/*2014年8月6日17:28:31*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -563,15 +563,24 @@
     });
     (function($) {
         function set_val(input) {
-            var data_arr = input.val().split(","), multiple = s_input.next().find("multiple");
+            var data_arr = input.val().split(","), multiple = input.next().find(".multiple");
             for (var i = 0; i < data_arr.length; i++) {
                 var val = data_arr[i];
-                multiple.find("value[" + val + "]").attr("checked", "true");
+                multiple.filter("[value=" + val + "]").attr("checked", "true");
+            }
+        }
+        function set_val_b(input) {
+            var data_arr = input.val().split("、"), label = input.next().find(".multiple").next();
+            for (var i = 0; i < data_arr.length; i++) {
+                var val = data_arr[i];
+                label.filter(function() {
+                    return $(this).text() == val;
+                }).prev().attr("checked", "true");
             }
         }
         var f_input = $("#facilities_hide"), s_input = $("#generalAmenities_hide");
         set_val(f_input);
-        set_val(s_input);
+        set_val_b(s_input);
     })($);
     $("#room_name").e_input_tip({
         space: "请输入房型名称",
