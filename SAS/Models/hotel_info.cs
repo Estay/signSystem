@@ -39,7 +39,7 @@ namespace SAS.Models
         private string _h_latitude;
         private string _h_check_in;
         private string _h_check_out;
-        private DateTime? _h_opening_time;
+        private DateTime _h_opening_time;
         private int? _h_room_count;
         private string _h_province;
         private string _h_city;
@@ -276,7 +276,7 @@ namespace SAS.Models
         /// <summary>
         /// 开业时间 （挂牌营业）
         /// </summary>
-        public DateTime? h_opening_time
+        public DateTime h_opening_time
         {
             set { _h_opening_time = value; }
             get { return _h_opening_time; }

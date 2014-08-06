@@ -1,4 +1,4 @@
-/*2014年7月17日11:39:21*/
+/*2014年8月6日13:51:03*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -356,18 +356,21 @@
     $("#phone_area_code,#hotel_phonehotel_phone").keyup(function(event) {
         $("#phone").val($("#phone_area_code").val() + "-" + $("#hotel_phonehotel_phone").val());
     });
-    $("#phone_area_code").e_input_tip({
-        space: "区号",
-        need_text: "必填",
-        error: "错误",
-        rule: /^\d{3,4}$/
-    });
-    $("#hotel_phone").e_input_tip({
-        space: "座机号码",
-        need_text: "必需填写",
-        error: "格式不正确",
-        rule: /^\d{7,8}$/
-    });
+    (function($) {
+        var area = $("#phone_area_code"), fixed_phone = $("#hotel_phone");
+        area.e_input_tip({
+            space: "区号",
+            need_text: "必填",
+            error: "错误",
+            rule: /^\d{3,4}$/
+        });
+        fixed_phone.e_input_tip({
+            space: "座机号码",
+            need_text: "必需填写",
+            error: "格式不正确",
+            rule: /^\d{7,8}$/
+        });
+    })($);
     $("#hotel_fax").e_input_tip({
         space: "传真号码(带区号)",
         need: false,
@@ -376,7 +379,7 @@
     });
     $("#mobeli_phone").e_input_tip({
         space: "11位手机号码",
-        need: false,
+        need_text: "必填,接收预订信息",
         error: "格式不正确",
         rule: /^1\d{10}$/
     });
@@ -385,85 +388,102 @@
         error: "格式不正确",
         rule: /^[\s\S]+$/
     });
-    $("#hotel_province").change(function(event) {
-        map.centerAndZoom($(this).find(":selected").text());
-        $("#h_city,#h_administrative_region,#h_business_zone").attr("disabled", "");
-        if ($(this).val()) {
-            $.ajax({
-                url: "/help/location.ashx",
-                type: "GET",
-                dataType: "json",
-                data: {
-                    type: "city",
-                    value: $(this).val()
-                }
-            }).done(function(data) {
-                $("#h_city").children().slice(1).remove();
-                $("#h_administrative_region").children().slice(1).remove();
-                $("#h_business_zone").children().slice(1).remove();
-                for (var i = 0; i < data.length; i++) {
-                    var city = data[i];
-                    var option = '<option value="' + city.id + '">' + city.name + "</option>";
-                    $("#h_city").append(option);
-                }
-                $("#h_city").removeAttr("disabled");
-            }).fail(function() {
-                alert("加载城市数据错误");
-            }).always(function() {});
-        } else {
-            $("#h_city").children().slice(1).remove();
+    (function($) {
+        var province = $("#hotel_province"), city = $("#h_city"), region = $("#h_administrative_region"), zone = $("#h_business_zone");
+        province.change(function(event) {
+            seted_province();
+        });
+        function seted_province() {
+            map.centerAndZoom(province.find(":selected").text());
+            city.add(region).add(zone).attr("disabled", "");
+            if (province.val()) {
+                $.ajax({
+                    url: "/help/location.ashx",
+                    type: "GET",
+                    dataType: "json",
+                    data: {
+                        type: "city",
+                        value: province.val()
+                    }
+                }).done(function(data) {
+                    city.children().slice(1).remove();
+                    region.children().slice(1).remove();
+                    zone.children().slice(1).remove();
+                    var val = city.attr("original"), option = "";
+                    for (var i = 0; i < data.length; i++) {
+                        var city_data = data[i];
+                        option = option + '<option value="' + city_data.id + '"' + (val == city_data.id ? " selected" : "") + ">" + city_data.name + "</option>";
+                    }
+                    city.append(option);
+                    if (val) {
+                        city.removeClass("col_gray");
+                        region.removeClass("col_gray");
+                        zone.removeClass("col_gray");
+                        seted_city();
+                    }
+                    city.removeAttr("disabled");
+                }).fail(function() {
+                    alert("加载城市数据错误");
+                }).always(function() {});
+            } else {
+                city.children().slice(1).remove();
+            }
         }
-    });
-    $("#h_city").change(function(event) {
-        $("#h_administrative_region,#h_business_zone").attr("disabled", "");
-        if ($(this).val()) {
-            map.centerAndZoom($(this).find(":selected").text());
-            $.ajax({
-                url: "/help/location.ashx",
-                type: "GET",
-                dataType: "json",
-                data: {
-                    type: "region",
-                    value: $(this).val()
-                }
-            }).done(function(data) {
-                $("#h_administrative_region").children().slice(1).remove();
-                for (var i = 0; i < data.length; i++) {
-                    var city = data[i];
-                    var option = '<option value="' + city.id + '">' + city.name + "</option>";
-                    $("#h_administrative_region").append(option);
-                }
-            }).fail(function() {
-                alert("加载行政区数据错误");
-            }).always(function() {});
-            $.ajax({
-                url: "/help/location.ashx",
-                type: "GET",
-                dataType: "json",
-                data: {
-                    type: "commercial",
-                    value: $(this).val()
-                }
-            }).done(function(data) {
-                $("#h_business_zone").children().slice(1).remove();
-                for (var i = 0; i < data.length; i++) {
-                    var city = data[i];
-                    var option = '<option value="' + city.id + '">' + city.name + "</option>";
-                    $("#h_business_zone").append(option);
-                }
-            }).fail(function() {
-                alert("加载商圈数据错误");
-            }).always(function() {});
-            $("#h_administrative_region,#h_business_zone").removeAttr("disabled");
-        } else {
-            $("#h_administrative_region,#h_business_zone").each(function(index, el) {
-                el.children().slice(1).remove();
-            });
+        seted_province();
+        city.change(function(event) {
+            seted_city();
+        });
+        function seted_city() {
+            region.add(zone).attr("disabled", "");
+            if (city.val()) {
+                map.centerAndZoom(city.find(":selected").text());
+                $.ajax({
+                    url: "/help/location.ashx",
+                    type: "GET",
+                    dataType: "json",
+                    data: {
+                        type: "region",
+                        value: city.val()
+                    }
+                }).done(function(data) {
+                    region.children().slice(1).remove();
+                    var val = region.attr("original"), option = "";
+                    for (var i = 0; i < data.length; i++) {
+                        var city_data = data[i];
+                        option = option + '<option value="' + city_data.id + '"' + (val == city_data.id ? " selected" : "") + ">" + city_data.name + "</option>";
+                    }
+                    region.append(option);
+                }).fail(function() {
+                    alert("加载行政区数据错误");
+                }).always(function() {});
+                $.ajax({
+                    url: "/help/location.ashx",
+                    type: "GET",
+                    dataType: "json",
+                    data: {
+                        type: "commercial",
+                        value: city.val()
+                    }
+                }).done(function(data) {
+                    zone.children().slice(1).remove();
+                    var val = zone.attr("original"), option = "";
+                    for (var i = 0; i < data.length; i++) {
+                        var city_data = data[i];
+                        option = option + '<option value="' + city_data.id + '"' + (val == city_data.id ? " selected" : "") + ">" + city_data.name + "</option>";
+                    }
+                    zone.append(option);
+                }).fail(function() {
+                    alert("加载商圈数据错误");
+                }).always(function() {});
+                region.add(zone).removeAttr("disabled");
+            } else {
+                console.log("message");
+            }
         }
-    });
-    $("#h_administrative_region,#h_business_zone").change(function(event) {
-        map.centerAndZoom($(this).find(":selected").text());
-    });
+        region.add(zone).change(function(event) {
+            map.centerAndZoom(city.find(":selected").text());
+        });
+    })($);
     $("#location_box").e_tab_switch({
         callback: function(index) {
             if (index == 0) {
@@ -541,6 +561,18 @@
             });
         }
     });
+    (function($) {
+        function set_val(input) {
+            var data_arr = input.val().split(","), multiple = s_input.next().find("multiple");
+            for (var i = 0; i < data_arr.length; i++) {
+                var val = data_arr[i];
+                multiple.find("value[" + val + "]").attr("checked", "true");
+            }
+        }
+        var f_input = $("#facilities_hide"), s_input = $("#generalAmenities_hide");
+        set_val(f_input);
+        set_val(s_input);
+    })($);
     $("#room_name").e_input_tip({
         space: "请输入房型名称",
         rule: /^[\s\S]{2,}$/
