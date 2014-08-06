@@ -135,6 +135,9 @@
 					city.append(option);
 
 					if(val){
+						city.removeClass('col_gray');
+						region.removeClass('col_gray');
+						zone.removeClass('col_gray');
 						seted_city();
 					}
 
@@ -339,6 +342,29 @@
 				})
 			}
 	});
+
+
+	//公寓配套回显
+	(function($){
+		function set_val (input) {
+			var data_arr = input.val().split(","),
+				multiple = s_input.next().find('multiple');
+
+			for (var i = 0; i < data_arr.length; i++) {
+				var val = data_arr[i];
+				multiple.find('value['+val+']').attr('checked', 'true');
+			};
+		}
+
+		var f_input = $("#facilities_hide"),
+			s_input = $("#generalAmenities_hide");
+
+		set_val(f_input);
+		set_val(s_input);
+
+	})($)
+
+	
 
 	//////////////////////////////////添加房型/////////////////////////////////////////////
 	// 房型名称
