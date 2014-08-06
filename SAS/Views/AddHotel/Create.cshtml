@@ -82,7 +82,7 @@
 			</label>
 		</p>
 		<p class="input_line">
-			<span class="label">地址及所在商区</span><select name="@Html.DisplayNameFor(model => model.h_province)" id="hotel_province">
+			<span class="label">城市及所在商区</span><select name="@Html.DisplayNameFor(model => model.h_province)" id="hotel_province">
 	            <option value="" >请选择</option>
 				@foreach(var opt in hotel_province){
 					<option value="@opt.Key">@opt.Value</option>                    
@@ -112,7 +112,7 @@
 				</p>
 			</div>
 			<div id="location_box" class="float_l">
-				<a href="" class="e_tab btn_d set">在地图上定位</a><a href="" class="e_tab btn_d">输入经纬底定位</a>
+				<a href="" class="e_tab btn_d set">在地图上定位</a><a href="" class="e_tab btn_d">输入经纬度定位</a>
 				<input id="map_lon_input" class="hide" type="text" name="@Html.DisplayNameFor(model => model.BaiduLon)"><input id="map_lat_input" class="hide" type="text" name="@Html.DisplayNameFor(model => model.BaiduLat)">
 				<p class="float_r"><span id="map_lon_text">--</span>,<span id="map_lat_text">--</span></p>
 				<div class="box_b e_tab_box">
