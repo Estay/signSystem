@@ -37,7 +37,7 @@ namespace SAS.Controllers
         {
             hotel_info.h_id = "01611129";
             hotel_info.h_utime = DateTime.Now;
-            hotel_info.h_ctime = DateTime.Now;
+            
             if (ModelState.IsValid)
             {
                 db.Entry(hotel_info).State = EntityState.Modified;
