@@ -563,6 +563,14 @@
     });
     (function($) {
         function set_val(input) {
+<<<<<<< HEAD
+            if (input.val()) {
+                var data_arr = input.val().split(","), multiple = s_input.next().find("multiple");
+                for (var i = 0; i < data_arr.length; i++) {
+                    var val = data_arr[i];
+                    multiple.find("value[" + val + "]").attr("checked", "true");
+                }
+=======
             var data_arr = input.val().split(","), multiple = input.next().find(".multiple");
             for (var i = 0; i < data_arr.length; i++) {
                 var val = data_arr[i];
@@ -576,7 +584,9 @@
                 label.filter(function() {
                     return $(this).text() == val;
                 }).prev().attr("checked", "true");
+>>>>>>> 6e912245fc733ec6a372713d6d17324887d06b4b
             }
+
         }
         var f_input = $("#facilities_hide"), s_input = $("#generalAmenities_hide");
         set_val(f_input);
