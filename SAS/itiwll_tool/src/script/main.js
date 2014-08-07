@@ -378,8 +378,11 @@
 		var f_input = $("#facilities_hide"),
 			s_input = $("#generalAmenities_hide");
 
-		set_val(f_input);
-		set_val_b(s_input);
+		if(f_input.length){
+			set_val(f_input);
+			set_val_b(s_input);
+		
+		}
 
 	})($)
 
