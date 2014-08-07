@@ -54,6 +54,31 @@ namespace SAS.Controllers
             int.TryParse(hotelId, out hotel_id);         
             return View((dbRoom.room.ToList().Where(r=>r.hotel_id==hotel_id)).ToList());
         }
+
+        //修改房型
+        public ActionResult update(string roomId)
+        {
+
+            ViewBag.Tag = "修改房型";
+            int RId = Convert.ToInt32(roomId);
+            //getRooms(Convert.ToInt32(hotelId));
+            //string f = hotelId;
+            getfacilities();
+            hotel_room_info room = (from h in dbRoom.room where h.room_id == RId select h).Single();
+            getRooms(room.hotel_id);
+            ViewBag.HoltelId = room.hotel_id;
+            return View("Create", room);
+        }
+        public void getfacilities()
+        {
+            ViewData["facilities"] = DBhelp.GetSelectDataByTable("Facilities_info");//facilities
+        }
+        public void getRooms(int hotel_id)
+        {
+            //List<hotel_room_info> roomsList = (from r in db.room where r.hotel_id == hotel_id select r).ToList();
+            ViewData["rooms"] = DBhelp.getRooms(hotel_id);
+            ViewData["bedTypes"] = new hotel_room_info().getBedType();
+        }
         //图片
         public ActionResult Image(string hotelId)
         {
