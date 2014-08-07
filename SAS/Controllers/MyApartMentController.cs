@@ -21,14 +21,31 @@ namespace SAS.Controllers
         //酒店信息
         public ActionResult Hotel(string hotelId)
         {
+          
             int.TryParse(hotelId, out hotel_id);
             ViewData["DTime"] = new hotel_info().getDecorationTime();  //Theme
             ViewData["Themes"] = DBhelp.GetSelectDataByTable("hotel_theme_info");  //Theme
             ViewData["Category"] = DBhelp.GetSelectDataByTable("Hotel_theme_type_info"); ;//Category
             ViewData["facilities"] = DBhelp.GetSelectDataByTable("Facilities_info");//facilities
             ViewData["services"] = DBhelp.GetSelectDataByTable("GeneralAmenities_info");//services
-            ViewData["provice"] = DBhelp.GetSelectDataByTable("province_info");//provice     
+            ViewData["provice"] = DBhelp.GetSelectDataByTable("province_info");//provice   
+            ViewBag.HotelId = hotel_id;
             return View(dbHotel.hotel.Single(h=>h.hotel_id==hotel_id));
+        }
+        [HttpPost]
+        public ActionResult Hotel(hotel_info hotel_info)
+        {
+            hotel_info.h_id = "01611129";
+            hotel_info.h_utime = DateTime.Now;
+            hotel_info.h_ctime = DateTime.Now;
+           // if (ModelState.IsValid)
+           // {
+                db.Entry(hotel_info).State = EntityState.Modified;
+               
+                db.SaveChanges();
+              
+            //}
+            return View(hotel_info);
         }
         //房型
         public ActionResult Room(string hotelId)

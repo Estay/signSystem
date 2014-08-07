@@ -23,7 +23,8 @@
 
 
     }
-
+@using(Html.BeginForm("Hotel","MyApartMent",FormMethod.Post))
+{
 <div id="flag_box">
 	<span href="" class="btn_c set">修改公寓信息</span>
 </div>
@@ -37,16 +38,15 @@
 				<span class="label">所属类别</span>
 				<select name="@Html.DisplayNameFor(model => model.h_t_id)" id="hotel_class">
 	                <option value="" >请选择</option>
-					@foreach (var opt in hotel_class)
+	@foreach (var opt in hotel_class)
      {
-         if (Model.h_t_id == opt.Key)
+          if (Model.h_t_id == opt.Key)
          {
 	                    <option value="@opt.Key" selected>@opt.Value</option>                    
          }
          else
          {
-	                    <option value="@opt.Key" >@opt.Value</option>                    
-         }
+	                    <option value="@opt.Key" >@opt.Value</option>  }                          
      }
 				</select>
 				<span class="col_red">*</span>
@@ -297,7 +297,9 @@
         <input class="hide" type="submit"  value="Create" />
 	</div>
 </div>
-
+    <input id="hotelId" type="text" class="hide" name="@Html.DisplayNameFor(model => model.hotel_id)" value="@ViewBag.HotelId">
+				
+}
 <!-- 地图 -->
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=XvswfQtzH5kPt2s7GPYAuTIF"></script>
 <script type="text/javascript">
