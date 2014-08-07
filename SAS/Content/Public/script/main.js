@@ -1,4 +1,4 @@
-/*2014年8月7日13:44:33*/
+/*2014年8月7日15:17:53*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -390,99 +390,101 @@
     });
     (function($) {
         var province = $("#hotel_province"), city = $("#h_city"), region = $("#h_administrative_region"), zone = $("#h_business_zone");
-        province.change(function(event) {
-            seted_province();
-        });
-        function seted_province() {
-            map.centerAndZoom(province.find(":selected").text());
-            city.add(region).add(zone).attr("disabled", "");
-            if (province.val()) {
-                $.ajax({
-                    url: "/help/location.ashx",
-                    type: "GET",
-                    dataType: "json",
-                    data: {
-                        type: "city",
-                        value: province.val()
-                    }
-                }).done(function(data) {
+        if (province.length) {
+            province.change(function(event) {
+                seted_province();
+            });
+            function seted_province() {
+                map.centerAndZoom(province.find(":selected").text());
+                city.add(region).add(zone).attr("disabled", "");
+                if (province.val()) {
+                    $.ajax({
+                        url: "/help/location.ashx",
+                        type: "GET",
+                        dataType: "json",
+                        data: {
+                            type: "city",
+                            value: province.val()
+                        }
+                    }).done(function(data) {
+                        city.children().slice(1).remove();
+                        region.children().slice(1).remove();
+                        zone.children().slice(1).remove();
+                        var val = city.attr("original"), option = "";
+                        for (var i = 0; i < data.length; i++) {
+                            var city_data = data[i];
+                            option = option + '<option value="' + city_data.id + '"' + (val == city_data.id ? " selected" : "") + ">" + city_data.name + "</option>";
+                        }
+                        city.append(option);
+                        if (val) {
+                            city.removeClass("col_gray");
+                            region.removeClass("col_gray");
+                            zone.removeClass("col_gray");
+                            seted_city();
+                        }
+                        city.removeAttr("disabled");
+                    }).fail(function() {
+                        alert("加载城市数据错误");
+                    }).always(function() {});
+                } else {
                     city.children().slice(1).remove();
-                    region.children().slice(1).remove();
-                    zone.children().slice(1).remove();
-                    var val = city.attr("original"), option = "";
-                    for (var i = 0; i < data.length; i++) {
-                        var city_data = data[i];
-                        option = option + '<option value="' + city_data.id + '"' + (val == city_data.id ? " selected" : "") + ">" + city_data.name + "</option>";
-                    }
-                    city.append(option);
-                    if (val) {
-                        city.removeClass("col_gray");
-                        region.removeClass("col_gray");
-                        zone.removeClass("col_gray");
-                        seted_city();
-                    }
-                    city.removeAttr("disabled");
-                }).fail(function() {
-                    alert("加载城市数据错误");
-                }).always(function() {});
-            } else {
-                city.children().slice(1).remove();
+                }
             }
-        }
-        seted_province();
-        city.change(function(event) {
-            seted_city();
-        });
-        function seted_city() {
-            region.add(zone).attr("disabled", "");
-            if (city.val()) {
+            seted_province();
+            city.change(function(event) {
+                seted_city();
+            });
+            function seted_city() {
+                region.add(zone).attr("disabled", "");
+                if (city.val()) {
+                    map.centerAndZoom(city.find(":selected").text());
+                    $.ajax({
+                        url: "/help/location.ashx",
+                        type: "GET",
+                        dataType: "json",
+                        data: {
+                            type: "region",
+                            value: city.val()
+                        }
+                    }).done(function(data) {
+                        region.children().slice(1).remove();
+                        var val = region.attr("original"), option = "";
+                        for (var i = 0; i < data.length; i++) {
+                            var city_data = data[i];
+                            option = option + '<option value="' + city_data.id + '"' + (val == city_data.id ? " selected" : "") + ">" + city_data.name + "</option>";
+                        }
+                        region.append(option);
+                    }).fail(function() {
+                        alert("加载行政区数据错误");
+                    }).always(function() {});
+                    $.ajax({
+                        url: "/help/location.ashx",
+                        type: "GET",
+                        dataType: "json",
+                        data: {
+                            type: "commercial",
+                            value: city.val()
+                        }
+                    }).done(function(data) {
+                        zone.children().slice(1).remove();
+                        var val = zone.attr("original"), option = "";
+                        for (var i = 0; i < data.length; i++) {
+                            var city_data = data[i];
+                            option = option + '<option value="' + city_data.id + '"' + (val == city_data.id ? " selected" : "") + ">" + city_data.name + "</option>";
+                        }
+                        zone.append(option);
+                    }).fail(function() {
+                        alert("加载商圈数据错误");
+                    }).always(function() {});
+                    region.add(zone).removeAttr("disabled");
+                } else {
+                    console.log("message");
+                }
+            }
+            region.add(zone).change(function(event) {
                 map.centerAndZoom(city.find(":selected").text());
-                $.ajax({
-                    url: "/help/location.ashx",
-                    type: "GET",
-                    dataType: "json",
-                    data: {
-                        type: "region",
-                        value: city.val()
-                    }
-                }).done(function(data) {
-                    region.children().slice(1).remove();
-                    var val = region.attr("original"), option = "";
-                    for (var i = 0; i < data.length; i++) {
-                        var city_data = data[i];
-                        option = option + '<option value="' + city_data.id + '"' + (val == city_data.id ? " selected" : "") + ">" + city_data.name + "</option>";
-                    }
-                    region.append(option);
-                }).fail(function() {
-                    alert("加载行政区数据错误");
-                }).always(function() {});
-                $.ajax({
-                    url: "/help/location.ashx",
-                    type: "GET",
-                    dataType: "json",
-                    data: {
-                        type: "commercial",
-                        value: city.val()
-                    }
-                }).done(function(data) {
-                    zone.children().slice(1).remove();
-                    var val = zone.attr("original"), option = "";
-                    for (var i = 0; i < data.length; i++) {
-                        var city_data = data[i];
-                        option = option + '<option value="' + city_data.id + '"' + (val == city_data.id ? " selected" : "") + ">" + city_data.name + "</option>";
-                    }
-                    zone.append(option);
-                }).fail(function() {
-                    alert("加载商圈数据错误");
-                }).always(function() {});
-                region.add(zone).removeAttr("disabled");
-            } else {
-                console.log("message");
-            }
+            });
         }
-        region.add(zone).change(function(event) {
-            map.centerAndZoom(city.find(":selected").text());
-        });
     })($);
     $("#location_box").e_tab_switch({
         callback: function(index) {
@@ -563,26 +565,20 @@
     });
     (function($) {
         function set_val(input) {
-            if (input.val()) {
-                var data_arr = input.val().split(","), multiple = input.next().find(".multiple");
-                for (var i = 0; i < data_arr.length; i++) {
-                    var val = data_arr[i];
-                    multiple.filter("[value=" + val + "]").attr("checked", "true");
-                }
+            var data_arr = input.val().split(","), multiple = input.next().find(".multiple");
+            for (var i = 0; i < data_arr.length; i++) {
+                var val = data_arr[i];
+                multiple.filter("[value=" + val + "]").attr("checked", "true");
             }
         }
         function set_val_b(input) {
-            if (input.val()) {
-                var data_arr = input.val().split("、"), label = input.next().find(".multiple").next();
-                for (var i = 0; i < data_arr.length; i++) {
-                    var val = data_arr[i];
-                    label.filter(function () {
-                        return $(this).text() == val;
-                    }).prev().attr("checked", "true");
-
-                }
+            var data_arr = input.val().split("、"), label = input.next().find(".multiple").next();
+            for (var i = 0; i < data_arr.length; i++) {
+                var val = data_arr[i];
+                label.filter(function() {
+                    return $(this).text() == val;
+                }).prev().attr("checked", "true");
             }
-
         }
         var f_input = $("#facilities_hide"), s_input = $("#generalAmenities_hide");
         set_val(f_input);
