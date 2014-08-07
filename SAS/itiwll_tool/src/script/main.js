@@ -381,7 +381,6 @@
 		if(f_input.length){
 			set_val(f_input);
 			set_val_b(s_input);
-		
 		}
 
 	})($)
@@ -522,7 +521,10 @@
 	})
 	
 
-	///////////////////////////////////////上传图片/////////////////////////
+	///////////////////////////////////////上传图片 回显/////////////////////////
+	$(".upload_img").e_img_siz("",true);
+
+
 	function upload_img(els) {
 		els.each(function(index, el) {
 			var el = $(el),
@@ -565,10 +567,10 @@
 
 						a.find('img').attr('src', img.URL).e_img_siz("",true);
 						if (img.PID) {
-							a.data('pid', img.PID);
+							a.attr('pid', img.PID);
 							a.find('select').html($("#img_type_sel").html());
 						}else {
-							a.data('pid', "error");
+							a.attr('pid', "error");
 							a.find('.img_set').addClass('col_red').html(img.Message);
 						}
 						
@@ -583,7 +585,7 @@
 
 	// 设置图片描述
 	$("#add_img").on('focusout',".upload_img_info", function(event) {
-		var pid = $(this).parents(".upload_img_box").data('pid'),
+		var pid = $(this).parents(".upload_img_box").attr('pid'),
 			v = $(this).val(),
 			ajax_load = "";
 
@@ -612,7 +614,7 @@
 	// 设置图片类型
 	$("#add_img").on('change',".upload_img_type", function(event) {
 		var el = $(this),
-			pid = el.parents(".upload_img_box").data('pid'),
+			pid = el.parents(".upload_img_box").attr('pid'),
 			v = el.val();
 
 		if (v) {
@@ -650,7 +652,7 @@
 	$("#add_img").on('click', '.img_del a', function(event) {
 		event.preventDefault();
 		var box = $(this).parents(".upload_img_box"),
-			pid = box.data('pid'),
+			pid = box.attr('pid'),
 			url = box.find('.upload_img').attr('src'),
 			data = {
 				PID : pid=="error"?0:pid,
