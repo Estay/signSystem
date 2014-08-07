@@ -1,4 +1,4 @@
-/*2014年8月7日15:28:17*/
+/*2014年8月7日16:59:19*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -681,6 +681,7 @@
         space: 0,
         rule: /^\d+$/
     });
+    $(".upload_img").e_img_siz("", true);
     function upload_img(els) {
         els.each(function(index, el) {
             var el = $(el), box = el.parents(".from_path").find(".img_show_box"), info_box = "";
@@ -713,10 +714,10 @@
                         var a = $(html).appendTo(box);
                         a.find("img").attr("src", img.URL).e_img_siz("", true);
                         if (img.PID) {
-                            a.data("pid", img.PID);
+                            a.attr("pid", img.PID);
                             a.find("select").html($("#img_type_sel").html());
                         } else {
-                            a.data("pid", "error");
+                            a.attr("pid", "error");
                             a.find(".img_set").addClass("col_red").html(img.Message);
                         }
                     }
@@ -727,7 +728,7 @@
     }
     upload_img($(".upload_img_input"));
     $("#add_img").on("focusout", ".upload_img_info", function(event) {
-        var pid = $(this).parents(".upload_img_box").data("pid"), v = $(this).val(), ajax_load = "";
+        var pid = $(this).parents(".upload_img_box").attr("pid"), v = $(this).val(), ajax_load = "";
         if (v) {
             ajax_load = $.ajax({
                 url: "/ImageProperty/ImageDes",
@@ -746,7 +747,7 @@
         }
     });
     $("#add_img").on("change", ".upload_img_type", function(event) {
-        var el = $(this), pid = el.parents(".upload_img_box").data("pid"), v = el.val();
+        var el = $(this), pid = el.parents(".upload_img_box").attr("pid"), v = el.val();
         if (v) {
             $(this).prop("disabled", true);
             $.ajax({
@@ -770,7 +771,7 @@
     });
     $("#add_img").on("click", ".img_del a", function(event) {
         event.preventDefault();
-        var box = $(this).parents(".upload_img_box"), pid = box.data("pid"), url = box.find(".upload_img").attr("src"), data = {
+        var box = $(this).parents(".upload_img_box"), pid = box.attr("pid"), url = box.find(".upload_img").attr("src"), data = {
             PID: pid == "error" ? 0 : pid,
             text: url
         };
