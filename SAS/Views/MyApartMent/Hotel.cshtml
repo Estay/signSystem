@@ -127,12 +127,12 @@
 			<div id="location_box" class="float_l">
 				<a href="" class="e_tab btn_d set">在地图上定位</a><a href="" class="e_tab btn_d">输入经纬度定位</a>
 				<input id="map_lon_input" class="hide" type="text" name="@Html.DisplayNameFor(model => model.BaiduLon)" value="@Model.BaiduLon"><input id="map_lat_input" class="hide" type="text" name="@Html.DisplayNameFor(model => model.BaiduLat)" value="@Model.BaiduLat">
-				<p class="float_r"><span id="map_lon_text">--</span>,<span id="map_lat_text">--</span></p>
+				<p class="float_r"><span id="map_lon_text">@Model.BaiduLon</span>,<span id="map_lat_text">@Model.BaiduLat</span></p>
 				<div class="box_b e_tab_box">
 					<div id="maps_input_box"></div>
 				</div>
 				<div id="location_input_box" class="box_b e_tab_box hide">
-					经度：<input id="map_lon" type="text">纬度：<input id="map_lat" type="text">
+					经度：<input id="map_lon" type="text" value="@Model.BaiduLon">纬度：<input id="map_lat" type="text" value="@Model.BaiduLat">
 					<br>
 					<br>
 				</div>

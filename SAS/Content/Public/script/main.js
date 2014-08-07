@@ -1,4 +1,4 @@
-/*2014年8月6日13:51:03*/
+/*2014年8月6日17:28:31*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -563,18 +563,34 @@
     });
     (function($) {
         function set_val(input) {
+<<<<<<< HEAD
             if (input.val()) {
                 var data_arr = input.val().split(","), multiple = s_input.next().find("multiple");
                 for (var i = 0; i < data_arr.length; i++) {
                     var val = data_arr[i];
                     multiple.find("value[" + val + "]").attr("checked", "true");
                 }
+=======
+            var data_arr = input.val().split(","), multiple = input.next().find(".multiple");
+            for (var i = 0; i < data_arr.length; i++) {
+                var val = data_arr[i];
+                multiple.filter("[value=" + val + "]").attr("checked", "true");
+            }
+        }
+        function set_val_b(input) {
+            var data_arr = input.val().split("、"), label = input.next().find(".multiple").next();
+            for (var i = 0; i < data_arr.length; i++) {
+                var val = data_arr[i];
+                label.filter(function() {
+                    return $(this).text() == val;
+                }).prev().attr("checked", "true");
+>>>>>>> 6e912245fc733ec6a372713d6d17324887d06b4b
             }
 
         }
         var f_input = $("#facilities_hide"), s_input = $("#generalAmenities_hide");
         set_val(f_input);
-        set_val(s_input);
+        set_val_b(s_input);
     })($);
     $("#room_name").e_input_tip({
         space: "请输入房型名称",

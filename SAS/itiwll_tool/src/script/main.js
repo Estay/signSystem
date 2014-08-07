@@ -344,15 +344,27 @@
 	});
 
 
-	//公寓配套回显
+	//公寓配套 公寓服务 回显
 	(function($){
 		function set_val (input) {
 			var data_arr = input.val().split(","),
-				multiple = s_input.next().find('multiple');
+				multiple = input.next().find('.multiple');
 
 			for (var i = 0; i < data_arr.length; i++) {
 				var val = data_arr[i];
-				multiple.find('value['+val+']').attr('checked', 'true');
+				multiple.filter('[value='+val+']').attr('checked', 'true');
+			};
+		}
+
+		function set_val_b (input) {
+			var data_arr = input.val().split("、"),
+				label = input.next().find('.multiple').next();
+
+			for (var i = 0; i < data_arr.length; i++) {
+				var val = data_arr[i];
+				label.filter(function(){
+				   return $(this).text() == val;
+				}).prev().attr('checked', 'true');
 			};
 		}
 
@@ -360,7 +372,7 @@
 			s_input = $("#generalAmenities_hide");
 
 		set_val(f_input);
-		set_val(s_input);
+		set_val_b(s_input);
 
 	})($)
 
@@ -653,7 +665,6 @@
 		});
 		
 	});
-
 
 
 	//////////////////////////////////功能按钮//////////////////////////////////////	
