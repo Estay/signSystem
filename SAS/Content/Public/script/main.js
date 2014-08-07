@@ -1,4 +1,4 @@
-/*2014年8月6日17:28:31*/
+/*2014年8月7日13:44:33*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -353,8 +353,8 @@
     $("#hotel_class,#hotel_theme,#hotel_province,#h_city,#h_administrative_region,#h_business_zone").e_input_tip({
         need_text: "必需选择"
     });
-    $("#phone_area_code,#hotel_phonehotel_phone").keyup(function(event) {
-        $("#phone").val($("#phone_area_code").val() + "-" + $("#hotel_phonehotel_phone").val());
+    $("#phone_area_code,#hotel_phone").keyup(function(event) {
+        $("#phone").val($("#phone_area_code").val() + "-" + $("#hotel_phone").val());
     });
     (function($) {
         var area = $("#phone_area_code"), fixed_phone = $("#hotel_phone");
