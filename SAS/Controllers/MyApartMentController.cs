@@ -210,5 +210,19 @@ namespace SAS.Controllers
             db.Dispose();
             base.Dispose(disposing);
         }
+        //公寓列表
+        public ActionResult MyHotel(string hotelId)
+        {
+
+            int.TryParse(hotelId, out hotel_id);
+            //ViewData["DTime"] = new hotel_info().getDecorationTime();  //Theme
+            //ViewData["Themes"] = DBhelp.GetSelectDataByTable("hotel_theme_info");  //Theme
+            //ViewData["Category"] = DBhelp.GetSelectDataByTable("Hotel_theme_type_info"); ;//Category
+            //ViewData["facilities"] = DBhelp.GetSelectDataByTable("Facilities_info");//facilities
+            //ViewData["services"] = DBhelp.GetSelectDataByTable("GeneralAmenities_info");//services
+            //ViewData["provice"] = DBhelp.GetSelectDataByTable("province_info");//provice   
+            //ViewBag.HotelId = hotel_id;
+            return View((from  h in  dbHotel.hotel where h.hotel_id==hotel_id select h).ToList());
+        }
     }
 }

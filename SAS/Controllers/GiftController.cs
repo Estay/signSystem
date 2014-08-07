@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SAS.help;
 using SAS.Models;
 
 namespace SAS.Controllers
@@ -98,7 +99,12 @@ namespace SAS.Controllers
             }
             return View(gift);
         }
-
+        public void getRooms(int hotel_id)
+        {
+            //List<hotel_room_info> roomsList = (from r in db.room where r.hotel_id == hotel_id select r).ToList();
+            ViewData["rooms"] = DBhelp.getRooms(hotel_id);
+            ViewData["bedTypes"] = new hotel_room_info().getBedType();
+        }
         //
         // POST: /Gift/Delete/5
 

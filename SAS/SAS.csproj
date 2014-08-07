@@ -406,6 +406,7 @@
     <Content Include="Views\Coment\Edit.cshtml" />
     <Content Include="Views\Coment\Delete.cshtml" />
     <Content Include="Views\MyApartMent\Image.cshtml" />
+    <Content Include="Views\MyApartMent\MyHotel.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
