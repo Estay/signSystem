@@ -71,6 +71,27 @@ namespace SAS.Controllers
             ViewBag.HoltelId = room.hotel_id;
             return View("Room", room);
         }
+        //删除房型
+        public ActionResult remove(string roomId)
+        {
+            int RId = Convert.ToInt32(roomId);
+            //getRooms(Convert.ToInt32(hotelId));
+            //string f = hotelId;
+            getfacilities();
+            hotel_room_info room = dbRoom.room.Find(Convert.ToInt32(roomId));
+            if (room != null)
+            {
+
+                dbRoom.room.Remove(room);
+                if (db.SaveChanges() > 0)
+                    ViewBag.sign = 1;
+                else
+                    ViewBag.sign = 0;
+            }
+            ViewBag.HoltelId = room.hotel_id;
+            getRooms(room.hotel_id);
+            return View("Create", new hotel_room_info());
+        }
         public void getfacilities()
         {
             ViewData["facilities"] = DBhelp.GetSelectDataByTable("Facilities_info");//facilities
