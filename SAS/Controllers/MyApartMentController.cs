@@ -69,7 +69,7 @@ namespace SAS.Controllers
             hotel_room_info room = (from h in dbRoom.room where h.room_id == RId select h).Single();
             getRooms(room.hotel_id);
             ViewBag.HoltelId = room.hotel_id;
-            return View("Create", room);
+            return View("Room", room);
         }
         public void getfacilities()
         {
