@@ -143,7 +143,7 @@
 		<h2>录入详细信息</h2>
 		<p class="input_line">
 			<label for="hotel_built">
-				<input  id="hotel_built_year" type="text" name="@Html.DisplayNameFor(model => model.h_opening_time)" class="hide">
+				<input  id="hotel_built_year" type="text" name="@Html.DisplayNameFor(model => model.h_opening_time)" class="hide" value="@(Model.h_opening_time.Year.ToString())年@(Model.h_opening_time.Month.ToString())月">
 				<span class="label">开业时间</span>
 				<select class="select_yeae">
 		            <option value="" >请选择</option>
@@ -175,7 +175,7 @@
 				</select>
 			</label>
 			<label for="hotel_decoration_time_year">
-				<input id="hotel_decoration_time_year" class="hide" type="text" name="@Html.DisplayNameFor(model => model.DecorateTime)" >
+				<input id="hotel_decoration_time_year" class="hide" type="text" name="@Html.DisplayNameFor(model => model.DecorateTime)"  value="@(Model.DecorateTime.Year.ToString())年@(Model.DecorateTime.Month.ToString())月">
 				<span class="label">装修时间</span>
 				<select class="select_yeae">
 		            <option value="" >请选择</option>
