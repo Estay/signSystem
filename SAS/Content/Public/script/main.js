@@ -1,4 +1,4 @@
-/*2014年8月7日15:17:53*/
+/*2014年8月7日15:28:17*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -581,8 +581,10 @@
             }
         }
         var f_input = $("#facilities_hide"), s_input = $("#generalAmenities_hide");
-        set_val(f_input);
-        set_val_b(s_input);
+        if (f_input.length) {
+            set_val(f_input);
+            set_val_b(s_input);
+        }
     })($);
     $("#room_name").e_input_tip({
         space: "请输入房型名称",
