@@ -102,7 +102,6 @@
 			zone = $("#h_business_zone");
 
 		if (province.length) {
-			gqc
 			// 设置省份
 			province.change(function(event) {
 				seted_province();
