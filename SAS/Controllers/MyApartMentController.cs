@@ -53,7 +53,7 @@ namespace SAS.Controllers
            
             int.TryParse(hotelId, out hotel_id);
             getRooms(hotel_id);
-            return View((dbRoom.room.ToList().Where(r=>r.hotel_id==hotel_id)).ToList());
+            return View(new hotel_room_info());
         }
 
         //修改房型
