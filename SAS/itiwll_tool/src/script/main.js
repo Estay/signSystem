@@ -94,152 +94,160 @@
 
 	// 城市及所在商区 联动模块  回显
 	(function($) {
+
+
 		var province = $("#hotel_province"),
 			city = $("#h_city"),
 			region = $("#h_administrative_region"),
 			zone = $("#h_business_zone");
 
-		// 设置省份
-		province.change(function(event) {
-			seted_province();
-		});
-
-		function seted_province () {
-			// 地图同步
-			map.centerAndZoom(province.find(':selected').text());
-
-			// 禁用 城市 商圈 行政区选择 
-			city.add(region).add(zone).attr('disabled', '');
-
-			if (province.val()) {
-				$.ajax({
-					url: '/help/location.ashx',
-					type: 'GET',
-					dataType: 'json',
-					data : {
-						type : "city",
-						value: province.val()
-					}
-				})
-				.done(function(data) {
-					city.children().slice(1).remove();
-					region.children().slice(1).remove();
-					zone.children().slice(1).remove();
-
-					var val = city.attr('original'),
-						option = "";
-					for (var i = 0; i < data.length; i++) {
-						var city_data = data[i];
-						option = option + '<option value="'+city_data.id+'"' + (val==city_data.id? " selected" : "") +'>'+city_data.name+'</option>';
-					};
-					city.append(option);
-
-					if(val){
-						city.removeClass('col_gray');
-						region.removeClass('col_gray');
-						zone.removeClass('col_gray');
-						seted_city();
-					}
-
-					// 启用城市选择
-					city.removeAttr('disabled');
-
-				})
-				.fail(function() {
-					alert("加载城市数据错误");
-				})
-				.always(function() {
-				});
-			}else{
-				city.children().slice(1).remove();
-			}
-		}
-
-		seted_province();
-
-		// 设置城市
-		city.change(function(event) {
-			seted_city();
-		});
-
-		function seted_city () {
-			region.add(zone).attr('disabled', '');
-
+		if (province.length) {
 			
-			if(city.val()){
+			// 设置省份
+			province.change(function(event) {
+				seted_province();
+			});
 
-				//地图同步
-				map.centerAndZoom(city.find(':selected').text());
+			function seted_province () {
+				// 地图同步
+				map.centerAndZoom(province.find(':selected').text());
 
-				// 加载行政区数据
-				$.ajax({
-					url: '/help/location.ashx',
-					type: 'GET',
-					dataType: 'json',
-					data : {
-						type : "region",
-						value: city.val()
-					}
-				})
-				.done(function(data) {
-					region.children().slice(1).remove();
+				// 禁用 城市 商圈 行政区选择 
+				city.add(region).add(zone).attr('disabled', '');
 
-					var val = region.attr('original'),
-						option = "";
-					for (var i = 0; i < data.length; i++) {
-						var city_data = data[i];
-						option = option + '<option value="'+city_data.id+'"' + (val==city_data.id ? " selected" : "") +'>'+city_data.name+'</option>';
-					};
-					region.append(option);
-				})
-				.fail(function() {
-					alert("加载行政区数据错误");
-				})
-				.always(function() {
-				});
+				if (province.val()) {
+					$.ajax({
+						url: '/help/location.ashx',
+						type: 'GET',
+						dataType: 'json',
+						data : {
+							type : "city",
+							value: province.val()
+						}
+					})
+					.done(function(data) {
+						city.children().slice(1).remove();
+						region.children().slice(1).remove();
+						zone.children().slice(1).remove();
 
-				// 加载商圈数据
-				$.ajax({
-					url: '/help/location.ashx',
-					type: 'GET',
-					dataType: 'json',
-					data : {
-						type : "commercial",
-						value: city.val()
-					}
-				})
-				.done(function(data) {
-					zone.children().slice(1).remove();
+						var val = city.attr('original'),
+							option = "";
+						for (var i = 0; i < data.length; i++) {
+							var city_data = data[i];
+							option = option + '<option value="'+city_data.id+'"' + (val==city_data.id? " selected" : "") +'>'+city_data.name+'</option>';
+						};
+						city.append(option);
 
-					var val = zone.attr('original'), 
-					option = "";
-					for (var i = 0; i < data.length; i++) {
-						var city_data = data[i];
-						option = option + '<option value="'+city_data.id+'"' + (val==city_data.id ? " selected" : "") +'>'+city_data.name+'</option>';
-					};
-					zone.append(option);
-				})
-				.fail(function() {
-					alert("加载商圈数据错误");
-				})
-				.always(function() {
-				});
+						if(val){
+							city.removeClass('col_gray');
+							region.removeClass('col_gray');
+							zone.removeClass('col_gray');
+							seted_city();
+						}
 
-				// 启用行政区商圈选择
-				region.add(zone).removeAttr('disabled');
-			}else {
-					// region.add(zone).each(function(index, el) {
-					// 	el.children().slice(1).remove();
-					// });
-				console.log("message");
+						// 启用城市选择
+						city.removeAttr('disabled');
 
+					})
+					.fail(function() {
+						alert("加载城市数据错误");
+					})
+					.always(function() {
+					});
+				}else{
+					city.children().slice(1).remove();
+				}
 			}
-		}
 
-		// 设置商圈和行政区
-		region.add(zone).change(function(event) {
-			map.centerAndZoom(city.find(':selected').text());
-		});
+			seted_province();
+
+			// 设置城市
+			city.change(function(event) {
+				seted_city();
+			});
+
+			function seted_city () {
+
+				region.add(zone).attr('disabled', '');
+
+				
+				if(city.val()){
+
+					//地图同步
+					map.centerAndZoom(city.find(':selected').text());
+
+					// 加载行政区数据
+					$.ajax({
+						url: '/help/location.ashx',
+						type: 'GET',
+						dataType: 'json',
+						data : {
+							type : "region",
+							value: city.val()
+						}
+					})
+					.done(function(data) {
+						region.children().slice(1).remove();
+
+						var val = region.attr('original'),
+							option = "";
+						for (var i = 0; i < data.length; i++) {
+							var city_data = data[i];
+							option = option + '<option value="'+city_data.id+'"' + (val==city_data.id ? " selected" : "") +'>'+city_data.name+'</option>';
+						};
+						region.append(option);
+					})
+					.fail(function() {
+						alert("加载行政区数据错误");
+					})
+					.always(function() {
+					});
+
+					// 加载商圈数据
+					$.ajax({
+						url: '/help/location.ashx',
+						type: 'GET',
+						dataType: 'json',
+						data : {
+							type : "commercial",
+							value: city.val()
+						}
+					})
+					.done(function(data) {
+						zone.children().slice(1).remove();
+
+						var val = zone.attr('original'), 
+						option = "";
+						for (var i = 0; i < data.length; i++) {
+							var city_data = data[i];
+							option = option + '<option value="'+city_data.id+'"' + (val==city_data.id ? " selected" : "") +'>'+city_data.name+'</option>';
+						};
+						zone.append(option);
+					})
+					.fail(function() {
+						alert("加载商圈数据错误");
+					})
+					.always(function() {
+					});
+
+					// 启用行政区商圈选择
+					region.add(zone).removeAttr('disabled');
+				}else {
+						// region.add(zone).each(function(index, el) {
+						// 	el.children().slice(1).remove();
+						// });
+					console.log("message");
+
+				}
+			}
+
+			// 设置商圈和行政区
+			region.add(zone).change(function(event) {
+				map.centerAndZoom(city.find(':selected').text());
+			});
+		};
+
+		
 		
 
 	})($);
