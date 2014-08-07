@@ -38,20 +38,21 @@ namespace SAS.Controllers
             hotel_info.h_id = "01611129";
             hotel_info.h_utime = DateTime.Now;
             hotel_info.h_ctime = DateTime.Now;
-           // if (ModelState.IsValid)
-           // {
+            if (ModelState.IsValid)
+            {
                 db.Entry(hotel_info).State = EntityState.Modified;
                
                 db.SaveChanges();
               
-            //}
+            }
             return View(hotel_info);
         }
         //房型
         public ActionResult Room(string hotelId)
         {
-            
-            int.TryParse(hotelId, out hotel_id);         
+           
+            int.TryParse(hotelId, out hotel_id);
+            getRooms(hotel_id);
             return View((dbRoom.room.ToList().Where(r=>r.hotel_id==hotel_id)).ToList());
         }
 
