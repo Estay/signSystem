@@ -563,11 +563,14 @@
     });
     (function($) {
         function set_val(input) {
-            var data_arr = input.val().split(","), multiple = s_input.next().find("multiple");
-            for (var i = 0; i < data_arr.length; i++) {
-                var val = data_arr[i];
-                multiple.find("value[" + val + "]").attr("checked", "true");
+            if (input.val()) {
+                var data_arr = input.val().split(","), multiple = s_input.next().find("multiple");
+                for (var i = 0; i < data_arr.length; i++) {
+                    var val = data_arr[i];
+                    multiple.find("value[" + val + "]").attr("checked", "true");
+                }
             }
+
         }
         var f_input = $("#facilities_hide"), s_input = $("#generalAmenities_hide");
         set_val(f_input);
