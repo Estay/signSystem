@@ -46,8 +46,8 @@
 
 
 	//电话值处理
-	$("#phone_area_code,#hotel_phonehotel_phone").keyup(function(event) {
-		$("#phone").val($("#phone_area_code").val()+"-"+$("#hotel_phonehotel_phone").val());
+	$("#phone_area_code,#hotel_phone").keyup(function(event) {
+		$("#phone").val($("#phone_area_code").val()+"-"+$("#hotel_phone").val());
 	});
 
 	// 固定电话提示和验证
