@@ -53,6 +53,7 @@ namespace SAS.Controllers
            
             int.TryParse(hotelId, out hotel_id);
             getRooms(hotel_id);
+            getfacilities();
             return View(new hotel_room_info());
         }
 
