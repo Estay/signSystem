@@ -4,4 +4,22 @@
     ViewBag.Title = "MyHotel";
 }
 
-<h2>MyHotel</h2>
+<table id="myHotelTable" cellspacing="0">
+	<tbody>
+		<tr>
+			<th>公寓名称</th>
+			<th>操作</th>
+		</tr>
+		@foreach (var i in Model){
+ 		<tr>
+			<td>@i.h_name_cn</td>
+			<td>
+                <a href="/MyApartMent/hotel?hotelId=@i.hotel_id">修改基本信息</a>|
+                <a href="/MyApartMent/Room?hotelId=@i.hotel_id">修改房型</a>|
+                <a href="/MyApartMent/Image?hotelId=@i.hotel_id">修改图片</a>
+
+			</td>
+		</tr>
+        }
+	</tbody>
+</table>

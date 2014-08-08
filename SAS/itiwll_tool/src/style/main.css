@@ -270,3 +270,8 @@
 .end_box p{
 	margin-top: 100px;
 }
+
+/*我的公寓*/
+#myHotelTable {
+	margin-top: 32px;
+}
