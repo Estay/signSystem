@@ -211,10 +211,10 @@ namespace SAS.Controllers
             base.Dispose(disposing);
         }
         //公寓列表
-        public ActionResult MyHotel(string hotelId)
+        public ActionResult MyHotel(string UId)
         {
-
-            int.TryParse(hotelId, out hotel_id);
+            UId = "test1";
+            //int.TryParse(hotelId, out hotel_id);
             //ViewData["DTime"] = new hotel_info().getDecorationTime();  //Theme
             //ViewData["Themes"] = DBhelp.GetSelectDataByTable("hotel_theme_info");  //Theme
             //ViewData["Category"] = DBhelp.GetSelectDataByTable("Hotel_theme_type_info"); ;//Category
@@ -222,7 +222,7 @@ namespace SAS.Controllers
             //ViewData["services"] = DBhelp.GetSelectDataByTable("GeneralAmenities_info");//services
             //ViewData["provice"] = DBhelp.GetSelectDataByTable("province_info");//provice   
             //ViewBag.HotelId = hotel_id;
-            return View((from  h in  dbHotel.hotel where h.hotel_id==hotel_id select h).ToList());
+            return View((from h in dbHotel.hotel where h.u_id == UId select h).ToList());
         }
     }
 }

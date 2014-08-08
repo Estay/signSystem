@@ -99,6 +99,7 @@ namespace SAS.Controllers
             }
             return View(gift);
         }
+        //得到当前酒店所有房型
         public void getRooms(int hotel_id)
         {
             //List<hotel_room_info> roomsList = (from r in db.room where r.hotel_id == hotel_id select r).ToList();

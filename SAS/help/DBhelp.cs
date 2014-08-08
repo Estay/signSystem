@@ -51,10 +51,15 @@ namespace SAS.help
             string str = JsonConvert.SerializeObject(list, settings);
             return str;
         }
+        
+        
         public static List<hotel_room_info> getRooms(int hotel_id)
         {
             return (from r in new hotel_room_infoDBContent().room where r.hotel_id == hotel_id select r).ToList();
         }
+
+       
+
         public static void InserDataTable(ref DataTable dt, Type t, hotel_room_RP_price_info price)
         {
             object values = null;
