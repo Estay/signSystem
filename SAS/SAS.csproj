@@ -376,21 +376,6 @@
     <Content Include="Views\MyApartMent\Hotel.cshtml" />
     <Content Include="Views\MyApartMent\Room.cshtml" />
     <Content Include="Views\MyApartMent\Price.cshtml" />
-    <Content Include="Views\DrrRule\Index.cshtml" />
-    <Content Include="Views\DrrRule\Details.cshtml" />
-    <Content Include="Views\DrrRule\Create.cshtml" />
-    <Content Include="Views\DrrRule\Edit.cshtml" />
-    <Content Include="Views\DrrRule\Delete.cshtml" />
-    <Content Include="Views\Gift\Index.cshtml" />
-    <Content Include="Views\Gift\Details.cshtml" />
-    <Content Include="Views\Gift\Create.cshtml" />
-    <Content Include="Views\Gift\Edit.cshtml" />
-    <Content Include="Views\Gift\Delete.cshtml" />
-    <Content Include="Views\Guarantee\Index.cshtml" />
-    <Content Include="Views\Guarantee\Details.cshtml" />
-    <Content Include="Views\Guarantee\Create.cshtml" />
-    <Content Include="Views\Guarantee\Edit.cshtml" />
-    <Content Include="Views\Guarantee\Delete.cshtml" />
     <Content Include="Views\RStatus\Index.cshtml" />
     <Content Include="Views\RStatus\Details.cshtml" />
     <Content Include="Views\RStatus\Create.cshtml" />
@@ -408,6 +393,9 @@
     <Content Include="Views\Coment\Delete.cshtml" />
     <Content Include="Views\MyApartMent\Image.cshtml" />
     <Content Include="Views\MyApartMent\MyHotel.cshtml" />
+    <Content Include="Views\Gift\MyGift.cshtml" />
+    <Content Include="Views\Guarantee\MyGuarantee.cshtml" />
+    <Content Include="Views\DrrRule\MyDrr.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

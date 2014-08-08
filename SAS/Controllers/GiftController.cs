@@ -22,6 +22,19 @@ namespace SAS.Controllers
             return View(db.hotel.ToList());
         }
 
+        public ActionResult MyGift()
+        {
+            GetData();
+            return View();
+        }
+        public void GetData()
+        {
+            string u_id = "test1";
+            //所有酒店列表
+            ViewData["rooms"] = help.HotelInfoHelp.getRooms(u_id);
+            //所有酒店对应的房型列表
+            ViewData["hotels"] = help.HotelInfoHelp.getHotlList(u_id);
+        }
         //
         // GET: /Gift/Details/5
 
