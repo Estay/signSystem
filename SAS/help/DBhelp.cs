@@ -190,8 +190,8 @@ namespace SAS.help
         //记录日志
         public static void log(string content)
         {
-            return;
-            string directory ="";
+
+            string directory = @"D:\al"; ;
 
             if (!Directory.Exists(directory))
             {
