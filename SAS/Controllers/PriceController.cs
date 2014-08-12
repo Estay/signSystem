@@ -16,7 +16,8 @@ namespace SAS.Controllers
 
         //
         // GET: /Price/
-
+        DateTime start = DateTime.Now;
+        DateTime end;
         public ActionResult Index()
         {
             return View(db.price.ToList());
@@ -25,8 +26,7 @@ namespace SAS.Controllers
         {
             string uId="test1";
 
-            DateTime start=DateTime.Now;
-            DateTime  end;
+            
 
             
             if (string.IsNullOrEmpty(Id) || string.IsNullOrEmpty(startDate) || string.IsNullOrEmpty(EndDate))
@@ -49,8 +49,21 @@ namespace SAS.Controllers
 
             return View("MyPrix", hotel);
         }
-
-
+        //房价修改接口
+        public int uPrice(string roomId, string startDate, string EndDate,string value)
+        {
+            int Id;
+            decimal price;
+            decimal.TryParse(value, out price);
+            int.TryParse(roomId, out Id);
+            DateTime.TryParse(startDate, out start);
+            DateTime.TryParse(startDate, out end);
+            string sql = string.Format("update  hotel_room_RP_price set Room_rp_price={2} where room_id={0}  Effectdate  between ({2},{3})", roomId,price, start, end);
+            if (DBhelp.ExcuteTableBySQL(sql) > 0)
+                return 1;
+            else
+                return 0;
+        }
         //
         // GET: /Price/Details/5
 
