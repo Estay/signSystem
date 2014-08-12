@@ -1,0 +1,22 @@
+﻿@model SAS.Models.Gift
+
+@{
+    //所有酒店列表
+ 
+    List<SAS.Models.hotel_info> hotels = ViewData["hotels"] as List<SAS.Models.hotel_info>;
+    
+    //所有酒店对应的房型列表
+    List<SAS.Models.hotel_room_info> rooms = ViewData["rooms"] as List<SAS.Models.hotel_room_info>;
+    
+    ViewBag.Title = "MyGift";
+    }
+@foreach (var h in hotels)
+{
+    var Rooms = rooms.Where(r=>r.hotel_id== h.hotel_id);
+    //当前酒店对应的房型
+    foreach (var item in Rooms)
+    {
+        
+    }
+}
+<h2>MyGift</h2>

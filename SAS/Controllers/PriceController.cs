@@ -16,12 +16,54 @@ namespace SAS.Controllers
 
         //
         // GET: /Price/
-
+        DateTime start = DateTime.Now;
+        DateTime end;
         public ActionResult Index()
         {
             return View(db.price.ToList());
         }
+        public ActionResult MyPrice(string Id,string startDate,string EndDate )
+        {
+            string uId="test1";
 
+            
+
+            
+            if (string.IsNullOrEmpty(Id) || string.IsNullOrEmpty(startDate) || string.IsNullOrEmpty(EndDate))
+            {
+                start = new DateTime(start.Year, start.Month, 1); end = start.AddMonths(1).AddDays(-1);
+            }
+            else
+            {
+                DateTime.TryParse(startDate, out start);
+                DateTime.TryParse(startDate, out end);
+            }
+
+            hotel_info hotel = new hotel_info();
+            // hotel.Room.RoomList = DBhelp.getRooms(48502);
+            // DBhelp.getRooms(48502);
+            hotel.Room.RoomList = HotelInfoHelp.getRooms("");
+            hotel.HotelList = HotelInfoHelp.getHotlList("");
+            int[] rf = (from r in new hotel_infoDBContent().hotel where r.u_id == uId select r.hotel_id).ToArray();
+            var f = (from p in db.price where p.room_rp_start_time > start && p.room_rp_start_time < end && rf.Contains(p.hotel_id) select p).ToList();
+
+            return View("MyPrix", hotel);
+        }
+        //房价修改接口
+        public int uPrice(string roomId, string startDate, string EndDate,string value)
+        {
+            int Id;
+            decimal price;
+            decimal.TryParse(value, out price);
+            int.TryParse(roomId, out Id);
+            DateTime.TryParse(startDate, out start);
+            DateTime.TryParse(startDate, out end);
+            string sql = string.Format("update  hotel_room_RP_price set Room_rp_price={2} where room_id={0}  Effectdate  between ({2},{3})", roomId,price, start, end);
+            if (DBhelp.ExcuteTableBySQL(sql) > 0)
+                return 1;
+            else
+                return 0;
+        }
         //
         // GET: /Price/Details/5
 

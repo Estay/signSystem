@@ -37,8 +37,9 @@ namespace SAS.Controllers
         //
         // GET: /DrrRule/Create
 
-        public ActionResult Create()
+        public ActionResult MyDrr()
         {
+            GetData();
             return View();
         }
 
@@ -57,7 +58,14 @@ namespace SAS.Controllers
 
             return View(drrrule);
         }
-
+        public void GetData()
+        {
+            string u_id = "test1";
+            //所有酒店列表
+            ViewData["rooms"] = help.HotelInfoHelp.getRooms(u_id);
+            //所有酒店对应的房型列表
+            ViewData["hotels"] = help.HotelInfoHelp.getHotlList(u_id);
+        }
         //
         // GET: /DrrRule/Edit/5
 

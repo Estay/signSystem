@@ -39,13 +39,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>bin\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -179,7 +180,6 @@
     <Compile Include="Controllers\PriceController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="Controllers\RStatusController.cs" />
-    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -264,6 +264,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="FakesAssemblies\" />
+    <Folder Include="Filters\" />
     <Folder Include="Images\" />
     <Folder Include="Scripts\" />
   </ItemGroup>
@@ -330,21 +332,6 @@
     <Content Include="Views\Room\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Price\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Price\Details.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Price\Create.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Price\Edit.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Price\Delete.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Image\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -376,21 +363,6 @@
     <Content Include="Views\MyApartMent\Hotel.cshtml" />
     <Content Include="Views\MyApartMent\Room.cshtml" />
     <Content Include="Views\MyApartMent\Price.cshtml" />
-    <Content Include="Views\DrrRule\Index.cshtml" />
-    <Content Include="Views\DrrRule\Details.cshtml" />
-    <Content Include="Views\DrrRule\Create.cshtml" />
-    <Content Include="Views\DrrRule\Edit.cshtml" />
-    <Content Include="Views\DrrRule\Delete.cshtml" />
-    <Content Include="Views\Gift\Index.cshtml" />
-    <Content Include="Views\Gift\Details.cshtml" />
-    <Content Include="Views\Gift\Create.cshtml" />
-    <Content Include="Views\Gift\Edit.cshtml" />
-    <Content Include="Views\Gift\Delete.cshtml" />
-    <Content Include="Views\Guarantee\Index.cshtml" />
-    <Content Include="Views\Guarantee\Details.cshtml" />
-    <Content Include="Views\Guarantee\Create.cshtml" />
-    <Content Include="Views\Guarantee\Edit.cshtml" />
-    <Content Include="Views\Guarantee\Delete.cshtml" />
     <Content Include="Views\RStatus\Index.cshtml" />
     <Content Include="Views\RStatus\Details.cshtml" />
     <Content Include="Views\RStatus\Create.cshtml" />
@@ -408,6 +380,11 @@
     <Content Include="Views\Coment\Delete.cshtml" />
     <Content Include="Views\MyApartMent\Image.cshtml" />
     <Content Include="Views\MyApartMent\MyHotel.cshtml" />
+    <Content Include="Views\Gift\MyGift.cshtml" />
+    <Content Include="Views\Guarantee\MyGuarantee.cshtml" />
+    <Content Include="Views\DrrRule\MyDrr.cshtml" />
+    <Content Include="Views\Shared\_public_foot.cshtml" />
+    <Content Include="Views\Price\MyPrix.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

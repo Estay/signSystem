@@ -63,6 +63,7 @@ namespace SAS.Controllers
 
         public ActionResult Create(string hotelId)
         {
+            help.DBhelp.log("add hotel Create");
             hotel_info hotel = new hotel_info();
             //khotel_theme_infoDBContent db = new khotel_theme_infoDBContent();
             // var themes = db..ToList();
