@@ -76,9 +76,10 @@
 				<span class="label">传真</span>
 				<input id="hotel_fax" type="text" name="@Html.DisplayNameFor(model => model.h_fax)">
 			</label>
-			<label for="****改成name****">
+			<label for="@Html.DisplayNameFor(model => model.h_mobile_phone)">
 				<span class="label">手机号码</span>
 				<input id="mobeli_phone" type="text" name="@Html.DisplayNameFor(model => model.h_mobile_phone)">
+				<span class="col_red">*</span>
 			</label>
 		</p>
 		<p class="input_line">
@@ -145,6 +146,7 @@
 						<option value="@opt">@opt</option>                    
 					}
 				</select>
+				<span class="col_red">*</span>
 			</label>
 			<label for="hotel_decoration_time_year">
 				<input id="hotel_decoration_time_year" class="hide" type="text" name="@Html.DisplayNameFor(model => model.DecorateTime)" >
@@ -162,6 +164,7 @@
 						<option value="@opt">@opt</option>                    
 					}
 				</select>
+				<span class="col_red">*</span>
 			</label>
 			<label for="hotel_building">
 				<span class="label">公寓楼高</span><input type="text" id="hotel_building" name="@Html.DisplayNameFor(model => model.Floor)">

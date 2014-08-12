@@ -273,15 +273,22 @@
 
 	$("#map_lon").e_input_tip({
 		space : "输入经度",
-		need: false,
+		need : false,
 		error : "格式不正确",
 		rule : /^\-{0,1}\d{1,3}$|^\-{0,1}\d{3}.\d+$/		
 	});
 	$("#map_lat").e_input_tip({
 		space : "输入维度",
-		need: false,
+		need : false,
 		error : "格式不正确",
 		rule : /^\-{0,1}\d{1,3}$|^\-{0,1}\d{3}.\d+$/
+	});
+	$("#map_lon_input").e_input_tip({
+		space : "",
+		space_callback : function () {
+			alert("请正确的设置地图位置");
+		}
+
 	});
 
 	// 触发图片选择
@@ -297,10 +304,14 @@
 		rule : /^\d+$/
 	});
 	// 开业时间 装修时间
-	$("#hotel_built_year,#hotel_decoration_time_year").siblings('select').change(function(event) {
+	var time_select = $("#hotel_built_year,#hotel_decoration_time_year").siblings('select');
+	time_select.change(function(event) {
 		var p = $(this).parent(), 
 			val = p.find('.select_yeae').val()+p.find('.select_month').val();
 		p.find('input.hide').val(val);
+	})
+	time_select.siblings('select').e_input_tip({
+		need_text : "必需选择"
 	});
 
 	// 公寓特色
@@ -722,7 +733,7 @@
 		event.preventDefault();
 		var el = $(this),
 			status = 0;
-		var input = $(this).parents(".box_a").find('input[type=text],select[name],textarea[name]').trigger("input_tip_checking");
+		var input = $(this).parents(".box_a").find('input[type=text],select[name],textarea[name],.select_yeae,.select_month').trigger("input_tip_checking");
 		setTimeout(function() {
 			input.each(function(index, el) {
 				if ($(this).attr('rules_error')||$(this).attr('rules_error')=="") {

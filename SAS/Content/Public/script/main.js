@@ -1,4 +1,4 @@
-/*2014年8月7日16:59:19*/
+/*2014年8月12日17:58:09*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -6,12 +6,20 @@
             need_text: "必需输入",
             space: "请输入",
             rule: null,
+            check: false,
             error: "格式不正确",
             error_callback: function(error, el) {
                 $(this).e_window({
                     top: 5,
                     width: "auto",
                     html: "<div class='red_tip_box'>" + error + "</div>"
+                });
+            },
+            space_callback: function(need_text, el) {
+                $(this).e_window({
+                    top: 5,
+                    width: "auto",
+                    html: "<div class='red_tip_box'>" + need_text + "</div>"
                 });
             },
             success_callback: function(el) {
@@ -32,6 +40,9 @@
                 if (el.val() == "" || el.val() == settings.space) {
                     init(el);
                 }
+                if (settings.check) {
+                    ruleValidate(el, el.val());
+                }
             }).keyup(function(event) {
                 var el = $(this);
                 if (el.val() == settings.space) {
@@ -41,14 +52,7 @@
                 }
             }).bind("input_tip_checking", function() {
                 var el = $(this);
-                if (el.val() == "" || el.val() == settings.space) {
-                    init(el);
-                    if (settings.need) {
-                        settings.error_callback.call(this, settings.need_text, el);
-                    }
-                } else {
-                    ruleValidate(el, el.val());
-                }
+                ruleValidate(el, el.val());
             });
             function init(el) {
                 var tip_text = $(this).attr("tip_text");
@@ -78,6 +82,15 @@
                 if (/[\<\>\&]+/.exec(val)) {
                     error(el, "不能包含“<”,“>”,“&”等特殊字符");
                     return;
+                }
+                if (val == "" || val == settings.space) {
+                    init(el);
+                    if (settings.need) {
+                        settings.space_callback.call(el[0], settings.need_text, el);
+                        return;
+                    } else {
+                        return;
+                    }
                 }
                 if (!settings.rule) {
                     success(el);
@@ -513,14 +526,24 @@
         error: "格式不正确",
         rule: /^\-{0,1}\d{1,3}$|^\-{0,1}\d{3}.\d+$/
     });
+    $("#map_lon_input").e_input_tip({
+        space: "",
+        space_callback: function() {
+            alert("请正确的设置地图位置");
+        }
+    });
     $("#hotel_building,#hotel_room_count").e_input_tip({
         space: "0",
         error: "格式不正确",
         rule: /^\d+$/
     });
-    $("#hotel_built_year,#hotel_decoration_time_year").siblings("select").change(function(event) {
+    var time_select = $("#hotel_built_year,#hotel_decoration_time_year").siblings("select");
+    time_select.change(function(event) {
         var p = $(this).parent(), val = p.find(".select_yeae").val() + p.find(".select_month").val();
         p.find("input.hide").val(val);
+    });
+    time_select.siblings("select").e_input_tip({
+        need_text: "必需选择"
     });
     $("#hotel_specialty").e_input_tip({
         space: "请输入公寓的特色",
@@ -820,7 +843,7 @@
     $(".checking_btn").click(function(event) {
         event.preventDefault();
         var el = $(this), status = 0;
-        var input = $(this).parents(".box_a").find("input[type=text],select[name],textarea[name]").trigger("input_tip_checking");
+        var input = $(this).parents(".box_a").find("input[type=text],select[name],textarea[name],.select_yeae,.select_month").trigger("input_tip_checking");
         setTimeout(function() {
             input.each(function(index, el) {
                 if ($(this).attr("rules_error") || $(this).attr("rules_error") == "") {

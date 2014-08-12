@@ -10,12 +10,20 @@
 			need_text: "必需输入",
 			space :"请输入",
 			rule : null,
+			check : false, //失去焦点是否验证
 			error : "格式不正确",
 			error_callback : function (error,el) {
 				$(this).e_window({
 					top: 5,
 					width: "auto",
 					html: "<div class='red_tip_box'>"+error+"</div>"
+				})
+			},
+			space_callback : function(need_text,el) {
+				$(this).e_window({
+					top: 5,
+					width: "auto",
+					html: "<div class='red_tip_box'>"+need_text+"</div>"
 				})
 			},
 			success_callback : function(el) {
@@ -48,6 +56,9 @@
 					//为空回到初始状态
 					init(el);
 				}
+				if (settings.check) {	
+					ruleValidate(el,el.val());
+				};
 			})
 			// 输入时调整样式 去除错误提示
 			.keyup(function(event) {
@@ -62,17 +73,8 @@
 			.bind("input_tip_checking",function () {
 				var el = $(this);
 
-				if(el.val()=="" || el.val()==settings.space){
-					//为空回到初始状态
-					init(el);
-					//必需输入提示
-					if(settings.need){
-						settings.error_callback.call(this,settings.need_text,el);
-					}
-				}else {
-					// 不为空验证规则
-					ruleValidate(el,el.val());
-				}
+				// 验证规则
+				ruleValidate(el,el.val());
 			})
 
 			// 初始化的状态
@@ -120,10 +122,23 @@
 					return ;
 				};
 
+				if(val=="" || val == settings.space){
+					//为空回到初始状态
+					init(el);
+					//必需输入提示
+					if(settings.need){
+						settings.space_callback.call(el[0],settings.need_text,el);
+						return;
+					}else {
+						return;
+					}
+				}
+
 				if (!settings.rule) {
 					success(el);
 					return ;
 				};
+
 
 				if(isRegExp(settings.rule)){
 					if (!settings.rule.exec(val)) {
