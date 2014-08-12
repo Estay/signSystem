@@ -21,14 +21,33 @@ namespace SAS.Controllers
         {
             return View(db.price.ToList());
         }
-        public ActionResult MyPrice()
+        public ActionResult MyPrice(string Id,string startDate,string EndDate )
         {
-            DateTime now = DateTime.Now;
-            DateTime d1 = new DateTime(now.Year, now.Month, 1);
-            DateTime d2 = d1.AddMonths(1).AddDays(-1);
+            string uId="test1";
 
-            var f = (from p in db.price where p.room_rp_start_time > d1 && p.room_rp_start_time < d2 && p.hotel_id == 55190 && p.room_id == 352246 select p).ToList();
-            return View("MyPrix", f);
+            DateTime start=DateTime.Now;
+            DateTime  end;
+
+            
+            if (string.IsNullOrEmpty(Id) || string.IsNullOrEmpty(startDate) || string.IsNullOrEmpty(EndDate))
+            {
+                start = new DateTime(start.Year, start.Month, 1); end = start.AddMonths(1).AddDays(-1);
+            }
+            else
+            {
+                DateTime.TryParse(startDate, out start);
+                DateTime.TryParse(startDate, out end);
+            }
+
+            hotel_info hotel = new hotel_info();
+            // hotel.Room.RoomList = DBhelp.getRooms(48502);
+            // DBhelp.getRooms(48502);
+            hotel.Room.RoomList = HotelInfoHelp.getRooms("");
+            hotel.HotelList = HotelInfoHelp.getHotlList("");
+            int[] rf = (from r in new hotel_infoDBContent().hotel where r.u_id == uId select r.hotel_id).ToArray();
+            var f = (from p in db.price where p.room_rp_start_time > start && p.room_rp_start_time < end && rf.Contains(p.hotel_id) select p).ToList();
+
+            return View("MyPrix", hotel);
         }
 
 
