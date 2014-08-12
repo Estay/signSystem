@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SAS.Models
 {
@@ -554,6 +555,24 @@ namespace SAS.Models
             get { return _hotel_theme_id; }
         }
         #endregion Model
+
+        //[NotMapped]
+        private List<hotel_info> hotelList = new List<hotel_info>();
+        [NotMapped]
+        public List<hotel_info> HotelList
+        {
+            get { return hotelList; }
+            set { hotelList = value; }
+        }
+        //    [NotMapped]
+        private hotel_room_info room = new hotel_room_info();
+        [NotMapped]
+        public hotel_room_info Room
+        {
+            get { return room; }
+            set { room = value; }
+        }
+
 
         public hotel_theme_info theme;
         //装修时间

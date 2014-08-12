@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
@@ -157,6 +158,15 @@ namespace SAS.Models
             get { return _hotel_id; }
         }
         #endregion Model
+
+        //[NotMapped]
+        private List<hotel_room_RP_price_info> priceList = new List<hotel_room_RP_price_info>();
+        [NotMapped]
+        public List<hotel_room_RP_price_info> PriceList
+        {
+            get { return priceList; }
+            set { priceList = value; }
+        }
     }
     public class PriceDBContent : DbContext
     {
