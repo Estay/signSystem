@@ -21,6 +21,16 @@ namespace SAS.Controllers
         {
             return View(db.price.ToList());
         }
+        public ActionResult MyPrice()
+        {
+            DateTime now = DateTime.Now;
+            DateTime d1 = new DateTime(now.Year, now.Month, 1);
+            DateTime d2 = d1.AddMonths(1).AddDays(-1);
+
+            var f = (from p in db.price where p.room_rp_start_time > d1 && p.room_rp_start_time < d2 && p.hotel_id == 55190 && p.room_id == 352246 select p).ToList();
+            return View("MyPrix", f);
+        }
+
 
         //
         // GET: /Price/Details/5

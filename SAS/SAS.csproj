@@ -332,21 +332,6 @@
     <Content Include="Views\Room\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Price\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Price\Details.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Price\Create.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Price\Edit.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Price\Delete.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Image\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -399,6 +384,7 @@
     <Content Include="Views\Guarantee\MyGuarantee.cshtml" />
     <Content Include="Views\DrrRule\MyDrr.cshtml" />
     <Content Include="Views\Shared\_public_foot.cshtml" />
+    <Content Include="Views\Price\MyPrix.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

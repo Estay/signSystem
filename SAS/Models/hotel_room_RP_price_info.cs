@@ -159,7 +159,13 @@ namespace SAS.Models
         #endregion Model
     }
     public class PriceDBContent : DbContext
-    {       
+    {
+        public PriceDBContent()
+            : base("DefaultConnection")
+        {
+ 
+        }
+    
         public DbSet<hotel_room_RP_price_info> price { get; set; }
     }
 }
