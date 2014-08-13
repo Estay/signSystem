@@ -155,10 +155,19 @@ namespace SAS.Models
         }
         #endregion Model
 
+        public List<Gift> GiftList()
+        {
+             //用户ID所有的酒店
+       
+           string  uId = "test1";
+            int[] rf = (from h in new hotel_infoDBContent().hotel where h.u_id == uId select h.hotel_id).ToArray();  
+            return (from h in new GiftDBContent().gifts where rf.Contains(h.hotel_id) select h).ToList();
+        
+        }
     }
     public class GiftDBContent : DbContext
     {
-        public DbSet<Gift> hotel { get; set; }
+        public DbSet<Gift> gifts { get; set; }
 
     }
 }

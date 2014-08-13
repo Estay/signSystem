@@ -210,6 +210,16 @@ namespace SAS.Models
 			get{return _rateplanid;}
 		}
 		#endregion Model
+
+        public List<GuaranteeRule> GuraranteeList()
+        {
+            //用户ID所有的酒店
+
+            string uId = "test1";
+            int[] rf = (from h in new hotel_infoDBContent().hotel where h.u_id == uId select h.hotel_id).ToArray();
+            return (from h in new GuaranteeRuleDBContent().hotel where rf.Contains(h.hotel_id) select h).ToList();
+
+        }
     }
     public class GuaranteeRuleDBContent : DbContext
     {

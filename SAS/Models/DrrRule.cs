@@ -181,6 +181,20 @@ namespace SAS.Models
             set { _rateplanid = value; }
             get { return _rateplanid; }
         }
+        private string roomIds;
+
+        public string RoomIds
+        {
+            get { return roomIds; }
+            set { roomIds = value; }
+        }
+        private string roomNames;
+
+        public string RoomNames
+        {
+            get { return roomNames; }
+            set { roomNames = value; }
+        }
         #endregion Model
 
         //[NotMapped]

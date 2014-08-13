@@ -19,7 +19,8 @@ namespace SAS.Controllers
 
         public ActionResult Index()
         {
-            return View(db.hotel.ToList());
+            //return View(db.hotel.ToList());
+            return null;
         }
 
         public ActionResult MyGift()
@@ -34,18 +35,20 @@ namespace SAS.Controllers
             ViewData["rooms"] = help.HotelInfoHelp.getRooms(u_id);
             //所有酒店对应的房型列表
             ViewData["hotels"] = help.HotelInfoHelp.getHotlList(u_id);
+
+            ViewData["gift"] = new Gift().GiftList();
         }
         //
         // GET: /Gift/Details/5
 
         public ActionResult Details(int id = 0)
         {
-            Gift gift = db.hotel.Find(id);
-            if (gift == null)
-            {
-                return HttpNotFound();
-            }
-            return View(gift);
+            //Gift gift = db.hotel.Find(id);
+            //if (gift == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            return View();
         }
 
         //
@@ -62,12 +65,12 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult Create(Gift gift)
         {
-            if (ModelState.IsValid)
-            {
-                db.hotel.Add(gift);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            //if (ModelState.IsValid)
+            //{
+            //    db.hotel.Add(gift);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
 
             return View(gift);
         }
@@ -75,15 +78,7 @@ namespace SAS.Controllers
         //
         // GET: /Gift/Edit/5
 
-        public ActionResult Edit(int id = 0)
-        {
-            Gift gift = db.hotel.Find(id);
-            if (gift == null)
-            {
-                return HttpNotFound();
-            }
-            return View(gift);
-        }
+     
 
         //
         // POST: /Gift/Edit/5
@@ -105,12 +100,8 @@ namespace SAS.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            Gift gift = db.hotel.Find(id);
-            if (gift == null)
-            {
-                return HttpNotFound();
-            }
-            return View(gift);
+
+            return null;
         }
         //得到当前酒店所有房型
         public void getRooms(int hotel_id)
@@ -125,9 +116,9 @@ namespace SAS.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Gift gift = db.hotel.Find(id);
-            db.hotel.Remove(gift);
-            db.SaveChanges();
+            //Gift gift = db.hotel.Find(id);
+            //db.hotel.Remove(gift);
+            //db.SaveChanges();
             return RedirectToAction("Index");
         }
 

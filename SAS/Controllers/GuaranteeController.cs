@@ -49,6 +49,8 @@ namespace SAS.Controllers
             ViewData["rooms"] = help.HotelInfoHelp.getRooms(u_id);
             //所有酒店对应的房型列表
             ViewData["hotels"] = help.HotelInfoHelp.getHotlList(u_id);
+
+            ViewData["Gurarantees"] = new GuaranteeRule().GuraranteeList();
         }
 
         //

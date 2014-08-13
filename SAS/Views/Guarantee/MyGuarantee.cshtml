@@ -7,7 +7,10 @@
     //所有酒店对应的房型列表
     List<SAS.Models.hotel_room_info> rooms = ViewData["rooms"] as List<SAS.Models.hotel_room_info>;
     
-    ViewBag.Title = "MyGuarantee";
+    //所有担保规则列表
+    List<SAS.Models.GuaranteeRule> guarantees = ViewData["Gurarantees"] as List<SAS.Models.GuaranteeRule>;
+    
+  ViewBag.Title = "MyGuarantee";
 }
 @foreach (var h in hotels)
 {
