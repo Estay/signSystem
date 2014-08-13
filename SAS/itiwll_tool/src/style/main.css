@@ -271,7 +271,14 @@
 	margin-top: 100px;
 }
 
-/*我的公寓*/
-#myHotelTable {
+/*我的公寓  促销规则*/
+#myHotelTable,
+#DrrRule {
 	margin-top: 32px;
+}
+#tittle {
+	font-weight: bold;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #888;
+	margin-bottom: 20px;
 }
