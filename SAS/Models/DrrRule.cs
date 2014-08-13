@@ -188,6 +188,13 @@ namespace SAS.Models
             get { return roomIds; }
             set { roomIds = value; }
         }
+        private string roomNames;
+
+        public string RoomNames
+        {
+            get { return roomNames; }
+            set { roomNames = value; }
+        }
         #endregion Model
 
         //[NotMapped]
