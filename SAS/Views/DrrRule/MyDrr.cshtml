@@ -11,26 +11,41 @@
 }
 
 <div id="DrrRule" class="box_a">
-    <p id="tittle">
-        <span>公寓:</span>
+    <h2>公寓:
         <select name="" >
             @foreach (var h in hotels)
             {
                 <option value="@h.">@h.h_name_cn</option>
             }
         </select>
-    </p>
+    </h2>
+    <table cellspacing="0">
+        <tbody>
+            <tr>
+                <th>担保规则</th>
+                <th>促销日期</th>
+                <th>髟房型</th>
+                <th>操作</th>
+            </tr>
+            <tr>
+                <td>td</td>
+                <td>td</td>
+                <td>td</td>
+                <td>td</td>
+            </tr>
 
-    @foreach (var h in hotels)
-    {
-        var Rooms = rooms.Where(r=>r.hotel_id== h.hotel_id);
-        //当前酒店对应的房型
-        foreach (var item in Rooms)
-        {
-            @item.h_r_name_cn
-        }
-        
-    }
+        </tbody>
+            @foreach (var h in hotels)
+            {
+                var Rooms = rooms.Where(r=>r.hotel_id== h.hotel_id);
+                //当前酒店对应的房型
+                foreach (var item in Rooms)
+                {
+                    @item.h_r_name_cn
+                }
+                
+            }
+
     
 </div>
 
