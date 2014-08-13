@@ -120,6 +120,16 @@ td {
 .checkbox_box {
   width: 830px;
 }
+.checkbox_box .w_sn span{
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  vertical-align: bottom;
+  margin-right: 20px;
+  width: 150px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
 .float_r {
   float: right;
 }
