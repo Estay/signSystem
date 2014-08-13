@@ -297,9 +297,9 @@ namespace SAS.Models
             get { return roomList; }
             set { roomList = value; }
         }
-
+        
         private hotel_room_RP_price_info prices = new hotel_room_RP_price_info();
-
+        [NotMapped]
         public hotel_room_RP_price_info Prices
         {
             get { return prices; }
@@ -307,6 +307,7 @@ namespace SAS.Models
         }
 
         //床型
+      
         public List<string> getBedType()
         {
             List<string> dic = new  List<string>();
