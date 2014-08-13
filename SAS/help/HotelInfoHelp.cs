@@ -21,5 +21,14 @@ namespace SAS.help
             uId = "test1";
             return (from h in new hotel_infoDBContent().hotel  where h.u_id==uId select h).ToList();
         }
+
+         //用户ID所有的酒店
+        public static List<DrrRule> getDrrList(string uId)
+        {
+            uId = "test1";
+            int[] rf = (from h in new hotel_infoDBContent().hotel where h.u_id == uId select h.hotel_id).ToArray();  
+            return (from h in new DrrRuleDBContent().drrs where rf.Contains(h.hotel_id) select h).ToList();
+        }
+    
     }
 }

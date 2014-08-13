@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
@@ -182,10 +183,21 @@ namespace SAS.Models
         }
         #endregion Model
 
+        //[NotMapped]
+        private List<DrrRule> drrList = new List<DrrRule>();
+        [NotMapped]
+        public List<DrrRule> DrrList
+        {
+            get { return drrList; }
+            set { drrList = value; }
+        }
+
+
     }
     public class DrrRuleDBContent : DbContext
     {
-        public DbSet<DrrRule> hotel { get; set; }
+        public DrrRuleDBContent() : base("DefaultConnection") { }
+        public DbSet<DrrRule> drrs { get; set; }
 
     }
 }

@@ -305,6 +305,13 @@ namespace SAS.Models
             get { return prices; }
             set { prices = value; }
         }
+        private DrrRule drrs = new DrrRule();
+        [NotMapped]
+        public DrrRule Drrs
+        {
+            get { return drrs; }
+            set { drrs = value; }
+        }
 
         //床型
       
