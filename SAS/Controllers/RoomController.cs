@@ -35,10 +35,12 @@ namespace SAS.Controllers
             }
             return View(hotel_room_info);
         }
-        public int IsOk(string text)
+        //验证房型是否存在
+        public int IsOk(string text,string hotelId)
         {
-
-            if ((from h in db.room where h.h_r_name_cn == text select h).Count() > 0 || (from h in new hotel_room_infoDBContent("").room where h.h_r_name_cn == text select h).Count() > 0)
+            int hotel_id=0;
+            int.TryParse(hotelId,out hotel_id);
+            if ((from h in db.room where h.h_r_name_cn == text && h.hotel_id == hotel_id select h).Count() > 0 || (from h in new hotel_room_infoDBContent("").room where h.h_r_name_cn == text && h.hotel_id == hotel_id select h).Count() > 0)
                 return 0;
             else
                 return 1;
@@ -95,14 +97,14 @@ namespace SAS.Controllers
             return View("Create", new hotel_room_info());
         }
         //验证房型是否存在
-        public int IsOk(string hotelId,string text)
-        {
-            int hotel_id=Convert.ToInt32(hotelId);
-            if ((from h in db.room where h.h_r_name_cn == text && h.hotel_id == hotel_id select h).Count() > 0)
-                return 0;
-            else
-                return 1;
-        }
+        //public int IsOk(string hotelId,string text)
+        //{
+        //    int hotel_id=Convert.ToInt32(hotelId);
+        //    if ((from h in db.room where h.h_r_name_cn == text && h.hotel_id == hotel_id select h).Count() > 0)
+        //        return 0;
+        //    else
+        //        return 1;
+        //}
 
         public void getfacilities()
         {
