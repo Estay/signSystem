@@ -97,7 +97,7 @@ namespace SAS.Controllers
             hotel_info.h_ctime = DateTime.Now;
             hotel_info.source_id = 5;
             hotel_info.h_id = Guid.NewGuid().ToString();
-            
+            hotel_info.h_state = false;
             var errors = ModelState.Values.SelectMany(v => v.Errors); 
             if (ModelState.IsValid)
             {
@@ -113,10 +113,12 @@ namespace SAS.Controllers
         }
         public int IsOk(string text)
         {
-            if ((from h in db.hotel where h.h_name_cn == text select h).Count() > 0)
+          
+            if ((from h in db.hotel where h.h_name_cn == text select h).Count() > 0 || (from h in new hotel_infoDBContent("").hotel where h.h_name_cn == text select h).Count() > 0 )
                 return 0;
             else
                 return 1;
+        
         }
        //上一步
         public ActionResult Forward(string hotelId)

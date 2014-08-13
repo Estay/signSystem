@@ -321,6 +321,8 @@ namespace SAS.Models
     }
     public class hotel_room_infoDBContent : DbContext
     {
+        public hotel_room_infoDBContent(string test) : base("hotel_room_infoDBContent") { }
+        public hotel_room_infoDBContent() : base("") { }
         public DbSet<hotel_room_info> room { get; set; }
     }
 }

@@ -35,7 +35,15 @@ namespace SAS.Controllers
             }
             return View(hotel_room_info);
         }
+        public int IsOk(string text)
+        {
 
+            if ((from h in db.room where h.h_r_name_cn == text select h).Count() > 0 || (from h in new hotel_room_infoDBContent("").room where h.h_r_name_cn == text select h).Count() > 0)
+                return 0;
+            else
+                return 1;
+
+        }
         //
         // GET: /Room/Create
 
