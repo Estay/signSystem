@@ -7,6 +7,9 @@
     
     //所有酒店对应的房型列表
     List<SAS.Models.hotel_room_info> rooms = ViewData["rooms"] as List<SAS.Models.hotel_room_info>;
+
+    //礼包
+    List<SAS.Models.Gift> gifts  = ViewData["gift"] as List<SAS.Models.Gift>;
     
     ViewBag.Title = "MyGift";
     }
@@ -16,7 +19,7 @@
     //当前酒店对应的房型
     foreach (var item in Rooms)
     {
-        
+      
     }
 }
 <h2>MyGift</h2>
