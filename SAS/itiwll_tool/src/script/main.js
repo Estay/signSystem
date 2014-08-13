@@ -11,6 +11,7 @@
 	// 城市输入提示和验证
 	$("#hotel_name").e_input_tip({
 		space : "请输入公寓名称",
+		check : true, //失去焦点验证
 		rule: function(success_callback,error_callback,val) {
 			var el = $(this);
 
@@ -733,7 +734,11 @@
 		event.preventDefault();
 		var el = $(this),
 			status = 0;
-		var input = $(this).parents(".box_a").find('input[type=text],select[name],textarea[name],.select_yeae,.select_month').trigger("input_tip_checking");
+		var input = $(this)
+					.parents(".box_a")
+					.find('input[type=text],select[name],textarea[name],.select_yeae,.select_month')
+					.remove("#hotel_name")
+					.trigger("input_tip_checking");
 		setTimeout(function() {
 			input.each(function(index, el) {
 				if ($(this).attr('rules_error')||$(this).attr('rules_error')=="") {

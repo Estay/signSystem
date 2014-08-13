@@ -1,4 +1,4 @@
-/*2014年8月12日17:58:09*/
+/*2014年8月13日11:10:47*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -340,6 +340,7 @@
     var estay_sas = {};
     $("#hotel_name").e_input_tip({
         space: "请输入公寓名称",
+        check: true,
         rule: function(success_callback, error_callback, val) {
             var el = $(this);
             if (!val.match(/^[\s\S]{3,}$/)) {
@@ -843,7 +844,7 @@
     $(".checking_btn").click(function(event) {
         event.preventDefault();
         var el = $(this), status = 0;
-        var input = $(this).parents(".box_a").find("input[type=text],select[name],textarea[name],.select_yeae,.select_month").trigger("input_tip_checking");
+        var input = $(this).parents(".box_a").find("input[type=text],select[name],textarea[name],.select_yeae,.select_month").remove("#hotel_name").trigger("input_tip_checking");
         setTimeout(function() {
             input.each(function(index, el) {
                 if ($(this).attr("rules_error") || $(this).attr("rules_error") == "") {
