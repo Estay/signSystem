@@ -22,6 +22,7 @@ namespace SAS.Controllers
         {
             return View(db.price.ToList());
         }
+
         public ActionResult MyPrice(string Id,string startDate,string EndDate)
         {
             string uId="test1";

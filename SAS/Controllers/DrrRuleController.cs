@@ -18,7 +18,7 @@ namespace SAS.Controllers
 
         public ActionResult Index()
         {
-            return View(db.hotel.ToList());
+           return View();
         }
 
         //
@@ -26,12 +26,12 @@ namespace SAS.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            DrrRule drrrule = db.hotel.Find(id);
-            if (drrrule == null)
-            {
-                return HttpNotFound();
-            }
-            return View(drrrule);
+            //DrrRule drrrule = db.hotel.Find(id);
+            //if (drrrule == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            return View();
         }
 
         //
@@ -49,12 +49,12 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult Create(DrrRule drrrule)
         {
-            if (ModelState.IsValid)
-            {
-                db.hotel.Add(drrrule);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            //if (ModelState.IsValid)
+            //{
+            //    db.hotel.Add(drrrule);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
 
             return View(drrrule);
         }
@@ -65,18 +65,20 @@ namespace SAS.Controllers
             ViewData["rooms"] = help.HotelInfoHelp.getRooms(u_id);
             //所有酒店对应的房型列表
             ViewData["hotels"] = help.HotelInfoHelp.getHotlList(u_id);
+
+            ViewData["drrs"] = help.HotelInfoHelp.getDrrList(u_id);
         }
         //
         // GET: /DrrRule/Edit/5
 
         public ActionResult Edit(int id = 0)
         {
-            DrrRule drrrule = db.hotel.Find(id);
-            if (drrrule == null)
-            {
-                return HttpNotFound();
-            }
-            return View(drrrule);
+            //DrrRule drrrule = db.hotel.Find(id);
+            //if (drrrule == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            return View();
         }
 
         //
@@ -85,12 +87,12 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult Edit(DrrRule drrrule)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(drrrule).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            //if (ModelState.IsValid)
+            //{
+            //    db.Entry(drrrule).State = EntityState.Modified;
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
             return View(drrrule);
         }
 
@@ -99,12 +101,12 @@ namespace SAS.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            DrrRule drrrule = db.hotel.Find(id);
-            if (drrrule == null)
-            {
-                return HttpNotFound();
-            }
-            return View(drrrule);
+            //DrrRule drrrule = db.hotel.Find(id);
+            //if (drrrule == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            return View();
         }
 
         //
@@ -113,9 +115,9 @@ namespace SAS.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            DrrRule drrrule = db.hotel.Find(id);
-            db.hotel.Remove(drrrule);
-            db.SaveChanges();
+            //DrrRule drrrule = db.hotel.Find(id);
+            //db.hotel.Remove(drrrule);
+            //db.SaveChanges();
             return RedirectToAction("Index");
         }
 

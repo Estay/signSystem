@@ -305,6 +305,13 @@ namespace SAS.Models
             get { return prices; }
             set { prices = value; }
         }
+        private DrrRule drrs = new DrrRule();
+        [NotMapped]
+        public DrrRule Drrs
+        {
+            get { return drrs; }
+            set { drrs = value; }
+        }
 
         //床型
       
@@ -321,6 +328,8 @@ namespace SAS.Models
     }
     public class hotel_room_infoDBContent : DbContext
     {
+        public hotel_room_infoDBContent(string test) : base("hotel_room_infoDBContent") { }
+        public hotel_room_infoDBContent() : base("") { }
         public DbSet<hotel_room_info> room { get; set; }
     }
 }

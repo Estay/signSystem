@@ -589,6 +589,9 @@ namespace SAS.Models
     }
     public class hotel_infoDBContent : DbContext
     {
+        //从数据库
+        public hotel_infoDBContent(string second): base("hotel_infoDBContent") { }
+        public hotel_infoDBContent() : base("DefaultConnection"){ }
         public DbSet<hotel_info> hotel { get; set; }
        
     }
