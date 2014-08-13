@@ -1,7 +1,21 @@
-﻿@model SAS.Models.hotel_room_RP_price_info
+﻿@model SAS.Models.hotel_info
 
 @{
     ViewBag.Title = "MyPrix";
 }
-
+@* 酒店列表*@
+@foreach (var h in Model.HotelList)
+{
+    
+}
+@* 房型列表表*@
+@foreach (var r in Model.Room.RoomList)
+{
+    
+}
+@* 价格列表*@
+@foreach (var r in Model.Room.Prices.PriceList)
+{
+    
+}
 <h2>MyPrix</h2>
