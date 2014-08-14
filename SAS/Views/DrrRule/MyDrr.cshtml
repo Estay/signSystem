@@ -84,7 +84,7 @@
                         <input id="" type="text" class="hide" name="" value="@Model.RoomIds">
                         @foreach (var item in Rooms)
                         {   
-                            <label class="w_sn"><input type="checkbox" class="multiple"  value=""><span class="">@item.h_r_name_cn</span></label>
+                            <label class="w_sn"><input type="checkbox" class="multiple"  value="@item.room_id"><span class="">@item.h_r_name_cn</span></label>
                         }                   
                     </p>
                 </div>
