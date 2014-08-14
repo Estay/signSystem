@@ -40,7 +40,7 @@ namespace SAS.Controllers
         public ActionResult MyDrr()
         {
             GetData();
-            return View();
+            return View(new DrrRule());
         }
 
         //
