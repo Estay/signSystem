@@ -11,14 +11,110 @@
     List<SAS.Models.DrrRule> Drrs = ViewData["drrs"] as List<SAS.Models.DrrRule>;
 
     ViewBag.Title = "MyDrr";
+    int i = 0;
 }
-@foreach (var h in hotels)
-{
-    var Rooms = rooms.Where(r=>r.hotel_id== h.hotel_id);
-    //当前酒店对应的房型
-    foreach (var item in Rooms)
+
+<div id="DrrRule" class="box_a">
+    <h2>公寓:
+        <select name="" >
+            @foreach (var h in hotels)
+            {
+                <option value="@h.">@h.h_name_cn</option>
+            }
+        </select>
+    </h2>
+    @foreach (var h in hotels)
     {
+        var Rooms = rooms.Where(r => r.hotel_id == h.hotel_id);
+        i++;
+    <div class='@(i < 2 ? "show" : "hide")'>
         
-    }
-}
-<h2>MyDrr</h2>
+        <table cellspacing="0">
+            <tbody>
+                <tr>
+                    <th>促销规则</th>
+                    <th>促销日期</th>
+                    <th>适用房型</th>
+                    <th>操作</th>
+                </tr>
+                @foreach (var item in Drrs)
+                { 
+                <tr>
+                    <td>@item.Description</td>
+                    <td>@(item.StartDate)-@(item.EndDate)</td>
+                    <td>td</td>
+                    <td><a href="">修改</a>|<a href="">删除</a></td>
+                </tr>
+                }
+
+            </tbody>
+        </table>
+        <br>
+        <p><span class="btn_d set">设置促销规则</span></p>
+        <div class="box_b">
+            <p class="input_line">
+                <label for="">
+                    <span class="label">促销名称：</span>
+                    <span>在某时间范围连住N晚N折</span>
+                </label>
+            </p>
+            <p class="input_line">
+                <label for="">
+                    <span class="label">促销日期：</span>
+                    <input type="text" class="date_start">至<input type="text" class="date_end">
+                </label>
+            </p>
+            <p class="input_line">
+                <label for="">
+                    <span class="label">促销规则：</span>
+                    连住
+                    <input type="text" class="w50">
+                    晚打
+                    <input type="text" class="w50">
+                    折
+                </label>
+            </p>
+            <div class="clear">
+                <div class="float_l">
+                    <div class="input_line"><span class="label">适用房型：</span></div>
+                </div>
+                <div class="float_l checkbox_box">
+                    <p class="input_line"><a class="all_set" href="">全选</a><a class="reverse_set" href="">反选</a></p>
+                    <p class="input_line">
+                        <input id="" type="text" class="hide" name="" value="">
+                        @foreach (var item in Rooms)
+                        {   
+                            <label class="w_sn"><input type="checkbox" class="multiple"  value=""><span class="">@item.h_r_name_cn</span></label>
+                        }                   
+                    </p>
+                </div>
+            </div>
+            <a id="btn_add_drr" class="btn_b" href="">添加促销规则</a>
+        </div>          
+    </div>
+    } 
+</div>
+
+<!-- 日期控件 -->
+<script type="text/javascript" src="@Url.Content("~/Content/public/script/laydate/laydate.dev.js")"></script>
+<script>
+    var start = {
+        elem: '#DrrRule .date_start',
+        min: laydate.now(), //设定最小日期为当前日期
+        istoday: false,
+        choose: function(datas){
+             end.min = datas; //开始日选好后，重置结束日的最小日期
+             end.start = datas //将结束日的初始值设定为开始日
+        }
+    };
+    var end = {
+        elem: '#DrrRule .date_end',
+        min: laydate.now(),
+        istoday: false,
+        choose: function(datas){
+            start.max = datas; //结束日选好后，充值开始日的最大日期
+        }
+    };
+    laydate(start);
+    laydate(end);
+</script>

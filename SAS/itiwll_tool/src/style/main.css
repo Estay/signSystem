@@ -271,7 +271,23 @@
 	margin-top: 100px;
 }
 
-/*我的公寓*/
-#myHotelTable {
+/*我的公寓  促销规则*/
+#myHotelTable,
+#DrrRule {
 	margin-top: 32px;
+}
+#DrrRule input.date_start,
+#DrrRule input.date_end {
+	width: 100px;
+	padding: 0 5px;
+}
+#DrrRule input.date_start {
+	margin-right: 10px;
+}
+#DrrRule input.date_end {
+	margin-left: 10px;
+}
+#btn_add_drr {
+	margin-left: 110px;
+	margin-top: 20px;
 }
