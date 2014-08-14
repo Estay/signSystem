@@ -328,8 +328,8 @@ namespace SAS.Models
     }
     public class hotel_room_infoDBContent : DbContext
     {
-        public hotel_room_infoDBContent(string test) : base("hotel_room_infoDBContent") { }
-        public hotel_room_infoDBContent() : base("DefaultConnection") { }
+        public hotel_room_infoDBContent(string test) : base("DefaultConnection") { }
+        public hotel_room_infoDBContent() : base("hotel_room_infoDBContent") { }
         public DbSet<hotel_room_info> room { get; set; }
     }
 }
