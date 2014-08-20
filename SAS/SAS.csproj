@@ -385,6 +385,7 @@
     <Content Include="Views\DrrRule\MyDrr.cshtml" />
     <Content Include="Views\Shared\_public_foot.cshtml" />
     <Content Include="Views\Price\MyPrix.cshtml" />
+    <Content Include="Views\Price\Create.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
