@@ -8,18 +8,26 @@
     //所有酒店对应的房型列表
     List<SAS.Models.hotel_room_info> rooms = ViewData["rooms"] as List<SAS.Models.hotel_room_info>;
     //促销信息列表
+<<<<<<< HEAD
     List<SAS.Models.DrrRules> Drrs = ViewData["drrs"] as List<SAS.Models.DrrRules>;
     //促销规则
     List<SAS.Models.DrrModes> DrrModes = ViewData["drrModes"] as List<SAS.Models.DrrModes>;
     
       
     ViewBag.Title = "MyDrr";
+=======
+    List<SAS.Models.DrrRule> Drrs = ViewData["drrs"] as List<SAS.Models.DrrRule>;
+
+    ViewBag.Title = "设置促销";
+    ViewBag.Description = "设置促销";
+    ViewBag.drrs = "set";
+>>>>>>> 8a468763bbfe6d56066c42aea5a57521297433c6
     int i = 0;
 }
 
 <div id="DrrRule" class="box_a">
     <h2>公寓:
-        <select name="" >
+        <select name="" id="hotel_switch">
             @foreach (var h in hotels)
             {
                 <option value="@h.h_name_cn">@h.h_name_cn</option>
@@ -30,7 +38,7 @@
     {
         var Rooms = rooms.Where(r => r.hotel_id == h.hotel_id);
         i++;
-    <div class='@(i < 2 ? "show" : "hide")'>
+    <div class='@(i < 2 ? "show" : "hide") hotel_drr'>
         
         <table cellspacing="0">
             <tbody>
@@ -87,7 +95,7 @@
                         <input id="" type="text" class="hide" name="" value="@Model.RoomIds">
                         @foreach (var item in Rooms)
                         {   
-                            <label class="w_sn"><input type="checkbox" class="multiple"  value=""><span class="">@item.h_r_name_cn</span></label>
+                            <label class="w_sn"><input type="checkbox" class="multiple"  value="@item.room_id"><span class="">@item.h_r_name_cn</span></label>
                         }                   
                     </p>
                 </div>

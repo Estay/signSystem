@@ -27,7 +27,7 @@ namespace SAS.Controllers
         public ActionResult MyGift()
         {
             GetData();
-            return View();
+            return View(new Gift());
         }
         public void GetData()
         {

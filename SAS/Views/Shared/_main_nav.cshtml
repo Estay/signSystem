@@ -1,13 +1,17 @@
-﻿<div id="main_nav">
+﻿<!-- 导航 -->
+<div id="main_nav">
 	<div class="main_nav_item">
 		<a href="">首&nbsp;&nbsp;&nbsp;&nbsp;页</a>
 	</div>
 	<div class="main_nav_item">
 		<a href="">公寓管理</a>
-		<a class="nav_item set" href="">新建公寓</a>
-		<a class="nav_item" href="">我的公寓</a>
-		<a class="nav_item" href="">房价管理</a>
-		<a class="nav_item" href="">房态管理</a>
+		<a class="nav_item @ViewBag.hotel_info" href="">新建公寓</a>
+		<a class="nav_item @ViewBag.my_apart_ment" href="">我的公寓</a>
+		<a class="nav_item @ViewBag.my_prix" href="">房价管理</a>
+		<a class="nav_item @ViewBag.my_apart_ment" href="">房态管理</a>
+		<a class="nav_item @ViewBag.guarantees" href="">担保规则</a>
+		<a class="nav_item @ViewBag.drrs" href="">促销规则</a>
+		<a class="nav_item @ViewBag.gift" href="">礼包设置</a>
 	</div>
 	<div class="main_nav_item">
 		<a href="">交易管理</a>

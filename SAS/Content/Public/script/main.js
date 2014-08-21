@@ -1,4 +1,4 @@
-/*2014年8月13日11:10:47*/
+/*2014年8月14日15:30:53*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -812,6 +812,10 @@
         }).fail(function(data) {
             alert("删除图片错误！错误代码：" + data.status + "," + data.statusText + "。");
         });
+    });
+    $("#hotel_switch").change(function(event) {
+        console.log(event);
+        $(".hotel_drr").hide().eq(this.selectedIndex).show();
     });
     $(".multiple").change(function(event) {
         var checkbox_box = $(this).parents(".checkbox_box"), input = $(this).parents(".input_line").prev(".hide"), vals = "";
