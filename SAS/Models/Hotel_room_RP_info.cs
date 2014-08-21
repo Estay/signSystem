@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -54,7 +55,8 @@ namespace SAS.Models
 		/// <summary>
 		/// 房型RP编号
 		/// </summary>
-		public int h_room_rp_id
+        [KeyAttribute]
+        public int h_room_rp_id
 		{
 			set{ _h_room_rp_id=value;}
 			get{return _h_room_rp_id;}
