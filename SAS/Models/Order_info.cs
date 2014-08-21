@@ -456,9 +456,5 @@ namespace SAS.Models
         #endregion Model
     }
 
-    public class Order_infoDBContent : DbContext
-    {
-        public DbSet<Order_info> hotel { get; set; }
-
-    }
+ 
 }

@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SAS.DBC;
 using SAS.help;
 using SAS.Models;
 
@@ -12,14 +13,14 @@ namespace SAS.Controllers
 {
     public class RoomController : Controller
     {
-        private hotel_room_infoDBContent db = new hotel_room_infoDBContent();
+        private HotelDBContent db = new HotelDBContent();
 
         //
         // GET: /Room/
 
         public ActionResult Index(object t)
         {
-            return View(db.room.ToList());
+            return View(db.rooms.ToList());
         }
 
         //
@@ -28,7 +29,7 @@ namespace SAS.Controllers
         public ActionResult Details(int id = 0)
         {
             ViewBag.sign = 1;
-            hotel_room_info hotel_room_info = db.room.Find(id);
+            hotel_room_info hotel_room_info = db.rooms.Find(id);
             if (hotel_room_info == null)
             {
                 return HttpNotFound();
@@ -40,7 +41,7 @@ namespace SAS.Controllers
         {
             int hotel_id=0;
             int.TryParse(hotelId,out hotel_id);
-            if ((from h in db.room where h.h_r_name_cn == text && h.hotel_id == hotel_id select h).Count() > 0 || (from h in new hotel_room_infoDBContent("").room where h.h_r_name_cn == text && h.hotel_id == hotel_id select h).Count() > 0)
+            if ((from h in db.rooms where h.h_r_name_cn == text && h.hotel_id == hotel_id select h).Count() > 0 || (from h in  new HotelDBContent("").rooms where h.h_r_name_cn == text && h.hotel_id == hotel_id select h).Count() > 0)
                 return 0;
             else
                 return 1;
@@ -70,7 +71,7 @@ namespace SAS.Controllers
             //getRooms(Convert.ToInt32(hotelId));
             //string f = hotelId;
             getfacilities();
-             hotel_room_info room= (from h in db.room where h.room_id == RId select h).Single();
+             hotel_room_info room= (from h in db.rooms where h.room_id == RId select h).Single();
              getRooms(room.hotel_id);
              ViewBag.HoltelId = room.hotel_id;
              return View("Create", room);
@@ -82,11 +83,11 @@ namespace SAS.Controllers
             //getRooms(Convert.ToInt32(hotelId));
             //string f = hotelId;
             getfacilities();
-            hotel_room_info room = db.room.Find(Convert.ToInt32(roomId));
+            hotel_room_info room = db.rooms.Find(Convert.ToInt32(roomId));
             if (room != null)
             {
 
-                db.room.Remove(room);
+                db.rooms.Remove(room);
                 if (db.SaveChanges() > 0)
                     ViewBag.sign = 1;
                 else
@@ -120,7 +121,7 @@ namespace SAS.Controllers
            
             if ( hotel_room_info.room_id> 0)
             {
-                var room=(from r in db.room where r.room_id == hotel_room_info.room_id select r).Single();
+                var room=(from r in db.rooms where r.room_id == hotel_room_info.room_id select r).Single();
                 if (room!=null)
                 {
                     room.h_r_name_cn = hotel_room_info.h_r_name_cn;
@@ -129,8 +130,8 @@ namespace SAS.Controllers
                     room.h_r_floor = hotel_room_info.h_r_floor;
                     room.Comments = hotel_room_info.Comments;
                     room.house_service = hotel_room_info.house_service;
-                    room.Sitting_room = hotel_room_info.Sitting_room;
-                    room.Study = room.Study;
+                    room.sitting_room_number = hotel_room_info.sitting_room_number;
+                    room.study = room.study;
                     room.Kitchen = room.Kitchen;
                     room.h_r_utime = DateTime.Now;
                     room.h_r_people_number = hotel_room_info.h_r_people_number;
@@ -156,7 +157,7 @@ namespace SAS.Controllers
 
                 //    return RedirectToAction("Index");
                 //}
-                db.room.Add(hotel_room_info);
+                db.rooms.Add(hotel_room_info);
                
             }
             if (db.SaveChanges() > 0)
@@ -181,7 +182,7 @@ namespace SAS.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            hotel_room_info hotel_room_info = db.room.Find(id);
+            hotel_room_info hotel_room_info = db.rooms.Find(id);
             if (hotel_room_info == null)
             {
                 return HttpNotFound();
@@ -210,7 +211,7 @@ namespace SAS.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            hotel_room_info hotel_room_info = db.room.Find(id);
+            hotel_room_info hotel_room_info = db.rooms.Find(id);
             if (hotel_room_info == null)
             {
                 return HttpNotFound();
@@ -224,8 +225,8 @@ namespace SAS.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            hotel_room_info hotel_room_info = db.room.Find(id);
-            db.room.Remove(hotel_room_info);
+            hotel_room_info hotel_room_info = db.rooms.Find(id);
+            db.rooms.Remove(hotel_room_info);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -180,6 +180,7 @@
     <Compile Include="Controllers\PriceController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="Controllers\RStatusController.cs" />
+    <Compile Include="DBC\HotelDBContent.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -198,16 +199,17 @@
     <Compile Include="help\location.ashx.cs">
       <DependentUpon>location.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Models\DrrRule.cs" />
+    <Compile Include="Models\DrrModes.cs" />
+    <Compile Include="Models\DrrRules.cs" />
     <Compile Include="Models\Gift.cs" />
     <Compile Include="Models\GuaranteeRule.cs" />
     <Compile Include="Models\Hotel_comment_info.cs" />
+    <Compile Include="Models\hotel_info.cs" />
     <Compile Include="Models\hotel_picture_info.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\hotel_room_RP_price_info.cs" />
     <Compile Include="Models\Location.cs" />
-    <Compile Include="Models\hotel_info.cs" />
     <Compile Include="Models\hotel_room_info.cs" />
     <Compile Include="Models\hotel_room_picture_info.cs" />
     <Compile Include="Models\hotel_theme_info.cs" />
@@ -264,13 +266,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="FakesAssemblies\" />
     <Folder Include="Filters\" />
     <Folder Include="Images\" />
     <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_public_head.cshtml" />
@@ -359,7 +362,6 @@
     <Content Include="Content\Public\script\main.map" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\PublishProfiles\sas.pubxml" />
     <Content Include="Views\MyApartMent\Hotel.cshtml" />
     <Content Include="Views\MyApartMent\Room.cshtml" />
     <Content Include="Views\MyApartMent\Price.cshtml" />

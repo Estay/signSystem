@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using SAS.DBC;
 using SAS.Models;
 
 namespace SAS.help
@@ -11,7 +12,7 @@ namespace SAS.help
     /// </summary>
     public class ImageDes : IHttpHandler
     {
-        private PictureDBContent db = new PictureDBContent();
+        private HotelDBContent db = new HotelDBContent();
         public void ProcessRequest(HttpContext context)
         {
            

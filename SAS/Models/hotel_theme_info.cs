@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SAS.DBC;
 
 namespace SAS.Models
 {
@@ -53,9 +54,9 @@ namespace SAS.Models
             {
                 Dictionary<int, string> list = new Dictionary<int, string>();
                 //Array array = new Array();
-               
-                khotel_theme_infoDBContent db = new khotel_theme_infoDBContent();
-                var themes = db.Themes.ToList();
+
+                HotelDBContent db = new HotelDBContent();
+                var themes = db.themes.ToList();
                
                
                 foreach (var t in themes)
@@ -71,8 +72,5 @@ namespace SAS.Models
 
        
     }
-    public class khotel_theme_infoDBContent : DbContext
-    {
-        public DbSet<hotel_theme_info> Themes{ get; set; }
-    }
+  
 }

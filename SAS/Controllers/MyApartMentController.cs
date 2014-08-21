@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SAS.DBC;
 using SAS.help;
 using SAS.Models;
 
@@ -12,10 +13,8 @@ namespace SAS.Controllers
 {
     public class MyApartMentController : Controller
     {
-        private hotel_infoDBContent db = new hotel_infoDBContent();
-        private hotel_infoDBContent dbHotel = new hotel_infoDBContent();
-        private RoomImageDBContent dbImage = new RoomImageDBContent();
-        private hotel_room_infoDBContent dbRoom = new hotel_room_infoDBContent();
+        private HotelDBContent db = new HotelDBContent();
+     
         // GET: /MyApartMent/
         int hotel_id = 0;
         //酒店信息
@@ -30,7 +29,7 @@ namespace SAS.Controllers
             ViewData["services"] = DBhelp.GetSelectDataByTable("GeneralAmenities_info");//services
             ViewData["provice"] = DBhelp.GetSelectDataByTable("province_info");//provice   
             ViewBag.HotelId = hotel_id;
-            return View(dbHotel.hotel.Single(h=>h.hotel_id==hotel_id));
+            return View(db.hotel.Single(h=>h.hotel_id==hotel_id));
         }
         [HttpPost]
         public ActionResult Hotel(hotel_info hotel_info)
@@ -66,7 +65,7 @@ namespace SAS.Controllers
             //getRooms(Convert.ToInt32(hotelId));
             //string f = hotelId;
             getfacilities();
-            hotel_room_info room = (from h in dbRoom.room where h.room_id == RId select h).Single();
+            hotel_room_info room = (from h in db.rooms where h.room_id == RId select h).Single();
             getRooms(room.hotel_id);
             ViewBag.HoltelId = room.hotel_id;
             return View("Room", room);
@@ -78,11 +77,11 @@ namespace SAS.Controllers
             //getRooms(Convert.ToInt32(hotelId));
             //string f = hotelId;
             getfacilities();
-            hotel_room_info room = dbRoom.room.Find(Convert.ToInt32(roomId));
+            hotel_room_info room = db.rooms.Find(Convert.ToInt32(roomId));
             if (room != null)
             {
 
-                dbRoom.room.Remove(room);
+                db.rooms.Remove(room);
                 if (db.SaveChanges() > 0)
                     ViewBag.sign = 1;
                 else
@@ -109,8 +108,8 @@ namespace SAS.Controllers
             int.TryParse(hotelId, out hotel_id);
             ViewData["rooms"] = DBhelp.getRooms(hotel_id);
             ViewData["ImageTypes"] = new hotel_picture_info().getImageType();
-            int[]rf = (from r in dbRoom.room where r.hotel_id == hotel_id select r.room_id).ToArray();           
-            return View((from image in dbImage.RoomImage where rf.Contains(image.room_id) select image).ToList()); 
+            int[]rf = (from r in db.rooms where r.hotel_id == hotel_id select r.room_id).ToArray();           
+            return View((from image in db.roomImages where rf.Contains(image.room_id) select image).ToList()); 
         }
 
     
@@ -222,7 +221,7 @@ namespace SAS.Controllers
             //ViewData["services"] = DBhelp.GetSelectDataByTable("GeneralAmenities_info");//services
             //ViewData["provice"] = DBhelp.GetSelectDataByTable("province_info");//provice   
             //ViewBag.HotelId = hotel_id;
-            return View((from h in dbHotel.hotel where h.u_id == UId select h).ToList());
+            return View((from h in db.hotel where h.u_id == UId select h).ToList());
         }
     }
 }

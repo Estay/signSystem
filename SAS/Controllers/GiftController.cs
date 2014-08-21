@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SAS.DBC;
 using SAS.help;
 using SAS.Models;
 
@@ -12,7 +13,7 @@ namespace SAS.Controllers
 {
     public class GiftController : Controller
     {
-        private GiftDBContent db = new GiftDBContent();
+        private HotelDBContent db = new HotelDBContent();
 
         //
         // GET: /Gift/

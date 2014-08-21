@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SAS.DBC;
 using SAS.help;
 using SAS.Models;
-using f=System.IO;
+using f = System.IO;
 
 namespace SAS.Controllers
 {
@@ -14,7 +15,7 @@ namespace SAS.Controllers
         //
         // GET: /ImageProperty/
         int sign = 0;
-        private PictureDBContent db = new PictureDBContent();
+        private HotelDBContent db = new HotelDBContent();
         public ActionResult Index()
         {
             return View();
@@ -26,7 +27,7 @@ namespace SAS.Controllers
             {
                 int ID = Convert.ToInt32(PID);
                 string DescText = text;
-                var p = (from i in db.room where i.h_p_id == ID select i).Single();
+                var p = (from i in db.pics where i.h_p_id == ID select i).Single();
                 p.h_p_title = DescText;
                 if (db.SaveChanges() > 0)
                     sign = 1;
@@ -55,10 +56,10 @@ namespace SAS.Controllers
                     path =pth+ text;
                 else
                 {
-                    p = (from i in db.room where i.h_p_id == ID select i).Single();
+                    p = (from i in db.pics where i.h_p_id == ID select i).Single();
                     path = pth+p.h_p_pic_original_url;
                     if (p != null)
-                        db.room.Remove(p);
+                        db.pics.Remove(p);
                     if (db.SaveChanges() > 0)
                         sign = 1;
                     else
@@ -89,7 +90,7 @@ namespace SAS.Controllers
             {
                 int ID = Convert.ToInt32(PID);
                 int DescText =Convert.ToInt32(text);
-                var p = (from i in db.room where i.h_p_id == ID select i).Single();
+                var p = (from i in db.pics where i.h_p_id == ID select i).Single();
                 p.h_p_type = DescText;
                 if (db.SaveChanges() > 0)
                     sign = 1;

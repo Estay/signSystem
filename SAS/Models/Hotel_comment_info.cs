@@ -203,9 +203,5 @@ namespace SAS.Models
         }
         #endregion Model
     }
-    public class Hotel_comment_infoDBContent : DbContext
-    {
-        public DbSet<Hotel_comment_info> hotel { get; set; }
-
-    }
+  
 }

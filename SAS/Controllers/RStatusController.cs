@@ -5,13 +5,14 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SAS.DBC;
 using SAS.Models;
 
 namespace SAS.Controllers
 {
     public class RStatusController : Controller
     {
-        private RoomStatusContent db = new RoomStatusContent();
+        private HotelDBContent db = new HotelDBContent();
 
         //
         // GET: /RStatus/
@@ -24,15 +25,15 @@ namespace SAS.Controllers
         //
         // GET: /RStatus/Details/5
 
-        public ActionResult Details(int id = 0)
-        {
-            Room_status_info room_status_info = db.hotel.Find(id);
-            if (room_status_info == null)
-            {
-                return HttpNotFound();
-            }
-            return View(room_status_info);
-        }
+        //public ActionResult Details(int id = 0)
+        //{
+        //    Room_status_info room_status_info = db.hotel.Find(id);
+        //    if (room_status_info == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(room_status_info);
+        //}
 
         //
         // GET: /RStatus/Create
@@ -50,7 +51,7 @@ namespace SAS.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.hotel.Add(room_status_info);
+                db.rstatus.Add(room_status_info);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -61,15 +62,15 @@ namespace SAS.Controllers
         //
         // GET: /RStatus/Edit/5
 
-        public ActionResult Edit(int id = 0)
-        {
-            Room_status_info room_status_info = db.hotel.Find(id);
-            if (room_status_info == null)
-            {
-                return HttpNotFound();
-            }
-            return View(room_status_info);
-        }
+        //public ActionResult Edit(int id = 0)
+        //{
+        //    Room_status_info room_status_info = db.hotel.Find(id);
+        //    if (room_status_info == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(room_status_info);
+        //}
 
         //
         // POST: /RStatus/Edit/5
@@ -89,15 +90,15 @@ namespace SAS.Controllers
         //
         // GET: /RStatus/Delete/5
 
-        public ActionResult Delete(int id = 0)
-        {
-            Room_status_info room_status_info = db.hotel.Find(id);
-            if (room_status_info == null)
-            {
-                return HttpNotFound();
-            }
-            return View(room_status_info);
-        }
+        //public ActionResult Delete(int id = 0)
+        //{
+        //    Room_status_info room_status_info = db.hotel.Find(id);
+        //    if (room_status_info == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(room_status_info);
+        //}
 
         //
         // POST: /RStatus/Delete/5
@@ -105,8 +106,8 @@ namespace SAS.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Room_status_info room_status_info = db.hotel.Find(id);
-            db.hotel.Remove(room_status_info);
+            Room_status_info room_status_info = db.rstatus.Find(id);
+            db.rstatus.Remove(room_status_info);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

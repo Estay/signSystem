@@ -10,24 +10,21 @@ namespace SAS.Models
 {
     public class hotel_info
     {
-        //[key]
 
-
-        
-       // public int id { get; set; }
-        
+        public hotel_info()
+        { }
         #region Model
         private int _hotel_id;
         private string _h_id;
         private string _u_id;
-        private int? _h_t_id;
+        private int _h_t_id=0;
         private string _h_name_cn;
         private string _h_name_en;
         private string _h_location_cn;
         private string _h_location_en;
         private string _h_description_cn;
         private string _h_description_en;
-        private int? _h_star = 0;
+        private int _h_star = 0;
         private string _h_organization;
         private string _h_tel;
         private string _h_mobile_phone;
@@ -41,7 +38,8 @@ namespace SAS.Models
         private string _h_check_in;
         private string _h_check_out;
         private DateTime _h_opening_time;
-        private int? _h_room_count;
+        private DateTime _decoratetime;
+        private int _h_room_count=0;
         private string _h_province;
         private string _h_city;
         private string _h_administrative_region;
@@ -52,47 +50,34 @@ namespace SAS.Models
         private bool _h_state = true;
         private string _h_state_reason;
         private string _h_hotel_website;
-        private DateTime? _h_ctime;
-        private DateTime? _h_utime;
-        private int? _h_sort = 10000;
-        private int? _source_id;
+        private DateTime _h_ctime;
+        private DateTime _h_utime;
+        private int _h_sort = 10000;
+        private int _source_id;
         private string _generalamenities;
         private string _roomamenities;
         private string _diningamenities;
         private string _recreationamenities;
         private string _availpolicy;
-        private int? _commenttotal = 0;
-        private int? _commentgood = 0;
-        private int? _commentbad = 0;
+        private int _commenttotal = 0;
+        private int _commentgood = 0;
+        private int _commentbad = 0;
         private string _creditcards;
         private string _score;
         private string _introeditor;
         private string _facilities;
         private string _baidulat;
         private string _baidulon;
-        private int? _brandid;
+        private int _brandid=0;
         private string _surroundings;
         private string _features;
         private string _helpfultips;
         private string _hotel_theme_id;
-        private DateTime decorateTime;
-        private int floor;
-
-        public int Floor
-        {
-            get { return floor; }
-            set { floor = value; }
-        }
-
-        public DateTime DecorateTime
-        {
-            get { return decorateTime; }
-            set { decorateTime = value; }
-        }
+        private int _floor=0;
         /// <summary>
         /// 
         /// </summary>
-       [KeyAttribute]
+        [KeyAttribute]
         public int hotel_id
         {
             set { _hotel_id = value; }
@@ -117,7 +102,7 @@ namespace SAS.Models
         /// <summary>
         /// 主题类型分类 对应 hotel_theme_type_info 的 t_id
         /// </summary>
-        public int? h_t_id
+        public int h_t_id
         {
             set { _h_t_id = value; }
             get { return _h_t_id; }
@@ -173,7 +158,7 @@ namespace SAS.Models
         /// <summary>
         /// 酒店星级 旅游局指认 0 1 2 3 4 5 (0为普通，后面相对)
         /// </summary>
-        public int? h_star
+        public int h_star
         {
             set { _h_star = value; }
             get { return _h_star; }
@@ -283,9 +268,17 @@ namespace SAS.Models
             get { return _h_opening_time; }
         }
         /// <summary>
+        /// 装修时间
+        /// </summary>
+        public DateTime decorateTime
+        {
+            set { _decoratetime = value; }
+            get { return _decoratetime; }
+        }
+        /// <summary>
         /// 可销售房数量（非库存）
         /// </summary>
-        public int? h_room_count
+        public int h_room_count
         {
             set { _h_room_count = value; }
             get { return _h_room_count; }
@@ -373,7 +366,7 @@ namespace SAS.Models
         /// <summary>
         /// 录入时间
         /// </summary>
-        public DateTime? h_ctime
+        public DateTime h_ctime
         {
             set { _h_ctime = value; }
             get { return _h_ctime; }
@@ -381,7 +374,7 @@ namespace SAS.Models
         /// <summary>
         /// 更新时间
         /// </summary>
-        public DateTime? h_utime
+        public DateTime h_utime
         {
             set { _h_utime = value; }
             get { return _h_utime; }
@@ -389,7 +382,7 @@ namespace SAS.Models
         /// <summary>
         /// 排序
         /// </summary>
-        public int? h_sort
+        public int h_sort
         {
             set { _h_sort = value; }
             get { return _h_sort; }
@@ -397,7 +390,7 @@ namespace SAS.Models
         /// <summary>
         /// 关联来源类型编号   如 1 自营，4 艺龙 
         /// </summary>
-        public int? source_id
+        public int source_id
         {
             set { _source_id = value; }
             get { return _source_id; }
@@ -445,7 +438,7 @@ namespace SAS.Models
         /// <summary>
         /// 评论总数
         /// </summary>
-        public int? commentTotal
+        public int commentTotal
         {
             set { _commenttotal = value; }
             get { return _commenttotal; }
@@ -453,7 +446,7 @@ namespace SAS.Models
         /// <summary>
         /// 好评数
         /// </summary>
-        public int? commentGood
+        public int commentGood
         {
             set { _commentgood = value; }
             get { return _commentgood; }
@@ -461,7 +454,7 @@ namespace SAS.Models
         /// <summary>
         /// 差评数
         /// </summary>
-        public int? commentBad
+        public int commentBad
         {
             set { _commentbad = value; }
             get { return _commentbad; }
@@ -517,7 +510,7 @@ namespace SAS.Models
         /// <summary>
         /// 品牌编号 
         /// </summary>
-        public int? BrandId
+        public int BrandId
         {
             set { _brandid = value; }
             get { return _brandid; }
@@ -554,9 +547,18 @@ namespace SAS.Models
             set { _hotel_theme_id = value; }
             get { return _hotel_theme_id; }
         }
+        /// <summary>
+        /// 楼层
+        /// </summary>
+        public int floor
+        {
+            set { _floor = value; }
+            get { return _floor; }
+        }
         #endregion Model
 
-        //[NotMapped]
+
+        [NotMapped]
         private List<hotel_info> hotelList = new List<hotel_info>();
         [NotMapped]
         public List<hotel_info> HotelList
@@ -564,7 +566,7 @@ namespace SAS.Models
             get { return hotelList; }
             set { hotelList = value; }
         }
-        //    [NotMapped]
+        [NotMapped]
         private hotel_room_info room = new hotel_room_info();
         [NotMapped]
         public hotel_room_info Room
@@ -573,26 +575,21 @@ namespace SAS.Models
             set { room = value; }
         }
 
-
+        [NotMapped]
         public hotel_theme_info theme;
+
+
         //装修时间
         public List<string> getDecorationTime()
         {
             List<string> list = new List<string>();
             for (int i = 0; i < 30; i++)
             {
-                list.Add(DateTime.Now.Date.AddYears(-i).Year+"年");
+                list.Add(DateTime.Now.Date.AddYears(-i).Year + "年");
             }
             return list;
         }
-        
+
     }
-    public class hotel_infoDBContent : DbContext
-    {
-        //从数据库
-        public hotel_infoDBContent(string second) : base("DefaultConnection") { }
-        public hotel_infoDBContent() : base("hotel_infoDBContent") { }
-        public DbSet<hotel_info> hotel { get; set; }
-       
-    }
+
 }

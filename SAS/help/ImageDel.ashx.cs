@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using SAS.Models;
 using System.IO;
+using SAS.DBC;
 namespace SAS.help
 {
     /// <summary>
@@ -11,7 +12,7 @@ namespace SAS.help
     /// </summary>
     public class ImageDel : IHttpHandler
     {
-        private PictureDBContent db = new PictureDBContent();
+        private HotelDBContent db = new HotelDBContent();
         public void ProcessRequest(HttpContext context)
         {
          

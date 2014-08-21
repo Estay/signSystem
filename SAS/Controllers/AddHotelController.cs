@@ -7,12 +7,13 @@ using System.Web;
 using System.Web.Mvc;
 using SAS.Models;
 using SAS.help;
+using SAS.DBC;
 
 namespace SAS.Controllers
 {
     public class AddHotelController : Controller
-    {
-        private hotel_infoDBContent db = new hotel_infoDBContent();
+    {                                        
+        private HotelDBContent db = new HotelDBContent();
 
         //
         // GET: /AddHotel/
@@ -113,8 +114,18 @@ namespace SAS.Controllers
         }
         public int IsOk(string text)
         {
-          
-            if ((from h in db.hotel where h.h_name_cn == text select h).Count() > 0 || (from h in new hotel_infoDBContent("").hotel where h.h_name_cn == text select h).Count() > 0 )
+            try
+            {
+             var f =from h in db.hotel where h.h_name_cn == text select h;
+                int f3 = (from h in new HotelDBContent("").hotel where h.h_name_cn == text select h).Count();
+            }
+            catch (Exception e)
+            {
+                
+                throw e;
+            }
+
+            if ((from h in db.hotel where h.h_name_cn == text select h).Count() > 0 || (from h in new HotelDBContent("").hotel where h.h_name_cn == text select h).Count() > 0)
                 return 0;
             else
                 return 1;

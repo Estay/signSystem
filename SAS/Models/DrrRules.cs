@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
@@ -7,8 +8,11 @@ using System.Web;
 
 namespace SAS.Models
 {
-    public class DrrRule
+    public class DrrRules
     {
+       
+        public DrrRules()
+        { }
         #region Model
         private int _id;
         private int? _drrruleid;
@@ -29,9 +33,13 @@ namespace SAS.Models
         private int _hotel_id;
         private int? _h_room_rp_id;
         private string _rateplanid;
+        private string _roomids;
+        private string _roomnames;
+        private string _drrname;
         /// <summary>
         /// 产品编号
         /// </summary>
+            [KeyAttribute]
         public int id
         {
             set { _id = value; }
@@ -181,26 +189,37 @@ namespace SAS.Models
             set { _rateplanid = value; }
             get { return _rateplanid; }
         }
-        private string roomIds;
-
+        /// <summary>
+        /// 
+        /// </summary>
         public string RoomIds
         {
-            get { return roomIds; }
-            set { roomIds = value; }
+            set { _roomids = value; }
+            get { return _roomids; }
         }
-        private string roomNames;
-
+        /// <summary>
+        /// 
+        /// </summary>
         public string RoomNames
         {
-            get { return roomNames; }
-            set { roomNames = value; }
+            set { _roomnames = value; }
+            get { return _roomnames; }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string DrrName
+        {
+            set { _drrname = value; }
+            get { return _drrname; }
+        }
+
         #endregion Model
 
         //[NotMapped]
-        private List<DrrRule> drrList = new List<DrrRule>();
+        private List<DrrRules> drrList = new List<DrrRules>();
         [NotMapped]
-        public List<DrrRule> DrrList
+        public List<DrrRules> DrrList
         {
             get { return drrList; }
             set { drrList = value; }
@@ -208,10 +227,5 @@ namespace SAS.Models
 
 
     }
-    public class DrrRuleDBContent : DbContext
-    {
-        public DrrRuleDBContent() : base("DefaultConnection") { }
-        public DbSet<DrrRule> drrs { get; set; }
-
-    }
+  
 }

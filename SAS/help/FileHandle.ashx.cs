@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using Newtonsoft.Json;
+using SAS.DBC;
 using SAS.Models;
 
 namespace SAS.help
@@ -17,7 +18,7 @@ namespace SAS.help
         int maxSize = 104857600;
         public void ProcessRequest(HttpContext context)
         {
-            PictureDBContent db = new PictureDBContent();
+            HotelDBContent db = new HotelDBContent();
             string NewsFilePath = HttpContext.Current.Server.MapPath("\\") + "UploadFiles\\TitleImage\\";
             string AdminFilePath = HttpContext.Current.Server.MapPath("\\") + "admin\\UploadFiles\\TitleImage\\";
             context.Response.ContentType = "text/html";
@@ -74,7 +75,7 @@ namespace SAS.help
                             pic.h_p_tag = tag;
                             pic.h_p_time = DateTime.Now;
                             pic.Status = false;
-                            db.room.Add(pic);
+                            db.pics.Add(pic);
                             db.SaveChanges();
                         }
                         else
@@ -101,7 +102,7 @@ namespace SAS.help
                     #endregion
                 }
                 //  List<hotel_picture_info> list = (from p in db.room where p.h_p_tag ==tag select new { p.h_p_pic_original_url, p.h_p_id }).ToList();
-                var pics = from p in db.room
+                var pics = from p in db.pics
                            where p.h_p_tag == tag
                            select new
                                {

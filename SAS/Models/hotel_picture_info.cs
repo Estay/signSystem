@@ -138,8 +138,5 @@ namespace SAS.Models
             return dic;
         }
     }
-    public class PictureDBContent : DbContext
-    {
-        public DbSet<hotel_picture_info> room { get; set; }
-    }
+  
 }

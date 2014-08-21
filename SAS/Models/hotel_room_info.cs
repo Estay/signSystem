@@ -11,6 +11,9 @@ namespace SAS.Models
     public class hotel_room_info
     {
         
+     
+        public hotel_room_info()
+        { }
         #region Model
         private int _room_id;
         private string _h_r_id;
@@ -21,12 +24,14 @@ namespace SAS.Models
         private string _h_r_description_en;
         private string _h_r_acreage;
         private int? _h_r_people_number;
+        private int? _sitting_room_number = 0;
         private int? _h_r_bedroom_number = 1;
+        private int? _kitchennumber = 0;
+        private int? _h_r_bathroom_number;
         private string _h_r_house_number = "1";
         private int _h_r_reserve = 1;
         private string _h_r_bed_number = "1";
         private string _h_r_bed_type;
-        private int _h_r_bathroom_number;
         private string _h_r_floor;
         private int? _h_r_least_day = 1;
         private int? _h_r_longest_day;
@@ -39,41 +44,12 @@ namespace SAS.Models
         private string _comments;
         private int? _capacity = 0;
         private string _house_service;
-        private int sitting_room;
-
-        public int Sitting_room
-        {
-            get { return sitting_room; }
-            set { sitting_room = value; }
-        }
-        private int study;
-
-        public int Study
-        {
-            get { return study; }
-            set { study = value; }
-        }
-        private int balcony;
-
-        public int Balcony
-        {
-            get { return balcony; }
-            set { balcony = value; }
-        }
-        private int kitchen;
-
-        public int Kitchen
-        {
-            get { return kitchen; }
-            set { kitchen = value; }
-        }
-
-
+        private int? _study;
+        private int? _kitchen;
         /// <summary>
         /// 我库房型编号
         /// </summary>
-        /// 
-       [KeyAttribute]
+        [KeyAttribute]
         public int room_id
         {
             set { _room_id = value; }
@@ -144,12 +120,36 @@ namespace SAS.Models
             get { return _h_r_people_number; }
         }
         /// <summary>
+        /// 客厅数  默认0
+        /// </summary>
+        public int? sitting_room_number
+        {
+            set { _sitting_room_number = value; }
+            get { return _sitting_room_number; }
+        }
+        /// <summary>
         /// 卧室数 (暂不用) 几室
         /// </summary>
         public int? h_r_bedroom_number
         {
             set { _h_r_bedroom_number = value; }
             get { return _h_r_bedroom_number; }
+        }
+        /// <summary>
+        /// 厨房数  默认1
+        /// </summary>
+        public int? KitchenNumber
+        {
+            set { _kitchennumber = value; }
+            get { return _kitchennumber; }
+        }
+        /// <summary>
+        /// 卫生间数(暂不用) 默认 1
+        /// </summary>
+        public int? h_r_bathroom_number
+        {
+            set { _h_r_bathroom_number = value; }
+            get { return _h_r_bathroom_number; }
         }
         /// <summary>
         /// 房屋套数 (库存来源数值)
@@ -182,14 +182,6 @@ namespace SAS.Models
         {
             set { _h_r_bed_type = value; }
             get { return _h_r_bed_type; }
-        }
-        /// <summary>
-        /// 卫生间数(暂不用)
-        /// </summary>
-        public int h_r_bathroom_number
-        {
-            set { _h_r_bathroom_number = value; }
-            get { return _h_r_bathroom_number; }
         }
         /// <summary>
         /// 楼层
@@ -287,6 +279,22 @@ namespace SAS.Models
             set { _house_service = value; }
             get { return _house_service; }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? study
+        {
+            set { _study = value; }
+            get { return _study; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? Kitchen
+        {
+            set { _kitchen = value; }
+            get { return _kitchen; }
+        }
         #endregion Model 
 
         //[NotMapped]
@@ -305,16 +313,15 @@ namespace SAS.Models
             get { return prices; }
             set { prices = value; }
         }
-        private DrrRule drrs = new DrrRule();
+        private DrrRules drrs = new DrrRules();
         [NotMapped]
-        public DrrRule Drrs
+        public DrrRules Drrs
         {
             get { return drrs; }
             set { drrs = value; }
         }
 
         //床型
-      
         public List<string> getBedType()
         {
             List<string> dic = new  List<string>();
@@ -326,10 +333,5 @@ namespace SAS.Models
             return dic;
         }
     }
-    public class hotel_room_infoDBContent : DbContext
-    {
-        public hotel_room_infoDBContent(string test) : base("DefaultConnection") { }
-        public hotel_room_infoDBContent() : base("hotel_room_infoDBContent") { }
-        public DbSet<hotel_room_info> room { get; set; }
-    }
+   
 }

@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using System.Data;
 using System.Reflection;
 using System.IO;
+using SAS.DBC;
 
 namespace SAS.help
 {
@@ -55,7 +56,7 @@ namespace SAS.help
         
         public static List<hotel_room_info> getRooms(int hotel_id)
         {
-            return (from r in new hotel_room_infoDBContent().room where r.hotel_id == hotel_id select r).ToList();
+            return (from r in  new HotelDBContent().rooms where r.hotel_id == hotel_id select r).ToList();
         }
 
        

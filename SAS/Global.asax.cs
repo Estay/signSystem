@@ -18,6 +18,10 @@ namespace SAS
     {
         protected void Application_Start()
         {
+           // Database.SetInitializer(new MigrateDatabaseToLatestVersion<AppContext, Configuration>()); 
+
+            //Database.SetInitializer<hotel_infoDBContent>(null);
+
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);

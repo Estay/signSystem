@@ -123,9 +123,5 @@ namespace SAS.Models
         #endregion Model
 
     }
-    public class RoomStatusContent : DbContext
-    {
-        public DbSet<Room_status_info> hotel { get; set; }
-
-    }
+  
 }

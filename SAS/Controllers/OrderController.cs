@@ -5,13 +5,14 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SAS.DBC;
 using SAS.Models;
 
 namespace SAS.Controllers
 {
     public class OrderController : Controller
     {
-        private Order_infoDBContent db = new Order_infoDBContent();
+        private HotelDBContent db = new HotelDBContent();
 
         //
         // GET: /Order/
@@ -24,15 +25,15 @@ namespace SAS.Controllers
         //
         // GET: /Order/Details/5
 
-        public ActionResult Details(int id = 0)
-        {
-            Order_info order_info = db.hotel.Find(id);
-            if (order_info == null)
-            {
-                return HttpNotFound();
-            }
-            return View(order_info);
-        }
+        //public ActionResult Details(int id = 0)
+        //{
+        //    Order_info order_info = db.hotel.Find(id);
+        //    if (order_info == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(order_info);
+        //}
 
         //
         // GET: /Order/Create
@@ -48,12 +49,12 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult Create(Order_info order_info)
         {
-            if (ModelState.IsValid)
-            {
-                db.hotel.Add(order_info);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            //if (ModelState.IsValid)
+            //{
+            //    db.hotel.Add(order_info);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
 
             return View(order_info);
         }
@@ -61,15 +62,15 @@ namespace SAS.Controllers
         //
         // GET: /Order/Edit/5
 
-        public ActionResult Edit(int id = 0)
-        {
-            Order_info order_info = db.hotel.Find(id);
-            if (order_info == null)
-            {
-                return HttpNotFound();
-            }
-            return View(order_info);
-        }
+        //public ActionResult Edit(int id = 0)
+        //{
+        //    Order_info order_info = db.hotel.Find(id);
+        //    if (order_info == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(order_info);
+        //}
 
         //
         // POST: /Order/Edit/5
@@ -89,15 +90,15 @@ namespace SAS.Controllers
         //
         // GET: /Order/Delete/5
 
-        public ActionResult Delete(int id = 0)
-        {
-            Order_info order_info = db.hotel.Find(id);
-            if (order_info == null)
-            {
-                return HttpNotFound();
-            }
-            return View(order_info);
-        }
+        //public ActionResult Delete(int id = 0)
+        //{
+        //    Order_info order_info = db.hotel.Find(id);
+        //    if (order_info == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(order_info);
+        //}
 
         //
         // POST: /Order/Delete/5
@@ -105,8 +106,8 @@ namespace SAS.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Order_info order_info = db.hotel.Find(id);
-            db.hotel.Remove(order_info);
+            Order_info order_info = db.orders.Find(id);
+            db.orders.Remove(order_info);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

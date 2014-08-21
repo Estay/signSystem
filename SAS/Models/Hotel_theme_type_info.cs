@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using SAS.DBC;
 
 namespace SAS.Models
 {
@@ -56,8 +57,8 @@ namespace SAS.Models
             Dictionary<int, string> list = new Dictionary<int, string>();
             //Array array = new Array();
 
-            CategoryDBContent db = new CategoryDBContent();
-            var themes = db.curent.ToList();
+            HotelDBContent db = new HotelDBContent();
+            var themes = db.curents.ToList();
 
 
             foreach (var t in themes)
@@ -72,8 +73,5 @@ namespace SAS.Models
 
 
     }
-    public class CategoryDBContent :DbContext
-    {
-        public DbSet<Hotel_theme_type_info> curent { get; set; }
-    }
+  
 }

@@ -5,13 +5,14 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SAS.DBC;
 using SAS.Models;
 
 namespace SAS.Controllers
 {
     public class DrrRuleController : Controller
     {
-        private DrrRuleDBContent db = new DrrRuleDBContent();
+        private HotelDBContent db = new HotelDBContent();
 
         //
         // GET: /DrrRule/
@@ -40,14 +41,14 @@ namespace SAS.Controllers
         public ActionResult MyDrr()
         {
             GetData();
-            return View(new DrrRule());
+            return View(new DrrRules());
         }
 
         //
         // POST: /DrrRule/Create
 
         [HttpPost]
-        public ActionResult Create(DrrRule drrrule)
+        public ActionResult Create(DrrRules drrrule)
         {
             //if (ModelState.IsValid)
             //{
@@ -60,13 +61,17 @@ namespace SAS.Controllers
         }
         public void GetData()
         {
+            
             string u_id = "test1";
+            ViewData["drrModes"] = help.HotelInfoHelp.getDrrModeList(u_id);
             //所有酒店列表
             ViewData["rooms"] = help.HotelInfoHelp.getRooms(u_id);
             //所有酒店对应的房型列表
             ViewData["hotels"] = help.HotelInfoHelp.getHotlList(u_id);
-
+           // ViewData["drrModes"] = help.HotelInfoHelp.getDrrModeList(u_id);
             ViewData["drrs"] = help.HotelInfoHelp.getDrrList(u_id);
+
+           
         }
         //
         // GET: /DrrRule/Edit/5
@@ -85,7 +90,7 @@ namespace SAS.Controllers
         // POST: /DrrRule/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(DrrRule drrrule)
+        public ActionResult Edit(DrrRules drrrule)
         {
             //if (ModelState.IsValid)
             //{

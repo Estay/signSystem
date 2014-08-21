@@ -168,14 +168,5 @@ namespace SAS.Models
             set { priceList = value; }
         }
     }
-    public class PriceDBContent : DbContext
-    {
-        public PriceDBContent()
-            : base("DefaultConnection")
-        {
- 
-        }
-    
-        public DbSet<hotel_room_RP_price_info> price { get; set; }
-    }
+  
 }

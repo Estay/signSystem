@@ -5,13 +5,14 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SAS.DBC;
 using SAS.Models;
 
 namespace SAS.Controllers
 {
     public class ComentController : Controller
     {
-        private Hotel_comment_infoDBContent db = new Hotel_comment_infoDBContent();
+        private HotelDBContent db = new HotelDBContent();
 
         //
         // GET: /Coment/
@@ -24,15 +25,15 @@ namespace SAS.Controllers
         //
         // GET: /Coment/Details/5
 
-        public ActionResult Details(int id = 0)
-        {
-            Hotel_comment_info hotel_comment_info = db.hotel.Find(id);
-            if (hotel_comment_info == null)
-            {
-                return HttpNotFound();
-            }
-            return View(hotel_comment_info);
-        }
+        //public ActionResult Details(int id = 0)
+        //{
+        //    Hotel_comment_info hotel_comment_info = db.hotel.Find(id);
+        //    if (hotel_comment_info == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(hotel_comment_info);
+        //}
 
         //
         // GET: /Coment/Create
@@ -50,7 +51,7 @@ namespace SAS.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.hotel.Add(hotel_comment_info);
+                db.coments.Add(hotel_comment_info);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -61,15 +62,15 @@ namespace SAS.Controllers
         //
         // GET: /Coment/Edit/5
 
-        public ActionResult Edit(int id = 0)
-        {
-            Hotel_comment_info hotel_comment_info = db.hotel.Find(id);
-            if (hotel_comment_info == null)
-            {
-                return HttpNotFound();
-            }
-            return View(hotel_comment_info);
-        }
+        //public ActionResult Edit(int id = 0)
+        //{
+        //    Hotel_comment_info hotel_comment_info = db.coments.Find(id);
+        //    if (hotel_comment_info == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(hotel_comment_info);
+        //}
 
         //
         // POST: /Coment/Edit/5
@@ -89,15 +90,15 @@ namespace SAS.Controllers
         //
         // GET: /Coment/Delete/5
 
-        public ActionResult Delete(int id = 0)
-        {
-            Hotel_comment_info hotel_comment_info = db.hotel.Find(id);
-            if (hotel_comment_info == null)
-            {
-                return HttpNotFound();
-            }
-            return View(hotel_comment_info);
-        }
+        //public ActionResult Delete(int id = 0)
+        //{
+        //    Hotel_comment_info hotel_comment_info = db.hotel.Find(id);
+        //    if (hotel_comment_info == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(hotel_comment_info);
+        //}
 
         //
         // POST: /Coment/Delete/5
@@ -105,8 +106,8 @@ namespace SAS.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Hotel_comment_info hotel_comment_info = db.hotel.Find(id);
-            db.hotel.Remove(hotel_comment_info);
+            Hotel_comment_info hotel_comment_info = db.coments.Find(id);
+            db.coments.Remove(hotel_comment_info);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

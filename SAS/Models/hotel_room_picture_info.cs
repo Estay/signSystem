@@ -108,8 +108,5 @@ namespace SAS.Models
 
         
     }
-    public class RoomImageDBContent : DbContext
-    {
-        public DbSet<hotel_room_picture_info> RoomImage { get; set; }
-    }
+   
 }

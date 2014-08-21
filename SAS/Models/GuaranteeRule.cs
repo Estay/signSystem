@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using SAS.DBC;
 
 namespace SAS.Models
 {
@@ -214,16 +215,12 @@ namespace SAS.Models
         public List<GuaranteeRule> GuraranteeList()
         {
             //用户ID所有的酒店
-
+              HotelDBContent db = new HotelDBContent();
             string uId = "test1";
-            int[] rf = (from h in new hotel_infoDBContent().hotel where h.u_id == uId select h.hotel_id).ToArray();
-            return (from h in new GuaranteeRuleDBContent().hotel where rf.Contains(h.hotel_id) select h).ToList();
+            int[] rf = (from h in db.hotel where h.u_id == uId select h.hotel_id).ToArray();
+            return (from h in db.guarantees where rf.Contains(h.hotel_id) select h).ToList();
 
         }
     }
-    public class GuaranteeRuleDBContent : DbContext
-    {
-         public DbSet<GuaranteeRule> hotel { get; set; }
-       
-    }
+
 }

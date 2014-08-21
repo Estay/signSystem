@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using SAS.DBC;
 
 namespace SAS.Models
 {
@@ -25,9 +27,14 @@ namespace SAS.Models
         private int _hotel_id;
         private int? _h_room_rp_id;
         private string _rateplanid;
+        private string _roomnames;
+        private DateTime? _startdate;
+        private DateTime? _enddate;
+        private string _roomids;
         /// <summary>
         /// 
         /// </summary>
+         [KeyAttribute]
         public int GiftId
         {
             set { _giftid = value; }
@@ -153,28 +160,49 @@ namespace SAS.Models
             set { _rateplanid = value; }
             get { return _rateplanid; }
         }
-        private string roomNames;
-
-        public string RoomNames
+        /// <summary>
+        /// 
+        /// </summary>
+        public string roomNames
         {
-            get { return roomNames; }
-            set { roomNames = value; }
+            set { _roomnames = value; }
+            get { return _roomnames; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public DateTime? StartDate
+        {
+            set { _startdate = value; }
+            get { return _startdate; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public DateTime? EndDate
+        {
+            set { _enddate = value; }
+            get { return _enddate; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string RoomIds
+        {
+            set { _roomids = value; }
+            get { return _roomids; }
         }
         #endregion Model
 
         public List<Gift> GiftList()
         {
              //用户ID所有的酒店
-       
+         HotelDBContent db = new HotelDBContent();
            string  uId = "test1";
-            int[] rf = (from h in new hotel_infoDBContent().hotel where h.u_id == uId select h.hotel_id).ToArray();  
-            return (from h in new GiftDBContent().gifts where rf.Contains(h.hotel_id) select h).ToList();
+           int[] rf = (from h in db.hotel where h.u_id == uId select h.hotel_id).ToArray();
+           return (from h in  db.gifts where rf.Contains(h.hotel_id) select h).ToList();
         
         }
     }
-    public class GiftDBContent : DbContext
-    {
-        public DbSet<Gift> gifts { get; set; }
 
-    }
 }

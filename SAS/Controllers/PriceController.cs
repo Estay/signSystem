@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SAS.DBC;
 using SAS.help;
 using SAS.Models;
 
@@ -12,7 +13,7 @@ namespace SAS.Controllers
 {
     public class PriceController : Controller
     {
-        private PriceDBContent db = new PriceDBContent();
+        private HotelDBContent db = new HotelDBContent();
 
         //
         // GET: /Price/
@@ -45,7 +46,7 @@ namespace SAS.Controllers
             // DBhelp.getRooms(48502);
             hotel.Room.RoomList = HotelInfoHelp.getRooms("");
             hotel.HotelList = HotelInfoHelp.getHotlList("");
-            int[] rf = (from r in new hotel_infoDBContent().hotel where r.u_id == uId select r.hotel_id).ToArray();
+            int[] rf = (from r in db.hotel where r.u_id == uId select r.hotel_id).ToArray();
             var f = (from p in db.price where p.room_rp_start_time > start && p.room_rp_start_time < end && rf.Contains(p.hotel_id) select p).ToList();
 
             return View("MyPrix", hotel);
