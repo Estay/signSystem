@@ -24,8 +24,7 @@
 
     int i = 0;
 }
-@using (Html.BeginForm("Create", "DrrRule", FormMethod.Post))
-{
+
 <div id="DrrRule" class="box_a">
     <h2>公寓:
         <select name="" id="hotel_switch">
@@ -37,6 +36,8 @@
     </h2>
     @foreach (var h in hotels)
     {
+        using (Html.BeginForm("Create", "DrrRule", FormMethod.Post))
+      {
         var Rooms = rooms.Where(r => r.hotel_id == h.hotel_id);
         i++;
     <div class='@(i < 2 ? "show" : "hide") hotel_drr'>
@@ -111,12 +112,12 @@
                     </p>
                 </div>
             </div>
-            <a id="btn_add_drr" class="btn_b" href="">添加促销规则</a>
+            <a id="btn_add_drr"  href="javascript:document.forms[0].submit()" class="btn_b" >添加促销规则</a>
         </div>          
     </div>
-    } 
+        }
+      } 
 </div>
-}
 
 
 <div class="hide drr_modes">

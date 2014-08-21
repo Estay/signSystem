@@ -190,7 +190,7 @@ namespace SAS.Models
             get { return _rateplanid; }
         }
         /// <summary>
-        /// 
+        /// 房型编号(以逗号分隔）
         /// </summary>
         public string RoomIds
         {
@@ -198,7 +198,7 @@ namespace SAS.Models
             get { return _roomids; }
         }
         /// <summary>
-        /// 
+        /// 房型名称(以逗号分隔）
         /// </summary>
         public string RoomNames
         {
@@ -206,7 +206,7 @@ namespace SAS.Models
             get { return _roomnames; }
         }
         /// <summary>
-        /// 
+        /// 促销名称
         /// </summary>
         public string DrrName
         {
