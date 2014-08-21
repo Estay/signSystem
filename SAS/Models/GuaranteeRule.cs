@@ -218,7 +218,7 @@ namespace SAS.Models
               HotelDBContent db = new HotelDBContent();
             string uId = "test1";
             int[] rf = (from h in db.hotel where h.u_id == uId select h.hotel_id).ToArray();
-            return (from h in db.guarantees where rf.Contains(h.hotel_id) select h).ToList();
+            return (from h in db.gu where rf.Contains(h.hotel_id) select h).ToList();
 
         }
     }
