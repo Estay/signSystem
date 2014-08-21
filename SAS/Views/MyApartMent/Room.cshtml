@@ -103,10 +103,10 @@
                         }
                     </select>
     				卫
-                    <select id="bookroom" name="@Html.DisplayNameFor(model => model.Study)">
+                    <select id="bookroom" name="@Html.DisplayNameFor(model => model.study)">
                         @foreach (var item in number)
                         {
-                            if (item == Model.Study)
+                            if (item == Model.study)
                             {
                                 <option value="@item" selected>@item</option>                                
                             }else{

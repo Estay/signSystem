@@ -11,11 +11,15 @@ namespace SAS.DBC
     {
         public HotelDBContent() : base("DefaultConnection") { }
         public HotelDBContent(string second) : base("SecondConnection") { }
-
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<System.Data.Entity.ModelConfiguration.Conventions.PluralizingTableNameConvention>();
+        }
         public DbSet<hotel_info> hotel { get; set; }
         public DbSet<DrrRules> drrs { get; set; }
         public DbSet<Gift> gifts { get; set; }
-        public DbSet<GuaranteeRule> guarantees { get; set; }
+       // public DbSet<GuaranteeRule> guarantees { get; set; }
+        public DbSet<GuaranteeRule> gu { get; set; }
         public DbSet<Hotel_comment_info> coments { get; set; }
         public DbSet<hotel_picture_info> pics { get; set; }
         public DbSet<hotel_room_RP_price_info> price { get; set; }
