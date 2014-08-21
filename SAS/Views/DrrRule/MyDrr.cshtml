@@ -63,28 +63,56 @@
         <br>
         <p><span class="btn_d set">设置促销规则</span></p>
         <div class="box_b">
+
+            <!-- 促销名称 -->
             <p class="input_line">
                 <label for="">
                     <span class="label">促销名称：</span>
-                    <span>在某时间范围连住N晚N折</span>
+                    <select name="@Html.DisplayNameFor(model=>Model.TypeCode)" class="drr_modes">
+                        @foreach (var item in DrrModes)
+                        {
+                            if (Model.TypeCode == item.Code)
+                            {
+                                <option value="@item.Id" selected>@item.Name</option>
+                            }else {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        }
+                    </select>
                 </label>
             </p>
             <p class="input_line">
                 <label for="">
                     <span class="label">促销日期：</span>
-                    <input type="text" class="date_start" value="@Model.StartDate">至<input type="text" class="date_end" value="@Model.EndDate">
+                    <input type="text" class="date_start" name="@Html.DisplayNameFor(model=>Model.StartDate)" value="@Model.StartDate">至<input type="text" class="date_end" name="@Html.DisplayNameFor(model=>Model.EndDate)" value="@Model.EndDate">
                 </label>
             </p>
-            <p class="input_line">
-                <label for="">
-                    <span class="label">促销规则：</span>
-                    连住
-                    <input type="text" class="w50" value="@Model.CheckInNum">
-                    晚打
-                    <input type="text" class="w50" value="@Model.CashScale">
-                    折
-                </label>
-            </p>
+            <div class="clear">
+                <div class="float_l">
+                    <div class="input_line"><span class="label">促销规则：</span></div>
+                </div>
+                <div class="float_l">
+                    <div class="drr_mode clear">
+                        <div class="float_l">
+                            <p class="input_line">提前
+                                <input type="text" class="w50" name="@Html.DisplayNameFor(model=>Model.DayNum)" value="@Model.DayNum">
+                                天预订每间打<input  class="w50" type="text" name="@Html.DisplayNameFor(model=>Model.CashScale)" value="@Model.CashScale" />折
+                            </p>
+                        </div>                    
+                    </div>
+                    <div class="drr_mode hide clear">
+                        <div class="float_l">
+                            <p class="input_line">连住
+                                <input type="text" class="w50" name="@Html.DisplayNameFor(model=>Model.CheckInNum)" value="@Model.CheckInNum">
+                                晚
+                            </p>
+                        </div>
+                        <div class="float_l">
+                            <p class="input_line">打<input  class="w50" type="text" name="@Html.DisplayNameFor(model=>Model.CashScale)" value="@Model.CashScale" />折</p>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
             <div class="clear">
                 <div class="float_l">
                     <div class="input_line"><span class="label">适用房型：</span></div>
@@ -92,10 +120,10 @@
                 <div class="float_l checkbox_box">
                     <p class="input_line"><a class="all_set" href="">全选</a><a class="reverse_set" href="">反选</a></p>
                     <p class="input_line">
-                        <input id="" type="text" class="hide" name="" value="@Model.RoomIds">
+                        <input id="" type="text" class="hide" name="@Html.DisplayNameFor(model=>Model.RoomIds)" value="@Model.RoomIds">
                         @foreach (var item in Rooms)
                         {   
-                            <label class="w_sn"><input type="checkbox" class="multiple"  value="@item.room_id"><span class="">@item.h_r_name_cn</span></label>
+                            <label class="w_sn"><input type="checkbox" class="multiple"  value="@item.room_id"><span class="" title="@item.h_r_name_cn">@item.h_r_name_cn</span></label>
                         }                   
                     </p>
                 </div>

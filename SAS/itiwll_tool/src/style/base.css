@@ -98,7 +98,9 @@ td {
 .m_b50 {
   margin-bottom: 50px;
 }
-
+.m_l20 {
+  margin-left: 20px;
+}
 .w_sn {
   white-space: nowrap;
 }
