@@ -11,6 +11,7 @@ namespace SAS.DBC
     {
         public HotelDBContent() : base("DefaultConnection") { }
         public HotelDBContent(string second) : base("SecondConnection") { }
+
         public DbSet<hotel_info> hotel { get; set; }
         public DbSet<DrrRules> drrs { get; set; }
         public DbSet<Gift> gifts { get; set; }

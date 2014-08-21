@@ -10,6 +10,8 @@ namespace SAS.Models
 {
     public class Gift
     {
+        public Gift()
+        { }
         #region Model
         private int _giftid;
         private int? _hotelgiftid;
@@ -34,7 +36,7 @@ namespace SAS.Models
         /// <summary>
         /// 
         /// </summary>
-         [KeyAttribute]
+        [KeyAttribute]
         public int GiftId
         {
             set { _giftid = value; }
@@ -196,12 +198,24 @@ namespace SAS.Models
 
         public List<Gift> GiftList()
         {
-             //用户ID所有的酒店
-         HotelDBContent db = new HotelDBContent();
-           string  uId = "test1";
-           int[] rf = (from h in db.hotel where h.u_id == uId select h.hotel_id).ToArray();
-           return (from h in  db.gifts where rf.Contains(h.hotel_id) select h).ToList();
-        
+            HotelDBContent db = new HotelDBContent();
+            string uId = "test1";
+            try
+            {
+                int[] rf1 = (from h in db.hotel where h.u_id == uId select h.hotel_id).ToArray();
+                var temp = (from h in db.gifts where rf1.Contains(h.hotel_id) select h).ToList();
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+            //用户ID所有的酒店
+
+
+            int[] rf = (from h in db.hotel where h.u_id == uId select h.hotel_id).ToArray();
+            return (from h in db.gifts where rf.Contains(h.hotel_id) select h).ToList();
+
         }
     }
 
