@@ -18,7 +18,7 @@ namespace SAS.Models
         private int? _drrruleid;
         private string _typecode;
         private string _description;
-        private string _datetype;
+        private string _datetype ="CheckInDay";
         private DateTime? _startdate;
         private DateTime? _enddate;
         private int? _daynum=-1;
@@ -29,7 +29,7 @@ namespace SAS.Models
         private string _cashscale;
         private decimal? _deductnum;
         private string _weekset;
-        private string _feetype;
+        private string _feetype = "WeekdayFee";
         private int _hotel_id;
         private int? _h_room_rp_id;
         private string _rateplanid;
@@ -39,7 +39,7 @@ namespace SAS.Models
         /// <summary>
         /// 产品编号
         /// </summary>
-            [KeyAttribute]
+       [KeyAttribute]
         public int id
         {
             set { _id = value; }
