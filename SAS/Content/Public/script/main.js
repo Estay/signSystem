@@ -1,4 +1,4 @@
-/*2014年8月21日11:38:30*/
+/*2014年8月21日15:43:12*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -858,6 +858,22 @@
             }
             $(this).change();
         });
+    });
+    $("body").on("keypress", ".only_integer", function(event) {
+        console.log(event.keyCode);
+        if (event.keyCode >= 48 && event.keyCode <= 59) {} else {
+            event.preventDefault();
+        }
+        var el = $(this);
+        el.val(el.val().replace(/\D/g, ""));
+    });
+    $("body").on("keypress", ".only_float", function(event) {
+        console.log(event.keyCode);
+        if (event.keyCode >= 48 && event.keyCode <= 59 || event.keyCode == 46) {} else {
+            event.preventDefault();
+        }
+        var el = $(this);
+        el.val(el.val().replace(/[^\d\.]/g, ""));
     });
     $(".checking_btn").click(function(event) {
         event.preventDefault();
