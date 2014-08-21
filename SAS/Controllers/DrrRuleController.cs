@@ -50,12 +50,12 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult Create(DrrRules drrrule)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    db.hotel.Add(drrrule);
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
+            if (ModelState.IsValid)
+            {
+                db.drrs.Add(drrrule);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
 
             return View(drrrule);
         }
@@ -92,12 +92,12 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult Edit(DrrRules drrrule)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    db.Entry(drrrule).State = EntityState.Modified;
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
+            if (ModelState.IsValid)
+            {
+                db.Entry(drrrule).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
             return View(drrrule);
         }
 
