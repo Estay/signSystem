@@ -50,13 +50,51 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult Create(DrrRules drrrule)
         {
+            string guid = Guid.NewGuid().ToString();
+
+            Hotel_room_RP_info rp = new Hotel_room_RP_info();
+
+            rp.RatePlanId = guid;
+            rp.hotel_id = drrrule.hotel_id;
+            rp.h_room_rp_is_to_store_pay = true;
+            rp.h_room_rp_check_in = "00:00:00";
+            rp.h_room_rp_check_out = "23:59:00";
+            rp.h_room_rp_least_day=1;
+            rp.h_room_rp_longest_day = 365;
+            rp.h_room_rp_ctime = DateTime.Now;
+                rp.h_room_rp_name_cn = "";
+            if (drrrule.TypeCode == "DRRBookAhead")
+            {
+                string last = string.Format("提前{0}天预订，每间晚优惠{1}％",  drrrule.DayNum, drrrule.DeductNum * 10);
+                if (string.IsNullOrEmpty(drrrule.DrrName))
+                    rp.h_room_rp_name_cn = string.Format("促销({0})",drrrule.DrrName);
+                else
+                    rp.h_room_rp_name_cn = string.Format("促销({0})", last);
+                drrrule.Description = string.Format("促销规则：入住日期在{0}-{1},{2}", drrrule.StartDate, drrrule.EndDate, last);
+            }
+            else if (drrrule.TypeCode == "DRRStayPerRoomPerNight")
+            {
+                string last = string.Format("连住{2}天，每间晚优惠{3}％", drrrule.StartDate, drrrule.EndDate, drrrule.CheckInNum, drrrule.DeductNum * 10);
+                if (string.IsNullOrEmpty(drrrule.DrrName))
+                    rp.h_room_rp_name_cn = string.Format("促销({0})", drrrule.DrrName);
+                else
+                    rp.h_room_rp_name_cn = string.Format("促销({0})", last);
+                drrrule.Description = string.Format("促销规则：入住日期在{0}-{1},{2}", drrrule.StartDate, drrrule.EndDate, last);
+          
+            }
+            //插入RP
+            db.rps.Add(rp);
+            //取rpId
+            var f=(from r in db.rps where r.RatePlanId == guid select r.h_room_rp_id).Single().ToString();
+            drrrule.RatePlanId = f.ToString();;
+
             if (ModelState.IsValid)
             {
                 db.drrs.Add(drrrule);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            GetData();
             return View(drrrule);
         }
         public void GetData()
