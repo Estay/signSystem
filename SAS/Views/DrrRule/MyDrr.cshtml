@@ -91,26 +91,8 @@
                 <div class="float_l">
                     <div class="input_line"><span class="label">促销规则：</span></div>
                 </div>
-                <div class="float_l">
-                    <div class="drr_mode clear">
-                        <div class="float_l">
-                            <p class="input_line">提前
-                                <input type="text" class="w50" name="@Html.DisplayNameFor(model=>Model.DayNum)" value="@Model.DayNum">
-                                天预订每间打<input  class="w50" type="text" name="@Html.DisplayNameFor(model=>Model.CashScale)" value="@Model.CashScale" />折
-                            </p>
-                        </div>                    
-                    </div>
-                    <div class="drr_mode hide clear">
-                        <div class="float_l">
-                            <p class="input_line">连住
-                                <input type="text" class="w50" name="@Html.DisplayNameFor(model=>Model.CheckInNum)" value="@Model.CheckInNum">
-                                晚
-                            </p>
-                        </div>
-                        <div class="float_l">
-                            <p class="input_line">打<input  class="w50" type="text" name="@Html.DisplayNameFor(model=>Model.CashScale)" value="@Model.CashScale" />折</p>
-                        </div>                        
-                    </div>
+                <div class="float_l drr_mode">
+
                 </div>
             </div>
             <div class="clear">
@@ -132,6 +114,28 @@
         </div>          
     </div>
     } 
+</div>
+
+
+<div class="hide drr_modes">
+    <p class="input_line ">
+        提前
+        <input type="text" class="w50" name="@Html.DisplayNameFor(model=>
+        Model.DayNum)" value="@Model.DayNum">
+        天预订每间打
+        <input  class="w50" type="text" name="@Html.DisplayNameFor(model=>
+        Model.CashScale)" value="@Model.CashScale" >
+        折
+    </p>
+    <p class="input_line ">
+        连住
+        <input type="text" class="w50" name="@Html.DisplayNameFor(model=>
+        Model.CheckInNum)" value="@Model.CheckInNum">
+        晚打
+        <input  class="w50" type="text" name="@Html.DisplayNameFor(model=>
+        Model.CashScale)" value="@Model.CashScale" >
+        折
+    </p>
 </div>
 
 <!-- 日期控件 -->

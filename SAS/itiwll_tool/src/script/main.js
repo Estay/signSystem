@@ -728,7 +728,7 @@
 	// 促销规则切换
 	$(".drr_modes").change(function(event) {
 		console.log(this.selectedIndex);
-		$(this).parents(".box_b").find(".drr_mode").hide().eq(this.selectedIndex).show();
+		$(this).parents(".box_b").find(".drr_mode").html($(".drr_modes").find('.input_line').eq(this.selectedIndex).clone(false, false));
 	});
 
 
