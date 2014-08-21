@@ -1,4 +1,4 @@
-/*2014年8月14日15:30:53*/
+/*2014年8月21日11:38:30*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -336,7 +336,17 @@
     };
 })(jQuery);
 
+(function() {})();
+
 (function($) {
+    if (!window.console) window.console = {};
+    var console = window.console;
+    var funcs = [ "assert", "clear", "count", "debug", "dir", "dirxml", "error", "exception", "group", "groupCollapsed", "groupEnd", "info", "log", "markTimeline", "profile", "profileEnd", "table", "time", "timeEnd", "timeStamp", "trace", "warn" ];
+    for (var i = 0, l = funcs.length; i < l; i++) {
+        var func = funcs[i];
+        if (!console[func]) console[func] = function() {};
+    }
+    if (!console.memory) console.memory = {};
     var estay_sas = {};
     $("#hotel_name").e_input_tip({
         space: "请输入公寓名称",
@@ -816,6 +826,10 @@
     $("#hotel_switch").change(function(event) {
         console.log(event);
         $(".hotel_drr").hide().eq(this.selectedIndex).show();
+    });
+    $(".drr_modes").change(function(event) {
+        console.log(this.selectedIndex);
+        $(this).parents(".box_b").find(".drr_mode").html($(".drr_modes").find(".input_line").eq(this.selectedIndex).clone(false, false));
     });
     $(".multiple").change(function(event) {
         var checkbox_box = $(this).parents(".checkbox_box"), input = $(this).parents(".input_line").prev(".hide"), vals = "";

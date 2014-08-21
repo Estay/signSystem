@@ -3,7 +3,35 @@
  ** 20140623
  **
  **********************************************************/
+ (function (){  
+
+
+
+})();
+
+
 (function($) {
+
+	//创建空console对象，避免JS报错  
+
+	if(!window.console)  
+	    window.console = {};  
+	var console = window.console;  
+
+	var funcs = ['assert', 'clear', 'count', 'debug', 'dir', 'dirxml',  
+	             'error', 'exception', 'group', 'groupCollapsed', 'groupEnd',  
+	             'info', 'log', 'markTimeline', 'profile', 'profileEnd',  
+	             'table', 'time', 'timeEnd', 'timeStamp', 'trace', 'warn'];  
+	for(var i=0,l=funcs.length;i<l;i++) {  
+	    var func = funcs[i];  
+	    if(!console[func])  
+	        console[func] = function(){};  
+	}  
+	if(!console.memory)  
+	    console.memory = {};
+
+
+
 	var estay_sas = {};
 
 	//////////////////////////////////新建酒店/////////////////////////////////////////////
@@ -691,10 +719,18 @@
 	});
 
 	//////////////////////////////////设置促销规则////////////////////////////////////////
+	// 酒店切换
 	$("#hotel_switch").change(function(event) {
 		console.log(event);
 		$(".hotel_drr").hide().eq(this.selectedIndex).show();
 	});
+
+	// 促销规则切换
+	$(".drr_modes").change(function(event) {
+		console.log(this.selectedIndex);
+		$(this).parents(".box_b").find(".drr_mode").html($(".drr_modes").find('.input_line').eq(this.selectedIndex).clone(false, false));
+	});
+
 
 	//////////////////////////////////功能按钮//////////////////////////////////////	
 
