@@ -18,8 +18,8 @@
 
 
 
-    ViewBag.Title =   ViewBag.title;
-    ViewBag.Description =   ViewBag.title;
+    ViewBag.Title = ViewBag.title;
+    ViewBag.Description = ViewBag.title;
     ViewBag.drrs = "set";
 
     int i = 0;
@@ -30,7 +30,8 @@
         <select name="" id="hotel_switch">
             @foreach (var h in hotels)
             {
-                if (h.hotel_id == ViewBag.Id) {
+                if (h.hotel_id == ViewBag.Id)
+                {
                 <option value="@h.hotel_id" selected>@h.h_name_cn</option>
                     
                 }
@@ -162,7 +163,7 @@
                         </p>
                     </div>
                 </div>
-                <a id="btn_add_drr" href="javascript:document.forms[@(i-1)].submit()" class="btn_b">添加促销规则</a>
+                <a id="btn_add_drr" href="javascript:document.forms[@(i - 1)].submit()" class="btn_b">添加促销规则</a>
             </div>
         </div>
         }
