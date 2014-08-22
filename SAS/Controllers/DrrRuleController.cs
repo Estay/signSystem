@@ -25,8 +25,7 @@ namespace SAS.Controllers
         //首次加载
         public ActionResult MyDrr(string id)
         {
-            ViewBag.title = "添加促销规则";
-            ViewBag.buttonName = "添加";
+            SetName();
             int hotel_id;
             int.TryParse(id,out hotel_id);
 
@@ -94,9 +93,15 @@ namespace SAS.Controllers
                 help.DBhelp.log("促销信息删除失败"+e.ToString());
                 throw;
             }
-         
+            SetName();
            
             return View("MyDrr", new DrrRules());
+        }
+
+        private void SetName()
+        {
+            ViewBag.title = "添加促销规则";
+            ViewBag.buttonName = "添加";
         }
         //
         // POST: /DrrRule/Create
@@ -104,8 +109,7 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult Create(DrrRules drrrule)
         {
-            ViewBag.title = "添加促销规则";
-            ViewBag.buttonName = "添加";
+            SetName();
             if (drrrule.TypeCode == "DRRBookAhead")
             {
                 string last = string.Format("提前{0}天预订，每间晚优惠{1}％", drrrule.DayNum, drrrule.DeductNum * 10);
