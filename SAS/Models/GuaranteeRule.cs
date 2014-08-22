@@ -212,13 +212,12 @@ namespace SAS.Models
 		}
 		#endregion Model
 
-        public List<GuaranteeRule> GuraranteeList()
+        public List<GuaranteeRule> GuraranteeList(int hotelId)
         {
             //用户ID所有的酒店
               HotelDBContent db = new HotelDBContent();
-            string uId = "test1";
-            int[] rf = (from h in db.hotel where h.u_id == uId select h.hotel_id).ToArray();
-            return (from h in db.gu where rf.Contains(h.hotel_id) select h).ToList();
+
+              return (from h in db.gu where h.hotel_id == hotelId select h).ToList();
 
         }
     }

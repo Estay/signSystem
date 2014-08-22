@@ -38,20 +38,52 @@ namespace SAS.Controllers
         //
         // GET: /Guarantee/Create
 
-        public ActionResult MyGuarantee()
+        public ActionResult MyGuarantee(string id)
         {
-            GetData();
+            GetData(id);
             return View();
         }
-        public void GetData()
+        public void GetData(string id)
         {
             string u_id = "test1";
+            int hotel_id;
+            int.TryParse(id, out hotel_id);
+            var hotels= help.HotelInfoHelp.getHotlList(u_id);
+            if(id==null &&hotels.Count>0)
+                hotel_id = hotels[0].hotel_id;
             //所有酒店列表
-            ViewData["rooms"] = help.HotelInfoHelp.getRooms(u_id);
-            //所有酒店对应的房型列表
-            ViewData["hotels"] = help.HotelInfoHelp.getHotlList(u_id);
+            ViewData["rooms"] = help.HotelInfoHelp.getRooms(hotel_id);
 
-            ViewData["Gurarantees"] = new GuaranteeRule().GuraranteeList();
+            //所有酒店对应的房型列表
+
+            ViewData["Gurarantees"] = new GuaranteeRule().GuraranteeList(hotel_id);
+        }
+
+        //修改担保
+        public ActionResult updateG(string id)
+        {
+            int gId;
+            int.TryParse(id, out gId);
+            var gu = (from g in db.gu where g.GuaranteeRulesId == gId select g).Single();
+            ViewBag.Id = gu.hotel_id;
+
+            return View(new GuaranteeRule());
+        }
+        //删除担保
+        public ActionResult deleteG(string id)
+        {
+            int gId;
+            int.TryParse(id, out gId);
+            var gift = (from g in db.gu where g.GuaranteeRulesId == gId select g).Single();
+
+            ViewBag.Id = gift.hotel_id;
+            db.gu.Remove(gift);
+            if (db.SaveChanges() > 0)
+                ViewBag.sign = 1;
+            else
+                ViewBag.sign = 0;
+
+            return View(new Gift());
         }
 
         //

@@ -196,25 +196,14 @@ namespace SAS.Models
         }
         #endregion Model
 
-        public List<Gift> GiftList()
+        public List<Gift> GiftList(int hotelId )
         {
             HotelDBContent db = new HotelDBContent();
             string uId = "test1";
-            try
-            {
-                int[] rf1 = (from h in db.hotel where h.u_id == uId select h.hotel_id).ToArray();
-                var temp = (from h in db.gifts where rf1.Contains(h.hotel_id) select h).ToList();
-            }
-            catch (Exception e)
-            {
-
-                throw e;
-            }
+           
             //用户ID所有的酒店
-
-
-            int[] rf = (from h in db.hotel where h.u_id == uId select h.hotel_id).ToArray();
-            return (from h in db.gifts where rf.Contains(h.hotel_id) select h).ToList();
+           
+            return (from h in db.gifts where h.hotel_id==hotelId select h).ToList();
 
         }
     }
