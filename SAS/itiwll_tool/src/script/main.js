@@ -732,6 +732,47 @@
 	});
 
 
+	// 验证表单
+	$("#drr_name").e_input_tip({
+		space : "促销价格的名称",
+		rule : /^[\S\s]{3,50}$/,
+		error : "请输入3至50个字符"
+	});
+ 
+
+ 	// 房型回显
+	(function($){
+		function set_val (input) {
+			var data_arr = input.val().split(","),
+				multiple = input.next().find('.multiple');
+
+			for (var i = 0; i < data_arr.length; i++) {
+				var val = data_arr[i];
+				multiple.filter('[value='+val+']').attr('checked', 'true');
+			};
+		}
+
+		function set_val_b (input) {
+			var data_arr = input.val().split("、"),
+				label = input.next().find('.multiple').next();
+
+			for (var i = 0; i < data_arr.length; i++) {
+				var val = data_arr[i];
+				label.filter(function(){
+				   return $(this).text() == val;
+				}).prev().attr('checked', 'true');
+			};
+		}
+
+		var rooms = $("#rooms"),
+			rooms_text = $("#rooms_text");
+
+		if(f_input.length){
+			set_val(rooms);
+			set_val_b(rooms_text);
+		}
+
+	})($)
 	//////////////////////////////////功能按钮//////////////////////////////////////	
 
 	//多选值处理

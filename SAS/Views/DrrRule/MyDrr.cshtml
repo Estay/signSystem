@@ -78,7 +78,8 @@
                 <p class="input_line">
                     <label for="">
                         <span class="label">促销名称</span>
-                        <input type="text" name="@Html.DisplayNameFor(model => Model.DrrName)" value="@Model.DrrName">
+                        <input id="drr_name" type="text" name="@Html.DisplayNameFor(model => Model.DrrName)" value="@Model.DrrName">
+                        <span class="col_red">*</span>
                     </label>
                     <input class="hide" type="text" name="@Html.DisplayNameFor(model => Model.hotel_id)" value="@h.hotel_id" />
                 </p>
@@ -153,8 +154,8 @@
                     <div class="float_l checkbox_box">
                         <p class="input_line"><a class="all_set" href="">全选</a><a class="reverse_set" href="">反选</a></p>
                         <p class="input_line">
-                            <input id="" type="text" class="hide" name="@Html.DisplayNameFor(model => Model.RoomIds)" value="@Model.RoomIds">
-                            <input id="" type="text" class="hide" name="@Html.DisplayNameFor(model => Model.RoomNames)" value="@Model.RoomNames">
+                            <input id="rooms" type="text" class="hide" name="@Html.DisplayNameFor(model => Model.RoomIds)" value="@Model.RoomIds">
+                            <input id="rooms_text" type="text" class="hide" name="@Html.DisplayNameFor(model => Model.RoomNames)" value="@Model.RoomNames">
                             @foreach (var item in Rooms)
                             {   
                                 <label class="w_sn">
