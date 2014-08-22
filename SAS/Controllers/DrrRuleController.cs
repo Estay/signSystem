@@ -38,25 +38,43 @@ namespace SAS.Controllers
         //
         // GET: /DrrRule/Create
 
+        //首次加载
         public ActionResult MyDrr()
         {
+            var drrs= help.HotelInfoHelp.getHotlList("");
+            ViewData["hotels"] = drrs;
+
             GetData();
+           
+          
+
             return View(new DrrRules());
         }
 
+        //更新促销
         public ActionResult updateDrr(string id)
         {
             int drrId;
             int.TryParse(id, out drrId);
             GetData();
-            return View("MyDrr", (from d in db.drrs where d.id == drrId select d).Single());
+            
+           var drr=(from d in db.drrs where d.id == drrId select d).Single();
+           ViewBag.Id = drr.hotel_id;
+           ViewBag.title = "修改促销";
+           ViewBag.buttonName = "修改促销";
+           return View("MyDrr", drr);
         }
+        //删除促销
         public ActionResult deleteDrr(string id)
         {
             int drrId;
             int.TryParse(id, out drrId);
+             var drr=(from d in db.drrs where d.id == drrId select d).SingleOrDefault();
+             db.drrs.Remove(drr);
+            db.rps.Remove((from r in db.rps where r.h_room_rp_id==drr.h_room_rp_id select r).Single());
             GetData();
-            return View("MyDrr", (from d in db.drrs where d.id == drrId select d).Single());
+            ViewBag.Id = drr.hotel_id;
+            return View("MyDrr", new DrrRules());
         }
         //
         // POST: /DrrRule/Create
@@ -185,6 +203,7 @@ namespace SAS.Controllers
 
         public ActionResult Delete(int id = 0)
         {
+            
             //DrrRule drrrule = db.hotel.Find(id);
             //if (drrrule == null)
             //{
