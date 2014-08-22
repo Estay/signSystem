@@ -41,7 +41,7 @@ namespace SAS.Controllers
         //首次加载
         public ActionResult MyDrr()
         {
-            var drrs= help.HotelInfoHelp.getHotlList("");
+            var drrs= help.HotelInfoHelp.getHotlList("test1");
             ViewData["hotels"] = drrs;
 
             GetData();
