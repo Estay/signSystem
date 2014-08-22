@@ -51,6 +51,13 @@ namespace SAS.Controllers
             GetData();
             return View("MyDrr", (from d in db.drrs where d.id == drrId select d).Single());
         }
+        public ActionResult deleteDrr(string id)
+        {
+            int drrId;
+            int.TryParse(id, out drrId);
+            GetData();
+            return View("MyDrr", (from d in db.drrs where d.id == drrId select d).Single());
+        }
         //
         // POST: /DrrRule/Create
 
@@ -112,14 +119,38 @@ namespace SAS.Controllers
             
             string u_id = "test1";
             ViewData["drrModes"] = help.HotelInfoHelp.getDrrModeList(u_id);
-            //所有酒店列表
-            ViewData["rooms"] = help.HotelInfoHelp.getRooms(u_id);
-            //所有酒店对应的房型列表
             ViewData["hotels"] = help.HotelInfoHelp.getHotlList(u_id);
-           // ViewData["drrModes"] = help.HotelInfoHelp.getDrrModeList(u_id);
-            ViewData["drrs"] = help.HotelInfoHelp.getDrrList(u_id);
+
+           // //所有酒店列表
+           // ViewData["rooms"] = help.HotelInfoHelp.getRooms(u_id);
+           // //所有酒店对应的房型列表
+            
+           //// ViewData["drrModes"] = help.HotelInfoHelp.getDrrModeList(u_id);
+           // ViewData["drrs"] = help.HotelInfoHelp.getDrrList(u_id);
 
            
+        }
+
+      
+        public void GetData(string hotelId)
+        {
+            int hotel_id;
+            int.TryParse(hotelId, out hotel_id);
+            string u_id = "test1";
+            GetData();
+            //所有酒店列表
+            ViewData["rooms"] = new hotel_room_info().getRoomsByHoltelId(hotel_id);
+            //所有酒店对应的房型列表
+            
+            // ViewData["drrModes"] = help.HotelInfoHelp.getDrrModeList(u_id);
+            ViewData["drrs"] = new DrrRules().getDrrsByHoltelId(hotel_id);
+
+
+        }
+        public ActionResult selectH(string hotelId)
+        {
+            GetData(hotelId);
+            return   View(new DrrRules());
         }
         //
         // GET: /DrrRule/Edit/5

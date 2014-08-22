@@ -15,31 +15,13 @@ namespace SAS.help
         {
             uId = "test1";
             int[] rf = (from h in  db.hotel where h.u_id == uId select h.hotel_id).ToArray();
-            try
-            {
-                var temp = from r in  db.rooms where rf.Contains(r.hotel_id) select r;
-            }
-            catch (Exception e)
-            {
-                
-                throw e;
-            }
-          
+        
             return (from r in  db.rooms where rf.Contains(r.hotel_id) select r).ToList();
         }
         //用户ID所有的酒店
         public static List<hotel_info> getHotlList(string uId)
         {
-            try
-            {
-                var a = (from h in db.hotel where h.u_id == uId select h).ToList();
-            }
-            catch (Exception e)
-            {
-                
-                throw e;
-            }
-            uId = "test1";
+            
             return (from h in db.hotel where h.u_id == uId select h).ToList();
         }
 

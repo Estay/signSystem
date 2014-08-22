@@ -225,7 +225,13 @@ namespace SAS.Models
             set { drrList = value; }
         }
 
-
+        public List<DrrRules> getDrrsByHoltelId(int hotelId)
+        {
+            using (DBC.HotelDBContent db = new DBC.HotelDBContent())
+            {
+                return (from r in db.drrs where r.hotel_id == hotel_id select r).ToList();
+            }
+        }
     }
   
 }
