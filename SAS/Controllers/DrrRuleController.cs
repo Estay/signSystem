@@ -68,18 +68,33 @@ namespace SAS.Controllers
         //删除促销
         public ActionResult deleteDrr(string id)
         {
-            int drrId;
-            int.TryParse(id, out drrId);
-             var drr=(from d in db.drrs where d.id == drrId select d).SingleOrDefault();
-             db.drrs.Remove(drr);
-            db.rps.Remove((from r in db.rps where r.h_room_rp_id==drr.h_room_rp_id select r).Single());
-            if (db.SaveChanges() > 0)
-                ViewBag.sign = 1;
-            else
-                ViewBag.sign = 0;
-            GetData();
-            ViewBag.Id = drr.hotel_id;
-            GetData(drr.hotel_id.ToString());
+            try
+            {
+                int drrId;
+                int.TryParse(id, out drrId);
+                var drr = (from d in db.drrs where d.id == drrId select d).SingleOrDefault();
+                db.drrs.Remove(drr);
+                db.SaveChanges();
+                var rp = (from r in db.rps where r.h_room_rp_id == drr.h_room_rp_id && r.h_room_rp_state == true select r).SingleOrDefault();
+                if (rp!=null)
+                {
+                    rp.h_room_rp_state = false;
+                    if (db.SaveChanges() > 0)
+                        ViewBag.sign = 1;
+                    else
+                        ViewBag.sign = 0;
+                }
+                GetData();
+                ViewBag.Id = drr.hotel_id;
+                GetData(drr.hotel_id.ToString());
+            }
+            catch (Exception e)
+            {
+                help.DBhelp.log("促销信息删除失败"+e.ToString());
+                throw;
+            }
+         
+           
             return View("MyDrr", new DrrRules());
         }
         //
@@ -90,60 +105,79 @@ namespace SAS.Controllers
         {
             ViewBag.title = "添加促销规则";
             ViewBag.buttonName = "添加";
-
-            string guid = Guid.NewGuid().ToString();
-
-            Hotel_room_RP_info rp = new Hotel_room_RP_info();
-           
-            rp.RatePlanId = guid;
-            rp.hotel_id = drrrule.hotel_id;
-            rp.h_room_rp_is_to_store_pay = true;
-            rp.h_room_rp_check_in = "00:00:00";
-            rp.h_room_rp_check_out = "23:59:00";
-            rp.h_room_rp_least_day=1;
-            rp.h_room_rp_longest_day = 365;
-            rp.h_room_rp_ctime = DateTime.Now;
-                rp.h_room_rp_name_cn = "";
             if (drrrule.TypeCode == "DRRBookAhead")
             {
-                string last = string.Format("提前{0}天预订，每间晚优惠{1}％",  drrrule.DayNum, drrrule.DeductNum * 10);
-                if (string.IsNullOrEmpty(drrrule.DrrName))
-                    rp.h_room_rp_name_cn = string.Format("促销({0})", last);
-                else
-                rp.h_room_rp_name_cn = string.Format("促销({0})",drrrule.DrrName);                
+                string last = string.Format("提前{0}天预订，每间晚优惠{1}％", drrrule.DayNum, drrrule.DeductNum * 10);
                 drrrule.Description = string.Format("促销规则：入住日期在{0}-{1},{2}", drrrule.StartDate.Value.ToShortDateString(), drrrule.EndDate.Value.ToShortDateString(), last);
             }
             if (drrrule.TypeCode == "DRRStayPerRoomPerNight")
             {
                 string last = string.Format("连住{2}天，每间晚优惠{3}％", drrrule.StartDate, drrrule.EndDate, drrrule.CheckInNum, drrrule.DeductNum * 10);
-                if (string.IsNullOrEmpty(drrrule.DrrName))
-                    rp.h_room_rp_name_cn = string.Format("促销({0})", last);                  
-                else
-                    rp.h_room_rp_name_cn = string.Format("促销({0})", drrrule.DrrName);
                 drrrule.Description = string.Format("促销规则：入住日期在{0}-{1},{2}", drrrule.StartDate.Value.ToShortDateString(), drrrule.EndDate.Value.ToShortDateString(), last);
-          
+
             }
-           // drrrule.StartDate.Value.tos;
-          //drrrule.StartDate=drrrule.EndDate.Value.ToShortDateString();
-            //插入RP
-            db.rps.Add(rp);
-            db.SaveChanges();
-            //取rpId
-            var f=(from r in db.rps where r.RatePlanId == guid select r.h_room_rp_id).SingleOrDefault();
-            drrrule.h_room_rp_id = f;;
-            //要操作的酒店
-        
-            GetData();
-            
-            if (ModelState.IsValid)
+            if (drrrule.id > 0)
             {
-                db.drrs.Add(drrrule);
-                db.SaveChanges();
-                GetData(drrrule.hotel_id.ToString());
-                return View("MyDrr", new DrrRules());
+                if (ModelState.IsValid)
+                {
+                    db.Entry(drrrule).State = EntityState.Modified;
+                    db.SaveChanges();
+                   
+                }
             }
-            
-            return View("MyDrr", drrrule);
+            else
+            {
+                #region
+                string guid = Guid.NewGuid().ToString();
+
+                Hotel_room_RP_info rp = new Hotel_room_RP_info();
+
+                rp.RatePlanId = guid;
+                rp.hotel_id = drrrule.hotel_id;
+                rp.h_room_rp_is_to_store_pay = true;
+                rp.h_room_rp_check_in = "00:00:00";
+                rp.h_room_rp_check_out = "23:59:00";
+                rp.h_room_rp_least_day = 1;
+                rp.h_room_rp_longest_day = 365;
+                rp.h_room_rp_ctime = DateTime.Now;
+                rp.h_room_rp_name_cn = "";
+              
+                rp.h_room_rp_name_cn = string.Format("促销({0})", drrrule.DrrName);
+
+                var tempRp = (from r in db.rps where r.h_room_rp_name_cn == rp.h_room_rp_name_cn && r.hotel_id == drrrule.hotel_id select r).SingleOrDefault();
+                if (tempRp != null)
+                {
+                    drrrule.h_room_rp_id = tempRp.h_room_rp_id; ;
+                }
+                else
+                {
+                    db.rps.Add(rp);
+                    db.SaveChanges();
+                    //取rpId
+                    var f = (from r in db.rps where r.RatePlanId == guid select r.h_room_rp_id).SingleOrDefault();
+                    drrrule.h_room_rp_id = f; ;
+                }
+                // drrrule.StartDate.Value.tos;
+                //drrrule.StartDate=drrrule.EndDate.Value.ToShortDateString();
+                //插入RP
+
+                //要操作的酒店
+
+             
+
+                if (ModelState.IsValid)
+                {
+                    db.drrs.Add(drrrule);
+                    db.SaveChanges();
+                
+
+                }
+                #endregion
+            }
+            GetData();
+            GetData(drrrule.hotel_id.ToString());
+            return View("MyDrr", new DrrRules());
+          
         }
         public void GetData()
         {
