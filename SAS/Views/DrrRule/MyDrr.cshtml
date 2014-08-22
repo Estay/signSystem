@@ -43,11 +43,10 @@
             }
         </select>
     </h2>
-    @foreach (var h in hotels)
-    {
-        using (Html.BeginForm("Create", "DrrRule", FormMethod.Post))
+
+        @using (Html.BeginForm("Create", "DrrRule", FormMethod.Post))
         {
-            var Rooms = rooms.Where(r => r.hotel_id == h.hotel_id);
+            var Rooms = rooms;
             i++;
         <div class='@(i < 2 ? "show" : "hide") hotel_drr'>
 
@@ -65,7 +64,7 @@
                             <td>@item.Description</td>
                             <td>@(item.StartDate.Value.ToShortDateString())至@(item.EndDate.Value.ToShortDateString())</td>
                             <td>@item.RoomNames</td>
-                            <td><a href="/DrrRule/updateDrr?id=@item.id">修改</a>|<a href="">删除</a></td>
+                            <td><a href="/DrrRule/updateDrr?id=@item.id">修改</a>|<a href="/DrrRule/deleteDrr?id=@item.id">删除</a></td>
                         </tr>
                     }
 
@@ -80,7 +79,7 @@
                         <span class="label">促销名称</span>
                         <input type="text" name="@Html.DisplayNameFor(model => Model.DrrName)" value="@Model.DrrName">
                     </label>
-                    <input class="hide" type="text" name="@Html.DisplayNameFor(model => Model.hotel_id)" value="@h.hotel_id" />
+                    <input class="hide" type="text" name="@Html.DisplayNameFor(model => Model.hotel_id)" value="@ViewBag.id" />
                 </p>
 
                 <!-- 促销方式 -->
@@ -155,7 +154,7 @@
                         <p class="input_line">
                             <input id="" type="text" class="hide" name="@Html.DisplayNameFor(model => Model.RoomIds)" value="@Model.RoomIds">
                             <input id="" type="text" class="hide" name="@Html.DisplayNameFor(model => Model.RoomNames)" value="@Model.RoomNames">
-                            @foreach (var item in Rooms)
+                            @foreach (var item in rooms)
                             {   
                                 <label class="w_sn">
                                     <input type="checkbox" class="multiple"  value="@item.room_id"><span class="" title="@item.h_r_name_cn">@item.h_r_name_cn</span></label>
@@ -167,7 +166,7 @@
             </div>
         </div>
         }
-    }
+    
 </div>
 
 <!-- 设置促销的方式 -->
