@@ -332,6 +332,14 @@ namespace SAS.Models
             }
             return dic;
         }
+        public List<hotel_room_info> getRoomsByHoltelId(int hotelId)
+        {
+            using (DBC.HotelDBContent db = new DBC.HotelDBContent())
+            {
+                return (from r in db.rooms where r.hotel_id == hotel_id select r).ToList();
+            }
+        }
+
     }
    
 }
