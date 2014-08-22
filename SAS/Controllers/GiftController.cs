@@ -26,11 +26,16 @@ namespace SAS.Controllers
 
         public ActionResult MyGift(string id)
         {
-            ViewBag.title = "添加礼包";
-            ViewBag.buttonName = "添加";
+            setName();
             GetData(id);
             
             return View(new Gift());
+        }
+
+        private void setName()
+        {
+            ViewBag.title = "添加礼包";
+            ViewBag.buttonName = "添加";
         }
         public void GetData(string id)
         {
@@ -45,6 +50,7 @@ namespace SAS.Controllers
             }
             ViewData["gift"] = new Gift().GiftList(hotel_id);
             ViewData["rooms"] = help.HotelInfoHelp.getRooms(hotel_id);
+            ViewBag.Id = hotel_id;
             //所有酒店列表
             
             //所有酒店对应的房型列表
@@ -59,8 +65,8 @@ namespace SAS.Controllers
             int.TryParse(id,out gId);
             var gift = (from g in db.gifts where g.GiftId == gId select g).Single();
             ViewBag.Id = gift.hotel_id;
-
-            return View(new Gift());
+            GetData(gift.hotel_id.ToString());
+            return View("MyGift", gift);
         }
         //删除gift
         public ActionResult deleteG(string id)
@@ -75,8 +81,9 @@ namespace SAS.Controllers
                 ViewBag.sign=1;
             else
                  ViewBag.sign=0;
+            setName();
 
-            return View(new Gift());
+            return View("MyGift", new Gift());
         }
         //
         // GET: /Gift/Details/5
@@ -105,16 +112,31 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult Create(Gift gift)
         {
+            gift.WeekSet = "1,2,3,4,5,6,7";
+            gift.DateType = "CheckinDate";
+            gift.GiftTypes = "1,2,4,7";
+            gift.HourType = "Hours24";
+            gift.HourNumber = 0;
+            gift.WayOfGiving = "EveryRoom";
             ViewBag.title = "添加礼包";
             ViewBag.buttonName = "添加";
-            //if (ModelState.IsValid)
-            //{
-            //    db.hotel.Add(gift);
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    db.gifts.Add(gift);
+                    db.SaveChanges();
 
-            return View(gift);
+                }
+            }
+            catch (Exception e)
+            {
+                
+                throw e;
+            }
+
+            GetData(gift.hotel_id.ToString());
+            return View("MyGift", gift);
         }
 
         //

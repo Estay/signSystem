@@ -105,7 +105,7 @@ namespace SAS.Controllers
         }
         //
         // POST: /DrrRule/Create
-
+        //修改和添加提交
         [HttpPost]
         public ActionResult Create(DrrRules drrrule)
         {

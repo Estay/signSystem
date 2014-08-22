@@ -18,6 +18,8 @@
     int i = 0;
     
     }
+   @using (Html.BeginForm("Create", "Gift", FormMethod.Post))
+        {
 <div id="DrrRule" class="box_a">
     <h2>公寓:
         <select name="" id="hotel_switch_gift">
@@ -43,7 +45,7 @@
                     <td>@item.GiftContent</td>
                     <td>@(item.StartDate)至@(item.EndDate)</td>
                     <td>@item.roomNames</td>
-                    <td><a href="@item.GiftId">修改</a>|<a href="">删除</a></td>
+                    <td><a href="/Gift/updateG?id=@item.GiftId">修改</a>|<a href="/Gift/deleteG?id=@item.GiftId">删除</a></td>
                 </tr>
                 }
 
@@ -91,7 +93,11 @@
                 <a id="btn_add_drr" href="javascript:document.forms[0].submit()" class="btn_b">@ViewBag.buttonName</a>
         </div>          
     </div>
+       <input class="hide" type="text" name="@Html.DisplayNameFor(model => Model.hotel_id)" value="@ViewBag.Id" />
+           
 </div>
+             
+   }
 
 <!-- 日期控件 -->
 <script type="text/javascript" src="@Url.Content("~/Content/public/script/laydate/laydate.dev.js")"></script>
