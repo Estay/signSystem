@@ -71,6 +71,10 @@ namespace SAS.Controllers
              var drr=(from d in db.drrs where d.id == drrId select d).SingleOrDefault();
              db.drrs.Remove(drr);
             db.rps.Remove((from r in db.rps where r.h_room_rp_id==drr.h_room_rp_id select r).Single());
+            if (db.SaveChanges() > 0)
+                ViewBag.sign = 1;
+            else
+                ViewBag.sign = 0;
             GetData();
             ViewBag.Id = drr.hotel_id;
             GetData(drr.hotel_id.ToString());

@@ -44,7 +44,7 @@ namespace SAS.Controllers
             hotel_info hotel = new hotel_info();
             // hotel.Room.RoomList = DBhelp.getRooms(48502);
             // DBhelp.getRooms(48502);
-            hotel.Room.RoomList = HotelInfoHelp.getRooms("");
+            hotel.Room.RoomList = HotelInfoHelp.getRooms(44);
             hotel.HotelList = HotelInfoHelp.getHotlList("");
             int[] rf = (from r in db.hotel where r.u_id == uId select r.hotel_id).ToArray();
             var f = (from p in db.price where p.room_rp_start_time > start && p.room_rp_start_time < end && rf.Contains(p.hotel_id) select p).ToList();

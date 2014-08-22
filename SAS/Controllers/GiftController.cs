@@ -24,20 +24,54 @@ namespace SAS.Controllers
             return null;
         }
 
-        public ActionResult MyGift()
+        public ActionResult MyGift(string id)
         {
-            GetData();
+            GetData(id);
+            
             return View(new Gift());
         }
-        public void GetData()
+        public void GetData(string id)
         {
+            int hotel_id;
+            int.TryParse(id, out hotel_id);
             string u_id = "test1";
+            var hotels= help.HotelInfoHelp.getHotlList(u_id);
+            if (id == null && hotels.Count > 0)
+            {
+                hotel_id = hotels[0].hotel_id;
+            }
+            ViewData["gift"] = new Gift().GiftList(hotel_id);
+            ViewData["rooms"] = help.HotelInfoHelp.getRooms(hotel_id);
             //所有酒店列表
-            ViewData["rooms"] = help.HotelInfoHelp.getRooms(u_id);
+            
             //所有酒店对应的房型列表
-            ViewData["hotels"] = help.HotelInfoHelp.getHotlList(u_id);
+          
+        }
+        //修改gift
+        public ActionResult updateG(string id)
+        {
+            int gId;
+            int.TryParse(id,out gId);
+            var gift = (from g in db.gifts where g.GiftId == gId select g).Single();
+            ViewBag.Id = gift.hotel_id;
 
-            ViewData["gift"] = new Gift().GiftList();
+            return View(new Gift());
+        }
+        //删除gift
+        public ActionResult deleteG(string id)
+        {
+            int gId;
+            int.TryParse(id, out gId);
+            var gift = (from g in db.gifts where g.GiftId == gId select g).Single();
+           
+            ViewBag.Id = gift.hotel_id;
+            db.gifts.Remove(gift);
+            if(db.SaveChanges()>0)
+                ViewBag.sign=1;
+            else
+                 ViewBag.sign=0;
+
+            return View(new Gift());
         }
         //
         // GET: /Gift/Details/5
