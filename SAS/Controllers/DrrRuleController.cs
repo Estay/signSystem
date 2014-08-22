@@ -48,6 +48,7 @@ namespace SAS.Controllers
             ViewData["hotels"] = drrs;
             ViewData["drrModes"] = help.HotelInfoHelp.getDrrModeList(u_id);
             GetData(id);
+            
           
 
             return View(new DrrRules());
@@ -154,6 +155,7 @@ namespace SAS.Controllers
       
         public void GetData(string hotelId)
         {
+
             int hotel_id;
             int.TryParse(hotelId, out hotel_id);
             string u_id = "test1";
@@ -164,7 +166,7 @@ namespace SAS.Controllers
             
             // ViewData["drrModes"] = help.HotelInfoHelp.getDrrModeList(u_id);
             ViewData["drrs"] = new DrrRules().getDrrsByHoltelId(hotel_id);
-
+            ViewBag.Id = hotel_id;
 
         }
         public ActionResult selectH(string hotelId)
