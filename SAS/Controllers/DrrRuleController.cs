@@ -39,14 +39,15 @@ namespace SAS.Controllers
         // GET: /DrrRule/Create
 
         //首次加载
-        public ActionResult MyDrr()
+        public ActionResult MyDrr(string id)
         {
-            string u_id = "test1";
+            int hotel_id;
+            int.TryParse(id,out hotel_id);
+            string u_id = "test12";
             var drrs = help.HotelInfoHelp.getHotlList(u_id);
             ViewData["hotels"] = drrs;
             ViewData["drrModes"] = help.HotelInfoHelp.getDrrModeList(u_id);
-            GetData(drrs[0].ToString());
-           
+            GetData(id);
           
 
             return View(new DrrRules());
