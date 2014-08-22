@@ -1,4 +1,4 @@
-/*2014年8月22日13:42:39*/
+/*2014年8月22日15:48:42*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -835,6 +835,10 @@
         space: "促销价格的名称",
         rule: /^[\S\s]{3,50}$/,
         error: "请输入3至50个字符"
+    });
+    $("#hotel_switch_gift").change(function(event) {
+        console.log(event);
+        window.location.href = "/Gift/MyGift?id=" + $(this).find("option:selected").val();
     });
     (function($) {
         function set_val(input) {

@@ -739,6 +739,14 @@
 		error : "请输入3至50个字符"
 	});
  
+	//////////////////////////////////设置礼包////////////////////////////////////////
+    // 酒店切换
+    $("#hotel_switch_gift").change(function(event) {
+        console.log(event);
+        window.location.href="/Gift/MyGift?id="+$(this).find("option:selected").val();
+    });
+
+
 
  	// 房型回显
 	(function($){

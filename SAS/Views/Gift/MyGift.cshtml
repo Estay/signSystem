@@ -20,19 +20,15 @@
     }
 <div id="DrrRule" class="box_a">
     <h2>公寓:
-        <select name="" id="hotel_switch">
+        <select name="" id="hotel_switch_gift">
             @foreach (var h in hotels)
             {
-                <option value="@h.h_name_cn">@h.h_name_cn</option>
+                <option value="@h.hotel_id">@h.h_name_cn</option>
             }
         </select>
     </h2>
-    @foreach (var h in hotels)
-    {
-        var Rooms = rooms.Where(r => r.hotel_id == h.hotel_id);
-        i++;
-    <div class='@(i < 2 ? "show" : "hide") hotel_drr'>
-        
+        @{i++;}
+    <div class='hotel_drr'>
         <table cellspacing="0">
             <tbody>
                 <tr>
@@ -54,39 +50,47 @@
             </tbody>
         </table>
         <br>
-        <p><span class="btn_d set">设置礼包</span></p>
+        <p><span class="btn_d set">@ViewBag.title</span></p>
         <div class="box_b">
-            <p class="input_line">
-                <label for="">
-                    <span class="label">促销名称：</span>
-                    <input type="text" name="" value="">
-                </label>
-            </p>
-            <p class="input_line">
-                <label for="">
-                    <span class="label">礼包日期：</span>
-                    <input type="text" class="date_start" value="">至<input type="text" class="date_end" value="">
-                </label>
-            </p>
             <div class="clear">
                 <div class="float_l">
-                    <div class="input_line"><span class="label">适用房型：</span></div>
+                    <div class="input_line">
+                        <span class="label">礼包描述：</span>
+                    </div>
                 </div>
-                <div class="float_l checkbox_box">
-                    <p class="input_line"><a class="all_set" href="">全选</a><a class="reverse_set" href="">反选</a></p>
+                <div class="float_l">
                     <p class="input_line">
-                        <input id="" type="text" class="hide" name="" value="">
-                        @foreach (var item in Rooms)
-                        {   
-                            <label class="w_sn"><input type="checkbox" class="multiple"  value="@item.room_id"><span class="">@item.h_r_name_cn</span></label>
-                        }                   
+                        <textarea name="@Html.DisplayNameFor(model => model.GiftContent)" id="GiftContent" cols="80" rows="5">@Model.GiftContent</textarea>
                     </p>
                 </div>
             </div>
-            <a id="btn_add_drr" class="btn_b" href="">添加礼包</a>
+            <p class="input_line">
+                <label for="">
+                    <span class="label">礼包日期：</span>
+                    <input type="text" name="@Html.DisplayNameFor(model => model.StartDate)" class="date_start" value="@Model.StartDate">至<input type="text" name="@Html.DisplayNameFor(model => model.EndDate)" class="date_end" value="@Model.StartDate">
+                </label>
+            </p>
+            <!-- 适用房型 -->
+                <div class="clear">
+                    <div class="float_l">
+                        <div class="input_line"><span class="label">适用房型：</span></div>
+                    </div>
+                    <div class="float_l checkbox_box">
+                        <p class="input_line"><a class="all_set" href="">全选</a><a class="reverse_set" href="">反选</a></p>
+                        <p class="input_line">
+                            <input id="rooms" type="text" class="hide" name="@Html.DisplayNameFor(model => Model.RoomIds)" value="@Model.RoomIds">
+                            <input id="rooms_text" type="text" class="hide" name="@Html.DisplayNameFor(model => Model.roomNames)" value="@Model.roomNames">
+                            @foreach (var item in rooms)
+                            {   
+                                <label class="w_sn">
+                                    <input type="checkbox" class="multiple"  value="@item.room_id"><span class="" title="@item.h_r_name_cn">@item.h_r_name_cn</span></label>
+                            }
+                        </p>
+                    </div>
+                </div>
+                <a id="btn_add_drr" href="javascript:document.forms[0].submit()" class="btn_b">@ViewBag.buttonName</a>
         </div>          
     </div>
-    } 
 </div>
 
 <!-- 日期控件 -->
