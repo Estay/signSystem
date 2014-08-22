@@ -25,6 +25,8 @@ namespace SAS.Controllers
         //首次加载
         public ActionResult MyDrr(string id)
         {
+            ViewBag.title = "添加促销规则";
+            ViewBag.buttonName = "添加";
             int hotel_id;
             int.TryParse(id,out hotel_id);
 
@@ -58,8 +60,8 @@ namespace SAS.Controllers
             
            var drr=(from d in db.drrs where d.id == drrId select d).Single();
            ViewBag.Id = drr.hotel_id;
-           ViewBag.title = "修改促销";
-           ViewBag.buttonName = "修改促销";
+           ViewBag.title = "修改促销规则";
+           ViewBag.buttonName = "修改";
            GetData(drr.hotel_id.ToString());
            return View("MyDrr", drr);
         }
