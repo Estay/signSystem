@@ -744,7 +744,7 @@
 	(function($){
 		function set_val (input) {
 			var data_arr = input.val().split(","),
-				multiple = input.next().find('.multiple');
+				multiple = input.parent().find('.multiple');
 
 			for (var i = 0; i < data_arr.length; i++) {
 				var val = data_arr[i];
@@ -767,7 +767,7 @@
 		var rooms = $("#rooms"),
 			rooms_text = $("#rooms_text");
 
-		if(f_input.length){
+		if(rooms.length){
 			set_val(rooms);
 			set_val_b(rooms_text);
 		}

@@ -17,23 +17,7 @@ namespace SAS.Controllers
         //
         // GET: /DrrRule/
 
-        public ActionResult Index()
-        {
-           return View();
-        }
-
-        //
-        // GET: /DrrRule/Details/5
-
-        public ActionResult Details(int id = 0)
-        {
-            //DrrRule drrrule = db.hotel.Find(id);
-            //if (drrrule == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            return View();
-        }
+    
 
         //
         // GET: /DrrRule/Create
@@ -43,15 +27,26 @@ namespace SAS.Controllers
         {
             int hotel_id;
             int.TryParse(id,out hotel_id);
-            string u_id = "test12";
+
+            oprationed(id);
+
+            return View(new DrrRules());
+        }
+        public void oprationed(string id)
+        {
+            string u_id = "test1";
             var drrs = help.HotelInfoHelp.getHotlList(u_id);
             ViewData["hotels"] = drrs;
             ViewData["drrModes"] = help.HotelInfoHelp.getDrrModeList(u_id);
-            GetData(id);
+            if (id == null && drrs.Count > 0)
+            {
+                GetData(drrs[0].hotel_id.ToString());
+            }
+            else
+            {
+                GetData(id);
+            }
             
-          
-
-            return View(new DrrRules());
         }
 
         //更新促销
@@ -65,6 +60,7 @@ namespace SAS.Controllers
            ViewBag.Id = drr.hotel_id;
            ViewBag.title = "修改促销";
            ViewBag.buttonName = "修改促销";
+           GetData(drr.hotel_id.ToString());
            return View("MyDrr", drr);
         }
         //删除促销
@@ -77,6 +73,7 @@ namespace SAS.Controllers
             db.rps.Remove((from r in db.rps where r.h_room_rp_id==drr.h_room_rp_id select r).Single());
             GetData();
             ViewBag.Id = drr.hotel_id;
+            GetData(drr.hotel_id.ToString());
             return View("MyDrr", new DrrRules());
         }
         //
@@ -125,14 +122,18 @@ namespace SAS.Controllers
             //取rpId
             var f=(from r in db.rps where r.RatePlanId == guid select r.h_room_rp_id).SingleOrDefault().ToString();
             drrrule.RatePlanId = f.ToString();;
-
+            //要操作的酒店
+        
+            GetData();
+            
             if (ModelState.IsValid)
             {
                 db.drrs.Add(drrrule);
                 db.SaveChanges();
+                GetData(drrrule.hotel_id.ToString());
                 return RedirectToAction("MyDrr", drrrule);
             }
-            GetData();
+            
             return View("MyDrr", drrrule);
         }
         public void GetData()
@@ -159,7 +160,7 @@ namespace SAS.Controllers
             int hotel_id;
             int.TryParse(hotelId, out hotel_id);
             string u_id = "test1";
-            GetData();
+           // GetData();
             //所有酒店列表
             ViewData["rooms"] = new hotel_room_info().getRoomsByHoltelId(hotel_id);
             //所有酒店对应的房型列表

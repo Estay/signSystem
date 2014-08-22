@@ -1,4 +1,4 @@
-/*2014年8月22日13:24:12*/
+/*2014年8月22日13:42:39*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -838,7 +838,7 @@
     });
     (function($) {
         function set_val(input) {
-            var data_arr = input.val().split(","), multiple = input.next().find(".multiple");
+            var data_arr = input.val().split(","), multiple = input.parent().find(".multiple");
             for (var i = 0; i < data_arr.length; i++) {
                 var val = data_arr[i];
                 multiple.filter("[value=" + val + "]").attr("checked", "true");
@@ -854,7 +854,7 @@
             }
         }
         var rooms = $("#rooms"), rooms_text = $("#rooms_text");
-        if (f_input.length) {
+        if (rooms.length) {
             set_val(rooms);
             set_val_b(rooms_text);
         }

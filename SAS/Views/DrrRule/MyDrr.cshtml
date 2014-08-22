@@ -43,11 +43,10 @@
             }
         </select>
     </h2>
-    @foreach (var h in hotels)
-    {
-        using (Html.BeginForm("Create", "DrrRule", FormMethod.Post))
+
+        @using (Html.BeginForm("Create", "DrrRule", FormMethod.Post))
         {
-            var Rooms = rooms.Where(r => r.hotel_id == h.hotel_id);
+            var Rooms = rooms;
             i++;
         <div class='@(i < 2 ? "show" : "hide") hotel_drr'>
 
@@ -65,10 +64,9 @@
                             <td>@item.Description</td>
                             <td>@(item.StartDate.Value.ToShortDateString())至@(item.EndDate.Value.ToShortDateString())</td>
                             <td>@item.RoomNames</td>
-                            <td><a href="/DrrRule/updateDrr?id=@item.id">修改</a>|<a href="">删除</a></td>
+                            <td><a href="/DrrRule/updateDrr?id=@item.id">修改</a>|<a href="/DrrRule/deleteDrr?id=@item.id">删除</a></td>
                         </tr>
                     }
-
                 </tbody>
             </table>
             <br>
@@ -81,7 +79,7 @@
                         <input id="drr_name" type="text" name="@Html.DisplayNameFor(model => Model.DrrName)" value="@Model.DrrName">
                         <span class="col_red">*</span>
                     </label>
-                    <input class="hide" type="text" name="@Html.DisplayNameFor(model => Model.hotel_id)" value="@h.hotel_id" />
+                    <input class="hide" type="text" name="@Html.DisplayNameFor(model => Model.hotel_id)" value="@ViewBag.id" />
                 </p>
 
                 <!-- 促销方式 -->
@@ -168,7 +166,7 @@
             </div>
         </div>
         }
-    }
+    
 </div>
 
 <!-- 设置促销的方式 -->
