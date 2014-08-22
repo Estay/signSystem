@@ -44,6 +44,13 @@ namespace SAS.Controllers
             return View(new DrrRules());
         }
 
+        public ActionResult updateDrr(string id)
+        {
+            int drrId;
+            int.TryParse(id, out drrId);
+            GetData();
+            return View("MyDrr", (from d in db.drrs where d.id == drrId select d).Single());
+        }
         //
         // POST: /DrrRule/Create
 
@@ -53,7 +60,7 @@ namespace SAS.Controllers
             string guid = Guid.NewGuid().ToString();
 
             Hotel_room_RP_info rp = new Hotel_room_RP_info();
-
+           
             rp.RatePlanId = guid;
             rp.hotel_id = drrrule.hotel_id;
             rp.h_room_rp_is_to_store_pay = true;
@@ -67,35 +74,38 @@ namespace SAS.Controllers
             {
                 string last = string.Format("提前{0}天预订，每间晚优惠{1}％",  drrrule.DayNum, drrrule.DeductNum * 10);
                 if (string.IsNullOrEmpty(drrrule.DrrName))
-                    rp.h_room_rp_name_cn = string.Format("促销({0})",drrrule.DrrName);
-                else
                     rp.h_room_rp_name_cn = string.Format("促销({0})", last);
-                drrrule.Description = string.Format("促销规则：入住日期在{0}-{1},{2}", drrrule.StartDate, drrrule.EndDate, last);
+                else
+                rp.h_room_rp_name_cn = string.Format("促销({0})",drrrule.DrrName);                
+                drrrule.Description = string.Format("促销规则：入住日期在{0}-{1},{2}", drrrule.StartDate.Value.ToShortDateString(), drrrule.EndDate.Value.ToShortDateString(), last);
             }
-            else if (drrrule.TypeCode == "DRRStayPerRoomPerNight")
+            if (drrrule.TypeCode == "DRRStayPerRoomPerNight")
             {
                 string last = string.Format("连住{2}天，每间晚优惠{3}％", drrrule.StartDate, drrrule.EndDate, drrrule.CheckInNum, drrrule.DeductNum * 10);
                 if (string.IsNullOrEmpty(drrrule.DrrName))
-                    rp.h_room_rp_name_cn = string.Format("促销({0})", drrrule.DrrName);
+                    rp.h_room_rp_name_cn = string.Format("促销({0})", last);                  
                 else
-                    rp.h_room_rp_name_cn = string.Format("促销({0})", last);
-                drrrule.Description = string.Format("促销规则：入住日期在{0}-{1},{2}", drrrule.StartDate, drrrule.EndDate, last);
+                    rp.h_room_rp_name_cn = string.Format("促销({0})", drrrule.DrrName);
+                drrrule.Description = string.Format("促销规则：入住日期在{0}-{1},{2}", drrrule.StartDate.Value.ToShortDateString(), drrrule.EndDate.Value.ToShortDateString(), last);
           
             }
+           // drrrule.StartDate.Value.tos;
+          //drrrule.StartDate=drrrule.EndDate.Value.ToShortDateString();
             //插入RP
             db.rps.Add(rp);
+            db.SaveChanges();
             //取rpId
-            var f=(from r in db.rps where r.RatePlanId == guid select r.h_room_rp_id).Single().ToString();
+            var f=(from r in db.rps where r.RatePlanId == guid select r.h_room_rp_id).SingleOrDefault().ToString();
             drrrule.RatePlanId = f.ToString();;
 
             if (ModelState.IsValid)
             {
                 db.drrs.Add(drrrule);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("MyDrr", drrrule);
             }
             GetData();
-            return View(drrrule);
+            return View("MyDrr", drrrule);
         }
         public void GetData()
         {
@@ -136,7 +146,7 @@ namespace SAS.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(drrrule);
+            return View("",drrrule);
         }
 
         //

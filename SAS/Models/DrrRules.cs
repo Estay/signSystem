@@ -21,11 +21,11 @@ namespace SAS.Models
         private string _datetype ="CheckInDay";
         private DateTime? _startdate;
         private DateTime? _enddate;
-        private int? _daynum=-1;
-        private int? _checkinnum=-1;
-        private int? _everycheckinnum=-1;
-        private int? _lastdaynum=-1;
-        private int? _whichdaynum=-1;
+        private int? _daynum;
+        private int? _checkinnum;
+        private int? _everycheckinnum;
+        private int? _lastdaynum;
+        private int? _whichdaynum;
         private string _cashscale;
         private decimal? _deductnum;
         private string _weekset;
