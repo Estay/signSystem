@@ -106,7 +106,7 @@ namespace SAS.Controllers
         public ActionResult Create(Gift gift)
         {
             ViewBag.title = "添加礼包";
-            ViewBag.buttonName = "添加礼包";
+            ViewBag.buttonName = "添加";
             //if (ModelState.IsValid)
             //{
             //    db.hotel.Add(gift);
