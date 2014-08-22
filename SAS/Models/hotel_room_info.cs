@@ -336,7 +336,7 @@ namespace SAS.Models
         {
             using (DBC.HotelDBContent db = new DBC.HotelDBContent())
             {
-                return (from r in db.rooms where r.hotel_id == hotel_id select r).ToList();
+                return (from r in db.rooms where r.hotel_id == hotelId select r).ToList();
             }
         }
 
