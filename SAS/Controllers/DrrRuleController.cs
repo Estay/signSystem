@@ -41,10 +41,11 @@ namespace SAS.Controllers
         //首次加载
         public ActionResult MyDrr()
         {
-            var drrs= help.HotelInfoHelp.getHotlList("test1");
+            string u_id = "test1";
+            var drrs = help.HotelInfoHelp.getHotlList(u_id);
             ViewData["hotels"] = drrs;
-
-            GetData();
+            ViewData["drrModes"] = help.HotelInfoHelp.getDrrModeList(u_id);
+            GetData(drrs[0].ToString());
            
           
 
