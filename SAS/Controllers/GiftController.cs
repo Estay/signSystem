@@ -26,6 +26,8 @@ namespace SAS.Controllers
 
         public ActionResult MyGift(string id)
         {
+            ViewBag.title = "添加礼包";
+            ViewBag.buttonName = "添加";
             GetData(id);
             
             return View(new Gift());
@@ -51,6 +53,8 @@ namespace SAS.Controllers
         //修改gift
         public ActionResult updateG(string id)
         {
+            ViewBag.title = "修改礼包";
+            ViewBag.buttonName = "修改";
             int gId;
             int.TryParse(id,out gId);
             var gift = (from g in db.gifts where g.GiftId == gId select g).Single();
@@ -101,6 +105,8 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult Create(Gift gift)
         {
+            ViewBag.title = "添加礼包";
+            ViewBag.buttonName = "添加礼包";
             //if (ModelState.IsValid)
             //{
             //    db.hotel.Add(gift);
