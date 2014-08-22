@@ -79,6 +79,7 @@ namespace SAS.Controllers
                 if (rp!=null)
                 {
                     rp.h_room_rp_state = false;
+                    rp.h_room_rp_utime = DateTime.Now;
                     if (db.SaveChanges() > 0)
                         ViewBag.sign = 1;
                     else
