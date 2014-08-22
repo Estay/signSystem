@@ -53,6 +53,7 @@
             <table cellspacing="0">
                 <tbody>
                     <tr>
+                        <th>促销名称</th>
                         <th>促销规则</th>
                         <th>促销日期</th>
                         <th>适用房型</th>
@@ -61,6 +62,7 @@
                     @foreach (var item in Drrs)
                     { 
                         <tr>
+                            <td>@item.DrrName</td>
                             <td>@item.Description</td>
                             <td>@(item.StartDate.Value.ToShortDateString())至@(item.EndDate.Value.ToShortDateString())</td>
                             <td>@item.RoomNames</td>
@@ -70,7 +72,7 @@
                 </tbody>
             </table>
             <br>
-            <p><span class="btn_d set">设置促销规则</span></p>
+            <p><span class="btn_d set">@ViewBag.title</span></p>
             <div class="box_b">
                 <!-- 促销名称 -->
                 <p class="input_line">
@@ -79,7 +81,7 @@
                         <input id="drr_name" type="text" name="@Html.DisplayNameFor(model => Model.DrrName)" value="@Model.DrrName">
                         <span class="col_red">*</span>
                     </label>
-                    <input class="hide" type="text" name="@Html.DisplayNameFor(model => Model.hotel_id)" value="@ViewBag.id" />
+                    <input class="hide" type="text" name="@Html.DisplayNameFor(model => Model.hotel_id)" value="@ViewBag.Id" />
                 </p>
 
                 <!-- 促销方式 -->
@@ -162,7 +164,7 @@
                         </p>
                     </div>
                 </div>
-                <a id="btn_add_drr" href="javascript:document.forms[@(i - 1)].submit()" class="btn_b">添加促销规则</a>
+                <a id="btn_add_drr" href="javascript:document.forms[@(i - 1)].submit()" class="btn_b">@ViewBag.buttonName</a>
             </div>
         </div>
         }
