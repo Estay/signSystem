@@ -88,6 +88,9 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult Create(DrrRules drrrule)
         {
+            ViewBag.title = "添加促销规则";
+            ViewBag.buttonName = "添加";
+
             string guid = Guid.NewGuid().ToString();
 
             Hotel_room_RP_info rp = new Hotel_room_RP_info();
@@ -126,8 +129,8 @@ namespace SAS.Controllers
             db.rps.Add(rp);
             db.SaveChanges();
             //取rpId
-            var f=(from r in db.rps where r.RatePlanId == guid select r.h_room_rp_id).SingleOrDefault().ToString();
-            drrrule.RatePlanId = f.ToString();;
+            var f=(from r in db.rps where r.RatePlanId == guid select r.h_room_rp_id).SingleOrDefault();
+            drrrule.h_room_rp_id = f;;
             //要操作的酒店
         
             GetData();
@@ -137,7 +140,7 @@ namespace SAS.Controllers
                 db.drrs.Add(drrrule);
                 db.SaveChanges();
                 GetData(drrrule.hotel_id.ToString());
-                return View("MyDrr", drrrule);
+                return View("MyDrr", new DrrRules());
             }
             
             return View("MyDrr", drrrule);

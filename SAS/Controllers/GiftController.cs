@@ -36,6 +36,7 @@ namespace SAS.Controllers
             int.TryParse(id, out hotel_id);
             string u_id = "test1";
             var hotels= help.HotelInfoHelp.getHotlList(u_id);
+            ViewData["hotels"] = hotels;
             if (id == null && hotels.Count > 0)
             {
                 hotel_id = hotels[0].hotel_id;
