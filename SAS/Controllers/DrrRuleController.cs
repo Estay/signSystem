@@ -135,7 +135,7 @@ namespace SAS.Controllers
                 db.drrs.Add(drrrule);
                 db.SaveChanges();
                 GetData(drrrule.hotel_id.ToString());
-                return RedirectToAction("MyDrr", drrrule);
+                return View("MyDrr", drrrule);
             }
             
             return View("MyDrr", drrrule);
