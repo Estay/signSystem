@@ -719,11 +719,12 @@
 	});
 
 	//////////////////////////////////设置促销规则////////////////////////////////////////
-	// 酒店切换
-	$("#hotel_switch").change(function(event) {
-		console.log(event);
-		$(".hotel_drr").hide().eq(this.selectedIndex).show();
-	});
+    // 酒店切换
+    $("#hotel_switch").change(function(event) {
+        console.log(event);
+        window.location.href="/DrrRule/MyDrr?hotel_id="+$(this).find("option:selected").val();
+    });
+
 	// 促销规则切换
 	$(".drr_modes").change(function(event) {
 		console.log(this.selectedIndex);
@@ -736,17 +737,25 @@
 	//多选值处理
 	$(".multiple").change(function(event) {
 		var checkbox_box = $(this).parents(".checkbox_box"),
-
 			input = $(this).parents(".input_line").prev(".hide"),
-			vals = "";
-		input = input.length?input : $(this).parents(".input_line").find(".hide");
+			vals = "",
+			texts = "";
+		if(!input.length) {
+			input = $(this).parents(".input_line").find(".hide").eq(0);
+			input_text = input.next(".hide");
+		}
 		checkbox_box.find('.multiple').each(function(index, el) {
 			if ($(this).attr('checked')) {
 				vals += ($(this).val()+",");
+				texts += ($(this).next().text()+"、");
 			};
 		});
 		vals = vals.slice(0, -1);
+		texts = texts.slice(0, -1);
 		input.val(vals);
+		input_text.val(texts);
+		console.log(input.val());
+		console.log(input_text.val());
 	});
 	// 全选
 	$(".all_set").click(function(event) {

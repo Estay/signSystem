@@ -30,7 +30,7 @@
         <select name="" id="hotel_switch">
             @foreach (var h in hotels)
             {
-                <option value="@h.h_name_cn">@h.h_name_cn</option>
+                <option value="@h.hotel_id">@h.h_name_cn</option>
             }
         </select>
     </h2>
@@ -156,6 +156,7 @@
                         <p class="input_line"><a class="all_set" href="">全选</a><a class="reverse_set" href="">反选</a></p>
                         <p class="input_line">
                             <input id="" type="text" class="hide" name="@Html.DisplayNameFor(model => Model.RoomIds)" value="@Model.RoomIds">
+                            <input id="" type="text" class="hide" name="@Html.DisplayNameFor(model => Model.RoomNames)" value="@Model.RoomNames">
                             @foreach (var item in Rooms)
                             {   
                                 <label class="w_sn">
@@ -215,4 +216,6 @@
     };
     laydate(start);
     laydate(end);
+
+
 </script>

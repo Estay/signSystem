@@ -1,4 +1,4 @@
-/*2014年8月21日15:43:12*/
+/*2014年8月22日10:03:08*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -825,22 +825,30 @@
     });
     $("#hotel_switch").change(function(event) {
         console.log(event);
-        $(".hotel_drr").hide().eq(this.selectedIndex).show();
+        window.location.href = "/DrrRule/MyDrr?hotel_id=" + $(this).find("option:selected").val();
     });
     $(".drr_modes").change(function(event) {
         console.log(this.selectedIndex);
         $(this).parents(".box_b").find(".drr_mode").html($(".drr_modes").find(".input_line").eq(this.selectedIndex).clone(false, false));
     });
     $(".multiple").change(function(event) {
-        var checkbox_box = $(this).parents(".checkbox_box"), input = $(this).parents(".input_line").prev(".hide"), vals = "";
-        input = input.length ? input : $(this).parents(".input_line").find(".hide");
+        var checkbox_box = $(this).parents(".checkbox_box"), input = $(this).parents(".input_line").prev(".hide"), vals = "", texts = "";
+        if (!input.length) {
+            input = $(this).parents(".input_line").find(".hide").eq(0);
+            input_text = input.next(".hide");
+        }
         checkbox_box.find(".multiple").each(function(index, el) {
             if ($(this).attr("checked")) {
                 vals += $(this).val() + ",";
+                texts += $(this).next().text() + "、";
             }
         });
         vals = vals.slice(0, -1);
+        texts = texts.slice(0, -1);
         input.val(vals);
+        input_text.val(texts);
+        console.log(input.val());
+        console.log(input_text.val());
     });
     $(".all_set").click(function(event) {
         event.preventDefault();
