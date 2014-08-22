@@ -1,4 +1,4 @@
-/*2014年8月22日10:03:08*/
+/*2014年8月22日10:39:42*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -825,7 +825,7 @@
     });
     $("#hotel_switch").change(function(event) {
         console.log(event);
-        window.location.href = "/DrrRule/MyDrr?hotel_id=" + $(this).find("option:selected").val();
+        window.location.href = "/DrrRule/MyDrr?id=" + $(this).find("option:selected").val();
     });
     $(".drr_modes").change(function(event) {
         console.log(this.selectedIndex);

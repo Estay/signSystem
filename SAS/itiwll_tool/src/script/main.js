@@ -722,7 +722,7 @@
     // 酒店切换
     $("#hotel_switch").change(function(event) {
         console.log(event);
-        window.location.href="/DrrRule/MyDrr?hotel_id="+$(this).find("option:selected").val();
+        window.location.href="/DrrRule/MyDrr?id="+$(this).find("option:selected").val();
     });
 
 	// 促销规则切换
