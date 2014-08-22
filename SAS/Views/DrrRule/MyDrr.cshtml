@@ -18,8 +18,8 @@
 
 
 
-    ViewBag.Title = "设置促销";
-    ViewBag.Description = "设置促销";
+    ViewBag.Title =   ViewBag.title;
+    ViewBag.Description =   ViewBag.title;
     ViewBag.drrs = "set";
 
     int i = 0;
@@ -30,7 +30,15 @@
         <select name="" id="hotel_switch">
             @foreach (var h in hotels)
             {
-                <option value="@h.h_name_cn">@h.h_name_cn</option>
+                if (h.hotel_id == ViewBag.Id) {
+                <option value="@h.hotel_id" selected>@h.h_name_cn</option>
+                    
+                }
+                else
+                {
+                <option value="@h.hotel_id">@h.h_name_cn</option>
+                    
+                }
             }
         </select>
     </h2>
@@ -109,7 +117,7 @@
                     </div>
                     <div class="float_l drr_mode">
 
-                        @if (Model.TypeCode == DrrModes[0].Code)
+                        @if (Model.TypeCode == DrrModes[0].Code || string.IsNullOrEmpty(Model.TypeCode))
                         {
                             <p class="input_line ">
                                 提前
@@ -133,17 +141,6 @@
                                 折
                             </p>
                         }
-
-
-                        <p class="input_line ">
-                            提前
-                        <input type="text" class="w50 only_integer" name="@Html.DisplayNameFor(model =>
-                        Model.DayNum)" value="@Model.DayNum">
-                            天预订每间打
-                        <input  class="w50 only_float" type="text" name="@Html.DisplayNameFor(model =>
-                        Model.DeductNum)" value="@Model.DeductNum" >
-                            折
-                        </p>
                     </div>
                 </div>
 
@@ -156,6 +153,7 @@
                         <p class="input_line"><a class="all_set" href="">全选</a><a class="reverse_set" href="">反选</a></p>
                         <p class="input_line">
                             <input id="" type="text" class="hide" name="@Html.DisplayNameFor(model => Model.RoomIds)" value="@Model.RoomIds">
+                            <input id="" type="text" class="hide" name="@Html.DisplayNameFor(model => Model.RoomNames)" value="@Model.RoomNames">
                             @foreach (var item in Rooms)
                             {   
                                 <label class="w_sn">
@@ -215,4 +213,6 @@
     };
     laydate(start);
     laydate(end);
+
+
 </script>
