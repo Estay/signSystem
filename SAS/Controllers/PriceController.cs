@@ -34,7 +34,8 @@ namespace SAS.Controllers
             
             if (string.IsNullOrEmpty(Id) || string.IsNullOrEmpty(startDate) || string.IsNullOrEmpty(EndDate))
             {
-                start = new DateTime(start.Year, start.Month, 1); end = start.AddMonths(1).AddDays(-1);
+                start = new DateTime(start.Year, start.Month, 1);// end = start.AddMonths(1).AddDays(-1);
+                end = start.AddDays(15);
             }
             else
             {
@@ -48,13 +49,13 @@ namespace SAS.Controllers
            
             var hotels=HotelInfoHelp.getHotlList("");
             hotel.HotelList = hotels;
-            if (hotels.Count > 0)
+            if (string.IsNullOrEmpty(Id) && hotels.Count > 0)
             {
                 hotel_id = hotels[0].hotel_id;
             }
             hotel.Room.RoomList = HotelInfoHelp.getRooms(hotel_id);
          //   int[] rf = (from r in db.hotel where r.u_id == uId select r.hotel_id).ToArray();
-            var f = (from p in db.price where p.room_rp_start_time > start && p.room_rp_start_time < end && p.hotel_id==hotel_id select p).ToList();
+            var f = (from p in db.realPrices where p.Effectdate > start && p.Effectdate < end && p.Hotel_id == hotel_id select p).ToList();
             hotel.Room.Prices.PriceList = f;
             return View("MyPrix", hotel);
         }

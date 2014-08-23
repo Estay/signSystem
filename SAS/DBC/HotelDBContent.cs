@@ -31,5 +31,7 @@ namespace SAS.DBC
         public DbSet<hotel_room_picture_info> roomImages { get; set; }
         public DbSet<DrrModes> drrmodes { get; set; }
         public DbSet<Hotel_room_RP_info> rps { get; set; }
+        public DbSet<Hotel_room_RP_price> realPrices { get; set; }
+        public DbSet<Hotel_room_RP_price_batch> publicPrices { get; set; }
     }
 }

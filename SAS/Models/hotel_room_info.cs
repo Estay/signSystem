@@ -305,10 +305,10 @@ namespace SAS.Models
             get { return roomList; }
             set { roomList = value; }
         }
-        
-        private hotel_room_RP_price_info prices = new hotel_room_RP_price_info();
+
+        private Hotel_room_RP_price prices = new Hotel_room_RP_price();
         [NotMapped]
-        public hotel_room_RP_price_info Prices
+        public Hotel_room_RP_price Prices
         {
             get { return prices; }
             set { prices = value; }

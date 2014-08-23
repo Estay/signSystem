@@ -209,6 +209,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\Hotel_room_RP_info.cs" />
+    <Compile Include="Models\Hotel_room_RP_price.cs" />
+    <Compile Include="Models\Hotel_room_RP_price_batch.cs" />
     <Compile Include="Models\hotel_room_RP_price_info.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\hotel_room_info.cs" />
