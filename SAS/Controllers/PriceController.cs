@@ -39,18 +39,15 @@ namespace SAS.Controllers
 
             if (string.IsNullOrEmpty(Id) || string.IsNullOrEmpty(startDate) || string.IsNullOrEmpty(EndDate))
             {
-                start = new DateTime(start.Year, start.Month, 1);// end = start.AddMonths(1).AddDays(-1);
-                end = start.AddDays(15);
+                start = DateTime.Now.Date; end = start.AddDays(14); 
+              //  end = start.AddDays(15);
             }
             else
             {
-                DateTime.TryParse(startDate, out start);
-                DateTime.TryParse(startDate, out end);
+                DateTime.TryParse(startDate, out start); end = start.AddDays(14);        
             }
 
-            hotel_info hotel = new hotel_info();
-   
-
+            hotel_info hotel = new hotel_info();   
             var hotels = HotelInfoHelp.getHotlList("");
             hotel.HotelList = hotels;
             if (string.IsNullOrEmpty(Id) && hotels.Count > 0)
@@ -58,7 +55,7 @@ namespace SAS.Controllers
 
             hotel.Room.RoomList = HotelInfoHelp.getRooms(hotel_id);
           
-            var f = (from p in db.realPrices where p.Effectdate >= start && p.Effectdate < end && p.Hotel_id == hotel_id select p).ToList();
+            var f = (from p in db.realPrices where p.Effectdate >= start && p.Effectdate <= end && p.Hotel_id == hotel_id select p).ToList();
             hotel.Room.Prices.PriceList = f;
             Dictionary<string, string> dates = new Dictionary<string, string>();
             int t = Convert.ToInt32((end - start).TotalDays);
