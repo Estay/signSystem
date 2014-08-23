@@ -55,8 +55,18 @@ namespace SAS.Controllers
             }
             hotel.Room.RoomList = HotelInfoHelp.getRooms(hotel_id);
          //   int[] rf = (from r in db.hotel where r.u_id == uId select r.hotel_id).ToArray();
-            var f = (from p in db.realPrices where p.Effectdate > start && p.Effectdate < end && p.Hotel_id == hotel_id select p).ToList();
+            var f = (from p in db.realPrices where p.Effectdate >=start && p.Effectdate <= end && p.Hotel_id == hotel_id select p).ToList();
             hotel.Room.Prices.PriceList = f;
+            Dictionary<string, string> dates = new Dictionary<string, string>();
+            int t=Convert.ToInt32((end-start).TotalDays);
+           for (int i = 0; i <t; i++)
+			{
+                DateTime d = start.AddDays(i);
+                string day = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(d.DayOfWeek).Substring(2);
+
+                dates.Add(d.ToShortDateString(), day);
+			}
+            ViewData["dates"] = dates;
             return View("MyPrix", hotel);
         }
         //房价修改接口
