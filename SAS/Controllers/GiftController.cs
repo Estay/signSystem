@@ -82,7 +82,7 @@ namespace SAS.Controllers
             else
                  ViewBag.sign=0;
             setName();
-
+            GetData(gift.hotel_id.ToString());
             return View("MyGift", new Gift());
         }
         //
@@ -122,12 +122,21 @@ namespace SAS.Controllers
             ViewBag.buttonName = "添加";
             try
             {
-                if (ModelState.IsValid)
+                if (gift.GiftId > 0)
                 {
-                    db.gifts.Add(gift);
-                    db.SaveChanges();
-
+                    db.Entry(gift).State = EntityState.Modified;
+                   // db.SaveChanges();
                 }
+                else
+                {
+                    if (ModelState.IsValid)
+                    {
+                        db.gifts.Add(gift);
+                      
+
+                    }
+                }
+                db.SaveChanges();
             }
             catch (Exception e)
             {
