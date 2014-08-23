@@ -19,4 +19,102 @@
 {
     
 }
-<h2>MyPrix</h2>
+
+<div id="my_price" class="box_a">
+    <h2>
+    	<!-- 公寓列表 -->
+    	公寓:
+        <select name="" id="hotel_switch_my_price">
+            @foreach (var h in Model.HotelList)
+            {
+                if (h.hotel_id == ViewBag.Id)
+                {
+                <option value="@h.hotel_id" selected>@h.h_name_cn</option>
+                    
+                }
+                else
+                {
+                <option value="@h.hotel_id">@h.h_name_cn</option>
+                }
+            }
+        </select>
+		&nbsp;
+		&nbsp;
+		&nbsp;
+		&nbsp;
+
+		<!-- 选择日期期 -->
+		选择日期
+		<input type="text" id="date_load" class="laydate-icon">
+    </h2>
+
+	<table cellspacing="0">
+	    <tbody>
+	        <tr>
+	            <th>房型</th>
+	            <th>促销规则</th>
+	            <th>促销日期</th>
+	            <th>适用房型</th>
+	            <th>操作</th>
+	        </tr>
+	        <!-- 遍历房型 -->
+			@foreach (var r in Model.Room.RoomList)
+			{
+			    <tr>
+	                <td>@r.h_r_name_cn</td>
+			    </tr>
+			}
+	    </tbody>
+	</table>
+
+<div class="" id="pr_set_box" class="set_box">
+	<p class="input_line">
+		<input type="text" class="date_start w100 laydate-icon">
+		至
+		<input type="text" class="date_end w100 laydate-icon">
+	</p>
+
+</div>
+</div>
+
+
+
+<!-- 日期控件 -->
+<script type="text/javascript" src="@Url.Content("~/Content/public/script/laydate/laydate.dev.js")"></script>
+<script>
+	// 切换日期
+    (function() {
+    	var start = {
+	        elem: '#date_load',
+	        min: laydate.now(),
+	        istoday: true,
+	        choose: function (datas) {
+	            // tudo 切换日期
+	        }
+	    };
+	    laydate(start);
+    })();
+
+    // 设置价格日期
+    (function() {
+        var start = {
+            elem: '#my_price .date_start',
+            min: laydate.now(), //设定最小日期为当前日期
+            istoday: false,
+            choose: function (datas) {
+                end.min = datas; //开始日选好后，重置结束日的最小日期
+                end.start = datas //将结束日的初始值设定为开始日
+            }
+        };
+        var end = {
+            elem: '#my_price .date_end',
+            min: laydate.now(),
+            istoday: false,
+            choose: function (datas) {
+                start.max = datas; //结束日选好后，充值开始日的最大日期
+            }
+        };
+        laydate(start);
+        laydate(end);
+    })();
+</script>

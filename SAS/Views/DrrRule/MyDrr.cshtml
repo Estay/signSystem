@@ -197,25 +197,25 @@
 <!-- 日期控件 -->
 <script type="text/javascript" src="@Url.Content("~/Content/public/script/laydate/laydate.dev.js")"></script>
 <script>
-    var start = {
-        elem: '#DrrRule .date_start',
-        min: laydate.now(), //设定最小日期为当前日期
-        istoday: false,
-        choose: function (datas) {
-            end.min = datas; //开始日选好后，重置结束日的最小日期
-            end.start = datas //将结束日的初始值设定为开始日
-        }
-    };
-    var end = {
-        elem: '#DrrRule .date_end',
-        min: laydate.now(),
-        istoday: false,
-        choose: function (datas) {
-            start.max = datas; //结束日选好后，充值开始日的最大日期
-        }
-    };
-    laydate(start);
-    laydate(end);
-
-
+    (function() {
+        var start = {
+            elem: '#DrrRule .date_start',
+            min: laydate.now(), //设定最小日期为当前日期
+            istoday: false,
+            choose: function (datas) {
+                end.min = datas; //开始日选好后，重置结束日的最小日期
+                end.start = datas //将结束日的初始值设定为开始日
+            }
+        };
+        var end = {
+            elem: '#DrrRule .date_end',
+            min: laydate.now(),
+            istoday: false,
+            choose: function (datas) {
+                start.max = datas; //结束日选好后，充值开始日的最大日期
+            }
+        };
+        laydate(start);
+        laydate(end);
+    })();
 </script>

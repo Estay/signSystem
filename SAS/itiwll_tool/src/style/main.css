@@ -291,3 +291,16 @@
 	margin-left: 110px;
 	margin-top: 20px;
 }
+
+/*房价房态*/
+#my_price,
+#room_status {
+	margin-top: 32px;
+}
+#date_load {
+	width: 100px;
+}
+
+.set_box {
+	border: 5px solid #CCC;
+}

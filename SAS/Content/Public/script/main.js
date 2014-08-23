@@ -1,4 +1,4 @@
-/*2014年8月23日11:31:53*/
+/*2014年8月23日14:42:03*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -839,6 +839,10 @@
     $("#hotel_switch_gift").change(function(event) {
         console.log(event);
         window.location.href = "/Gift/MyGift?id=" + $(this).find("option:selected").val();
+    });
+    $("#hotel_switch_my_price").change(function(event) {
+        console.log(event);
+        window.location.href = "/Price/myprice?id=" + $(this).find("option:selected").val();
     });
     (function($) {
         function set_val(input) {

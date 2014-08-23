@@ -465,7 +465,7 @@
 	});
 
 
-
+	// 床型输入模块
 	(function() {
 		var bed_input = $("#bed_input"),
 			bed_val = bed_input.val();
@@ -747,7 +747,21 @@
     });
 
 
+	//////////////////////////////////房价房态////////////////////////////////////////
+    // 酒店切换
+    $("#hotel_switch_my_price").change(function(event) {
+        console.log(event);
+        window.location.href="/Price/myprice?id="+$(this).find("option:selected").val();
+    });
 
+
+
+
+
+
+
+
+	//////////////////////////////////功能控件//////////////////////////////////////	
  	// 房型回显
 	(function($){
 		function set_val (input) {
@@ -781,7 +795,6 @@
 		}
 
 	})($)
-	//////////////////////////////////功能按钮//////////////////////////////////////	
 
 	//多选值处理
 	$(".multiple").change(function(event) {
