@@ -63,8 +63,8 @@ namespace SAS.Controllers
 			{
                 DateTime d = start.AddDays(i);
                 string day = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(d.DayOfWeek).Substring(2);
-
-                dates.Add(d.ToShortDateString(), day);
+               
+              dates.Add(d.ToString("MM-dd"), day);
 			}
             ViewData["dates"] = dates;
             return View("MyPrix", hotel);
