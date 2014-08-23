@@ -1,4 +1,4 @@
-/*2014年8月22日15:48:42*/
+/*2014年8月23日11:31:53*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -904,6 +904,7 @@
         if (event.keyCode >= 48 && event.keyCode <= 59) {} else {
             event.preventDefault();
         }
+    }).on("change", ".only_integer", function(event) {
         var el = $(this);
         el.val(el.val().replace(/\D/g, ""));
     });

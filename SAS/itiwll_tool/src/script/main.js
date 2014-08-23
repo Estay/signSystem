@@ -836,9 +836,11 @@
 			event.preventDefault();
 		}
 
+
+	}).on('change', '.only_integer', function(event) {
 		var el = $(this);
 		el.val(el.val().replace(/\D/g,""));
-	});
+	});;
 	// class only_float 只能输入浮点数
 	$("body").on("keypress",".only_float",function(event) {
 		console.log(event.keyCode);

@@ -6,24 +6,24 @@
 
     //所有酒店对应的房型列表
     List<SAS.Models.hotel_room_info> rooms = ViewData["rooms"] as List<SAS.Models.hotel_room_info>;
-    
+
     //所有担保规则列表
     List<SAS.Models.GuaranteeRule> guarantees = ViewData["Gurarantees"] as List<SAS.Models.GuaranteeRule>;
-    
-  ViewBag.Title = "设置担保";
-  ViewBag.Description = "设置担保";
-  ViewBag.guarantees = "set";
-  int i = 0;
+
+    ViewBag.Title = @ViewBag.title;
+    ViewBag.Description = @ViewBag.title;
+    ViewBag.guarantees = "set";
+    int i = 0;
 
 
 }
 @foreach (var h in hotels)
 {
-    var Rooms = rooms.Where(r=>r.hotel_id== h.hotel_id);
+    var Rooms = rooms.Where(r => r.hotel_id == h.hotel_id);
     //当前酒店对应的房型
     foreach (var item in Rooms)
     {
-        
+
     }
 }
 <div id="DrrRule" class="box_a">
@@ -39,61 +39,68 @@
     {
         var Rooms = rooms.Where(r => r.hotel_id == h.hotel_id);
         i++;
-    <div class='@(i < 2 ? "show" : "hide") hotel_drr'>
-        
-        <table cellspacing="0">
-            <tbody>
-                <tr>
-                    <th>担保规则</th>
-                    <th>担保日期</th>
-                    <th>变更/取消规则</th>
-                    <th>操作</th>
-                </tr>
-                @foreach (var item in guarantees)
-                { 
-                <tr>
-                    <td>@item.Description</td>
-                    <td>@(item.StartDate)至@(item.EndDate)</td>
-                    <td><a href="@item.id">修改</a>|<a href="">删除</a></td>
-                </tr>
-                }
+        <div class='@(i < 2 ? "show" : "hide") hotel_drr'>
 
-            </tbody>
-        </table>
-        <br>
-        <p><span class="btn_d set">设置担保规则</span></p>
-        <div class="box_b">
-            <p class="input_line">
-                <label for="">
-                    <span class="label">担保金额：</span>
-                    <input type="checkbox" name="@Html.DisplayNameFor(model => model.GuaranteeType)" value="@Model.GuaranteeType">
-                    <input type="checkbox" name="@Html.DisplayNameFor(model => model.GuaranteeType)" value="@Model.GuaranteeType">
-                </label>
-            </p>
-            <p class="input_line">
-                <label for="">
-                    <span class="label">担保日期：</span>
-                    <input type="text" class="date_start" name="@Html.DisplayNameFor(model => model.StartDate)" value="@Model.StartDate">至<input type="text" name="@Html.DisplayNameFor(model => model.EndDate)" class="date_end" value="@Model.EndDate">
-                </label>
-            </p>
-            <div class="clear">
-                <div class="float_l">
-                    <div class="input_line"><span class="label">变更/取消规则：</span></div>
+            <table cellspacing="0">
+                <tbody>
+                    <tr>
+                        <th>担保规则</th>
+                        <th>担保日期</th>
+                        <th>变更/取消规则</th>
+                        <th>操作</th>
+                    </tr>
+                    @foreach (var item in guarantees)
+                    { 
+                        <tr>
+                            <td>@item.Description</td>
+                            <td>@(item.StartDate)至@(item.EndDate)</td>
+                            <td><a href="@item.id">修改</a>|<a href="">删除</a></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+            <br>
+            <p><span class="btn_d set">@ViewBag.title</span></p>
+            <div class="box_b">
+                <p class="input_line">
+                    <label for="">
+                        <span class="label">担保金额：</span>
+                        <label>
+                            <input type="radio" name="@Html.DisplayNameFor(model => model.GuaranteeType)" value="FirstNightCost" @Model.GuaranteeType == "FirstNightCost"?"checked":"">首晚房费</label>
+                        <label>
+                            <input type="radio" name="@Html.DisplayNameFor(model => model.GuaranteeType)" value="FullNightCost" @Model.GuaranteeType == "FullNightCost"?"checked":"">全部房费</label>
+                    </label>
+                </p>
+                <p class="input_line">
+                    <label for="">
+                        <span class="label">担保日期：</span>
+                        <input readonly="readonly" type="text" name="@Html.DisplayNameFor(model => model.StartDate)" class="date_start laydate-icon" value="@Model.StartDate">至<input readonly="readonly" type="text" name="@Html.DisplayNameFor(model => model.EndDate)" class="date_end laydate-icon" value="@Model.StartDate">
+                    </label>
+                </p>
+                <div class="clear">
+                    <div class="float_l">
+                        <div class="input_line"><span class="label">变更/取消：</span></div>
+                    </div>
+                    <div class="float_l checkbox_box">
+                        <p class="input_line">
+                            <label>
+                                <input type="radio" name="@Html.DisplayNameFor(model => model.ChangeRule)" @Model.ChangeRule == "1"?"checked":"" value="1">不许变更/取消</label>
+                        </p>
+                        <p class="input_line">
+                            <label>
+                                <input type="radio" name="@Html.DisplayNameFor(model => model.ChangeRule)" @Model.ChangeRule == "1"?"checked":"" value="2">
+                                许变更/取消，需在最早到店时间前
+                            <input class="w50 only_integer" type="text" name="@Html.DisplayNameFor(model => model.Hour)" value="@Model.Hour">
+                                小时通知
+                            </label>
+                        </p>
+                    </div>
                 </div>
-                <div class="float_l checkbox_box">
-                     <label for="@Html.DisplayNameFor(model => model.ChangeRule)"><input type="checkbox" name="@Html.DisplayNameFor(model => model.ChangeRule)">不许变更/取消</label>
-                     <label for="@Html.DisplayNameFor(model => model.ChangeRule)">
-                        <input type="checkbox" name="@Html.DisplayNameFor(model => model.ChangeRule)">
-                        许变更/取消，需在最早到店时间前
-                        <input type="text">
-                        小时通知
-                     </label>
-                </div>
+                <a id="btn_add_drr" class="btn_b" href="">@ViewBag.buttonName</a>
             </div>
-            <a id="btn_add_drr" class="btn_b" href="">添加礼包</a>
-        </div>          
-    </div>
-    } 
+        </div>
+    }
 </div>
 
 <!-- 日期控件 -->
@@ -103,16 +110,16 @@
         elem: '#DrrRule .date_start',
         min: laydate.now(), //设定最小日期为当前日期
         istoday: false,
-        choose: function(datas){
-             end.min = datas; //开始日选好后，重置结束日的最小日期
-             end.start = datas //将结束日的初始值设定为开始日
+        choose: function (datas) {
+            end.min = datas; //开始日选好后，重置结束日的最小日期
+            end.start = datas //将结束日的初始值设定为开始日
         }
     };
     var end = {
         elem: '#DrrRule .date_end',
         min: laydate.now(),
         istoday: false,
-        choose: function(datas){
+        choose: function (datas) {
             start.max = datas; //结束日选好后，充值开始日的最大日期
         }
     };
