@@ -26,12 +26,17 @@ namespace SAS.Controllers
 
         public ActionResult MyPrice(string Id,string startDate,string EndDate)
         {
-            string uId="test1";
+            
+            return View("MyPrix", getData(Id, startDate, EndDate));
+        }
+        public hotel_info getData(string Id, string startDate, string EndDate)
+        {
+            string uId = "test1";
 
             int hotel_id = 0;
             int.TryParse(Id, out hotel_id);
 
-            
+
             if (string.IsNullOrEmpty(Id) || string.IsNullOrEmpty(startDate) || string.IsNullOrEmpty(EndDate))
             {
                 start = new DateTime(start.Year, start.Month, 1);// end = start.AddMonths(1).AddDays(-1);
@@ -46,31 +51,29 @@ namespace SAS.Controllers
             hotel_info hotel = new hotel_info();
             // hotel.Room.RoomList = DBhelp.getRooms(48502);
             // DBhelp.getRooms(48502);
-           
-            var hotels=HotelInfoHelp.getHotlList("");
+
+            var hotels = HotelInfoHelp.getHotlList("");
             hotel.HotelList = hotels;
             if (string.IsNullOrEmpty(Id) && hotels.Count > 0)
-            {
                 hotel_id = hotels[0].hotel_id;
-            }
+
             hotel.Room.RoomList = HotelInfoHelp.getRooms(hotel_id);
-         //   int[] rf = (from r in db.hotel where r.u_id == uId select r.hotel_id).ToArray();
-            var f = (from p in db.realPrices where p.Effectdate >=start && p.Effectdate < end && p.Hotel_id == hotel_id select p).ToList();
+          
+            var f = (from p in db.realPrices where p.Effectdate >= start && p.Effectdate < end && p.Hotel_id == hotel_id select p).ToList();
             hotel.Room.Prices.PriceList = f;
             Dictionary<string, string> dates = new Dictionary<string, string>();
-            int t=Convert.ToInt32((end-start).TotalDays);
-           for (int i = 0; i <t; i++)
-			{
+            int t = Convert.ToInt32((end - start).TotalDays);
+            for (int i = 0; i < t; i++)
+            {
                 DateTime d = start.AddDays(i);
                 string day = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(d.DayOfWeek).Substring(2);
-               
-              dates.Add(d.ToString("MM-dd"), day);
-			}
+                dates.Add(d.ToString("MM-dd"), day);
+            }
             ViewData["dates"] = dates;
-            return View("MyPrix", hotel);
+            return hotel;
         }
         //房价修改接口
-        public int uPrice(string id,string roomId, string startDate, string EndDate,string value)
+        public ActionResult uPrice(string id, string roomId, string startDate, string EndDate, string value)
         {
             int Id;
             decimal price;
@@ -80,9 +83,10 @@ namespace SAS.Controllers
             DateTime.TryParse(startDate, out end);
             string sql = string.Format("update  hotel_room_RP_price set Room_rp_price={2} where room_id={0}  Effectdate  between ({2},{3})", roomId,price, start, end);
             if (DBhelp.ExcuteTableBySQL(sql) > 0)
-                return 1;
+                ViewBag.sign = 1;
             else
-                return 0;
+                ViewBag.sign = 0;
+            return View("MyPrix", getData(id, startDate, EndDate));
         }
         //
         // GET: /Price/Details/5
