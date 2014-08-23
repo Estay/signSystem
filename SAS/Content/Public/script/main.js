@@ -1,4 +1,4 @@
-/*2014年8月23日15:32:09*/
+/*2014年8月23日17:14:38*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -844,20 +844,74 @@
         console.log(event);
         window.location.href = "/Price/myprice?id=" + $(this).find("option:selected").val();
     });
-    $(".item_pr").click(function(event) {
-        var el = $(this), html = $("#pr_set_box").clone(false, false);
-        el.e_window({
-            position_mod: "relative",
-            relative_mod: "bottom",
-            top: 0,
-            left: 0,
-            width: "auto",
-            marginTop: 0,
-            marginRight: 0,
-            box_id: "",
-            html: html
+    (function() {
+        var el_ing = "", send_data = {};
+        $(".item_pr").click(function(event) {
+            if (el_ing) {
+                el_ing.e_window_kill();
+            }
+            var el = $(this), html = $("#pr_set_box").clone(false, false).removeClass("hide");
+            html.find(".date_start").val(el.attr("date"));
+            html.find(".date_end").val(el.attr("date"));
+            send_data.id = el.attr("Hotel_id");
+            send_data.roomId = el.attr("roomid");
+            el_ing = el.e_window({
+                position_mod: "relative",
+                relative_mod: "bottom",
+                top: 0,
+                left: 0,
+                width: 500,
+                marginTop: 0,
+                marginRight: 0,
+                box_id: "set_pr_box",
+                html: html
+            });
+            $(".close_win").click(function(event) {
+                event.preventDefault();
+                el_ing.e_window_kill();
+            });
+            function set_date() {
+                var start = {
+                    elem: "#set_pr_box .date_start",
+                    min: laydate.now(),
+                    istoday: false,
+                    choose: function(datas) {
+                        end.min = datas;
+                        end.start = datas;
+                    }
+                };
+                var end = {
+                    elem: "#set_pr_box .date_end",
+                    min: laydate.now(),
+                    istoday: false,
+                    choose: function(datas) {
+                        start.max = datas;
+                    }
+                };
+                laydate(start);
+                laydate(end);
+            }
+            setTimeout(set_date, 100);
         });
-    });
+        $("body").on("click", ".set_pr_btn", function(event) {
+            event.preventDefault();
+            send_data.startDate = $(this).siblings(".input_line").find(".date_start").val();
+            send_data.EndDate = $(this).siblings(".input_line").find(".date_end").val();
+            send_data.value = $(this).siblings(".only_integer").val();
+            console.log(send_data);
+            $.ajax({
+                url: "/price/uPrice/",
+                type: "PoST",
+                data: send_data
+            }).done(function() {
+                console.log("success");
+            }).fail(function() {
+                console.log("error");
+            }).always(function() {
+                console.log("complete");
+            });
+        });
+    })();
     (function($) {
         function set_val(input) {
             var data_arr = input.val().split(","), multiple = input.parent().find(".multiple");

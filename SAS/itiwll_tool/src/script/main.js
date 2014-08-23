@@ -754,21 +754,95 @@
         window.location.href="/Price/myprice?id="+$(this).find("option:selected").val();
     });
 
-    $(".item_pr").click(function(event) {
-    	var el = $(this),
-    		html = $("#pr_set_box").clone(false, false);
-    	el.e_window({
-			position_mod: "relative", //位置模式 居中：center 相对元素 ：relative  相对窗口：absolute
-			relative_mod: "bottom", //bottom right top left
-			top: 0,
-			left: 0,
-			width: "auto",
-			marginTop: 0,
-			marginRight: 0,
-			box_id: "",
-			html: html
-    	})
-    });
+    // 弹窗模块
+    (function() {
+    	var el_ing = "",
+    		send_data = {};
+
+	    $(".item_pr").click(function(event) {
+	    	if (el_ing) {
+	    		el_ing.e_window_kill();
+	    	};
+
+	    	var el = $(this),
+	    		html = $("#pr_set_box").clone(false, false).removeClass('hide');
+
+	    	html.find('.date_start').val(el.attr('date'));
+	    	html.find('.date_end').val(el.attr('date'));
+
+	    	send_data.id = el.attr("Hotel_id");
+	    	send_data.roomId = el.attr("roomid");
+
+	    	el_ing = el.e_window({
+				position_mod: "relative", //位置模式 居中：center 相对元素 ：relative  相对窗口：absolute
+				relative_mod: "bottom", //bottom right top left
+				top: 0,
+				left: 0,
+				width: 500,
+				marginTop: 0,
+				marginRight: 0,
+				box_id: "set_pr_box",
+				html: html
+	    	});
+
+	    	$(".close_win").click(function(event) {
+	    		event.preventDefault();
+	    		el_ing.e_window_kill();
+	    	});
+
+
+	    	function set_date() {
+		        var start = {
+		            elem: '#set_pr_box .date_start',
+		            min: laydate.now(), //设定最小日期为当前日期
+		            istoday: false,
+		            choose: function (datas) {
+		                end.min = datas; //开始日选好后，重置结束日的最小日期
+		                end.start = datas //将结束日的初始值设定为开始日
+		            }
+		        };
+		        var end = {
+		            elem: '#set_pr_box .date_end',
+		            min: laydate.now(),
+		            istoday: false,
+		            choose: function (datas) {
+		                start.max = datas; //结束日选好后，充值开始日的最大日期
+		            }
+		        };
+		        laydate(start);
+		        laydate(end);
+	    	}
+	    	setTimeout(set_date, 100);
+	    });
+
+
+	   // 修改房价按钮
+	    $("body").on('click', '.set_pr_btn', function(event) {
+	    	event.preventDefault();
+	    	send_data.startDate = $(this).siblings('.input_line').find('.date_start').val();
+	    	send_data.EndDate = $(this).siblings('.input_line').find('.date_end').val();
+	    	send_data.value = $(this).siblings('.only_integer').val();
+	    	console.log(send_data);
+
+	    	// todo 验证
+	    	$.ajax({
+	    		url: '/price/uPrice/',
+	    		type: 'PoST',
+	    		data: send_data,
+	    	})
+	    	.done(function() {
+	    		console.log("success");
+	    	})
+	    	.fail(function() {
+	    		console.log("error");
+	    	})
+	    	.always(function() {
+	    		console.log("complete");
+	    	});
+	    	
+	    });
+    })();
+
 
 
 
@@ -935,6 +1009,9 @@
 			};				
 		}, 200);
 	});
+
+
+
 
 })(jQuery);
 

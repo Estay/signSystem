@@ -6,21 +6,6 @@
     //日期(第一个string为日期，第二个string为星期几
     Dictionary<string, string> dates = ViewData["dates"]  as Dictionary<string, string>; 
 }
-@* 酒店列表*@
-@foreach (var h in Model.HotelList)
-{
-    
-}
-@* 房型列表表*@
-@foreach (var r in Model.Room.RoomList)
-{
-    
-}
-@* 价格列表*@
-@foreach (var r in Model.Room.Prices.PriceList)
-{
-    
-}
 
 <div id="my_price" class="box_a">
     <h2>
@@ -47,29 +32,33 @@
 
 		<!-- 选择日期期 -->
 		选择日期
-		<input type="text" id="date_load" class="laydate-icon">
+		<input type="text" id="date_load" class="laydate-icon" value="">
+		<span class="tip_text">显示15天房价</span>
     </h2>
 
 	<table cellspacing="0">
 	    <tbody>
 	        <tr>
 	            <th>房型</th>
-	            
+	            @foreach (var d in dates) { 
+                    <th>@d.Key<br />@d.Value</th>
+                }
 	        </tr>
 	        <!-- 遍历房型 -->
 			@foreach (var r in Model.Room.RoomList)
 			{
 			    <tr>
 	                <td>@r.h_r_name_cn</td>
-                    @foreach(var pr in Model.Room.Prices.PriceList.Where(o=>o.Room_id==r.room_id)){
-                        <td class="item_pr">@pr.Room_rp_price</td>
+                    @foreach(var pr in Model.Room.Prices.PriceList.Where(o=>o.Room_id==r.room_id))
+                    {
+                        <td class="item_pr" date="@pr.Effectdate.ToString("yyyy-MM-dd")" roomid="@pr.Room_id" hotel_id="@pr.Hotel_id">@Convert.ToInt32(pr.Room_rp_price)</td>
                     }
 			    </tr>
 			}
 	    </tbody>
 	</table>
 
-<div class="set_box" id="pr_set_box">
+<div class="set_box hide" id="pr_set_box">
 	<p class="input_line">
 		<input type="text" class="date_start w100 laydate-icon">
 		至
@@ -77,6 +66,7 @@
 	</p>
 	房价调整为<input type="text" class="w50 only_integer">
 	<a href="" class="set_pr_btn btn_b">确定</a>
+	<a href="" class="close_win btn_b">取消</a>
 </div>
 </div>
 
@@ -98,26 +88,4 @@
 	    laydate(start);
     })();
 
-    // 设置价格日期
-    (function() {
-        var start = {
-            elem: '#my_price .date_start',
-            min: laydate.now(), //设定最小日期为当前日期
-            istoday: false,
-            choose: function (datas) {
-                end.min = datas; //开始日选好后，重置结束日的最小日期
-                end.start = datas //将结束日的初始值设定为开始日
-            }
-        };
-        var end = {
-            elem: '#my_price .date_end',
-            min: laydate.now(),
-            istoday: false,
-            choose: function (datas) {
-                start.max = datas; //结束日选好后，充值开始日的最大日期
-            }
-        };
-        laydate(start);
-        laydate(end);
-    })();
 </script>
