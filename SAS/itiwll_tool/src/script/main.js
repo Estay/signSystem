@@ -827,7 +827,7 @@
 	    	// todo 验证
 	    	$.ajax({
 	    		url: '/price/uPrice/',
-	    		type: 'PoST',
+	    		type: 'GET',
 	    		data: send_data,
 	    	})
 	    	.done(function() {
