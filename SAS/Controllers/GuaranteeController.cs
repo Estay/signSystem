@@ -21,7 +21,11 @@ namespace SAS.Controllers
         {
             return View(db.hotel.ToList());
         }
-
+        private void setName()
+        {
+            ViewBag.title = "设置担保";
+            ViewBag.buttonName = "添加";
+        }
         //
         // GET: /Guarantee/Details/5
 
@@ -41,7 +45,8 @@ namespace SAS.Controllers
         public ActionResult MyGuarantee(string id)
         {
             GetData(id);
-            return View();
+            setName();
+            return View(new GuaranteeRule());
         }
         public void GetData(string id)
         {
@@ -51,6 +56,8 @@ namespace SAS.Controllers
             var hotels= help.HotelInfoHelp.getHotlList(u_id);
             if(id==null &&hotels.Count>0)
                 hotel_id = hotels[0].hotel_id;
+         
+            ViewData["hotels"] = hotels;
             //所有酒店列表
             ViewData["rooms"] = help.HotelInfoHelp.getRooms(hotel_id);
 
@@ -66,24 +73,28 @@ namespace SAS.Controllers
             int.TryParse(id, out gId);
             var gu = (from g in db.gu where g.GuaranteeRulesId == gId select g).Single();
             ViewBag.Id = gu.hotel_id;
-
-            return View(new GuaranteeRule());
+            GetData(gu.hotel_id.ToString());
+            ViewBag.title = "修改担保";
+            ViewBag.buttonName = "修改";
+            return View("MyGuarantee", new GuaranteeRule());
         }
         //删除担保
         public ActionResult deleteG(string id)
         {
             int gId;
             int.TryParse(id, out gId);
-            var gift = (from g in db.gu where g.GuaranteeRulesId == gId select g).Single();
+            var gu = (from g in db.gu where g.GuaranteeRulesId == gId select g).Single();
 
-            ViewBag.Id = gift.hotel_id;
-            db.gu.Remove(gift);
+            db.gu.Remove(gu);
             if (db.SaveChanges() > 0)
                 ViewBag.sign = 1;
             else
                 ViewBag.sign = 0;
 
-            return View(new Gift());
+            ViewBag.Id = gu.hotel_id;
+            GetData(gu.hotel_id.ToString());
+            setName();
+            return View("MyGuarantee", new GuaranteeRule());
         }
 
         //

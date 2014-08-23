@@ -122,11 +122,13 @@ namespace SAS.Controllers
             ViewBag.buttonName = "添加";
             try
             {
+                //修改
                 if (gift.GiftId > 0)
                 {
                     db.Entry(gift).State = EntityState.Modified;
                    // db.SaveChanges();
                 }
+                //添加
                 else
                 {
                     if (ModelState.IsValid)
