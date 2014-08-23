@@ -49,8 +49,7 @@ namespace SAS.Controllers
             }
 
             hotel_info hotel = new hotel_info();
-            // hotel.Room.RoomList = DBhelp.getRooms(48502);
-            // DBhelp.getRooms(48502);
+   
 
             var hotels = HotelInfoHelp.getHotlList("");
             hotel.HotelList = hotels;
@@ -69,7 +68,7 @@ namespace SAS.Controllers
                 string day = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(d.DayOfWeek).Substring(2);
                 dates.Add(d.ToString("MM-dd"), day);
             }
-            ViewData["dates"] = dates;
+            ViewData["dates"] = dates; ViewBag.Id = Id;
             return hotel;
         }
         //房价修改接口
