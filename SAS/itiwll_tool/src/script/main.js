@@ -754,6 +754,22 @@
         window.location.href="/Price/myprice?id="+$(this).find("option:selected").val();
     });
 
+    $(".item_pr").click(function(event) {
+    	var el = $(this),
+    		html = $("#pr_set_box").clone(false, false);
+    	el.e_window({
+			position_mod: "relative", //位置模式 居中：center 相对元素 ：relative  相对窗口：absolute
+			relative_mod: "bottom", //bottom right top left
+			top: 0,
+			left: 0,
+			width: "auto",
+			marginTop: 0,
+			marginRight: 0,
+			box_id: "",
+			html: html
+    	})
+    });
+
 
 
 

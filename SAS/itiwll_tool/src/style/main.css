@@ -300,7 +300,23 @@
 #date_load {
 	width: 100px;
 }
+.item_pr {
+	-webkit-transition: all 0.8s;
+	-o-transition: all 0.8s;
+	transition: all 0.8s;
+}
+.item_pr:hover {
+	cursor: pointer;
+	background-color: #003C91;
+	color: #FFF;
+}
 
 .set_box {
+	position: absolute;
 	border: 5px solid #CCC;
+	background-color: #FFF;
+	padding: 10px;
+}
+.set_pr_btn {
+	margin-left: 30px;
 }

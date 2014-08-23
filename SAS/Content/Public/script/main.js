@@ -1,4 +1,4 @@
-/*2014年8月23日14:42:03*/
+/*2014年8月23日15:32:09*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -843,6 +843,20 @@
     $("#hotel_switch_my_price").change(function(event) {
         console.log(event);
         window.location.href = "/Price/myprice?id=" + $(this).find("option:selected").val();
+    });
+    $(".item_pr").click(function(event) {
+        var el = $(this), html = $("#pr_set_box").clone(false, false);
+        el.e_window({
+            position_mod: "relative",
+            relative_mod: "bottom",
+            top: 0,
+            left: 0,
+            width: "auto",
+            marginTop: 0,
+            marginRight: 0,
+            box_id: "",
+            html: html
+        });
     });
     (function($) {
         function set_val(input) {

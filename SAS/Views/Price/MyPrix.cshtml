@@ -52,28 +52,29 @@
 	    <tbody>
 	        <tr>
 	            <th>房型</th>
-	            <th>促销规则</th>
-	            <th>促销日期</th>
-	            <th>适用房型</th>
-	            <th>操作</th>
+	            
 	        </tr>
 	        <!-- 遍历房型 -->
 			@foreach (var r in Model.Room.RoomList)
 			{
 			    <tr>
 	                <td>@r.h_r_name_cn</td>
+                    @foreach(var pr in Model.Room.Prices.PriceList.Where(o=>o.Room_id==r.room_id)){
+                        <td class="item_pr">@pr.Room_rp_price</td>
+                    }
 			    </tr>
 			}
 	    </tbody>
 	</table>
 
-<div class="" id="pr_set_box" class="set_box">
+<div class="set_box" id="pr_set_box">
 	<p class="input_line">
 		<input type="text" class="date_start w100 laydate-icon">
 		至
 		<input type="text" class="date_end w100 laydate-icon">
 	</p>
-
+	房价调整为<input type="text" class="w50 only_integer">
+	<a href="" class="set_pr_btn btn_b">确定</a>
 </div>
 </div>
 
