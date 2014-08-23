@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "MyPrix";
     ViewBag.my_prix = "set";
+    //日期(第一个string为日期，第二个string为星期几
+    Dictionary<string, string> dates = ViewData["dates"]  as Dictionary<string, string>; 
 }
 @* 酒店列表*@
 @foreach (var h in Model.HotelList)
