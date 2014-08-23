@@ -83,11 +83,17 @@ td {
 .w50 {
   width: 50px;
 }
+.w100 {
+  width: 100px;
+}
 .m_t10 {
   margin-top: 10px;
 }
 .m_t15 {
   margin-top: 15px;
+}
+.m_t30 {
+  margin-top: 30px;
 }
 .m_t20 {
   margin-top: 20px;
