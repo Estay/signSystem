@@ -147,7 +147,7 @@ namespace SAS.Controllers
             }
 
             GetData(gift.hotel_id.ToString());
-            return View("MyGift", gift);
+            return View("MyGift", new Gift());
         }
 
         //
