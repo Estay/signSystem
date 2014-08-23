@@ -103,12 +103,12 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult Create(GuaranteeRule guaranteerule)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    db.guarantees.Add(guaranteerule);
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
+            if (ModelState.IsValid)
+            {
+                db.gu.Add(guaranteerule);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
 
             return View(guaranteerule);
         }

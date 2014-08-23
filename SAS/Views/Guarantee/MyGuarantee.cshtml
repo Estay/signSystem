@@ -5,7 +5,7 @@
     List<SAS.Models.hotel_info> hotels = ViewData["hotels"] as List<SAS.Models.hotel_info>;
 
     //所有酒店对应的房型列表
-    List<SAS.Models.hotel_room_info> rooms = ViewData["rooms"] as List<SAS.Models.hotel_room_info>;
+ //   List<SAS.Models.hotel_room_info> rooms = ViewData["rooms"] as List<SAS.Models.hotel_room_info>;
 
     //所有担保规则列表
     List<SAS.Models.GuaranteeRule> guarantees = ViewData["Gurarantees"] as List<SAS.Models.GuaranteeRule>;
@@ -17,16 +17,12 @@
 
 
 }
-@foreach (var h in hotels)
-{
-    var Rooms = rooms.Where(r => r.hotel_id == h.hotel_id);
-    //当前酒店对应的房型
-    foreach (var item in Rooms)
-    {
 
-    }
-}
-<div id="DrrRule" class="box_a">
+  @using (Html.BeginForm("Create", "Guarantee", FormMethod.Post))
+        {
+     <input class="hide" type="text" name="@Html.DisplayNameFor(model => Model.hotel_id)" value="@ViewBag.Id" />
+      <input class="hide" type="text" name="@Html.DisplayNameFor(model => Model.id)" value="@Model.id" />
+   <div id="DrrRule" class="box_a">
     <h2>公寓:
         <select name="" id="hotel_switch">
             @foreach (var h in hotels)
@@ -37,7 +33,7 @@
     </h2>
     @foreach (var h in hotels)
     {
-        var Rooms = rooms.Where(r => r.hotel_id == h.hotel_id);
+       
         i++;
         <div class='@(i < 2 ? "show" : "hide") hotel_drr'>
 
@@ -102,7 +98,7 @@
         </div>
     }
 </div>
-
+  }
 <!-- 日期控件 -->
 <script type="text/javascript" src="@Url.Content("~/Content/public/script/laydate/laydate.dev.js")"></script>
 <script>

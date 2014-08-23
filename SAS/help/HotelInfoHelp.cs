@@ -21,7 +21,7 @@ namespace SAS.help
         //用户ID所有的酒店
         public static List<hotel_info> getHotlList(string uId)
         {
-            
+            uId = "test1";
             return (from h in db.hotel where h.u_id == uId select h).ToList();
         }
 
