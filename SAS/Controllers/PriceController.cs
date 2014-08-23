@@ -28,7 +28,8 @@ namespace SAS.Controllers
         {
             string uId="test1";
 
-            
+            int hotel_id = 0;
+            int.TryParse(Id, out hotel_id);
 
             
             if (string.IsNullOrEmpty(Id) || string.IsNullOrEmpty(startDate) || string.IsNullOrEmpty(EndDate))
@@ -44,11 +45,17 @@ namespace SAS.Controllers
             hotel_info hotel = new hotel_info();
             // hotel.Room.RoomList = DBhelp.getRooms(48502);
             // DBhelp.getRooms(48502);
-            hotel.Room.RoomList = HotelInfoHelp.getRooms(44);
-            hotel.HotelList = HotelInfoHelp.getHotlList("");
-            int[] rf = (from r in db.hotel where r.u_id == uId select r.hotel_id).ToArray();
-            var f = (from p in db.price where p.room_rp_start_time > start && p.room_rp_start_time < end && rf.Contains(p.hotel_id) select p).ToList();
-
+           
+            var hotels=HotelInfoHelp.getHotlList("");
+            hotel.HotelList = hotels;
+            if (hotels.Count > 0)
+            {
+                hotel_id = hotels[0].hotel_id;
+            }
+            hotel.Room.RoomList = HotelInfoHelp.getRooms(hotel_id);
+         //   int[] rf = (from r in db.hotel where r.u_id == uId select r.hotel_id).ToArray();
+            var f = (from p in db.price where p.room_rp_start_time > start && p.room_rp_start_time < end && p.hotel_id==hotel_id select p).ToList();
+            hotel.Room.Prices.PriceList = f;
             return View("MyPrix", hotel);
         }
         //房价修改接口
