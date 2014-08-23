@@ -37,10 +37,9 @@ namespace SAS.Controllers
             int.TryParse(Id, out hotel_id);
 
 
-            if (string.IsNullOrEmpty(Id) || string.IsNullOrEmpty(startDate) || string.IsNullOrEmpty(EndDate))
+            if (string.IsNullOrEmpty(Id) || string.IsNullOrEmpty(startDate))
             {
                 start = DateTime.Now.Date; end = start.AddDays(14); 
-              //  end = start.AddDays(15);
             }
             else
             {
@@ -58,18 +57,19 @@ namespace SAS.Controllers
             var f = (from p in db.realPrices where p.Effectdate >= start && p.Effectdate <= end && p.Hotel_id == hotel_id select p).ToList();
             hotel.Room.Prices.PriceList = f;
             Dictionary<string, string> dates = new Dictionary<string, string>();
-            int t = Convert.ToInt32((end - start).TotalDays);
+            int t = Convert.ToInt32((end - start).TotalDays)+1;
             for (int i = 0; i < t; i++)
             {
                 DateTime d = start.AddDays(i);
                 string day = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(d.DayOfWeek).Substring(2);
                 dates.Add(d.ToString("MM-dd"), day);
             }
-            ViewData["dates"] = dates; ViewBag.Id = Id;
+            ViewData["dates"] = dates; ViewBag.Id =Convert.ToInt32(Id);
             return hotel;
         }
         //房价修改接口
-        public ActionResult uPrice(string id, string roomId, string startDate, string EndDate, string value)
+            [HttpPost]
+        public ActionResult update(string id, string roomId, string startDate, string EndDate, string value)
         {
             int Id;
             decimal price;
@@ -77,7 +77,23 @@ namespace SAS.Controllers
             int.TryParse(roomId, out Id);
             DateTime.TryParse(startDate, out start);
             DateTime.TryParse(startDate, out end);
-            string sql = string.Format("update  hotel_room_RP_price set Room_rp_price={2} where room_id={0}  Effectdate  between ({2},{3})", roomId,price, start, end);
+            string sql = string.Format("update  hotel_room_RP_price set Room_rp_price={2} where room_id={0}  Effectdate  between ({2},{3})", roomId, price, start, end);
+            if (DBhelp.ExcuteTableBySQL(sql) > 0)
+                ViewBag.sign = 1;
+            else
+                ViewBag.sign = 0;
+            return View("MyPrix", getData(id, startDate, EndDate));
+        }
+
+        public ActionResult uPrice(string id, string roomId, string startDate, string EndDate, string value)
+        {
+            int Id;
+            decimal price;
+            decimal.TryParse(value, out price);
+            int.TryParse(roomId, out Id);
+            DateTime.TryParse(startDate, out start);
+            DateTime.TryParse(EndDate, out end);
+            string sql = string.Format("update  hotel_room_RP_price set Room_rp_price={1} where room_id={0} and Effectdate  between '{2}' and '{3}'", roomId,price, start.ToString("yyyy-MM-dd"), end.ToString("yyyy-MM-dd"));
             if (DBhelp.ExcuteTableBySQL(sql) > 0)
                 ViewBag.sign = 1;
             else

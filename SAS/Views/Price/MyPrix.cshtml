@@ -4,7 +4,9 @@
     ViewBag.Title = "MyPrix";
     ViewBag.my_prix = "set";
     //日期(第一个string为日期，第二个string为星期几
-    Dictionary<string, string> dates = ViewData["dates"]  as Dictionary<string, string>; 
+    Dictionary<string, string> dates = ViewData["dates"]  as Dictionary<string, string>;
+
+    var t = Model.Room.Prices.PriceList.Where(o => o.Room_id == 285437);
 }
 
 <div id="my_price" class="box_a">
@@ -48,7 +50,7 @@
 			@foreach (var r in Model.Room.RoomList)
 			{
 			    <tr>
-	                <td>@r.h_r_name_cn</td>
+                   <td>@r.h_r_name_cn</td>
                     @foreach(var pr in Model.Room.Prices.PriceList.Where(o=>o.Room_id==r.room_id))
                     {
                         <td class="item_pr" date="@pr.Effectdate.ToString("yyyy-MM-dd")" roomid="@pr.Room_id" hotel_id="@pr.Hotel_id">@Convert.ToInt32(pr.Room_rp_price)</td>
