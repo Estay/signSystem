@@ -80,7 +80,7 @@ namespace SAS.Controllers
             GetData(gu.hotel_id.ToString());
             ViewBag.title = "修改担保";
             ViewBag.buttonName = "修改";
-            return View("MyGuarantee", new GuaranteeRule());
+            return View("MyGuarantee", gu);
         }
         //删除担保
         public ActionResult deleteG(string id)
