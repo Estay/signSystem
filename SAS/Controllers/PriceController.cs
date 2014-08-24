@@ -37,7 +37,7 @@ namespace SAS.Controllers
             int.TryParse(Id, out hotel_id);
 
 
-            if (string.IsNullOrEmpty(Id) || string.IsNullOrEmpty(startDate))
+            if (string.IsNullOrEmpty(Id) && string.IsNullOrEmpty(startDate))
             {
                 start = DateTime.Now.Date; end = start.AddDays(14); 
             }
@@ -64,11 +64,12 @@ namespace SAS.Controllers
                 string day = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(d.DayOfWeek).Substring(2);
                 dates.Add(d.ToString("MM-dd"), day);
             }
+            ViewBag.startDate = start.ToString("yyyy-MM-dd");
             ViewData["dates"] = dates; ViewBag.Id =Convert.ToInt32(Id);
             return hotel;
         }
         //房价修改接口
-            [HttpPost]
+        [HttpPost]
         public ActionResult update(string id, string roomId, string startDate, string EndDate, string value)
         {
             int Id;

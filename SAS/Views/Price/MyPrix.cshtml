@@ -5,8 +5,6 @@
     ViewBag.my_prix = "set";
     //日期(第一个string为日期，第二个string为星期几
     Dictionary<string, string> dates = ViewData["dates"]  as Dictionary<string, string>;
-
-    var t = Model.Room.Prices.PriceList.Where(o => o.Room_id == 285437);
 }
 
 <div id="my_price" class="box_a">
@@ -34,7 +32,7 @@
 
 		<!-- 选择日期期 -->
 		选择日期
-		<input type="text" id="date_load" class="laydate-icon" value="">
+		<input type="text" id="date_load" class="laydate-icon" value="@ViewBag.startDate">
 		<span class="tip_text">显示15天房价</span>
     </h2>
 
