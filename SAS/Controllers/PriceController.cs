@@ -37,7 +37,7 @@ namespace SAS.Controllers
             int.TryParse(Id, out hotel_id);
 
 
-            if (string.IsNullOrEmpty(Id) && string.IsNullOrEmpty(startDate))
+            if (string.IsNullOrEmpty(startDate))
             {
                 start = DateTime.Now.Date; end = start.AddDays(14); 
             }
