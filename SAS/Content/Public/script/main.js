@@ -1,4 +1,4 @@
-/*2014年8月24日11:40:40*/
+/*2014年8月24日16:28:38*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -845,6 +845,9 @@
         window.location.href = setUrlParam("id", $(this).find("option:selected").val(), location.href);
     });
     (function() {
+        if (!$("#date_load").length) {
+            return;
+        }
         var start = {
             elem: "#date_load",
             min: laydate.now(),

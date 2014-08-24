@@ -2,9 +2,74 @@
 
 @{
     ViewBag.Title = "MyStatus";
+    ViewBag.my_status = "set";    
     Dictionary<string, string> dates = ViewData["dates"] as Dictionary<string, string>;
 }
 
-<h2>MyStatus</h2>
-   
-}
+<div id="my_price" class="box_a">
+    <h2>
+    	<!-- 公寓列表 -->
+    	公寓:
+        <select name="" id="hotel_switch_my_price">
+            @foreach (var h in Model.HotelList)
+            {
+                if (h.hotel_id == ViewBag.Id)
+                {
+                <option value="@h.hotel_id" selected>@h.h_name_cn</option>
+                    
+                }
+                else
+                {
+                <option value="@h.hotel_id">@h.h_name_cn</option>
+                }
+            }
+        </select>
+		&nbsp;
+		&nbsp;
+		&nbsp;
+		&nbsp;
+
+		<!-- 选择日期期 -->
+		选择日期
+		<input type="text" id="date_load" class="laydate-icon" value="@ViewBag.startDate">
+		<span class="tip_text">显示15天房价</span>
+    </h2>
+
+	<table cellspacing="0">
+	    <tbody>
+	        <tr>
+	            <th>房型</th>
+	            @foreach (var d in dates) { 
+                    <th>@d.Key<br />@d.Value</th>
+                }
+	        </tr>
+	        <!-- 遍历房型 -->
+			@foreach (var r in Model.Room.RoomList)
+			{
+			    <tr>
+                   <td>@r.h_r_name_cn</td>
+                    @foreach(var s in Model.Room.RoomStatus.RoomStatusList.Where(o=>o.room_id==r.room_id))
+                    {
+                        <td class="item_pr" date="@s.r_s_time.ToString("yyyy-MM-dd")" roomid="@s.room_id" hotel_id="@s.hotel_id">@s.r_s_number</td>
+                    }
+			    </tr>
+			}
+	    </tbody>
+	</table>
+
+<div class="set_box hide" id="pr_set_box">
+	<p class="input_line">
+		<input type="text" class="date_start w100 laydate-icon">
+		至
+		<input type="text" class="date_end w100 laydate-icon">
+	</p>
+	房价调整为<input type="text" class="w50 only_integer">
+	<a href="" class="set_pr_btn btn_b">确定</a>
+	<a href="" class="close_win btn_b">取消</a>
+</div>
+</div>
+
+
+
+<!-- 日期控件 -->
+<script type="text/javascript" src="@Url.Content("~/Content/public/script/laydate/laydate.dev.js")"></script>

@@ -756,6 +756,9 @@
 
 	// 切换日期
     (function() {
+    	if (!$("#date_load").length) {
+    		return;
+    	};
     	var start = {
 	        elem: '#date_load',
 	        min: laydate.now(),
