@@ -46,7 +46,10 @@ namespace SAS.Controllers
         {
             GetData(id);
             setName();
-            return View(new GuaranteeRule());
+            GuaranteeRule guaranteeRule = new GuaranteeRule();
+            guaranteeRule.ChangeRule = 1;
+            guaranteeRule.GuaranteeType = "FirstNightCost";
+            return View(guaranteeRule);
         }
         public void GetData(string id)
         {
@@ -64,6 +67,7 @@ namespace SAS.Controllers
             //所有酒店对应的房型列表
 
             ViewData["Gurarantees"] = new GuaranteeRule().GuraranteeList(hotel_id);
+            ViewBag.Id = hotel_id;
         }
 
         //修改担保
@@ -103,14 +107,28 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult Create(GuaranteeRule guaranteerule)
         {
-            if (ModelState.IsValid)
+            if (guaranteerule.id > 0)
             {
-                db.gu.Add(guaranteerule);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                db.Entry(guaranteerule).State = EntityState.Modified;
             }
-
-            return View(guaranteerule);
+            else
+            {
+                var rp=(from r in db.rps where r.hotel_id==guaranteerule.hotel_id && r.h_room_rp_state==true && r.h_room_rp_name_cn=="标准价"select r.h_room_rp_id).SingleOrDefault();
+                if (rp>0)
+                {
+                    guaranteerule.h_room_rp_id = rp;
+                    if (ModelState.IsValid)
+                    {
+                        db.gu.Add(guaranteerule);
+                      
+                        return RedirectToAction("Index");
+                    }
+                }
+            }
+            db.SaveChanges();
+            db.Dispose();
+            GetData(guaranteerule.hotel_id.ToString());
+            return View("MyGuarantee", new GuaranteeRule());
         }
 
         //
