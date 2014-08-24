@@ -44,6 +44,10 @@ namespace SAS.Controllers
         {
             return View();
         }
+        public ActionResult Status(string Id, string startDate, string EndDate)
+        {
+            return View("MyStatus", getData(Id, startDate, EndDate));
+        }
 
         //
         // POST: /RStatus/Create
@@ -68,7 +72,7 @@ namespace SAS.Controllers
             int.TryParse(Id, out hotel_id);
 
 
-            if (string.IsNullOrEmpty(Id) && string.IsNullOrEmpty(startDate))
+            if (string.IsNullOrEmpty(startDate))
             {
                 start = DateTime.Now.Date; end = start.AddDays(14);
             }
