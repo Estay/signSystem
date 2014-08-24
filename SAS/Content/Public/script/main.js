@@ -1,4 +1,4 @@
-/*2014年8月24日16:28:38*/
+/*2014年8月24日18:00:51*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -839,6 +839,13 @@
     $("#hotel_switch_gift").change(function(event) {
         console.log(event);
         window.location.href = "/Gift/MyGift?id=" + $(this).find("option:selected").val();
+    });
+    $(".MyGuarantee_btn").click(function(event) {
+        var el = $(".g_ru_change:checked"), val = el.next().text();
+        if (el.index(".g_ru_change") == 1) {
+            val = val + el.nextAll("input").val() + el.nextAll("span").eq(1).text();
+        }
+        $(".MyGuarantee_Description").val(val);
     });
     $("#hotel_switch_my_price").change(function(event) {
         console.log(event);

@@ -747,6 +747,17 @@
     });
 
 
+	//////////////////////////////////设置担保////////////////////////////////////////
+	$(".MyGuarantee_btn").click(function(event) {
+		var el = $(".g_ru_change:checked"),
+			val = el.next().text();
+
+		if (el.index(".g_ru_change") ==1) {
+			val = val + el.nextAll("input").val() + el.nextAll("span").eq(1).text();
+		};
+		$(".MyGuarantee_Description").val(val);
+	});
+
 	//////////////////////////////////房价房态////////////////////////////////////////
     // 酒店切换
     $("#hotel_switch_my_price").change(function(event) {
