@@ -85,7 +85,7 @@ namespace SAS.Controllers
             return View("MyPrix", getData(id, startDate, EndDate));
         }
 
-        public ActionResult uPrice(string id, string roomId, string startDate, string EndDate, string value)
+        public int uPrice(string id, string roomId, string startDate, string EndDate, string value)
         {
             int Id;
             decimal price;
@@ -95,10 +95,10 @@ namespace SAS.Controllers
             DateTime.TryParse(EndDate, out end);
             string sql = string.Format("update  hotel_room_RP_price set Room_rp_price={1} where room_id={0} and Effectdate  between '{2}' and '{3}'", roomId,price, start.ToString("yyyy-MM-dd"), end.ToString("yyyy-MM-dd"));
             if (DBhelp.ExcuteTableBySQL(sql) > 0)
-                ViewBag.sign = 1;
+                return 1;
             else
-                ViewBag.sign = 0;
-            return View("MyPrix", getData(id, startDate, EndDate));
+                return 0;
+           // return View("MyPrix", getData(id, startDate, EndDate));
         }
         //
         // GET: /Price/Details/5
