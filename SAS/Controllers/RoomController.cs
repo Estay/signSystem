@@ -45,7 +45,7 @@ namespace SAS.Controllers
                 return 0;
             else
                 return 1;
-
+        
         }
         //
         // GET: /Room/Create
