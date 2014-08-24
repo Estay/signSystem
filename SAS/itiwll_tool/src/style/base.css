@@ -110,7 +110,9 @@ td {
 .w_sn {
   white-space: nowrap;
 }
-
+.t_ac {
+  text-align: center;
+}
 /*常用组件*/
 
 /*布局*/
