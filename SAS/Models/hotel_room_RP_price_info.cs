@@ -159,7 +159,10 @@ namespace SAS.Models
         }
         #endregion Model
 
-        //[NotMapped]
+
+        /// <summary>
+        /// 房价列表
+        /// </summary>
         private List<hotel_room_RP_price_info> priceList = new List<hotel_room_RP_price_info>();
         [NotMapped]
         public List<hotel_room_RP_price_info> PriceList

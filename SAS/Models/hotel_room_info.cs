@@ -321,6 +321,14 @@ namespace SAS.Models
             set { drrs = value; }
         }
 
+        private RoomStatus roomStatus = new RoomStatus();
+        [NotMapped]
+        public RoomStatus RoomStatus
+        {
+            get { return roomStatus; }
+            set { roomStatus = value; }
+        }
+
         //床型
         public List<string> getBedType()
         {

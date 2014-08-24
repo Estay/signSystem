@@ -62,7 +62,18 @@ namespace SAS.help
 
             return (from h in  db.drrmodes select h).ToList();
         }
-    
-    
+        //得到查询日期
+        public static Dictionary<string, string> getDate(DateTime start, DateTime end)
+        {
+            Dictionary<string, string> dates = new Dictionary<string, string>();
+            int t = Convert.ToInt32((end - start).TotalDays) + 1;
+            for (int i = 0; i < t; i++)
+            {
+                DateTime d = start.AddDays(i);
+                string day = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(d.DayOfWeek).Substring(2);
+                dates.Add(d.ToString("MM-dd"), day);
+            }
+            return dates;
+        }
     }
 }

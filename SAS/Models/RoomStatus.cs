@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -121,5 +122,17 @@ namespace SAS.Models
             get { return _hotelcode; }
         }
         #endregion Model
+
+        //[NotMapped]
+        /// <summary>
+        /// 房态列表
+        /// </summary>
+        private List<RoomStatus> roomStatusList = new List<RoomStatus>();
+        [NotMapped]
+        public List<RoomStatus> RoomStatusList
+        {
+            get { return roomStatusList; }
+            set { roomStatusList = value; }
+        }
     }
 }

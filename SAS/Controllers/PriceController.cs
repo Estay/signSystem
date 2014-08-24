@@ -57,15 +57,9 @@ namespace SAS.Controllers
             var f = (from p in db.realPrices where p.Effectdate >= start && p.Effectdate <= end && p.Hotel_id == hotel_id select p).ToList();
             hotel.Room.Prices.PriceList = f;
             Dictionary<string, string> dates = new Dictionary<string, string>();
-            int t = Convert.ToInt32((end - start).TotalDays)+1;
-            for (int i = 0; i < t; i++)
-            {
-                DateTime d = start.AddDays(i);
-                string day = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(d.DayOfWeek).Substring(2);
-                dates.Add(d.ToString("MM-dd"), day);
-            }
+       
             ViewBag.startDate = start.ToString("yyyy-MM-dd");
-            ViewData["dates"] = dates; ViewBag.Id =Convert.ToInt32(Id);
+            ViewData["dates"] = HotelInfoHelp.getDate(start, end); ViewBag.Id = Convert.ToInt32(Id);
             return hotel;
         }
         //房价修改接口
@@ -85,7 +79,7 @@ namespace SAS.Controllers
                 ViewBag.sign = 0;
             return View("MyPrix", getData(id, startDate, EndDate));
         }
-
+        //修改房价
         public int uPrice(string id, string roomId, string startDate, string EndDate, string value)
         {
             int Id;
