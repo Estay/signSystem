@@ -132,19 +132,21 @@ namespace SAS.Controllers
          
            
             int hotelId = 0;
-            Hotel_room_RP_price_batch pBacth = new Hotel_room_RP_price_batch();
-            pBacth.Addbed = -1;
-            pBacth.HpStatus = 0;
+          
             //遍历价格集合
             foreach (var p in hotel_room_RP_price_info)
             {
+               
                  int.TryParse(p.hotel_id.ToString(),out hotelId);
                  Hotel_room_RP_info rp = new Hotel_room_RP_info();
                  rp.h_room_rp_name_cn = "标准价";
                  rp.hotel_id = p.hotel_id;
+                 Hotel_room_RP_price_batch pBacth = new Hotel_room_RP_price_batch();
+                 pBacth.Addbed = -1;
+                 pBacth.HpStatus = 0;
                  pBacth.Room_rp_id=help.HotelInfoHelp.getRatePlanId(rp);
                  pBacth.Room_rp_start_time = DateTime.Now.Date;
-                 pBacth.Room_rp_end_time = DateTime.Now.AddYears(1);
+                 pBacth.Room_rp_end_time = DateTime.Now.AddYears(1).Date;
                  pBacth.Room_id = p.room_id;
                  pBacth.Hotel_id = p.hotel_id;
                  pBacth.Price = p.room_rp_price;
