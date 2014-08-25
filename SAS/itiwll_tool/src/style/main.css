@@ -334,12 +334,12 @@
 	vertical-align: middle;
 	margin-right: 5px;
 }
+.white {
+	background-color: #FFF;
+}
 .orange {
 	background-color: #F09401;
 	border-color: #F09401;
-}
-.white {
-	background-color: #FFF;
 }
 .grey {
 	background-color: #C6C7C9;

@@ -34,7 +34,20 @@
 		<input type="text" id="date_load" class="laydate-icon" value="@ViewBag.startDate">
 		<span class="tip_text">显示15天房价</span>
     </h2>
-	<p class="help_info">注：<span class="col_block orange"></span>满房 &nbsp;&nbsp; <span class="col_block white"></span>可售 &nbsp;&nbsp; <span class="col_block grey"></span>关房 </p>
+	<p class="help_info">
+		<b>注：</b>
+		<span class="col_block orange"></span>
+		满房
+		&nbsp;&nbsp;
+		<span class="col_block white"></span>
+		可售
+		&nbsp;&nbsp;
+		<span class="col_block grey"></span>
+		关房
+		&nbsp;&nbsp;
+		&nbsp;&nbsp;
+		<span class="col_orange">已售房量</span>/<span>可售房量</span>
+	</p>
 	<table cellspacing="0">
 	    <tbody>
 	        <tr>
@@ -53,9 +66,9 @@
                         <td class="item_pr 
                             @(s.r_s_status?"white" : "grey") 
                             @(s.AvieBeds==0?"orange" : "")" date="@s.r_s_time.ToString("yyyy-MM-dd")" roomid="@s.room_id" hotel_id="@s.hotel_id">
-                            @s.EBeds
+                            <span class="col_orange">@s.EBeds</span>
                             /
-                            @s.r_s_number
+                            @s.AvieBeds
 
                         </td>
                     }
