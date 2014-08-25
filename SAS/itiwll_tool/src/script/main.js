@@ -897,7 +897,7 @@
 	    	// todo 验证
 
 	    	$.ajax({
-	    		url: '/Guarantee/MyGuarantee',
+	    		url: '/RStatus/uStatus/',
 	    		type: 'GET',
 	    		data: send_data,
 	    	})
