@@ -34,7 +34,7 @@
 		<input type="text" id="date_load" class="laydate-icon" value="@ViewBag.startDate">
 		<span class="tip_text">显示15天房价</span>
     </h2>
-
+	<p class="help_info">注：<span class="col_block orange"></span>满房 &nbsp;&nbsp; <span class="col_block white"></span>可售 &nbsp;&nbsp; <span class="col_block grey"></span>关房 </p>
 	<table cellspacing="0">
 	    <tbody>
 	        <tr>
@@ -50,7 +50,14 @@
                    <td>@r.h_r_name_cn</td>
                     @foreach(var s in Model.Room.RoomStatus.RoomStatusList.Where(o=>o.room_id==r.room_id))
                     {
-                        <td class="item_pr" date="@s.r_s_time.ToString("yyyy-MM-dd")" roomid="@s.room_id" hotel_id="@s.hotel_id">@s.r_s_number</td>
+                        <td class="item_pr 
+                            @(s.r_s_status?"white" : "grey") 
+                            @(s.AvieBeds==0?"orange" : "")" date="@s.r_s_time.ToString("yyyy-MM-dd")" roomid="@s.room_id" hotel_id="@s.hotel_id">
+                            @s.EBeds
+                            /
+                            @s.r_s_number
+
+                        </td>
                     }
 			    </tr>
 			}
