@@ -26,11 +26,11 @@
         <select name="" id="hotel_switch">
             @foreach (var h in hotels)
             {
-                <option value="@h.h_name_cn">@h.h_name_cn</option>
+                <option value="@h.hotel_id">@h.h_name_cn</option>
             }
         </select>
     </h2>
-        <div class='@(i < 2 ? "show" : "hide") hotel_drr'>
+        <div class='hotel_drr'>
 
             <table cellspacing="0">
                 <tbody>

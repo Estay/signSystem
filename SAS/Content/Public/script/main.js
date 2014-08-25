@@ -1,4 +1,4 @@
-/*2014年8月25日13:19:22*/
+/*2014年8月25日16:02:40*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -861,6 +861,10 @@
         console.log(event);
         window.location.href = "/Gift/MyGift?id=" + $(this).find("option:selected").val();
     });
+    $("#hotel_switch").change(function(event) {
+        console.log(event);
+        window.location.href = "/Guarantee/MyGuaran?id=" + $(this).find("option:selected").val();
+    });
     $(".MyGuarantee_btn").click(function(event) {
         var el = $(".g_ru_change:checked"), val = el.next().text();
         if (el.index(".g_ru_change") == 1) {
@@ -897,6 +901,7 @@
             html.find(".date_start").val(el.attr("date"));
             html.find(".date_end").val(el.attr("date"));
             html.find(".only_integer").val(el.text());
+            html.find(".only_integer.status_val").val("10");
             send_data.id = el.attr("Hotel_id");
             send_data.roomId = el.attr("roomid");
             el_ing = el.e_window({
@@ -939,9 +944,10 @@
         });
         $("body").on("click", ".set_pr_btn", function(event) {
             event.preventDefault();
-            send_data.startDate = $(this).siblings(".input_line").find(".date_start").val();
-            send_data.EndDate = $(this).siblings(".input_line").find(".date_end").val();
-            send_data.value = $(this).siblings(".only_integer").val();
+            var box = $(this).parents(".set_box");
+            send_data.startDate = box.find(".date_start").val();
+            send_data.EndDate = box.find(".date_end").val();
+            send_data.value = box.find(".only_integer").val();
             console.log(send_data);
             $.ajax({
                 url: "/price/uPrice/",
@@ -955,6 +961,30 @@
                     alert("修改失败！");
                 }
             }).fail(function() {
+                alert("服务器错误！");
+                console.log("服务器错误！");
+            });
+        });
+        $("body").on("click", ".set_status_btn", function(event) {
+            event.preventDefault();
+            var box = $(this).parents(".set_box");
+            send_data.startDate = box.find(".date_start").val();
+            send_data.EndDate = box.find(".date_end").val();
+            send_data.CanSell = box.find(".only_integer").val();
+            console.log(send_data);
+            $.ajax({
+                url: "/Guarantee/MyGuarantee",
+                type: "GET",
+                data: send_data
+            }).done(function(data) {
+                console.log(data);
+                if (data == 1) {
+                    location.reload();
+                } else {
+                    alert("修改失败！");
+                }
+            }).fail(function() {
+                alert("服务器错误！");
                 console.log("服务器错误！");
             });
         });
