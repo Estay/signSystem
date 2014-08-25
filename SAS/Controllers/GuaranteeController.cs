@@ -75,7 +75,7 @@ namespace SAS.Controllers
         {
             int gId;
             int.TryParse(id, out gId);
-            var gu = (from g in db.gu where g.GuaranteeRulesId == gId select g).Single();
+            var gu = (from g in db.gu where g.id == gId select g).Single();
             ViewBag.Id = gu.hotel_id;
             GetData(gu.hotel_id.ToString());
             ViewBag.title = "修改担保";
@@ -107,8 +107,11 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult Create(GuaranteeRule guaranteerule)
         {
+          
+
             if (guaranteerule.id > 0)
             {
+               
                 db.Entry(guaranteerule).State = EntityState.Modified;
             }
             else
@@ -121,7 +124,7 @@ namespace SAS.Controllers
                     {
                         db.gu.Add(guaranteerule);
                       
-                        return RedirectToAction("Index");
+                       
                     }
                 }
             }
