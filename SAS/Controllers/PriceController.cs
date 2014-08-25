@@ -150,6 +150,10 @@ namespace SAS.Controllers
                  pBacth.Room_id = p.room_id;
                  pBacth.Hotel_id = p.hotel_id;
                  pBacth.Price = p.room_rp_price;
+                 pBacth.Idate = DateTime.Now;
+                 pBacth.Hpdate = DateTime.Now;
+                 pBacth.AuditDate = DateTime.Now;
+
                  if (ModelState.IsValid)
                  {
                      db.publicPrices.Add(pBacth);
