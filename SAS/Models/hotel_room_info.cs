@@ -46,6 +46,20 @@ namespace SAS.Models
         private string _house_service;
         private int? _study;
         private int? _kitchen;
+        private int _sitting_room;
+
+        public int Sitting_room
+        {
+            get { return _sitting_room; }
+            set { _sitting_room = value; }
+        }
+        private int _balcony;
+
+        public int Balcony
+        {
+            get { return _balcony; }
+            set { _balcony = value; }
+        }
         /// <summary>
         /// 我库房型编号
         /// </summary>
