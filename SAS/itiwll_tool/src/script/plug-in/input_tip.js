@@ -11,6 +11,7 @@
 			space :"请输入",
 			rule : null,
 			check : false, //失去焦点是否验证
+			submit_check : true, //表单提交是否验证
 			error : "格式不正确",
 			error_callback : function (error,el) {
 				$(this).e_window({
@@ -33,7 +34,8 @@
 		};
 		var settings = $.extend({}, defaults, options);
 		return this.each(function() {
-			var el = $(this);
+			var el = $(this),
+				form = el .parents("form");
 
 			if (!el.val()) {
 				init(el);
@@ -75,7 +77,27 @@
 
 				// 验证规则
 				ruleValidate(el,el.val());
-			})
+			});
+
+				
+			form.submit(function(event) {
+				var val = el.val();
+
+				// 表单提交时验证
+				if (settings.submit_check) {
+					if (!ruleValidate(el, val)) {
+						event.preventDefault();
+						event.stopImmediatePropagation();
+						$("html,body").animate({scrollTop: el.offset().top}, 800);
+					} else {
+
+						if(val=="" || val == settings.space){
+							el.val("");
+						}
+						console.log(el.attr('name')+":"+el.val());
+					}
+				}
+			});
 
 			// 初始化的状态
 			function init (el) {
@@ -119,24 +141,26 @@
 			function ruleValidate(el,val) {
 				if (/[\<\>\&]+/.exec(val)) {
 					error(el,"不能包含“<”,“>”,“&”等特殊字符");
-					return ;
+					return false;
 				};
 
+				// 值为空或默认
 				if(val=="" || val == settings.space){
 					//为空回到初始状态
 					init(el);
 					//必需输入提示
 					if(settings.need){
 						settings.space_callback.call(el[0],settings.need_text,el);
-						return;
+						return false;
 					}else {
-						return;
+						return true;
 					}
 				}
 
+				// 没有规则
 				if (!settings.rule) {
 					success(el);
-					return ;
+					return true;
 				};
 
 
@@ -144,8 +168,10 @@
 					if (!settings.rule.exec(val)) {
 						// 没通过规则 进入错误状态
 						error(el,settings.error);
+						return false;
 					}else {
 						success(el);
+						return true;
 					}
 				}else if(settings.rule instanceof Function){
 					settings.rule.call(

@@ -1,4 +1,4 @@
-/*2014年8月24日18:00:51*/
+/*2014年8月25日13:19:22*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -7,6 +7,7 @@
             space: "请输入",
             rule: null,
             check: false,
+            submit_check: true,
             error: "格式不正确",
             error_callback: function(error, el) {
                 $(this).e_window({
@@ -29,7 +30,7 @@
         };
         var settings = $.extend({}, defaults, options);
         return this.each(function() {
-            var el = $(this);
+            var el = $(this), form = el.parents("form");
             if (!el.val()) {
                 init(el);
             }
@@ -53,6 +54,23 @@
             }).bind("input_tip_checking", function() {
                 var el = $(this);
                 ruleValidate(el, el.val());
+            });
+            form.submit(function(event) {
+                var val = el.val();
+                if (settings.submit_check) {
+                    if (!ruleValidate(el, val)) {
+                        event.preventDefault();
+                        event.stopImmediatePropagation();
+                        $("html,body").animate({
+                            scrollTop: el.offset().top
+                        }, 800);
+                    } else {
+                        if (val == "" || val == settings.space) {
+                            el.val("");
+                        }
+                        console.log(el.attr("name") + ":" + el.val());
+                    }
+                }
             });
             function init(el) {
                 var tip_text = $(this).attr("tip_text");
@@ -81,26 +99,28 @@
             function ruleValidate(el, val) {
                 if (/[\<\>\&]+/.exec(val)) {
                     error(el, "不能包含“<”,“>”,“&”等特殊字符");
-                    return;
+                    return false;
                 }
                 if (val == "" || val == settings.space) {
                     init(el);
                     if (settings.need) {
                         settings.space_callback.call(el[0], settings.need_text, el);
-                        return;
+                        return false;
                     } else {
-                        return;
+                        return true;
                     }
                 }
                 if (!settings.rule) {
                     success(el);
-                    return;
+                    return true;
                 }
                 if (isRegExp(settings.rule)) {
                     if (!settings.rule.exec(val)) {
                         error(el, settings.error);
+                        return false;
                     } else {
                         success(el);
+                        return true;
                     }
                 } else if (settings.rule instanceof Function) {
                     settings.rule.call(el[0], function(el) {
@@ -351,6 +371,7 @@
     $("#hotel_name").e_input_tip({
         space: "请输入公寓名称",
         check: true,
+        submit_check: false,
         rule: function(success_callback, error_callback, val) {
             var el = $(this);
             if (!val.match(/^[\s\S]{3,}$/)) {
@@ -965,7 +986,7 @@
         var checkbox_box = $(this).parents(".checkbox_box"), input = $(this).parents(".input_line").prev(".hide"), vals = "", texts = "";
         if (!input.length) {
             input = $(this).parents(".input_line").find(".hide").eq(0);
-            input_text = input.next(".hide");
+            var input_text = input.next(".hide");
         }
         checkbox_box.find(".multiple").each(function(index, el) {
             if ($(this).attr("checked")) {
@@ -976,9 +997,11 @@
         vals = vals.slice(0, -1);
         texts = texts.slice(0, -1);
         input.val(vals);
-        input_text.val(texts);
         console.log(input.val());
-        console.log(input_text.val());
+        if (input_text) {
+            input_text.val(texts);
+            console.log(input_text.val());
+        }
     });
     $(".all_set").click(function(event) {
         event.preventDefault();
@@ -1017,47 +1040,7 @@
     $(".checking_btn").click(function(event) {
         event.preventDefault();
         var el = $(this), status = 0;
-        var input = $(this).parents(".box_a").find("input[type=text],select[name],textarea[name],.select_yeae,.select_month").remove("#hotel_name").trigger("input_tip_checking");
-        setTimeout(function() {
-            input.each(function(index, el) {
-                if ($(this).attr("rules_error") || $(this).attr("rules_error") == "") {
-                    status = 1;
-                    return false;
-                }
-            });
-            $(".room_img_item").each(function(index, el) {
-                if ($(this).find(".img_set").length < 5) {
-                    status = 2;
-                }
-            });
-            $("#bed_input").each(function() {
-                if (!$(this).val()) {
-                    status = 3;
-                }
-            });
-            if (status == 0) {
-                document.forms[0].submit();
-            } else {
-                if (status == 1) {
-                    var Message = "填写的信息没有通过验证，请检查。";
-                }
-                if (status == 2) {
-                    var Message = "每个房型图片不能少于5张。";
-                }
-                if (status == 3) {
-                    var Message = "必须设置床型";
-                }
-                el.e_window({
-                    relative_mod: "right",
-                    left: 30,
-                    width: "auto",
-                    html: "<div class='red_tip_box'>" + Message + "</div>"
-                });
-                setTimeout(function() {
-                    el.e_window_kill();
-                }, 5e3);
-            }
-        }, 200);
+        $("form").submit();
     });
     function setUrlParam(para_name, para_value, url) {
         var strNewUrl = new String();

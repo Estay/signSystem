@@ -40,6 +40,7 @@
 	$("#hotel_name").e_input_tip({
 		space : "请输入公寓名称",
 		check : true, //失去焦点验证
+		submit_check : false,
 		rule: function(success_callback,error_callback,val) {
 			var el = $(this);
 
@@ -338,7 +339,7 @@
 		var p = $(this).parent(), 
 			val = p.find('.select_yeae').val()+p.find('.select_month').val();
 		p.find('input.hide').val(val);
-	})
+	});
 	time_select.siblings('select').e_input_tip({
 		need_text : "必需选择"
 	});
@@ -926,7 +927,7 @@
 			texts = "";
 		if(!input.length) {
 			input = $(this).parents(".input_line").find(".hide").eq(0);
-			input_text = input.next(".hide");
+			var input_text = input.next(".hide");
 		}
 		checkbox_box.find('.multiple').each(function(index, el) {
 			if ($(this).attr('checked')) {
@@ -937,9 +938,12 @@
 		vals = vals.slice(0, -1);
 		texts = texts.slice(0, -1);
 		input.val(vals);
-		input_text.val(texts);
 		console.log(input.val());
-		console.log(input_text.val());
+
+		if (input_text) {
+			input_text.val(texts);
+			console.log(input_text.val());
+		};
 	});
 	// 全选
 	$(".all_set").click(function(event) {
@@ -995,54 +999,62 @@
 		event.preventDefault();
 		var el = $(this),
 			status = 0;
-		var input = $(this)
-					.parents(".box_a")
-					.find('input[type=text],select[name],textarea[name],.select_yeae,.select_month')
-					.remove("#hotel_name")
-					.trigger("input_tip_checking");
-		setTimeout(function() {
-			input.each(function(index, el) {
-				if ($(this).attr('rules_error')||$(this).attr('rules_error')=="") {
-					status = 1;
-					return false;
-				};
-			});
-			$(".room_img_item").each(function(index, el) {
-				if($(this).find('.img_set').length<5){
-					status = 2;
-				}
-			});
-			$("#bed_input").each(function() {
-				if(!$(this).val()){
-					status = 3;
-				}
-			});
-			if (status == 0) {
-				document.forms[0].submit();
-			}else {
-				if(status == 1){
-					var Message = "填写的信息没有通过验证，请检查。";
-				};
-				if(status == 2){
-					var Message = "每个房型图片不能少于5张。";
-				};
-				if(status == 3) {
-					var Message = "必须设置床型";
-				};
-				el.e_window({
-					relative_mod : "right",
-					left : 30,
-					width: "auto",
-					html: "<div class='red_tip_box'>"+ Message +"</div>"
-				});
-				setTimeout(function() {
-					el.e_window_kill();
-				}, 5000);
-			};				
-		}, 200);
+		$("form")
+		// .submit(function() {
+		// 	input.each(function(index, el) {
+		// 		if ($(this).attr('rules_error')||$(this).attr('rules_error')=="") {
+		// 			status = 1;
+		// 			return false;
+		// 		};
+		// 	});
+		// 	$(".room_img_item").each(function(index, el) {
+		// 		if($(this).find('.img_set').length<5){
+		// 			status = 2;
+		// 		}
+		// 	});
+		// 	$("#bed_input").each(function() {
+		// 		if(!$(this).val()){
+		// 			status = 3;
+		// 		}
+		// 	});
+		// 	if (status == 0) {
+		// 		document.forms[0].submit();
+		// 	}else {
+		// 		if(status == 1){
+		// 			var Message = "填写的信息没有通过验证，请检查。";
+		// 		};
+		// 		if(status == 2){
+		// 			var Message = "每个房型图片不能少于5张。";
+		// 		};
+		// 		if(status == 3) {
+		// 			var Message = "必须设置床型";
+		// 		};
+		// 		el.e_window({
+		// 			relative_mod : "right",
+		// 			left : 30,
+		// 			width: "auto",
+		// 			html: "<div class='red_tip_box'>"+ Message +"</div>"
+		// 		});
+		// 		setTimeout(function() {
+		// 			el.e_window_kill();
+		// 		}, 5000);
+		// 	}
+		// })
+		.submit();
+		// var input = $(this)
+		// 			.parents(".box_a")
+		// 			.find('input[type=text],select[name],textarea[name],.select_yeae,.select_month')
+		// 			.not("#hotel_name");
+		// 			// .trigger("input_tip_checking");
+
+		// setTimeout(function() {
+		// 		
+		// 	};				
+		// }, 200);
 	});
 
 
+	// 设置url参数
 	function setUrlParam(para_name,para_value,url)
 	{
 	        var strNewUrl=new String();
