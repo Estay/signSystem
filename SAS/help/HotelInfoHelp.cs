@@ -9,7 +9,7 @@ namespace SAS.help
 {
     public class HotelInfoHelp
     {
-        static string uId = "newtest";
+        static string uId = "test1";
         private static HotelDBContent db = new HotelDBContent();
         //酒店的房型列表
         public static List<hotel_room_info> getRooms(int hotelId)
