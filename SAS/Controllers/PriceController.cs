@@ -145,8 +145,9 @@ namespace SAS.Controllers
                  pBacth.Addbed = -1;
                  pBacth.HpStatus = 0;
                  pBacth.Room_rp_id=help.HotelInfoHelp.getRatePlanId(rp);
-                 pBacth.Room_rp_start_time = DateTime.Now.Date;
-                 pBacth.Room_rp_end_time = DateTime.Now.AddYears(1).Date;
+                 DateTime start=DateTime.Now.Date;DateTime end=DateTime.Now.Date;
+                 pBacth.Room_rp_start_time =start ;
+                 pBacth.Room_rp_end_time = end;
                  pBacth.Room_id = p.room_id;
                  pBacth.Hotel_id = p.hotel_id;
                  pBacth.Price = p.room_rp_price;
@@ -154,12 +155,22 @@ namespace SAS.Controllers
                  pBacth.Hpdate = DateTime.Now;
                  pBacth.AuditDate = DateTime.Now;
 
+                 Room_status_info roomStatus = new Room_status_info();
+                 roomStatus.r_s_time = start;
+                 roomStatus.EndDate = end;
+                 roomStatus.room_id = p.room_id;
+                 roomStatus.hotel_id = p.hotel_id;
+                 roomStatus.OverBooking = true;
+                 string number = (from r in db.rooms where r.room_id == p.room_id select r.h_r_house_number).SingleOrDefault(); int roomNubmer; int.TryParse(number, out roomNubmer);
+
+                 roomStatus.r_s_number = roomNubmer;
                  if (ModelState.IsValid)
                  {
                      db.publicPrices.Add(pBacth);
                      db.SaveChanges();
                  }
-               
+
+                
             }
            
            return RedirectToAction("Create", "Image", new { hotelId = hotelId }); 
