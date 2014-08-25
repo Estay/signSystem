@@ -892,6 +892,7 @@
 	    	send_data.startDate = box.find('.date_start').val();
 	    	send_data.EndDate = box.find('.date_end').val();
 	    	send_data.CanSell = box.find('.only_integer').val();
+	    	send_data.status = box.find('[name=r_stats]:checked').val();
 	    	console.log(send_data);
 
 	    	// todo 验证
