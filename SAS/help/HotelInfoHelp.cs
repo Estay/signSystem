@@ -9,21 +9,28 @@ namespace SAS.help
 {
     public class HotelInfoHelp
     {
-        static string uId = "newtest";
-        private static HotelDBContent db = new HotelDBContent();
+        static string uId = "test1";
+        private static HotelDBContent db =null;
         //酒店的房型列表
         public static List<hotel_room_info> getRooms(int hotelId)
         {
            // uId = "test1";
            // int[] rf = (from h in  db.hotel where h.u_id == uId select h.hotel_id).ToArray();
-
-            return (from r in db.rooms where r.hotel_id == hotelId select r).ToList();
+            using (db = new HotelDBContent())
+            {
+                return (from r in db.rooms where r.hotel_id == hotelId select r).ToList();
+            }
+           
         }
         //用户ID所有的酒店
         public static List<hotel_info> getHotlList(string iuId)
         {
            // uId = "test1";
-            return (from h in db.hotel where h.u_id == uId select h).ToList();
+            using (db = new HotelDBContent())
+            {
+                return (from h in db.hotel where h.u_id == uId select h).ToList();
+            }
+            
         }
 
          //用户ID所有的酒店

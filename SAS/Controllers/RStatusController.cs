@@ -97,16 +97,14 @@ namespace SAS.Controllers
             ViewData["dates"] =HotelInfoHelp.getDate(start,end) ; ViewBag.Id = Convert.ToInt32(Id);
             return hotel;
         }
-        //修改房价
-        public int uStatus(string id, string roomId, string startDate, string EndDate, string value)
+        //修改房态
+        public int uStatus(string id, string roomId, string startDate, string EndDate, string CanSell, string status)
         {
-            int Id;
-            decimal price;
-            decimal.TryParse(value, out price);
-            int.TryParse(roomId, out Id);
-            DateTime.TryParse(startDate, out start);
-            DateTime.TryParse(EndDate, out end);
-            string sql = string.Format("update  hotel_room_RP_price set Room_rp_price={1} where room_id={0} and Effectdate  between '{2}' and '{3}'", roomId, price, start.ToString("yyyy-MM-dd"), end.ToString("yyyy-MM-dd"));
+            int Id, RoomId,Sell, MyStutus; DateTime _startDate, _EndDate;
+
+            int.TryParse(CanSell, out Sell); int.TryParse(id, out Id); int.TryParse(roomId, out RoomId); DateTime.TryParse(startDate, out _startDate); DateTime.TryParse(EndDate, out _EndDate); int.TryParse(status, out MyStutus);
+
+            string sql = string.Format("update RoomStatus set aviebeds={0},r_status={1} where hotel_id={2} and room_id={0} and Effectdate  between '{2}' and '{3}'", Sell, MyStutus, Id, RoomId, _startDate.ToString("yyyy-MM-dd"), _EndDate.ToString("yyyy-MM-dd"));
             if (DBhelp.ExcuteTableBySQL(sql) > 0)
                 return 1;
             else
