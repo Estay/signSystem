@@ -104,7 +104,7 @@ namespace SAS.Controllers
 
             int.TryParse(CanSell, out Sell); int.TryParse(id, out Id); int.TryParse(roomId, out RoomId); DateTime.TryParse(startDate, out _startDate); DateTime.TryParse(EndDate, out _EndDate); int.TryParse(status, out MyStutus);
 
-            string sql = string.Format("update RoomStatus set aviebeds={0},r_status={1} where hotel_id={2} and room_id={0} and Effectdate  between '{2}' and '{3}'", Sell, MyStutus, Id, RoomId, _startDate.ToString("yyyy-MM-dd"), _EndDate.ToString("yyyy-MM-dd"));
+            string sql = string.Format("update RoomStatus set aviebeds={0},r_s_status={1} where hotel_id={2} and room_id={3} and r_s_time  between '{4}' and '{5}'", Sell, MyStutus, Id, RoomId, _startDate.ToString("yyyy-MM-dd"), _EndDate.ToString("yyyy-MM-dd"));
             if (DBhelp.ExcuteTableBySQL(sql) > 0)
                 return 1;
             else
