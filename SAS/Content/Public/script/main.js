@@ -1,4 +1,4 @@
-/*2014年8月25日15:49:42*/
+/*2014年8月25日16:02:40*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -901,6 +901,7 @@
             html.find(".date_start").val(el.attr("date"));
             html.find(".date_end").val(el.attr("date"));
             html.find(".only_integer").val(el.text());
+            html.find(".only_integer.status_val").val("10");
             send_data.id = el.attr("Hotel_id");
             send_data.roomId = el.attr("roomid");
             el_ing = el.e_window({
@@ -964,7 +965,7 @@
                 console.log("服务器错误！");
             });
         });
-        $("body").on("click", ".set_pr_btn", function(event) {
+        $("body").on("click", ".set_status_btn", function(event) {
             event.preventDefault();
             var box = $(this).parents(".set_box");
             send_data.startDate = box.find(".date_start").val();
