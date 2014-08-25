@@ -17,7 +17,6 @@
 
 
 }
-
   @using (Html.BeginForm("Create", "Guarantee", FormMethod.Post))
         {
      <input class="hide" type="text" name="@Html.DisplayNameFor(model => Model.hotel_id)" value="@ViewBag.Id" />
@@ -31,10 +30,6 @@
             }
         </select>
     </h2>
-    @foreach (var h in hotels)
-    {
-       
-        i++;
         <div class='@(i < 2 ? "show" : "hide") hotel_drr'>
 
             <table cellspacing="0">
@@ -61,12 +56,10 @@
             <div class="box_b">
                 <p class="input_line">
                     <span class="label">担保金额：</span>
-<!--                     <label>
+                    <label>
                         <input type="radio" name="@Html.DisplayNameFor(model => model.GuaranteeType)" value="FirstNightCost" @(Model.GuaranteeType == "FirstNightCost"?"checked=":"")>首晚房费</label>
                     <label>
-                        <input type="radio" name="@Html.DisplayNameFor(model => model.GuaranteeType)" value="FullNightCost" @(Model.GuaranteeType == "FullNightCost"?"checked":"")>全部房费</label> -->
-
-                    <input type="radio" name="G" value="" placeholder="" checked>
+                        <input type="radio" name="@Html.DisplayNameFor(model => model.GuaranteeType)" value="FullNightCost" @(Model.GuaranteeType == "FullNightCost"?"checked":"")>全部房费</label>
                 </p>
                 <p class="input_line">
                     <span class="label">担保日期：</span>
@@ -82,7 +75,7 @@
                                 <input class="g_ru_change" type="radio" name="@Html.DisplayNameFor(model => model.ChangeRule)" @(Model.ChangeRule == 1?"checked":"") value="1"><span>不许变更/取消</span></label>
                         </p>
                         <p class="input_line">
-                            <input class="g_ru_change" type="radio" name="@Html.DisplayNameFor(model => model.ChangeRule)" @(Model.ChangeRule == 1 ?"checked":"") value="2">
+                            <input class="g_ru_change" type="radio" name="@Html.DisplayNameFor(model => model.ChangeRule)" @(Model.ChangeRule == 2 ?"checked":"") value="2">
                             <span>允许变更/取消，需在最早到店时间前</span>
                             <input class="w50 only_integer" type="text" name="@Html.DisplayNameFor(model => model.Hour)" value="@Model.Hour">
                             <span>小时通知</span>
@@ -93,7 +86,6 @@
                 <a id="btn_add_drr" class="btn_b MyGuarantee_btn" href="javascript:document.forms[0].submit()">@ViewBag.buttonName</a>
             </div>
         </div>
-    }
 </div>
   }
 <!-- 日期控件 -->
