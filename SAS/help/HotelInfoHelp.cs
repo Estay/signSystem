@@ -9,6 +9,7 @@ namespace SAS.help
 {
     public class HotelInfoHelp
     {
+        static string uId = "newtest";
         private static HotelDBContent db = new HotelDBContent();
         //酒店的房型列表
         public static List<hotel_room_info> getRooms(int hotelId)
@@ -19,19 +20,19 @@ namespace SAS.help
             return (from r in db.rooms where r.hotel_id == hotelId select r).ToList();
         }
         //用户ID所有的酒店
-        public static List<hotel_info> getHotlList(string uId)
+        public static List<hotel_info> getHotlList(string iuId)
         {
-            uId = "test1";
+           // uId = "test1";
             return (from h in db.hotel where h.u_id == uId select h).ToList();
         }
 
          //用户ID所有的酒店
-        public static List<DrrRules> getDrrList(string uId)
+        public static List<DrrRules> getDrrList(string iuId)
         {
             int[] rf = (from h in  db.hotel where h.u_id == uId select h.hotel_id).ToArray();
             try
             {
-                uId = "test1";
+               // uId = "test1";
                
                // var f = from h in db.drrs where rf.Contains(h.hotel_id) select h;
                 var rfr=(from h in  db.drrs where rf.Contains(h.hotel_id) select h).ToList();
@@ -75,6 +76,40 @@ namespace SAS.help
             }
             return dates;
         }
-       
+        /// <summary>
+        /// 得到RatePlanId
+        /// </summary>
+        /// <param name="rp"></param>
+        /// <returns></returns>
+        public static int getRatePlanId(Hotel_room_RP_info rp)
+        {
+            int ratePlanId = 0;
+            rp.RatePlanId = Guid.NewGuid().ToString();
+            rp.h_room_rp_is_to_store_pay = true;
+            rp.h_room_rp_check_in = "00:00:00";
+            rp.h_room_rp_check_out = "23:59:00";
+            rp.h_room_rp_least_day = 1;
+            rp.h_room_rp_longest_day = 365;
+            rp.h_room_rp_ctime = DateTime.Now;
+            rp.h_room_rp_name_cn = "";
+            using (HotelDBContent db = new HotelDBContent())
+            {
+                var tempRp = (from r in db.rps where r.h_room_rp_name_cn == rp.h_room_rp_name_cn && r.hotel_id == rp.hotel_id select r).SingleOrDefault();
+                if (tempRp != null)
+                {
+                    ratePlanId = tempRp.h_room_rp_id; ;
+                }
+                else
+                {
+                    db.rps.Add(rp);
+                    db.SaveChanges();
+                    //取rpId
+                    ratePlanId = (from r in db.rps where r.RatePlanId == rp.RatePlanId select r.h_room_rp_id).SingleOrDefault();
+               
+                }
+            }
+        
+            return ratePlanId;
+        }
     }
 }

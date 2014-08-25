@@ -87,7 +87,7 @@ namespace SAS.Controllers
         {
             int gId;
             int.TryParse(id, out gId);
-            var gu = (from g in db.gu where g.GuaranteeRulesId == gId select g).Single();
+            var gu = (from g in db.gu where g.id == gId select g).SingleOrDefault();
 
             db.gu.Remove(gu);
             if (db.SaveChanges() > 0)

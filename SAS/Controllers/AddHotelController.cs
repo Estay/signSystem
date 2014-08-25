@@ -95,7 +95,7 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult Create(hotel_info hotel_info)
         {
-            
+            hotel_info.u_id = "newtest";
             hotel_info.source_id = 5;
             hotel_info.h_id = Guid.NewGuid().ToString();
             hotel_info.h_state = false;
@@ -118,6 +118,7 @@ namespace SAS.Controllers
             }
             catch (Exception e)
             {
+                throw e;
                 help.DBhelp.log("新建公寓基本信息"+e.ToString());
              
             }

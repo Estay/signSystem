@@ -29,6 +29,7 @@ namespace SAS.Controllers
             
             return View("MyPrix", getData(Id, startDate, EndDate));
         }
+        //获取房态数据
         public hotel_info getData(string Id, string startDate, string EndDate)
         {
             string uId = "test1";
@@ -120,31 +121,43 @@ namespace SAS.Controllers
         //
         // POST: /Price/Create
 
+        /// <summary>
+        /// 新建公寓价格录入
+        /// </summary>
+        /// <param name="hotel_room_RP_price_info"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Create(List<hotel_room_RP_price_info> hotel_room_RP_price_info)
         {
-            // string tableName = TableHotel_Info;
-            string tableName = "hotel_room_rp_price_info";
-            //存储变化的酒店信息(空表)
-            DataTable dtPrice = new DBhelp().getDataTable(DBhelp.getTStructByTName("hotel_room_rp_price_info"));
+         
+           
             int hotelId = 0;
+            Hotel_room_RP_price_batch pBacth = new Hotel_room_RP_price_batch();
+            pBacth.Addbed = -1;
+            pBacth.HpStatus = 0;
+            //遍历价格集合
             foreach (var p in hotel_room_RP_price_info)
             {
-                if (dtPrice.Rows.Count == 0)
-                    hotelId = p.hotel_id;
-                DBhelp.InserDataTable(ref dtPrice, typeof(hotel_room_RP_price_info), p);
+                 int.TryParse(p.hotel_id.ToString(),out hotelId);
+                 Hotel_room_RP_info rp = new Hotel_room_RP_info();
+                 rp.h_room_rp_name_cn = "标准价";
+                 rp.hotel_id = p.hotel_id;
+                 pBacth.Room_rp_id=help.HotelInfoHelp.getRatePlanId(rp);
+                 pBacth.Room_rp_start_time = DateTime.Now.Date;
+                 pBacth.Room_rp_end_time = DateTime.Now.AddYears(1);
+                 pBacth.Room_id = p.room_id;
+                 pBacth.Hotel_id = p.hotel_id;
+                 pBacth.Price = p.room_rp_price;
+                 if (ModelState.IsValid)
+                 {
+                     db.publicPrices.Add(pBacth);
+                     db.SaveChanges();
+                 }
+               
             }
-            if(DBhelp.copyDataToServer(dtPrice, tableName))
-                return RedirectToAction("Create", "Image", new { hotelId = hotelId }); 
-            //if (ModelState.IsValid)
-            //{
-            //    db.price.Add(hotel_room_rp_price_info);
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
-           // hotel_room_rp_price_info
-            
-            return View();
+           
+           return RedirectToAction("Create", "Image", new { hotelId = hotelId }); 
+
         }
         public void getRooms(int hotel_id)
         {

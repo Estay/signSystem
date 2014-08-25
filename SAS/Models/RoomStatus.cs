@@ -24,6 +24,24 @@ namespace SAS.Models
         private bool _r_s_status;
         private int? _hotel_id;
         private string _hotelcode;
+        private int _avieBeds;
+        /// <summary>
+        /// 可售数
+        /// </summary>
+        public int AvieBeds
+        {
+            get { return _avieBeds; }
+            set { _avieBeds = value; }
+        }
+        private int _eBeds;
+        /// <summary>
+        /// 总房量
+        /// </summary>
+        public int EBeds
+        {
+            get { return _eBeds; }
+            set { _eBeds = value; }
+        }
         /// <summary>
         /// 
         /// </summary>
