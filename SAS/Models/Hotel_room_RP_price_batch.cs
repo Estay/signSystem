@@ -13,31 +13,31 @@ namespace SAS.Models
         private int _hotel_id;
         private int _room_id;
         private int _room_rp_id;
-        private int? _roomtypeid = 0;
-        private int? _priceid = 0;
+        private int _roomtypeid = 0;
+        private int _priceid = 0;
         private decimal _price;
-        private decimal? _cost = -1M;
-        private decimal? _weekend;
-        private decimal? _membercost;
-        private decimal? _weekendcost;
-        private decimal? _addbed;
+        private decimal _cost = -1M;
+        private decimal _weekend;
+        private decimal _membercost;
+        private decimal _weekendcost;
+        private decimal _addbed;
         private string _uid;
         private string _hoteluid;
-        private DateTime? _idate;
+        private DateTime _idate;
         private DateTime _room_rp_start_time;
         private DateTime _room_rp_end_time;
-        private DateTime? _hpdate;
-        private int? _status = 1;
-        private int? _hpstatus = 0;
+        private DateTime _hpdate;
+        private int _status = 1;
+        private int _hpstatus = 0;
         private bool _isaudit = false;
         private string _audituid;
-        private DateTime? _auditdate;
-        private int? _auditstatus = -1;
-        private decimal? _commission = -1M;
+        private DateTime _auditdate;
+        private int _auditstatus = -1;
+        private decimal _commission = -1M;
         /// <summary>
         /// 
         /// </summary>
-       [KeyAttribute]
+        [KeyAttribute]
         public int Hpbid
         {
             set { _hpbid = value; }
@@ -70,7 +70,7 @@ namespace SAS.Models
         /// <summary>
         /// 
         /// </summary>
-        public int? RoomTypeId
+        public int RoomTypeId
         {
             set { _roomtypeid = value; }
             get { return _roomtypeid; }
@@ -78,7 +78,7 @@ namespace SAS.Models
         /// <summary>
         /// 
         /// </summary>
-        public int? PriceID
+        public int PriceID
         {
             set { _priceid = value; }
             get { return _priceid; }
@@ -94,7 +94,7 @@ namespace SAS.Models
         /// <summary>
         /// 
         /// </summary>
-        public decimal? Cost
+        public decimal Cost
         {
             set { _cost = value; }
             get { return _cost; }
@@ -102,7 +102,7 @@ namespace SAS.Models
         /// <summary>
         /// 
         /// </summary>
-        public decimal? Weekend
+        public decimal Weekend
         {
             set { _weekend = value; }
             get { return _weekend; }
@@ -110,7 +110,7 @@ namespace SAS.Models
         /// <summary>
         /// 
         /// </summary>
-        public decimal? MemberCost
+        public decimal MemberCost
         {
             set { _membercost = value; }
             get { return _membercost; }
@@ -118,7 +118,7 @@ namespace SAS.Models
         /// <summary>
         /// 
         /// </summary>
-        public decimal? WeekendCost
+        public decimal WeekendCost
         {
             set { _weekendcost = value; }
             get { return _weekendcost; }
@@ -126,7 +126,7 @@ namespace SAS.Models
         /// <summary>
         /// 
         /// </summary>
-        public decimal? Addbed
+        public decimal Addbed
         {
             set { _addbed = value; }
             get { return _addbed; }
@@ -150,7 +150,7 @@ namespace SAS.Models
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? Idate
+        public DateTime Idate
         {
             set { _idate = value; }
             get { return _idate; }
@@ -174,7 +174,7 @@ namespace SAS.Models
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? Hpdate
+        public DateTime Hpdate
         {
             set { _hpdate = value; }
             get { return _hpdate; }
@@ -182,7 +182,7 @@ namespace SAS.Models
         /// <summary>
         /// 
         /// </summary>
-        public int? Status
+        public int Status
         {
             set { _status = value; }
             get { return _status; }
@@ -190,7 +190,7 @@ namespace SAS.Models
         /// <summary>
         /// 
         /// </summary>
-        public int? HpStatus
+        public int HpStatus
         {
             set { _hpstatus = value; }
             get { return _hpstatus; }
@@ -214,7 +214,7 @@ namespace SAS.Models
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? AuditDate
+        public DateTime AuditDate
         {
             set { _auditdate = value; }
             get { return _auditdate; }
@@ -222,7 +222,7 @@ namespace SAS.Models
         /// <summary>
         /// 
         /// </summary>
-        public int? AuditStatus
+        public int AuditStatus
         {
             set { _auditstatus = value; }
             get { return _auditstatus; }
@@ -230,7 +230,7 @@ namespace SAS.Models
         /// <summary>
         /// 
         /// </summary>
-        public decimal? Commission
+        public decimal Commission
         {
             set { _commission = value; }
             get { return _commission; }

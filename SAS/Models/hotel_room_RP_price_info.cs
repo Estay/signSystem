@@ -20,7 +20,7 @@ namespace SAS.Models
         private DateTime _room_rp_end_time;
         private decimal _room_rp_price;
         private decimal? _weekend;
-        private decimal? _membercost=-1;
+        private decimal _membercost=-1;
         private decimal? _weekendcost=-1;
         private DateTime _room_rp_time;
         private bool _status = true;
@@ -104,7 +104,7 @@ namespace SAS.Models
         /// <summary>
         /// 平日结算价 
         /// </summary>
-        public decimal? MemberCost
+        public decimal MemberCost
         {
             set { _membercost = value; }
             get { return _membercost; }
