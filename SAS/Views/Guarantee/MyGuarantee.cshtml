@@ -44,7 +44,7 @@
                     { 
                         <tr>
                             <td>@item.Description</td>
-                            <td>@(item.StartDate)至@(item.EndDate)</td>
+                            <td>@(item.StartDate.ToString("yyyy-MM-dd"))至@(item.EndDate.ToString("yyyy-MM-dd"))</td>
                             <td><a href="/Guarantee/updateG/?id=@item.id">修改</a>|<a href="/Guarantee/deleteG/?id=@item.id">删除</a></td>
                         </tr>
                     }
@@ -63,7 +63,7 @@
                 </p>
                 <p class="input_line">
                     <span class="label">担保日期：</span>
-                    <input readonly="readonly" type="text" name="@Html.DisplayNameFor(model => model.StartDate)" class="date_start laydate-icon" value="@Model.StartDate">至<input readonly="readonly" type="text" name="@Html.DisplayNameFor(model => model.EndDate)" class="date_end laydate-icon" value="@Model.StartDate">
+                    <input readonly="readonly" type="text" name="@Html.DisplayNameFor(model => model.StartDate)" class="date_start laydate-icon" value="@Model.StartDate.ToString("yyyy-MM-dd")">至<input readonly="readonly" type="text" name="@Html.DisplayNameFor(model => model.EndDate)" class="date_end laydate-icon" value="@Model.StartDate.ToString("yyyy-MM-dd")">
                 </p>
                 <div class="clear">
                     <div class="float_l">

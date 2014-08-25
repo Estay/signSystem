@@ -95,20 +95,35 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult Create(hotel_info hotel_info)
         {
-            hotel_info.h_ctime = DateTime.Now;
+            
             hotel_info.source_id = 5;
             hotel_info.h_id = Guid.NewGuid().ToString();
             hotel_info.h_state = false;
-            var errors = ModelState.Values.SelectMany(v => v.Errors); 
-            if (ModelState.IsValid)
+            hotel_info.h_utime = DateTime.Now;
+            try
             {
-                db.hotel.Add(hotel_info);
-                db.SaveChanges();
-                var ddh = db.hotel.Select(h => new { h.hotel_id,h.h_id }).Single(h=>h.h_id == hotel_info.h_id);
+                hotel_info.h_ctime = DateTime.Now;
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                if (ModelState.IsValid)
+                {
+                    db.hotel.Add(hotel_info);
+                    db.SaveChanges();
+                  
+                   // return RedirectToAction("Room/Create/"+ddh.hotel_id);
+                 
+                }
+           
 
-               // return RedirectToAction("Room/Create/"+ddh.hotel_id);
-                return RedirectToAction("Create", "Room", new { hotelId = ddh.hotel_id });
+
             }
+            catch (Exception e)
+            {
+                help.DBhelp.log("新建公寓基本信息"+e.ToString());
+             
+            }
+            var ddh = db.hotel.Select(h => new { h.hotel_id, h.h_id }).Single(h => h.h_id == hotel_info.h_id);
+            db.Dispose();
+            return RedirectToAction("Create", "Room", new { hotelId = ddh.hotel_id });
             
             return View(hotel_info);
         }

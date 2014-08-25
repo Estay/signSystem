@@ -10,27 +10,27 @@ namespace SAS.Models
     public class GuaranteeRule
     {
         #region Model
-		private int _id;
-		private int _guaranteerulesid;
-		private string _description;
-		private string _datetype;
-		private DateTime? _startdate;
-		private DateTime? _enddate;
-		private string _weekset;
-		private bool _istimeguarantee;
-		private string _starttime;
-		private string _endtime;
-		private int? _istomorrow;
-		private bool _isamountguarantee;
-		private int? _amount;
-		private string _guaranteetype;
-		private int? _changerule;
-		private DateTime? _day;
-		private string _time;
-		private int? _hour;
-		private int _hotel_id;
-		private int? _h_room_rp_id;
-		private string _rateplanid;
+        private int _id;
+        private int _guaranteerulesid;
+        private string _description;
+        private string _datetype;
+        private DateTime _startdate=DateTime.Now;
+        private DateTime _enddate = DateTime.Now;
+        private string _weekset;
+        private bool _istimeguarantee;
+        private string _starttime;
+        private string _endtime;
+        private int? _istomorrow;
+        private bool _isamountguarantee;
+        private int? _amount;
+        private string _guaranteetype;
+        private int? _changerule;
+        private DateTime? _day;
+        private string _time;
+        private int? _hour;
+        private int _hotel_id;
+        private int? _h_room_rp_id;
+        private string _rateplanid;
 		/// <summary>
 		/// 担保规则编号
 		/// </summary>
@@ -69,7 +69,7 @@ namespace SAS.Models
 		/// 开始日期 举例：DateType为CheckInDay：表示当前订单的入住日期落在StartDate和EndDate之间，并且入住日期符合周设置时才需要判断其它条件是否担保，否则不需要担保 DateType为StayDay：表示当前订单的客人只要有住在店里面的日期（[ArrivalDate,DepartureDate））落在StartDate和EndDate之间，并且入住日期符合周设置时才需要判断其它条件是否担保，否则不需要担保
 
 		/// </summary>
-		public DateTime? StartDate
+        public DateTime StartDate
 		{
 			set{ _startdate=value;}
 			get{return _startdate;}
@@ -78,7 +78,7 @@ namespace SAS.Models
 		/// 结束时间 举例：DateType为CheckInDay：表示当前订单的入住日期落在StartDate和EndDate之间，并且入住日期符合周设置时才需要判断其它条件是否担保，否则不需要担保 DateType为StayDay：表示当前订单的客人只要有住在店里面的日期（[ArrivalDate,DepartureDate））落在StartDate和EndDate之间，并且入住日期符合周设置时才需要判断其它条件是否担保，否则不需要担保
 
 		/// </summary>
-		public DateTime? EndDate
+        public DateTime EndDate
 		{
 			set{ _enddate=value;}
 			get{return _enddate;}
