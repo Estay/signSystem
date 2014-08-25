@@ -60,13 +60,13 @@
             <p><span class="btn_d set">@ViewBag.title</span></p>
             <div class="box_b">
                 <p class="input_line">
-                    <label for="">
-                        <span class="label">担保金额：</span>
-                        <label>
-                            <input type="radio" name="@Html.DisplayNameFor(model => model.GuaranteeType)" value="FirstNightCost" @Model.GuaranteeType == "FirstNightCost"?"checked":"">首晚房费</label>
-                        <label>
-                            <input type="radio" name="@Html.DisplayNameFor(model => model.GuaranteeType)" value="FullNightCost" @Model.GuaranteeType == "FullNightCost"?"checked":"">全部房费</label>
-                    </label>
+                    <span class="label">担保金额：</span>
+<!--                     <label>
+                        <input type="radio" name="@Html.DisplayNameFor(model => model.GuaranteeType)" value="FirstNightCost" @(Model.GuaranteeType == "FirstNightCost"?"checked=":"")>首晚房费</label>
+                    <label>
+                        <input type="radio" name="@Html.DisplayNameFor(model => model.GuaranteeType)" value="FullNightCost" @(Model.GuaranteeType == "FullNightCost"?"checked":"")>全部房费</label> -->
+
+                    <input type="radio" name="G" value="" placeholder="" checked>
                 </p>
                 <p class="input_line">
                     <span class="label">担保日期：</span>
@@ -79,10 +79,10 @@
                     <div class="float_l checkbox_box">
                         <p class="input_line">
                             <label>
-                                <input class="g_ru_change" type="radio" name="@Html.DisplayNameFor(model => model.ChangeRule)" @Model.ChangeRule == "1"?"checked":"" value="1"><span>不许变更/取消</span></label>
+                                <input class="g_ru_change" type="radio" name="@Html.DisplayNameFor(model => model.ChangeRule)" @(Model.ChangeRule == 1?"checked":"") value="1"><span>不许变更/取消</span></label>
                         </p>
                         <p class="input_line">
-                            <input class="g_ru_change" type="radio" name="@Html.DisplayNameFor(model => model.ChangeRule)" @Model.ChangeRule == "1"?"checked":"" value="2">
+                            <input class="g_ru_change" type="radio" name="@Html.DisplayNameFor(model => model.ChangeRule)" @(Model.ChangeRule == 1 ?"checked":"") value="2">
                             <span>允许变更/取消，需在最早到店时间前</span>
                             <input class="w50 only_integer" type="text" name="@Html.DisplayNameFor(model => model.Hour)" value="@Model.Hour">
                             <span>小时通知</span>
