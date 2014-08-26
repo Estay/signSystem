@@ -53,20 +53,29 @@ namespace SAS.Controllers
             try
             {
                 string pth=System.Web. HttpContext.Current.Server.MapPath("..");
-                string oPath, tPath;
+                string oPath = string.Empty,tPath = string.Empty;
                // string tPath = pth + text2;
                 hotel_room_picture_info p = null;
                 int ID = 0;int.TryParse(PID,out ID);
                
                     p = (from i in db.roomImages where i.h_r_p_id == ID select i).SingleOrDefault();
-                    oPath = pth + p.h_r_p_pic_original_url;
-                    tPath = pth + p.h_r_p_pic_thumb_url;
                     if (p != null)
-                        db.roomImages.Remove(p);
-                    if (db.SaveChanges() > 0)
-                        sign = 1;
+                    {
+                        oPath = pth + p.h_r_p_pic_original_url;
+                        tPath = pth + p.h_r_p_pic_thumb_url;
+                        if (p != null)
+                            db.roomImages.Remove(p);
+                        if (db.SaveChanges() > 0)
+                            sign = 1;
+                        else
+                            sign = 0;
+                    }
                     else
-                        sign = 0;
+                    {
+                        tPath = pth + text2.Replace("..","") ;
+                        oPath = pth + text1.Replace("..", "");
+                       
+                    }
                 
              //  path= path.Remove(path.IndexOf(".."), 2);
               if (f.File.Exists(oPath))

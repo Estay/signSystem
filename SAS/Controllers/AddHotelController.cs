@@ -95,7 +95,7 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult Create(hotel_info hotel_info)
         {
-            hotel_info.u_id = "newtest";
+            hotel_info.u_id = help.HotelInfoHelp.getUId();
             hotel_info.source_id =Convert.ToInt32(help.StringHelper.appSettings("source_id")); ;
             hotel_info.h_id = Guid.NewGuid().ToString();
             hotel_info.h_state = false;

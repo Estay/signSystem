@@ -9,7 +9,7 @@ namespace SAS.help
 {
     public class HotelInfoHelp
     {
-        static string uId = "test1";
+        static string uId = help.HotelInfoHelp.getUId();
 
         private static HotelDBContent db =null;
 
@@ -112,6 +112,14 @@ namespace SAS.help
             }
         
             return ratePlanId;
+        }
+        /// <summary>
+        /// 或得用户账号,用于hotel_info里面的u_id字段
+        /// </summary>
+        /// <returns></returns>
+        public static string getUId()
+        {
+            return "yyy";
         }
     }
 
