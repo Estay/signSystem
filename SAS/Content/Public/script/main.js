@@ -1,4 +1,4 @@
-/*2014年8月26日09:20:34*/
+/*2014年8月26日11:07:13*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -993,6 +993,52 @@
             });
         });
     })();
+    (function() {
+        var el_ing = "", send_data = {};
+        $(".operation_order").click(function(event) {
+            event.preventDefault();
+            if (el_ing) {
+                el_ing.e_window_kill();
+            }
+            var el = $(this), html = $(".set_box").clone(false, false).removeClass("hide");
+            el_ing = el.e_window({
+                position_mod: "relative",
+                relative_mod: "bottom",
+                top: 0,
+                left: 0,
+                width: 500,
+                marginTop: 0,
+                marginRight: 0,
+                box_id: "",
+                html: html
+            });
+            $(".close_win").click(function(event) {
+                event.preventDefault();
+                el_ing.e_window_kill();
+            });
+        });
+    })();
+    $("body").on("click", ".modify_order_status_btn", function(event) {
+        event.preventDefault();
+        var form = $(this).parents("form"), data = form.serialize();
+        console.log(data);
+    });
+    $("body").on("click", ".confirmation_order", function(event) {
+        var el = $(this), box = el.parents(".set_box"), rejection_box = box.find(".rejection_box");
+        if (box.find(".confirmation_order").index(el) == 1) {
+            rejection_box.show();
+        } else {
+            rejection_box.hide();
+        }
+    });
+    $("body").on("click", ".rejection_radio", function(event) {
+        var el = $(this), box = el.parents(".rejection_box"), rejection_text = box.find(".rejection_text");
+        if (box.find(".rejection_radio").index(el) == 2) {
+            rejection_text.show();
+        } else {
+            rejection_text.hide();
+        }
+    });
     (function($) {
         function set_val(input) {
             var data_arr = input.val().split(","), multiple = input.parent().find(".multiple");

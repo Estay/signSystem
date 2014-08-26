@@ -55,7 +55,13 @@
 	color: red;
 	background: #FFF;
 }
-
+/*弹出设置窗样式*/
+.set_box {
+	position: absolute;
+	border: 5px solid #CCC;
+	background-color: #FFF;
+	padding: 10px;
+}
 /*特殊按钮样式*/
 .all_set {
 	margin-right: 20px;
@@ -311,12 +317,7 @@
 	color: #FFF;
 }
 
-.set_box {
-	position: absolute;
-	border: 5px solid #CCC;
-	background-color: #FFF;
-	padding: 10px;
-}
+
 .set_pr_btn {
 	margin-left: 30px;
 }
@@ -344,4 +345,24 @@
 .grey {
 	background-color: #C6C7C9;
 	border-color: #C6C7C9;
+}
+
+/*订单管理*/
+.danbao_ico {
+	background-color: #003C91;
+	color: #FFF;
+	font-size: 12px;
+	border-radius: 3px;
+	padding:0 2px;
+}
+.confirmation_order {
+	font-size: 16px;
+}
+input[name="confirmation_order"]:checked + span {
+	color: #003C91;
+	font-weight: bold;
+}
+.rejection_box {
+	background-color: #EEE;
+	padding: 5px;
 }

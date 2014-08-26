@@ -608,7 +608,7 @@
 						var img = response[i];
 						var a = $(html).appendTo(box);
 
-						a.find('img').attr('src', img.URL).e_img_siz("",true);
+						a.find('img').attr('src', img.tURL).attr('oURL',img.oURL);.e_img_siz("",true);
 						if (img.PID) {
 							a.attr('pid', img.PID);
 							a.find('select').html($("#img_type_sel").html());
@@ -696,10 +696,12 @@
 		event.preventDefault();
 		var box = $(this).parents(".upload_img_box"),
 			pid = box.attr('pid'),
-			url = box.find('.upload_img').attr('src'),
+			t_url = box.find('.upload_img').attr('src'),
+			o_url = box.find('.upload_img').attr('oURL'),
 			data = {
 				PID : pid=="error"?0:pid,
-				text : url
+				text1 : t_url,
+				text2 : o_url
 			};
 
 		//删除图片请求
@@ -921,14 +923,78 @@
     })();
 
 
+    ///////////////////////////订单管理/////////////////////////////////////
+    // 操作 弹窗模块
+    (function() {
+    	var el_ing = "",
+    		send_data = {};
+
+	    $(".operation_order").click(function(event) {
+	    	event.preventDefault();
+
+	    	if (el_ing) {
+	    		el_ing.e_window_kill();
+	    	};
+
+	    	var el = $(this),
+	    		html = $(".set_box").clone(false, false).removeClass('hide');
+
+
+	    	el_ing = el.e_window({
+				position_mod: "relative", //位置模式 居中：center 相对元素 ：relative  相对窗口：absolute
+				relative_mod: "bottom", //bottom right top left
+				top: 0,
+				left: 0,
+				width: 500,
+				marginTop: 0,
+				marginRight: 0,
+				box_id: "",
+				html: html
+	    	});
+
+	    	$(".close_win").click(function(event) {
+	    		event.preventDefault();
+	    		el_ing.e_window_kill();
+	    	});
+	    });
+	})();
+
+	// 确认按钮
+	$("body").on('click', '.modify_order_status_btn', function(event) {
+		event.preventDefault();
+		var form = $(this).parents("form"),
+			data = form.serialize();
+		console.log(data);
+	});
+
+    // 弹窗的交互
+    $("body").on('click', '.confirmation_order', function(event) {
+    	var el = $(this),
+    		box = el.parents(".set_box"),
+    		rejection_box = box.find('.rejection_box');
+
+    	if (box.find('.confirmation_order').index(el) == 1 ) {
+    		rejection_box.show();
+    	}else{
+    		rejection_box.hide();	
+    	}
+    });
+    $("body").on('click', '.rejection_radio', function(event) {
+    	var el = $(this),
+    		box = el.parents(".rejection_box"),
+    		rejection_text = box.find('.rejection_text');
+
+    	if (box.find('.rejection_radio').index(el) == 2 ) {
+    		rejection_text.show();
+    	}else{
+    		rejection_text.hide();	
+    	}
+    });
 
 
 
 
-
-
-
-	//////////////////////////////////功能控件//////////////////////////////////////	
+	/////////////////////////////////////////////////////////////////功能控件////////////////////////////////////////////////////////////////	
  	// 房型回显
 	(function($){
 		function set_val (input) {
