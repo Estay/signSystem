@@ -1,4 +1,4 @@
-/*2014年8月26日16:22:03*/
+/*2014年8月26日16:57:32*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -809,7 +809,7 @@
         if (v) {
             $(this).prop("disabled", true);
             $.ajax({
-                url: "/ImageProperty/ImageDes",
+                url: "/ImageProperty/ImageType",
                 type: "GET",
                 data: {
                     PID: pid,

@@ -665,7 +665,7 @@
 
 			//提交类型
 			$.ajax({
-				url: '/ImageProperty/ImageDes',
+				url: '/ImageProperty/ImageType',
 				type: 'GET',
 				data: {
 					PID: pid,
