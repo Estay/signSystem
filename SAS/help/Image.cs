@@ -7,7 +7,8 @@ namespace SAS.help
 {
     public class Image
     {
-        public string URL;
+        public string oURL;
+        public string tURL;
         public int PID;
         public string Message;
     }

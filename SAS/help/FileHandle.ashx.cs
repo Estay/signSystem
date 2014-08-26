@@ -76,9 +76,10 @@ namespace SAS.help
                       //  string showImagePath = "..\\" + fileI;
                         string showImagePath = string.Empty; ;
                         // && w > 500 && h > 300
+                        string fileName1, message, oPath=string.Empty, tPath = string.Empty;
                         if (size < maxSize && w > 500 && h > 300 )
                         {
-                            string fileName1,message,oPath,tPath=string.Empty;
+                            
                           //  string message=
                             if (new help.ImgHelper().MoreImgUpload(file, out fileName1, out message, ThumbImages_SavePath, OriginalImages_SavePath, ThumbImages_Height, ThumbImages_Wight, Images_Height, Images_Wight, ThumbImages_Size, out oPath, out tPath))
                             {
@@ -100,8 +101,9 @@ namespace SAS.help
                         else
                         {
                             Image IM = new Image();
-                            IM.URL = showImagePath;
-                            string message = string.Empty;
+                            IM.oURL = oPath;
+                            IM.tURL = tPath;
+                            message = string.Empty;
                             if (size > maxSize)
                                 message = "图片大小小于10M";
                             if (w < 500 ||h < 300)
@@ -121,21 +123,23 @@ namespace SAS.help
                     #endregion
                 }
                 //  List<hotel_picture_info> list = (from p in db.room where p.h_p_tag ==tag select new { p.h_p_pic_original_url, p.h_p_id }).ToList();
-                var pics = from p in db.pics
-                           where p.h_p_tag == tag
+                var pics = from p in db.roomImages
+                           where p.h_r_p_tag == tag
                            select new
                                {
-                                   p.h_p_id,
-                                   p.h_p_pic_original_url,
-                                   p.h_p_title
+                                   p.h_r_p_id,
+                                   p.h_r_p_pic_original_url,
+                                   p.h_r_p_pic_thumb_url,
+                                   p.h_r_p_title
 
                                };
                 foreach (var item in pics)
                 {
                     Image pic = new Image();
-                    pic.URL = item.h_p_pic_original_url;
+                    pic.oURL = item.h_r_p_pic_original_url;
+                    pic.tURL = item.h_r_p_pic_thumb_url;
                     pic.Message ="";
-                    pic.PID = item.h_p_id;
+                    pic.PID = item.h_r_p_id;
                     list1.Add(pic);
                 }
 
