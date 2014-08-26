@@ -220,8 +220,11 @@ namespace SAS.Controllers
             //ViewData["facilities"] = DBhelp.GetSelectDataByTable("Facilities_info");//facilities
             //ViewData["services"] = DBhelp.GetSelectDataByTable("GeneralAmenities_info");//services
             //ViewData["provice"] = DBhelp.GetSelectDataByTable("province_info");//provice   
-            //ViewBag.HotelId = hotel_id;
-            return View((from h in db.hotel where h.u_id == UId select h).ToList());
+            //ViewBag.HotelId = hotel_id;         
+              return View(help.HotelInfoHelp.getHotlList(UId));
+  
+    
+          
         }
     }
 }

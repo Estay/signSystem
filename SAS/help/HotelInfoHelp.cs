@@ -58,19 +58,12 @@ namespace SAS.help
         //所有促销类型
         public static List<DrrModes> getDrrModeList(string uId)
         {
-             
-            try
-            {
-                var f = from h in  db.drrmodes select h;
-                var g = (from h in  db.drrmodes select h).ToList();
-            }
-            catch (Exception e)
-            {
 
-                throw e;
+            using (db = new HotelDBContent())
+            {
+                return (from h in db.drrmodes select h).ToList();
             }
-
-            return (from h in  db.drrmodes select h).ToList();
+           
         }
         //得到查询日期
         public static Dictionary<string, string> getDate(DateTime start, DateTime end)
