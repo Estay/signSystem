@@ -116,7 +116,7 @@
 			<div id="location_box" class="float_l">
 				<a href="" class="e_tab btn_d set">在地图上定位</a><a href="" class="e_tab btn_d">输入经纬度定位</a>
 				<input id="map_lon_input" class="hide" type="text" name="@Html.DisplayNameFor(model => model.BaiduLon)"><input id="map_lat_input" class="hide" type="text" name="@Html.DisplayNameFor(model => model.BaiduLat)">
-				<p class="float_r"><span id="map_lon_text">--</span>,<span id="map_lat_text">--</span></p>
+				<p class="float_r"><span id="show_coordinates"></span></p>
 				<div class="box_b e_tab_box">
 					<div id="maps_input_box"></div>
 				</div>
@@ -313,8 +313,7 @@
     function set_map_val (p) {
     	$("#map_lon_input").val(p.lng);
     	$("#map_lat_input").val(p.lat);
-    	$("#map_lon_text").text(p.lng);
-    	$("#map_lat_text").text(p.lat);
+    	$("#show_coordinates").text(p.lng + "," + p.lat);
     }
 
 </script>

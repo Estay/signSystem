@@ -17,9 +17,9 @@ namespace SAS.Controllers
         //
         // GET: /Order/
 
-        public ActionResult Index()
+        public ActionResult MyOrder()
         {
-            return View(db.hotel.ToList());
+            return View();
         }
 
         //

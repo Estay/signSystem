@@ -1,4 +1,4 @@
-/*2014年8月25日16:34:10*/
+/*2014年8月26日09:20:34*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -534,8 +534,11 @@
     $("#location_box").e_tab_switch({
         callback: function(index) {
             if (index == 0) {
+                $("#show_coordinates").show();
                 $("#map_lon,#map_lat").e_window_kill();
-            } else {}
+            } else {
+                $("#show_coordinates").hide();
+            }
         }
     });
     $("#map_lon").keyup(function(event) {
@@ -561,7 +564,7 @@
     $("#map_lon_input").e_input_tip({
         space: "",
         space_callback: function() {
-            alert("请正确的设置地图位置");
+            alert("请正确的设置地图坐标");
         }
     });
     $("#hotel_building,#hotel_room_count").e_input_tip({
