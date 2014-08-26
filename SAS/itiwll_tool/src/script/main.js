@@ -608,7 +608,7 @@
 						var img = response[i];
 						var a = $(html).appendTo(box);
 
-						a.find('img').attr('src', img.tURL).attr('oURL',img.oURL);.e_img_siz("",true);
+						a.find('img').attr('src', img.tURL).attr('oURL',img.oURL).e_img_siz("",true);
 						if (img.PID) {
 							a.attr('pid', img.PID);
 							a.find('select').html($("#img_type_sel").html());

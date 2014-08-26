@@ -1,4 +1,4 @@
-/*2014年8月26日11:07:13*/
+/*2014年8月26日16:22:03*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -770,7 +770,7 @@
                     for (var i = 0; i < response.length; i++) {
                         var img = response[i];
                         var a = $(html).appendTo(box);
-                        a.find("img").attr("src", img.URL).e_img_siz("", true);
+                        a.find("img").attr("src", img.tURL).attr("oURL", img.oURL).e_img_siz("", true);
                         if (img.PID) {
                             a.attr("pid", img.PID);
                             a.find("select").html($("#img_type_sel").html());
@@ -829,9 +829,10 @@
     });
     $("#add_img").on("click", ".img_del a", function(event) {
         event.preventDefault();
-        var box = $(this).parents(".upload_img_box"), pid = box.attr("pid"), url = box.find(".upload_img").attr("src"), data = {
+        var box = $(this).parents(".upload_img_box"), pid = box.attr("pid"), t_url = box.find(".upload_img").attr("src"), o_url = box.find(".upload_img").attr("oURL"), data = {
             PID: pid == "error" ? 0 : pid,
-            text: url
+            text1: t_url,
+            text2: o_url
         };
         $.ajax({
             url: "/ImageProperty/ImageDel",
