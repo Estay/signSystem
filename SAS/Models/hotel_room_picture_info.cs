@@ -21,11 +21,11 @@ namespace SAS.Models
         private DateTime? _h_r_p_time;
         private int? _h_r_p_type;
         private int _h_r_p_size;
+        private int? _souce_id;
         /// <summary>
         /// 酒店房间图片编号
         /// </summary>
-        /// 
-        [KeyAttribute]
+         [KeyAttribute]
         public int h_r_p_id
         {
             set { _h_r_p_id = value; }
@@ -102,6 +102,14 @@ namespace SAS.Models
         {
             set { _h_r_p_size = value; }
             get { return _h_r_p_size; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? souce_id
+        {
+            set { _souce_id = value; }
+            get { return _souce_id; }
         }
         #endregion Model
 

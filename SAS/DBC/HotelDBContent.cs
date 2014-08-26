@@ -34,5 +34,7 @@ namespace SAS.DBC
         public DbSet<Hotel_room_RP_price> realPrices { get; set; }
         public DbSet<Hotel_room_RP_price_batch> publicPrices { get; set; }
         public DbSet<RoomStatus> roomStatuss { get; set; }
+        public DbSet<Source_type_info> sourceTypes { get; set; }
+        public DbSet<RoomStatus_batch> publicStatuses { get; set; }
     }
 }

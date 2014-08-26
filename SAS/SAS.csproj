@@ -196,9 +196,11 @@
     <Compile Include="help\ImageDes.ashx.cs">
       <DependentUpon>ImageDes.ashx</DependentUpon>
     </Compile>
+    <Compile Include="help\ImgHelper.cs" />
     <Compile Include="help\location.ashx.cs">
       <DependentUpon>location.ashx</DependentUpon>
     </Compile>
+    <Compile Include="help\StringHelper.cs" />
     <Compile Include="Models\DrrModes.cs" />
     <Compile Include="Models\DrrRules.cs" />
     <Compile Include="Models\Gift.cs" />
@@ -219,7 +221,9 @@
     <Compile Include="Models\Hotel_theme_type_info.cs" />
     <Compile Include="Models\Order_info.cs" />
     <Compile Include="Models\RoomStatus.cs" />
+    <Compile Include="Models\RoomStatus_batch.cs" />
     <Compile Include="Models\Room_status_info.cs" />
+    <Compile Include="Models\Source_type_info.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

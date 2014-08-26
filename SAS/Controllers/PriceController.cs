@@ -162,7 +162,7 @@ namespace SAS.Controllers
                  roomStatus.hotel_id = p.hotel_id;
                  roomStatus.OverBooking = true;
                  string number = (from r in db.rooms where r.room_id == p.room_id select r.h_r_house_number).SingleOrDefault(); int roomNubmer; int.TryParse(number, out roomNubmer);
-
+           //      roomStatus.
                  roomStatus.r_s_number = roomNubmer;
                  if (ModelState.IsValid)
                  {

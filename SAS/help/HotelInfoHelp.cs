@@ -17,7 +17,7 @@ namespace SAS.help
 
             using(db = new HotelDBContent())
             {
-            return (from r in db.rooms where r.hotel_id == hotelId select r).ToList();
+              return (from r in db.rooms where r.hotel_id == hotelId select r).ToList();
             }
 
         }
