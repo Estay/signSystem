@@ -20,21 +20,25 @@ namespace SAS.Controllers
         {
             return View();
         }
+        //修改图片标题
         public int ImageDes(string PID, string text)
         {
 
             try
             {
-                int ID = Convert.ToInt32(PID);
+                int ID =0;   int.TryParse( PID, out ID);
                 string DescText = text;
-                var p = (from i in db.pics where i.h_p_id == ID select i).Single();
-                p.h_p_title = DescText;
-                if (db.SaveChanges() > 0)
-                    sign = 1;
-                else
+                var p = (from i in db.roomImages where i.h_r_p_id == ID select i).SingleOrDefault();
+                if (p != null)
                 {
-                    sign = 0;
-                    DBhelp.log("图片描述修改失败PID=" + PID);
+                    p.h_r_p_title = DescText;
+                    if (db.SaveChanges() > 0)
+                        sign = 1;
+                    else
+                    {
+                        sign = 0;
+                        DBhelp.log("图片描述修改失败PID=" + PID);
+                    }
                 }
             }
             catch (Exception ex)
@@ -44,31 +48,35 @@ namespace SAS.Controllers
             }
             return sign;
         }
-        public int ImageDel(string PID, string text)
+        public int ImageDel(string PID, string text1,string text2)
         {
             try
             {
-                 string pth=System.Web. HttpContext.Current.Server.MapPath("..");
-                string path = pth+text;
-                hotel_picture_info p = null;
-                int ID = Convert.ToInt32(PID);
-                if (ID == 0)
-                    path =pth+ text;
-                else
-                {
-                    p = (from i in db.pics where i.h_p_id == ID select i).Single();
-                    path = pth+p.h_p_pic_original_url;
+                string pth=System.Web. HttpContext.Current.Server.MapPath("..");
+                string oPath, tPath;
+               // string tPath = pth + text2;
+                hotel_room_picture_info p = null;
+                int ID = 0;int.TryParse(PID,out ID);
+               
+                    p = (from i in db.roomImages where i.h_r_p_id == ID select i).SingleOrDefault();
+                    oPath = pth + p.h_r_p_pic_original_url;
+                    tPath = pth + p.h_r_p_pic_thumb_url;
                     if (p != null)
-                        db.pics.Remove(p);
+                        db.roomImages.Remove(p);
                     if (db.SaveChanges() > 0)
                         sign = 1;
                     else
                         sign = 0;
-                }
-               path= path.Remove(path.IndexOf(".."), 2);
-               if (f.File.Exists(path))
+                
+             //  path= path.Remove(path.IndexOf(".."), 2);
+              if (f.File.Exists(oPath))
                {
-                   f.File.Delete(path);
+                   f.File.Delete(oPath);
+                   sign = 1;
+               }
+               if (f.File.Exists(tPath))
+               {
+                   f.File.Delete(tPath);
                    sign = 1;
                }
             }
@@ -78,20 +86,18 @@ namespace SAS.Controllers
                 sign = 0;
                 DBhelp.log("删除图片" + ex.ToString());
             }
-
-            
            
             return sign;
         }
-
+        //修改图片类型
         public int ImageType(string PID, string text)
         {
             try
             {
                 int ID = Convert.ToInt32(PID);
                 int DescText =Convert.ToInt32(text);
-                var p = (from i in db.pics where i.h_p_id == ID select i).Single();
-                p.h_p_type = DescText;
+                var p = (from i in db.roomImages where i.h_r_p_id == ID select i).SingleOrDefault();
+                p.h_r_p_type = DescText;
                 if (db.SaveChanges() > 0)
                     sign = 1;
                 else

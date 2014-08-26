@@ -177,13 +177,13 @@
 				</select>
 			</label>
 			<label for="hotel_decoration_time_year">
-				<input id="hotel_decoration_time_year" class="hide" type="text" name="@Html.DisplayNameFor(model => model.DecorateTime)"  value="@(Model.DecorateTime.Year.ToString())年@(Model.DecorateTime.Month.ToString())月">
+				<input id="hotel_decoration_time_year" class="hide" type="text" name="@Html.DisplayNameFor(model => model.decorateTime)"  value="@(Model.decorateTime.Year.ToString())年@(Model.DecorateTime.Month.ToString())月">
 				<span class="label">装修时间</span>
 				<select class="select_yeae">
 		            <option value="" >请选择</option>
 					@foreach (var opt in DTimes)
      {
-         if (Model.DecorateTime.Year.ToString() == opt.Remove(4))
+         if (Model.decorateTime.Year.ToString() == opt.Remove(4))
          {
 	                    <option value="@opt" selected>@opt</option>                    
          }
@@ -197,7 +197,7 @@
 		            <option value="" >请选择</option>
 					@foreach (var opt in month)
      {
-         if (Model.DecorateTime.Month.ToString() == opt.Remove(opt.Length - 1))
+         if (Model.decorateTime.Month.ToString() == opt.Remove(opt.Length - 1))
          {
 	                    <option value="@opt" selected>@opt</option>                    
          }
@@ -209,7 +209,7 @@
 				</select>
 			</label>
 			<label for="hotel_building">
-				<span class="label">公寓楼高</span><input type="text" id="hotel_building" name="@Html.DisplayNameFor(model => model.Floor)" value="@Model.Floor">
+				<span class="label">公寓楼高</span><input type="text" id="hotel_building" name="@Html.DisplayNameFor(model => model.floor)" value="@Model.floor">
 				<span class="col_red">*</span>
 			</label>
 			<label for="hotel_room_count">

@@ -155,18 +155,30 @@ namespace SAS.Controllers
                  pBacth.Hpdate = DateTime.Now;
                  pBacth.AuditDate = DateTime.Now;
 
-                 Room_status_info roomStatus = new Room_status_info();
+               
+                 if (ModelState.IsValid)
+                 {
+                     db.publicPrices.Add(pBacth);
+                     
+                     db.SaveChanges();
+                 }
+                 RoomStatus_batch roomStatus = new RoomStatus_batch();
                  roomStatus.r_s_time = start;
                  roomStatus.EndDate = end;
                  roomStatus.room_id = p.room_id;
                  roomStatus.hotel_id = p.hotel_id;
                  roomStatus.OverBooking = true;
+                 roomStatus.HpStatus = 0;
+                 roomStatus.r_s_utime = DateTime.Now;
+                 roomStatus.r_s_ctime = DateTime.Now;
                  string number = (from r in db.rooms where r.room_id == p.room_id select r.h_r_house_number).SingleOrDefault(); int roomNubmer; int.TryParse(number, out roomNubmer);
-           //      roomStatus.
+                 //      roomStatus.
                  roomStatus.r_s_number = roomNubmer;
+                 roomStatus.eBeds = roomNubmer;
                  if (ModelState.IsValid)
                  {
-                     db.publicPrices.Add(pBacth);
+                     
+                     db.publicStatuses.Add(roomStatus);
                      db.SaveChanges();
                  }
 
