@@ -36,6 +36,7 @@ namespace SAS.help
             string tag = Guid.NewGuid().ToString();
             int roomId=Convert.ToInt32(context.Request.Form[0]);
             List<Image> list1 = new List<Image>();
+            string count="..";
             if (files.Count > 0)
             {
                 string path = "";
@@ -78,17 +79,23 @@ namespace SAS.help
                         //string showImagePath = string.Empty; ;
                         // && w > 500 && h > 300
                         string fileName1, message, oPath=string.Empty, tPath = string.Empty;
+                        string d = DateTime.Now.ToString("yyyy-MM");
+                        
+                        if (!new help.ImgHelper().MoreImgUpload(file, out fileName1, out message, ThumbImages_SavePath, OriginalImages_SavePath, ThumbImages_Height, ThumbImages_Wight, Images_Height, Images_Wight, ThumbImages_Size, out oPath, out tPath))
+                        {
+                            return;
+                        }
+                        string realOpath = ThumbImages_SavePath + d + "/" + "T_" + fileName1;
+                        string realTpath = ThumbImages_SavePath + d + "/" + "T_" + fileName1;
                         if (size < maxSize && w > 500 && h > 300 )
                         {
                             
                           //  string message=
-                            if (new help.ImgHelper().MoreImgUpload(file, out fileName1, out message, ThumbImages_SavePath, OriginalImages_SavePath, ThumbImages_Height, ThumbImages_Wight, Images_Height, Images_Wight, ThumbImages_Size, out oPath, out tPath))
-                            {
-
+                         
                                 hotel_room_picture_info pic = new hotel_room_picture_info();
-                                string d = DateTime.Now.ToString("yyyy-MM");
-                                pic.h_r_p_pic_original_url = OriginalImages_SavePath + d + "/" + fileName1;
-                                pic.h_r_p_pic_thumb_url = ThumbImages_SavePath + d + "/" + "T_" + fileName1;
+
+                                pic.h_r_p_pic_original_url = realOpath;
+                                pic.h_r_p_pic_thumb_url = realTpath;
                                 pic.souce_id = Convert.ToInt32(help.StringHelper.appSettings("source_id"));
                                
                                 pic.room_id = roomId;
@@ -98,14 +105,14 @@ namespace SAS.help
 
                                 db.roomImages.Add(pic);
                                 db.SaveChanges();
-                            }
+                            
 
                         }
                         else
                         {
                             Image IM = new Image();
-                            IM.oURL = oPath;
-                            IM.tURL = tPath;
+                            IM.oURL = count + realOpath;
+                            IM.tURL = count + realTpath; ;
                             message = string.Empty;
                             if (size > maxSize)
                                 message = "图片大小小于10M";
