@@ -200,5 +200,47 @@ namespace SAS.Models
             get { return _auditstatus; }
         }
         #endregion Model
+
+
+        public bool insertStatuBatch(hotel_room_RP_price_info p)
+        {
+            bool result = false;
+  
+            try
+            {
+              using(DBC.HotelDBContent db=new DBC.HotelDBContent())
+              {
+                RoomStatus_batch roomStatus = new RoomStatus_batch();
+                roomStatus.r_s_time = p.room_rp_start_time;
+                roomStatus.EndDate = p.room_rp_end_time;
+                roomStatus.room_id = p.room_id;
+                roomStatus.hotel_id = p.hotel_id;
+                roomStatus.OverBooking = true;
+                roomStatus.HpStatus = 0;
+                roomStatus.r_s_utime = DateTime.Now;
+                roomStatus.r_s_ctime = DateTime.Now;
+                string number = (from r in db.rooms where r.room_id == p.room_id select r.h_r_house_number).SingleOrDefault(); int roomNubmer; int.TryParse(number, out roomNubmer);
+                //      roomStatus.
+                roomStatus.r_s_number = roomNubmer;
+                roomStatus.eBeds = roomNubmer;
+                //if (ModelState.IsValid)
+                //{
+
+                    db.publicStatuses.Add(roomStatus);
+                    if (db.SaveChanges() > 0)
+                        result = true;
+                    else
+                        result = false;
+              //}
+             }
+
+            }
+            catch (Exception e)
+            {
+                help.DBhelp.log("插入Roombatch" + e.ToString());
+                result = false;
+            }
+            return result;
+        }
     }
 }
