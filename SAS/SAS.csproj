@@ -176,6 +176,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\ImagePropertyController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MyApartMentController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\PriceController.cs" />
@@ -220,6 +221,7 @@
     <Compile Include="Models\hotel_room_picture_info.cs" />
     <Compile Include="Models\hotel_theme_info.cs" />
     <Compile Include="Models\Hotel_theme_type_info.cs" />
+    <Compile Include="Models\Merchant_info.cs" />
     <Compile Include="Models\Order_info.cs" />
     <Compile Include="Models\RoomStatus.cs" />
     <Compile Include="Models\RoomStatus_batch.cs" />
@@ -414,6 +416,7 @@
   <ItemGroup>
     <Content Include="Content\Public\script\laydate\README.md" />
     <None Include="Properties\PublishProfiles\m.pubxml" />
+    <Content Include="Views\Login\signLogin.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
