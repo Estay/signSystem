@@ -169,7 +169,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AddHotelController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\CheckLogin.cs" />
     <Compile Include="Controllers\ComentController.cs" />
     <Compile Include="Controllers\DrrRuleController.cs" />
     <Compile Include="Controllers\GiftController.cs" />

@@ -8,9 +8,12 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using SAS.Models;
 using SAS.DBC;
+using SAS.help;
+
 
 namespace SAS.Controllers
 {
+    [CheckLogin(IsCheck = false)]
     public class LoginController : Controller
     {
         private HotelDBContent db = new HotelDBContent();
@@ -20,9 +23,24 @@ namespace SAS.Controllers
 
         public ActionResult myLogin()
         {
-            Session["userName"] = "121";
+            string code = StringHelper.CreateValidateCode(5);
+           
+            byte[] bytes = StringHelper.CreateValidateGraphic(code);
+            Session["ValidateCode"] = code;
+           ViewBag.image= File(bytes, @"image/jpeg");
             return View("signLogin");
         }
+        public ActionResult builImage()
+        {
+            string code = StringHelper.CreateValidateCode(5);
+
+            byte[] bytes = StringHelper.CreateValidateGraphic(code);
+            Session["ValidateCode"] = code;
+            ViewBag.image = File(bytes, @"image/jpeg");
+            return File(bytes, @"image/jpeg");
+        }
+       
+       
 
         //
         // GET: /Login/Details/5
@@ -46,7 +64,7 @@ namespace SAS.Controllers
         /// <param name="merchant_info"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult LogSubmit(Merchant_info merchant_info)
+        public ActionResult LoginSubmit(Merchant_info merchant_info)
         {
             
             using(db=new HotelDBContent())
