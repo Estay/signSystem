@@ -44,10 +44,10 @@
         </select>
     </h2>
 
-        @using (Html.BeginForm("Create", "DrrRule", FormMethod.Post))
-        {
-            var Rooms = rooms;
-            i++;
+    @using (Html.BeginForm("Create", "DrrRule", FormMethod.Post))
+    {
+        var Rooms = rooms;
+        i++;
         <div class='@(i < 2 ? "show" : "hide") hotel_drr'>
 
             <table cellspacing="0">
@@ -77,9 +77,19 @@
                 <!-- 促销名称 -->
                 <p class="input_line">
                     <label for="">
-                        <span class="label">促销名称</span>
-                        <input id="drr_name" type="text" name="@Html.DisplayNameFor(model => Model.DrrName)" value="@Model.DrrName">
-                        <span class="col_red">*</span>
+                        <span class="label">促销名称：</span>
+                        @if (string.IsNullOrEmpty(Model.DrrName))
+                        {
+                            <input id="drr_name" type="text" name="@Html.DisplayNameFor(model => Model.DrrName)" value="@Model.DrrName">
+                            <span class="col_red">*</span>
+                        }
+                        else
+                        {
+                              
+                            <b>@Model.DrrName</b> 
+                        }
+
+
                     </label>
                     <input class="hide" type="text" name="@Html.DisplayNameFor(model => Model.hotel_id)" value="@ViewBag.Id" />
                     <input class="hide" type="text" name="@Html.DisplayNameFor(model => Model.id)" value="@Model.id" />
@@ -107,10 +117,8 @@
 
                 <!-- 促销日期 -->
                 <p class="input_line">
-                    <label for="">
-                        <span class="label">促销日期：</span>
-                        <input readonly="readonly" type="text" class="date_start laydate-icon" name="@Html.DisplayNameFor(model => Model.StartDate)" value="@Model.StartDate">至<input readonly="readonly" type="text" class="date_end laydate-icon" name="@Html.DisplayNameFor(model => Model.EndDate)" value="@Model.EndDate">
-                    </label>
+                    <span class="label">促销日期：</span>
+                    <input readonly="readonly" type="text" class="date_start laydate-icon" name="@Html.DisplayNameFor(model => Model.StartDate)" value="@Model.StartDate">至<input readonly="readonly" type="text" class="date_end laydate-icon" name="@Html.DisplayNameFor(model => Model.EndDate)" value="@Model.EndDate">
                 </p>
 
                 <!-- 促销规则 -->
@@ -168,8 +176,8 @@
                 <a id="btn_add_drr" href="javascript:document.forms[@(i - 1)].submit()" class="btn_b">@ViewBag.buttonName</a>
             </div>
         </div>
-        }
-    
+    }
+
 </div>
 
 <!-- 设置促销的方式 -->
@@ -197,7 +205,7 @@
 <!-- 日期控件 -->
 <script type="text/javascript" src="@Url.Content("~/Content/public/script/laydate/laydate.dev.js")"></script>
 <script>
-    (function() {
+    (function () {
         var start = {
             elem: '#DrrRule .date_start',
             min: laydate.now(), //设定最小日期为当前日期

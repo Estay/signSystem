@@ -751,8 +751,36 @@
 	// 验证表单
 	$("#drr_name").e_input_tip({
 		space : "促销价格的名称",
-		rule : /^[\S\s]{3,50}$/,
-		error : "请输入3至50个字符"
+		check : true, //失去焦点验证
+		submit_check : false,
+		rule: function(success_callback,error_callback,val) {
+			var el = $(this);
+
+			if (!val.match(/^[\s\S]{3,}$/)) {
+				error_callback("请输入三个以上的字符",el);
+				return ;
+			};
+
+
+			$.ajax({
+				url: '/DrrRule/IsOk/',
+				dataType: 'text',
+				data: {
+					text:val,
+					id : $("#hotel_id").val()
+				}
+			})
+			.done(function(data) {
+				if(data==0){
+					error_callback("此公寓已存在",el);
+				}else{
+					success_callback(el);
+				}
+			})
+			.fail(function(data) {
+				alert("服务器验证公寓销价名称失败");
+			});	
+		}
 	});
  
 	//////////////////////////////////设置礼包////////////////////////////////////////

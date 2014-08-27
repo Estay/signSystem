@@ -1,4 +1,4 @@
-/*2014年8月27日10:48:45*/
+/*2014年8月27日13:45:52*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -861,8 +861,31 @@
     });
     $("#drr_name").e_input_tip({
         space: "促销价格的名称",
-        rule: /^[\S\s]{3,50}$/,
-        error: "请输入3至50个字符"
+        check: true,
+        submit_check: false,
+        rule: function(success_callback, error_callback, val) {
+            var el = $(this);
+            if (!val.match(/^[\s\S]{3,}$/)) {
+                error_callback("请输入三个以上的字符", el);
+                return;
+            }
+            $.ajax({
+                url: "/DrrRule/IsOk/",
+                dataType: "text",
+                data: {
+                    text: val,
+                    id: $("#hotel_id").val()
+                }
+            }).done(function(data) {
+                if (data == 0) {
+                    error_callback("此公寓已存在", el);
+                } else {
+                    success_callback(el);
+                }
+            }).fail(function(data) {
+                alert("服务器验证公寓销价名称失败");
+            });
+        }
     });
     $("#hotel_switch_gift").change(function(event) {
         console.log(event);
