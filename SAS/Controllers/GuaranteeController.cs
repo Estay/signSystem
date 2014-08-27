@@ -107,8 +107,8 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult Create(GuaranteeRule guaranteerule)
         {
-          
 
+            setName();
             if (guaranteerule.id > 0)
             {
                
@@ -116,17 +116,20 @@ namespace SAS.Controllers
             }
             else
             {
-                var rp=(from r in db.rps where r.hotel_id==guaranteerule.hotel_id && r.h_room_rp_state==true && r.h_room_rp_name_cn=="标准价"select r.h_room_rp_id).SingleOrDefault();
-                if (rp>0)
+                Hotel_room_RP_info ratePlan = new Hotel_room_RP_info();
+                ratePlan.hotel_id = guaranteerule.hotel_id;
+                ratePlan.h_room_rp_name_cn = "标准价";
+                int ratePlanId = help.HotelInfoHelp.getRatePlanId(ratePlan);
+               // var rp=(from r in db.rps where r.hotel_id==guaranteerule.hotel_id && r.h_room_rp_state==true && r.h_room_rp_name_cn=="标准价"select r.h_room_rp_id).SingleOrDefault();
+
+                guaranteerule.h_room_rp_id = ratePlanId;
+                if (ModelState.IsValid)
                 {
-                    guaranteerule.h_room_rp_id = rp;
-                    if (ModelState.IsValid)
-                    {
-                        db.gu.Add(guaranteerule);
+                   db.gu.Add(guaranteerule);
                       
                        
-                    }
-                }
+               }
+                
             }
             db.SaveChanges();
             db.Dispose();

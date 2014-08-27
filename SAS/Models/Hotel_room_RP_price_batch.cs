@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Http.ModelBinding;
 
 namespace SAS.Models
 {
@@ -236,5 +237,55 @@ namespace SAS.Models
             get { return _commission; }
         }
         #endregion Model
+
+       /// <summary>
+       /// 插入价格
+       /// </summary>
+       /// <param name="p"></param>
+       /// <returns></returns>
+        public bool InsertPriceBatch(hotel_room_RP_price_info p)
+        {
+            bool result = false;
+            try
+            {
+                using (DBC.HotelDBContent db = new DBC.HotelDBContent())
+                {
+                    Hotel_room_RP_info rp = new Hotel_room_RP_info();
+                    rp.h_room_rp_name_cn = "标准价";
+                    rp.hotel_id = p.hotel_id;
+                    Hotel_room_RP_price_batch pBacth = new Hotel_room_RP_price_batch();
+                    pBacth.Addbed = -1;
+                    pBacth.HpStatus = 0;
+                    pBacth.Room_rp_id = help.HotelInfoHelp.getRatePlanId(rp);
+                    DateTime start = p.room_rp_start_time; DateTime end = p.room_rp_end_time;
+                    pBacth.Room_rp_start_time = start;
+                    pBacth.Room_rp_end_time = end;
+                    pBacth.Room_id = p.room_id;
+                    pBacth.Hotel_id = p.hotel_id;
+                    pBacth.Price = p.room_rp_price;
+                    pBacth.Idate = DateTime.Now;
+                    pBacth.Hpdate = DateTime.Now;
+                    pBacth.AuditDate = DateTime.Now;
+
+
+                    //if (ModelState.IsValid)
+                    //{
+                    db.publicPrices.Add(pBacth);
+
+                    if (db.SaveChanges() > 0)
+                        result = true;
+                    else
+                        result = false;
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                result = false;
+                
+            }
+        return result;
+        }
     }
 }

@@ -168,6 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AddHotelController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ComentController.cs" />
     <Compile Include="Controllers\DrrRuleController.cs" />
     <Compile Include="Controllers\GiftController.cs" />
@@ -234,6 +235,23 @@
     <Content Include="Content\Public\img\logo.png" />
     <Content Include="Content\Public\script\jquery\jquery-1.8.3.js" />
     <Content Include="Content\Public\script\jquery\jquery-1.8.3.min.js" />
+    <Content Include="Content\Public\script\laydate\laydate.dev.js" />
+    <Content Include="Content\Public\script\laydate\laydate.js" />
+    <Content Include="Content\Public\script\laydate\need\laydate.css" />
+    <Content Include="Content\Public\script\laydate\skins\dahong\icon.png" />
+    <Content Include="Content\Public\script\laydate\skins\dahong\laydate.css" />
+    <Content Include="Content\Public\script\laydate\skins\danlan\icon.png" />
+    <Content Include="Content\Public\script\laydate\skins\danlan\laydate.css" />
+    <Content Include="Content\Public\script\laydate\skins\default\icon.png" />
+    <Content Include="Content\Public\script\laydate\skins\default\laydate.css" />
+    <Content Include="Content\Public\script\laydate\skins\molv\icon.png" />
+    <Content Include="Content\Public\script\laydate\skins\molv\laydate.css" />
+    <Content Include="Content\Public\script\laydate\skins\qianhuang\icon.png" />
+    <Content Include="Content\Public\script\laydate\skins\qianhuang\laydate.css" />
+    <Content Include="Content\Public\script\laydate\skins\yahui\icon.png" />
+    <Content Include="Content\Public\script\laydate\skins\yahui\laydate.css" />
+    <Content Include="Content\Public\script\laydate\skins\yalan\icon.png" />
+    <Content Include="Content\Public\script\laydate\skins\yalan\laydate.css" />
     <Content Include="Content\Public\script\main.js" />
     <Content Include="Content\Public\style\main.css" />
     <Content Include="favicon.ico" />
@@ -373,11 +391,6 @@
     <Content Include="Views\MyApartMent\Hotel.cshtml" />
     <Content Include="Views\MyApartMent\Room.cshtml" />
     <Content Include="Views\MyApartMent\Price.cshtml" />
-    <Content Include="Views\Order\Index.cshtml" />
-    <Content Include="Views\Order\Details.cshtml" />
-    <Content Include="Views\Order\Create.cshtml" />
-    <Content Include="Views\Order\Edit.cshtml" />
-    <Content Include="Views\Order\Delete.cshtml" />
     <Content Include="Views\Coment\Index.cshtml" />
     <Content Include="Views\Coment\Details.cshtml" />
     <Content Include="Views\Coment\Create.cshtml" />
@@ -397,6 +410,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Order\MyOrder.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Public\script\laydate\README.md" />
+    <None Include="Properties\PublishProfiles\m.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

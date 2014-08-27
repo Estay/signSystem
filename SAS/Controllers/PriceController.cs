@@ -83,15 +83,30 @@ namespace SAS.Controllers
         //修改房价
         public int uPrice(string id, string roomId, string startDate, string EndDate, string value)
         {
-            int Id;
-            decimal price;
+
+            int Id, room_id, count = 0; decimal price;
             decimal.TryParse(value, out price);
-            int.TryParse(roomId, out Id);
+            int.TryParse(id, out Id);
+            int.TryParse(roomId, out room_id);
             DateTime.TryParse(startDate, out start);
             DateTime.TryParse(EndDate, out end);
-            string sql = string.Format("update  hotel_room_RP_price set Room_rp_price={1} where room_id={0} and Effectdate  between '{2}' and '{3}'", roomId,price, start.ToString("yyyy-MM-dd"), end.ToString("yyyy-MM-dd"));
-            if (DBhelp.ExcuteTableBySQL(sql) > 0)
-                return 1;
+            hotel_room_RP_price_info p = new hotel_room_RP_price_info();
+            using (db = new HotelDBContent())
+            {
+                count = (from r in db.rooms where r.hotel_id == Id && r.room_id == room_id select r).Count();
+            }
+            if (count > 0)
+            {
+                
+                p.hotel_id = Id;
+                p.room_id = room_id;
+                p.room_rp_start_time = start;
+                p.room_rp_end_time = end;
+                p.room_rp_price = price;
+             
+            }
+            if(new Hotel_room_RP_price_batch().InsertPriceBatch(p))
+              return 1;
             else
                 return 0;
            // return View("MyPrix", getData(id, startDate, EndDate));
@@ -129,8 +144,8 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult Create(List<hotel_room_RP_price_info> hotel_room_RP_price_info)
         {
-         
-           
+            bool result = false;
+            DateTime start = DateTime.Now.Date; DateTime end = DateTime.Now.AddYears(1).Date;
             int hotelId = 0;
           
             //遍历价格集合
@@ -138,54 +153,18 @@ namespace SAS.Controllers
             {
                
                  int.TryParse(p.hotel_id.ToString(),out hotelId);
-                 Hotel_room_RP_info rp = new Hotel_room_RP_info();
-                 rp.h_room_rp_name_cn = "标准价";
-                 rp.hotel_id = p.hotel_id;
-                 Hotel_room_RP_price_batch pBacth = new Hotel_room_RP_price_batch();
-                 pBacth.Addbed = -1;
-                 pBacth.HpStatus = 0;
-                 pBacth.Room_rp_id=help.HotelInfoHelp.getRatePlanId(rp);
-                 DateTime start=DateTime.Now.Date;DateTime end=DateTime.Now.Date;
-                 pBacth.Room_rp_start_time =start ;
-                 pBacth.Room_rp_end_time = end;
-                 pBacth.Room_id = p.room_id;
-                 pBacth.Hotel_id = p.hotel_id;
-                 pBacth.Price = p.room_rp_price;
-                 pBacth.Idate = DateTime.Now;
-                 pBacth.Hpdate = DateTime.Now;
-                 pBacth.AuditDate = DateTime.Now;
-
-               
-                 if (ModelState.IsValid)
-                 {
-                     db.publicPrices.Add(pBacth);
-                     
-                     db.SaveChanges();
-                 }
-                 RoomStatus_batch roomStatus = new RoomStatus_batch();
-                 roomStatus.r_s_time = start;
-                 roomStatus.EndDate = end;
-                 roomStatus.room_id = p.room_id;
-                 roomStatus.hotel_id = p.hotel_id;
-                 roomStatus.OverBooking = true;
-                 roomStatus.HpStatus = 0;
-                 roomStatus.r_s_utime = DateTime.Now;
-                 roomStatus.r_s_ctime = DateTime.Now;
-                 string number = (from r in db.rooms where r.room_id == p.room_id select r.h_r_house_number).SingleOrDefault(); int roomNubmer; int.TryParse(number, out roomNubmer);
-                 //      roomStatus.
-                 roomStatus.r_s_number = roomNubmer;
-                 roomStatus.eBeds = roomNubmer;
-                 if (ModelState.IsValid)
-                 {
-                     
-                     db.publicStatuses.Add(roomStatus);
-                     db.SaveChanges();
-                 }
+                 p.room_rp_start_time = start; p.room_rp_end_time = end;
+                 if(new Hotel_room_RP_price_batch().InsertPriceBatch(p)&& new RoomStatus_batch().insertStatuBatch(p))
+                    result=true;
 
                 
             }
-           
-           return RedirectToAction("Create", "Image", new { hotelId = hotelId }); 
+           if(result==true)
+            return RedirectToAction("Create", "Image", new { hotelId = hotelId }); 
+           else
+             return RedirectToAction("Create", "Price", new { hotelId = hotelId }); 
+    
+
 
         }
         public void getRooms(int hotel_id)
@@ -193,6 +172,7 @@ namespace SAS.Controllers
             //List<hotel_room_info> roomsList = (from r in db.room where r.hotel_id == hotel_id select r).ToList();
             ViewData["rooms"] = DBhelp.getRooms(hotel_id);
         }
+      
         //
         // GET: /Price/Edit/5
 
@@ -210,15 +190,34 @@ namespace SAS.Controllers
         // POST: /Price/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(hotel_room_RP_price_info hotel_room_rp_price_info)
+        public int priceSubmit(hotel_room_RP_price_info hotel_room_rp_price_info)
         {
-            if (ModelState.IsValid)
-            {
-                //db.Entry(hotel_room_rp_price_info).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(hotel_room_rp_price_info);
+            //Hotel_room_RP_price_batch pBacth = new Hotel_room_RP_price_batch();
+            //pBacth.Addbed = -1;
+            //pBacth.HpStatus = 0;
+            //pBacth.Room_rp_id = help.HotelInfoHelp.getRatePlanId(hotel_room_rp_price_info);
+            //DateTime start = DateTime.Now.Date; DateTime end = DateTime.Now.AddYears(1).Date;
+            //pBacth.Room_rp_start_time = start;
+            //pBacth.Room_rp_end_time = end;
+            //pBacth.Room_id = p.room_id;
+            //pBacth.Hotel_id = p.hotel_id;
+            //pBacth.Price = p.room_rp_price;
+            //pBacth.Idate = DateTime.Now;
+            //pBacth.Hpdate = DateTime.Now;
+            //pBacth.AuditDate = DateTime.Now;
+
+            //if (DBhelp.ExcuteTableBySQL(sql) > 0)
+            //    return 1;
+            //else
+            //    return 0;
+            //if (ModelState.IsValid)
+            //{
+            //    //db.Entry(hotel_room_rp_price_info).State = EntityState.Modified;
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
+            //return View(hotel_room_rp_price_info);
+            return 0;
         }
 
         //
