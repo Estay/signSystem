@@ -200,8 +200,19 @@ namespace SAS.Controllers
 
            
         }
+        //验证房型是否存在
+        public int IsOk(string id, string text)
+        {
+            int drrId; int.TryParse(id, out drrId);
+            using (db = new HotelDBContent())
+            {
+                if ((from h in db.drrs where h.DrrName == text && h.id == drrId select h).Count() > 0)
+                    return 0;
+                else
+                    return 1;
+            }
+        }
 
-      
         public void GetData(string hotelId)
         {
 

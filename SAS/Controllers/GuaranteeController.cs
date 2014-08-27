@@ -107,8 +107,8 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult Create(GuaranteeRule guaranteerule)
         {
-          
 
+            setName();
             if (guaranteerule.id > 0)
             {
                

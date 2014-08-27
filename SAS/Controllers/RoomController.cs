@@ -101,10 +101,13 @@ namespace SAS.Controllers
         public int IsOk(string hotelId, string text)
         {
             int hotel_id = Convert.ToInt32(hotelId);
-            if ((from h in db.rooms where h.h_r_name_cn == text && h.hotel_id == hotel_id select h).Count() > 0)
-                return 0;
-            else
-                return 1;
+            using (db = new HotelDBContent())
+            {
+                if ((from h in db.rooms where h.h_r_name_cn == text && h.hotel_id == hotel_id select h).Count() > 0)
+                    return 0;
+                else
+                    return 1;
+            }
         }
 
         public void getfacilities()
