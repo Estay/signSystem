@@ -48,7 +48,7 @@
     {
         var Rooms = rooms;
         i++;
-        <div class='@(i < 2 ? "show" : "hide") hotel_drr'>
+        <div class='hotel_drr'>
 
             <table cellspacing="0">
                 <tbody>
@@ -91,7 +91,7 @@
 
 
                     </label>
-                    <input class="hide" type="text" name="@Html.DisplayNameFor(model => Model.hotel_id)" value="@ViewBag.Id" />
+                    <input id="hotel_id" class="hide" type="text" name="@Html.DisplayNameFor(model => Model.hotel_id)" value="@ViewBag.Id" />
                     <input class="hide" type="text" name="@Html.DisplayNameFor(model => Model.id)" value="@Model.id" />
                 </p>
 
