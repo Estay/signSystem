@@ -1,4 +1,4 @@
-/*2014年8月26日16:57:32*/
+/*2014年8月27日10:48:45*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -531,42 +531,45 @@
             });
         }
     })($);
-    $("#location_box").e_tab_switch({
-        callback: function(index) {
-            if (index == 0) {
-                $("#show_coordinates").show();
-                $("#map_lon,#map_lat").e_window_kill();
-            } else {
-                $("#show_coordinates").hide();
+    (function() {
+        var lon = $("#map_lon"), lat = $("#map_lat"), location_box = $("#location_box");
+        lon.keyup(function(event) {
+            $("#map_lon_input").val($(this).val());
+            $("#map_lon_text").text($(this).val());
+        });
+        lat.keyup(function(event) {
+            $("#map_lat_input").val($(this).val());
+            $("#map_lat_text").text($(this).val());
+        });
+        location_box.e_tab_switch({
+            callback: function(index) {
+                if (index == 0) {
+                    $("#show_coordinates").show();
+                    lat.add(lon).e_window_kill().unbind("input_tip_checking");
+                } else {
+                    $("#show_coordinates").hide();
+                    lon.e_input_tip({
+                        space: "输入经度",
+                        need: false,
+                        error: "格式不正确",
+                        rule: /^\-{0,1}\d{1,3}$|^\-{0,1}\d{1,3}.\d+$/
+                    });
+                    lat.e_input_tip({
+                        space: "输入维度",
+                        need: false,
+                        error: "格式不正确",
+                        rule: /^\-{0,1}\d{1,3}$|^\-{0,1}\d{1,3}.\d+$/
+                    });
+                }
             }
-        }
-    });
-    $("#map_lon").keyup(function(event) {
-        $("#map_lon_input").val($(this).val());
-        $("#map_lon_text").text($(this).val());
-    });
-    $("#map_lat").keyup(function(event) {
-        $("#map_lat_input").val($(this).val());
-        $("#map_lat_text").text($(this).val());
-    });
-    $("#map_lon").e_input_tip({
-        space: "输入经度",
-        need: false,
-        error: "格式不正确",
-        rule: /^\-{0,1}\d{1,3}$|^\-{0,1}\d{3}.\d+$/
-    });
-    $("#map_lat").e_input_tip({
-        space: "输入维度",
-        need: false,
-        error: "格式不正确",
-        rule: /^\-{0,1}\d{1,3}$|^\-{0,1}\d{3}.\d+$/
-    });
-    $("#map_lon_input").e_input_tip({
-        space: "",
-        space_callback: function() {
-            alert("请正确的设置地图坐标");
-        }
-    });
+        });
+        $("#map_lon_input").e_input_tip({
+            space: "",
+            space_callback: function() {
+                alert("请正确的设置地图坐标");
+            }
+        });
+    })();
     $("#hotel_building,#hotel_room_count").e_input_tip({
         space: "0",
         error: "格式不正确",
