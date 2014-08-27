@@ -281,47 +281,58 @@
 
 	})($);
 
+	// 地图模块
+	(function() {
+		var lon = $("#map_lon"),
+			lat = $("#map_lat"),
+			location_box = $("#location_box");
 
-	// 地图输入方式切换
-	$("#location_box").e_tab_switch({
-		callback: function(index) {
-			if (index == 0) {
-				$("#show_coordinates").show();
-				$("#map_lon,#map_lat").e_window_kill();
-			} else {
-				$("#show_coordinates").hide();
-				// todo 地图验证逻辑
+			lon.keyup(function(event) {
+				$("#map_lon_input").val($(this).val());
+				$("#map_lon_text").text($(this).val());
+			});
+			lat.keyup(function(event) {
+				$("#map_lat_input").val($(this).val());
+				$("#map_lat_text").text($(this).val());
+			});
+		// 地图输入方式切换
+		location_box.e_tab_switch({
+			callback: function(index) {
+				if (index == 0) {
+					// 切换到地图设置
+					$("#show_coordinates").show();
+					lat.add(lon).e_window_kill().unbind('input_tip_checking');
+
+
+				} else {
+					// 切换到输入设置
+
+					$("#show_coordinates").hide();;
+					lon.e_input_tip({
+						space : "输入经度",
+						need : false,
+						error : "格式不正确",
+						rule : /^\-{0,1}\d{1,3}$|^\-{0,1}\d{1,3}.\d+$/		
+					});
+					lat.e_input_tip({
+						space : "输入维度",
+						need : false,
+						error : "格式不正确",
+						rule : /^\-{0,1}\d{1,3}$|^\-{0,1}\d{1,3}.\d+$/
+					});
+
+				}
 			}
-		}
-	});
-	$("#map_lon").keyup(function(event) {
-		$("#map_lon_input").val($(this).val());
-		$("#map_lon_text").text($(this).val());
-	});
-	$("#map_lat").keyup(function(event) {
-		$("#map_lat_input").val($(this).val());
-		$("#map_lat_text").text($(this).val());
-	});
+		});
+		$("#map_lon_input").e_input_tip({
+			space : "",
+			space_callback : function () {
+				alert("请正确的设置地图坐标");
+			}
 
-	$("#map_lon").e_input_tip({
-		space : "输入经度",
-		need : false,
-		error : "格式不正确",
-		rule : /^\-{0,1}\d{1,3}$|^\-{0,1}\d{3}.\d+$/		
-	});
-	$("#map_lat").e_input_tip({
-		space : "输入维度",
-		need : false,
-		error : "格式不正确",
-		rule : /^\-{0,1}\d{1,3}$|^\-{0,1}\d{3}.\d+$/
-	});
-	$("#map_lon_input").e_input_tip({
-		space : "",
-		space_callback : function () {
-			alert("请正确的设置地图坐标");
-		}
+		});
+	})();
 
-	});
 
 	// 触发图片选择
 	// $(".upload_img_box").on('click', '.upload_img_btn', function(event) {
