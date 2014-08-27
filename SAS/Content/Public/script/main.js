@@ -1,4 +1,4 @@
-/*2014年8月27日13:58:44*/
+/*2014年8月27日15:31:27*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -367,7 +367,29 @@
         if (!console[func]) console[func] = function() {};
     }
     if (!console.memory) console.memory = {};
-    var estay_sas = {};
+    $("#login_id_input").e_input_tip({
+        space: "用户名",
+        need: true
+    });
+    $("#login_password_input_show").click(function(event) {
+        $(this).hide();
+        $(this).prev().show().focus();
+    });
+    $("#login_password_input").e_input_tip({
+        space: "",
+        need: true,
+        space_callback: function(need_text, el) {
+            el.hide().next().show();
+        }
+    });
+    $("#login_code_input").e_input_tip({
+        space: "验证码",
+        need: true
+    });
+    $("#login_btn").click(function(event) {
+        event.preventDefault();
+        $(this).parents("form").submit();
+    });
     $("#hotel_name").e_input_tip({
         space: "请输入公寓名称",
         check: true,

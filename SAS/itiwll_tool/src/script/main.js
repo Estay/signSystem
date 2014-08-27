@@ -30,10 +30,34 @@
 	if(!console.memory)  
 	    console.memory = {};
 
+	//////////////////////////////////登陆页面/////////////////////////////////////////////
+	$("#login_id_input").e_input_tip({
+		space : "用户名",
+		need : true
+	});
 
 
-	var estay_sas = {};
 
+	$("#login_password_input_show").click(function(event) {
+		$(this).hide();
+		$(this).prev().show().focus();
+	});
+	$("#login_password_input").e_input_tip({
+		space : "",
+		need : true,
+		space_callback : function(need_text,el) {
+			el.hide().next().show();	
+		}
+	});
+	$("#login_code_input").e_input_tip({
+		space : "验证码",
+		need : true
+	});
+
+	$("#login_btn").click(function(event) {
+		event.preventDefault();
+		$(this).parents("form").submit();
+	});
 	//////////////////////////////////新建酒店/////////////////////////////////////////////
 
 	// 城市输入提示和验证
