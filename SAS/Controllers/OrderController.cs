@@ -38,11 +38,15 @@ namespace SAS.Controllers
         //
         // GET: /Order/Create
 
-        public ActionResult Create()
+        public ActionResult CheckOrder()
         {
-            return View();
+            return View("CheckOrderinfo");
         }
-
+        public ActionResult QueryOrder()
+        {
+            return View("QueryOrderInfo");
+        }
+       
         //
         // POST: /Order/Create
 

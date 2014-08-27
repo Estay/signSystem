@@ -169,6 +169,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AddHotelController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CheckLogin.cs" />
     <Compile Include="Controllers\ComentController.cs" />
     <Compile Include="Controllers\DrrRuleController.cs" />
     <Compile Include="Controllers\GiftController.cs" />
@@ -186,6 +187,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="help\CheckLogin.cs" />
     <Compile Include="help\DBhelp.cs" />
     <Compile Include="help\FileHandle.ashx.cs">
       <DependentUpon>FileHandle.ashx</DependentUpon>
@@ -222,6 +224,7 @@
     <Compile Include="Models\hotel_theme_info.cs" />
     <Compile Include="Models\Hotel_theme_type_info.cs" />
     <Compile Include="Models\Merchant_info.cs" />
+    <Compile Include="Models\Merchant_security_info.cs" />
     <Compile Include="Models\Order_info.cs" />
     <Compile Include="Models\RoomStatus.cs" />
     <Compile Include="Models\RoomStatus_batch.cs" />
@@ -417,6 +420,8 @@
     <Content Include="Content\Public\script\laydate\README.md" />
     <None Include="Properties\PublishProfiles\m.pubxml" />
     <Content Include="Views\Login\signLogin.cshtml" />
+    <Content Include="Views\Order\CheckOrderInfo.cshtml" />
+    <Content Include="Views\Order\QueryOrderInfo.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -16,7 +16,7 @@ namespace SAS
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "AddHotel", action = "Create", id = UrlParameter.Optional }
+                defaults: new { controller = "Login", action = "MyLogin", id = UrlParameter.Optional }
             );
         }
     }

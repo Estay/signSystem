@@ -20,6 +20,7 @@ namespace SAS.Controllers
 
         public ActionResult Index()
         {
+            Session["userName"] =null;
             //return View(db.hotel.ToList());
             return null;
         }

@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using SAS.Models;
 using SAS.DBC;
 
@@ -19,21 +20,14 @@ namespace SAS.Controllers
 
         public ActionResult myLogin()
         {
+            Session["userName"] = "121";
             return View("signLogin");
         }
 
         //
         // GET: /Login/Details/5
 
-        public ActionResult Details(string id = null)
-        {
-            Merchant_info merchant_info = db.Merchant_info.Find(id);
-            if (merchant_info == null)
-            {
-                return HttpNotFound();
-            }
-            return View(merchant_info);
-        }
+
 
         //
         // GET: /Login/Create
@@ -46,17 +40,24 @@ namespace SAS.Controllers
         //
         // POST: /Login/Create
 
+        /// <summary>
+        /// 登入
+        /// </summary>
+        /// <param name="merchant_info"></param>
+        /// <returns></returns>
         [HttpPost]
-        public ActionResult Create(Merchant_info merchant_info)
+        public ActionResult LogSubmit(Merchant_info merchant_info)
         {
-            if (ModelState.IsValid)
+            
+            using(db=new HotelDBContent())
             {
-                db.Merchant_info.Add(merchant_info);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if((from m in db.Merchant_infos where m.tel == merchant_info.tel || m.name == merchant_info.name select m.password).SingleOrDefault() == merchant_info.password)
+                    RedirectToAction("AddHotel/create");                   
+                else
+                   ViewBag.LoginInfo = "用户名或者密码错误";
 
-            return View(merchant_info);
+            }
+            return View("signLogin");;
         }
 
         //
@@ -64,7 +65,7 @@ namespace SAS.Controllers
 
         public ActionResult Edit(string id = null)
         {
-            Merchant_info merchant_info = db.Merchant_info.Find(id);
+            Merchant_info merchant_info = db.Merchant_infos.Find(id);
             if (merchant_info == null)
             {
                 return HttpNotFound();
@@ -90,27 +91,12 @@ namespace SAS.Controllers
         //
         // GET: /Login/Delete/5
 
-        public ActionResult Delete(string id = null)
-        {
-            Merchant_info merchant_info = db.Merchant_info.Find(id);
-            if (merchant_info == null)
-            {
-                return HttpNotFound();
-            }
-            return View(merchant_info);
-        }
+
 
         //
         // POST: /Login/Delete/5
 
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(string id)
-        {
-            Merchant_info merchant_info = db.Merchant_info.Find(id);
-            db.Merchant_info.Remove(merchant_info);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+     
 
         protected override void Dispose(bool disposing)
         {

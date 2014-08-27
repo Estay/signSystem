@@ -37,6 +37,8 @@ namespace SAS.DBC
         public DbSet<Source_type_info> sourceTypes { get; set; }
         public DbSet<RoomStatus_batch> publicStatuses { get; set; }
 
-        public DbSet<Merchant_info> Merchant_info { get; set; }
+        public DbSet<Merchant_info> Merchant_infos { get; set; }
+        public DbSet<Merchant_security_info> MerchantSecutirys { get; set; }
+       
     }
 }
