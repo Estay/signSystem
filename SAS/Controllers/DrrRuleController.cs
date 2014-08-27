@@ -206,7 +206,7 @@ namespace SAS.Controllers
             int drrId; int.TryParse(id, out drrId);
             using (db = new HotelDBContent())
             {
-                if ((from h in db.drrs where h.DrrName == text && h.id == drrId select h).Count() > 0)
+                if ((from h in db.drrs where h.DrrName == text && h.hotel_id == drrId select h).Count() > 0)
                     return 0;
                 else
                     return 1;

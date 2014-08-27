@@ -11,7 +11,7 @@ using SAS.Models;
 
 namespace SAS.Controllers
 {
-    public class MyApartMentController : Controller
+    public class MyApartMentController : BaseController
     {
         private HotelDBContent db = new HotelDBContent();
      
