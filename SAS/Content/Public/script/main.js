@@ -1,4 +1,4 @@
-/*2014年8月27日13:45:52*/
+/*2014年8月27日13:58:44*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -878,7 +878,7 @@
                 }
             }).done(function(data) {
                 if (data == 0) {
-                    error_callback("此公寓已存在", el);
+                    error_callback("此促销价格的名称已存在", el);
                 } else {
                     success_callback(el);
                 }

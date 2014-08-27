@@ -772,7 +772,7 @@
 			})
 			.done(function(data) {
 				if(data==0){
-					error_callback("此公寓已存在",el);
+					error_callback("此促销价格的名称已存在",el);
 				}else{
 					success_callback(el);
 				}
