@@ -1,7 +1,28 @@
 ﻿@model SAS.Models.TempAdvise
 
 @{
-    ViewBag.Title = "MyAdivise";
+    ViewBag.Title = "投诉建议";
+    ViewBag.MyAdivise = "set";
 }
+<div id="content" class="box_a m_t32">
 
-<h2>MyAdivise</h2>
+	<p class="input_line">
+		<label>
+			<span class="label">联系方式</span>
+			<input type="text" name="xxxx">
+		</label>
+	</p>
+	<div class="clear">
+		<div class="float_l">
+			<span class="label">建议与投诉内容</span>
+		</div>
+		<div class="float_l">
+			<textarea name="xxxx" cols="100" rows="10"></textarea>
+		</div>
+	</div>
+	<p class="t_ac m_t20">
+		<a href="" class="btn_b">确定</a>
+	</p>
+
+</div>
+

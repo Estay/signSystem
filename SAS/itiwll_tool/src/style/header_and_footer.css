@@ -23,6 +23,11 @@
 }
 .warp{
 	background: #003897;
+	color: #FFF;
+	line-height: 50px;
+}
+.warp a {
+	color: #FFF;
 }
 .warp h1 {
   color: #FFF;
