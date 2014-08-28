@@ -35,7 +35,7 @@ namespace SAS.Controllers
             string code = StringHelper.CreateValidateCode(5);
 
             byte[] bytes = StringHelper.CreateValidateGraphic(code);
-            Session[code] = code;
+            Session["code"] = code;
             ViewBag.image = File(bytes, @"image/jpeg");
             return File(bytes, @"image/jpeg");
         }
