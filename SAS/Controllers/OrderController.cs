@@ -16,18 +16,20 @@ namespace SAS.Controllers
 
         //
         // GET: /Order/
-
+        Order_info order =null;
         public ActionResult MyOrder()
         {
-            Order_info order = new Order_info();
-            order.OrderList = order.getOrderInfos();
+            order = new Order_info();
+            order.OrderList = order.getOrderInfos(Order_info.orderStatus.newOrder);
             return View(order);
         }
 
 
         public ActionResult CheckOrder()
         {
-            return View("CheckOrderinfo");
+            order = new Order_info();
+            order.OrderList = order.getOrderInfos(Order_info.orderStatus.confirmed);
+            return View("CheckOrderinfo", order);
         }
         public ActionResult QueryOrder()
         {

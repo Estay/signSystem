@@ -29,18 +29,29 @@
 
 			<!-- 订单数据 -->
 			<tr>
-				<td><span class="danbao_ico">担保</span></td>
-				<td>123456789123</td>
-				<td>公寓名称公寓名称公寓名称公寓名称</td>
-				<td>房型名称</td>
-				<td>入住人name</td>
-				<td>13584562554</td>
-				<td>000-00-00</td>
-				<td>000-00-00</td>
-				<td>￥0000.00</td>
+                @foreach (var o in Model.OrderList)
+                {
+                   	<tr>
+				<td>@if(o.o_guaranteePrice>0)
+                    {
+                       <span class="danbao_ico">担保</span>
+                    }
+				</td>
+				<td>@o.o_SerialId</td>
+				<td>@o.hotel_name</td>
+				<td>@o.room_name</td>
+				<td>@o.o_other_guest_info</td>
+				<td>@o.o_user_phone</td>
+				<td>@o.o_check_in_date.ToShortDateString()</td>
+				<td>@o.o_check_out_date.ToShortDateString()</td>
+				<td>@o.o_total_price</td>
 				<td>未确认</td>
+				
 				<td><a href="" class="operation_order">操作</a></td>
 			</tr>
+             }
+			
+		
 		</tbody>
 	</table>
 </div>
@@ -70,9 +81,9 @@
 
 		<!-- 满房/变价/其它 -->
 		<p class="input_line m_l0">
-			<label><input class="rejection_radio" type="radio" name="xxxxx">满房</label>
-			<label><input class="rejection_radio" type="radio" name="xxxxx">变价</label>
-			<label><input class="rejection_radio" type="radio" name="xxxxx">其它</label>
+			<label><input class="rejection_radio" type="radio" name="xxxxx" value="">满房</label>
+			<label><input class="rejection_radio" type="radio" name="xxxxx" value="">变价</label>
+			<label><input class="rejection_radio" type="radio" name="xxxxx" value="">其它</label>
 		</p>
 		<!-- 其它有因 -->
 		<textarea class="rejection_text hide" name="xxxxx" placeholder="请说明原因"></textarea>

@@ -464,21 +464,27 @@ namespace SAS.Models
             get { return orderList; }
             set { orderList = value; }
         }
-
-
-        public List<Order_info> getOrderInfos()
+     
+        public enum orderStatus
         {
+           newOrder=1, //新单
+           confirmed=2   //已确认 
             
+        }
+        public List<Order_info> getOrderInfos(orderStatus state)
+        {
+           
+            int orderState = (int)state;;
+            List<Order_info> list=new List<Order_info>();
             try
             {
                 using (DBC.HotelDBContent db = new DBC.HotelDBContent())
                 {
                     string uId=help.HotelInfoHelp.getUId();
                     int[] rf = (from h in db.hotel where h.u_id == uId select h.hotel_id).ToArray();
-                    int h_id= rf[0];
-                    var f = from o in db.orders where o.hotel_id == h_id && o.o_state_id == 1 select o;
-                    var rfr = (from o in db.orders where rf.Contains(o.hotel_id) && o.o_state_id==1  select o).ToList();
-                    return rfr;
+                   
+                        list = (from o in db.orders where rf.Contains(o.hotel_id) && o.o_state_id == orderState select o).ToList();
+                    
                 }
                 // uId = "test1";
 
@@ -490,7 +496,36 @@ namespace SAS.Models
 
                 throw e;
             }
+            return list;
            
+        }
+        public List<Order_info> getOrderInfos(string start,string end, Order_info order)
+        {
+            int orderState = 0; DateTime s, e; DateTime.TryParse(start, out s); DateTime.TryParse(end, out e);
+            List<Order_info> list = new List<Order_info>();
+           // int.TryParse(state.ToString(), out orderState);
+            try
+            {
+                using (DBC.HotelDBContent db = new DBC.HotelDBContent())
+                {
+                    string uId = help.HotelInfoHelp.getUId();
+                    int[] rf = (from h in db.hotel where h.u_id == uId select h.hotel_id).ToArray();
+
+                    list = (from o in db.orders where rf.Contains(o.hotel_id) && o.o_ctime >= s && o.o_ctime<=e select o).ToList();
+
+                }
+                // uId = "test1";
+
+                // var f = from h in db.drrs where rf.Contains(h.hotel_id) select h;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            return list;
+
         }
     }
 
