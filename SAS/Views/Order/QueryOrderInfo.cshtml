@@ -1,7 +1,46 @@
 ﻿@model SAS.Models.Order_info
 
 @{
-    ViewBag.Title = "QueryOrderInfo";
+    ViewBag.Title = "订单查询";
+    ViewBag.my_oder = "set";
 }
 
-<h2>QueryOrderInfo</h2>
+<div id="flag_box">
+	<a href="/Order/MyOrder" class="btn_c ">未确认订单</a>
+	<a href="/Order/CheckOrder" class="btn_c">待审核订单</a>
+	<a href="/Order/QueryOrder" class="btn_c set">订单查询</a>
+</div>
+<div class="box_a">
+	<table cellspacing="0">
+		<tbody>
+			<tr>
+				<th>&nbsp;</th>
+				<th>订单号</th>
+				<th>公寓名称</th>
+				<th>房型</th>
+				<th>入住人</th>
+				<th>电话号码</th>
+				<th>入住日期</th>
+				<th>离店日期</th>
+				<th>总价</th>
+				<th>状态</th>
+				<th>操作</th>
+			</tr>
+
+			<!-- 订单数据 -->
+			<tr>
+				<td><span class="danbao_ico">担保</span></td>
+				<td>123456789123</td>
+				<td>公寓名称公寓名称公寓名称公寓名称</td>
+				<td>房型名称</td>
+				<td>入住人name</td>
+				<td>13584562554</td>
+				<td>000-00-00</td>
+				<td>000-00-00</td>
+				<td>￥0000.00</td>
+				<td>未确认</td>
+				<td><a href="" class="operation_order">操作</a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
