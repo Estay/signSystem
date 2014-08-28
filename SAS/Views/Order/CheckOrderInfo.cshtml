@@ -59,7 +59,8 @@
 <div class="set_box hide">
 
 <!-- 表单 -->
-<form class="my_form">
+@using(Html.BeginForm("orderSubmit","order",FormMethod.Post))
+{
 	<!-- 订单ID -->
 	<input type="text" class="order_id hide" name="xxxxx" >
 
@@ -82,5 +83,5 @@
 		<a href="" class="btn_b modify_order_status_btn">确定</a>
 		<a href="" class="close_win btn_b">取消</a>
 	</p>
-</form>
+}
 </div>

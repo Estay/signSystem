@@ -51,16 +51,14 @@ namespace SAS.Controllers
 
             try
             {
-                if(order_info.o_state_id==1){
-                     EstayMobileService.MobileContractClient _client = new MobileContractClient();
-                    _client.ClientCredentials.UserName.UserName = help.StringHelper.appSettings("WCFUserName");
-                    _client.ClientCredentials.UserName.Password = help.StringHelper.appSettings("WCFPassWord");
-                    order_info .room_id= _client.confirmOrderStatus(order_info.order_id).ResultCode == SAS.EstayMobileService.EnumResultCode.Success ? 1 : 0;
-                }
+                EstayMobileService.MobileContractClient _client = new MobileContractClient();
+                _client.ClientCredentials.UserName.UserName = help.StringHelper.appSettings("WCFUserName");
+                _client.ClientCredentials.UserName.Password = help.StringHelper.appSettings("WCFPassWord");
+                if (order_info.o_state_id == 1)
+                    order_info.room_id = _client.confirmOrderStatus(order_info.order_id).ResultCode == SAS.EstayMobileService.EnumResultCode.Success ? 1 : 0;
                 else
-                {
-                     
-                }
+                    order_info.room_id = _client.ChangeOrderState(new OrderAndStateChangeParamsDTO() { OrderID = order_info.order_id, NewOrderStateInfoID = order_info.o_state_id }).ResultCode == SAS.EstayMobileService.EnumResultCode.Success ? 1 : 0;
+
             }
             catch (Exception ex)
             {
@@ -81,6 +79,39 @@ namespace SAS.Controllers
            return View("MyOrder", getOrder());
         }
 
+        [HttpPost]
+        public ActionResult orderCheckSubmit(Order_info order_info)
+        {
+
+            try
+            {
+                EstayMobileService.MobileContractClient _client = new MobileContractClient();
+                _client.ClientCredentials.UserName.UserName = help.StringHelper.appSettings("WCFUserName");
+                _client.ClientCredentials.UserName.Password = help.StringHelper.appSettings("WCFPassWord");
+                if (order_info.o_state_id == 1)
+                    order_info.room_id = _client.confirmOrderStatus(order_info.order_id).ResultCode == SAS.EstayMobileService.EnumResultCode.Success ? 1 : 0;
+                else
+                    order_info.room_id = _client.ChangeOrderState(new OrderAndStateChangeParamsDTO() { OrderID = order_info.order_id, NewOrderStateInfoID = order_info.o_state_id }).ResultCode == SAS.EstayMobileService.EnumResultCode.Success ? 1 : 0;
+
+            }
+            catch (Exception ex)
+            {
+                //ViewBag.sign =
+                help.DBhelp.log("确认订单失败" + ex.ToString()); order_info.room_id = 0;
+            }
+            ViewBag.sing = order_info.room_id;
+
+            //else 
+            //    ViewBag.sign=0;
+            //if (ModelState.IsValid)
+            //{
+            //    db.hotel.Add(order_info);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
+
+            return View("MyOrder", getOrder());
+        }
         //
         // GET: /Order/Edit/5
 
