@@ -1,7 +1,79 @@
 ﻿@model SAS.Models.Order_info
 
 @{
-    ViewBag.Title = "CheckOrderInfo";
+    ViewBag.Title = "待审核订单";
+    ViewBag.my_oder = "set";
 }
 
-<h2>CheckOrderInfo</h2>
+<div id="flag_box">
+	<a href="/Order/MyOrder" class="btn_c ">未确认订单</a>
+	<a href="/Order/CheckOrder" class="btn_c set">待审核订单</a>
+	<a href="/Order/MyOrder" class="btn_c">订单查询</a>
+</div>
+<div class="box_a">
+	<table cellspacing="0">
+		<tbody>
+			<tr>
+				<th>&nbsp;</th>
+				<th>订单号</th>
+				<th>公寓名称</th>
+				<th>房型</th>
+				<th>入住人</th>
+				<th>电话号码</th>
+				<th>入住日期</th>
+				<th>离店日期</th>
+				<th>总价</th>
+				<th>状态</th>
+				<th>备注</th>
+				<th>操作</th>
+			</tr>
+
+			<!-- 订单数据 -->
+			<tr>
+				<td><span class="danbao_ico">担保</span></td>
+				<td>123456789123</td>
+				<td>公寓名称公寓名称公寓名称公寓名称</td>
+				<td>房型名称</td>
+				<td>入住人name</td>
+				<td>13584562554</td>
+				<td>000-00-00</td>
+				<td>000-00-00</td>
+				<td>￥0000.00</td>
+				<td>未确认</td>
+				<td>厅基苛械阿斯顿阿斯顿阿斯顿</td>
+				<td><a href="" class="operation_order">审核</a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+
+<!-- 弹窗 -->
+<div class="set_box hide">
+
+<!-- 表单 -->
+<form class="my_form">
+	<!-- 订单ID -->
+	<input type="text" class="hide" name="xxxxx" >
+
+	<!-- 状态 -->
+	<p class="input_line">
+		<label class="status_order"><input name="xxxxx" type="radio" value="xxxxxx"><span>已入住</span></label>&nbsp;&nbsp;&nbsp;&nbsp;
+		<label class="status_order"><input name="xxxxx" type="radio" value="xxxxxx"><span>未入住</span></label><br>
+		<label class="status_order"><input name="xxxxx" type="radio" value="xxxxxx"><span>已退房</span></label>&nbsp;&nbsp;&nbsp;&nbsp;
+		<label class="status_order"><input name="xxxxx" type="radio" value="xxxxxx"><span>未退房</span></label>
+	</p>
+
+	<!-- 房号 -->
+	<p class="input_line">
+		<input type="text" class="w50" name="xxxxx" placeholder="房号">
+	</p>
+	<br>
+	<!-- 备注 -->
+	<textarea name="xxxxx" placeholder="备注"></textarea>
+	<p class="t_ac m_t20">
+		<a href="" class="btn_b modify_order_status_btn">确定</a>
+		<a href="" class="close_win btn_b">取消</a>
+	</p>
+</form>
+</div>

@@ -1,4 +1,4 @@
-/*2014年8月27日15:31:27*/
+/*2014年8月28日10:02:01*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -379,7 +379,14 @@
         space: "",
         need: true,
         space_callback: function(need_text, el) {
-            el.hide().next().show();
+            el.hide().next().show().e_window({
+                top: 5,
+                width: "auto",
+                html: "<div class='red_tip_box'>" + need_text + "</div>"
+            });
+        },
+        success_callback: function(el) {
+            el.next().e_window_kill();
         }
     });
     $("#login_code_input").e_input_tip({
@@ -1071,6 +1078,7 @@
         event.preventDefault();
         var form = $(this).parents("form"), data = form.serialize();
         console.log(data);
+        form.submit();
     });
     $("body").on("click", ".confirmation_order", function(event) {
         var el = $(this), box = el.parents(".set_box"), rejection_box = box.find(".rejection_box");

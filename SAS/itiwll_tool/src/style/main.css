@@ -37,6 +37,10 @@
 #login_btn {
 	vertical-align: middle;
 }
+#valiCode {
+	height: 33px;
+	vertical-align: middle;
+}
 /*导航*/
 #nav_box {
 	margin-top: 32px;
@@ -395,11 +399,15 @@
 .confirmation_order {
 	font-size: 16px;
 }
-input[name="confirmation_order"]:checked + span {
+input[type="radio"]:checked + span {
 	color: #003C91;
 	font-weight: bold;
 }
 .rejection_box {
 	background-color: #EEE;
 	padding: 5px;
+}
+
+.status_order {
+	font-size: 16px;
 }

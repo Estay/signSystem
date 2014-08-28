@@ -6,7 +6,6 @@
     
 }
 
-@ViewBag.LoginInf
 @using (Html.BeginForm("LoginSubmit", "Login", FormMethod.Post))
 {
 
@@ -25,5 +24,6 @@
 			<a href=""><img id="valiCode" style="cursor: pointer;" src="/Login/builImage/" alt="验证码" />  </a>
 			<a href="" id="login_btn" class="btn_a">登录</a>
 		</p>
+		<p class="t_ac m_t20 col_red">@ViewBag.LoginInfo</p>
 	</div>
 }

@@ -1,14 +1,14 @@
 ﻿@model SAS.Models.Order_info
 
 @{
-    ViewBag.Title = "order";
+    ViewBag.Title = "未确认订单";
     ViewBag.my_oder = "set";
 }
 
 <div id="flag_box">
-	<span href="" class="btn_c set">未确认订单</span>
-	<span href="" class="btn_c">待审核订单</span>
-	<span href="" class="btn_c">订单查询</span>
+	<a href="/Order/MyOrder" class="btn_c set">未确认订单</a>
+	<a href="/Order/CheckOrder" class="btn_c">待审核订单</a>
+	<a href="/Order/MyOrder" class="btn_c">订单查询</a>
 </div>
 <div class="box_a">
 	<table cellspacing="0">
@@ -45,17 +45,37 @@
 	</table>
 </div>
 
+
+
+<!-- 弹窗 -->
 <div class="set_box">
+
+<!-- 表单 -->
 <form class="my_form">
-	<p class="input_line"><label class="confirmation_order"><input type="radio" name="confirmation_order" value="1" checked><span>确认订单</span></label></p>
-	<p class="input_line"><label class="confirmation_order"><input type="radio" name="confirmation_order" value="2"><span>拒绝订单</span></label></p>
+	<!-- 订单ID -->
+	<input type="text" class="hide" name="xxxxx" >
+
+	<!-- 确认订单/拒绝订单 -->
+	<p class="input_line">
+		<label class="confirmation_order">
+		<input type="radio" name="xxxxx" value="1" checked>
+		<span>确认订单</span></label></p>
+	<p class="input_line">
+		<label class="confirmation_order">
+		<input type="radio" name="xxxxx" value="2">
+		<span>拒绝订单</span>
+		</label>
+	</p>
 	<div class="rejection_box hide">
+
+		<!-- 满房/变价/其它 -->
 		<p class="input_line m_l0">
-			<label><input class="rejection_radio" type="radio" name="rejection">满房</label>
-			<label><input class="rejection_radio" type="radio" name="rejection">变价</label>
-			<label><input class="rejection_radio" type="radio" name="rejection">其它</label>
+			<label><input class="rejection_radio" type="radio" name="xxxxx">满房</label>
+			<label><input class="rejection_radio" type="radio" name="xxxxx">变价</label>
+			<label><input class="rejection_radio" type="radio" name="xxxxx">其它</label>
 		</p>
-		<textarea class="rejection_text hide" name="rejection_text" placeholder="请说明原因"></textarea>
+		<!-- 其它有因 -->
+		<textarea class="rejection_text hide" name="xxxxx" placeholder="请说明原因"></textarea>
 
 	</div>
 	<p class="t_ac m_t20">

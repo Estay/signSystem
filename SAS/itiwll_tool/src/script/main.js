@@ -46,8 +46,16 @@
 		space : "",
 		need : true,
 		space_callback : function(need_text,el) {
-			el.hide().next().show();	
-		}
+			el.hide().next().show()
+			.e_window({
+					top: 5,
+					width: "auto",
+					html: "<div class='red_tip_box'>"+need_text+"</div>"
+				});
+		},
+		success_callback : function(el) {
+				el.next().e_window_kill();
+			},
 	});
 	$("#login_code_input").e_input_tip({
 		space : "验证码",
@@ -1022,12 +1030,13 @@
 	    });
 	})();
 
-	// 确认按钮
+	// 确定按钮
 	$("body").on('click', '.modify_order_status_btn', function(event) {
 		event.preventDefault();
 		var form = $(this).parents("form"),
 			data = form.serialize();
 		console.log(data);
+		form.submit();
 	});
 
     // 弹窗的交互
