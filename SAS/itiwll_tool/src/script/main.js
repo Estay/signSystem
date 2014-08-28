@@ -1010,6 +1010,7 @@
 	    	var el = $(this),
 	    		html = $(".set_box").clone(false, false).removeClass('hide');
 
+	    	html.find('.order_id').val(el.attr('order_id'));
 
 	    	el_ing = el.e_window({
 				position_mod: "relative", //位置模式 居中：center 相对元素 ：relative  相对窗口：absolute

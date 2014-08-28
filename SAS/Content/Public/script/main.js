@@ -1,4 +1,4 @@
-/*2014年8月28日10:02:01*/
+/*2014年8月28日14:51:36*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -1057,6 +1057,7 @@
                 el_ing.e_window_kill();
             }
             var el = $(this), html = $(".set_box").clone(false, false).removeClass("hide");
+            html.find(".order_id").val(el.attr("order_id"));
             el_ing = el.e_window({
                 position_mod: "relative",
                 relative_mod: "bottom",

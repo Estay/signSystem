@@ -47,7 +47,7 @@
 				<td>@o.o_total_price</td>
 				<td>未确认</td>
 				
-				<td><a href="" class="operation_order">操作</a></td>
+				<td><a href="" class="operation_order" order_id="@o.order_id" >操作</a></td>
 			</tr>
              }
 			
@@ -64,7 +64,7 @@
 <!-- 表单 -->
 <form class="my_form">
 	<!-- 订单ID -->
-	<input type="text" class="hide" name="xxxxx" >
+	<input class="order_id hide" type="text" name="xxxxx" >
 
 	<!-- 确认订单/拒绝订单 -->
 	<p class="input_line">
