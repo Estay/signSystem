@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.BaseDTO" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.BaseDTO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://www.estay.cn:7085/MyMobileServer.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/MobileInter.ThirdInterface.Service" />
+  <xs:complexType name="GuaranteeRuleChangeRule">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/MobileInter.ThirdInterface.Service" minOccurs="0" name="GuaranteeRuleType" type="q1:EnumGuaranteeChangeRule" />
+      <xs:element minOccurs="0" name="NeedCheckin24hour_hours" type="xs:int" />
+      <xs:element minOccurs="0" name="NeedCheckinTime_hours" type="xs:int" />
+      <xs:element minOccurs="0" name="NeedSomeDay_day" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="NeedSomeDay_time" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GuaranteeRuleChangeRule" nillable="true" type="tns:GuaranteeRuleChangeRule" />
+</xs:schema>

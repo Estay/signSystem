@@ -7,13 +7,14 @@ using System.Web;
 using System.Web.Mvc;
 using SAS.DBC;
 using SAS.Models;
+using SAS.EstayMobileService;
 
 namespace SAS.Controllers
 {
     public class OrderController : Controller
     {
         private HotelDBContent db = new HotelDBContent();
-
+       
         //
         // GET: /Order/
         Order_info order =null;
@@ -42,6 +43,17 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult Create(Order_info order_info)
         {
+           
+          
+          EstayMobileService.MobileContractClient _client = new MobileContractClient();
+          _client.ClientCredentials.UserName.UserName = help.StringHelper.appSettings("WCFUserName");
+          _client.ClientCredentials.UserName.Password = help.StringHelper.appSettings("WCFPassWord");
+
+           var orderState= _client.confirmOrderStatus(order_info.order_id);
+            if(orderState.msg=="")
+            ViewBag.sign=1;
+            else 
+                ViewBag.sign=0;
             //if (ModelState.IsValid)
             //{
             //    db.hotel.Add(order_info);

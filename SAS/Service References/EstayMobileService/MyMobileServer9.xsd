@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.UserDTO" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.UserDTO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://www.estay.cn:7085/MyMobileServer.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" />
+  <xs:complexType name="UserInfoSearchParamsDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CardNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mobile" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="balance" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="createTimeBegin" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="createTimeEnd" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="integral" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserInfoSearchParamsDTO" nillable="true" type="tns:UserInfoSearchParamsDTO" />
+  <xs:complexType name="ArrayOfUserInfoDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserInfoDTO" nillable="true" type="tns:UserInfoDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserInfoDTO" nillable="true" type="tns:ArrayOfUserInfoDTO" />
+  <xs:complexType name="UserInfoDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Balance" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Birthday" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Integral" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Job" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastLoginIP" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastLoginTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LiveCity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LoginTimes" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MonthIncome" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Pwd" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sex" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="SourceFrom" type="q1:EnumUserSourceFrom" />
+      <xs:element minOccurs="0" name="UserEmail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserLevelID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserTel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="anyhome_CardNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="anyhome_UserCardID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="userLevelName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserInfoDTO" nillable="true" type="tns:UserInfoDTO" />
+  <xs:complexType name="loginUserParamsDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LoginUserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ppass" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="UserSourceFrom" type="q2:EnumUserSourceFrom" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="loginUserParamsDTO" nillable="true" type="tns:loginUserParamsDTO" />
+  <xs:complexType name="UserVerifyDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CheckMailTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CheckPassedHandphone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CheckPassedMail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CheckhandphoneTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Is_checkHandphone" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Is_checkMail" nillable="true" type="xs:boolean" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="UserFromID" nillable="true" type="q3:EnumUserSourceFrom" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserVerifyDTO" nillable="true" type="tns:UserVerifyDTO" />
+  <xs:complexType name="UserVerifyParamsDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="UserSourceFrom" nillable="true" type="q4:EnumUserSourceFrom" />
+      <xs:element minOccurs="0" name="is_checkHandphone" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="is_checkMail" nillable="true" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserVerifyParamsDTO" nillable="true" type="tns:UserVerifyParamsDTO" />
+  <xs:complexType name="ArrayOfUserVerifyDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserVerifyDTO" nillable="true" type="tns:UserVerifyDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserVerifyDTO" nillable="true" type="tns:ArrayOfUserVerifyDTO" />
+  <xs:complexType name="CashBackConfigDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CashbackTargetName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OpenFlag" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Ratio" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CashBackConfigDTO" nillable="true" type="tns:CashBackConfigDTO" />
+  <xs:complexType name="IntegralConfigDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ExchangeRate" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ExpireUnit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExpiryValue" type="xs:decimal" />
+      <xs:element minOccurs="0" name="GiveIntegral_OpenFlag" type="xs:boolean" />
+      <xs:element minOccurs="0" name="GiveIntegral_giveIntegralItemName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GiveIntegral_itemScript" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GiveIntegral_number" type="xs:decimal" />
+      <xs:element minOccurs="0" name="StorageRatio_itemScript" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StorageRatio_numberBetween" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StorageRatio_ratio" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IntegralConfigDTO" nillable="true" type="tns:IntegralConfigDTO" />
+  <xs:complexType name="UserIntegralDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ArriveTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CommentID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Consumption" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ECSId" type="xs:int" />
+      <xs:element minOccurs="0" name="Expire" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ExpireDays" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="HourseID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="House_loupan_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="House_no" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Integetal" type="xs:decimal" />
+      <xs:element minOccurs="0" name="IsDelete" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LeaveTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OperatorName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OperatorTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OrderID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Remark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserCardID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserCardNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserEmail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserMobile" nillable="true" type="xs:string" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="UserSourceFrom" type="q5:EnumUserSourceFrom" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserIntegralDTO" nillable="true" type="tns:UserIntegralDTO" />
+  <xs:complexType name="UserLevelDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BetweenIntegral" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IntegralRatio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="addTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="sort" type="xs:int" />
+      <xs:element minOccurs="0" name="userLevelID" type="xs:int" />
+      <xs:element minOccurs="0" name="userLevelName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserLevelDTO" nillable="true" type="tns:UserLevelDTO" />
+  <xs:complexType name="UserBalanceParamsDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Consumption" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDelete" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPay" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="UserSourceFrom" type="q6:EnumUserSourceFrom" />
+      <xs:element minOccurs="0" name="anyhome_CardNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="endDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fromDate" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserBalanceParamsDTO" nillable="true" type="tns:UserBalanceParamsDTO" />
+  <xs:complexType name="ArrayOfUserBalanceDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserBalanceDTO" nillable="true" type="tns:UserBalanceDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserBalanceDTO" nillable="true" type="tns:ArrayOfUserBalanceDTO" />
+  <xs:complexType name="UserBalanceDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountType" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ArriveTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Balance" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CommentID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Consumption" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ECSId" type="xs:int" />
+      <xs:element minOccurs="0" name="HourseID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="House_loupan_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="House_no" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsDelete" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPay" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LeaveTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OperatorName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OperatorTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OrderID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PayGuid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Remark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserCardID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserCardNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserEmail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserMobile" nillable="true" type="xs:string" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="UserSourceFrom" type="q7:EnumUserSourceFrom" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserBalanceDTO" nillable="true" type="tns:UserBalanceDTO" />
+  <xs:complexType name="UserBalanceChangeParamsDTO">
+    <xs:sequence>
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="AccountType" type="q8:EnumAccountType" />
+      <xs:element minOccurs="0" name="ChargeNum" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Commentid" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="OrderID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Remark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="UserSourceFrom" type="q9:EnumUserSourceFrom" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserBalanceChangeParamsDTO" nillable="true" type="tns:UserBalanceChangeParamsDTO" />
+  <xs:complexType name="UserBalanceIncomcOutcomeSumDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IncomeSum" type="xs:decimal" />
+      <xs:element minOccurs="0" name="OutcomeSum" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserBalanceIncomcOutcomeSumDTO" nillable="true" type="tns:UserBalanceIncomcOutcomeSumDTO" />
+  <xs:complexType name="UserIntegralSearchParamsDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsDelete" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+      <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="UserSourceFrom" type="q10:EnumUserSourceFrom" />
+      <xs:element minOccurs="0" name="anyhome_CardNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="endDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fromDate" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserIntegralSearchParamsDTO" nillable="true" type="tns:UserIntegralSearchParamsDTO" />
+  <xs:complexType name="ArrayOfUserIntegralDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserIntegralDTO" nillable="true" type="tns:UserIntegralDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserIntegralDTO" nillable="true" type="tns:ArrayOfUserIntegralDTO" />
+  <xs:complexType name="UserIntegralChangeParamsDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Commentid" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ExpireDays" type="xs:int" />
+      <xs:element minOccurs="0" name="ExpireTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IntergralNum" type="xs:decimal" />
+      <xs:element minOccurs="0" name="IsDelete" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="OrderID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Remark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+      <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="UserSourceFrom" type="q11:EnumUserSourceFrom" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserIntegralChangeParamsDTO" nillable="true" type="tns:UserIntegralChangeParamsDTO" />
+  <xs:complexType name="CashBackDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="amountArrives_time" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="cashBack_addTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="cashBack_id" type="xs:int" />
+      <xs:element minOccurs="0" name="cashBack_price" type="xs:decimal" />
+      <xs:element minOccurs="0" name="cashBack_remark" nillable="true" type="xs:string" />
+      <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="cashBack_status" nillable="true" type="q12:EnumCashbackStatus" />
+      <xs:element minOccurs="0" name="isDelete" type="xs:boolean" />
+      <xs:element minOccurs="0" name="orderID" nillable="true" type="xs:string" />
+      <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="userFromDatabase" nillable="true" type="q13:EnumUserSourceFrom" />
+      <xs:element minOccurs="0" name="userID" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CashBackDTO" nillable="true" type="tns:CashBackDTO" />
+  <xs:complexType name="ArrayOfCashBackDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CashBackDTO" nillable="true" type="tns:CashBackDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCashBackDTO" nillable="true" type="tns:ArrayOfCashBackDTO" />
+  <xs:complexType name="UserCashBackSearchParams">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arriveDateBegin" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="arrvieDateEnd" nillable="true" type="xs:dateTime" />
+      <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="cashbackStatus" nillable="true" type="q14:EnumCashbackStatus" />
+      <xs:element minOccurs="0" name="dateBegin" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="dateEnd" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="isDelete" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="orderID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="priceBegin" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="priceEnd" nillable="true" type="xs:decimal" />
+      <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="userDataFrom" nillable="true" type="q15:EnumUserSourceFrom" />
+      <xs:element minOccurs="0" name="userID" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserCashBackSearchParams" nillable="true" type="tns:UserCashBackSearchParams" />
+</xs:schema>

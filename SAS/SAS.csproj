@@ -51,6 +51,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -230,6 +232,11 @@
     <Compile Include="Models\Room_status_info.cs" />
     <Compile Include="Models\Source_type_info.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\EstayMobileService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Public\img\bank.png" />
@@ -268,6 +275,13 @@
     <Content Include="itiwll_tool\src\style\base.css" />
     <Content Include="itiwll_tool\src\style\header_and_footer.css" />
     <Content Include="itiwll_tool\src\style\main.css" />
+    <None Include="Service References\EstayMobileService\MyMobileServer.disco" />
+    <None Include="Service References\EstayMobileService\configuration91.svcinfo" />
+    <None Include="Service References\EstayMobileService\configuration.svcinfo" />
+    <None Include="Service References\EstayMobileService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -293,6 +307,126 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.CashBackConfigResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.CheckExistResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.CompositeType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.EarliestLastestArriveTimeResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.ElongCreateOrderResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.ElongValidateCreditCardResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.ElongValidateOrderResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.EmailSMSTemplateCategoryCollectionResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.EmailSMSTemplateCategoryResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.IntegralConfigResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.LoginResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.OrderGuaranteeRuleResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.OrderInfoCollectionResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.OrderInfoResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.OrderStateCollectionResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.OrderStateResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.ResultBase.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.ReviewableResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.SearchCntResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.SendInfoResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.TemplateCollectionResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.TemplateResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.UserBalanceCollectionResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.UserBalanceIncomcOutcomeSumResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.UserBalanceResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.UserCashBackCollectionResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.UserCashBackResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.UserCurrentBalanceResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.UserCurrentIntegralResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.UserInfoCollectionResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.UserInfoResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.UserIntegralCollectionResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.UserIntegralResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.UserIntegralValueResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.UserLevelResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.UserVerifyCollectionResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.UserVerifyResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.ValidateCodeMappingResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.ValidateTypeCollectionResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.ValidateTypeResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -421,6 +555,52 @@
     <Content Include="Views\Login\signLogin.cshtml" />
     <Content Include="Views\Order\CheckOrderInfo.cshtml" />
     <Content Include="Views\Order\QueryOrderInfo.cshtml" />
+    <None Include="Service References\EstayMobileService\MyMobileServer.wsdl" />
+    <None Include="Service References\EstayMobileService\MyMobileServer.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EstayMobileService\MyMobileServer1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EstayMobileService\MyMobileServer10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EstayMobileService\MyMobileServer11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EstayMobileService\MyMobileServer12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EstayMobileService\MyMobileServer2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EstayMobileService\MyMobileServer3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EstayMobileService\MyMobileServer4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EstayMobileService\MyMobileServer5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EstayMobileService\MyMobileServer6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EstayMobileService\MyMobileServer7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EstayMobileService\MyMobileServer8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EstayMobileService\MyMobileServer9.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\EstayMobileService\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
