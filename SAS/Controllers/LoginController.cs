@@ -26,7 +26,7 @@ namespace SAS.Controllers
             string code = StringHelper.CreateValidateCode(5);
            
             byte[] bytes = StringHelper.CreateValidateGraphic(code);
-            Session["ValidateCode"] = code;
+            Session["code"] = code;
            ViewBag.image= File(bytes, @"image/jpeg");
             return View("signLogin");
         }
@@ -35,7 +35,7 @@ namespace SAS.Controllers
             string code = StringHelper.CreateValidateCode(5);
 
             byte[] bytes = StringHelper.CreateValidateGraphic(code);
-            Session["ValidateCode"] = code;
+            Session[code] = code;
             ViewBag.image = File(bytes, @"image/jpeg");
             return File(bytes, @"image/jpeg");
         }
@@ -66,15 +66,26 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult LoginSubmit(Merchant_info merchant_info)
         {
-            
-            using(db=new HotelDBContent())
+            string code = Session["code"].ToString();
+            if (code == merchant_info.guid)
             {
-                if((from m in db.Merchant_infos where m.tel == merchant_info.tel || m.name == merchant_info.name select m.password).SingleOrDefault() == merchant_info.password)
-                    RedirectToAction("AddHotel/create");                   
-                else
-                   ViewBag.LoginInfo = "用户名或者密码错误";
+                using (db = new HotelDBContent())
+                {
+                    string pass=(from m in db.Merchant_infos where m.tel == merchant_info.tel || m.name == merchant_info.name select m.password).SingleOrDefault();
+                    if (pass == merchant_info.password)
+                    {
+                        Session["userName"] = merchant_info.tel;
+                        Session.Remove("code");
+                        return RedirectToAction("create", "addHotel");
+                    }
+                    else
+                    {
+                        ViewBag.LoginInfo = "用户名或者密码错误";
+                    }
 
-            }
+                }
+            }else
+                ViewBag.LoginInfo = "验证码错误,请输入正确的验证码";
             return View("signLogin");;
         }
 

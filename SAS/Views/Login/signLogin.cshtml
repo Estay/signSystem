@@ -13,15 +13,16 @@
 	<div id="login_box" class="t_ac mainlayout">
 		<h2>欢迎使用一呆公寓管理系统</h2>
 		<p id="#login_input_box" class="m_t30">
-			<input id="login_id_input" type="text" name="">
-			<input id="login_password_input" class="hide" type="password" name="">
+			<input id="login_id_input" class="" type="text" name="@Html.DisplayNameFor(model => model.tel)">
+
+			<input id="login_password_input" class="hide" type="password" name="@Html.DisplayNameFor(model => model.password)">
 	
 			<!-- 密码输入提示 -->
 			<input id="login_password_input_show" class="col_gray" type="text" value="密码">
 			<!-- 密码输入提示 -->
 	
-			<input id="login_code_input" type="text" name="">
-			<span><img id="valiCode" style="cursor: pointer;" src="/Login/builImage/" alt="验证码" />  </span>
+			<input id="login_code_input" type="text" name="@Html.DisplayNameFor(model => model.guid)">
+			<a href=""><img id="valiCode" style="cursor: pointer;" src="/Login/builImage/" alt="验证码" />  </a>
 			<a href="" id="login_btn" class="btn_a">登录</a>
 		</p>
 	</div>
