@@ -10,8 +10,77 @@
 	<a href="/Order/CheckOrder" class="btn_c">待审核订单</a>
 	<a href="/Order/QueryOrder" class="btn_c set">订单查询</a>
 </div>
-<div class="box_a">
-	<table cellspacing="0">
+<div class="box_a" id="query_order">
+	<!-- 表单 -->
+	<form action="">
+		<p class="input_line">
+			<!-- 订单编号 -->
+			<label>
+				<span class="label">订单编号</span>
+				<input class="w100" type="text" name="xxxx" value="xxxx">
+			</label>
+
+			<!-- 入住人姓名 -->
+			<label>
+				<span class="label">入住人姓名</span>
+				<input class="w100" type="text" name="xxxx" value="xxx">
+			</label>
+
+			<!-- 电话 -->
+			<label>
+				<span class="label">电话</span>
+				<input class="w100" type="text" name="xxxx" value="xxx">
+			</label>
+		</p>
+
+		<p class="input_line">
+			<!-- 选择公寓 -->
+			<label>
+				<span class="label">公寓</span>
+				<select name="xxxx">
+					<option value="">选择公寓</option>
+				
+					<!-- 公寓遍历 -->
+					<option value="xxx">公寓名</option>
+				</select>
+			</label>
+
+			<!-- 选择房型 -->
+			<label>
+				<span class="label">房型 </span>
+				<select name="xxxx">
+					<option value="">选择房型 </option>
+				
+					<!-- 房型遍历 -->
+					<option value="xxx">房型 名</option>
+				</select>
+			</label>
+			
+			<!-- 房号 -->
+			<label>
+				<span class="label">房号</span>
+				<input class="w100" type="text" name="xxxx" value="xxx">
+			</label>
+		</p>
+
+		<!-- 订单产生时间 -->
+		<p class="input_line">
+			<span class="label">订单产生时间</span>
+			<input class="date_start_order" type="text" name="xxxx" value="xxxx">
+			到
+			<input class="date_end_order" type="text" name="xxxx" value="xxxx">
+
+			<span class="label">入住日期</span>
+			<input class="date_start w100" type="text" name="xxxx" value="xxxx">
+			<span class="label">离店日期</span>
+			<input class="date_end w100" type="text" name="xxxx" value="xxxx">
+		</p>
+
+		<p class="m_t20 t_ac">
+			<a href="" class="btn_b">查询</a>
+		</p>
+	</form>
+	<table cellspacing="0" class="m_t30">
 		<tbody>
 			<tr>
 				<th>&nbsp;</th>
@@ -44,3 +113,53 @@
 		</tbody>
 	</table>
 </div>
+
+<!-- 日期控件 -->
+<script type="text/javascript" src="@Url.Content("~/Content/public/script/laydate/laydate.dev.js")"></script>
+<script>
+    (function () {
+        var start = {
+            elem: '#query_order .date_start',
+            // min: laydate.now(), //设定最小日期为当前日期
+            istoday: false,
+            choose: function (datas) {
+                end.min = datas; //开始日选好后，重置结束日的最小日期
+                end.start = datas //将结束日的初始值设定为开始日
+            }
+        };
+        var end = {
+            elem: '#query_order .date_end',
+            // min: laydate.now(),
+            istoday: false,
+            choose: function (datas) {
+                start.max = datas; //结束日选好后，充值开始日的最大日期
+            }
+        };
+
+        var start_order = {
+            elem: '#query_order .date_start_order',
+            istoday: false,
+            istime : true,
+            format: 'YYYY-MM-DD hh:mm:ss',
+            choose: function (datas) {
+                end.min = datas; //开始日选好后，重置结束日的最小日期
+                end.start = datas //将结束日的初始值设定为开始日
+            }
+        };
+        var end_order = {
+            elem: '#query_order .date_end_order',
+            istoday: false,
+            istime : true,
+            format: 'YYYY-MM-DD hh:mm:ss',
+            choose: function (datas) {
+                start.max = datas; //结束日选好后，充值开始日的最大日期
+            }
+        };
+
+
+        laydate(start);
+        laydate(end);
+        laydate(start_order);
+        laydate(end_order);
+    })();
+</script>
