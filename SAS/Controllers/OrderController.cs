@@ -39,6 +39,8 @@ namespace SAS.Controllers
         }
         public ActionResult QueryOrder()
         {
+             ViewData["hotels"] = help.HotelInfoHelp.getHotlList("");
+           
             return View("QueryOrderInfo");
         }
        

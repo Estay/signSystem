@@ -22,14 +22,19 @@ namespace SAS.Controllers
         {
           
             int.TryParse(hotelId, out hotel_id);
+            HelperData();
+            ViewBag.HotelId = hotel_id;
+            return View(db.hotel.Single(h=>h.hotel_id==hotel_id));
+        }
+
+        private void HelperData()
+        {
             ViewData["DTime"] = new hotel_info().getDecorationTime();  //Theme
             ViewData["Themes"] = DBhelp.GetSelectDataByTable("hotel_theme_info");  //Theme
             ViewData["Category"] = DBhelp.GetSelectDataByTable("Hotel_theme_type_info"); ;//Category
             ViewData["facilities"] = DBhelp.GetSelectDataByTable("Facilities_info");//facilities
             ViewData["services"] = DBhelp.GetSelectDataByTable("GeneralAmenities_info");//services
             ViewData["provice"] = DBhelp.GetSelectDataByTable("province_info");//provice   
-            ViewBag.HotelId = hotel_id;
-            return View(db.hotel.Single(h=>h.hotel_id==hotel_id));
         }
         [HttpPost]
         public ActionResult Hotel(hotel_info hotel_info)
@@ -44,6 +49,8 @@ namespace SAS.Controllers
                 db.SaveChanges();
               
             }
+            HelperData();
+            ViewBag.HotelId = hotel_info.hotel_id;
             return View(hotel_info);
         }
         //房型

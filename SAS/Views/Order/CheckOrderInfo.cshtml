@@ -46,7 +46,7 @@
 				<td>@o.o_total_price</td>
 				<td>已确认</td>
 				<td>@o.o_remark</td>
-				<td><a href="" class="operation_order">审核</a></td>
+				<td><a href="" class="operation_order"  order_id="@o.order_id">审核</a></td>
 			</tr> 
             }
 	
@@ -67,9 +67,8 @@
 	<!-- 状态 -->
 	<p class="input_line">
 		<label class="status_order"><input name="@Html.DisplayNameFor(model => model.o_state_id)" type="radio" value="3"><span>已入住</span></label>&nbsp;&nbsp;&nbsp;&nbsp;
-		<label class="status_order"><input name="@Html.DisplayNameFor(model => model.o_state_id)" type="radio" value="31"><span>未入住</span></label><br>
+		<label class="status_order"><input name="@Html.DisplayNameFor(model => model.o_state_id)" type="radio" value="31"><span>未到店</span></label><br>
 		<label class="status_order"><input name="@Html.DisplayNameFor(model => model.o_state_id)" type="radio" value="4"><span>已结账</span></label>&nbsp;&nbsp;&nbsp;&nbsp;
-		<label class="status_order"><input name="@Html.DisplayNameFor(model => model.o_state_id)" type="radio" value="32"><span>未退房</span></label>
 	</p>
 
 	<!-- 房号 -->
