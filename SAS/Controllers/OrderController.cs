@@ -20,9 +20,14 @@ namespace SAS.Controllers
         Order_info order =null;
         public ActionResult MyOrder()
         {
+
+            return View(getOrder());
+        }
+        public Order_info getOrder()
+        {
             order = new Order_info();
             order.OrderList = order.getOrderInfos(Order_info.orderStatus.newOrder);
-            return View(order);
+            return order;
         }
 
 
@@ -41,19 +46,31 @@ namespace SAS.Controllers
         // POST: /Order/Create
 
         [HttpPost]
-        public ActionResult Create(Order_info order_info)
+        public ActionResult orderSubmit(Order_info order_info)
         {
-           
-          
-          EstayMobileService.MobileContractClient _client = new MobileContractClient();
-          _client.ClientCredentials.UserName.UserName = help.StringHelper.appSettings("WCFUserName");
-          _client.ClientCredentials.UserName.Password = help.StringHelper.appSettings("WCFPassWord");
 
-           var orderState= _client.confirmOrderStatus(order_info.order_id);
-            if(orderState.msg=="")
-            ViewBag.sign=1;
-            else 
-                ViewBag.sign=0;
+            try
+            {
+                if(order_info.o_state_id==1){
+                     EstayMobileService.MobileContractClient _client = new MobileContractClient();
+                    _client.ClientCredentials.UserName.UserName = help.StringHelper.appSettings("WCFUserName");
+                    _client.ClientCredentials.UserName.Password = help.StringHelper.appSettings("WCFPassWord");
+                    order_info .room_id= _client.confirmOrderStatus(order_info.order_id).ResultCode == SAS.EstayMobileService.EnumResultCode.Success ? 1 : 0;
+                }
+                else
+                {
+                     
+                }
+            }
+            catch (Exception ex)
+            {
+                 //ViewBag.sign =
+                help.DBhelp.log("确认订单失败"+ex.ToString()); order_info.room_id = 0;
+            }
+            ViewBag.sing = order_info.room_id;
+          
+            //else 
+            //    ViewBag.sign=0;
             //if (ModelState.IsValid)
             //{
             //    db.hotel.Add(order_info);
@@ -61,7 +78,7 @@ namespace SAS.Controllers
             //    return RedirectToAction("Index");
             //}
 
-            return View(order_info);
+           return View("MyOrder", getOrder());
         }
 
         //
