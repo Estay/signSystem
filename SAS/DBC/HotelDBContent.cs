@@ -39,6 +39,8 @@ namespace SAS.DBC
 
         public DbSet<Merchant_info> Merchant_infos { get; set; }
         public DbSet<Merchant_security_info> MerchantSecutirys { get; set; }
+
+        public DbSet<TempAdvise> TempAdvises { get; set; }
        
     }
 }
