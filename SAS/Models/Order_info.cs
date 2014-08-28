@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
@@ -28,7 +29,7 @@ namespace SAS.Models
         private string _rp_description;
         private int? _rp_price_id = 0;
         private string _rp_price_description;
-        private int _o_state_id;
+        private int _o_state_id=1;
         private string _o_state_change_log;
         private string _o_title;
         private int _o_number;
@@ -454,7 +455,45 @@ namespace SAS.Models
             get { return _channelid; }
         }
         #endregion Model
+
+        //[NotMapped]
+        private List<Order_info> orderList = new List<Order_info>();
+        [NotMapped]
+        public List<Order_info> OrderList
+        {
+            get { return orderList; }
+            set { orderList = value; }
+        }
+
+
+        public List<Order_info> getOrderInfos()
+        {
+            
+            try
+            {
+                using (DBC.HotelDBContent db = new DBC.HotelDBContent())
+                {
+                    string uId=help.HotelInfoHelp.getUId();
+                    int[] rf = (from h in db.hotel where h.u_id == uId select h.hotel_id).ToArray();
+                    int h_id= rf[0];
+                    var f = from o in db.orders where o.hotel_id == h_id && o.o_state_id == 1 select o;
+                    var rfr = (from o in db.orders where rf.Contains(o.hotel_id) && o.o_state_id==1  select o).ToList();
+                    return rfr;
+                }
+                // uId = "test1";
+
+                // var f = from h in db.drrs where rf.Contains(h.hotel_id) select h;
+                
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+           
+        }
     }
 
+   
  
 }

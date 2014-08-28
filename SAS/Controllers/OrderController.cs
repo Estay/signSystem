@@ -19,24 +19,11 @@ namespace SAS.Controllers
 
         public ActionResult MyOrder()
         {
-            return View();
+            Order_info order = new Order_info();
+            order.OrderList = order.getOrderInfos();
+            return View(order);
         }
 
-        //
-        // GET: /Order/Details/5
-
-        //public ActionResult Details(int id = 0)
-        //{
-        //    Order_info order_info = db.hotel.Find(id);
-        //    if (order_info == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(order_info);
-        //}
-
-        //
-        // GET: /Order/Create
 
         public ActionResult CheckOrder()
         {
