@@ -46,7 +46,11 @@ namespace SAS.Controllers
        
         //
         // POST: /Order/Create
-
+        /// <summary>
+        /// 订单确认提交
+        /// </summary>
+        /// <param name="order_info"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult orderSubmit(Order_info order_info)
         {
@@ -73,7 +77,11 @@ namespace SAS.Controllers
 
            return View("MyOrder", getOrder());
         }
-
+        /// <summary>
+        /// 订单审核提交
+        /// </summary>
+        /// <param name="order_info"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult orderCheckSubmit(Order_info order_info)
         {
@@ -93,14 +101,34 @@ namespace SAS.Controllers
             }
             ViewBag.sign = order_info.room_id;
 
-            //else 
-            //    ViewBag.sign=0;
-            //if (ModelState.IsValid)
-            //{
-            //    db.hotel.Add(order_info);
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
+
+            return View("MyOrder", getOrder());
+        }
+
+        /// <summary>
+        /// 订单查询提交
+        /// </summary>
+        /// <param name="order_info"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult orderQuerySubmit(Order_info order_info)
+        {
+
+            try
+            {
+                EstayMobileService.MobileContractClient _client = new MobileContractClient();
+                _client.ClientCredentials.UserName.UserName = help.StringHelper.appSettings("WCFUserName");
+                _client.ClientCredentials.UserName.Password = help.StringHelper.appSettings("WCFPassWord");
+                order_info.room_id = _client.ChangeOrderState(new OrderAndStateChangeParamsDTO() { OrderID = order_info.order_id, NewOrderStateInfoID = order_info.o_state_id }).ResultCode == SAS.EstayMobileService.EnumResultCode.Success ? 1 : 0;
+
+            }
+            catch (Exception ex)
+            {
+                //ViewBag.sign =
+                help.DBhelp.log("确认订单失败" + ex.ToString()); order_info.room_id = 0;
+            }
+            ViewBag.sign = order_info.room_id;
+
 
             return View("MyOrder", getOrder());
         }
