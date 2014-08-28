@@ -59,17 +59,17 @@
 <div class="set_box hide">
 
 <!-- 表单 -->
-@using(Html.BeginForm("orderSubmit","order",FormMethod.Post))
+@using (Html.BeginForm("orderCheckSubmit", "order", FormMethod.Post))
 {
 	<!-- 订单ID -->
-	<input type="text" class="order_id hide" name="xxxxx" >
+	<input type="text" class="order_id hide"  name="@Html.DisplayNameFor(model => model.order_id)" >
 
 	<!-- 状态 -->
 	<p class="input_line">
-		<label class="status_order"><input name="xxxxx" type="radio" value="xxxxxx"><span>已入住</span></label>&nbsp;&nbsp;&nbsp;&nbsp;
-		<label class="status_order"><input name="xxxxx" type="radio" value="xxxxxx"><span>未入住</span></label><br>
-		<label class="status_order"><input name="xxxxx" type="radio" value="xxxxxx"><span>已退房</span></label>&nbsp;&nbsp;&nbsp;&nbsp;
-		<label class="status_order"><input name="xxxxx" type="radio" value="xxxxxx"><span>未退房</span></label>
+		<label class="status_order"><input name="@Html.DisplayNameFor(model => model.o_state_id)" type="radio" value="xxxxxx"><span>已入住</span></label>&nbsp;&nbsp;&nbsp;&nbsp;
+		<label class="status_order"><input name="@Html.DisplayNameFor(model => model.o_state_id)" type="radio" value="xxxxxx"><span>未入住</span></label><br>
+		<label class="status_order"><input name="@Html.DisplayNameFor(model => model.o_state_id)" type="radio" value="xxxxxx"><span>已退房</span></label>&nbsp;&nbsp;&nbsp;&nbsp;
+		<label class="status_order"><input name="@Html.DisplayNameFor(model => model.o_state_id)" type="radio" value="xxxxxx"><span>未退房</span></label>
 	</p>
 
 	<!-- 房号 -->
@@ -78,7 +78,7 @@
 	</p>
 	<br>
 	<!-- 备注 -->
-	<textarea class="hide" name="xxxxx" placeholder="备注"></textarea>
+	<textarea class="hide"  name="@Html.DisplayNameFor(model => model.o_remark)"  placeholder="备注"></textarea>
 	<p class="t_ac m_t20">
 		<a href="" class="btn_b modify_order_status_btn">确定</a>
 		<a href="" class="close_win btn_b">取消</a>
