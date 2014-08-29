@@ -61,6 +61,7 @@ namespace SAS.Controllers
             int.TryParse(hotelId, out hotel_id);
             getRooms(hotel_id);
             getfacilities();
+            ViewBag.HoltelId = hotel_id;
             return View(new hotel_room_info());
         }
 
