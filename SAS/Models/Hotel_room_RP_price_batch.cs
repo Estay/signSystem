@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Http.ModelBinding;
+using SAS.help;
 
 namespace SAS.Models
 {
@@ -266,16 +267,9 @@ namespace SAS.Models
                     pBacth.Idate = DateTime.Now;
                     pBacth.Hpdate = DateTime.Now;
                     pBacth.AuditDate = DateTime.Now;
-
-
-                    //if (ModelState.IsValid)
-                    //{
                     db.publicPrices.Add(pBacth);
-
-                    if (db.SaveChanges() > 0)
-                        result = true;
-                    else
-                        result = false;
+                    result=db.SaveChanges()>0?true:false;
+                     DBhelp.CallProc(p.room_id, "proc_hotel_room_RP_price_batch_roomid");
 
                 }
 

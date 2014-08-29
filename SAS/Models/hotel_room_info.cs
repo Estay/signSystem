@@ -402,6 +402,7 @@ namespace SAS.Models
                         room.h_r_house_number = hotel_room_info.h_r_house_number;
                         room.h_r_bedroom_number = hotel_room_info.h_r_bedroom_number;
                         room.h_r_acreage = hotel_room_info.h_r_acreage;
+                        room.defaultPrice = hotel_room_info.DefaultPrice;
                         result = db.SaveChanges() > 0 ? true : false; ;
                     }
                 }

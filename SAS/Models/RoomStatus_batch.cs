@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using SAS.help;
 
 namespace SAS.Models
 {
@@ -225,17 +226,12 @@ namespace SAS.Models
                 roomStatus.r_s_utime = DateTime.Now;
                 roomStatus.r_s_ctime = DateTime.Now;
                 string number = (from r in db.rooms where r.room_id == p.room_id select r.h_r_house_number).SingleOrDefault(); int roomNubmer; int.TryParse(number, out roomNubmer);
-                //      roomStatus.
                 roomStatus.r_s_number = roomNubmer;
                 roomStatus.eBeds = roomNubmer;
-                //if (ModelState.IsValid)
-                //{
-
-                    db.publicStatuses.Add(roomStatus);
-                    if (db.SaveChanges() > 0)
-                        result = true;
-                    else
-                        result = false;
+                db.publicStatuses.Add(roomStatus);
+                result = db.SaveChanges() > 0 ? true : false;
+               
+                   DBhelp.CallProc(roomStatus.room_id, "[proc_hotel_room_ebeds_batch_roomid]");
               //}
              }
 
@@ -247,7 +243,7 @@ namespace SAS.Models
             }
             return result;          
         }
-
+        
         public bool insertStatuBatch(RoomStatus_batch roomStatus)
         {
             bool result = false;
@@ -266,19 +262,11 @@ namespace SAS.Models
                 roomStatus.HpStatus = 0;
                 roomStatus.r_s_utime = DateTime.Now;
                 roomStatus.r_s_ctime = DateTime.Now;
-               // string number = (from r in db.rooms where r.room_id == p.room_id select r.h_r_house_number).SingleOrDefault(); int roomNubmer; int.TryParse(number, out roomNubmer);
-                //      roomStatus.
-               // roomStatus.r_s_number = roomNubmer;
-               // roomStatus.eBeds = roomNubmer;
-                //if (ModelState.IsValid)
-                //{
-
-                    db.publicStatuses.Add(roomStatus);
-                    if (db.SaveChanges() > 0)
-                        result = true;
-                    else
-                        result = false;
-              //}
+                db.publicStatuses.Add(roomStatus);
+                result = db.SaveChanges() > 0 ? true : false;
+                if (result)
+                    DBhelp.CallProc(roomStatus.room_id, "[proc_hotel_room_ebeds_batch_roomid]");
+               
              }
 
             }

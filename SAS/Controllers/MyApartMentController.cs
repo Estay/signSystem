@@ -296,11 +296,14 @@ namespace SAS.Controllers
         public ActionResult FilishedRoom(string hotelId)
         {
             int.TryParse(hotelId, out hotel_id); DateTime start = DateTime.Now.Date; DateTime end = DateTime.Now.AddYears(1).Date; bool re = false;
-            foreach (var r in (from h in db.rooms where h.hotel_id==hotel_id && h.DefaultPrice!=0 select h).ToList())
+            var rooms = (from h in db.rooms where h.hotel_id == hotel_id && h.DefaultPrice != 0 select h).ToList();
+            foreach (var r in rooms)
             {
-                hotel_room_RP_price_info p = new hotel_room_RP_price_info() { room_rp_start_time = start, room_rp_end_time = end,room_rp_price=r.DefaultPrice };
+                hotel_room_RP_price_info p = new hotel_room_RP_price_info() { room_rp_start_time = start, room_rp_end_time = end,room_rp_price=r.DefaultPrice,hotel_id=r.hotel_id,room_id=r.room_id};
                 if (new Hotel_room_RP_price_batch().InsertPriceBatch(p) && new RoomStatus_batch().insertStatuBatch(p))
-                    re = true;
+                {
+                    re = true; ; //DBhelp.CallProc(p.room_id, "proc_hotel_room_ebeds_batch_roomid");
+                }
             }
             if (re == true)
                 return RedirectToAction("myHotel", "MyApartMent");
