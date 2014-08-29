@@ -171,23 +171,24 @@ namespace SAS.Controllers
             }
             return View(hotel_info);
         }
+        //删除公寓
         public int delApart(string hotelId)
         {
-            //try
-            //{
-            //    int.TryParse(hotelId, out hotel_id); string u_id = HotelInfoHelp.getUId();
-            //    using (db = new HotelDBContent())
-            //    {
-            //        var f = ((from h in db.hotel where h.hotel_id == hotel_id && h.source_id == 5 && h.u_id == u_id select h).SingleOrDefault()).h_state ;
-                   
-            //       // result = ((from h in db.hotel where h.hotel_id = hotel_id && h.source_id = 5 select h).SingleOrDefault()).h_state=false);
-            //    }
-            //}
-            //catch (Exception)
-            //{
-                
-            //    throw;
-            //}
+            try
+            {
+                int.TryParse(hotelId, out hotel_id); string u_id = HotelInfoHelp.getUId();
+                using (db = new HotelDBContent())
+                {
+                    ((from h in db.hotel where h.hotel_id == hotel_id && h.source_id == 5 && h.u_id == u_id select h).SingleOrDefault()).h_state=false;
+                    result = db.SaveChanges() > 0 ? 1 : 0;
+                    // result = ((from h in db.hotel where h.hotel_id = hotel_id && h.source_id = 5 select h).SingleOrDefault()).h_state=false);
+                }
+            }
+            catch (Exception)
+            {
+                result = 0;
+                throw;
+            }
             return result;
         }
 
