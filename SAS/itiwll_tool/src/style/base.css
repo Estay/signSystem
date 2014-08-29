@@ -79,6 +79,12 @@ td {
 .no_bor {
   border: none;
 }
+.tab_bor_r {
+  border-left: 1px solid #CCC;
+}
+.tab_bor_t {
+  border-top: 1px solid #CCC;
+}
 
 .w50 {
   width: 50px;

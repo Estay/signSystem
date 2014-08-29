@@ -10,11 +10,13 @@
 	<tbody>
 		<tr>
 			<th>公寓名称</th>
+			<th>状态</th>
 			<th>操作</th>
 		</tr>
 		@foreach (var i in Model){
  		<tr>
 			<td>@i.h_name_cn</td>
+			<td>@(i.h_state==false?"审核中":"审核通过")</td>
 			<td>
                 <a href="/MyApartMent/hotel?hotelId=@i.hotel_id">修改基本信息</a>|
                 <a href="/MyApartMent/Room?hotelId=@i.hotel_id">修改房型</a>|
