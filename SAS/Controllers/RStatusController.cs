@@ -100,16 +100,16 @@ namespace SAS.Controllers
         //修改房态
         public int uStatus(string id, string roomId, string startDate, string EndDate, string CanSell, string status)
         {
-            int Id, RoomId,Sell, MyStutus; DateTime _startDate, _EndDate;
-
-            int.TryParse(CanSell, out Sell); int.TryParse(id, out Id); int.TryParse(roomId, out RoomId); DateTime.TryParse(startDate, out _startDate); DateTime.TryParse(EndDate, out _EndDate); int.TryParse(status, out MyStutus);
-
-            string sql = string.Format("update RoomStatus set aviebeds={0},r_s_status={1} where hotel_id={2} and room_id={3} and r_s_time  between '{4}' and '{5}'", Sell, MyStutus, Id, RoomId, _startDate.ToString("yyyy-MM-dd"), _EndDate.ToString("yyyy-MM-dd"));
-            if (DBhelp.ExcuteTableBySQL(sql) > 0)
-                return 1;
-            else
-                return 0;
-            // return View("MyPrix", getData(id, startDate, EndDate));
+            int result = 0;
+            int Id, room_id, count = 0; int Rstatus; int RCanSell; int.TryParse(status, out Rstatus); int.TryParse(CanSell, out RCanSell); int.TryParse(id, out Id); int.TryParse(roomId, out room_id); DateTime.TryParse(startDate, out start); DateTime.TryParse(EndDate, out end);
+            hotel_room_RP_price_info p = new hotel_room_RP_price_info();
+            using (db = new HotelDBContent())
+            {
+                count = (from r in db.rooms where r.hotel_id == Id && r.room_id == room_id select r).Count();
+            }
+            if (count > 0)
+                result = new RoomStatus_batch().insertStatuBatch(new RoomStatus_batch() { hotel_id = Id, room_id = room_id, r_s_time = start, EndDate = end, eBeds = RCanSell }) == true && DBhelp.CallProc(room_id, "proc_hotel_room_RP_price_batch_roomid") == true ? 1 : 0;
+            return result;
         }
         
         //

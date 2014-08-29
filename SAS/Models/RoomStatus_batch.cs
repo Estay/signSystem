@@ -128,7 +128,7 @@ namespace SAS.Models
             get { return _hotelcode; }
         }
         /// <summary>
-        /// 
+        /// 已售数
         /// </summary>
         public int? avieBeds
         {
@@ -136,7 +136,7 @@ namespace SAS.Models
             get { return _aviebeds; }
         }
         /// <summary>
-        /// 
+        /// 总房量
         /// </summary>
         public int? eBeds
         {
@@ -201,7 +201,11 @@ namespace SAS.Models
         }
         #endregion Model
 
-
+        /// <summary>
+        /// 房态首次数据插入
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
         public bool insertStatuBatch(hotel_room_RP_price_info p)
         {
             bool result = false;
@@ -240,7 +244,51 @@ namespace SAS.Models
                 help.DBhelp.log("插入Roombatch" + e.ToString());
                 result = false;
             }
+            return result;          
+        }
+
+        public bool insertStatuBatch(RoomStatus_batch roomStatus)
+        {
+            bool result = false;
+  
+            try
+            {
+              using(DBC.HotelDBContent db=new DBC.HotelDBContent())
+              {
+               
+                //roomStatus.r_s_time = p.room_rp_start_time;
+                //roomStatus.EndDate = p.room_rp_end_time;
+                //roomStatus.room_id = p.room_id;
+                //roomStatus.hotel_id = p.hotel_id;
+                roomStatus.OverBooking = true;
+                roomStatus.HpStatus = 0;
+                roomStatus.r_s_utime = DateTime.Now;
+                roomStatus.r_s_ctime = DateTime.Now;
+               // string number = (from r in db.rooms where r.room_id == p.room_id select r.h_r_house_number).SingleOrDefault(); int roomNubmer; int.TryParse(number, out roomNubmer);
+                //      roomStatus.
+               // roomStatus.r_s_number = roomNubmer;
+               // roomStatus.eBeds = roomNubmer;
+                //if (ModelState.IsValid)
+                //{
+
+                    db.publicStatuses.Add(roomStatus);
+                    if (db.SaveChanges() > 0)
+                        result = true;
+                    else
+                        result = false;
+              //}
+             }
+
+            }
+            catch (Exception e)
+            {
+                help.DBhelp.log("插入Roombatch" + e.ToString());
+                result = false;
+            }
             return result;
         }
+    
+
     }
+    
 }

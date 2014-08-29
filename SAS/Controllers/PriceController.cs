@@ -91,19 +91,8 @@ namespace SAS.Controllers
                 count = (from r in db.rooms where r.hotel_id == Id && r.room_id == room_id select r).Count();
             }
             if (count > 0)
-            {
-                //if (new Hotel_room_RP_price_batch().InsertPriceBatch(new hotel_room_RP_price_info() { hotel_id = Id, room_id = room_id, room_rp_start_time = start, room_rp_end_time = end, room_rp_price = price }) && DBhelp.CallProc(room_id, "proc_hotel_room_RP_price_batch_roomid"))
-                //{
-                //    result = 1;
-                //}
-                result = new Hotel_room_RP_price_batch().InsertPriceBatch(new hotel_room_RP_price_info() { hotel_id = Id, room_id = room_id, room_rp_start_time = start, room_rp_end_time = end, room_rp_price = price }) == true && DBhelp.CallProc(room_id, "proc_hotel_room_RP_price_batch_roomid") == true ? 1 : 0;
-               
-
-            }
-
-            else
-                result = 0;
-                return result;
+               result = new Hotel_room_RP_price_batch().InsertPriceBatch(new hotel_room_RP_price_info() { hotel_id = Id, room_id = room_id, room_rp_start_time = start, room_rp_end_time = end, room_rp_price = price }) == true && DBhelp.CallProc(room_id, "proc_hotel_room_RP_price_batch_roomid") == true ? 1 : 0;
+            return result;
            // return View("MyPrix", getData(id, startDate, EndDate));
         }
         //
