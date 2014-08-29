@@ -277,6 +277,7 @@
     <Content Include="itiwll_tool\src\style\base.css" />
     <Content Include="itiwll_tool\src\style\header_and_footer.css" />
     <Content Include="itiwll_tool\src\style\main.css" />
+    <None Include="Properties\PublishProfiles\m.pubxml" />
     <None Include="Service References\EstayMobileService\MyMobileServer.disco" />
     <None Include="Service References\EstayMobileService\configuration91.svcinfo" />
     <None Include="Service References\EstayMobileService\configuration.svcinfo" />
@@ -430,6 +431,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Views\Advise\MyAdivise.cshtml" />
+    <Content Include="Views\Image\failure.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -509,9 +511,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Image\Create.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Image\Faiture.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Image\Delete.cshtml" />
