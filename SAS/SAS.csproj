@@ -554,7 +554,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Public\script\laydate\README.md" />
-    <None Include="Properties\PublishProfiles\m.pubxml" />
     <Content Include="Views\Login\signLogin.cshtml" />
     <Content Include="Views\Order\CheckOrderInfo.cshtml" />
     <Content Include="Views\Order\QueryOrderInfo.cshtml" />
