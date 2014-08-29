@@ -119,7 +119,44 @@ namespace SAS.Controllers
             return View((from image in db.roomImages where rf.Contains(image.room_id) select image).ToList()); 
         }
 
-    
+        /// <summary>
+        ///我的公寓增加房型
+        /// </summary>
+        /// <param name="hotel_room_info"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult RoomSubmit(hotel_room_info hotel_room_info)
+        {
+
+            int sign = 0;
+            if (hotel_room_info.room_id > 0)
+            {
+
+                sign = hotel_room_info.updateRoom(hotel_room_info) == true ? 1 : 0; ;
+
+            }
+            else
+            {
+
+                hotel_room_info.h_r_id = "004";
+                hotel_room_info.h_r_utime = DateTime.Now;
+                hotel_room_info.h_r_ctime = DateTime.Now;
+                hotel_room_info.h_r_state = true;
+                hotel_room_info.h_r_reserve = 3;
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                db.rooms.Add(hotel_room_info);
+                sign = db.SaveChanges() > 0 ? 1 : 0; ;
+            }
+
+            getfacilities();
+            getRooms(hotel_room_info.hotel_id);
+          
+            getRooms(hotel_room_info.hotel_id);
+            ViewBag.sign = sign;
+            ViewBag.Tag = "增加房型";
+            ViewBag.HoltelId = hotel_room_info.hotel_id;
+            return View("Room", new hotel_room_info());
+        }
 
         //
         // GET: /MyApartMent/Details/5
