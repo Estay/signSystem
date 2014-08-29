@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -526,6 +527,96 @@ namespace SAS.Models
             }
             return list;
 
+        }
+       
+        /// <summary>
+        /// 订单查询
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns></returns>
+        public List<Order_info> getOrderInfos( Order_info order)
+        {
+            string hho = order.o_check_in_date.ToString();
+            string condition=string.Empty;
+            if (!string.IsNullOrEmpty(order.o_SerialId ))
+            {
+                if(condition==string.Empty)
+                condition=string.Format("o_SerialId='{0}'",order.o_SerialId);
+                else
+                  condition+=string.Format("and o_SerialId='{0}'",order.o_SerialId);
+
+            }
+            if(!string.IsNullOrEmpty(order.o_other_guest_info))
+            {
+                if (condition == string.Empty)
+                    condition = string.Format("o_other_guest_info='{0}'", order._o_other_guest_info);
+                else
+                    condition += string.Format(" and o_other_guest_info='{0}'", order._o_other_guest_info);
+            } if (!string.IsNullOrEmpty(order.o_user_phone))
+            {
+                if (condition == string.Empty)
+                    condition = string.Format("o_user_phone='{0}'", order.o_user_phone);
+                else
+                    condition += string.Format(" and o_user_phone='{0}'", order.o_user_phone);
+            }
+            //预定开始日期
+            if (order.earliestArriveTime != null && order.earliestArriveTime.ToString() != "0001/1/1 0:00:00")
+            {
+                if (condition == string.Empty)
+                    condition = string.Format("o_ctime>='{0}'", order.earliestArriveTime);
+                else
+                    condition += string.Format(" and o_ctime>='{0}'", order.earliestArriveTime);
+            }
+            //预定结束日期
+            if (order.lastestArriveTime != null && order.lastestArriveTime.ToString() != "0001/1/1 0:00:00")
+            {
+                if (condition == string.Empty)
+                    condition = string.Format("o_ctime<='{0}'", order.lastestArriveTime);
+                else
+                    condition += string.Format(" and o_ctime<='{0}'", order.lastestArriveTime);
+            }
+            //入住日期
+            if (order._o_check_in_date != null && order._o_check_in_date.ToString() != "0001/1/1 0:00:00")
+            {
+                if (condition == string.Empty)
+                    condition = string.Format("o_check_in_date>='{0}'", order._o_check_in_date);
+                else
+                    condition += string.Format(" and o_check_in_date>='{0}'", order._o_check_in_date);
+            }
+            //离店日期
+            if (order._o_check_out_date != null && order._o_check_out_date.ToString() != "0001/1/1 0:00:00")
+            {
+                if (condition == string.Empty)
+                    condition = string.Format("o_check_out_date<='{0}'", order._o_check_out_date);
+                else
+                    condition += string.Format(" and o_check_out_date<='{0}'", order._o_check_out_date);
+            }
+            List<Order_info> list = new List<Order_info>();
+            if (condition != string.Empty)
+            {
+                string sql = string.Format("select o_SerialId, hotel_name,o_other_guest_info,o_user_phone,o_check_in_date,o_check_out_date,o_total_price ,room_name from order_info where {0} ", condition);
+                using (SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        DateTime s,e;
+                        DateTime.TryParse(dr[4].ToString(),out s);
+                        DateTime.TryParse(dr[5].ToString(),out e);
+                        Order_info o = new Order_info() { o_SerialId = dr[0].ToString(), hotel_name = dr[1].ToString(), o_other_guest_info = dr[2].ToString(), o_user_phone = dr[3].ToString(), o_check_in_date = s, o_check_out_date = e, o_total_price = Convert.ToDecimal(dr[6]), room_name=dr[7].ToString() };
+                        list.Add(o);
+                    }
+                }
+            }
+            return list;
+              
+
+        }
+        public string convertDate(DateTime t)
+        {
+            return t.ToString();
         }
     }
 

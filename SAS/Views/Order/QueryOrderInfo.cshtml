@@ -11,8 +11,9 @@
 	<a href="/Order/QueryOrder" class="btn_c set">订单查询</a>
 </div>
 <div class="box_a" id="query_order">
-	<!-- 表单 -->
-	<form action="">
+	@using (Html.BeginForm("orderQuerySubmit", "order", FormMethod.Post))
+{
+
 		<p class="input_line">
 			<!-- 订单编号 -->
 			<label>
@@ -23,13 +24,13 @@
 			<!-- 入住人姓名 -->
 			<label>
 				<span class="label">入住人姓名</span>
-				<input class="w100" type="text" name="@Html.DisplayNameFor(model => model.o_other_guest_info)"value="xxx">
+				<input class="w100" type="text" name="@Html.DisplayNameFor(model => model.o_other_guest_info)"value="">
 			</label>
 
 			<!-- 电话 -->
 			<label>
 				<span class="label">电话</span>
-				<input class="w100" type="text" name="@Html.DisplayNameFor(model => model.o_user_phone)" value="xxx">
+				<input class="w100" type="text" name="@Html.DisplayNameFor(model => model.o_user_phone)" value="">
 			</label>
 		</p>
 
@@ -77,9 +78,9 @@
 		</p>
 
 		<p class="m_t20 t_ac">
-			<a href="" class="btn_b">查询</a>
+			<a href="javascript:document.forms[0].submit()" class="btn_b">查询</a>
 		</p>
-	</form>
+ }
 	<table cellspacing="0" class="m_t30">
 		<tbody>
 			<tr>
@@ -95,9 +96,30 @@
 				<th>状态</th>
 				<th>操作</th>
 			</tr>
+                  @foreach (var o in Model.OrderList)
+                {
+                   	<tr>
+				<td>@if(o.o_guaranteePrice>0)
+                    {
+                       <span class="danbao_ico">担保</span>
+                    }
+				</td>
+				<td>@o.o_SerialId</td>
+				<td>@o.hotel_name</td>
+				<td>@o.room_name</td>
+				<td>@o.o_other_guest_info</td>
+				<td>@o.o_user_phone</td>
+				<td>@o.o_check_in_date.ToShortDateString()</td>
+				<td>@o.o_check_out_date.ToShortDateString()</td>
+				<td>@o.o_total_price</td>
+				<td>未确认</td>
+				
+				<td><a href="" class="operation_order" order_id="@o.order_id" >操作</a></td>
+			</tr>
+             }
 
 			<!-- 订单数据 -->
-			<tr>
+	@*		<tr>
 				<td><span class="danbao_ico">担保</span></td>
 				<td>123456789123</td>
 				<td>公寓名称公寓名称公寓名称公寓名称</td>
@@ -109,7 +131,7 @@
 				<td>￥0000.00</td>
 				<td>未确认</td>
 				<td><a href="" class="operation_order">操作</a></td>
-			</tr>
+			</tr>*@
 		</tbody>
 	</table>
 </div>

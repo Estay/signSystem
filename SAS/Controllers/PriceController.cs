@@ -18,7 +18,7 @@ namespace SAS.Controllers
         //
         // GET: /Price/
         DateTime start = DateTime.Now;
-        DateTime end;
+        DateTime end; int result = 0;
         public ActionResult Index()
         {
             return View(db.price.ToList());
@@ -84,12 +84,7 @@ namespace SAS.Controllers
         public int uPrice(string id, string roomId, string startDate, string EndDate, string value)
         {
 
-            int Id, room_id, count = 0; decimal price;
-            decimal.TryParse(value, out price);
-            int.TryParse(id, out Id);
-            int.TryParse(roomId, out room_id);
-            DateTime.TryParse(startDate, out start);
-            DateTime.TryParse(EndDate, out end);
+            int Id, room_id, count = 0; decimal price;  decimal.TryParse(value, out price); int.TryParse(id, out Id);  int.TryParse(roomId, out room_id); DateTime.TryParse(startDate, out start);  DateTime.TryParse(EndDate, out end);
             hotel_room_RP_price_info p = new hotel_room_RP_price_info();
             using (db = new HotelDBContent())
             {
@@ -97,18 +92,15 @@ namespace SAS.Controllers
             }
             if (count > 0)
             {
-                
-                p.hotel_id = Id;
-                p.room_id = room_id;
-                p.room_rp_start_time = start;
-                p.room_rp_end_time = end;
-                p.room_rp_price = price;
-             
+                if (new Hotel_room_RP_price_batch().InsertPriceBatch(new hotel_room_RP_price_info() { hotel_id = Id, room_id = room_id, room_rp_start_time = start, room_rp_end_time = end, room_rp_price = price }))
+                {
+                    result = 1;
+                }
             }
-            if(new Hotel_room_RP_price_batch().InsertPriceBatch(p))
-              return 1;
+
             else
-                return 0;
+                result = 0;
+                return result;
            // return View("MyPrix", getData(id, startDate, EndDate));
         }
         //

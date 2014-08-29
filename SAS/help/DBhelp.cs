@@ -238,5 +238,28 @@ namespace SAS.help
             }
             return rows;
         }
+        /// <summary>
+        /// 调用存储过程，用于房态房价修改
+        /// </summary>
+        /// <returns></returns>
+        public static int CallProc(int roomId,string procName)
+        {
+            int result=0;
+            try
+            {
+                  SqlCommand cmd = new SqlCommand();
+                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = procName;
+               cmd.Parameters.Add(new SqlParameter("roomid", roomId));
+                //cmd.ex
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+            return result;
+           
+        }
     }
 }

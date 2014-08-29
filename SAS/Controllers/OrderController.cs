@@ -40,8 +40,10 @@ namespace SAS.Controllers
         public ActionResult QueryOrder()
         {
             // ViewData["hotels"] = help.HotelInfoHelp.getHotlList("");
-           
-            return View("QueryOrderInfo");
+            Order_info order = QueryOrder(new Order_info() { o_check_in_date = DateTime.Now, o_check_out_date = DateTime.Now.AddDays(30) });
+            
+            
+            return View("QueryOrderInfo", order);
         }
        
         //
@@ -114,23 +116,19 @@ namespace SAS.Controllers
         public ActionResult orderQuerySubmit(Order_info order_info)
         {
 
-            try
-            {
-                EstayMobileService.MobileContractClient _client = new MobileContractClient();
-                _client.ClientCredentials.UserName.UserName = help.StringHelper.appSettings("WCFUserName");
-                _client.ClientCredentials.UserName.Password = help.StringHelper.appSettings("WCFPassWord");
-                order_info.room_id = _client.ChangeOrderState(new OrderAndStateChangeParamsDTO() { OrderID = order_info.order_id, NewOrderStateInfoID = order_info.o_state_id }).ResultCode == SAS.EstayMobileService.EnumResultCode.Success ? 1 : 0;
-
-            }
-            catch (Exception ex)
-            {
-                //ViewBag.sign =
-                help.DBhelp.log("确认订单失败" + ex.ToString()); order_info.room_id = 0;
-            }
+            
             ViewBag.sign = order_info.room_id;
+            Order_info order = QueryOrder(order_info);
 
 
-            return View("MyOrder", getOrder());
+            return View("QueryOrderInfo", order);
+        }
+
+        private static Order_info QueryOrder(Order_info order_info)
+        {
+            Order_info order = new Order_info();
+            order.OrderList = order.getOrderInfos(order_info);
+            return order;
         }
         //
         // GET: /Order/Edit/5
