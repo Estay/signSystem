@@ -104,7 +104,6 @@
 	$("#hotel_name").e_input_tip({
 		space : "请输入公寓名称",
 		check : true, //失去焦点验证
-		submit_check : false,
 		rule: function(success_callback,error_callback,val) {
 			var el = $(this);
 
@@ -1225,7 +1224,14 @@
 		event.preventDefault();
 		var el = $(this),
 			status = 0;
-		$("form")
+
+		var err_el = $('[rules_error]');
+
+		// if (err_el.length) {	
+		// 	err_el.trigger('input_tip_checking');
+		// 	return;
+		// };
+		$("form").submit();
 		// .submit(function() {
 		// 	input.each(function(index, el) {
 		// 		if ($(this).attr('rules_error')||$(this).attr('rules_error')=="") {
@@ -1266,7 +1272,7 @@
 		// 		}, 5000);
 		// 	}
 		// })
-		.submit();
+		
 		// var input = $(this)
 		// 			.parents(".box_a")
 		// 			.find('input[type=text],select[name],textarea[name],.select_yeae,.select_month')

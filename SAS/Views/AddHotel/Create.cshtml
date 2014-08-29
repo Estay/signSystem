@@ -79,7 +79,7 @@
 			</label>
 			<label for="@Html.DisplayNameFor(model => model.h_mobile_phone)">
 				<span class="label">手机号码</span>
-				<input id="mobeli_phone" type="text" name="@Html.DisplayNameFor(model => model.h_mobile_phone)">
+				<input id="mobeli_phone" class="only_integer" type="text" name="@Html.DisplayNameFor(model => model.h_mobile_phone)" maxlength="11">
 				<span class="col_red">*</span>
 			</label>
 		</p>
@@ -168,12 +168,12 @@
 				<span class="col_red">*</span>
 			</label>
 			<label for="hotel_building">
-				<span class="label">公寓楼高</span><input type="text" id="hotel_building" name="@Html.DisplayNameFor(model => model.floor)">
+				<span class="label">公寓楼高</span><input type="text" id="hotel_building" class="only_integer" name="@Html.DisplayNameFor(model => model.floor)">
 				<span class="col_red">*</span>
 			</label>
 			<label for="hotel_room_count">
 				<span class="label">房间总数</span>
-				<input type="text" id="hotel_room_count" name="@Html.DisplayNameFor(model => model.h_room_count)">
+				<input type="text" id="hotel_room_count" class="only_integer" name="@Html.DisplayNameFor(model => model.h_room_count)">
 				<span class="col_red">*</span>
 			</label>
 		</p>

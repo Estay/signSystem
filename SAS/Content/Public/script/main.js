@@ -1,4 +1,4 @@
-/*2014年8月29日16:32:47*/
+/*2014年8月29日18:23:06*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -58,17 +58,33 @@
             form.submit(function(event) {
                 var val = el.val();
                 if (settings.submit_check) {
-                    if (!ruleValidate(el, val)) {
-                        event.preventDefault();
-                        event.stopImmediatePropagation();
-                        $("html,body").animate({
-                            scrollTop: el.offset().top
-                        }, 800);
-                    } else {
-                        if (val == "" || val == settings.space) {
-                            el.val("");
+                    if (settings.check) {
+                        if (el.attr("rules_error")) {
+                            event.preventDefault();
+                            event.stopImmediatePropagation();
+                            ruleValidate(el, val);
+                            $("html,body").animate({
+                                scrollTop: el.offset().top
+                            }, 800);
+                        } else {
+                            if (val == "" || val == settings.space) {
+                                el.val("");
+                            }
+                            console.log(el.attr("name") + ":" + el.val());
                         }
-                        console.log(el.attr("name") + ":" + el.val());
+                    } else {
+                        if (!ruleValidate(el, val)) {
+                            event.preventDefault();
+                            event.stopImmediatePropagation();
+                            $("html,body").animate({
+                                scrollTop: el.offset().top
+                            }, 800);
+                        } else {
+                            if (val == "" || val == settings.space) {
+                                el.val("");
+                            }
+                            console.log(el.attr("name") + ":" + el.val());
+                        }
                     }
                 }
             });
@@ -78,7 +94,7 @@
                 el.addClass("col_gray").val(settings.space);
                 settings.init.call(el[0]);
                 if (settings.need) {
-                    el.attr("rules_error", "");
+                    el.attr("rules_error", "true");
                 } else {
                     el.removeAttr("rules_error");
                 }
@@ -425,7 +441,6 @@
     $("#hotel_name").e_input_tip({
         space: "请输入公寓名称",
         check: true,
-        submit_check: false,
         rule: function(success_callback, error_callback, val) {
             var el = $(this);
             if (!val.match(/^[\s\S]{3,}$/)) {
@@ -1209,6 +1224,7 @@
     $(".checking_btn").click(function(event) {
         event.preventDefault();
         var el = $(this), status = 0;
+        var err_el = $("[rules_error]");
         $("form").submit();
     });
     function setUrlParam(para_name, para_value, url) {

@@ -80,22 +80,41 @@
 			});
 
 				
+			// 表单提交时验证
 			form.submit(function(event) {
 				var val = el.val();
 
-				// 表单提交时验证
 				if (settings.submit_check) {
-					if (!ruleValidate(el, val)) {
-						event.preventDefault();
-						event.stopImmediatePropagation();
-						$("html,body").animate({scrollTop: el.offset().top}, 800);
-					} else {
+					if (settings.check) {
 
-						if(val=="" || val == settings.space){
-							el.val("");
+						// 失去焦点是否已验通过
+						if (el.attr('rules_error')) {
+							event.preventDefault();
+							event.stopImmediatePropagation();
+							ruleValidate(el, val);
+							$("html,body").animate({scrollTop: el.offset().top}, 800);
+						}else {
+							if(val=="" || val == settings.space){
+								el.val("");
+							}
+							console.log(el.attr('name')+":"+el.val());
 						}
-						console.log(el.attr('name')+":"+el.val());
+					}else{
+
+						// 验证规则是否通过
+						if (!ruleValidate(el, val)) {
+							event.preventDefault();
+							event.stopImmediatePropagation();
+							$("html,body").animate({scrollTop: el.offset().top}, 800);
+						} else {
+							if(val=="" || val == settings.space){
+								el.val("");
+							}
+							console.log(el.attr('name')+":"+el.val());
+						}
 					}
+
+
 				}
 			});
 
@@ -112,7 +131,7 @@
 
 				// 据need标记是否通过规则
 				if (settings.need) {
-					el.attr('rules_error',"");
+					el.attr('rules_error',"true");
 				}else{
 					el.removeAttr('rules_error');	
 				}
