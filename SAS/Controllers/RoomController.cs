@@ -15,30 +15,7 @@ namespace SAS.Controllers
     {
         private HotelDBContent db = new HotelDBContent();
 
-        //
-        // GET: /Room/
 
-        public ActionResult Index(object t)
-        {
-            return View(db.rooms.ToList());
-        }
-
-        //
-        // GET: /Room/Details/5
-
-        public ActionResult Details(int id = 0)
-        {
-            ViewBag.sign = 1;
-            hotel_room_info hotel_room_info = db.rooms.Find(id);
-            if (hotel_room_info == null)
-            {
-                return HttpNotFound();
-            }
-            return View(hotel_room_info);
-        }
-     
-        //
-        // GET: /Room/Create
 
         public ActionResult Create(string hotelId)
         {
@@ -144,65 +121,18 @@ namespace SAS.Controllers
           
             return View(new hotel_room_info());
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="hotel_id"></param>
         public void getRooms(int hotel_id)
         {
             //List<hotel_room_info> roomsList = (from r in db.room where r.hotel_id == hotel_id select r).ToList();
             ViewData["rooms"] = DBhelp.getRooms(hotel_id);
             ViewData["bedTypes"] = new hotel_room_info().getBedType();
         }
-        //
-        // GET: /Room/Edit/5
+   
 
-        public ActionResult Edit(int id = 0)
-        {
-            hotel_room_info hotel_room_info = db.rooms.Find(id);
-            if (hotel_room_info == null)
-            {
-                return HttpNotFound();
-            }
-            return View(hotel_room_info);
-        }
-
-        //
-        // POST: /Room/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(hotel_room_info hotel_room_info)
-        {
-            //db.Entry(hotel_room_info).State=e
-            if (ModelState.IsValid)
-            {
-                db.Entry(hotel_room_info).State = System.Data.EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(hotel_room_info);
-        }
-
-        //
-        // GET: /Room/Delete/5
-
-        public ActionResult Delete(int id = 0)
-        {
-            hotel_room_info hotel_room_info = db.rooms.Find(id);
-            if (hotel_room_info == null)
-            {
-                return HttpNotFound();
-            }
-            return View(hotel_room_info);
-        }
-
-        //
-        // POST: /Room/Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            hotel_room_info hotel_room_info = db.rooms.Find(id);
-            db.rooms.Remove(hotel_room_info);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
 
         protected override void Dispose(bool disposing)
         {
