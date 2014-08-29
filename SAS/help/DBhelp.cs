@@ -242,21 +242,27 @@ namespace SAS.help
         /// 调用存储过程，用于房态房价修改
         /// </summary>
         /// <returns></returns>
-        public static int CallProc(int roomId,string procName)
+        public static bool CallProc(int roomId,string procName)
         {
-            int result=0;
+            bool result=true;
             try
             {
-                  SqlCommand cmd = new SqlCommand();
-                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = procName;
-               cmd.Parameters.Add(new SqlParameter("roomid", roomId));
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand cmd = new SqlCommand(procName, connection);
+                    connection.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = procName;
+                    cmd.Parameters.Add(new SqlParameter("@roomid", roomId));
+                    cmd.ExecuteScalar(); 
+                }
+               
                 //cmd.ex
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
-                throw;
+                help.DBhelp.log("修改房价房态存储过程调用失败");
+                result = false;
             }
             return result;
            
