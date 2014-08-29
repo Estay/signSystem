@@ -100,6 +100,7 @@ namespace SAS.Controllers
             hotel_info.h_id = Guid.NewGuid().ToString();
             hotel_info.h_state = true;
             hotel_info.h_utime = DateTime.Now;
+            hotel_info.CheckState = 2;
             try
             {
                 hotel_info.h_ctime = DateTime.Now;
