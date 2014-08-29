@@ -69,9 +69,30 @@
 
 	//////////////////////////////////公寓列表/////////////////////////////////////////////
 	$('.del_hotel').click(function(event) {
-		var r = confirm('确认删除公寓<'+ $(this).attr('hotel_name') +'>?！');
-		if (r==false) {
-			event.preventDefault();
+		var el = $(this);
+		var r = confirm('确认删除公寓<'+ el.attr('hotel_name') +'>?！');
+		event.preventDefault();
+		if (r==true) {
+			$.ajax({
+				url: el[0].href,
+				type: 'GET',
+				data: {hotel_id: el.attr('hotel_id')},
+			})
+			.done(function(date) {
+				console.log("success");
+				if (date == 1) {
+					location.reload();
+				}else {
+					alert("删除失败");
+				}
+			})
+			.fail(function() {
+				console.log("error");
+			})
+			.always(function() {
+				console.log("complete");
+			});
+			
 		};
 	});
 
@@ -495,6 +516,13 @@
 	$("#room_count").e_input_tip({
 			space :0,
 			rule : /^\d+$/
+	});
+
+	//默认房价
+	$("#default_price").e_input_tip({
+			space : "",
+			need_text:"必须选择",
+			rule : /^\d+$|^\d+.\d+$/
 	});
 
 	// 宜住人数
@@ -1173,7 +1201,9 @@
 	}).on('change', '.only_integer', function(event) {
 		var el = $(this);
 		el.val(el.val().replace(/\D/g,""));
-	});;
+	});
+
+
 	// class only_float 只能输入浮点数
 	$("body").on("keypress",".only_float",function(event) {
 		console.log(event.keyCode);
@@ -1183,9 +1213,11 @@
 			event.preventDefault();
 		}
 
+
+	}).on('change', '.only_float', function(event) {
 		var el = $(this);
 		el.val(el.val().replace(/[^\d\.]/g,""));
-	})
+	});
 
 
 	// 验证表单
