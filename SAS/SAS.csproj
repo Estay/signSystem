@@ -431,7 +431,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Views\Advise\MyAdivise.cshtml" />
-    <Content Include="Views\Image\failure.cshtml" />
+    <Content Include="Views\Image\Faiture.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
