@@ -92,10 +92,13 @@ namespace SAS.Controllers
             }
             if (count > 0)
             {
-                if (new Hotel_room_RP_price_batch().InsertPriceBatch(new hotel_room_RP_price_info() { hotel_id = Id, room_id = room_id, room_rp_start_time = start, room_rp_end_time = end, room_rp_price = price }))
-                {
-                    result = 1;
-                }
+                //if (new Hotel_room_RP_price_batch().InsertPriceBatch(new hotel_room_RP_price_info() { hotel_id = Id, room_id = room_id, room_rp_start_time = start, room_rp_end_time = end, room_rp_price = price }) && DBhelp.CallProc(room_id, "proc_hotel_room_RP_price_batch_roomid"))
+                //{
+                //    result = 1;
+                //}
+                result = new Hotel_room_RP_price_batch().InsertPriceBatch(new hotel_room_RP_price_info() { hotel_id = Id, room_id = room_id, room_rp_start_time = start, room_rp_end_time = end, room_rp_price = price }) == true && DBhelp.CallProc(room_id, "proc_hotel_room_RP_price_batch_roomid") == true ? 1 : 0;
+               
+
             }
 
             else

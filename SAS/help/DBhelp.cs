@@ -252,7 +252,6 @@ namespace SAS.help
                     SqlCommand cmd = new SqlCommand(procName, connection);
                     connection.Open();
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.CommandText = procName;
                     cmd.Parameters.Add(new SqlParameter("@roomid", roomId));
                     cmd.ExecuteScalar(); 
                 }
