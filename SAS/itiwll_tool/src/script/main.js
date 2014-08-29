@@ -66,6 +66,17 @@
 		event.preventDefault();
 		$(this).parents("form").submit();
 	});
+
+	//////////////////////////////////公寓列表/////////////////////////////////////////////
+	$('.del_hotel').click(function(event) {
+		var r = confirm('确认删除公寓<'+ $(this).attr('hotel_name') +'>?！');
+		if (r==false) {
+			event.preventDefault();
+		};
+	});
+
+
+
 	//////////////////////////////////新建酒店/////////////////////////////////////////////
 
 	// 城市输入提示和验证

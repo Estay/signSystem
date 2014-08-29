@@ -380,8 +380,12 @@
 	background-color: #FFF;
 }
 .orange {
+	color: #FFF;
 	background-color: #F09401;
 	border-color: #F09401;
+}
+.orange .col_orange {
+	color: #FFF;
 }
 .grey {
 	background-color: #C6C7C9;

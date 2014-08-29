@@ -46,7 +46,7 @@
 		关房
 		&nbsp;&nbsp;
 		&nbsp;&nbsp;
-		<span class="col_orange">已售房量</span>/<span>可售房量</span>
+		<span class="col_orange">已售房量</span>/<span>可售房量(包括已售房量)</span>
 	</p>
 	<table cellspacing="0">
 	    <tbody>
@@ -59,16 +59,16 @@
 	        <!-- 遍历房型 -->
 			@foreach (var r in Model.Room.RoomList)
 			{
-			    <tr>
+			    <tr class="tab_bor_t">
                    <td>@r.h_r_name_cn</td>
                     @foreach(var s in Model.Room.RoomStatus.RoomStatusList.Where(o=>o.room_id==r.room_id))
                     {
-                        <td class="item_pr 
+                        <td class="item_pr tab_bor_r 
                             @(s.r_s_status?"white" : "grey") 
-                            @(s.AvieBeds==0?"orange" : "")" date="@s.r_s_time.ToString("yyyy-MM-dd")" roomid="@s.room_id" hotel_id="@s.hotel_id">
-                            <span class="col_orange">@s.EBeds</span>
+                            @(s.EBeds==s.AvieBeds?"orange" : "")" date="@s.r_s_time.ToString("yyyy-MM-dd")" roomid="@s.room_id" hotel_id="@s.hotel_id">
+                            <span class="col_orange">@s.AvieBeds</span>
                             /
-                            @s.AvieBeds
+                            @s.EBeds
 
                         </td>
                     }
