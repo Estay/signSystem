@@ -54,9 +54,10 @@
                     
                     @foreach(var i in Image)
                     {
+                        string url = ".." + i.h_r_p_pic_original_url;
                         <div class="upload_img_box" pid="@i.h_r_p_id">
                             <div class="img_box">
-                                <img class="upload_img" src="@i.h_r_p_pic_original_url">
+                                <img class="upload_img" src="@url">
                             </div>
                             <p class="img_set">
                                 <input type="text" class="upload_img_info" value="@i.h_r_p_title">
