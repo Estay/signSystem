@@ -16,7 +16,8 @@ namespace SAS.Controllers
         private HotelDBContent db = new HotelDBContent();
      
         // GET: /MyApartMent/
-        int hotel_id = 0;
+        int hotel_id = 0, result = 0;
+        
         //酒店信息
         public ActionResult Hotel(string hotelId)
         {
@@ -169,6 +170,25 @@ namespace SAS.Controllers
                 return HttpNotFound();
             }
             return View(hotel_info);
+        }
+        public int delApart(string hotelId)
+        {
+            //try
+            //{
+            //    int.TryParse(hotelId, out hotel_id); string u_id = HotelInfoHelp.getUId();
+            //    using (db = new HotelDBContent())
+            //    {
+            //        var f = ((from h in db.hotel where h.hotel_id == hotel_id && h.source_id == 5 && h.u_id == u_id select h).SingleOrDefault()).h_state ;
+                   
+            //       // result = ((from h in db.hotel where h.hotel_id = hotel_id && h.source_id = 5 select h).SingleOrDefault()).h_state=false);
+            //    }
+            //}
+            //catch (Exception)
+            //{
+                
+            //    throw;
+            //}
+            return result;
         }
 
         //

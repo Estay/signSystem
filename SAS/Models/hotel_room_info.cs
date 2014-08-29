@@ -48,6 +48,16 @@ namespace SAS.Models
         private int? _study;
         private int? _kitchen;
         private int _sitting_room;
+        private decimal defaultPrice;
+
+        /// <summary>
+        /// 默认价格用于我的公寓增加房型
+        /// </summary>
+        public decimal DefaultPrice
+        {
+            get { return defaultPrice; }
+            set { defaultPrice = value; }
+        }
 
         public int Sitting_room
         {
