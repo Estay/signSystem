@@ -57,7 +57,7 @@ namespace SAS.Controllers
         //房型
         public ActionResult Room(string hotelId)
         {
-           
+            ViewBag.Tag = "增加房型";
             int.TryParse(hotelId, out hotel_id);
             getRooms(hotel_id);
             getfacilities();
@@ -186,7 +186,6 @@ namespace SAS.Controllers
             catch (Exception)
             {
                 result = 0;
-                throw;
             }
             return result;
         }
@@ -276,6 +275,7 @@ namespace SAS.Controllers
         //公寓列表
         public ActionResult MyHotel(string UId)
         {
+           
             UId = "test1";
             //int.TryParse(hotelId, out hotel_id);
             //ViewData["DTime"] = new hotel_info().getDecorationTime();  //Theme
@@ -289,6 +289,21 @@ namespace SAS.Controllers
   
     
           
+        }
+
+
+        public ActionResult FilishedRoom(string hotelId)
+        {
+            int.TryParse(hotelId, out hotel_id); DateTime start = DateTime.Now.Date; DateTime end = DateTime.Now.AddYears(1).Date; bool re = false;
+            foreach (var r in (from h in db.rooms where h.hotel_id==hotel_id && h.DefaultPrice!=0 select h).ToList())
+            {
+                hotel_room_RP_price_info p = new hotel_room_RP_price_info() { room_rp_start_time = start, room_rp_end_time = end,room_rp_price=r.DefaultPrice };
+                if (new Hotel_room_RP_price_batch().InsertPriceBatch(p) && new RoomStatus_batch().insertStatuBatch(p))
+                    re = true;
+            }
+            if (re == true)
+                return RedirectToAction("myHotel", "MyApartMent");
+            return View("Room");
         }
     }
 }
