@@ -30,7 +30,7 @@ namespace SAS.help
            // uId = "test1";
             using (db = new HotelDBContent())
             {
-                return (from h in db.hotel where h.u_id == uId select h).ToList();
+                return (from h in db.hotel where h.u_id == uId && h.h_state==true select h).ToList();
             }
         }
 

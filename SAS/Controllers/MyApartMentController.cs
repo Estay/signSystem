@@ -181,8 +181,7 @@ namespace SAS.Controllers
                 {
                     ((from h in db.hotel where h.hotel_id == hotel_id && h.source_id == 5 && h.u_id == u_id select h).SingleOrDefault()).h_state=false;
                     result = db.SaveChanges() > 0 ? 1 : 0;
-                    // result = ((from h in db.hotel where h.hotel_id = hotel_id && h.source_id = 5 select h).SingleOrDefault()).h_state=false);
-                }
+               }
             }
             catch (Exception)
             {
