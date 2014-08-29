@@ -98,7 +98,7 @@ namespace SAS.Controllers
             }
             ViewBag.HoltelId = room.hotel_id;
             getRooms(room.hotel_id);
-            return View("Create", new hotel_room_info());
+            return View("room", new hotel_room_info());
         }
         public void getfacilities()
         {
@@ -215,58 +215,9 @@ namespace SAS.Controllers
             return View(hotel_info);
         }
 
-        //
-        // GET: /MyApartMent/Edit/5
 
-        public ActionResult Edit(int id = 0)
-        {
-            hotel_info hotel_info = db.hotel.Find(id);
-            if (hotel_info == null)
-            {
-                return HttpNotFound();
-            }
-            return View(hotel_info);
-        }
-
-        //
-        // POST: /MyApartMent/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(hotel_info hotel_info)
-        {
-            if (ModelState.IsValid)
-            {
-                //db.Entry(hotel_info).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(hotel_info);
-        }
-
-        //
-        // GET: /MyApartMent/Delete/5
-
-        public ActionResult Delete(int id = 0)
-        {
-            hotel_info hotel_info = db.hotel.Find(id);
-            if (hotel_info == null)
-            {
-                return HttpNotFound();
-            }
-            return View(hotel_info);
-        }
-
-        //
-        // POST: /MyApartMent/Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            hotel_info hotel_info = db.hotel.Find(id);
-            db.hotel.Remove(hotel_info);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+     
+   
 
         protected override void Dispose(bool disposing)
         {
@@ -309,5 +260,7 @@ namespace SAS.Controllers
                 return RedirectToAction("myHotel", "MyApartMent");
             return View("Room");
         }
+
+      
     }
 }

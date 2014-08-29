@@ -36,17 +36,7 @@ namespace SAS.Controllers
             }
             return View(hotel_room_info);
         }
-        //验证房型是否存在
-        //public int IsOk(string text,string hotelId)
-        //{
-        //    int hotel_id=0;
-        //    int.TryParse(hotelId,out hotel_id);
-        //    if ((from h in db.rooms where h.h_r_name_cn == text && h.hotel_id == hotel_id select h).Count() > 0 || (from h in  new HotelDBContent("").rooms where h.h_r_name_cn == text && h.hotel_id == hotel_id select h).Count() > 0)
-        //        return 0;
-        //    else
-        //        return 1;
-        
-        //}
+     
         //
         // GET: /Room/Create
 
