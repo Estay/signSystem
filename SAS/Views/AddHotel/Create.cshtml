@@ -69,7 +69,7 @@
 			<label for="@Html.DisplayNameFor(model => model.h_tel)">
 				<span class="label">电话</span>
 				<input id="phone" type="text" class="hide" name="@Html.DisplayNameFor(model => model.h_tel)">
-				<input type="text" id="phone_area_code">-<input type="text" id="hotel_phone">
+				<input type="text" class="only_integer" maxlength="4" id="phone_area_code">-<input type="text" class="only_integer" maxlength="8" id="hotel_phone">
 				<span class="col_red">*</span>
                 @Html.ValidationMessageFor(model => model.h_tel)
 			</label>

@@ -45,7 +45,7 @@
 				    <tr class="room_item">                  
                         <td>@Convert.ToInt32(identity++)</td>
 					    <td>@item.h_r_name_cn</td>
-					    <td><a href="/MyApartMent/update?roomId=@item.room_id">修改</a>|<a href="/Room/remove?roomId=@item.room_id">删除</a></td>
+					    <td><a href="/MyApartMent/update?roomId=@item.room_id">修改</a>|<a href="/MyApartMent/remove?roomId=@item.room_id">删除</a></td>
 				    </tr>
                 }
 			</tbody>
@@ -56,12 +56,19 @@
         <div class="box_b">
     		<p class="input_line">
                 <input class="hide" type="text" name="@Html.DisplayNameFor(model=>model.room_id)" value="@Model.room_id " />
+                <input class="hide" type="text" name="@Html.DisplayNameFor(model=>model.hotel_id)" value="@Model.hotel_id " />
     			<label for="room_name"><span class="label">房型名称</span><input type="text" id="room_name" name="@Html.DisplayNameFor(model => model.h_r_name_cn)" value="@Model.h_r_name_cn"><span class="col_red">*</span></label>
     			<label for="room_count">
     				<span class="label">数量</span>
     				<input type="text" id="room_count" name="@Html.DisplayNameFor(model => model.h_r_house_number)" value="@Model.h_r_house_number">
     				<span class="col_red">*</span>
     				<span>将会设置房量的默认值</span>
+    			</label>
+   			    <label for="room_count">
+    				<span class="label">默认房价</span>
+    				<input type="text" id="default_price" class="w50 only_float" name="@Html.DisplayNameFor(model => model.DefaultPrice)" value="@Model.DefaultPrice">
+    				<span class="col_red">*</span>
+    				<span>将会设置房价的默认值</span>
     			</label>
     		</p>
     		<p class="input_line">
@@ -265,11 +272,7 @@
 	</div>
   
  
-	<div class="btn_box">
-		<!-- <a href="/AddHotel/Create?hotelId=@hotelId" class="previou btn_a">上一步</a> -->
-        
-        <a href="/Price/Create?hotelId=@hotelId" id="save_room_info" class="btn_a btn_save_step">保存进入下一步</a>
-	</div>
+
     
 </div>
     

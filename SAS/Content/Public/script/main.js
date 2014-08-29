@@ -1,4 +1,4 @@
-/*2014年8月29日14:58:59*/
+/*2014年8月29日16:32:47*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -398,9 +398,28 @@
         $(this).parents("form").submit();
     });
     $(".del_hotel").click(function(event) {
-        var r = confirm("确认删除公寓<" + $(this).attr("hotel_name") + ">?！");
-        if (r == false) {
-            event.preventDefault();
+        var el = $(this);
+        var r = confirm("确认删除公寓<" + el.attr("hotel_name") + ">?！");
+        event.preventDefault();
+        if (r == true) {
+            $.ajax({
+                url: el[0].href,
+                type: "GET",
+                data: {
+                    hotel_id: el.attr("hotel_id")
+                }
+            }).done(function(date) {
+                console.log("success");
+                if (date == 1) {
+                    location.reload();
+                } else {
+                    alert("删除失败");
+                }
+            }).fail(function() {
+                console.log("error");
+            }).always(function() {
+                console.log("complete");
+            });
         }
     });
     $("#hotel_name").e_input_tip({
@@ -689,6 +708,11 @@
     $("#room_count").e_input_tip({
         space: 0,
         rule: /^\d+$/
+    });
+    $("#default_price").e_input_tip({
+        space: "",
+        need_text: "必须选择",
+        rule: /^\d+$|^\d+.\d+$/
     });
     $("#people_number").e_input_tip({
         need_text: "必须选择"
@@ -1178,6 +1202,7 @@
         if (event.keyCode >= 48 && event.keyCode <= 59 || event.keyCode == 46) {} else {
             event.preventDefault();
         }
+    }).on("change", ".only_float", function(event) {
         var el = $(this);
         el.val(el.val().replace(/[^\d\.]/g, ""));
     });

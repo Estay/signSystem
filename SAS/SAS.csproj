@@ -432,6 +432,7 @@
     </Content>
     <Content Include="Views\Advise\MyAdivise.cshtml" />
     <Content Include="Views\Image\Faiture.cshtml" />
+    <Content Include="Views\Advise\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
