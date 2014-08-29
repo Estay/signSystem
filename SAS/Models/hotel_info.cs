@@ -74,6 +74,16 @@ namespace SAS.Models
         private string _helpfultips;
         private string _hotel_theme_id;
         private int _floor=0;
+        private int _checkState;
+
+        /// <summary>
+        /// 1为审核通过 0为不通过 2为正在审核中
+        /// </summary>
+        public int CheckState
+        {
+            get { return _checkState; }
+            set { _checkState = value; }
+        }
         /// <summary>
         /// 
         /// </summary>
