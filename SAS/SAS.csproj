@@ -277,6 +277,7 @@
     <Content Include="itiwll_tool\src\style\base.css" />
     <Content Include="itiwll_tool\src\style\header_and_footer.css" />
     <Content Include="itiwll_tool\src\style\main.css" />
+    <None Include="Properties\PublishProfiles\m.pubxml" />
     <None Include="Service References\EstayMobileService\MyMobileServer.disco" />
     <None Include="Service References\EstayMobileService\configuration91.svcinfo" />
     <None Include="Service References\EstayMobileService\configuration.svcinfo" />

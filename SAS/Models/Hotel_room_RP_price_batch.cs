@@ -269,7 +269,7 @@ namespace SAS.Models
                     pBacth.AuditDate = DateTime.Now;
                     db.publicPrices.Add(pBacth);
                     result=db.SaveChanges()>0?true:false;
-                     DBhelp.CallProc(p.room_id, "proc_hotel_room_RP_price_batch_roomid");
+                     //DBhelp.CallProc(p.room_id, "proc_hotel_room_RP_price_batch_roomid");
 
                 }
 

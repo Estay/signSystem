@@ -231,7 +231,7 @@ namespace SAS.Models
                 db.publicStatuses.Add(roomStatus);
                 result = db.SaveChanges() > 0 ? true : false;
                
-                   DBhelp.CallProc(roomStatus.room_id, "[proc_hotel_room_ebeds_batch_roomid]");
+                 // DBhelp.CallProc(roomStatus.room_id, "[proc_hotel_room_ebeds_batch_roomid]");
               //}
              }
 
