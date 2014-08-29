@@ -117,61 +117,41 @@ namespace SAS.Controllers
         //
         // POST: /Room/Create
 
+        /// <summary>
+        ///新建公寓增加房型
+        /// </summary>
+        /// <param name="hotel_room_info"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Create(hotel_room_info hotel_room_info)
         {
-       
-           
+
+            int sign = 0;
             if ( hotel_room_info.room_id> 0)
             {
-                var room=(from r in db.rooms where r.room_id == hotel_room_info.room_id select r).Single();
-                if (room!=null)
-                {
-                    room.h_r_name_cn = hotel_room_info.h_r_name_cn;
-                    room.h_r_bed_type = hotel_room_info.h_r_bed_type;
-                    room.h_r_description_cn = hotel_room_info.h_r_description_cn;
-                    room.h_r_floor = hotel_room_info.h_r_floor;
-                    room.Comments = hotel_room_info.Comments;
-                    room.house_service = hotel_room_info.house_service;
-                    room.sitting_room_number = hotel_room_info.sitting_room_number;
-                    room.study = room.study;
-                    room.Kitchen = room.Kitchen;
-                    room.h_r_utime = DateTime.Now;
-                    room.h_r_people_number = hotel_room_info.h_r_people_number;
-                    room.h_r_house_number = hotel_room_info.h_r_house_number;
-                    room.h_r_bedroom_number = hotel_room_info.h_r_bedroom_number;
-                    room.h_r_acreage = hotel_room_info.h_r_acreage;
-                   // db.SaveChanges();
-                }
+
+                sign = hotel_room_info.updateRoom(hotel_room_info) == true ? 1 : 0; ;
                 
             }
             else
             {
-                //hotel_room_info.hotel_id = 48385;
                 hotel_room_info.h_r_id = "004";
                 hotel_room_info.h_r_utime = DateTime.Now;
-                hotel_room_info.h_r_ctime = DateTime.Now;
-            ;
+                hotel_room_info.h_r_ctime = DateTime.Now;            
                 hotel_room_info.h_r_state = true;
                 hotel_room_info.h_r_reserve = 3;
                 var errors = ModelState.Values.SelectMany(v => v.Errors);
-                //if (ModelState.IsValid)
-                //{
-
-                //    return RedirectToAction("Index");
-                //}
                 db.rooms.Add(hotel_room_info);
-               
+                sign = db.SaveChanges()>0? 1 : 0; ;
             }
-            if (db.SaveChanges() > 0)
-                ViewBag.sign = 1;
-            else
-                ViewBag.sign = 0;
+           
             getfacilities();
             getRooms(hotel_room_info.hotel_id);
             ViewBag.HoltelId = hotel_room_info.hotel_id;
             ViewBag.Tag = "增加房型";
             getRooms(hotel_room_info.hotel_id);
+            ViewBag.sign = sign;
+          
             return View(new hotel_room_info());
         }
         public void getRooms(int hotel_id)

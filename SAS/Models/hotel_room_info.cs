@@ -8,10 +8,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SAS.Models
 {
+    
     public class hotel_room_info
     {
         
-     
+      
         public hotel_room_info()
         { }
         #region Model
@@ -360,6 +361,48 @@ namespace SAS.Models
             {
                 return (from r in db.rooms where r.hotel_id == hotelId select r).ToList();
             }
+        }
+        /// <summary>
+        /// 修改房型
+        /// </summary>
+        /// <param name="room_id"></param>
+        /// <param name="hotel_room_info"></param>
+        /// <returns></returns>
+        public bool updateRoom(hotel_room_info hotel_room_info)
+        {
+            bool result = false;
+            try
+            {
+                using (DBC.HotelDBContent db = new DBC.HotelDBContent())
+                {
+                    var room = (from r in db.rooms where r.room_id == hotel_room_info.room_id select r).Single();
+                    if (room != null)
+                    {
+                        room.h_r_name_cn = hotel_room_info.h_r_name_cn;
+                        room.h_r_bed_type = hotel_room_info.h_r_bed_type;
+                        room.h_r_description_cn = hotel_room_info.h_r_description_cn;
+                        room.h_r_floor = hotel_room_info.h_r_floor;
+                        room.Comments = hotel_room_info.Comments;
+                        room.house_service = hotel_room_info.house_service;
+                        room.sitting_room_number = hotel_room_info.sitting_room_number;
+                        room.study = room.study;
+                        room.Kitchen = room.Kitchen;
+                        room.h_r_utime = DateTime.Now;
+                        room.h_r_people_number = hotel_room_info.h_r_people_number;
+                        room.h_r_house_number = hotel_room_info.h_r_house_number;
+                        room.h_r_bedroom_number = hotel_room_info.h_r_bedroom_number;
+                        room.h_r_acreage = hotel_room_info.h_r_acreage;
+                        result = db.SaveChanges() > 0 ? true : false; ;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                result = false;
+                throw;
+            }
+            return result;
+           
         }
 
     }
