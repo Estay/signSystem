@@ -1,4 +1,4 @@
-/*2014年8月28日14:51:36*/
+/*2014年8月29日14:58:59*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -396,6 +396,12 @@
     $("#login_btn").click(function(event) {
         event.preventDefault();
         $(this).parents("form").submit();
+    });
+    $(".del_hotel").click(function(event) {
+        var r = confirm("确认删除公寓<" + $(this).attr("hotel_name") + ">?！");
+        if (r == false) {
+            event.preventDefault();
+        }
     });
     $("#hotel_name").e_input_tip({
         space: "请输入公寓名称",
