@@ -97,7 +97,7 @@ namespace SAS.help
                                 pic.h_r_p_pic_original_url = realOpath;
                                 pic.h_r_p_pic_thumb_url = realTpath;
                                 pic.souce_id = Convert.ToInt32(help.StringHelper.appSettings("source_id"));
-                               
+                                pic.State = false;
                                 pic.room_id = roomId;
                              
                                 pic.h_r_p_tag = tag;

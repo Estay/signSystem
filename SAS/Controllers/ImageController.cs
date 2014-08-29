@@ -50,7 +50,7 @@ namespace SAS.Controllers
                 {
                     if ((from h in  db.hotel where h.hotel_id == hotel_id select h).Count() > 0)
                     {
-                        string sql = string.Format("update hotel_picture_info set status=1 where hotel_id in(select room_id from hotel_room_info where hotel_id in({0}))", hotel_id);
+                        string sql = string.Format("update hotel_room_picture_info set state=1 where room_id in(select room_id from hotel_room_info where hotel_id in({0}))", hotel_id);
                         if (DBhelp.ExcuteTableBySQL(sql) > 0)
                             return View("Success");
                         else

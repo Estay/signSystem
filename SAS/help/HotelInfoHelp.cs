@@ -119,7 +119,7 @@ namespace SAS.help
         /// <returns></returns>
         public static string getUId()
         {
-            return "yyy";
+            return "yyyy";
         }
     }
 

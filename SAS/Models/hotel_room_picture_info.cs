@@ -22,6 +22,13 @@ namespace SAS.Models
         private int? _h_r_p_type;
         private int _h_r_p_size;
         private int? _souce_id;
+        private bool _state;
+
+        public bool State
+        {
+            get { return _state; }
+            set { _state = value; }
+        }
         /// <summary>
         /// 酒店房间图片编号
         /// </summary>
