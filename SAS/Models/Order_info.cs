@@ -594,7 +594,7 @@ namespace SAS.Models
             List<Order_info> list = new List<Order_info>();
             if (condition != string.Empty)
             {
-                string sql = string.Format("select o_SerialId, hotel_name,o_other_guest_info,o_user_phone,o_check_in_date,o_check_out_date,o_total_price ,room_name from order_info where {0} ", condition);
+                string sql = string.Format("select o_SerialId, hotel_name,o_other_guest_info,o_user_phone,o_check_in_date,o_check_out_date,o_total_price ,room_name,(select  o_state_title from  order_state_type_info as s where a.o_state_id=s.o_state_id) from order_info as a where {0} ", condition);
                 using (SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
                 {
                     conn.Open();
@@ -605,7 +605,7 @@ namespace SAS.Models
                         DateTime s,e;
                         DateTime.TryParse(dr[4].ToString(),out s);
                         DateTime.TryParse(dr[5].ToString(),out e);
-                        Order_info o = new Order_info() { o_SerialId = dr[0].ToString(), hotel_name = dr[1].ToString(), o_other_guest_info = dr[2].ToString(), o_user_phone = dr[3].ToString(), o_check_in_date = s, o_check_out_date = e, o_total_price = Convert.ToDecimal(dr[6]), room_name=dr[7].ToString() };
+                        Order_info o = new Order_info() { o_SerialId = dr[0].ToString(), hotel_name = dr[1].ToString(), o_other_guest_info = dr[2].ToString(), o_user_phone = dr[3].ToString(), o_check_in_date = s, o_check_out_date = e, o_total_price = Convert.ToDecimal(dr[6]), room_name=dr[7].ToString(),_o_title=dr[8].ToString() };
                         list.Add(o);
                     }
                 }
