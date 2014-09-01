@@ -107,8 +107,11 @@ namespace SAS.Controllers
                 count = (from r in db.rooms where r.hotel_id == Id && r.room_id == room_id select r).Count();
             }
             if (count > 0)
-                result = new RoomStatus_batch().insertStatuBatch(new RoomStatus_batch() { hotel_id = Id, room_id = room_id, r_s_time = start, EndDate = end, eBeds = RCanSell }) == true && DBhelp.CallProc(room_id, "proc_hotel_room_ebeds_batch_roomid") == true ? 1 : 0;
-            return result;
+                  result = new RoomStatus_batch().insertStatuBatch(new RoomStatus_batch() { hotel_id = Id, room_id = room_id, r_s_time = start, EndDate = end, eBeds = RCanSell }) == true && DBhelp.CallProc(room_id, "proc_hotel_room_ebeds_batch_roomid") == true ? 1 : 0;
+          
+               // result = new RoomStatus_batch().insertStatuBatch(new RoomStatus_batch() { hotel_id = Id, room_id = room_id, r_s_time = start, EndDate = end, eBeds = RCanSell }) == true?1 : 0;
+           
+          return result;
         }
         
         //

@@ -56,7 +56,7 @@
         <div class="box_b">
     		<p class="input_line">
                 <input class="hide" type="text" name="@Html.DisplayNameFor(model=>model.room_id)" value="@Model.room_id " />
-                <input class="hide" type="text" name="@Html.DisplayNameFor(model=>model.hotel_id)" value="@Model.hotel_id " />
+                <input class="hide" type="text" name="@Html.DisplayNameFor(model=>model.hotel_id)" value="@ViewBag.HoltelId" />
     			<label for="room_name"><span class="label">房型名称</span><input type="text" id="room_name" name="@Html.DisplayNameFor(model => model.h_r_name_cn)" value="@Model.h_r_name_cn"><span class="col_red">*</span></label>
     			<label for="room_count">
     				<span class="label">数量</span>
@@ -265,7 +265,7 @@
         <a href="javascript:document.forms[0].submit()" class="btn_b  checking_btn" id="btn_add_room">确定<span>@ViewBag.Tag</span></a>
         @if (ViewBag.Tag == "修改房型")
         {
-   		<a href="/Room/Create?hotelId=@hotelId" class="btn_b">取消修改</a>
+   		<a href="/MyApartMent/Room?hotelId=@hotelId" class="btn_b">取消修改</a>
         }
             
         </div>
