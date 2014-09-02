@@ -82,8 +82,8 @@
 				
 			// 表单提交时验证
 			form.submit(function(event) {
+				if (el.attr("not_validate")) return;
 				var val = el.val();
-
 				if (settings.submit_check) {
 					if (settings.check) {
 						// 失去焦点是否已验通过

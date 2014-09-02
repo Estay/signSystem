@@ -1,4 +1,4 @@
-/*2014年9月2日10:27:48*/
+/*2014年9月2日13:08:58*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -56,6 +56,7 @@
                 ruleValidate(el, el.val());
             });
             form.submit(function(event) {
+                if (el.attr("not_validate")) return;
                 var val = el.val();
                 if (settings.submit_check) {
                     if (settings.check) {
@@ -796,7 +797,7 @@
         $("#bed_box").on("click", ".bed_del", function(event) {
             event.preventDefault();
             var box = $(this).parents(".bed_item");
-            box.find(".bed,.number").e_window_kill().unbind("input_tip_checking");
+            box.find(".bed,.number").e_window_kill().unbind("input_tip_checking").attr("not_validate", "true");
             box.remove();
             setBedInput();
         });
@@ -958,10 +959,10 @@
             type: "GET",
             data: data
         }).done(function(data) {
-            box.find(".upload_img_info,.upload_img_type").unbind("input_tip_checking");
             if (data == 0) {
                 alert("删除图片失败");
             } else {
+                box.find(".upload_img_info,.upload_img_type").e_window_kill().unbind("input_tip_checking").attr("not_validate", "true");
                 box.remove();
             }
         }).fail(function(data) {
@@ -1012,6 +1013,13 @@
         console.log(event);
         window.location.href = "/Guarantee/MyGuaran?id=" + $(this).find("option:selected").val();
     });
+    $(".g_ru_change").click(function(event) {
+        if ($(this).index(".g_ru_change") == 1) {
+            $("#notify_time").e_input_tip().removeAttr("not_validate");
+        } else {
+            $("#notify_time").e_window_kill().unbind("input_tip_checking").attr("not_validate", "true");
+        }
+    });
     $(".MyGuarantee_btn").click(function(event) {
         event.preventDefault();
         var el = $(".g_ru_change:checked"), val = el.next().text();
@@ -1019,6 +1027,7 @@
             val = val + el.nextAll("input").val() + el.nextAll("span").eq(1).text();
         }
         $(".MyGuarantee_Description").val(val);
+        $(this).parents("form").submit();
     });
     $("#hotel_switch_my_price").change(function(event) {
         console.log(event);
