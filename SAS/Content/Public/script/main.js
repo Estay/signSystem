@@ -1,4 +1,4 @@
-/*2014年9月2日13:08:58*/
+/*2014年9月2日14:20:04*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -600,6 +600,7 @@
                 map.centerAndZoom(city.find(":selected").text());
             });
         }
+        parents(selector);
     })($);
     (function() {
         var lon = $("#map_lon"), lat = $("#map_lat"), location_box = $("#location_box");
@@ -615,21 +616,23 @@
             callback: function(index) {
                 if (index == 0) {
                     $("#show_coordinates").show();
-                    lat.add(lon).e_window_kill().unbind("input_tip_checking");
+                    lat.add(lon).e_window_kill().unbind("input_tip_checking").attr("not_validate", "true");
                 } else {
+                    if (!lon.attr("not_validate")) {
+                        lon.e_input_tip({
+                            space: "输入经度",
+                            error: "格式不正确",
+                            rule: /^\-{0,1}\d{1,3}$|^\-{0,1}\d{1,3}.\d+$/
+                        });
+                        lat.e_input_tip({
+                            space: "输入维度",
+                            error: "格式不正确",
+                            rule: /^\-{0,1}\d{1,3}$|^\-{0,1}\d{1,3}.\d+$/
+                        });
+                    } else {
+                        lat.add(lon).removeAttr("not_validate");
+                    }
                     $("#show_coordinates").hide();
-                    lon.e_input_tip({
-                        space: "输入经度",
-                        need: false,
-                        error: "格式不正确",
-                        rule: /^\-{0,1}\d{1,3}$|^\-{0,1}\d{1,3}.\d+$/
-                    });
-                    lat.e_input_tip({
-                        space: "输入维度",
-                        need: false,
-                        error: "格式不正确",
-                        rule: /^\-{0,1}\d{1,3}$|^\-{0,1}\d{1,3}.\d+$/
-                    });
                 }
             }
         });

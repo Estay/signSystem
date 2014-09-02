@@ -339,7 +339,7 @@
 			});
 		};
 
-		
+		parents(selector)
 		
 
 	})($);
@@ -364,24 +364,25 @@
 				if (index == 0) {
 					// 切换到地图设置
 					$("#show_coordinates").show();
-					lat.add(lon).e_window_kill().unbind('input_tip_checking');
+					lat.add(lon).e_window_kill().unbind('input_tip_checking').attr('not_validate', 'true');
 
 				} else {
 					// 切换到输入设置
-
+					if (!lon.attr('not_validate')) {					
+						lon.e_input_tip({
+							space : "输入经度",
+							error : "格式不正确",
+							rule : /^\-{0,1}\d{1,3}$|^\-{0,1}\d{1,3}.\d+$/		
+						});
+						lat.e_input_tip({
+							space : "输入维度",
+							error : "格式不正确",
+							rule : /^\-{0,1}\d{1,3}$|^\-{0,1}\d{1,3}.\d+$/
+						});
+					}else{
+						lat.add(lon).removeAttr('not_validate');
+					}
 					$("#show_coordinates").hide();;
-					lon.e_input_tip({
-						space : "输入经度",
-						need : false,
-						error : "格式不正确",
-						rule : /^\-{0,1}\d{1,3}$|^\-{0,1}\d{1,3}.\d+$/		
-					});
-					lat.e_input_tip({
-						space : "输入维度",
-						need : false,
-						error : "格式不正确",
-						rule : /^\-{0,1}\d{1,3}$|^\-{0,1}\d{1,3}.\d+$/
-					});
 
 				}
 			}

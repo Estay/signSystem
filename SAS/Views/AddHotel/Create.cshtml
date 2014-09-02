@@ -283,20 +283,14 @@
         var currentPoint = new BMap.Point(lng, lat);
         var marker = new BMap.Marker(currentPoint);
         marker.enableDragging();
-        $("#Longtitude").val(lng);
-        $("#Latitude").val(lat);
-        $("#HasLatLong").val("True");
+
 
         marker.addEventListener("dragend", function (e) {
             var currentZoom = map.getZoom();
             var cp = new BMap.Point(e.point.lng, e.point.lat);
             map.setCenter(cp);
-            $("#Longtitude").val(e.point.lng);
-            $("#Latitude").val(e.point.lat);
-            $("#HasLatLong").val("True");
             var p = marker.getPosition();//获取marker的位置
             set_map_val(p);
-            // alert("marker的位置是" + p.lng + "," + p.lat);
         });
         map.addOverlay(marker);
         var infoWindow = new BMap.InfoWindow(sContent);
@@ -305,9 +299,7 @@
         });
         var p = marker.getPosition();//获取marker的位置
         set_map_val(p);
-        // alert("marker的位置是" + p.lng + "," + p.lat);
-        //setTimeout(function () { marker.openInfoWindow(infoWindow); }, 1000);
-        //map.setCenter(currentPoint);
+
     }
 
     function set_map_val (p) {
