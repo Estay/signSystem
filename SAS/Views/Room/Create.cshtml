@@ -57,9 +57,9 @@
     			<label for="room_name"><span class="label">房型名称</span><input type="text" id="room_name" name="@Html.DisplayNameFor(model => model.h_r_name_cn)" value="@Model.h_r_name_cn"><span class="col_red">*</span></label>
     			<label for="room_count">
     				<span class="label">数量</span>
-    				<input type="text" id="room_count" name="@Html.DisplayNameFor(model => model.h_r_house_number)" value="@Model.h_r_house_number">
-    				<span class="col_red">*</span>
-    				<span>将会设置房量的默认值</span>
+    				<input type="text" id="room_count" class="only_integer" name="@Html.DisplayNameFor(model => model.h_r_house_number)" value="@Model.h_r_house_number">
+    				<span>(将会设置房量的默认值)</span>
+                    <span class="col_red">*</span>
     			</label>
     		</p>
     		<p class="input_line">
@@ -153,11 +153,12 @@
                             }
                         }
                     </select>
-                    人          
+                    人
+                    <span class="col_red">*</span>   
                 </label>
                 <label for="room_area">
                     <span class="label">面积</span>
-                    <input type="text" id="room_area" name="@Html.DisplayNameFor(model => model.h_r_acreage)" value="@Model.h_r_acreage">平米
+                    <input type="text" id="room_area" class="only_integer" name="@Html.DisplayNameFor(model => model.h_r_acreage)" value="@Model.h_r_acreage">平米
                     <span class="col_red">*</span>
                 </label>
                 <label for="room_floor">
@@ -212,6 +213,8 @@
                         </div>
                         <a href="" class="bed_add">添加</a>
                     </div>
+                </div>
+                <div class="float_l">
                     <span class="col_red">*</span>
                 </div>
             </div>

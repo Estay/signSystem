@@ -86,7 +86,6 @@
 
 				if (settings.submit_check) {
 					if (settings.check) {
-
 						// 失去焦点是否已验通过
 						if (el.attr('rules_error')) {
 							event.preventDefault();
@@ -100,7 +99,6 @@
 							console.log(el.attr('name')+":"+el.val());
 						}
 					}else{
-
 						// 验证规则是否通过
 						if (!ruleValidate(el, val)) {
 							event.preventDefault();

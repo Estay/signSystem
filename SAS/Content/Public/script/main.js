@@ -1,4 +1,4 @@
-/*2014年8月29日18:23:06*/
+/*2014年9月2日10:27:48*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -717,8 +717,30 @@
         }
     })($);
     $("#room_name").e_input_tip({
-        space: "请输入房型名称",
-        rule: /^[\s\S]{2,}$/
+        space: "请输入公寓名称",
+        check: true,
+        rule: function(success_callback, error_callback, val) {
+            var el = $(this);
+            if (!val.match(/^[\s\S]{3,}$/)) {
+                error_callback("请输入三个以上的字符", el);
+                return;
+            }
+            $.ajax({
+                url: "/Room/IsOk/",
+                dataType: "text",
+                data: {
+                    text: val
+                }
+            }).done(function(data) {
+                if (data == 0) {
+                    error_callback("此房型已存在", el);
+                } else {
+                    success_callback(el);
+                }
+            }).fail(function() {
+                alert("服务器验证公寓名称失败");
+            });
+        }
     });
     $("#room_count").e_input_tip({
         space: 0,
@@ -740,29 +762,42 @@
         space: "",
         rule: /^[\s\S]+$/
     });
-    $(".bed_add").click(function(event) {
-        event.preventDefault();
-        var clone = $(".bed_item.hide").clone().removeClass("hide");
-        $(this).before(clone);
-    });
     (function() {
-        var bed_input = $("#bed_input"), bed_val = bed_input.val();
+        $(".bed_add").click(function(event) {
+            event.preventDefault();
+            var clone = $(".bed_item.hide").clone().removeClass("hide");
+            $(this).before(clone);
+            clone.find(".bed,.number").e_input_tip({
+                check: true,
+                need_text: "必须选择"
+            });
+        });
+        var bed_input = $("#bed_input"), bed_val = bed_input.val(), bed_items = $(".bed_item");
         if (bed_val) {
             var bed_arr = bed_val.split(",");
-            $(".bed_item").eq(1).remove();
+            bed_items.eq(1).remove();
             for (var i = 0; i < bed_arr.length; i++) {
                 if (bed_arr[i]) {
                     var bed = bed_arr[i].split("|");
                     var clone = $(".bed_item.hide").clone().removeClass("hide");
                     clone.find(".bed").val(bed[0]);
                     clone.find(".number").val(bed[1]);
+                    if (i == 0) {
+                        clone.find(".bed_del").remove();
+                    }
                     $(".bed_add").before(clone);
                 }
             }
+            bed_items = $(".bed_item");
         }
+        bed_items.not(".hide").find(".bed,.number").e_input_tip({
+            need_text: "必须选择"
+        });
         $("#bed_box").on("click", ".bed_del", function(event) {
             event.preventDefault();
-            $(this).parents(".bed_item").remove();
+            var box = $(this).parents(".bed_item");
+            box.find(".bed,.number").e_window_kill().unbind("input_tip_checking");
+            box.remove();
             setBedInput();
         });
         $("#bed_box").on("change", "select", function(event) {
@@ -817,6 +852,12 @@
         rule: /^\d+$/
     });
     $(".upload_img").e_img_siz("", true);
+    $(".upload_img_info").e_input_tip({
+        need: false
+    });
+    $(".upload_img_type").e_input_tip({
+        need_text: "必须选择"
+    });
     function upload_img(els) {
         els.each(function(index, el) {
             var el = $(el), box = el.parents(".from_path").find(".img_show_box"), info_box = "";
@@ -851,6 +892,7 @@
                         if (img.PID) {
                             a.attr("pid", img.PID);
                             a.find("select").html($("#img_type_sel").html());
+                            a.find(".upload_img_info").e_input_tip();
                         } else {
                             a.attr("pid", "error");
                             a.find(".img_set").addClass("col_red").html(img.Message);
@@ -916,6 +958,7 @@
             type: "GET",
             data: data
         }).done(function(data) {
+            box.find(".upload_img_info,.upload_img_type").unbind("input_tip_checking");
             if (data == 0) {
                 alert("删除图片失败");
             } else {
@@ -970,6 +1013,7 @@
         window.location.href = "/Guarantee/MyGuaran?id=" + $(this).find("option:selected").val();
     });
     $(".MyGuarantee_btn").click(function(event) {
+        event.preventDefault();
         var el = $(".g_ru_change:checked"), val = el.next().text();
         if (el.index(".g_ru_change") == 1) {
             val = val + el.nextAll("input").val() + el.nextAll("span").eq(1).text();
@@ -1225,6 +1269,15 @@
         event.preventDefault();
         var el = $(this), status = 0;
         var err_el = $("[rules_error]");
+        $(".room_img_item").each(function(index, el) {
+            if ($(this).find(".img_set").length < 5) {
+                status = 2;
+            }
+        });
+        if (status == 2) {
+            alert("每个房型图片不能少于5张。");
+            return;
+        }
         $("form").submit();
     });
     function setUrlParam(para_name, para_value, url) {

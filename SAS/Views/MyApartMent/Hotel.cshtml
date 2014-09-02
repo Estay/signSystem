@@ -1,9 +1,9 @@
 ﻿@model SAS.Models.hotel_info
 
 @{
-    ViewBag.Title = "新建公寓-录入基本信息";
-    ViewBag.Description = "新建公寓";
-    ViewBag.Keywords = "新建公寓";
+    ViewBag.Title = "新建公寓-修改公寓信息";
+    ViewBag.Description = "修改公寓信息";
+    ViewBag.Keywords = "修改公寓信息";
     ViewBag.my_apart_ment = "set";        
     
     string f = Model.h_name_cn;
@@ -28,11 +28,11 @@
 @using(Html.BeginForm("Hotel","MyApartMent",FormMethod.Post))
 {
 <div id="flag_box">
-	<span href="" class="btn_c set">修改公寓信息</span>
+	<span href="" class="btn_c set">修改基本信息</span>
 </div>
-<div class="box_a">
+<div class="box_a content">
 	<div class="from_path">
-		<h2>录入基本信息</h2>
+		<h2>公寓基本信息</h2>
 		<p class="input_line">
 			<label for="hotel_name"><span class="label">名称</span><b>@Model.h_name_cn</b></label>
              @Html.ValidationMessageFor(model => model.h_name_cn)

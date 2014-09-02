@@ -507,8 +507,33 @@
 	//////////////////////////////////添加房型/////////////////////////////////////////////
 	// 房型名称
 	$("#room_name").e_input_tip({
-			space :"请输入房型名称",
-			rule : /^[\s\S]{2,}$/
+		space : "请输入公寓名称",
+		check : true, //失去焦点验证
+		rule: function(success_callback,error_callback,val) {
+			var el = $(this);
+
+			if (!val.match(/^[\s\S]{3,}$/)) {
+				error_callback("请输入三个以上的字符",el);
+				return ;
+			};
+
+
+			$.ajax({
+				url: '/Room/IsOk/',
+				dataType: 'text',
+				data: {text:val }
+			})
+			.done(function(data) {
+				if(data==0){
+					error_callback("此房型已存在",el);
+				}else{
+					success_callback(el);
+				}
+			})
+			.fail(function() {
+				alert("服务器验证公寓名称失败");
+			});	
+		}
 	});
 
 	// 数量
@@ -541,37 +566,60 @@
 		rule : /^[\s\S]+$/
 	});
 
-	// 添加床型
-	$(".bed_add").click(function(event) {
-		event.preventDefault();
-		var clone = $(".bed_item.hide").clone().removeClass('hide');
-		$(this).before(clone);
-	});
+
+
 
 
 	// 床型输入模块
 	(function() {
-		var bed_input = $("#bed_input"),
-			bed_val = bed_input.val();
 
+		// 添加床型
+		$(".bed_add").click(function(event) {
+			event.preventDefault();
+			var clone = $(".bed_item.hide").clone().removeClass('hide');
+			$(this).before(clone);
+			clone.find('.bed,.number')
+			.e_input_tip({
+				check : true,
+				need_text : "必须选择"
+			});
+		});
+
+		var bed_input = $("#bed_input"),
+			bed_val = bed_input.val(),
+			bed_items = $('.bed_item');
+		// 回显
 		if (bed_val) {
 			var bed_arr = bed_val.split(",");
-			$(".bed_item").eq(1).remove();
+			bed_items.eq(1).remove();
+
+			
 			for (var i = 0; i < bed_arr.length; i++) {
 				if(bed_arr[i]){
 					var bed = bed_arr[i].split("|");
 					var clone = $(".bed_item.hide").clone().removeClass('hide');
 					clone.find(".bed").val(bed[0]);
 					clone.find(".number").val(bed[1]);
+					if (i==0) {
+						clone.find('.bed_del').remove();
+					};
 					$(".bed_add").before(clone);
 				}
 			};
+			bed_items = $('.bed_item');
 		};
+
+		// 床型验证
+		bed_items .not(".hide").find('.bed,.number').e_input_tip({
+			need_text : "必须选择"
+		});
 
 		// 删除床型
 		$("#bed_box").on('click', '.bed_del', function(event) {
 			event.preventDefault();
-			$(this).parents(".bed_item").remove();
+			var box = $(this).parents(".bed_item");
+			box.find('.bed,.number').e_window_kill().unbind('input_tip_checking');
+			box.remove();
 			setBedInput();
 		});
 
@@ -648,6 +696,13 @@
 	///////////////////////////////////////上传图片 回显/////////////////////////
 	$(".upload_img").e_img_siz("",true);
 
+	// 绑定验证
+	$(".upload_img_info").e_input_tip({
+		need:false
+	});
+	$(".upload_img_type").e_input_tip({
+		need_text:"必须选择"
+	});
 
 	function upload_img(els) {
 		els.each(function(index, el) {
@@ -693,6 +748,9 @@
 						if (img.PID) {
 							a.attr('pid', img.PID);
 							a.find('select').html($("#img_type_sel").html());
+
+							// 绑定验证
+							a.find('.upload_img_info').e_input_tip();
 						}else {
 							a.attr('pid', "error");
 							a.find('.img_set').addClass('col_red').html(img.Message);
@@ -792,6 +850,7 @@
 			data: data
 		})
 		.done(function(data) {
+			box.find('.upload_img_info,.upload_img_type').unbind('input_tip_checking');
 			if (data==0) {
 				alert("删除图片失败");
 			}else {
@@ -870,6 +929,7 @@
 
     // 提交担保
 	$(".MyGuarantee_btn").click(function(event) {
+		event.preventDefault();
 		var el = $(".g_ru_change:checked"),
 			val = el.next().text();
 
@@ -1227,18 +1287,19 @@
 
 		var err_el = $('[rules_error]');
 
-		// if (err_el.length) {	
-		// 	err_el.trigger('input_tip_checking');
-		// 	return;
-		// };
+		// 图片数量验证
+		$(".room_img_item").each(function(index, el) {
+			if($(this).find('.img_set').length<5){
+				status = 2;
+			}
+		});
+
+		if (status == 2) {
+			alert("每个房型图片不能少于5张。")
+			return
+		}
 		$("form").submit();
-		// .submit(function() {
-		// 	input.each(function(index, el) {
-		// 		if ($(this).attr('rules_error')||$(this).attr('rules_error')=="") {
-		// 			status = 1;
-		// 			return false;
-		// 		};
-		// 	});
+
 		// 	$(".room_img_item").each(function(index, el) {
 		// 		if($(this).find('.img_set').length<5){
 		// 			status = 2;
@@ -1249,7 +1310,7 @@
 		// 			status = 3;
 		// 		}
 		// 	});
-		// 	if (status == 0) {
+
 		// 		document.forms[0].submit();
 		// 	}else {
 		// 		if(status == 1){
