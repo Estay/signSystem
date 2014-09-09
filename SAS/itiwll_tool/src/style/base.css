@@ -45,6 +45,14 @@ select {
 textarea {
   border: 1px solid #595757;
 }
+select:focus,
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus {
+  -webkit-box-shadow: 1px 1px 8px #003C91;
+  box-shadow: 1px 1px 8px #003C91;
+  border-color: #003C91;
+}
 table {
   width: 100%;
   border: 1px solid #595757;

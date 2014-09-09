@@ -339,7 +339,6 @@
 			});
 		};
 
-		parents(selector)
 		
 
 	})($);
@@ -363,6 +362,7 @@
 			callback: function(index) {
 				if (index == 0) {
 					// 切换到地图设置
+					// todo
 					$("#show_coordinates").show();
 					lat.add(lon).e_window_kill().unbind('input_tip_checking').attr('not_validate', 'true');
 
@@ -870,18 +870,13 @@
         window.location.href="/DrrRule/MyDrr?id="+$(this).find("option:selected").val();
     });
 
-	// 促销规则切换
-	$(".drr_modes").change(function(event) {
-		console.log(this.selectedIndex);
-		$(this).parents(".box_b").find(".drr_mode").html($(".drr_modes").find('.input_line').eq(this.selectedIndex).clone(false, false));
-	});
+
 
 
 	// 验证表单
 	$("#drr_name").e_input_tip({
 		space : "促销价格的名称",
 		check : true, //失去焦点验证
-		submit_check : false,
 		rule: function(success_callback,error_callback,val) {
 			var el = $(this);
 
@@ -911,7 +906,19 @@
 			});	
 		}
 	});
- 
+
+	var drr_mode = $('.drr_mode');
+	drr_mode.find('input').e_input_tip();
+
+	// 促销规则切换
+	$(".drr_modes").change(function(event) {
+		console.log(this.selectedIndex);
+		drr_mode.find('input').e_window_kill();
+		var input_line = drr_mode.find(".input_line").hide().eq(this.selectedIndex).show();
+		input_line.find('input').removeAttr('not_validate');
+		input_line.siblings().find('input').attr('not_validate', 'true');
+	});
+
 	//////////////////////////////////设置礼包////////////////////////////////////////
     // 酒店切换
     $("#hotel_switch_gift").change(function(event) {
@@ -919,7 +926,15 @@
         window.location.href="/Gift/MyGift?id="+$(this).find("option:selected").val();
     });
 
-
+    $('#GiftContent').e_input_tip();
+    
+	// 礼包和促销同时使用此验证
+	$('#rooms').e_input_tip({
+		space_callback : function() {
+			alert("请选择适用房型");
+		}
+	});
+ 
 	//////////////////////////////////设置担保////////////////////////////////////////
     // 酒店切换
     $("#hotel_switch").change(function(event) {

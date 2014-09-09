@@ -1,4 +1,4 @@
-/*2014年9月2日14:20:04*/
+/*2014年9月9日10:06:37*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -600,7 +600,6 @@
                 map.centerAndZoom(city.find(":selected").text());
             });
         }
-        parents(selector);
     })($);
     (function() {
         var lon = $("#map_lon"), lat = $("#map_lat"), location_box = $("#location_box");
@@ -976,14 +975,9 @@
         console.log(event);
         window.location.href = "/DrrRule/MyDrr?id=" + $(this).find("option:selected").val();
     });
-    $(".drr_modes").change(function(event) {
-        console.log(this.selectedIndex);
-        $(this).parents(".box_b").find(".drr_mode").html($(".drr_modes").find(".input_line").eq(this.selectedIndex).clone(false, false));
-    });
     $("#drr_name").e_input_tip({
         space: "促销价格的名称",
         check: true,
-        submit_check: false,
         rule: function(success_callback, error_callback, val) {
             var el = $(this);
             if (!val.match(/^[\s\S]{3,}$/)) {
@@ -1008,9 +1002,24 @@
             });
         }
     });
+    var drr_mode = $(".drr_mode");
+    drr_mode.find("input").e_input_tip();
+    $(".drr_modes").change(function(event) {
+        console.log(this.selectedIndex);
+        drr_mode.find("input").e_window_kill();
+        var input_line = drr_mode.find(".input_line").hide().eq(this.selectedIndex).show();
+        input_line.find("input").removeAttr("not_validate");
+        input_line.siblings().find("input").attr("not_validate", "true");
+    });
     $("#hotel_switch_gift").change(function(event) {
         console.log(event);
         window.location.href = "/Gift/MyGift?id=" + $(this).find("option:selected").val();
+    });
+    $("#GiftContent").e_input_tip();
+    $("#rooms").e_input_tip({
+        space_callback: function() {
+            alert("请选择适用房型");
+        }
     });
     $("#hotel_switch").change(function(event) {
         console.log(event);
