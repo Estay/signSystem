@@ -25,7 +25,16 @@
         <select name="" id="hotel_switch_gift">
             @foreach (var h in hotels)
             {
+                if (h.hotel_id == ViewBag.Id)
+                {
+                <option value="@h.hotel_id" selected>@h.h_name_cn</option>
+                    
+                }
+                else
+                {
                 <option value="@h.hotel_id">@h.h_name_cn</option>
+                    
+                }
             }
         </select>
         </h2>

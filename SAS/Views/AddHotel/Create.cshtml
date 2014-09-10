@@ -51,19 +51,6 @@
 				</select>
 				<span class="col_red">*</span>
 			</label>
-			<label for="hotel_theme">
-				<span class="label">公寓主题</span>
-                 
-            @*@Html.DropDownListFor(m=>m.theme.hotel_theme_title,ViewData["sl"] as SelectList);*@
-
-				<select name="@Html.DisplayNameFor(model => model.hotel_theme_id)" id="hotel_theme">
-	                <option value="" >请选择</option>
-					@foreach(var opt in hotel_theme){
-	                    <option value="@opt.Key">@opt.Value</option>                    
-	                }
-				</select>
-				<span class="col_red">*</span>
-			</label>
 		</p>
 		<p class="input_line">
 			<label for="@Html.DisplayNameFor(model => model.h_tel)">
@@ -81,6 +68,7 @@
 				<span class="label">手机号码</span>
 				<input id="mobeli_phone" class="only_integer" type="text" name="@Html.DisplayNameFor(model => model.h_mobile_phone)" maxlength="11">
 				<span class="col_red">*</span>
+				<span>接收订单提醒短信</span>
 			</label>
 		</p>
 		<p class="input_line">
@@ -125,6 +113,21 @@
 					<br>
 					<br>
 				</div>
+			</div>
+		</div>
+		<!-- 公寓主题 -->
+		<div class="clear">
+			<div class="float_l">
+				<div class="input_line"><span class="label">公寓主题</span></div>
+			</div>
+			<div class="float_l checkbox_box">
+				<p class="input_line"><a class="all_set" href="">全选</a><a class="reverse_set" href="">反选</a></p>
+                <input class="hide" type="text" name="@Html.DisplayNameFor(model => model.hotel_theme_id)" value="" />
+                <p class="input_line">
+					@foreach(var facility in hotel_theme){   
+				        <label class="w_sn"><input class="multiple" type="checkbox" name="facilit" value="@facility.Key"><span class="hotel_facility" title="@facility.Value">@facility.Value</span></label>
+	                }					
+            	</p>
 			</div>
 		</div>
 	</div>

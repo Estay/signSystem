@@ -74,7 +74,7 @@ th {
   line-height: 30px;
 }
 td {
-  font-size: 12px;
+  font-size: 14px;
   color: #595757;
   text-align: center;
   line-height: 30px;
@@ -143,16 +143,6 @@ td {
 }
 .checkbox_box {
   width: 830px;
-}
-.checkbox_box .w_sn span{
-  display: inline-block;
-  *display: inline;
-  *zoom: 1;
-  vertical-align: bottom;
-  margin-right: 20px;
-  width: 150px;
-  text-overflow: ellipsis;
-  overflow: hidden;
 }
 .float_r {
   float: right;
@@ -266,7 +256,6 @@ td {
   position: relative;
   top: 1px;
 }
-/*.btn_c:hover,*/
 .btn_c.set {
   background: #003C8F;
   background: linear-gradient(to bottom, #005DDE, #003C8F);
@@ -297,6 +286,28 @@ td {
 .btn_d.set {
   border-bottom:1px solid #FFF;
 }
+
+/*多选组件*/
+.checkbox_box .w_sn {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  line-height: 30px;
+  width: 184px;
+}
+.checkbox_box .w_sn span{
+  vertical-align: bottom;
+  margin-right: 20px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  border-bottom: 1px solid #FFF; 
+}
+.checkbox_box .w_sn span:hover,
+input[type="checkbox"]:checked + span {
+  font-weight: bold;
+  color: #205ca0;
+}
+
 /*文字 颜色*/
 .label {
   width: 7em;

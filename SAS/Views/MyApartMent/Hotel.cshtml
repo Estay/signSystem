@@ -85,6 +85,7 @@
 				<span class="label">手机号码</span>
 				<input id="mobeli_phone" type="text" name="@Html.DisplayNameFor(model => model.h_mobile_phone)" value="@Model.h_mobile_phone">
 				<span class="col_red">*</span>
+				<span>接收订单提醒短信</span>
 			</label>
 		</p>
 		<p class="input_line">
@@ -138,6 +139,21 @@
 					<br>
 					<br>
 				</div>
+			</div>
+		</div>
+		<!-- 公寓主题 -->
+		<div class="clear">
+			<div class="float_l">
+				<div class="input_line"><span class="label">公寓主题</span></div>
+			</div>
+			<div class="float_l checkbox_box">
+				<p class="input_line"><a class="all_set" href="">全选</a><a class="reverse_set" href="">反选</a></p>
+                <input class="hide multiple_value" type="text" name="@Html.DisplayNameFor(model => model.hotel_theme_id)" value="@Model.hotel_theme_id" />
+                <p class="input_line">
+					@foreach(var facility in hotel_theme){   
+				        <label class="w_sn"><input class="multiple" type="checkbox" name="facilit" value="@facility.Key"><span class="hotel_facility" title="@facility.Value">@facility.Value</span></label>
+	                }					
+            	</p>
 			</div>
 		</div>
 	</div>

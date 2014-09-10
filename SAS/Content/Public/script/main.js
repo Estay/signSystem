@@ -1,4 +1,4 @@
-/*2014年9月9日10:06:37*/
+/*2014年9月10日10:35:02*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -71,7 +71,6 @@
                             if (val == "" || val == settings.space) {
                                 el.val("");
                             }
-                            console.log(el.attr("name") + ":" + el.val());
                         }
                     } else {
                         if (!ruleValidate(el, val)) {
@@ -84,7 +83,6 @@
                             if (val == "" || val == settings.space) {
                                 el.val("");
                             }
-                            console.log(el.attr("name") + ":" + el.val());
                         }
                     }
                 }
@@ -487,7 +485,7 @@
         });
     })($);
     $("#hotel_fax").e_input_tip({
-        space: "传真号码(带区号)",
+        space: "(如:0755-83386677)",
         need: false,
         error: "格式不正确",
         rule: /^\d{3,4}\-?\d{7,8}$/
@@ -717,6 +715,7 @@
         if (f_input.length) {
             set_val(f_input);
             set_val_b(s_input);
+            set_val($(".multiple_value"));
         }
     })($);
     $("#room_name").e_input_tip({
@@ -971,7 +970,7 @@
             alert("删除图片错误！错误代码：" + data.status + "," + data.statusText + "。");
         });
     });
-    $("#hotel_switch").change(function(event) {
+    $("#hotel_switch_my_drr").change(function(event) {
         console.log(event);
         window.location.href = "/DrrRule/MyDrr?id=" + $(this).find("option:selected").val();
     });
@@ -1021,7 +1020,7 @@
             alert("请选择适用房型");
         }
     });
-    $("#hotel_switch").change(function(event) {
+    $("#hotel_switch_my_guarantee").change(function(event) {
         console.log(event);
         window.location.href = "/Guarantee/MyGuaran?id=" + $(this).find("option:selected").val();
     });

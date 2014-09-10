@@ -194,7 +194,6 @@
 	*zoom: 1;
 	vertical-align: bottom;
 	margin-right: 20px;
-	width: 150px;
 	-ms-text-overflow: ellipsis;
 	text-overflow: ellipsis;
 	overflow: hidden;

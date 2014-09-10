@@ -23,10 +23,19 @@
       <input class="hide" type="text" name="@Html.DisplayNameFor(model => Model.id)" value="@Model.id" />
    <div id="DrrRule" class="box_a">
     <h2>公寓:
-        <select name="" id="hotel_switch">
+        <select name="" id="hotel_switch_my_guarantee">
             @foreach (var h in hotels)
             {
+                if (h.hotel_id == ViewBag.Id)
+                {
+                <option value="@h.hotel_id" selected>@h.h_name_cn</option>
+                    
+                }
+                else
+                {
                 <option value="@h.hotel_id">@h.h_name_cn</option>
+                    
+                }
             }
         </select>
     </h2>

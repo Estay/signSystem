@@ -165,7 +165,7 @@
 
 	// 传真
 	$("#hotel_fax").e_input_tip({
-		space : "传真号码(带区号)",
+		space : "(如:0755-83386677)",
 		need: false,
 		error : "格式不正确",
 		rule : /^\d{3,4}\-?\d{7,8}$/
@@ -498,6 +498,7 @@
 		if(f_input.length){
 			set_val(f_input);
 			set_val_b(s_input);
+			set_val($('.multiple_value'));
 		}
 
 	})($)
@@ -865,7 +866,7 @@
 
 	//////////////////////////////////设置促销规则////////////////////////////////////////
     // 酒店切换
-    $("#hotel_switch").change(function(event) {
+    $("#hotel_switch_my_drr").change(function(event) {
         console.log(event);
         window.location.href="/DrrRule/MyDrr?id="+$(this).find("option:selected").val();
     });
@@ -937,7 +938,7 @@
  
 	//////////////////////////////////设置担保////////////////////////////////////////
     // 酒店切换
-    $("#hotel_switch").change(function(event) {
+    $("#hotel_switch_my_guarantee").change(function(event) {
         console.log(event);
         window.location.href="/Guarantee/MyGuaran?id="+$(this).find("option:selected").val();
     });

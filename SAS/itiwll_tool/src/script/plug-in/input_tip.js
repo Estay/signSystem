@@ -96,7 +96,6 @@
 							if(val=="" || val == settings.space){
 								el.val("");
 							}
-							console.log(el.attr('name')+":"+el.val());
 						}
 					}else{
 						// 验证规则是否通过
@@ -108,7 +107,6 @@
 							if(val=="" || val == settings.space){
 								el.val("");
 							}
-							console.log(el.attr('name')+":"+el.val());
 						}
 					}
 
