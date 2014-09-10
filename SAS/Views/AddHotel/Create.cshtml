@@ -16,7 +16,7 @@
    
     Dictionary<int, String> hotel_province = ViewData["provice"] as Dictionary<int, string>;
 
-    Array month = new string[]{ "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "11月", "12月" };
+    Array month = new string[]{ "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月","11月", "12月" };
 
     Dictionary<int, String> hotel_facilitys = ViewData["facilities"] as Dictionary<int, string>;
  
@@ -134,7 +134,6 @@
 	<div class="from_path">
 		<h2>录入详细信息</h2>
 		<p class="input_line">
-			<label for="hotel_built">
 				<input  id="hotel_built_year" type="text" name="@Html.DisplayNameFor(model => model.h_opening_time)" class="hide">
 				<span class="label">开业时间</span>
 				<select class="select_yeae">
@@ -151,8 +150,6 @@
 					}
 				</select>
 				<span class="col_red">*</span>
-			</label>
-			<label for="hotel_decoration_time_year">
 				<input id="hotel_decoration_time_year" class="hide" type="text" name="@Html.DisplayNameFor(model => model.decorateTime)" >
 				<span class="label">装修时间</span>
 				<select class="select_yeae">
@@ -169,7 +166,7 @@
 					}
 				</select>
 				<span class="col_red">*</span>
-			</label>
+
 			<label for="hotel_building">
 				<span class="label">公寓楼高</span><input type="text" id="hotel_building" class="only_integer" name="@Html.DisplayNameFor(model => model.floor)">
 				<span class="col_red">*</span>

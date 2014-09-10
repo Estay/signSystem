@@ -410,6 +410,36 @@
 		rule : /^\d+$/
 	});
 	// 开业时间 装修时间
+	(function() {
+		var open_year = $('.select_yeae').eq(0),
+			decoration_year = $('.select_yeae').eq(1),
+			open_month = $('.select_month').eq(0),
+			decoration_month = $('.select_month').eq(1);
+			open_year_o = open_year.find('option'),
+			decoration_year_o = decoration_year.find('option'),
+			open_month_o = open_month.find('option'),
+			decoration_month_o = decoration_month.find('option'),
+			clone_y = open_year.clone(false, false),
+			clone_m = open_month.clone(false, false);
+
+		open_year.add(open_month).change(function(event) {
+			if (decoration_year[0].selectedIndex!=0 && open_year[0].selectedIndex>=decoration_year[0].selectedIndex) {
+				decoration_year[0].selectedIndex=open_year[0].selectedIndex;
+				if (open_month[0].selectedIndex!=0 && decoration_month[0].selectedIndex!=0 && open_month[0].selectedIndex<decoration_month[0].selectedIndex) {
+					decoration_month[0].selectedIndex = open_month[0].selectedIndex;
+				};
+			};
+		});
+		decoration_month.add(decoration_year).change(function(event) {
+			var a = decoration_year[0].selectedIndex * decoration_month[0].selectedIndex * open_year[0].selectedIndex * open_month[0].selectedIndex,
+				b = decoration_month[0].selectedIndex - decoration_year[0].selectedIndex * 12 + open_year[0].selectedIndex * 12 -  open_month[0].selectedIndex;
+			if (a > 0 && b >0) {
+				alert("装修时间不能在开业时间之后");
+				decoration_year[0].selectedIndex = decoration_month[0].selectedIndex = 0;
+			};
+		});
+
+	})();
 	var time_select = $("#hotel_built_year,#hotel_decoration_time_year").siblings('select');
 	time_select.change(function(event) {
 		var p = $(this).parent(), 
