@@ -9,8 +9,8 @@ namespace SAS
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             
-           // filters.Add(new CheckLogin() { IsCheck = true });
-           filters.Add(new HandleErrorAttribute());
+            filters.Add(new CheckLogin() { IsCheck = true });
+          // filters.Add(new HandleErrorAttribute());
         }
     }
 }

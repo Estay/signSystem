@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using SAS.DBC;
 using SAS.Models;
+using System.Web.Mvc;
 
 namespace SAS.help
 {
@@ -119,7 +120,7 @@ namespace SAS.help
         /// <returns></returns>
         public static string getUId()
         {
-            return "180";
+            return HttpContext.Current.Session["uid"].ToString();
         }
     }
 
