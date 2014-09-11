@@ -468,7 +468,7 @@
 
 	// 公寓简介
 	$("#hotel_abstract").e_input_tip({
-		space : "请输入公寓简介",
+		space : "请输入公寓简介(2000字以内)",
 		error : "最大可输入2000个字符",
 		rule : /^[\S\s]{0,2000}$/,
 		error_callback : function (error,el) {
@@ -483,8 +483,7 @@
 
 	// 交通位置
 	$("#hotel_place").e_input_tip({
-		space : "请输入交通位置",
-		error : "最大可输入2000个字符",
+		space : "请输入交通位置(2000字以内)",
 		error : "最大可输入2000个字符",
 		rule : /^[\S\s]{0,2000}$/,
 		error_callback : function (error,el) {
@@ -687,7 +686,7 @@
 
 	$("#room_describ").e_input_tip({
 		error : "最大可输入2000个字符",
-		space:"请输入房型描述",
+		space:"请输入房型描述(2000字以内)",
 		rule: /^[\s\S]{0,2000}$/
 	});
 
@@ -729,6 +728,7 @@
 
 	// 绑定验证
 	$(".upload_img_info").e_input_tip({
+		space:"请输入图片描述",
 		need:false
 	});
 	$(".upload_img_type").e_input_tip({
@@ -781,7 +781,13 @@
 							a.find('select').html($("#img_type_sel").html());
 
 							// 绑定验证
-							a.find('.upload_img_info').e_input_tip();
+							a.find('.upload_img_info').e_input_tip({
+								space:"请输入图片描述",
+								need:false
+							});
+							a.find(".upload_img_type").e_input_tip({
+								need_text:"必须选择"
+							});
 						}else {
 							a.attr('pid', "error");
 							a.find('.img_set').addClass('col_red').html(img.Message);
@@ -798,13 +804,16 @@
 
 	// 设置图片描述
 	$("#add_img").on('focusout',".upload_img_info", function(event) {
-		var pid = $(this).parents(".upload_img_box").attr('pid'),
+		var el = $(this),
+			pid = el.parents(".upload_img_box").attr('pid'),
 			v = $(this).val(),
 			ajax_load = "";
 
 
-		if (v) {
-
+		if (v && v!= el.attr('last_value')) {
+			if(v == "请输入图片描述"){
+				v="";
+			}
 			//提交描述
 			ajax_load = $.ajax({
 				url: '/ImageProperty/ImageDes',
@@ -816,7 +825,9 @@
 			.done(function(data) {
 				if (data==0) {
 					alert("描述提交失败");
-				};
+				}else {
+					el.attr('last_value', v);
+				}
 			})
 			.fail(function(data) {
 				alert("描述提交错误！错误代码：" + data.status + ","+data.statusText + "。");
