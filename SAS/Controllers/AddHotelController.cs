@@ -64,6 +64,7 @@ namespace SAS.Controllers
 
         public ActionResult Create(string hotelId)
         {
+           // ViewBag.username = "ff";
             help.DBhelp.log("add hotel Create");
             hotel_info hotel = new hotel_info();
             //khotel_theme_infoDBContent db = new khotel_theme_infoDBContent();

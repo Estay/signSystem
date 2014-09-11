@@ -9,6 +9,7 @@ namespace SAS.help
         public bool IsCheck { get; set; } 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
+           
             if (filterContext.HttpContext.Session != null)
             {
                 base.OnActionExecuting(filterContext); 

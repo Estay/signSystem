@@ -71,12 +71,14 @@ namespace SAS.Controllers
             {
                 using (db = new HotelDBContent())
                 {
-                    string pass=(from m in db.Merchant_infos where m.tel == merchant_info.tel || m.name == merchant_info.name select m.password).SingleOrDefault();
-                    if (pass == merchant_info.password)
+                    Merchant_info mer = (from m in db.Merchant_infos where m.tel == merchant_info.tel || m.name == merchant_info.name select m).SingleOrDefault();
+                    if (mer.password == merchant_info.password)
                     {
-                        Session["userName"] = merchant_info.tel;
+
+                        Session["userName"] = mer.name;
+                        Session["uid"] = merchant_info.tel;
                         Session.Remove("code");
-                        return RedirectToAction("create", "addHotel");
+                       return RedirectToAction("create", "addHotel");
                     }
                     else
                     {
@@ -86,9 +88,20 @@ namespace SAS.Controllers
                 }
             }else
                 ViewBag.LoginInfo = "验证码错误,请输入正确的验证码";
+            Session.Remove("code");
             return View("signLogin");;
         }
-
+        public ActionResult temp()
+        {
+            ViewBag.username = Session["username"];
+            ViewBag.code = Session["code"];
+            return View();
+        }
+        public ActionResult Logout()
+        {
+            Session.Remove("uid");
+            return RedirectToAction("signLogin", "Login");
+        }
         //
         // GET: /Login/Edit/5
 
@@ -101,7 +114,7 @@ namespace SAS.Controllers
             }
             return View(merchant_info);
         }
-
+       
         //
         // POST: /Login/Edit/5
 
