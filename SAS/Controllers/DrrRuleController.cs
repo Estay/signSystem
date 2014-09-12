@@ -110,6 +110,9 @@ namespace SAS.Controllers
         public ActionResult Create(DrrRules drrrule)
         {
             SetName();
+            drrrule.DayNum = drrrule.CheckInNum != null ? -1 : drrrule.DayNum;
+            drrrule.CheckInNum = drrrule.DayNum != null ? -1 : drrrule.CheckInNum;
+
             if (drrrule.TypeCode == "DRRBookAhead")
             {
                 string last = string.Format("提前{0}天预订，每间晚优惠{1}％", drrrule.DayNum, drrrule.DeductNum * 10);
