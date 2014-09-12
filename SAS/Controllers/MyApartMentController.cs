@@ -266,11 +266,8 @@ namespace SAS.Controllers
                 {
                     re = true; ; DBhelp.CallProc(p.room_id, "proc_hotel_room_ebeds_batch_roomid"); DBhelp.CallProc(p.room_id, "proc_hotel_room_RP_price_batch_roomid");
                 }
-           // }
-                if (re == true)
-                    return 1;
-                else
-                    return 0;
+                result = re == true ? 1 : 0;
+                return result;
         }
 
       
