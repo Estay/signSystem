@@ -1,4 +1,4 @@
-/*2014年9月12日09:59:13*/
+/*2014年9月12日10:19:15*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -1055,7 +1055,7 @@
     });
     $("#hotel_switch_my_guarantee").change(function(event) {
         console.log(event);
-        window.location.href = "/Guarantee/MyGuaran?id=" + $(this).find("option:selected").val();
+        window.location.href = "/Guarantee/MyGuarantee?id=" + $(this).find("option:selected").val();
     });
     $(".g_ru_change").click(function(event) {
         if ($(this).index(".g_ru_change") == 1) {

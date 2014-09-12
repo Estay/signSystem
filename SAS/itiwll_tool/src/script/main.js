@@ -984,7 +984,7 @@
     // 酒店切换
     $("#hotel_switch_my_guarantee").change(function(event) {
         console.log(event);
-        window.location.href="/Guarantee/MyGuaran?id="+$(this).find("option:selected").val();
+        window.location.href="/Guarantee/MyGuarantee?id="+$(this).find("option:selected").val();
     });
 
     $('.g_ru_change').click(function(event) {
