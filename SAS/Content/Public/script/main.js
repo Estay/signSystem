@@ -1,4 +1,4 @@
-/*2014年9月12日10:19:15*/
+/*2014年9月12日15:05:58*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -770,7 +770,7 @@
         rule: /^\d+$/
     });
     $("#default_price").e_input_tip({
-        space: "",
+        space: "0",
         need_text: "必须选择",
         rule: /^\d+$|^\d+.\d+$/
     });

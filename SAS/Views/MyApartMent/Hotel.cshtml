@@ -35,7 +35,7 @@
 		<h2>公寓基本信息</h2>
 		<p class="input_line">
 			<label for="hotel_name"><span class="label">名称</span><b>@Model.h_name_cn</b></label>
-             @Html.ValidationMessageFor(model => model.h_name_cn)
+			<input type="text" class="hide" name="@Html.DisplayNameFor(model => model.h_name_cn)" value="@Model.h_name_cn" >
 			<label for="hotel_class">
 				<span class="label">所属类别</span>
 				<select name="@Html.DisplayNameFor(model => model.h_t_id)" id="hotel_class">
@@ -75,7 +75,6 @@
 				<input id="phone" type="text" class="hide" name="@Html.DisplayNameFor(model => model.h_tel)" value="@Model.h_tel">
 				<input type="text" id="phone_area_code" value="@Model.h_tel.Split('-')[0]">-<input type="text" id="hotel_phone" value="@Model.h_tel.Split('-')[1]">
 				<span class="col_red">*</span>
-                @Html.ValidationMessageFor(model => model.h_tel)
 			</label>
 			<label for="@Html.DisplayNameFor(model => model.h_fax)">
 				<span class="label">传真</span>
@@ -314,12 +313,14 @@
 		</div>
 	</div>
 	<div class="btn_box">
-		<a href="javascript:document.forms[0].submit()" id="save_hotel_info" class="btn_a btn_save_step checking_btn">保存</a>
+		<a href="" id="save_hotel_info" class="btn_a btn_save_step checking_btn">保存</a>
+		<a href="/MyApartMent/MyHotel" class="btn_a btn_save_step checking_btn m_l20">取消</a>
         <input class="hide" type="submit"  value="Create" />
 	</div>
 </div>
-    <input id="hotelId" type="text" class="hide" name="@Html.DisplayNameFor(model => model.hotel_id)" value="@ViewBag.HotelId">
-	 <input id="hotelId" type="text" class="hide" name="@Html.DisplayNameFor(model => model.h_ctime)" value="@Html.DisplayNameFor(model => model.h_ctime)">
+<input id="hotelId" type="text" class="hide" name="@Html.DisplayNameFor(model => model.hotel_id)" value="@ViewBag.HotelId">
+<input id="hotelId" type="text" class="hide" name="@Html.DisplayNameFor(model => model.h_ctime)" value="@Html.DisplayNameFor(model => model.h_ctime)">
+<input id="success" type="text" class="hide" value="@ViewBag.sign">	
 					
 }
 <!-- 地图 -->
@@ -381,10 +382,10 @@
     	$("#show_coordinates").text(p.lng + "," + p.lat);
     }
 
-    var success = @Viewbag.sign;
-    if (success == 0) {
+    var success = document.getElementById('success').value;
+    if (success === "0") {
     	alert("修改成功");
-    }else {
+    }else if (success){
     	alert("修改失败");
     }
 </script>

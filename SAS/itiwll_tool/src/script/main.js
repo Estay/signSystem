@@ -577,7 +577,7 @@
 
 	//默认房价
 	$("#default_price").e_input_tip({
-			space : "",
+			space : "0",
 			need_text:"必须选择",
 			rule : /^\d+$|^\d+.\d+$/
 	});
