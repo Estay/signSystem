@@ -1,4 +1,4 @@
-/*2014年9月12日17:55:03*/
+/*2014年9月12日18:01:46*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -1034,9 +1034,10 @@
             });
         }
     });
-    var drr_modes = $(".drr_modes_hide").find(".input_line"), drr_mode = $(".drr_mode");
+    var drr_modes = $("#drr_modes_hide").find(".input_line"), drr_mode = $(".drr_mode");
+    drr_mode.find("input").e_input_tip();
     $(".drr_modes").change(function(event) {
-        var input_inline = drr_mode.find("input").e_window_kill().attr("not_validate", "true");
+        drr_mode.find("input").e_window_kill().attr("not_validate", "true");
         drr_mode.html(drr_modes.eq(this.selectedIndex).clone(false, false));
         drr_mode.find("input").e_input_tip();
     });
