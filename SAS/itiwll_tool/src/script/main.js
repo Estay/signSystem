@@ -549,7 +549,7 @@
 
 
 			$.ajax({
-				url: '/Common/room/isok',
+				url: '/Common/isok',
 				dataType: 'text',
 				data: {text:val }
 			})
