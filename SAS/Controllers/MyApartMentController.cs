@@ -42,9 +42,8 @@ namespace SAS.Controllers
         {
             try
             {
-                hotel_info.source_id = Convert.ToInt32(help.StringHelper.appSettings("source_id")); ;
-                hotel_info.h_id = "";
-                hotel_info.h_utime = DateTime.Now;
+                hotel_info.source_id = Convert.ToInt32(help.StringHelper.appSettings("source_id")); hotel_info.h_id = ""; hotel_info.h_utime = DateTime.Now;
+              
                 var errors = ModelState.Values.SelectMany(v => v.Errors);
                 if (ModelState.IsValid)
                 {
@@ -62,8 +61,7 @@ namespace SAS.Controllers
             }
          
             HelperData();
-            ViewBag.HotelId = hotel_info.hotel_id;
-            ViewBag.sign = result;
+            ViewBag.HotelId = hotel_info.hotel_id; ViewBag.sign = result;   
             return View(hotel_info);
         }
         //房型
