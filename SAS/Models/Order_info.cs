@@ -538,6 +538,7 @@ namespace SAS.Models
         {
             string hho = order.o_check_in_date.ToString();
             string condition=string.Empty;
+            //订单编号
             if (!string.IsNullOrEmpty(order.o_SerialId ))
             {
                 if(condition==string.Empty)
@@ -546,6 +547,7 @@ namespace SAS.Models
                   condition+=string.Format("and o_SerialId='{0}'",order.o_SerialId);
 
             }
+            //入住人姓名
             if(!string.IsNullOrEmpty(order.o_other_guest_info))
             {
                 if (condition == string.Empty)

@@ -128,7 +128,10 @@ namespace SAS.Controllers
         {
             Order_info order = new Order_info();
             order.OrderList = order.getOrderInfos(order_info);
-            return order;
+            if( order.OrderList.Count>0)
+            return order_info;
+            else
+                return order;
         }
         //
         // GET: /Order/Edit/5
