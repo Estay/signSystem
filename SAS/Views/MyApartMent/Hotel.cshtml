@@ -36,6 +36,8 @@
 		<p class="input_line">
 			<label for="hotel_name"><span class="label">名称</span><b>@Model.h_name_cn</b></label>
 			<input type="text" class="hide" name="@Html.DisplayNameFor(model => model.h_name_cn)" value="@Model.h_name_cn" >
+			<input type="text" class="hide" name="@Html.DisplayNameFor(model => model.h_id)" value="@Model.h_id" >
+			<input type="text" class="hide" name="@Html.DisplayNameFor(model => model.u_id)" value="@Model.u_id" >
 			<label for="hotel_class">
 				<span class="label">所属类别</span>
 				<select name="@Html.DisplayNameFor(model => model.h_t_id)" id="hotel_class">
