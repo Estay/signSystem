@@ -40,18 +40,28 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult Hotel(hotel_info hotel_info)
         {
-            hotel_info.h_id = "01611129";
-            hotel_info.h_utime = DateTime.Now;
-            
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(hotel_info).State = EntityState.Modified;
-               
-                db.SaveChanges();
+                hotel_info.source_id = Convert.ToInt32(help.StringHelper.appSettings("source_id")); hotel_info.h_id = ""; hotel_info.h_utime = DateTime.Now;
               
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                if (ModelState.IsValid)
+                {
+                    db.Entry(hotel_info).State = EntityState.Modified;
+
+                    result = db.SaveChanges() > 0 ? 0 : 1;
+
+                }
             }
+            catch (Exception e)
+            {
+                DBhelp.log("修改公寓失败"+e.ToString());
+                result = 1;
+           
+            }
+         
             HelperData();
-            ViewBag.HotelId = hotel_info.hotel_id;
+            ViewBag.HotelId = hotel_info.hotel_id; ViewBag.sign = result;   
             return View(hotel_info);
         }
         //房型

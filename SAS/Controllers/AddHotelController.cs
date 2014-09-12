@@ -32,7 +32,7 @@ namespace SAS.Controllers
                if (id > 0)
                {
 
-                   hotel = (from h in db.hotel where h.hotel_id == id select h).Single();
+                   hotel = (from h in db.hotel where h.hotel_id == id select h).SingleOrDefault();
 
                }
            }
