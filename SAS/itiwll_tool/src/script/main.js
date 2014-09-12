@@ -952,16 +952,16 @@
 		}
 	});
 
-	var drr_mode = $('.drr_mode');
-	drr_mode.find('input').e_input_tip();
+	var drr_modes = $('.drr_modes_hide').find('.input_line'),
+		drr_mode = $('.drr_mode');
 
 	// 促销规则切换
 	$(".drr_modes").change(function(event) {
-		console.log(this.selectedIndex);
-		drr_mode.find('input').e_window_kill();
-		var input_line = drr_mode.find(".input_line").hide().eq(this.selectedIndex).show();
-		input_line.find('input').removeAttr('not_validate');
-		input_line.siblings().find('input').attr('not_validate', 'true');
+		var input_inline = drr_mode.find('input').e_window_kill().attr('not_validate', 'true');
+		drr_mode.html(drr_modes.eq(this.selectedIndex).clone(false, false));
+		drr_mode.find('input').e_input_tip();
+
+
 	});
 
 	//////////////////////////////////设置礼包////////////////////////////////////////
