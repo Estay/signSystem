@@ -14,9 +14,11 @@ namespace SAS.Controllers
     {
         private HotelDBContent db = new HotelDBContent();
 
+        public CommonController()
+        { }
      
         //验证房型是否存在
-        public int IsOk(string hotelId, string text)
+        public int isok(string text,string hotelId)
         {
             int hotel_id = Convert.ToInt32(hotelId);
             using (db = new HotelDBContent())
@@ -27,25 +29,25 @@ namespace SAS.Controllers
                     return 1;
             }
         }
-        /// <summary>
-        /// 验证酒店名称是否存在
-        /// </summary>
-        /// <param name="text"></param>
-        /// <returns></returns>
-        public int IsOk(string text)
-        {
+        ///// <summary>
+        ///// 验证酒店名称是否存在
+        ///// </summary>
+        ///// <param name="text"></param>
+        ///// <returns></returns>
+        //public int IsOk(string text)
+        //{
 
-            using (db = new HotelDBContent())
-            {
+        //    using (db = new HotelDBContent())
+        //    {
 
-                if ((from h in db.hotel where h.h_name_cn == text select h).Count() > 0)
-                    return 0;
-                else
-                    return 1;
-            }
+        //        if ((from h in db.hotel where h.h_name_cn == text select h).Count() > 0)
+        //            return 0;
+        //        else
+        //            return 1;
+        //    }
             
 
-        }
+        //}
 
         protected override void Dispose(bool disposing)
         {
