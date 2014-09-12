@@ -18,19 +18,19 @@
 			<!-- 订单编号 -->
 			<label>
 				<span class="label">订单编号</span>
-				<input class="w100" type="text" name="@Html.DisplayNameFor(model => model.o_SerialId)" value="">
+				<input class="w100" type="text" name="@Html.DisplayNameFor(model => model.o_SerialId)"  value="@Model.o_SerialId">
 			</label>
 
 			<!-- 入住人姓名 -->
 			<label>
 				<span class="label">入住人姓名</span>
-				<input class="w100" type="text" name="@Html.DisplayNameFor(model => model.o_other_guest_info)"value="">
+				<input class="w100" type="text" name="@Html.DisplayNameFor(model => model.o_other_guest_info)" value="@Model.o_other_guest_info">
 			</label>
 
 			<!-- 电话 -->
 			<label>
 				<span class="label">电话</span>
-				<input class="w100" type="text" name="@Html.DisplayNameFor(model => model.o_user_phone)" value="">
+				<input class="w100" type="text" name="@Html.DisplayNameFor(model => model.o_user_phone)"  value="@Model.o_user_phone">
 			</label>
 		</p>
 
@@ -67,14 +67,14 @@
 		<!-- 订单产生时间 -->
 		<p class="input_line">
 			<span class="label">预定日期</span>
-			<input class="date_start_order" type="text" name="@Html.DisplayNameFor(model => model.earliestArriveTime)" value="">
+			<input class="date_start_order" type="text" name="@Html.DisplayNameFor(model => model.earliestArriveTime)"  value="@Model.earliestArriveTime">
 			到
-			<input class="date_end_order" type="text" name="@Html.DisplayNameFor(model => model.lastestArriveTime)" value="">
+			<input class="date_end_order" type="text" name="@Html.DisplayNameFor(model => model.lastestArriveTime)"  value="@Model.lastestArriveTime">
 
 			<span class="label">入住日期</span>
-			<input class="date_start w100" type="text" name="@Html.DisplayNameFor(model => model.o_check_in_date)" value="">
+			<input class="date_start w100" type="text" name="@Html.DisplayNameFor(model => model.o_check_in_date)"  value="@Model.o_check_in_date">
 			<span class="label">离店日期</span>
-			<input class="date_end w100" type="text" name="@Html.DisplayNameFor(model => model.o_check_out_date)" value="">
+			<input class="date_end w100" type="text" name="@Html.DisplayNameFor(model => model.o_check_out_date)"  value="@Model.o_check_out_date">
 		</p>
 
 		<p class="m_t20 t_ac">

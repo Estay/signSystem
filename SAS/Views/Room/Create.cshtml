@@ -10,6 +10,7 @@
     int hotel_id = 0;
     Dictionary<int, String> room_facilitys = ViewData["facilities"] as Dictionary<int, string>;
     int[] number = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    int[] number_b = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
     int identity = 1;
     int temp = 0;
     //所有床型
@@ -187,7 +188,7 @@
                             </select>
                             <select class="number">
                                 <option value="">选择数量</option>
-                                @foreach (var item in number)
+                                @foreach (var item in number_b)
                                 {
                                 <option value="@item">@item</option>
                                 }
