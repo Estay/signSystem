@@ -120,8 +120,8 @@ namespace SAS.help
         /// <returns></returns>
         public static string getUId()
         {
-            HttpContext.Current.Session["uid"] = "admin";
-            HttpContext.Current.Session["username"] = "测试账号";
+            HttpContext.Current.Session["uid"] = "admintest";
+            HttpContext.Current.Session["userName"] = "测试账号";
             return HttpContext.Current.Session["uid"].ToString();
         }
     }
