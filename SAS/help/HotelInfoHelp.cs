@@ -120,7 +120,8 @@ namespace SAS.help
         /// <returns></returns>
         public static string getUId()
         {
-            return HttpContext.Current.Session["uid"].ToString();
+            return "180";
+            //return HttpContext.Current.Session["uid"].ToString();
         }
     }
 

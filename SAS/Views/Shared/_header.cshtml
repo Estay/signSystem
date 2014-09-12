@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "_header";
+    ViewBag.username=Session["userName"];
 }
 
 <div id="header">
@@ -28,7 +29,7 @@
 	<div class="mainlayout clear">
 		<h1 class="float_l">一呆公寓管理系统</h1>
 		<div class="float_r">
-			<span>用房名</span>|
+			<span>@ViewBag.username</span>|
 			<a href="">退出</a>
 		</div>
 	</div>

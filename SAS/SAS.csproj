@@ -173,6 +173,7 @@
     <Compile Include="Controllers\AdviseController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ComentController.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\DrrRuleController.cs" />
     <Compile Include="Controllers\GiftController.cs" />
     <Compile Include="Controllers\GuaranteeController.cs" />
@@ -433,6 +434,11 @@
     <Content Include="Views\Advise\MyAdivise.cshtml" />
     <Content Include="Views\Image\Faiture.cshtml" />
     <Content Include="Views\Advise\Success.cshtml" />
+    <Content Include="Views\Common\Index.cshtml" />
+    <Content Include="Views\Common\Details.cshtml" />
+    <Content Include="Views\Common\Create.cshtml" />
+    <Content Include="Views\Common\Edit.cshtml" />
+    <Content Include="Views\Common\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
