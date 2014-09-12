@@ -1,4 +1,4 @@
-/*2014年9月11日10:51:57*/
+/*2014年9月12日09:48:48*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -748,7 +748,7 @@
                 return;
             }
             $.ajax({
-                url: "/Room/IsOk/",
+                url: "/Common/room/isok",
                 dataType: "text",
                 data: {
                     text: val
