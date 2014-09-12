@@ -378,4 +378,10 @@
     	$("#show_coordinates").text(p.lng + "," + p.lat);
     }
 
+    var success = @Viewbag.sign;
+    if (success == 0) {
+    	alert("修改成功");
+    }else {
+    	alert("修改失败");
+    }
 </script>
