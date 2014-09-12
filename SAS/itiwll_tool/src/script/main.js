@@ -766,7 +766,7 @@
 				onSubmit: function(filename) {
 
 					info_box = $(upload_tip).appendTo(box);
-					info_box.find('p').text(filename+"正在上传中...");
+					info_box.find('p').text(filename+"<br><br>正在上传中...");
 
 					return {
 						roomid: this.attr('room_id')
