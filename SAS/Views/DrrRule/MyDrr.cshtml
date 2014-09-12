@@ -118,7 +118,7 @@
                 <!-- 促销日期 -->
                 <p class="input_line">
                     <span class="label">促销日期：</span>
-                    <input readonly="readonly" type="text" class="date_start laydate-icon" name="@Html.DisplayNameFor(model => Model.StartDate)" value="@Model.StartDate">至<input readonly="readonly" type="text" class="date_end laydate-icon" name="@Html.DisplayNameFor(model => Model.EndDate)" value="@Model.EndDate">
+                    <input readonly="readonly" type="text" class="date_start laydate-icon" name="@Html.DisplayNameFor(model => Model.StartDate)" value="@Model.StartDate.Value.ToShortDateString()">至<input readonly="readonly" type="text" class="date_end laydate-icon" name="@Html.DisplayNameFor(model => Model.EndDate)" value="@Model.EndDate.Value.ToShortDateString()">
                 </p>
 
                 <!-- 促销规则 -->

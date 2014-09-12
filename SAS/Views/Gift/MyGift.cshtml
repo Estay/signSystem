@@ -78,7 +78,7 @@
                 <p class="input_line">
                     <label for="">
                         <span class="label">礼包日期：</span>
-                        <input readonly="readonly" type="text" name="@Html.DisplayNameFor(model => model.StartDate)" class="date_start laydate-icon" value="@Model.StartDate">至<input readonly="readonly" type="text" name="@Html.DisplayNameFor(model => model.EndDate)" class="date_end laydate-icon" value="@Model.StartDate">
+                        <input readonly="readonly" type="text" name="@Html.DisplayNameFor(model => model.StartDate)" class="date_start laydate-icon"  value="@Model.StartDate.Value.ToShortDateString()">至<input readonly="readonly" type="text" name="@Html.DisplayNameFor(model => model.EndDate)" class="date_end laydate-icon" value="@Model.StartDate.Value.ToShortDateString()">
                     </label>
                 </p>
                 <!-- 适用房型 -->

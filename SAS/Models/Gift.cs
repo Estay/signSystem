@@ -30,8 +30,8 @@ namespace SAS.Models
         private int? _h_room_rp_id;
         private string _rateplanid;
         private string _roomnames;
-        private DateTime? _startdate;
-        private DateTime? _enddate;
+        private DateTime? _startdate=DateTime.Now;
+        private DateTime? _enddate=DateTime.Now;
         private string _roomids;
         /// <summary>
         /// 

@@ -19,8 +19,8 @@ namespace SAS.Models
         private string _typecode;
         private string _description;
         private string _datetype ="CheckInDay";
-        private DateTime? _startdate;
-        private DateTime? _enddate;
+        private DateTime? _startdate=DateTime.Now;
+        private DateTime? _enddate = DateTime.Now;
         private int? _daynum;
         private int? _checkinnum;
         private int? _everycheckinnum;
