@@ -14,13 +14,7 @@ namespace SAS.Controllers
     {
         private HotelDBContent db = new HotelDBContent();
 
-        //
-        // GET: /Common/
-
-        public ActionResult Index()
-        {
-            return View(db.hotel.ToList());
-        }
+     
         //验证房型是否存在
         public int IsOk(string hotelId, string text)
         {
@@ -33,94 +27,24 @@ namespace SAS.Controllers
                     return 1;
             }
         }
-        //
-        // GET: /Common/Details/5
-
-        public ActionResult Details(int id = 0)
+        /// <summary>
+        /// 验证酒店名称是否存在
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public int IsOk(string text)
         {
-            hotel_info hotel_info = db.hotel.Find(id);
-            if (hotel_info == null)
+
+            using (db = new HotelDBContent())
             {
-                return HttpNotFound();
+
+                if ((from h in db.hotel where h.h_name_cn == text select h).Count() > 0)
+                    return 0;
+                else
+                    return 1;
             }
-            return View(hotel_info);
-        }
+            
 
-        //
-        // GET: /Common/Create
-
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        //
-        // POST: /Common/Create
-
-        [HttpPost]
-        public ActionResult Create(hotel_info hotel_info)
-        {
-            if (ModelState.IsValid)
-            {
-                db.hotel.Add(hotel_info);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(hotel_info);
-        }
-
-        //
-        // GET: /Common/Edit/5
-
-        public ActionResult Edit(int id = 0)
-        {
-            hotel_info hotel_info = db.hotel.Find(id);
-            if (hotel_info == null)
-            {
-                return HttpNotFound();
-            }
-            return View(hotel_info);
-        }
-
-        //
-        // POST: /Common/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(hotel_info hotel_info)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(hotel_info).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(hotel_info);
-        }
-
-        //
-        // GET: /Common/Delete/5
-
-        public ActionResult Delete(int id = 0)
-        {
-            hotel_info hotel_info = db.hotel.Find(id);
-            if (hotel_info == null)
-            {
-                return HttpNotFound();
-            }
-            return View(hotel_info);
-        }
-
-        //
-        // POST: /Common/Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            hotel_info hotel_info = db.hotel.Find(id);
-            db.hotel.Remove(hotel_info);
-            db.SaveChanges();
-            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
