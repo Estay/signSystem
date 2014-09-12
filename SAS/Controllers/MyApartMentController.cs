@@ -141,6 +141,7 @@ namespace SAS.Controllers
         {
 
             int sign = 0;
+            string guid=Guid.NewGuid().ToString();
             if (hotel_room_info.room_id > 0)
             {
 
@@ -150,19 +151,19 @@ namespace SAS.Controllers
             else
             {
 
-                hotel_room_info.h_r_id = "004";
+                hotel_room_info.h_r_id = guid;
                 hotel_room_info.h_r_utime = DateTime.Now;
                 hotel_room_info.h_r_ctime = DateTime.Now;
                 hotel_room_info.h_r_state = true;
                 hotel_room_info.h_r_reserve = 3;
                 var errors = ModelState.Values.SelectMany(v => v.Errors);
                 db.rooms.Add(hotel_room_info);
-                sign = db.SaveChanges() > 0 ? 1 : 0; ;
+                sign = db.SaveChanges() > 0 ? 1 : 0;
+                sign=sign > 0 ? FilishedRoom((from r in db.rooms where r.h_r_id==guid select r).SingleOrDefault()) : 0;
+                
             }
 
             getfacilities();
-            getRooms(hotel_room_info.hotel_id);
-          
             getRooms(hotel_room_info.hotel_id);
             ViewBag.sign = sign;
             ViewBag.Tag = "增加房型";
@@ -254,21 +255,22 @@ namespace SAS.Controllers
         }
 
 
-        public ActionResult FilishedRoom(string hotelId)
+        public int FilishedRoom(hotel_room_info r)
         {
-            int.TryParse(hotelId, out hotel_id); DateTime start = DateTime.Now.Date; DateTime end = DateTime.Now.AddYears(1).Date; bool re = false;
-            var rooms = (from h in db.rooms where h.hotel_id == hotel_id && h.DefaultPrice>0 select h).ToList();
-            foreach (var r in rooms)
-            {
+            DateTime start = DateTime.Now.Date; DateTime end = DateTime.Now.AddYears(1).Date; bool re = false;
+            //var rooms = (from h in db.rooms where h.hotel_id == hotelId && h.DefaultPrice > 0 select h).ToList();
+            //foreach (var r in rooms)
+            //{
                 hotel_room_RP_price_info p = new hotel_room_RP_price_info() { room_rp_start_time = start, room_rp_end_time = end,room_rp_price=r.DefaultPrice,hotel_id=r.hotel_id,room_id=r.room_id};
                 if (new Hotel_room_RP_price_batch().InsertPriceBatch(p) && new RoomStatus_batch().insertStatuBatch(p))
                 {
-                    re = true; ; //DBhelp.CallProc(p.room_id, "proc_hotel_room_ebeds_batch_roomid");
+                    re = true; ; DBhelp.CallProc(p.room_id, "proc_hotel_room_ebeds_batch_roomid"); DBhelp.CallProc(p.room_id, "proc_hotel_room_RP_price_batch_roomid");
                 }
-            }
-            if (re == true)
-                return RedirectToAction("myHotel", "MyApartMent");
-            return View("Room");
+           // }
+                if (re == true)
+                    return 1;
+                else
+                    return 0;
         }
 
       

@@ -258,8 +258,9 @@ namespace SAS.Models
                 //roomStatus.room_id = p.room_id;
                 //roomStatus.hotel_id = p.hotel_id;
                 roomStatus.OverBooking = true;
-                roomStatus.r_s_status = true;
+                //roomStatus.r_s_status = true;
                 roomStatus.HpStatus = 0;
+                roomStatus.AuditDate = DateTime.Now;
                 roomStatus.r_s_utime = DateTime.Now;
                 roomStatus.r_s_ctime = DateTime.Now;
                 db.publicStatuses.Add(roomStatus);
