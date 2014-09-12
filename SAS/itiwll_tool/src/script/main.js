@@ -551,7 +551,10 @@
 			$.ajax({
 				url: '/Common/isok',
 				dataType: 'text',
-				data: {text:val }
+				data: {
+					text:val,
+					hotelId: $('[name=hotel_id]').val()
+				}
 			})
 			.done(function(data) {
 				if(data==0){

@@ -1,4 +1,4 @@
-/*2014年9月12日09:53:06*/
+/*2014年9月12日09:59:13*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -751,7 +751,8 @@
                 url: "/Common/isok",
                 dataType: "text",
                 data: {
-                    text: val
+                    text: val,
+                    hotelId: $("[name=hotel_id]").val()
                 }
             }).done(function(data) {
                 if (data == 0) {
