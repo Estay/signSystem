@@ -32,7 +32,16 @@
 
 		<!-- 选择日期期 -->
 		选择日期
+        @{DateTime lastDate = Convert.ToDateTime(ViewBag.startDate).AddDays(-15);
+           lastDate = lastDate > DateTime.Now ? lastDate : DateTime.Now;
+        }
+        @if (Convert.ToDateTime(ViewBag.startDate).Date != DateTime.Now.Date)
+        {
+        <a class="date_qucik_jump" href="/Price/myprice?startDate=@lastDate">&#60;&#60;</a>            
+        }
 		<input type="text" id="date_load" class="laydate-icon" value="@ViewBag.startDate">
+        <a class="date_qucik_jump" href="/Price/myprice?startDate=@Convert.ToDateTime(@ViewBag.startDate).AddDays(15)">&#62;&#62;</a>
+
 		<span class="tip_text">显示15天房价</span>
     </h2>
 

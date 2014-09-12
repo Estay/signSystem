@@ -339,12 +339,16 @@
 }
 
 /*房价房态*/
+.date_qucik_jump {
+	font-weight: normal;
+}
 #my_price,
 #room_status {
 	margin-top: 32px;
 }
 #date_load {
 	width: 100px;
+	margin-right: 0;
 }
 .item_pr {
 	-webkit-transition: all 0.8s;
