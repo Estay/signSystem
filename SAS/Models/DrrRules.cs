@@ -21,8 +21,8 @@ namespace SAS.Models
         private string _datetype ="CheckInDay";
         private DateTime? _startdate=DateTime.Now;
         private DateTime? _enddate = DateTime.Now;
-        private int? _daynum;
-        private int? _checkinnum;
+        private int _daynum;
+        private int _checkinnum;
         private int? _everycheckinnum;
         private int? _lastdaynum;
         private int? _whichdaynum;
@@ -96,7 +96,7 @@ namespace SAS.Models
         /// <summary>
         /// 提前几天
         /// </summary>
-        public int? DayNum
+        public int DayNum
         {
             set { _daynum = value; }
             get { return _daynum; }
@@ -104,7 +104,7 @@ namespace SAS.Models
         /// <summary>
         /// 连住几天
         /// </summary>
-        public int? CheckInNum
+        public int CheckInNum
         {
             set { _checkinnum = value; }
             get { return _checkinnum; }
