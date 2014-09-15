@@ -526,7 +526,7 @@
 
 		if(f_input.length){
 			set_val(f_input);
-			set_val_b(s_input);
+			set_val(s_input);
 			set_val($('.multiple_value'));
 		}
 

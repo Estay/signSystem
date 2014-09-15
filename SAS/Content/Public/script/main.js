@@ -1,4 +1,4 @@
-/*2014年9月12日18:24:55*/
+/*2014年9月15日09:59:16*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -734,7 +734,7 @@
         var f_input = $("#facilities_hide"), s_input = $("#generalAmenities_hide");
         if (f_input.length) {
             set_val(f_input);
-            set_val_b(s_input);
+            set_val(s_input);
             set_val($(".multiple_value"));
         }
     })($);
