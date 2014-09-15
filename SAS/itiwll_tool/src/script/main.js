@@ -1318,8 +1318,9 @@
 
 	// class only_number 只能输入数字
 	$("body").on("keypress",".only_integer",function(event) {
-		console.log(event.keyCode);
-		if (event.keyCode>=48 && event.keyCode<=59) {
+		var key_code = event.keyCode == 0 ? event.which : event.keyCode;
+		console.log(key_code);
+		if (key_code>=48 && key_code<=59) {
 
 		}else {
 			event.preventDefault();
@@ -1334,8 +1335,9 @@
 
 	// class only_float 只能输入浮点数
 	$("body").on("keypress",".only_float",function(event) {
-		console.log(event.keyCode);
-		if (event.keyCode>=48 && event.keyCode<=59 || event.keyCode == 46) {
+		var key_code = event.keyCode == 0 ? event.which : event.keyCode;
+		console.log(key_code);
+		if (key_code>=48 && key_code<=59 || key_code == 46) {
 
 		}else {
 			event.preventDefault();

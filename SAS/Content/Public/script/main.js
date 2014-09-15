@@ -1,4 +1,4 @@
-/*2014年9月15日09:59:16*/
+/*2014年9月15日10:49:14*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -1299,8 +1299,9 @@
         });
     });
     $("body").on("keypress", ".only_integer", function(event) {
-        console.log(event.keyCode);
-        if (event.keyCode >= 48 && event.keyCode <= 59) {} else {
+        var key_code = event.keyCode == 0 ? event.which : event.keyCode;
+        console.log(key_code);
+        if (key_code >= 48 && key_code <= 59) {} else {
             event.preventDefault();
         }
     }).on("change", ".only_integer", function(event) {
@@ -1308,8 +1309,9 @@
         el.val(el.val().replace(/\D/g, ""));
     });
     $("body").on("keypress", ".only_float", function(event) {
-        console.log(event.keyCode);
-        if (event.keyCode >= 48 && event.keyCode <= 59 || event.keyCode == 46) {} else {
+        var key_code = event.keyCode == 0 ? event.which : event.keyCode;
+        console.log(key_code);
+        if (key_code >= 48 && key_code <= 59 || key_code == 46) {} else {
             event.preventDefault();
         }
     }).on("change", ".only_float", function(event) {
