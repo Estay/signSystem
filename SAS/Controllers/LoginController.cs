@@ -66,7 +66,7 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult LoginSubmit(Merchant_info merchant_info)
         {
-            string code = Session["code"].ToString();
+            string code = Session["code"]!=null?Session["code"].ToString():"";
             if (code == merchant_info.guid)
             {
                 using (db = new HotelDBContent())
@@ -99,8 +99,12 @@ namespace SAS.Controllers
         }
         public ActionResult Logout()
         {
-            Session.Remove("uid");
-            return RedirectToAction("signLogin", "Login");
+            if (Session["uid"] != null)
+                Session.Remove("uid");
+            if(Session["userName"] != null)
+                Session.Remove("userName");
+            
+            return RedirectToAction("MyLogin", "Login");
         }
         //
         // GET: /Login/Edit/5
