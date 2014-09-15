@@ -4,12 +4,14 @@
     ViewBag.Title = "投诉建议";
     ViewBag.MyAdivise = "set";
 }
+@using (Html.BeginForm("Create", "Advise", FormMethod.Post))
+{
 <div id="content" class="box_a m_t32">
 
 	<p class="input_line">
 		<label>
 			<span class="label">联系方式</span>
-			<input type="text" name="xxxx">
+			<input type="text" name="@Html.DisplayNameFor(m=>m.contact)">
 		</label>
 	</p>
 	<div class="clear">
@@ -17,12 +19,12 @@
 			<span class="label">建议与投诉内容</span>
 		</div>
 		<div class="float_l">
-			<textarea name="xxxx" cols="100" rows="10"></textarea>
+			<textarea name="@Html.DisplayNameFor(m=>m.content)" cols="100" rows="10"></textarea>
 		</div>
 	</div>
 	<p class="t_ac m_t20">
-		<a href="" class="btn_b">确定</a>
+		<a href="" class="btn_b checking_btn">确定</a>
 	</p>
 
 </div>
-
+}

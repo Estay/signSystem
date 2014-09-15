@@ -11,6 +11,16 @@ namespace SAS.Models
         private int _id;
         private string _content;
         private string _contact;
+        private DateTime _submitTime;
+       
+
+   
+
+        public DateTime SubmitTime
+        {
+            get { return _submitTime; }
+            set { _submitTime = value; }
+        }
         /// <summary>
         /// 
         /// </summary>
