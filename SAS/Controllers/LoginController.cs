@@ -71,7 +71,7 @@ namespace SAS.Controllers
             {
                 using (db = new HotelDBContent())
                 {
-                    Merchant_info mer = (from m in db.Merchant_infos where m.tel == merchant_info.tel || m.name == merchant_info.name select m).SingleOrDefault();
+                    Merchant_info mer = (from m in db.Merchant_infos where m.tel == merchant_info.tel &&m.status==true select m).SingleOrDefault();
                     if (mer.password == merchant_info.password)
                     {
 
