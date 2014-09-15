@@ -10,7 +10,7 @@ namespace SAS.help
 {
     public class HotelInfoHelp
     {
-        static string uId = help.HotelInfoHelp.getUId();
+        public static string uId = help.HotelInfoHelp.getUId();
 
         private static HotelDBContent db =null;
 

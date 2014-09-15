@@ -439,6 +439,7 @@
     <Content Include="Views\Common\Create.cshtml" />
     <Content Include="Views\Common\Edit.cshtml" />
     <Content Include="Views\Common\Delete.cshtml" />
+    <Content Include="Views\Advise\Faiture.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
