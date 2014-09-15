@@ -15,14 +15,14 @@ namespace SAS.help
                 base.OnActionExecuting(filterContext); 
                 if (IsCheck)    
                 {
-                    if (filterContext.HttpContext.Session.IsNewSession)
-                    {
+                    //if (filterContext.HttpContext.Session.IsNewSession)
+                    //{
                         var sessionCookie = filterContext.HttpContext.Request.Headers["Cookie"];
                         if (filterContext.HttpContext.Session["uid"] == null)
                         {
                             filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(new { Controller = "Login", Action = "MyLogin" }));//这里是跳转到Account下的LogOff,自己定义
                         }
-                    }
+                   // }
 
                 }
        
