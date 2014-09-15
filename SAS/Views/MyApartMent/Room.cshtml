@@ -97,7 +97,7 @@
                         }
                     </select>
     				室
-                    <select id="saloon" name="@Html.DisplayNameFor(model => model.Sitting_room)">
+                    <select id="saloon" name="@Html.DisplayNameFor(model => model.sitting_room_number)">
                         @foreach (var item in number)
                         {
                             if (item == Model.Sitting_room)
@@ -145,10 +145,10 @@
                         }
                     </select>
                     阳台
-                    <select id="bookroom" name="@Html.DisplayNameFor(model => model.Balcony)">
+                    <select id="bookroom" name="@Html.DisplayNameFor(model => model.KitchenNumber)">
                         @foreach (var item in number)
                         {
-                            if (item == Model.Balcony)
+                            if (item == Model.KitchenNumber)
                             {
                                 <option value="@item" selected>@item</option>                                
                             }else{

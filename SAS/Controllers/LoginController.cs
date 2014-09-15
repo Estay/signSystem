@@ -72,13 +72,16 @@ namespace SAS.Controllers
                 using (db = new HotelDBContent())
                 {
                     Merchant_info mer = (from m in db.Merchant_infos where m.tel == merchant_info.tel &&m.status==true select m).SingleOrDefault();
-                    if (mer.password == merchant_info.password)
+                    if (mer != null)
                     {
+                        if (mer.password == merchant_info.password)
+                        {
 
-                        Session["userName"] = mer.name;
-                        Session["uid"] = merchant_info.tel;
-                        Session.Remove("code");
-                       return RedirectToAction("create", "addHotel");
+                            Session["userName"] = mer.name;
+                            Session["uid"] = merchant_info.tel;
+                            Session.Remove("code");
+                            return RedirectToAction("create", "addHotel");
+                        }
                     }
                     else
                     {

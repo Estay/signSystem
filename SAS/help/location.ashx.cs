@@ -33,10 +33,10 @@ namespace SAS.help
                     sql = string.Format("select city_id,city_name from city_info where province_id={0}", value);
                     break;
                 case "commercial":
-                    sql = string.Format("select id,Locations_name from commerical_locations_info where city_id={0}", value);
+                    sql = string.Format("select Locations_id,Locations_name from commerical_locations_info where city_id={0}", value);
                     break;
                 default:
-                    sql = string.Format("select id,district_name from district_info where city_id={0}", value);
+                    sql = string.Format("select district_id,district_name from district_info where city_id={0}", value);
                     break;
             }
            return   DBhelp.GetJsonBySQL(sql);

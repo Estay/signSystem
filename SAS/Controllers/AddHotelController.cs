@@ -173,43 +173,7 @@ namespace SAS.Controllers
         //
         // POST: /AddHotel/Edit/5
 
-        [HttpPost]
-        public ActionResult Edit(hotel_info hotel_info)
-        {
-            if (ModelState.IsValid)
-            {
-                //db.Entry(hotel_info).State = EntityState.Modified;
-                //db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(hotel_info);
-        }
-
-        //
-        // GET: /AddHotel/Delete/5
-
-        public ActionResult Delete(int id = 0)
-        {
-         
-            hotel_info hotel_info = db.hotel.Find(id);
-            if (hotel_info == null)
-            {
-                return HttpNotFound();
-            }
-            return View(hotel_info);
-        }
-
-        //
-        // POST: /AddHotel/Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            hotel_info hotel_info = db.hotel.Find(id);
-            db.hotel.Remove(hotel_info);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+      
 
         protected override void Dispose(bool disposing)
         {
