@@ -1,4 +1,4 @@
-/*2014年9月15日11:05:12*/
+/*2014年9月15日13:50:02*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -293,13 +293,15 @@
             action: "upload.php",
             onChange: function(filename) {},
             onSubmit: function(filename) {},
-            onComplete: function(filename, response) {}
+            onComplete: function(filename, response) {},
+            onError: function(filename) {},
+            outTime: 2e4
         }, settings = $.extend({}, defaults, options), randomId = function() {
             var id = 0;
             return function() {
-                return "_AjaxFileUpload" + id++;
+                return "_AjaxFileUpload" + new Date().getTime();
             };
-        }();
+        }(), response = "";
         return this.each(function() {
             var $this = $(this);
             if ($this.is("input") && $this.attr("type") === "file") {
@@ -326,11 +328,15 @@
                 form: form,
                 filename: filename
             }, onComplete);
-            form.append($element).bind("submit", {
-                element: $clone,
-                iframe: iframe,
-                filename: filename
-            }, onSubmit).submit();
+            try {
+                form.append($element).bind("submit", {
+                    element: $clone,
+                    iframe: iframe,
+                    filename: filename
+                }, onSubmit).submit();
+            } catch (err) {
+                console.log(err);
+            }
         }
         function onSubmit(e) {
             var data = settings.onSubmit.call(e.data.element, e.data.filename);
@@ -342,18 +348,27 @@
                 for (var variable in data) {
                     $("<input />").attr("type", "hidden").attr("name", variable).val(data[variable]).appendTo(e.target);
                 }
+                setTimeout(function() {
+                    if (!response) settings.onError.call(e.data.element, e.data.filename);
+                }, settings.outTime);
             }
         }
         function onComplete(e) {
-            var $iframe = $(e.target), doc = ($iframe[0].contentWindow || $iframe[0].contentDocument).document, response = doc.body.innerHTML;
-            if (response) {
-                response = $.parseJSON(response);
+            var $iframe = $(e.target);
+            if ($iframe[0].contentWindow || $iframe[0].contentDocument) {
+                var doc = ($iframe[0].contentWindow || $iframe[0].contentDocument).document;
+                response = doc.body.innerHTML;
+                if (response) {
+                    response = $.parseJSON(response);
+                } else {
+                    response = {};
+                }
+                settings.onComplete.call(e.data.element, e.data.filename, response);
+                e.data.form.remove();
+                $iframe.remove();
             } else {
-                response = {};
+                settings.onError.call(e.data.element, e.data.filename);
             }
-            settings.onComplete.call(e.data.element, e.data.filename, response);
-            e.data.form.remove();
-            $iframe.remove();
         }
         function createIframe() {
             var id = randomId();
@@ -884,7 +899,7 @@
     });
     function upload_img(els) {
         els.each(function(index, el) {
-            var el = $(el), box = el.parents(".from_path").find(".img_show_box"), info_box = "";
+            var el = $(el), box = el.parents(".from_path").find(".img_show_box"), info_box_id = "info_box" + new Date().getTime();
             var html = '<div class="upload_img_box">';
             html += '<div class="img_box"><img class="upload_img" /></div>';
             html += '<p class="img_set">';
@@ -902,16 +917,16 @@
             el.AjaxFileUpload({
                 action: "/help/FileHandle.ashx",
                 onSubmit: function(filename) {
-                    info_box = $(upload_tip).appendTo(box);
+                    info_box = $(upload_tip).appendTo(box).attr("id", info_box_id);
                     info_box.find("p").html(filename + "<br><br>正在上传中...");
                     return {
                         roomid: this.attr("room_id")
                     };
                 },
-                onComplete: function(file, response) {
+                onComplete: function(filename, response) {
                     for (var i = 0; i < response.length; i++) {
                         var img = response[i];
-                        var a = $(html).appendTo(box);
+                        var a = $(html).insertBefore("#" + info_box_id);
                         a.find("img").attr("src", img.tURL).attr("oURL", img.oURL).e_img_siz("", true);
                         if (img.PID) {
                             a.attr("pid", img.PID);
@@ -928,7 +943,10 @@
                             a.find(".img_set").addClass("col_red").html(img.Message);
                         }
                     }
-                    info_box.remove();
+                    $("#" + info_box_id).remove();
+                },
+                onError: function(filename) {
+                    $("#" + info_box_id).find("p").html(filename + "<br><br>正在上传失败...");
                 }
             });
         });

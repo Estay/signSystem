@@ -16,15 +16,19 @@
 			action:     "upload.php",
 			onChange:   function(filename) {},
 			onSubmit:   function(filename) {},
-			onComplete: function(filename, response) {}
+			onComplete: function(filename, response) {},
+			onError: function(filename) {},
+			outTime: 20000
 		},
 		settings = $.extend({}, defaults, options),
 		randomId = (function() {
 			var id = 0;
 			return function () {
-				return "_AjaxFileUpload" + id++;
+				// 修正
+				return "_AjaxFileUpload" + new Date().getTime();
 			};
-		})();
+		})(),
+		response = "";
 		
 		return this.each(function() {
 			var $this = $(this);
@@ -64,7 +68,12 @@
 
 			iframe.bind("load", {element: $clone, form: form, filename: filename}, onComplete);
 			
-			form.append($element).bind("submit", {element: $clone, iframe: iframe, filename: filename}, onSubmit).submit();
+			try {
+				form.append($element).bind("submit", {element: $clone, iframe: iframe, filename: filename}, onSubmit).submit();
+			}
+			catch(err) {
+				console.log(err);
+			}
 		}
 		
 		function onSubmit(e) {
@@ -85,26 +94,35 @@
 						.val(data[variable])
 						.appendTo(e.target);
 				}
+
+				//itiwll 设置超时时间
+				setTimeout(function() {
+					if(!response)settings.onError.call(e.data.element, e.data.filename);
+				}, settings.outTime);
 			}
 		}
 		
 		function onComplete (e) {
-			var $iframe  = $(e.target),
-				doc      = ($iframe[0].contentWindow || $iframe[0].contentDocument).document,
+				var $iframe  = $(e.target);
+			if ($iframe[0].contentWindow || $iframe[0].contentDocument) {
+				var	doc      = ($iframe[0].contentWindow || $iframe[0].contentDocument).document;
 				response = doc.body.innerHTML;
 
-			// 返回结果处理 itiwll注释
-			if (response) {
-				response = $.parseJSON(response);
-			} else {
-				response = {};
-			}
+				// 返回结果处理 itiwll注释
+				if (response) {
+					response = $.parseJSON(response);
+				} else {
+					response = {};
+				}
 
-			settings.onComplete.call(e.data.element, e.data.filename, response);
-			
-			// Remove the temporary form and iframe
-			e.data.form.remove();
-			$iframe.remove();
+				settings.onComplete.call(e.data.element, e.data.filename, response);
+				
+				// Remove the temporary form and iframe
+				e.data.form.remove();
+				$iframe.remove();
+			}else{
+				settings.onError.call(e.data.element, e.data.filename);
+			}
 		}
 
 		function createIframe() {

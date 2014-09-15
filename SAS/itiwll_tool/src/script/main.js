@@ -742,7 +742,7 @@
 		els.each(function(index, el) {
 			var el = $(el),
 				box = el.parents(".from_path").find('.img_show_box'),
-				info_box = "";
+				info_box_id = 'info_box' + new Date().getTime();
 
 			var	html =			'<div class="upload_img_box">';
 				html +=				'<div class="img_box"><img class="upload_img" /></div>';
@@ -765,18 +765,18 @@
 				action: "/help/FileHandle.ashx",
 				onSubmit: function(filename) {
 
-					info_box = $(upload_tip).appendTo(box);
+					info_box = $(upload_tip).appendTo(box).attr('id', info_box_id );
 					info_box.find('p').html(filename+"<br><br>正在上传中...");
 
 					return {
 						roomid: this.attr('room_id')
 					}
 				},
-				onComplete: function(file, response) {
+				onComplete: function(filename, response) {
 					// alert(JSON.stringify(response));
 					for (var i = 0; i < response.length; i++) {
 						var img = response[i];
-						var a = $(html).appendTo(box);
+						var a = $(html).insertBefore('#'+info_box_id);
 
 						a.find('img').attr('src', img.tURL).attr('oURL',img.oURL).e_img_siz("",true);
 						if (img.PID) {
@@ -797,7 +797,10 @@
 						}
 						
 					};
-					info_box.remove();
+					$('#'+info_box_id).remove();
+				},
+				onError: function(filename){
+					$('#'+info_box_id).find('p').html(filename+"<br><br>正在上传失败...");
 				}
 			});
 		});
