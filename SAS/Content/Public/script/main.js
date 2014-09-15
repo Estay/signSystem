@@ -1,4 +1,4 @@
-/*2014年9月15日13:50:02*/
+/*2014年9月15日13:59:54*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -1341,7 +1341,7 @@
         var el = $(this), status = 0;
         var err_el = $("[rules_error]");
         $(".room_img_item").each(function(index, el) {
-            if ($(this).find(".img_set").length < 5) {
+            if ($(this).find(".img_set").not(".col_red").length < 5) {
                 status = 2;
             }
         });

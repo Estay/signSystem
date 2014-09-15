@@ -1363,7 +1363,7 @@
 
 		// 图片数量验证
 		$(".room_img_item").each(function(index, el) {
-			if($(this).find('.img_set').length<5){
+			if($(this).find('.img_set').not('.col_red').length<5){
 				status = 2;
 			}
 		});
