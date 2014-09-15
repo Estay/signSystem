@@ -49,7 +49,7 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult Create(TempAdvise tempadvise)
         {
-            tempadvise.contact = tempadvise.contact == null ? help.HotelInfoHelp.getUId() : tempadvise.contact; tempadvise.SubmitTime = DateTime.Now;
+            tempadvise.contact = tempadvise.contact == null ? help.HotelInfoHelp.uId : tempadvise.contact; tempadvise.SubmitTime = DateTime.Now;
            
             if (ModelState.IsValid)
             {
