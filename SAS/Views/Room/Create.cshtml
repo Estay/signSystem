@@ -144,7 +144,7 @@
                 <label for="people_number"><span class="label">宜住人数</span>
                     <select id="people_number" name="@Html.DisplayNameFor(model => model.Kitchen)">
                         <option value="">请选择</option>         
-                        @foreach (var item in number)
+                        @foreach (var item in number_b)
                         {
                             if (item == Model.Kitchen)
                             {
@@ -205,7 +205,7 @@
                             </select>
                             <select class="number">
                                 <option value="">选择数量</option>
-                                @foreach (var item in number)
+                                @foreach (var item in number_b)
                                 {
                                 <option value="@item">@item</option>
                                 }
