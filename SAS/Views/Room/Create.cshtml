@@ -39,14 +39,22 @@
 					<th>名称</th>
 					<th>操作</th>
 				</tr>
-                @foreach (var item in roomList)
+                @if (roomList.Count == 0)
                 {
 				    <tr class="room_item">                  
-                        <td>@Convert.ToInt32(identity++)</td>
-					    <td>@item.h_r_name_cn</td>
-					    <td><a href="/Room/update?roomId=@item.room_id">修改</a>|<a href="/Room/remove?roomId=@item.room_id">删除</a></td>
-				    </tr>
+                        <td colspan=3>请添加房型</td>
+				    </tr>  
+                }else {
+                    foreach (var item in roomList)
+                    {
+				        <tr class="room_item">                  
+                            <td>@Convert.ToInt32(identity++)</td>
+					        <td>@item.h_r_name_cn</td>
+					        <td><a href="/Room/update?roomId=@item.room_id">修改</a>|<a href="/Room/remove?roomId=@item.room_id">删除</a></td>
+				        </tr>
+                    }
                 }
+
 			</tbody>
 		</table>
 	</div>

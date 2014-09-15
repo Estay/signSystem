@@ -4,13 +4,13 @@
     ViewBag.Title = "MyPrix";
     ViewBag.my_prix = "set";
     //日期(第一个string为日期，第二个string为星期几
-    Dictionary<string, string> dates = ViewData["dates"]  as Dictionary<string, string>;
+    Dictionary<string, string> dates = ViewData["dates"] as Dictionary<string, string>;
 }
 
 <div id="my_price" class="box_a">
     <h2>
-    	<!-- 公寓列表 -->
-    	公寓:
+        <!-- 公寓列表 -->
+        公寓:
         <select name="" id="hotel_switch_my_price">
             @foreach (var h in Model.HotelList)
             {
@@ -25,63 +25,74 @@
                 }
             }
         </select>
-		&nbsp;
+        &nbsp;
 		&nbsp;
 		&nbsp;
 		&nbsp;
 
 		<!-- 选择日期期 -->
-		选择日期
+        选择日期
         @{DateTime lastDate = Convert.ToDateTime(ViewBag.startDate).AddDays(-15);
-           lastDate = lastDate > DateTime.Now ? lastDate : DateTime.Now;
+          lastDate = lastDate > DateTime.Now ? lastDate : DateTime.Now;
         }
         @if (Convert.ToDateTime(ViewBag.startDate).Date != DateTime.Now.Date)
         {
-        <a class="date_qucik_jump" href="/Price/myprice?startDate=@lastDate">&#60;&#60;</a>            
+            <a class="date_qucik_jump" href="/Price/myprice?startDate=@lastDate">&#60;&#60;</a>            
         }
-		<input type="text" id="date_load" class="laydate-icon" value="@ViewBag.startDate">
+        <input type="text" id="date_load" class="laydate-icon" value="@ViewBag.startDate">
         <a class="date_qucik_jump" href="/Price/myprice?startDate=@Convert.ToDateTime(@ViewBag.startDate).AddDays(15)">&#62;&#62;</a>
 
-		<span class="tip_text">显示15天房价</span>
+        <span class="tip_text">显示15天房价</span>
     </h2>
 
-	<table cellspacing="0">
-	    <tbody>
-	        <tr>
-	            <th>房型</th>
-	            @foreach (var d in dates) { 
+    <table cellspacing="0">
+        <tbody>
+            <tr>
+                <th>房型</th>
+                @foreach (var d in dates)
+                { 
                     <th>@d.Key<br />@d.Value</th>
                 }
-	        </tr>
-	        <!-- 遍历房型 -->
-			@foreach (var r in Model.Room.RoomList)
-			{
-			    <tr>
-                   <td>@r.h_r_name_cn</td>
-                    @foreach(var pr in Model.Room.Prices.PriceList.Where(o=>o.Room_id==r.room_id))
-                    {
-                        <td class="item_pr" date="@pr.Effectdate.ToString("yyyy-MM-dd")" roomid="@pr.Room_id" hotel_id="@pr.Hotel_id">@Convert.ToInt32(pr.Room_rp_price)</td>
-                    }
-			    </tr>
-			}
-	    </tbody>
-	</table>
+            </tr>
+            @if (Model.Room.RoomList.Count == 0)
+            {
+                <tr>
+                    <td colspan="16">请在此公寓添加房型</td>
+                </tr>
+            }
+            else
+            {
+                <!-- 遍历房型 -->
+                foreach (var r in Model.Room.RoomList)
+                {
+                 <tr>
+                       <td>@r.h_r_name_cn</td>
+                        @foreach (var pr in Model.Room.Prices.PriceList.Where(o => o.Room_id == r.room_id))
+                        {
+                            <td class="item_pr" date="@pr.Effectdate.ToString("yyyy-MM-dd")" roomid="@pr.Room_id" hotel_id="@pr.Hotel_id">@Convert.ToInt32(pr.Room_rp_price)</td>
+                        }
+                </tr>
+                }
+            }
 
-<div class="set_box hide" id="pr_set_box">
-	<p class="input_line">
-		<input type="text" class="date_start w100 laydate-icon">
-		至
+        </tbody>
+    </table>
+
+    <div class="set_box hide" id="pr_set_box">
+        <p class="input_line">
+            <input type="text" class="date_start w100 laydate-icon">
+            至
 		<input type="text" class="date_end w100 laydate-icon">
-	</p>
-	<p>
-		<b>房价调整为:</b><input type="text" class="w50 only_integer">
-	</p>
-	<br>
-	<p class="t_ac">
-		<a href="" class="set_pr_btn btn_b">确定</a>
-		<a href="" class="close_win btn_b">取消</a>
-	</p>
-</div>
+        </p>
+        <p>
+            <b>房价调整为:</b><input type="text" class="w50 only_integer">
+        </p>
+        <br>
+        <p class="t_ac">
+            <a href="" class="set_pr_btn btn_b">确定</a>
+            <a href="" class="close_win btn_b">取消</a>
+        </p>
+    </div>
 </div>
 
 

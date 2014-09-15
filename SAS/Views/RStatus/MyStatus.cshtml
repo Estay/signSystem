@@ -65,24 +65,34 @@
                     <th>@d.Key<br />@d.Value</th>
                 }
 	        </tr>
+            @if (Model.Room.RoomList.Count == 0)
+            {
+                <tr>
+                    <td colspan="16">请在此公寓添加房型</td>
+                </tr>
+            }
+            else
+            {
 	        <!-- 遍历房型 -->
-			@foreach (var r in Model.Room.RoomList)
-			{
-			    <tr class="tab_bor_t">
-                   <td>@r.h_r_name_cn</td>
-                    @foreach(var s in Model.Room.RoomStatus.RoomStatusList.Where(o=>o.room_id==r.room_id))
-                    {
-                        <td class="item_pr tab_bor_r 
-                            @(s.r_s_status?"white" : "grey") 
-                            @(s.EBeds==s.AvieBeds?"orange" : "")" date="@s.r_s_time.ToString("yyyy-MM-dd")" roomid="@s.room_id" hotel_id="@s.hotel_id">
-                            <span class="col_orange">@s.AvieBeds</span>
-                            /
-                            @s.EBeds
+			    foreach (var r in Model.Room.RoomList)
+			    {
+			        <tr class="tab_bor_t">
+                       <td>@r.h_r_name_cn</td>
+                        @foreach(var s in Model.Room.RoomStatus.RoomStatusList.Where(o=>o.room_id==r.room_id))
+                        {
+                            <td class="item_pr tab_bor_r 
+                                @(s.r_s_status?"white" : "grey") 
+                                @(s.EBeds==s.AvieBeds?"orange" : "")" date="@s.r_s_time.ToString("yyyy-MM-dd")" roomid="@s.room_id" hotel_id="@s.hotel_id">
+                                <span class="col_orange">@s.AvieBeds</span>
+                                /
+                                @s.EBeds
 
-                        </td>
-                    }
-			    </tr>
-			}
+                            </td>
+                        }
+			        </tr>
+			    }
+            }
+
 	    </tbody>
 	</table>
 
