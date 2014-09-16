@@ -596,7 +596,7 @@ namespace SAS.Models
             List<Order_info> list = new List<Order_info>();
             if (condition != string.Empty)
             {
-                string sql = string.Format("select o_SerialId, hotel_name,o_other_guest_info,o_user_phone,o_check_in_date,o_check_out_date,o_total_price ,room_name,(select  o_state_title from  order_state_type_info as s where a.o_state_id=s.o_state_id) from order_info as a where {0} ", condition);
+                string sql = string.Format("select o_SerialId, hotel_name,o_other_guest_info,o_user_phone,o_check_in_date,o_check_out_date,o_total_price ,room_name,(select  o_state_title from  order_state_type_info as s where a.o_state_id=s.o_state_id) from order_info as a where {0} and hotel_id in(select hotel_id from hotel_info where u_id='{1}') ", condition,help.HotelInfoHelp.uId);
                 using (SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
                 {
                     conn.Open();

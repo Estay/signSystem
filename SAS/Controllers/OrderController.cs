@@ -41,8 +41,9 @@ namespace SAS.Controllers
         {
             // ViewData["hotels"] = help.HotelInfoHelp.getHotlList("");
             Order_info order = QueryOrder(new Order_info() { o_check_in_date = DateTime.Now, o_check_out_date = DateTime.Now.AddDays(30) });
-            
-            
+            order.o_check_in_date = Convert.ToDateTime("0001/1/1 0:00:00");
+
+            order.o_check_out_date = Convert.ToDateTime("0001/1/1 0:00:00");
             return View("QueryOrderInfo", order);
         }
        
@@ -129,9 +130,9 @@ namespace SAS.Controllers
             Order_info order = new Order_info();
             order.OrderList = order.getOrderInfos(order_info);
             if( order.OrderList.Count>0)
-            return order_info;
+            return  order;
             else
-                return order;
+                return order_info;
         }
         //
         // GET: /Order/Edit/5

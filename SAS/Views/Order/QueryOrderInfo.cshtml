@@ -3,6 +3,9 @@
 @{
     ViewBag.Title = "订单查询";
     ViewBag.my_oder = "set";
+    string checkin=string.Empty,checkout = string.Empty; ;
+    checkin = @Model.o_check_in_date.Year == 1 ? "" : @Model.o_check_in_date.ToString("yyyy-MM-dd");
+    checkout = @Model.o_check_out_date.Year == 1 ? "" : @Model.o_check_out_date.ToString("yyyy-MM-dd");
 }
 
 <div id="flag_box">
@@ -72,9 +75,10 @@
 			<input class="date_end_order" type="text" name="@Html.DisplayNameFor(model => model.lastestArriveTime)"  value="@Model.lastestArriveTime">
 
 			<span class="label">入住日期</span>
-			<input class="date_start w100" type="text" name="@Html.DisplayNameFor(model => model.o_check_in_date)"  value="@Model.o_check_in_date">
+            
+			<input class="date_start w100" type="text" name="@Html.DisplayNameFor(model => model.o_check_in_date)"  value="@checkin">
 			<span class="label">离店日期</span>
-			<input class="date_end w100" type="text" name="@Html.DisplayNameFor(model => model.o_check_out_date)"  value="@Model.o_check_out_date">
+			<input class="date_end w100" type="text" name="@Html.DisplayNameFor(model => model.o_check_out_date)"  value="@checkout">
 		</p>
 
 		<p class="m_t20 t_ac">
