@@ -1,4 +1,4 @@
-/*2014年9月15日14:37:49*/
+/*2014年9月16日14:17:44*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -517,6 +517,10 @@
         rule: /^[\s\S]+$/
     });
     (function($) {
+        var lon = $("#map_lon_input").val(), lat = $("#map_lat_input").val();
+        if (lon && lat) {
+            mapClick(lon, lat);
+        }
         var province = $("#hotel_province"), city = $("#h_city"), region = $("#h_administrative_region"), zone = $("#h_business_zone");
         if (province.length) {
             province.change(function(event) {
@@ -754,7 +758,7 @@
         }
     })($);
     $("#room_name").e_input_tip({
-        space: "请输入公寓名称",
+        space: "（如：高级大床房）",
         check: true,
         rule: function(success_callback, error_callback, val) {
             var el = $(this);
@@ -790,7 +794,7 @@
         rule: /^\d+$|^\d+.\d+$/
     });
     $("#people_number").e_input_tip({
-        need_text: "必须选择"
+        need_text: "必须选择宜住人数"
     });
     $("#room_area").e_input_tip({
         space: 0,
@@ -807,7 +811,7 @@
             $(this).before(clone);
             clone.find(".bed,.number").e_input_tip({
                 check: true,
-                need_text: "必须选择"
+                need_text: "必须选择床型"
             });
         });
         var bed_input = $("#bed_input"), bed_val = bed_input.val(), bed_items = $(".bed_item");
@@ -863,7 +867,7 @@
     })();
     $("#room_describ").e_input_tip({
         error: "最大可输入2000个字符",
-        space: "请输入房型描述(2000字以内)",
+        space: "请输入房型描述(如：“便捷设施 入住全新体验。合理搭配 巧妙空间布局。都市中心 尊享繁华市景”。2000字以内)",
         rule: /^[\s\S]{0,2000}$/
     });
     $("#room_remarks").e_input_tip({

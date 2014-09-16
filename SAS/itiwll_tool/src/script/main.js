@@ -187,7 +187,12 @@
 
 	// 城市及所在商区 联动模块  回显
 	(function($) {
-
+		// 地图位置回显
+		var lon = $('#map_lon_input').val(),
+			lat = $('#map_lat_input').val();
+		if (lon && lat) {
+			mapClick(lon, lat);
+		};
 
 		var province = $("#hotel_province"),
 			city = $("#h_city"),
@@ -239,7 +244,6 @@
 
 						// 启用城市选择
 						city.removeAttr('disabled');
-
 					})
 					.fail(function() {
 						alert("加载城市数据错误");
@@ -267,6 +271,7 @@
 
 					//地图同步
 					map.centerAndZoom(city.find(':selected').text());
+
 
 					// 加载行政区数据
 					$.ajax({
@@ -537,7 +542,7 @@
 	//////////////////////////////////添加房型/////////////////////////////////////////////
 	// 房型名称
 	$("#room_name").e_input_tip({
-		space : "请输入公寓名称",
+		space : "（如：高级大床房）",
 		check : true, //失去焦点验证
 		rule: function(success_callback,error_callback,val) {
 			var el = $(this);
@@ -584,7 +589,7 @@
 
 	// 宜住人数
 	$("#people_number").e_input_tip({
-		need_text:"必须选择"
+		need_text:"必须选择宜住人数"
 	});
 
 	// 面积
@@ -614,7 +619,7 @@
 			clone.find('.bed,.number')
 			.e_input_tip({
 				check : true,
-				need_text : "必须选择"
+				need_text : "必须选择床型"
 			});
 		});
 
@@ -689,7 +694,7 @@
 
 	$("#room_describ").e_input_tip({
 		error : "最大可输入2000个字符",
-		space:"请输入房型描述(2000字以内)",
+		space:"请输入房型描述(如：“便捷设施 入住全新体验。合理搭配 巧妙空间布局。都市中心 尊享繁华市景”。2000字以内)",
 		rule: /^[\s\S]{0,2000}$/
 	});
 
