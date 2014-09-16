@@ -71,9 +71,9 @@
                     <span>将会设置房量的默认值</span>
     			</label>
     		</p>
-    		<p class="input_line">
-    			<label for="bedroom">
-    				<span class="label">户型</span>
+            <p class="input_line">
+                <label for="bedroom">
+                    <span class="label">户型</span>
                 </label>
                     <select name="@Html.DisplayNameFor(model => model.h_r_bedroom_number)">
                         @foreach (var item in number)
@@ -86,11 +86,11 @@
                             }
                         }
                     </select>
-    				室
-                    <select id="saloon" name="@Html.DisplayNameFor(model => model.Sitting_room)">
+                    室
+                    <select id="saloon" name="@Html.DisplayNameFor(model => model.sitting_room_number)">
                         @foreach (var item in number)
                         {
-                            if (item == Model.Sitting_room)
+                            if (item == Model.sitting_room_number)
                             {
                                 <option value="@item" selected>@item</option>                                
                             }else{
@@ -98,7 +98,7 @@
                             }
                         }
                     </select>
-    				厅
+                    厅
                     <select id="toilet" name="@Html.DisplayNameFor(model => model.h_r_bathroom_number)">
                         @foreach (var item in number)
                         {
@@ -110,7 +110,7 @@
                             }
                         }
                     </select>
-    				卫
+                    卫
                     <select id="bookroom" name="@Html.DisplayNameFor(model => model.study)">
                         @foreach (var item in number)
                         {
@@ -122,7 +122,7 @@
                             }
                         }
                     </select>
-    				书房
+                    书房
                     <select id="bookroom" name="@Html.DisplayNameFor(model => model.Balcony)">
                         @foreach (var item in number)
                         {
@@ -135,10 +135,10 @@
                         }
                     </select>
                     阳台
-                    <select id="bookroom" name="@Html.DisplayNameFor(model => model.Balcony)">
+                    <select id="bookroom" name="@Html.DisplayNameFor(model => model.KitchenNumber)">
                         @foreach (var item in number)
                         {
-                            if (item == Model.Balcony)
+                            if (item == Model.KitchenNumber)
                             {
                                 <option value="@item" selected>@item</option>                                
                             }else{

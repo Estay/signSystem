@@ -1,4 +1,4 @@
-/*2014年9月16日14:31:50*/
+/*2014年9月16日15:06:12*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -295,7 +295,7 @@
             onSubmit: function(filename) {},
             onComplete: function(filename, response) {},
             onError: function(filename) {},
-            outTime: 2e4
+            outTime: 12e4
         }, settings = $.extend({}, defaults, options), randomId = function() {
             var id = 0;
             return function() {

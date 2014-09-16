@@ -18,7 +18,7 @@
 			onSubmit:   function(filename) {},
 			onComplete: function(filename, response) {},
 			onError: function(filename) {},
-			outTime: 20000
+			outTime: 120000
 		},
 		settings = $.extend({}, defaults, options),
 		randomId = (function() {
