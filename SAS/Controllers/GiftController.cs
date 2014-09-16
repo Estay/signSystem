@@ -65,7 +65,8 @@ namespace SAS.Controllers
             int gId;
             int.TryParse(id,out gId);
             var gift = (from g in db.gifts where g.GiftId == gId select g).Single();
-            ViewBag.Id = gift.hotel_id;
+            ViewBag.Id = gift.hotel_id; ViewBag.cancel = 1; 
+          
             GetData(gift.hotel_id.ToString());
             return View("MyGift", gift);
         }
