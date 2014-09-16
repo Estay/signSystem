@@ -100,7 +100,7 @@
                     <select id="saloon" name="@Html.DisplayNameFor(model => model.sitting_room_number)">
                         @foreach (var item in number)
                         {
-                            if (item == Model.Sitting_room)
+                            if (item == Model.sitting_room_number)
                             {
                                 <option value="@item" selected>@item</option>                                
                             }else{
