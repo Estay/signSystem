@@ -63,6 +63,7 @@ namespace SAS.Controllers
            ViewBag.title = "修改促销规则";
            ViewBag.buttonName = "修改";
            GetData(drr.hotel_id.ToString());
+           ViewBag.cancel = 1; ViewBag.hotelId = drr.hotel_id;            
            return View("MyDrr", drr);
         }
         //删除促销
@@ -111,8 +112,8 @@ namespace SAS.Controllers
         public ActionResult Create(DrrRules drrrule)
         {
             SetName();
-            drrrule.DayNum = drrrule.CheckInNum != null ? -1 : drrrule.DayNum;
-            drrrule.CheckInNum = drrrule.DayNum != null ? -1 : drrrule.CheckInNum;
+            drrrule.DayNum = drrrule.CheckInNum == null ?0 : drrrule.DayNum;
+            drrrule.CheckInNum = drrrule.DayNum == null ? 0 : drrrule.CheckInNum;
 
             if (drrrule.TypeCode == "DRRBookAhead")
             {
@@ -238,59 +239,9 @@ namespace SAS.Controllers
             GetData(hotelId);
             return   View(new DrrRules());
         }
-        //
-        // GET: /DrrRule/Edit/5
-
-        public ActionResult Edit(int id = 0)
-        {
-            //DrrRule drrrule = db.hotel.Find(id);
-            //if (drrrule == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            return View();
-        }
-
-        //
-        // POST: /DrrRule/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(DrrRules drrrule)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(drrrule).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View("",drrrule);
-        }
-
-        //
-        // GET: /DrrRule/Delete/5
-
-        public ActionResult Delete(int id = 0)
-        {
-            
-            //DrrRule drrrule = db.hotel.Find(id);
-            //if (drrrule == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            return View();
-        }
-
-        //
-        // POST: /DrrRule/Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            //DrrRule drrrule = db.hotel.Find(id);
-            //db.hotel.Remove(drrrule);
-            //db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+      
+    
+     
 
         protected override void Dispose(bool disposing)
         {
