@@ -103,6 +103,9 @@
                     </div>
                 </div>
                 <a id="btn_add_drr" class="btn_b MyGuarantee_btn" href="">@ViewBag.buttonName</a>
+                @if(ViewBag.cancel == 1){
+                    <a href="/Guarantee/MyGuarantee?id=@ViewBag.Id" class="btn_b m_l20">取消</a>
+                }
             </div>
         </div>
 </div>
