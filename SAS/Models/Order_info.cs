@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using SAS.help;
 
 namespace SAS.Models
 {
@@ -481,7 +482,7 @@ namespace SAS.Models
             {
                 using (DBC.HotelDBContent db = new DBC.HotelDBContent())
                 {
-                    string uId=help.HotelInfoHelp.getUId();
+                    string uId = new HotelInfoHelp().getUId();
                     int[] rf = (from h in db.hotel where h.u_id == uId select h.hotel_id).ToArray();
                    
                         list = (from o in db.orders where rf.Contains(o.hotel_id) && o.o_state_id == orderState select o).ToList();
@@ -509,7 +510,7 @@ namespace SAS.Models
             {
                 using (DBC.HotelDBContent db = new DBC.HotelDBContent())
                 {
-                    string uId = help.HotelInfoHelp.getUId();
+                    string uId = new HotelInfoHelp().getUId();
                     int[] rf = (from h in db.hotel where h.u_id == uId select h.hotel_id).ToArray();
 
                     list = (from o in db.orders where rf.Contains(o.hotel_id) && o.o_ctime >= s && o.o_ctime<=e select o).ToList();
@@ -596,7 +597,7 @@ namespace SAS.Models
             List<Order_info> list = new List<Order_info>();
             if (condition != string.Empty)
             {
-                string sql = string.Format("select o_SerialId, hotel_name,o_other_guest_info,o_user_phone,o_check_in_date,o_check_out_date,o_total_price ,room_name,(select  o_state_title from  order_state_type_info as s where a.o_state_id=s.o_state_id) from order_info as a where {0} and hotel_id in(select hotel_id from hotel_info where u_id='{1}') ", condition,help.HotelInfoHelp.uId);
+                string sql = string.Format("select o_SerialId, hotel_name,o_other_guest_info,o_user_phone,o_check_in_date,o_check_out_date,o_total_price ,room_name,(select  o_state_title from  order_state_type_info as s where a.o_state_id=s.o_state_id) from order_info as a where {0} and hotel_id in(select hotel_id from hotel_info where u_id='{1}') ", condition, new HotelInfoHelp().getUId());
                 using (SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
                 {
                     conn.Open();
