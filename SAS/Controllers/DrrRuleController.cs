@@ -111,8 +111,8 @@ namespace SAS.Controllers
         public ActionResult Create(DrrRules drrrule)
         {
             SetName();
-            drrrule.DayNum = drrrule.CheckInNum != null ? -1 : drrrule.DayNum;
-            drrrule.CheckInNum = drrrule.DayNum != null ? -1 : drrrule.CheckInNum;
+            drrrule.DayNum = drrrule.CheckInNum == null ?0 : drrrule.DayNum;
+            drrrule.CheckInNum = drrrule.DayNum == null ? 0 : drrrule.CheckInNum;
 
             if (drrrule.TypeCode == "DRRBookAhead")
             {

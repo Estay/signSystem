@@ -16,8 +16,8 @@
 
     //ViewBag.Title = "MyDrr";
 
-
-
+    string CheckInNum = Model.CheckInNum == 0 ? "" : Model.CheckInNum.ToString();
+    string DayNum = Model.DayNum == 0? "" : Model.DayNum.ToString();
     ViewBag.Title = ViewBag.title;
     ViewBag.Description = ViewBag.title;
     ViewBag.drrs = "set";
@@ -144,7 +144,7 @@
                             <p class="input_line ">
                                 提前
                                 <input type="text" class="w50 only_integer" name="@Html.DisplayNameFor(model =>
-                                Model.DayNum)" value="@Model.DayNum">
+                                Model.DayNum)" value="@DayNum">
                                 天预订每间打
                                 <input  class="w50 only_float" type="text" name="@Html.DisplayNameFor(model =>
                                 Model.DeductNum)" value="@Model.DeductNum" >
@@ -152,7 +152,7 @@
                             </p>
                             <p class="input_line hide">
                                 连住
-                                <input type="text" class="w50 only_integer" name="@Html.DisplayNameFor(model => Model.CheckInNum)" value="@Model.CheckInNum" not_validate="true">
+                                <input type="text" class="w50 only_integer" name="@Html.DisplayNameFor(model => Model.CheckInNum)" value="@CheckInNum" not_validate="true">
                                 晚打
                                 <input  class="w50 only_float" type="text" name="@Html.DisplayNameFor(model => Model.DeductNum)" value="@Model.DeductNum" not_validate="true">
                                 折
@@ -163,7 +163,7 @@
                            <p class="input_line hide">
                                 提前
                                 <input type="text" class="w50 only_integer" name="@Html.DisplayNameFor(model =>
-                                Model.DayNum)" value="@Model.DayNum" not_validate="true">
+                                Model.DayNum)" value="@DayNum" not_validate="true">
                                 天预订每间打
                                 <input  class="w50 only_float" type="text" name="@Html.DisplayNameFor(model =>
                                 Model.DeductNum)" value="@Model.DeductNum" not_validate="true">
@@ -171,7 +171,7 @@
                             </p>
                             <p class="input_line ">
                                 连住
-                                <input type="text" class="w50 only_integer" name="@Html.DisplayNameFor(model => Model.CheckInNum)" value="@Model.CheckInNum">
+                                <input type="text" class="w50 only_integer" name="@Html.DisplayNameFor(model => Model.CheckInNum)" value="@CheckInNum">
                                 晚打
                                 <input  class="w50 only_float" type="text" name="@Html.DisplayNameFor(model => Model.DeductNum)" value="@Model.DeductNum" >
                                 折
