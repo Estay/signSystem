@@ -5,14 +5,20 @@ using System.Web;
 using SAS.DBC;
 using SAS.Models;
 using System.Web.Mvc;
+using System.Web.WebPages;
+using System.Web.SessionState;
 
 namespace SAS.help
 {
-    public class HotelInfoHelp
+    public class HotelInfoHelp : System.Web.UI.Page, IRequiresSessionState
     {
-        public static string uId = help.HotelInfoHelp.getUId();
 
+        string uId = string.Empty;
         private static HotelDBContent db =null;
+        public HotelInfoHelp()
+        {
+            uId = getUId();
+        }
 
         //酒店的房型列表
         public static List<hotel_room_info> getRooms(int hotelId)
@@ -26,18 +32,20 @@ namespace SAS.help
         }
 
         //用户ID所有的酒店
-        public static List<hotel_info> getHotlList(string iuId)
+        public  List<hotel_info> getHotlList(string iuId)
         {
            // uId = "test1";
+            //c = new help.HotelInfoHelp().getUId();
+           // uId=
             using (db = new HotelDBContent())
             {
-                return (from h in db.hotel where h.u_id == uId && h.h_state==true select h).ToList();
+                return (from h in db.hotel where h.u_id == uId && h.h_state == true select h).ToList();
             }
         }
 
 
          //用户ID所有的酒店
-        public static List<DrrRules> getDrrList(string iuId)
+        public  List<DrrRules> getDrrList(string iuId)
         {
             int[] rf = (from h in  db.hotel where h.u_id == uId select h.hotel_id).ToArray();
             try
@@ -118,12 +126,15 @@ namespace SAS.help
         /// 或得用户账号,用于hotel_info里面的u_id字段
         /// </summary>
         /// <returns></returns>
-        public static string getUId()
+        public  string getUId()
         {
            // return "test";
             //HttpContext.Current.Session["uid"] = "admintest";
             //HttpContext.Current.Session["userName"] = "测试账号";
-            return HttpContext.Current.Session["uid"].ToString();
+           // Session["uid"];
+           
+            //return HttpContext.Current.Session["uid"].ToString();
+            return Session["uid"].ToString();
         }
     }
 

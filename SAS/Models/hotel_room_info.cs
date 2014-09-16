@@ -394,13 +394,19 @@ namespace SAS.Models
                         room.h_r_floor = hotel_room_info.h_r_floor;
                         room.Comments = hotel_room_info.Comments;
                         room.house_service = hotel_room_info.house_service;
+
                         room.sitting_room_number = hotel_room_info.sitting_room_number;
-                        room.study = room.study;
-                        room.Kitchen = room.Kitchen;
+                        room.study = hotel_room_info.study;
+                        room.h_r_bathroom_number = hotel_room_info.h_r_bathroom_number;
+                        room.KitchenNumber = hotel_room_info.KitchenNumber;
+                        room.Balcony = hotel_room_info.Balcony;
+                       
+                        room.h_r_bedroom_number = hotel_room_info.h_r_bedroom_number;
+
                         room.h_r_utime = DateTime.Now;
                         room.h_r_people_number = hotel_room_info.h_r_people_number;
                         room.h_r_house_number = hotel_room_info.h_r_house_number;
-                        room.h_r_bedroom_number = hotel_room_info.h_r_bedroom_number;
+                      
                         room.h_r_acreage = hotel_room_info.h_r_acreage;
                         room.defaultPrice = hotel_room_info.DefaultPrice;
                         result = db.SaveChanges() > 0 ? true : false; ;

@@ -78,7 +78,7 @@ namespace SAS.Controllers
                         {
 
                             Session["userName"] = mer.name;
-                            Session["uid"] = merchant_info.tel;
+                            Session["uid"] = mer.tel;
                             Session.Remove("code");
                             return RedirectToAction("create", "addHotel");
                         }
@@ -109,34 +109,7 @@ namespace SAS.Controllers
             
             return RedirectToAction("MyLogin", "Login");
         }
-        //
-        // GET: /Login/Edit/5
-
-        public ActionResult Edit(string id = null)
-        {
-            Merchant_info merchant_info = db.Merchant_infos.Find(id);
-            if (merchant_info == null)
-            {
-                return HttpNotFound();
-            }
-            return View(merchant_info);
-        }
-       
-        //
-        // POST: /Login/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(Merchant_info merchant_info)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(merchant_info).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(merchant_info);
-        }
-
+ 
         //
         // GET: /Login/Delete/5
 

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SAS.DBC;
+using SAS.help;
 using SAS.Models;
 
 namespace SAS.Controllers
@@ -56,7 +57,7 @@ namespace SAS.Controllers
             string u_id = "test1";
             int hotel_id;
             int.TryParse(id, out hotel_id);
-            var hotels= help.HotelInfoHelp.getHotlList(u_id);
+            var hotels = new HotelInfoHelp().getHotlList(u_id);
             if(id==null &&hotels.Count>0)
                 hotel_id = hotels[0].hotel_id;
          

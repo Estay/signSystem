@@ -82,7 +82,7 @@ namespace SAS.Controllers
             }
 
             hotel_info hotel = new hotel_info();
-            var hotels = HotelInfoHelp.getHotlList("");
+            var hotels = new HotelInfoHelp().getHotlList("");
             hotel.HotelList = hotels;
             if (string.IsNullOrEmpty(Id) && hotels.Count > 0)
                 hotel_id = hotels[0].hotel_id;

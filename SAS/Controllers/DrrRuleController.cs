@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using SAS.DBC;
 using SAS.Models;
+using SAS.help;
 
 namespace SAS.Controllers
 {
@@ -36,7 +37,7 @@ namespace SAS.Controllers
         public void oprationed(string id)
         {
             string u_id = "test1";
-            var drrs = help.HotelInfoHelp.getHotlList(u_id);
+            var drrs = new HotelInfoHelp().getHotlList(u_id);
             ViewData["hotels"] = drrs;
             ViewData["drrModes"] = help.HotelInfoHelp.getDrrModeList(u_id);
             if (id == null && drrs.Count > 0)
@@ -192,7 +193,7 @@ namespace SAS.Controllers
             
             string u_id = "test1";
             ViewData["drrModes"] = help.HotelInfoHelp.getDrrModeList(u_id);
-            ViewData["hotels"] = help.HotelInfoHelp.getHotlList(u_id);
+            ViewData["hotels"] = new HotelInfoHelp().getHotlList(u_id);
 
            // //所有酒店列表
            // ViewData["rooms"] = help.HotelInfoHelp.getRooms(u_id);

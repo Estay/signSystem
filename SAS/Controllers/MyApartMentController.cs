@@ -171,24 +171,13 @@ namespace SAS.Controllers
             return View("Room", new hotel_room_info());
         }
 
-        //
-        // GET: /MyApartMent/Details/5
-
-        public ActionResult Details(int id = 0)
-        {
-            hotel_info hotel_info = db.hotel.Find(id);
-            if (hotel_info == null)
-            {
-                return HttpNotFound();
-            }
-            return View(hotel_info);
-        }
+  
         //删除公寓
         public int delApart(string hotelId)
         {
             try
             {
-                int.TryParse(hotelId, out hotel_id); string u_id = HotelInfoHelp.getUId();
+                int.TryParse(hotelId, out hotel_id); string u_id = new HotelInfoHelp().getUId();
                 using (db = new HotelDBContent())
                 {
                     ((from h in db.hotel where h.hotel_id == hotel_id && h.source_id == 5 && h.u_id == u_id select h).SingleOrDefault()).h_state=false;
@@ -239,7 +228,8 @@ namespace SAS.Controllers
         public ActionResult MyHotel(string UId)
         {
            
-            UId = "test1";
+          // UId = Session["uid"].ToString();
+        //    UId = new help.HotelInfoHelp().getUId();
             //int.TryParse(hotelId, out hotel_id);
             //ViewData["DTime"] = new hotel_info().getDecorationTime();  //Theme
             //ViewData["Themes"] = DBhelp.GetSelectDataByTable("hotel_theme_info");  //Theme
@@ -248,7 +238,7 @@ namespace SAS.Controllers
             //ViewData["services"] = DBhelp.GetSelectDataByTable("GeneralAmenities_info");//services
             //ViewData["provice"] = DBhelp.GetSelectDataByTable("province_info");//provice   
             //ViewBag.HotelId = hotel_id;         
-              return View(help.HotelInfoHelp.getHotlList(UId));
+            return View(new HotelInfoHelp().getHotlList(UId));
   
     
           

@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using SAS.Models;
 using SAS.DBC;
+using SAS.help;
 
 namespace SAS.Controllers
 {
@@ -49,7 +50,7 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult Create(TempAdvise tempadvise)
         {
-            tempadvise.contact = tempadvise.contact == null ? help.HotelInfoHelp.uId : tempadvise.contact; tempadvise.SubmitTime = DateTime.Now;
+            tempadvise.contact = tempadvise.contact == null ? new HotelInfoHelp().getUId() : tempadvise.contact; tempadvise.SubmitTime = DateTime.Now;
            
             if (ModelState.IsValid)
             {
