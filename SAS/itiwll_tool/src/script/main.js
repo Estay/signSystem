@@ -1328,7 +1328,7 @@
 	$("body").on("keypress",".only_integer",function(event) {
 		var key_code = event.keyCode == 0 ? event.which : event.keyCode;
 		console.log(key_code);
-		if (key_code>=48 && key_code<=59) {
+		if (key_code>=48 && key_code<=59|| key_code == 8) {
 
 		}else {
 			event.preventDefault();

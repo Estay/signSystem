@@ -53,7 +53,7 @@
 				        <tr class="room_item">                  
                             <td>@Convert.ToInt32(identity++)</td>
 					        <td>@item.h_r_name_cn</td>
-					        <td><a href="/MyApartMent/update?roomId=@item.room_id">修改</a>|<a href="/MyApartMent/remove?roomId=@item.room_id">删除</a></td>
+					        <td><a href="/MyApartMent/update?roomId=@item.room_id#editor_room">修改</a>|<a href="/MyApartMent/remove?roomId=@item.room_id">删除</a></td>
 				        </tr>
                     }
                 }
@@ -61,7 +61,7 @@
 			</tbody>
 		</table>
 	</div>
-	<div class="from_path">
+	<div id="editor_room" class="from_path">
 		<span class="btn_d set">@ViewBag.Tag</span>
         <div class="box_b">
     		<p class="input_line">
