@@ -16,8 +16,8 @@
 
     //ViewBag.Title = "MyDrr";
 
-    string CheckInNum = Model.CheckInNum == 0 ? "" : Model.CheckInNum.ToString();
-    string DayNum = Model.DayNum == 0? "" : Model.DayNum.ToString();
+    string CheckInNum = Model.CheckInNum == 0 || Model.CheckInNum == -1? "" : Model.CheckInNum.ToString();
+    string DayNum = Model.DayNum == 0 || Model.DayNum==-1? "" : Model.DayNum.ToString();
     ViewBag.Title = ViewBag.title;
     ViewBag.Description = ViewBag.title;
     ViewBag.drrs = "set";
@@ -213,7 +213,7 @@
     <p class="input_line ">
         提前
         <input type="text" class="w50 only_integer day_num" name="@Html.DisplayNameFor(model =>
-        Model.DayNum)" value="@Model.DayNum">
+        Model.DayNum)" value="@DayNum">
         天预订每间打
         <input class="w50 only_float deduct_num" type="text" name="@Html.DisplayNameFor(model =>
         Model.DeductNum)" value="@Model.DeductNum" >
@@ -222,7 +222,7 @@
     <p class="input_line ">
         连住
         <input type="text" class="w50 check_in_num only_integer" name="@Html.DisplayNameFor(model =>
-        Model.CheckInNum)" value="@Model.CheckInNum">
+        Model.CheckInNum)" value="@CheckInNum">
         晚打
         <input  class="w50 only_float deduct_num" type="text" name="@Html.DisplayNameFor(model =>
         Model.DeductNum)" value="@Model.DeductNum" >
