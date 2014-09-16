@@ -94,7 +94,7 @@ namespace SAS.help
             rp.h_room_rp_least_day = 1;
             rp.h_room_rp_longest_day = 365;
             rp.h_room_rp_ctime = DateTime.Now;
-            rp.h_room_rp_name_cn = "";
+           // rp.h_room_rp_name_cn = "";
             using (HotelDBContent db = new HotelDBContent())
             {
                 var tempRp = (from r in db.rps where r.h_room_rp_name_cn == rp.h_room_rp_name_cn && r.hotel_id == rp.hotel_id select r).SingleOrDefault();

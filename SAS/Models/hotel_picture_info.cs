@@ -133,7 +133,7 @@ namespace SAS.Models
             string[] str = System.Configuration.ConfigurationManager.AppSettings["ImageType"].Split(',');
             for (int i =0 ; i <str.Length; i++)
             {
-                dic.Add(str[i], i);
+                dic.Add(str[i]+1, i);
             }
             return dic;
         }
