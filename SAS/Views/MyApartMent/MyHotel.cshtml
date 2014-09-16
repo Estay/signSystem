@@ -13,30 +13,37 @@
             <th>状态</th>
             <th>操作</th>
         </tr>
-        @foreach (var i in Model)
-        {
+        @if (Model.Count() == 0) { 
             <tr>
-                <td>@i.h_name_cn</td>
-                <td>
-                @if (i.CheckState == 0)
-                {
-                    <text>审核不通过</text>
-                }
-                else if (i.CheckState == 1)
-                {
-                    <text>审核通过</text>
-                }
-                else if (i.CheckState == 2)
-                {
-                    <text>审核中</text>
-                }
-                <td>
-                    <a href="/MyApartMent/hotel?hotelId=@i.hotel_id">修改基本信息</a>|
-	                <a href="/MyApartMent/Room?hotelId=@i.hotel_id">修改房型</a>|
-	                <a href="/MyApartMent/Image?hotelId=@i.hotel_id">修改图片</a>|
-                    <a class="del_hotel" href="/MyApartMent/delApart?hotelId=@i.hotel_id" hotel_id="@i.hotel_id" hotel_name="@i.h_name_cn">删除公寓</a>
-                </td>
+                <td colspan="3">请新建一个公寓</td>
             </tr>
+        }else {
+            foreach (var i in Model)
+            {
+                <tr>
+                    <td>@i.h_name_cn</td>
+                    <td>
+                    @if (i.CheckState == 0)
+                    {
+                        <text>审核不通过</text>
+                    }
+                    else if (i.CheckState == 1)
+                    {
+                        <text>审核通过</text>
+                    }
+                    else if (i.CheckState == 2)
+                    {
+                        <text>审核中</text>
+                    }
+                    <td>
+                        <a href="/MyApartMent/hotel?hotelId=@i.hotel_id">修改基本信息</a>|
+	                    <a href="/MyApartMent/Room?hotelId=@i.hotel_id">修改房型</a>|
+	                    <a href="/MyApartMent/Image?hotelId=@i.hotel_id">修改图片</a>|
+                        <a class="del_hotel" href="/MyApartMent/delApart?hotelId=@i.hotel_id" hotel_id="@i.hotel_id" hotel_name="@i.h_name_cn">删除公寓</a>
+                    </td>
+                </tr>
+            }
         }
+
     </tbody>
 </table>

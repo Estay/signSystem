@@ -15,7 +15,7 @@
 </div>
 <div class="box_a" id="query_order">
 	@using (Html.BeginForm("orderQuerySubmit", "order", FormMethod.Post))
-{
+ {
 
 		<p class="input_line">
 			<!-- 订单编号 -->
@@ -100,27 +100,37 @@
 				<th>状态</th>
 				<th>操作</th>
 			</tr>
-                  @foreach (var o in Model.OrderList)
+            @if (Model.OrderList.Count == 0)
+            {
+                <tr>
+                    <td colspan="12">暂无订单</td>
+                </tr>
+            }
+            else
+            {
+                         foreach (var o in Model.OrderList)
+                         {
+                   	        <tr>
+				        <td>@if (o.o_guaranteePrice > 0)
                 {
-                   	<tr>
-				<td>@if(o.o_guaranteePrice>0)
-                    {
-                       <span class="danbao_ico">担保</span>
-                    }
-				</td>
-				<td>@o.o_SerialId</td>
-				<td>@o.hotel_name</td>
-				<td>@o.room_name</td>
-				<td>@o.o_other_guest_info</td>
-				<td>@o.o_user_phone</td>
-				<td>@o.o_check_in_date.ToShortDateString()</td>
-				<td>@o.o_check_out_date.ToShortDateString()</td>
-				<td>@o.o_total_price</td>
-				<td>@o.o_title</td>
+                               <span class="danbao_ico">担保</span>
+                }
+				        </td>
+				        <td>@o.o_SerialId</td>
+				        <td>@o.hotel_name</td>
+				        <td>@o.room_name</td>
+				        <td>@o.o_other_guest_info</td>
+				        <td>@o.o_user_phone</td>
+				        <td>@o.o_check_in_date.ToShortDateString()</td>
+				        <td>@o.o_check_out_date.ToShortDateString()</td>
+				        <td>@o.o_total_price</td>
+				        <td>@o.o_title</td>
 				
-				<td><a href="" class="operation_order" order_id="@o.order_id" >操作</a></td>
-			</tr>
-             }
+				        <td><a href="" class="operation_order" order_id="@o.order_id" >操作</a></td>
+			        </tr>
+                         }
+            }
+ 
 
 			<!-- 订单数据 -->
 	@*		<tr>

@@ -59,16 +59,26 @@
                         <th>适用房型</th>
                         <th>操作</th>
                     </tr>
-                    @foreach (var item in Drrs)
-                    { 
+                    @if (Drrs.Count == 0)
+                    {
                         <tr>
-                            <td>@item.DrrName</td>
-                            <td>@item.Description</td>
-                            <td>@(item.StartDate.Value.ToShortDateString())至@(item.EndDate.Value.ToShortDateString())</td>
-                            <td>@item.RoomNames</td>
-                            <td><a href="/DrrRule/updateDrr?id=@item.id">修改</a>|<a href="/DrrRule/deleteDrr?id=@item.id">删除</a></td>
+                            <td colspan="5">请添加促销规则</td>
                         </tr>
                     }
+                    else
+                    {
+                        foreach (var item in Drrs)
+                        { 
+                            <tr>
+                                <td>@item.DrrName</td>
+                                <td>@item.Description</td>
+                                <td>@(item.StartDate.Value.ToShortDateString())至@(item.EndDate.Value.ToShortDateString())</td>
+                                <td>@item.RoomNames</td>
+                                <td><a href="/DrrRule/updateDrr?id=@item.id">修改</a>|<a href="/DrrRule/deleteDrr?id=@item.id">删除</a></td>
+                            </tr>
+                        }
+                    }
+
                 </tbody>
             </table>
             <br>
