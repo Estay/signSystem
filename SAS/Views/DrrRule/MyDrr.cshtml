@@ -199,6 +199,9 @@
                     </div>
                 </div>
                 <a id="btn_add_drr" href="" class="btn_b checking_btn">@ViewBag.buttonName</a>
+                @if(ViewBag.cancel == 1){
+                    <a href="/DrrRule/MyDrr?id=@ViewBag.hodelId" class="btn_b m_l20">取消</a>
+                }
             </div>
         </div>
     }
