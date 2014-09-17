@@ -58,7 +58,7 @@
                         { 
                             <tr>
                                 <td>@item.GiftContent</td>
-                                <td>@(item.StartDate)至@(item.EndDate)</td>
+                                <td>@(item.StartDate.ToString("yyyy-MM-dd"))至@(item.EndDate.ToString("yyyy-MM-dd"))</td>
                                 <td>@item.roomNames</td>
                                 <td><a href="/Gift/updateG?id=@item.GiftId">修改</a>|<a href="/Gift/deleteG?id=@item.GiftId">删除</a></td>
                             </tr>
