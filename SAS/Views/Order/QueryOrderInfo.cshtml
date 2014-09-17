@@ -27,7 +27,7 @@
 			<!-- 入住人姓名 -->
 			<label>
 				<span class="label">入住人姓名</span>
-				<input class="w100" type="text" name="@Html.DisplayNameFor(model => model.o_other_guest_info)" value="@Model.o_other_guest_info">
+				<input class="w100" type="text" name="@Html.DisplayNameFor(model => model.o_other_guest_info)" value="@Model.o_user_name">
 			</label>
 
 			<!-- 电话 -->
@@ -98,7 +98,7 @@
 				<th>离店日期</th>
 				<th>总价</th>
 				<th>状态</th>
-				<th>操作</th>
+				@*<th>操作</th>*@
 			</tr>
             @if (Model.OrderList.Count == 0)
             {
@@ -126,7 +126,7 @@
 				        <td>@o.o_total_price</td>
 				        <td>@o.o_title</td>
 				
-				        <td><a href="" class="operation_order" order_id="@o.order_id" >操作</a></td>
+				     @*   <td><a href="" class="operation_order" order_id="@o.order_id" >操作</a></td>*@
 			        </tr>
                          }
             }
