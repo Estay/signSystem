@@ -42,32 +42,32 @@
 	}
 	</select>
 
-
-    @foreach (var room in roomList)
+    @using (Html.BeginForm("CreateSub", "Image", FormMethod.Post))
     {
-	<div class="from_path" room_id="@room.room_id">
-		<h2>@room.h_r_name_cn</h2>
-		<div class="clear room_img_item">
-			<div class="float_l">
-				<label>
-					<input type="file" name="file" multiple room_id="@room.room_id" class="upload_img_input" accept="image/gif, image/jpeg, image/bmp, image/png">
-					<span class="upload_img_btn">选择图片</span>
-				</label>
-			</div>
-			<div class="float_l">
-				<div class="clear img_show_box">
+	    @foreach (var room in roomList)
+	    {
+		<div class="from_path" room_id="@room.room_id">
+			<h2>@room.h_r_name_cn</h2>
+			<div class="clear room_img_item">
+				<div class="float_l">
+					<label>
+						<input type="file" name="file" multiple room_id="@room.room_id" class="upload_img_input" accept="image/gif, image/jpeg, image/bmp, image/png">
+						<span class="upload_img_btn">选择图片</span>
+					</label>
+				</div>
+				<div class="float_l">
+					<div class="clear img_show_box">
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-    }
-    @using (Html.BeginForm("CreateSub", "Image", FormMethod.Post))
-    {
-	<div class="btn_box">
-        <input  type="hidden"  id="room_remarks" name="hotelId" value="@hotelId">
-      
-		<a href="" id="save_room_img" class="btn_a btn_save_step checking_btn">完成</a>
-	</div>
+	    }
+
+		<div class="btn_box">
+	        <input  type="hidden"  id="room_remarks" name="hotelId" value="@hotelId">
+	      
+			<a href="" id="save_room_img" class="btn_a btn_save_step checking_btn">完成</a>
+		</div>
     }
 </div>
 
