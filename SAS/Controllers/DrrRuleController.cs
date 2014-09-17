@@ -113,7 +113,7 @@ namespace SAS.Controllers
         {
             SetName();
             drrrule.DayNum = drrrule.CheckInNum == null ?0 : drrrule.DayNum;
-            drrrule.CheckInNum = drrrule.DayNum == null ? 0 : drrrule.CheckInNum;
+            drrrule.CheckInNum = drrrule.DayNum == null ?0 :drrrule.CheckInNum;
 
             if (drrrule.TypeCode == "DRRBookAhead")
             {
@@ -175,13 +175,13 @@ namespace SAS.Controllers
 
              
 
-                if (ModelState.IsValid)
-                {
+             //   if (ModelState.IsValid)
+               // {
                     db.drrs.Add(drrrule);
                     db.SaveChanges();
                 
 
-                }
+             //   }
                 #endregion
             }
             GetData();

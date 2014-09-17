@@ -214,6 +214,11 @@ namespace SAS.Controllers
 
             return View(hotel_info);
         }
+        [HttpPost]
+        public ActionResult ImageDone()
+        {
+            return RedirectToAction("MyHotel", "MyApartMent");
+        }
 
 
      
