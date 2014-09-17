@@ -139,7 +139,8 @@
 
 
 	//电话值处理
-	$("#phone_area_code,#hotel_phone").keyup(function(event) {
+	$("#phone_area_code,#hotel_phone").focusout(function(event) {
+		console.log("电话值处理");
 		$("#phone").val($("#phone_area_code").val()+"-"+$("#hotel_phone").val());
 	});
 

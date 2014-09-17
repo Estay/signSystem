@@ -36,10 +36,10 @@
         }
         @if (Convert.ToDateTime(ViewBag.startDate).Date != DateTime.Now.Date)
         {
-        <a class="date_qucik_jump" href="/rStatus/Status?startDate=@lastDate">&#60;&#60;</a>            
+        <a class="date_qucik_jump" href="/rStatus/Status?id=@ViewBag.Id&startDate=@lastDate">&#60;&#60;</a>            
         }
 		<input type="text" id="date_load" class="laydate-icon" value="@ViewBag.startDate">
-        <a class="date_qucik_jump" href="/rStatus/Status?startDate=@Convert.ToDateTime(@ViewBag.startDate).AddDays(15)">&#62;&#62;</a>
+        <a class="date_qucik_jump" href="/rStatus/Status?id=@ViewBag.Id&startDate=@Convert.ToDateTime(@ViewBag.startDate).AddDays(15)">&#62;&#62;</a>
 
 		<span class="tip_text">显示15天房价</span>
     </h2>

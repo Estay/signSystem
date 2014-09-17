@@ -1,4 +1,4 @@
-/*2014年9月16日15:06:12*/
+/*2014年9月17日16:33:58*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -481,7 +481,8 @@
     $("#hotel_class,#hotel_theme,#hotel_province,#h_city,#h_administrative_region,#h_business_zone").e_input_tip({
         need_text: "必需选择"
     });
-    $("#phone_area_code,#hotel_phone").keyup(function(event) {
+    $("#phone_area_code,#hotel_phone").focusout(function(event) {
+        console.log("电话值处理");
         $("#phone").val($("#phone_area_code").val() + "-" + $("#hotel_phone").val());
     });
     (function($) {
