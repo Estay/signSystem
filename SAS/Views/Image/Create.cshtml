@@ -44,7 +44,7 @@
 
     @using (Html.BeginForm("CreateSub", "Image", FormMethod.Post))
     {
-	    @foreach (var room in roomList)
+	    foreach (var room in roomList)
 	    {
 		<div class="from_path" room_id="@room.room_id">
 			<h2>@room.h_r_name_cn</h2>

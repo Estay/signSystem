@@ -62,6 +62,7 @@
       <xs:element minOccurs="0" name="Hotel_description" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Hotel_id" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Hotel_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsShowTrueHotelTelphone" type="xs:boolean" />
       <xs:element minOccurs="0" name="LastestArriveTime" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="O_IsInstantOrder" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="O_associateOrderID" nillable="true" type="xs:string" />

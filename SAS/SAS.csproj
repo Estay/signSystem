@@ -313,6 +313,55 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Advise\MyAdivise.cshtml" />
+    <Content Include="Views\Image\Faiture.cshtml" />
+    <Content Include="Views\Advise\Success.cshtml" />
+    <Content Include="Views\Common\Index.cshtml" />
+    <Content Include="Views\Common\Details.cshtml" />
+    <Content Include="Views\Common\Create.cshtml" />
+    <Content Include="Views\Common\Edit.cshtml" />
+    <Content Include="Views\Common\Delete.cshtml" />
+    <Content Include="Views\Advise\Faiture.cshtml" />
+    <None Include="Service References\EstayMobileService\MyMobileServer.wsdl" />
+    <None Include="Service References\EstayMobileService\MyMobileServer.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EstayMobileService\MyMobileServer1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EstayMobileService\MyMobileServer10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EstayMobileService\MyMobileServer11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EstayMobileService\MyMobileServer12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EstayMobileService\MyMobileServer2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EstayMobileService\MyMobileServer3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EstayMobileService\MyMobileServer4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EstayMobileService\MyMobileServer5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EstayMobileService\MyMobileServer6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EstayMobileService\MyMobileServer7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EstayMobileService\MyMobileServer8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EstayMobileService\MyMobileServer9.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.CashBackConfigResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -433,15 +482,6 @@
     <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.ValidateTypeResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Views\Advise\MyAdivise.cshtml" />
-    <Content Include="Views\Image\Faiture.cshtml" />
-    <Content Include="Views\Advise\Success.cshtml" />
-    <Content Include="Views\Common\Index.cshtml" />
-    <Content Include="Views\Common\Details.cshtml" />
-    <Content Include="Views\Common\Create.cshtml" />
-    <Content Include="Views\Common\Edit.cshtml" />
-    <Content Include="Views\Common\Delete.cshtml" />
-    <Content Include="Views\Advise\Faiture.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -551,46 +591,6 @@
     <Content Include="Views\Login\signLogin.cshtml" />
     <Content Include="Views\Order\CheckOrderInfo.cshtml" />
     <Content Include="Views\Order\QueryOrderInfo.cshtml" />
-    <None Include="Service References\EstayMobileService\MyMobileServer.wsdl" />
-    <None Include="Service References\EstayMobileService\MyMobileServer.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EstayMobileService\MyMobileServer1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EstayMobileService\MyMobileServer10.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EstayMobileService\MyMobileServer11.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EstayMobileService\MyMobileServer12.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EstayMobileService\MyMobileServer2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EstayMobileService\MyMobileServer3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EstayMobileService\MyMobileServer4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EstayMobileService\MyMobileServer5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EstayMobileService\MyMobileServer6.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EstayMobileService\MyMobileServer7.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EstayMobileService\MyMobileServer8.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EstayMobileService\MyMobileServer9.xsd">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

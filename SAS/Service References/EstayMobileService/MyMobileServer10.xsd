@@ -2228,7 +2228,7 @@
   <xs:element name="CancelOrderResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q278="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="CancelOrderResult" nillable="true" type="q278:ResultBase" />
+        <xs:element xmlns:q278="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="CancelOrderResult" nillable="true" type="q278:OrderStateResult" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

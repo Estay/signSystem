@@ -14,7 +14,7 @@ namespace SAS.Controllers
     {
         //
         // GET: /ImageProperty/
-        int sign = 0;
+        int sign = 1;
         private HotelDBContent db = new HotelDBContent();
         public ActionResult Index()
         {

@@ -4502,6 +4502,9 @@ namespace SAS.EstayMobileService {
         private string Hotel_nameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsShowTrueHotelTelphoneField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.DateTime> LastestArriveTimeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -4776,6 +4779,19 @@ namespace SAS.EstayMobileService {
                 if ((object.ReferenceEquals(this.Hotel_nameField, value) != true)) {
                     this.Hotel_nameField = value;
                     this.RaisePropertyChanged("Hotel_name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsShowTrueHotelTelphone {
+            get {
+                return this.IsShowTrueHotelTelphoneField;
+            }
+            set {
+                if ((this.IsShowTrueHotelTelphoneField.Equals(value) != true)) {
+                    this.IsShowTrueHotelTelphoneField = value;
+                    this.RaisePropertyChanged("IsShowTrueHotelTelphone");
                 }
             }
         }
@@ -12144,10 +12160,10 @@ namespace SAS.EstayMobileService {
         System.Threading.Tasks.Task<string> WaitPayStatusFormatStringAsync(int orderID, int lastMinutes, SAS.EstayMobileService.EnumReturnFormatType returnType);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CancelOrder", ReplyAction="http://tempuri.org/MobileContract/CancelOrderResponse")]
-        SAS.EstayMobileService.ResultBase CancelOrder(int orderID);
+        SAS.EstayMobileService.OrderStateResult CancelOrder(int orderID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CancelOrder", ReplyAction="http://tempuri.org/MobileContract/CancelOrderResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.ResultBase> CancelOrderAsync(int orderID);
+        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> CancelOrderAsync(int orderID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CancelOrderFormatString", ReplyAction="http://tempuri.org/MobileContract/CancelOrderFormatStringResponse")]
         string CancelOrderFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
@@ -14297,11 +14313,11 @@ namespace SAS.EstayMobileService {
             return base.Channel.WaitPayStatusFormatStringAsync(orderID, lastMinutes, returnType);
         }
         
-        public SAS.EstayMobileService.ResultBase CancelOrder(int orderID) {
+        public SAS.EstayMobileService.OrderStateResult CancelOrder(int orderID) {
             return base.Channel.CancelOrder(orderID);
         }
         
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.ResultBase> CancelOrderAsync(int orderID) {
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> CancelOrderAsync(int orderID) {
             return base.Channel.CancelOrderAsync(orderID);
         }
         
