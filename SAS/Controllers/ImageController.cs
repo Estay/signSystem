@@ -82,40 +82,7 @@ namespace SAS.Controllers
             return View(new hotel_picture_info());
         }
 
-        //
-        // GET: /Image/Edit/5
-
-     
-
-        //
-        // POST: /Image/Edit/5
-
-    
-
-        //
-        // GET: /Image/Delete/5
-
-        //public ActionResult Delete(int id = 0)
-        //{
-        //    hotel_picture_info hotel_picture_info = db.room.Find(id);
-        //    if (hotel_picture_info == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(hotel_picture_info);
-        //}
-
-        //
-        // POST: /Image/Delete/5
-
-       // [HttpPost, ActionName("Delete")]
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    hotel_picture_info hotel_picture_info = db.room.Find(id);
-        //    db.room.Remove(hotel_picture_info);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
+       
 
         protected override void Dispose(bool disposing)
         {
