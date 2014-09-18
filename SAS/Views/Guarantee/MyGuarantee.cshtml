@@ -74,9 +74,9 @@
                 <p class="input_line">
                     <span class="label">担保金额：</span>
                     <label>
-                        <input type="radio" name="@Html.DisplayNameFor(model => model.GuaranteeType)" value="FirstNightCost" @(Model.GuaranteeType == "FirstNightCost" ? "checked=" : "")>首晚房费</label>
+                        <input class="security_costs" type="radio" name="@Html.DisplayNameFor(model => model.GuaranteeType)" value="FirstNightCost" @(Model.GuaranteeType == "FirstNightCost" ? "checked=" : "")><span>首晚房费</span></label>
                     <label>
-                        <input type="radio" name="@Html.DisplayNameFor(model => model.GuaranteeType)" value="FullNightCost" @(Model.GuaranteeType == "FullNightCost" ? "checked" : "")>全部房费</label>
+                        <input class="security_costs" type="radio" name="@Html.DisplayNameFor(model => model.GuaranteeType)" value="FullNightCost" @(Model.GuaranteeType == "FullNightCost" ? "checked" : "")><span>全部房费</span></label>
                 </p>
                 <p id="double_date" class="input_line">
                     <span class="label">担保日期：</span>
