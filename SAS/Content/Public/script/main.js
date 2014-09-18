@@ -1,4 +1,4 @@
-/*2014年9月17日16:33:58*/
+/*2014年9月18日09:52:40*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -1087,9 +1087,9 @@
     });
     $(".MyGuarantee_btn").click(function(event) {
         event.preventDefault();
-        var el = $(".g_ru_change:checked"), val = el.next().text();
+        var el = $(".g_ru_change:checked"), val = $("#notify_time").val();
         if (el.index(".g_ru_change") == 1) {
-            val = val + el.nextAll("input").val() + el.nextAll("span").eq(1).text();
+            val = "允许变更/取消，需在最早到店时间前" + val + "小时通知";
         }
         $(".MyGuarantee_Description").val(val);
         $(this).parents("form").submit();
