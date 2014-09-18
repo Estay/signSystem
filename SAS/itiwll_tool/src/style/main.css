@@ -4,10 +4,13 @@
 	padding: 100px 0;
 }
 #login_box h2 {
+	font-weight: 100;
+	color: #787878;
 	font-size: 28px;
 }
 #login_input_box {
 	line-height: 35px;
+	margin-top: 80px;
 }
 #login_id_input {
 	height: 33px;

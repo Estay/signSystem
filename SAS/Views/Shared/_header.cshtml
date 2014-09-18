@@ -10,13 +10,14 @@
                 <img src="@Url.Content("~/Content/Public/img/logo.png")" alt="一呆网logo"></a>
 		</div>
 		<div class="float_l">
-			<p id="logo_tittle">中国领先的度假公寓在线租赁平台</p>
+			<p id="logo_tittle">一呆公寓管理系统</p>
 		</div>
 		<div class="float_r">
-			<p>
-				<a href="http://chat16.live800.com/live800/chatClient/chatbox.jsp?companyID=109468&amp;jid=8709954241" class="help_link" target="_blank">在线客服</a>
-				&nbsp;
-				<a href="/help.shtml" class="help_link" target="_blank">帮助中心</a>
+			<p>&nbsp;
+	            @if(Session["userName"]!=null){
+				<span>@ViewBag.username</span><span>|</span>
+				<a href="/Login/Logout/">退出</a>
+	            }
 			</p>
 			<p class="phone_text">
 				服务热线&nbsp;:&nbsp;&nbsp;
@@ -26,13 +27,4 @@
 	</div>
 </div>
 <div class="warp">
-	<div class="mainlayout clear">
-		<h1 class="float_l">一呆公寓管理系统</h1>
-		<div class="float_r">
-            @if(Session["userName"]!=null){
-			<span>@ViewBag.username</span><span>|</span>
-			<a href="/Login/Logout/">退出</a>
-            }
-		</div>
-	</div>
 </div>
