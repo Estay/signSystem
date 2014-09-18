@@ -46,6 +46,7 @@ namespace SAS.Controllers
         //删除房型
         public ActionResult remove(string roomId)
         {
+            ViewBag.Tag = "增加房型";
             int RId = Convert.ToInt32(roomId);
             //getRooms(Convert.ToInt32(hotelId));
             //string f = hotelId;
