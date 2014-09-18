@@ -132,6 +132,7 @@ td {
 /*布局*/
 #content {
   margin-top: 32px;
+  min-height: 580px;
 }
 .mainlayout {
     width: 1180px;
