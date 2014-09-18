@@ -552,9 +552,9 @@ namespace SAS.Models
             if(!string.IsNullOrEmpty(order.o_other_guest_info))
             {
                 if (condition == string.Empty)
-                    condition = string.Format("o_other_guest_info='{0}'", order._o_other_guest_info);
+                    condition = string.Format("o_user_name='{0}'", order._o_other_guest_info);
                 else
-                    condition += string.Format(" and o_other_guest_info='{0}'", order._o_other_guest_info);
+                    condition += string.Format(" and o_user_name='{0}'", order._o_other_guest_info);
             } if (!string.IsNullOrEmpty(order.o_user_phone))
             {
                 if (condition == string.Empty)
