@@ -81,22 +81,26 @@
 		<span>确认订单</span></label></p>
 	<p class="input_line">
 		<label class="confirmation_order">
-		<input type="radio" name="@Html.DisplayNameFor(model => model.o_state_id)" value="2">
-		<span>拒绝订单</span>
+		<input type="radio" name="@Html.DisplayNameFor(model => model.o_state_id)" value="21">
+		<span>拒绝订单:满房</span>
 		</label>
 	</p>
+	<p class="input_line">
+		<label class="confirmation_order">
+		<input type="radio" name="@Html.DisplayNameFor(model => model.o_state_id)" value="13">
+		<span>拒绝订单:变价</span>
+		</label>
+	</p>
+	<p class="input_line">
+		<label class="confirmation_order">
+		<input type="radio" name="@Html.DisplayNameFor(model => model.o_state_id)" value="18">
+		<span>拒绝订单:其它</span>
+		</label>
+	</p>@*
 	<div class="rejection_box hide">
+		<textarea class="rejection_text " name="@Html.DisplayNameFor(model => model.o_remark)" placeholder="请说明原因"></textarea>
 
-		<!-- 满房/变价/其它 -->
-		<p class="input_line m_l0">
-			<label><input class="rejection_radio" type="radio" name="@Html.DisplayNameFor(model => model.o_state_id)" value="21">满房</label>
-			<label><input class="rejection_radio" type="radio" name="@Html.DisplayNameFor(model => model.o_state_id)" value="13">变价</label>
-			<label><input class="rejection_radio" type="radio" name="@Html.DisplayNameFor(model => model.o_state_id)" value="18">其它</label>
-		</p>
-		<!-- 其它有因 -->
-		<textarea class="rejection_text hide" name="@Html.DisplayNameFor(model => model.o_remark)" placeholder="请说明原因"></textarea>
-
-	</div>
+	</div>*@
 	<p class="t_ac m_t20">
 		<a href="" class="btn_b modify_order_status_btn">确认</a>
 		<a href="" class="close_win btn_b">取消</a>
