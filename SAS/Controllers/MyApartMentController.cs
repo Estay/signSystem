@@ -92,6 +92,7 @@ namespace SAS.Controllers
         //删除房型
         public ActionResult remove(string roomId)
         {
+            ViewBag.Tag = "增加房型";
             int RId = Convert.ToInt32(roomId);
             //getRooms(Convert.ToInt32(hotelId));
             //string f = hotelId;
@@ -178,6 +179,7 @@ namespace SAS.Controllers
         {
             try
             {
+                
                 int.TryParse(hotelId, out hotel_id); string u_id = new HotelInfoHelp().getUId();
                 using (db = new HotelDBContent())
                 {
@@ -290,7 +292,7 @@ namespace SAS.Controllers
                 hotel_room_RP_price_info p = new hotel_room_RP_price_info() { room_rp_start_time = start, room_rp_end_time = end,room_rp_price=r.DefaultPrice,hotel_id=r.hotel_id,room_id=r.room_id};
                 if (new Hotel_room_RP_price_batch().InsertPriceBatch(p) && new RoomStatus_batch().insertStatuBatch(p))
                 {
-                    re = true; ; DBhelp.CallProc(p.room_id, "proc_hotel_room_ebeds_batch_roomid"); DBhelp.CallProc(p.room_id, "proc_hotel_room_RP_price_batch_roomid");
+                    re = true; ;// DBhelp.CallProc(p.room_id, "proc_hotel_room_ebeds_batch_roomid"); DBhelp.CallProc(p.room_id, "proc_hotel_room_RP_price_batch_roomid");
                 }
                 result = re == true ? 1 : 0;
                 return result;

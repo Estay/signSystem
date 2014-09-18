@@ -69,7 +69,7 @@
                        <td>@r.h_r_name_cn</td>
                         @foreach (var pr in Model.Room.Prices.PriceList.Where(o => o.Room_id == r.room_id))
                         {
-                            <td class="item_pr" date="@pr.Effectdate.ToString("yyyy-MM-dd")" roomid="@pr.Room_id" hotel_id="@pr.Hotel_id">@Convert.ToInt32(pr.Room_rp_price)</td>
+                            <td class="item_pr" date="@pr.Effectdate.ToString("yyyy-MM-dd")" roomid="@pr.Room_id" hotel_id="@pr.Hotel_id">@Convert.ToInt64(pr.Room_rp_price)</td>
                         }
                 </tr>
                 }

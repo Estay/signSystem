@@ -248,6 +248,7 @@
     <Content Include="Content\Public\img\duoxuan.jpg" />
     <Content Include="Content\Public\img\favicon_128.png" />
     <Content Include="Content\Public\img\footer_logo.png" />
+    <Content Include="Content\Public\img\login_bg.jpg" />
     <Content Include="Content\Public\img\logo.png" />
     <Content Include="Content\Public\script\jquery\jquery-1.8.3.js" />
     <Content Include="Content\Public\script\jquery\jquery-1.8.3.min.js" />
