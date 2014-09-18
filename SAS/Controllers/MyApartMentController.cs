@@ -16,7 +16,7 @@ namespace SAS.Controllers
         private HotelDBContent db = new HotelDBContent();
      
         // GET: /MyApartMent/
-        int hotel_id = 0, result = 0;
+        int hotel_id = 0, result = 1;
         
         //酒店信息
         public ActionResult Hotel(string hotelId)
@@ -121,10 +121,11 @@ namespace SAS.Controllers
             ViewData["bedTypes"] = new hotel_room_info().getBedType();
         }
         //图片
-        public ActionResult Image(string hotelId)
+        public ActionResult Image(string hotelId,string result)
         {
-            
+            ViewBag.sign = result;
             int.TryParse(hotelId, out hotel_id);
+            ViewBag.HotelId = hotelId;
             ViewData["rooms"] = DBhelp.getRooms(hotel_id);
             ViewData["ImageTypes"] = new hotel_picture_info().getImageType();
             int[]rf = (from r in db.rooms where r.hotel_id == hotel_id select r.room_id).ToArray();           
@@ -215,9 +216,39 @@ namespace SAS.Controllers
             return View(hotel_info);
         }
         [HttpPost]
-        public ActionResult ImageDone()
+        public ActionResult ImageDone(string hotelId)
         {
-            return RedirectToAction("MyHotel", "MyApartMent");
+            try
+            {
+                int hotel_id;
+                if (int.TryParse(hotelId, out hotel_id))
+                {
+                    if ((from h in db.hotel where h.hotel_id == hotel_id select h).Count() > 0)
+                    {
+                        string sql = string.Format("update hotel_room_picture_info set state=1 where room_id in(select room_id from hotel_room_info where hotel_id in({0}))", hotel_id);
+                        result= DBhelp.ExcuteTableBySQL(sql) > 0?1:0;                        
+
+                    }
+                }
+                else
+                {
+                    DBhelp.log("图片提交转换出错"); result = 0;
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                DBhelp.log("图片提交" + ex.ToString());
+                result = 1;
+            }
+            result = 0;
+            ViewBag.sign = result;
+            if(result==1)
+              return RedirectToAction("MyHotel", "MyApartMent");
+            else
+                return RedirectToAction("Image", "MyApartMent", new { hotelId = hotelId, result = result });
+           
         }
 
 

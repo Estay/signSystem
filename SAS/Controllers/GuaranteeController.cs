@@ -142,13 +142,13 @@ namespace SAS.Controllers
 
 
                     }
-
+                    db.SaveChanges();
                 }
-                db.SaveChanges();
+               
             }
-         
             GetData(guaranteerule.hotel_id.ToString());
-            return View("MyGuarantee", guaranteerule);
+          
+            return View("MyGuarantee", new GuaranteeRule() { GuaranteeType = "FirstNightCost",ChangeRule=1 });
         }
 
         //
