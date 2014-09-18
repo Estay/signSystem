@@ -11,15 +11,17 @@
 	<p class="input_line">
 		<label>
 			<span class="label">联系方式</span>
-			<input type="text" name="@Html.DisplayNameFor(m=>m.contact)">
+			<input id="complaint_contact" type="text" name="@Html.DisplayNameFor(m=>m.contact)">
 		</label>
 	</p>
+	<br>
+	<br>
 	<div class="clear">
 		<div class="float_l">
 			<span class="label">建议与投诉内容</span>
 		</div>
 		<div class="float_l">
-			<textarea name="@Html.DisplayNameFor(m=>m.content)" cols="100" rows="10"></textarea>
+			<textarea id="complaint_content" name="@Html.DisplayNameFor(m=>m.content)" cols="100" rows="10"></textarea>
 		</div>
 	</div>
 	<p class="t_ac m_t20">

@@ -1,4 +1,4 @@
-/*2014年9月18日10:27:05*/
+/*2014年9月18日15:13:11*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -1258,6 +1258,12 @@
             rejection_text.show();
         } else {
             rejection_text.hide();
+        }
+    });
+    $("#complaint_contact,#complaint_content").e_input_tip();
+    $(function() {
+        if ($("#word_failure").val() == 0) {
+            alert("操作失败！");
         }
     });
     (function($) {
