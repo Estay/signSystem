@@ -482,6 +482,7 @@
     <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.ValidateTypeResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Views\Error\DefaultError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

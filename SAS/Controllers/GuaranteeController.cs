@@ -89,54 +89,66 @@ namespace SAS.Controllers
         {
             int gId;
             int.TryParse(id, out gId);
-            var gu = (from g in db.gu where g.id == gId select g).SingleOrDefault();
+            GuaranteeRule guran = null;
+            using (db = new HotelDBContent())
+            {
+                var gu = (from g in db.gu where g.id == gId select g).SingleOrDefault();
 
-            db.gu.Remove(gu);
-            if (db.SaveChanges() > 0)
-                ViewBag.sign = 1;
-            else
-                ViewBag.sign = 0;
-
-            ViewBag.Id = gu.hotel_id;
-            GetData(gu.hotel_id.ToString());
-            setName();
-            return View("MyGuarantee", new GuaranteeRule());
+                db.gu.Remove(gu);
+                if (db.SaveChanges() > 0)
+                    ViewBag.sign = 1;
+                else
+                    ViewBag.sign = 0;
+                guran = gu;
+                ViewBag.Id = gu.hotel_id;
+                GetData(gu.hotel_id.ToString());
+                setName();
+            }
+             guran.id = 0;
+            return View("MyGuarantee", guran);
         }
 
         //
         // POST: /Guarantee/Create
-
+        /// <summary>
+        /// 担保提交
+        /// </summary>
+        /// <param name="guaranteerule"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Create(GuaranteeRule guaranteerule)
         {
 
             setName();
-            if (guaranteerule.id > 0)
+            using (db = new HotelDBContent())
             {
-               
-                db.Entry(guaranteerule).State = EntityState.Modified;
-            }
-            else
-            {
-                Hotel_room_RP_info ratePlan = new Hotel_room_RP_info();
-                ratePlan.hotel_id = guaranteerule.hotel_id;
-                ratePlan.h_room_rp_name_cn = "标准价";
-                int ratePlanId = help.HotelInfoHelp.getRatePlanId(ratePlan);
-               // var rp=(from r in db.rps where r.hotel_id==guaranteerule.hotel_id && r.h_room_rp_state==true && r.h_room_rp_name_cn=="标准价"select r.h_room_rp_id).SingleOrDefault();
-
-                guaranteerule.h_room_rp_id = ratePlanId;
-                if (ModelState.IsValid)
+                if (guaranteerule.id > 0)
                 {
-                   db.gu.Add(guaranteerule);
-                      
-                       
-               }
-                
+
+                    db.Entry(guaranteerule).State = EntityState.Modified;
+                }
+                else
+                {
+                    Hotel_room_RP_info ratePlan = new Hotel_room_RP_info();
+                    ratePlan.hotel_id = guaranteerule.hotel_id;
+                    ratePlan.h_room_rp_name_cn = "标准价";
+                    int ratePlanId = help.HotelInfoHelp.getRatePlanId(ratePlan);
+                    // var rp=(from r in db.rps where r.hotel_id==guaranteerule.hotel_id && r.h_room_rp_state==true && r.h_room_rp_name_cn=="标准价"select r.h_room_rp_id).SingleOrDefault();
+
+                    guaranteerule.h_room_rp_id = ratePlanId;
+                    if (ModelState.IsValid)
+                    {
+                        db.gu.Add(guaranteerule);
+
+
+                    }
+
+                }
+                db.SaveChanges();
             }
-            db.SaveChanges();
-            db.Dispose();
+         
             GetData(guaranteerule.hotel_id.ToString());
-            return View("MyGuarantee", new GuaranteeRule());
+            return View("MyGuarantee", guaranteerule);
         }
 
         //
@@ -159,30 +171,7 @@ namespace SAS.Controllers
             return View(guaranteerule);
         }
 
-        //
-        // GET: /Guarantee/Delete/5
 
-        //public ActionResult Delete(int id = 0)
-        //{
-        //    GuaranteeRule guaranteerule = db.hotel.Find(id);
-        //    if (guaranteerule == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(guaranteerule);
-        //}
-
-        //
-        // POST: /Guarantee/Delete/5
-
-        //[HttpPost, ActionName("Delete")]
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    GuaranteeRule guaranteerule = db.hotel.Find(id);
-        //    db.hotel.Remove(guaranteerule);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
 
         protected override void Dispose(bool disposing)
         {

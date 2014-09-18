@@ -549,12 +549,12 @@ namespace SAS.Models
 
             }
             //入住人姓名
-            if(!string.IsNullOrEmpty(order.o_other_guest_info))
+            if (!string.IsNullOrEmpty(order.o_user_name))
             {
                 if (condition == string.Empty)
-                    condition = string.Format("o_user_name='{0}'", order._o_other_guest_info);
+                    condition = string.Format("o_user_name='{0}'", order.o_user_name);
                 else
-                    condition += string.Format(" and o_user_name='{0}'", order._o_other_guest_info);
+                    condition += string.Format(" and o_user_name='{0}'", order.o_user_name);
             } if (!string.IsNullOrEmpty(order.o_user_phone))
             {
                 if (condition == string.Empty)

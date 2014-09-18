@@ -10,7 +10,7 @@ namespace SAS
         {
             
            filters.Add(new CheckLogin() { IsCheck = true });
-          // filters.Add(new HandleErrorAttribute());
+           filters.Add(new HandleErrorAttribute());
         }
     }
 }
