@@ -78,7 +78,7 @@
                     <label>
                         <input type="radio" name="@Html.DisplayNameFor(model => model.GuaranteeType)" value="FullNightCost" @(Model.GuaranteeType == "FullNightCost" ? "checked" : "")>全部房费</label>
                 </p>
-                <p class="input_line">
+                <p id="double_date" class="input_line">
                     <span class="label">担保日期：</span>
                     <input readonly="readonly" type="text" name="@Html.DisplayNameFor(model => model.StartDate)" class="date_start laydate-icon" value="@Model.StartDate.ToString("yyyy-MM-dd")">至<input readonly="readonly" type="text" name="@Html.DisplayNameFor(model => model.EndDate)" class="date_end laydate-icon" value="@Model.EndDate.ToString("yyyy-MM-dd")">
                 </p>
@@ -113,21 +113,58 @@
 <!-- 日期控件 -->
 <script type="text/javascript" src="@Url.Content("~/Content/public/script/laydate/laydate.dev.js")"></script>
 <script>
+    // 比较xxxx-xx-xx格式的日期
+    function comparisonDate(start,end) {
+        if (!start||!end) {
+            return;
+        };
+        var start_arr = start.split("-"),
+            end_arr = end.split("-"),
+            startTime = new Date(),
+            endTime = new Date();
+        startTime.setFullYear(start_arr[0]);
+        startTime.setMonth(start_arr[1]-1);
+        startTime.setDate(start_arr[2]);
+        startTime.setHours(0);
+        startTime.setMinutes(0);
+        startTime.setSeconds(0);
+        startTime = startTime.setMilliseconds(0);
+        endTime.getTime();
+        endTime.setFullYear(end_arr[0]);
+        endTime.setMonth(end_arr[1]-1);
+        endTime.setDate(end_arr[2]);
+        endTime.setHours(0);
+        endTime.setMinutes(0);
+        endTime.setSeconds(0);
+        endTime.setMilliseconds(0);
+        endTime = endTime.getTime();
+        return startTime-endTime;
+    }
+
+    var end_node = document.getElementsByClassName('date_end')[0],
+        start_node = document.getElementsByClassName('date_start')[0];
+
     var start = {
-        elem: '#DrrRule .date_start',
+        elem: '#double_date .date_start',
         min: laydate.now(), //设定最小日期为当前日期
         istoday: false,
         choose: function (datas) {
             end.min = datas; //开始日选好后，重置结束日的最小日期
             end.start = datas //将结束日的初始值设定为开始日
+            if (comparisonDate(start_node.value,end_node.value)>0) {
+                end_node.value = start_node.value;
+            };
         }
     };
     var end = {
-        elem: '#DrrRule .date_end',
+        elem: '#double_date .date_end',
         min: laydate.now(),
         istoday: false,
         choose: function (datas) {
             start.max = datas; //结束日选好后，充值开始日的最大日期
+            if (comparisonDate(start_node.value,end_node.value)>0) {
+                start_node.value = end_node.value;
+            };
         }
     };
     laydate(start);
