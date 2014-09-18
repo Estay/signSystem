@@ -1,4 +1,4 @@
-/*2014年9月18日15:47:13*/
+/*2014年9月18日17:38:58*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -867,15 +867,15 @@
         }
     })();
     $("#room_describ").e_input_tip({
-        error: "最大可输入2000个字符",
+        error: "最大可输入400个字符",
         space: "请输入房型描述(如：“便捷设施 入住全新体验。合理搭配 巧妙空间布局。都市中心 尊享繁华市景”。2000字以内)",
-        rule: /^[\s\S]{0,2000}$/
+        rule: /^[\s\S]{0,400}$/
     });
     $("#room_remarks").e_input_tip({
-        error: "最大可输入2000个字符",
+        error: "最大可输入400个字符",
         space: "请输入房型描述",
         need: false,
-        rule: /^[\s\S]{0,2000}$/
+        rule: /^[\s\S]{0,400}$/
     });
     $("#save_room_info").click(function(event) {
         if (!$(".room_item").length) {

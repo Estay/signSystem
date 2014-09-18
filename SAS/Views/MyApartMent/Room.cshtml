@@ -71,6 +71,7 @@
                     <span class="label">房型名称</span>
                     @if(Model.h_r_name_cn!=null){
                         <b>@Model.h_r_name_cn</b>
+                        <input type="text" id="room_name" class="hide" name="@Html.DisplayNameFor(model => model.h_r_name_cn)" value="@Model.h_r_name_cn">
                     }else{
                         <input type="text" id="room_name" name="@Html.DisplayNameFor(model => model.h_r_name_cn)" value="@Model.h_r_name_cn"><span class="col_red">*</span>
                     }
