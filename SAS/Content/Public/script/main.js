@@ -1,4 +1,4 @@
-/*2014年9月18日15:13:11*/
+/*2014年9月18日15:47:13*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -1262,7 +1262,7 @@
     });
     $("#complaint_contact,#complaint_content").e_input_tip();
     $(function() {
-        if ($("#word_failure").val() == 0) {
+        if ($("#word_failure").val() === 0) {
             alert("操作失败！");
         }
     });
