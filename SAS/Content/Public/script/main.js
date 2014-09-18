@@ -1,4 +1,4 @@
-/*2014年9月18日19:01:05*/
+/*2014年9月18日21:36:55*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -1124,8 +1124,12 @@
             var el = $(this), html = $("#pr_set_box").clone(false, false).removeClass("hide");
             html.find(".date_start").val(el.attr("date"));
             html.find(".date_end").val(el.attr("date"));
-            html.find(".only_integer").val(el.text());
-            html.find(".only_integer.status_val").val("10");
+            html.find(".only_integer.status_val").val(el.text().split("/")[1].replace(/(^\s*)|(\s*$)/g, ""));
+            if (el.is(".grey ")) {
+                html.find("[name=r_stats]")[1].checked = true;
+            } else {
+                html.find("[name=r_stats]")[0].checked = true;
+            }
             send_data.id = el.attr("Hotel_id");
             send_data.roomId = el.attr("roomid");
             el_ing = el.e_window({
