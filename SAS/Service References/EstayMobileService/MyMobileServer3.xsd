@@ -1,10 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.TestDTO" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.TestDTO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="CompositeType">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.HouseDTO" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.HouseDTO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="HouseParamsDTO">
     <xs:sequence>
-      <xs:element minOccurs="0" name="BoolValue" type="xs:boolean" />
-      <xs:element minOccurs="0" name="StringValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Check_in" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Check_out" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Hotel_id" type="xs:int" />
+      <xs:element minOccurs="0" name="Room_id" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="CompositeType" nillable="true" type="tns:CompositeType" />
+  <xs:element name="HouseParamsDTO" nillable="true" type="tns:HouseParamsDTO" />
+  <xs:complexType name="SearchParamsDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BusinessAreaId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Check_in" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Check_out" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CurrentLat" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CurrentLon" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CurrentPage" type="xs:int" />
+      <xs:element minOccurs="0" name="DistrictId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FacilityIds" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HighPrice" type="xs:int" />
+      <xs:element minOccurs="0" name="HotelSort" type="xs:int" />
+      <xs:element minOccurs="0" name="Keyword" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LowPrice" type="xs:int" />
+      <xs:element minOccurs="0" name="MaxLat" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaxLon" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MinLat" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MinLon" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PageSize" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchParamsDTO" nillable="true" type="tns:SearchParamsDTO" />
 </xs:schema>

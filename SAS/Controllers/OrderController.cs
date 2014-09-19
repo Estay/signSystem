@@ -63,8 +63,9 @@ namespace SAS.Controllers
                 EstayMobileService.MobileContractClient _client = new MobileContractClient();
                 _client.ClientCredentials.UserName.UserName = help.StringHelper.appSettings("WCFUserName");
                 _client.ClientCredentials.UserName.Password = help.StringHelper.appSettings("WCFPassWord");
+                object f = _client.confirmOrderStatus(order_info.order_id).ResultCode;
                 if (order_info.o_state_id == 1)
-                    order_info.room_id = _client.confirmOrderStatus(order_info.order_id).ResultCode == SAS.EstayMobileService.EnumResultCode.Success ? 1 : 0;
+                  order_info.room_id = _client.confirmOrderStatus(order_info.order_id).ResultCode == SAS.EstayMobileService.EnumResultCode.Success ? 1 : 0;
                 else
                     order_info.room_id = _client.ChangeOrderState(new OrderAndStateChangeParamsDTO() { OrderID = order_info.order_id, NewOrderStateInfoID = order_info.o_state_id }).ResultCode == SAS.EstayMobileService.EnumResultCode.Success ? 1 : 0;
 
@@ -94,6 +95,7 @@ namespace SAS.Controllers
                 EstayMobileService.MobileContractClient _client = new MobileContractClient();
                 _client.ClientCredentials.UserName.UserName = help.StringHelper.appSettings("WCFUserName");
                 _client.ClientCredentials.UserName.Password = help.StringHelper.appSettings("WCFPassWord");
+              // object  ffff= _client.ChangeOrderState(new OrderAndStateChangeParamsDTO() { OrderID = order_info.order_id, NewOrderStateInfoID = order_info.o_state_id }).ResultCode;
                  order_info.room_id = _client.ChangeOrderState(new OrderAndStateChangeParamsDTO() { OrderID = order_info.order_id, NewOrderStateInfoID = order_info.o_state_id }).ResultCode == SAS.EstayMobileService.EnumResultCode.Success ? 1 : 0;
 
             }
@@ -104,8 +106,8 @@ namespace SAS.Controllers
             }
             ViewBag.sign = order_info.room_id;
 
-
-            return View("CheckOrderInfo", getOrder());
+            return RedirectToAction("CheckOrder","Order");
+           // return View("CheckOrderInfo", getOrder());
         }
 
         /// <summary>
@@ -128,10 +130,10 @@ namespace SAS.Controllers
         private static Order_info QueryOrder(Order_info order_info)
         {
             Order_info order = new Order_info();
-            order.OrderList = order.getOrderInfos(order_info);
-            if( order.OrderList.Count>0)
-            return  order;
-            else
+            order_info.OrderList = order.getOrderInfos(order_info);
+            //if( order.OrderList.Count>0)
+            //    return order_info;
+            //else
                 return order_info;
         }
    

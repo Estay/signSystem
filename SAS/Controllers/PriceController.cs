@@ -60,7 +60,7 @@ namespace SAS.Controllers
             Dictionary<string, string> dates = new Dictionary<string, string>();
        
             ViewBag.startDate = start.ToString("yyyy-MM-dd");
-            ViewData["dates"] = HotelInfoHelp.getDate(start, end); ViewBag.Id = Convert.ToInt32(Id);
+            ViewData["dates"] = HotelInfoHelp.getDate(start, end); ViewBag.Id = Convert.ToInt32(hotel_id);
             return hotel;
         }
         //房价修改接口
