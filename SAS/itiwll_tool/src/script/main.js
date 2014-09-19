@@ -1058,13 +1058,17 @@
 
 	    	html.find('.date_start').val(el.attr('date'));
 	    	html.find('.date_end').val(el.attr('date'));
-	    	// html.find('.only_integer').val()
-	    	html.find('.only_integer.status_val').val(el.text().split("/")[1].replace(/(^\s*)|(\s*$)/g, ""));
-	    	if (el.is(".grey ")) {
-	    		html.find("[name=r_stats]")[1].checked = true ;
-	    	}else {
-	    		html.find("[name=r_stats]")[0].checked = true ;
-	    	}
+	    	html.find('.only_integer').val(el.text());
+	    	var status = html.find('.status_val');
+	    	if (status.length) {
+		    	status.val(el.text().split("/")[1].replace(/(^\s*)|(\s*$)/g, ""));
+		    	if (el.is(".grey ")) {
+		    		html.find("[name=r_stats]")[1].checked = true ;
+		    	}else {
+		    		html.find("[name=r_stats]")[0].checked = true ;
+		    	}
+	    	};
+
 
 	    	send_data.id = el.attr("Hotel_id");
 	    	send_data.roomId = el.attr("roomid");
