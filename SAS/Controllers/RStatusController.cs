@@ -94,7 +94,7 @@ namespace SAS.Controllers
             
        
             ViewBag.startDate = start.ToString("yyyy-MM-dd");
-            ViewData["dates"] =HotelInfoHelp.getDate(start,end) ; ViewBag.Id = Convert.ToInt32(Id);
+            ViewData["dates"] = HotelInfoHelp.getDate(start, end); ViewBag.Id = Convert.ToInt32(hotel_id);
             return hotel;
         }
         //修改房态
