@@ -17,9 +17,11 @@ namespace SAS.Controllers
         //
         // GET: /Bill/
 
-        public ActionResult Index()
+        public ActionResult QureyBill(string hotelId,string startTime,string endTime,string page)
         {
-            return View(db.orders.ToList());
+            ViewBag.allPage =100;
+            ViewBag.curentPage = page==null?"1":page;
+            return View("MyBill");
         }
 
         //
