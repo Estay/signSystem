@@ -447,4 +447,15 @@ input[type="radio"]:checked + span {
 
 
 
+/*结算管理*/
+#bill_btn {
+	line-height: 24px;
+	margin-left: 30px;
+}
+.bill_query {
+	border-bottom: 1px solid #000;
+	margin-bottom: 20px;
+}
+
+
 /*程序错误页面*/
