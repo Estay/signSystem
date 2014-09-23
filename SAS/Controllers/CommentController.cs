@@ -17,9 +17,12 @@ namespace SAS.Controllers
         //
         // GET: /Comment/
 
-        public ActionResult Index()
+        public ActionResult QueryComment(string hotelId,string page,string startTime,string endTime)
         {
-            return View(db.coments.ToList());
+             ViewBag.currentHotelId = hotelId;
+             ViewBag.allPage = 100;
+             ViewBag.curentPage =page;
+            return View("MyComment");
         }
 
         //
