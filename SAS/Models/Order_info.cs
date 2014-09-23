@@ -459,6 +459,9 @@ namespace SAS.Models
         #endregion Model
 
         //[NotMapped]
+        /// <summary>
+        /// 账单或订单列表
+        /// </summary>
         private List<Order_info> orderList = new List<Order_info>();
         [NotMapped]
         public List<Order_info> OrderList
@@ -621,6 +624,7 @@ namespace SAS.Models
         {
             return t.ToString();
         }
+      
     }
 
    

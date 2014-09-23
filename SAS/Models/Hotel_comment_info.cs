@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
@@ -202,6 +203,18 @@ namespace SAS.Models
             get { return _sign; }
         }
         #endregion Model
+
+        //[NotMapped]
+        /// <summary>
+        /// 点评列表
+        /// </summary>
+        private List<Hotel_comment_info> commnetList = new List<Hotel_comment_info>();
+        [NotMapped]
+        public List<Hotel_comment_info> CommnetList
+        {
+            get { return commnetList; }
+            set { commnetList = value; }
+        }
     }
   
 }
