@@ -1,4 +1,4 @@
-/*2014年9月19日00:37:29*/
+/*2014年9月23日09:58:58*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -1269,6 +1269,13 @@
         } else {
             rejection_text.hide();
         }
+    });
+    $("#bill_hotel").change(function(event) {
+        window.location.href = "/Bill/QureyBill?hotelId=" + $(this).find("option:selected").val();
+    });
+    $("#bill_btn").click(function(event) {
+        event.preventDefault();
+        window.location.href = "/Bill/QureyBill?hotelId=" + $("#bill_hotel").find("option:selected").val() + "&startTime=" + $(".date_start").val() + "&endTime=" + $(".date_end").val();
     });
     $("#complaint_contact,#complaint_content").e_input_tip();
     $(function() {

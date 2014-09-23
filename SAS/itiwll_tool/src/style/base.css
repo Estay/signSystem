@@ -310,6 +310,31 @@ input[type="checkbox"]:checked + span {
   color: #205ca0;
 }
 
+/*分页*/
+#page_number_box {
+  margin-top: 20px;
+  text-align: center;
+}
+.page_n {
+  border: 1px solid #205ca0;
+  background-color: #205ca0;
+  color: #FFF;
+  padding: 2px  7px;
+  -webkit-transition: all 0.8s;
+  -o-transition: all 0.8s;
+  transition: all 0.8s;
+}
+.page_n.set,
+.page_n.set:hover {
+  border: 1px solid #205ca0;
+  background-color: #FFF;
+  color: #205ca0;
+}
+.page_n:hover {
+  color: #FFF;
+  border-color: #407cC0;
+  background-color: #407cC0;
+}
 /*文字 颜色*/
 .label {
   width: 7em;
@@ -319,6 +344,7 @@ input[type="checkbox"]:checked + span {
   *zoom: 1;
   margin-right: 10px;
   font-weight: bold;
+  font-size: 14px;
 }
 .fw_b {
   font-weight: bold;
@@ -331,4 +357,7 @@ input[type="checkbox"]:checked + span {
 }
 .col_orange {
   color: #F09401;
+}
+.f_z18 {
+  font-size: 18px;
 }

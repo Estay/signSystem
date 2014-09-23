@@ -19,8 +19,11 @@ namespace SAS.Controllers
 
         public ActionResult QureyBill(string hotelId,string startTime,string endTime,string page)
         {
-            ViewBag.allPage =100;
+            ViewBag.allPage =10;
             ViewBag.curentPage = page==null?"1":page;
+            ViewBag.curentHotelId = hotelId;
+            ViewBag.curentstartTime = startTime;
+            ViewBag.curentendTime = endTime;
             return View("MyBill");
         }
 
