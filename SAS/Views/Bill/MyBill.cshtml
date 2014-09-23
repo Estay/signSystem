@@ -3,20 +3,32 @@
 @{
     ViewBag.Title = "结算管理";
     ViewBag.my_bill = "set";
-    ViewBag.url = "/Bill/QureyBill?hotelId=xxx&startTime=xxx&endTime=xxx&page=";
+    ViewBag.url = "/Bill/QureyBill?hotelId=" + ViewBag.curentHotelId + "&startTime=" +  ViewBag.curentstartTime + "&endTime=" + ViewBag.curentendTime + "&page=";
+
+
 }
 
 <div id="content" class="box_a">
     <p id="double_date" class="input_line bill_query">
         <span class="label" style="margin-left: 0">公寓</span>
-        <select name="">
+        <select id="bill_hotel" name="">
             <option value="">所有公寓</option>
-            <option value="x">xxx</option>
+            @*@foreach (var h in hotels)
+            {
+                if (h.hotel_id == ViewBag.curentHotelId)
+                {
+                <option value="@h.hotel_id" selected>@h.h_name_cn</option>
+                }
+                else
+                {
+                <option value="@h.hotel_id">@h.h_name_cn</option> 
+                }
+            }*@
         </select>
         <span class="label">日期</span>
-        <input class="date_start w100" type="text" name=""  value="">
+        <input class="date_start w100" type="text" name=""  value="@ViewBag.curentstartTime">
         到
-        <input class="date_end w100" type="text" name=""  value="">
+        <input class="date_end w100" type="text" name=""  value="@ViewBag.curentendTime">
         <a href="" id="bill_btn" class="btn_b">查询</a>
     </p>
 
@@ -55,6 +67,8 @@
         </tbody>
     </table>
     
+
+    <!-- 分页 -->
     <div id="page_number_box">
         @if(Convert.ToInt32(ViewBag.curentPage)!=1){
             <a href="@(ViewBag.url+(Convert.ToInt32(ViewBag.curentPage)-1))" class="page_n">上一页</a>

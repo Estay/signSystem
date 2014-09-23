@@ -1251,6 +1251,18 @@
     	}
     });
 
+    ////////////////////////////////////////////////结算信息/////////////////////////////////////////////////////
+    $('#bill_hotel').change(function(event) {
+        window.location.href="/Bill/QureyBill?hotelId="+$(this).find("option:selected").val();
+    });
+    $('#bill_btn').click(function(event) {
+    	event.preventDefault();
+        window.location.href="/Bill/QureyBill?hotelId="+$("#bill_hotel").find("option:selected").val() + 
+        "&startTime=" + $('.date_start').val()+ "&endTime=" + $('.date_end').val();
+
+    });
+
+
     ////////////////////////////////////////////////投诉和建议/////////////////////////////////////////////////////
     $('#complaint_contact,#complaint_content').e_input_tip();
 
