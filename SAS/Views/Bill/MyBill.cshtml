@@ -1,170 +1,413 @@
 ﻿@model SAS.Models.Order_info
 
 @{
-    ViewBag.Title = "结算管理";
-    ViewBag.my_bill = "set";
-    ViewBag.url = "/Bill/QureyBill?hotelId=" + ViewBag.curentHotelId + "&startTime=" +  ViewBag.curentstartTime + "&endTime=" + ViewBag.curentendTime + "&page=";
-
-
+    ViewBag.Title = "Create";
+    //酒店列表
+    Dictionary<string, string> hotels = ViewData["dates"] as Dictionary<string, string>;
 }
 
-<div id="content" class="box_a">
-    <p id="double_date" class="input_line bill_query">
-        <span class="label" style="margin-left: 0">公寓</span>
-        <select id="bill_hotel" name="">
-            <option value="">所有公寓</option>
-            @*@foreach (var h in hotels)
-            {
-                if (h.hotel_id == ViewBag.curentHotelId)
-                {
-                <option value="@h.hotel_id" selected>@h.h_name_cn</option>
-                }
-                else
-                {
-                <option value="@h.hotel_id">@h.h_name_cn</option> 
-                }
-            }*@
-        </select>
-        <span class="label">日期</span>
-        <input class="date_start w100" type="text" name=""  value="@ViewBag.curentstartTime">
-        到
-        <input class="date_end w100" type="text" name=""  value="@ViewBag.curentendTime">
-        <a href="" id="bill_btn" class="btn_b">查询</a>
-    </p>
+<h2>Create</h2>
 
-    <p><span class="label">收入总计：</span>￥<span class="col_red f_z18">XXXX</span><span class="label">拥挤总计：</span>￥<span class="col_red f_z18">XXXX</span><span class="label">担保总计：</span>￥<span class="col_red f_z18">XXXX</span></p>
-    <table cellspacing="0">
-        <tbody>
-            <tr>
-                <th>订单号</th>
-                <th>公寓名称</th>
-                <th>房型</th>
-                <th>入住人</th>
-                <th>入离店时间</th>
-                <th>订单总价</th>
-                <th>收入</th>
-                <th>佣金</th>
-                <th>担保</th>
-            </tr>
-            
-            <!-- 表格数据 -->
-            <tr>
-                <td>XXXXXX</td>
-                <td>XXXX</td>
-                <td>xxxxx</td>
-                <td>xxxxx</td>
-                <td>xxxxxx</td>
-                <td>xxxxx</td>
-                <td>xxxx</td>
-                <td>xxxx</td>
-                <td>xxxx</td>
-            </tr>
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
 
-            <!-- 没有数据 -->
-            <tr>
-                <td colspan="9">没有结算信息</td>
-            </tr>
-        </tbody>
-    </table>
-    
+    <fieldset>
+        <legend>Order_info</legend>
 
-    <!-- 分页 -->
-    <div id="page_number_box">
-        @if(Convert.ToInt32(ViewBag.curentPage)!=1){
-            <a href="@(ViewBag.url+(Convert.ToInt32(ViewBag.curentPage)-1))" class="page_n">上一页</a>
-        }
-        @if(Convert.ToInt32(ViewBag.curentPage)<5){
-            for (int i = 0; i < ((Convert.ToInt32(ViewBag.allPage)>5? 5 : Convert.ToInt32(ViewBag.allPage)-1)); i++)
-            {
-             <a href="@(ViewBag.url+(i+1))" class="page_n @(Convert.ToInt32(ViewBag.curentPage)==i+1 ? "set" : "")">@(i +1)</a>
-            }
-        }
-        @if(Convert.ToInt32(ViewBag.curentPage) > 4){
-            <a href="@(ViewBag.url+ 1)" class="page_n">1</a>
-            <span>......</span>
-            if(Convert.ToInt32(ViewBag.allPage) - Convert.ToInt32(ViewBag.curentPage) > 2){
-                for (int i = 0; i < (Convert.ToInt32(ViewBag.allPage)-3>5? 5 : Convert.ToInt32(ViewBag.allPage)-3); i++)
-                {
-                 <a href="@(ViewBag.url+(i+Convert.ToInt32(ViewBag.curentPage)-2))" class="page_n @(Convert.ToInt32(ViewBag.curentPage) == (i+Convert.ToInt32(ViewBag.curentPage)-2) ? "set" : "")">@(i+Convert.ToInt32(ViewBag.curentPage)-2)</a>
-                }
-            }else {
+        <div class="editor-label">
+            @Html.LabelFor(model => model.o_SerialId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.o_SerialId)
+            @Html.ValidationMessageFor(model => model.o_SerialId)
+        </div>
 
-                for (int i = 0; i < (Convert.ToInt32(ViewBag.allPage)>5? 4 : Convert.ToInt32(ViewBag.allPage)-1); i++)
-                {
-                 <a href="@(ViewBag.url+(Convert.ToInt32(ViewBag.allPage)-4+i))" class="page_n @(Convert.ToInt32(ViewBag.curentPage) == (Convert.ToInt32(ViewBag.allPage)-4+i) ? "set" : "")">@(Convert.ToInt32(ViewBag.allPage)-4+i)</a>
-                }
-            }
-        }
-        @if(Convert.ToInt32(ViewBag.allPage) - Convert.ToInt32(ViewBag.curentPage) > 3){
-            <span>......</span>
-        }
-        <a href="@(ViewBag.url + ViewBag.allPage)" class="page_n @(Convert.ToInt32(ViewBag.curentPage)==ViewBag.allPage ? "set" : "")">@ViewBag.allPage</a>
-        @if(Convert.ToInt32(ViewBag.curentPage)!=Convert.ToInt32(ViewBag.allPage)){
-            <a href="@(ViewBag.url+(Convert.ToInt32(ViewBag.curentPage)+1))" class="page_n">下一页</a>
-        }
-    </div>
-    
-  
+        <div class="editor-label">
+            @Html.LabelFor(model => model.hotel_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.hotel_id)
+            @Html.ValidationMessageFor(model => model.hotel_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.hotel_name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.hotel_name)
+            @Html.ValidationMessageFor(model => model.hotel_name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.hotel_address)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.hotel_address)
+            @Html.ValidationMessageFor(model => model.hotel_address)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.hotel_Tel)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.hotel_Tel)
+            @Html.ValidationMessageFor(model => model.hotel_Tel)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.hotel_description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.hotel_description)
+            @Html.ValidationMessageFor(model => model.hotel_description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.u_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.u_id)
+            @Html.ValidationMessageFor(model => model.u_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.o_userFromdb)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.o_userFromdb)
+            @Html.ValidationMessageFor(model => model.o_userFromdb)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.room_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.room_id)
+            @Html.ValidationMessageFor(model => model.room_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.room_name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.room_name)
+            @Html.ValidationMessageFor(model => model.room_name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.room_descript)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.room_descript)
+            @Html.ValidationMessageFor(model => model.room_descript)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.r_number_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.r_number_id)
+            @Html.ValidationMessageFor(model => model.r_number_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.h_room_rp_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.h_room_rp_id)
+            @Html.ValidationMessageFor(model => model.h_room_rp_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.rp_name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.rp_name)
+            @Html.ValidationMessageFor(model => model.rp_name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.rp_description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.rp_description)
+            @Html.ValidationMessageFor(model => model.rp_description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.rp_price_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.rp_price_id)
+            @Html.ValidationMessageFor(model => model.rp_price_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.rp_price_description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.rp_price_description)
+            @Html.ValidationMessageFor(model => model.rp_price_description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.o_state_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.o_state_id)
+            @Html.ValidationMessageFor(model => model.o_state_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.o_state_change_log)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.o_state_change_log)
+            @Html.ValidationMessageFor(model => model.o_state_change_log)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.o_title)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.o_title)
+            @Html.ValidationMessageFor(model => model.o_title)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.o_number)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.o_number)
+            @Html.ValidationMessageFor(model => model.o_number)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.o_total_price)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.o_total_price)
+            @Html.ValidationMessageFor(model => model.o_total_price)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.o_unit_price)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.o_unit_price)
+            @Html.ValidationMessageFor(model => model.o_unit_price)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.o_isbuy)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.o_isbuy)
+            @Html.ValidationMessageFor(model => model.o_isbuy)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.o_ctime)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.o_ctime)
+            @Html.ValidationMessageFor(model => model.o_ctime)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.o_buy_time)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.o_buy_time)
+            @Html.ValidationMessageFor(model => model.o_buy_time)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.o_user_name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.o_user_name)
+            @Html.ValidationMessageFor(model => model.o_user_name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.o_user_phone)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.o_user_phone)
+            @Html.ValidationMessageFor(model => model.o_user_phone)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.o_user_email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.o_user_email)
+            @Html.ValidationMessageFor(model => model.o_user_email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.o_check_in_date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.o_check_in_date)
+            @Html.ValidationMessageFor(model => model.o_check_in_date)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.o_check_out_date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.o_check_out_date)
+            @Html.ValidationMessageFor(model => model.o_check_out_date)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.o_night)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.o_night)
+            @Html.ValidationMessageFor(model => model.o_night)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.o_buy_type)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.o_buy_type)
+            @Html.ValidationMessageFor(model => model.o_buy_type)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.o_other_guest_info)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.o_other_guest_info)
+            @Html.ValidationMessageFor(model => model.o_other_guest_info)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.order_from_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.order_from_id)
+            @Html.ValidationMessageFor(model => model.order_from_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.o_guest_remark)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.o_guest_remark)
+            @Html.ValidationMessageFor(model => model.o_guest_remark)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.o_remark)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.o_remark)
+            @Html.ValidationMessageFor(model => model.o_remark)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.o_associateOrderID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.o_associateOrderID)
+            @Html.ValidationMessageFor(model => model.o_associateOrderID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.lastestArriveTime)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.lastestArriveTime)
+            @Html.ValidationMessageFor(model => model.lastestArriveTime)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.earliestArriveTime)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.earliestArriveTime)
+            @Html.ValidationMessageFor(model => model.earliestArriveTime)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.o_IsInstantOrder)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.o_IsInstantOrder)
+            @Html.ValidationMessageFor(model => model.o_IsInstantOrder)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.o_guaranteePrice)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.o_guaranteePrice)
+            @Html.ValidationMessageFor(model => model.o_guaranteePrice)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.o_roomRetain)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.o_roomRetain)
+            @Html.ValidationMessageFor(model => model.o_roomRetain)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.o_orderWay)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.o_orderWay)
+            @Html.ValidationMessageFor(model => model.o_orderWay)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.payLasestTime)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.payLasestTime)
+            @Html.ValidationMessageFor(model => model.payLasestTime)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.orderCreateOperatorGuid)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.orderCreateOperatorGuid)
+            @Html.ValidationMessageFor(model => model.orderCreateOperatorGuid)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.orderCreateOperator)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.orderCreateOperator)
+            @Html.ValidationMessageFor(model => model.orderCreateOperator)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.channelID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.channelID)
+            @Html.ValidationMessageFor(model => model.channelID)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
 </div>
 
-
-<!-- 日期控件 -->
-<script type="text/javascript" src="@Url.Content("~/Content/public/script/laydate/laydate.dev.js")"></script>
-<script>
-    // 比较xxxx-xx-xx格式的日期
-    function comparisonDate(start,end) {
-        if (!start||!end) {
-            return;
-        };
-        var start_arr = start.split("-"),
-            end_arr = end.split("-"),
-            startTime = new Date(),
-            endTime = new Date();
-        startTime.setFullYear(start_arr[0]);
-        startTime.setMonth(start_arr[1]-1);
-        startTime.setDate(start_arr[2]);
-        startTime.setHours(0);
-        startTime.setMinutes(0);
-        startTime.setSeconds(0);
-        startTime = startTime.setMilliseconds(0);
-        endTime.getTime();
-        endTime.setFullYear(end_arr[0]);
-        endTime.setMonth(end_arr[1]-1);
-        endTime.setDate(end_arr[2]);
-        endTime.setHours(0);
-        endTime.setMinutes(0);
-        endTime.setSeconds(0);
-        endTime.setMilliseconds(0);
-        endTime = endTime.getTime();
-        return startTime-endTime;
-    }
-
-    var end_node = document.getElementsByClassName('date_end')[0],
-        start_node = document.getElementsByClassName('date_start')[0];
-
-    var start = {
-        elem: '#double_date .date_start',
-        //min: laydate.now(), //设定最小日期为当前日期
-        istoday: false,
-        choose: function (datas) {
-            end.min = datas; //开始日选好后，重置结束日的最小日期
-            end.start = datas //将结束日的初始值设定为开始日
-            if (comparisonDate(start_node.value,end_node.value)>0) {
-                end_node.value = start_node.value;
-            };
-        }
-    };
-    var end = {
-        elem: '#double_date .date_end',
-        //min: laydate.now(),
-        istoday: false,
-        choose: function (datas) {
-            //start.max = datas; //结束日选好后，充值开始日的最大日期
-            if (comparisonDate(start_node.value,end_node.value)>0) {
-                start_node.value = end_node.value;
-            };
-        }
-    };
-    laydate(start);
-    laydate(end);
-</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
