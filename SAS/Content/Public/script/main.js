@@ -1,4 +1,4 @@
-/*2014年9月23日10:11:04*/
+/*2014年9月23日13:50:58*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -1276,6 +1276,24 @@
     $("#bill_btn").click(function(event) {
         event.preventDefault();
         window.location.href = "/Bill/QureyBill?hotelId=" + $("#bill_hotel").find("option:selected").val() + "&startTime=" + $(".date_start").val() + "&endTime=" + $(".date_end").val();
+    });
+    $("#comment_hotel").change(function(event) {
+        window.location.href = "/Comment/QueryComment?hotelId=" + $(this).find("option:selected").val();
+    });
+    $("#comment_btn").click(function(event) {
+        event.preventDefault();
+        window.location.href = "/Comment/QueryComment?hotelId=" + $("#comment_hotel").find("option:selected").val() + "&startTime=" + $(".date_start").val() + "&endTime=" + $(".date_end").val();
+    });
+    $(".show_comment_reply").click(function(event) {
+        event.preventDefault();
+        var el = $(this);
+        if (el.text() == "回复") {
+            el.parents("tr").find(".comment_p").show(800);
+            el.text("收起回复");
+        } else {
+            el.parents("tr").find(".comment_p").hide(800);
+            el.text("回复");
+        }
     });
     $("#complaint_contact,#complaint_content").e_input_tip();
     $(function() {

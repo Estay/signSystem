@@ -1,190 +1,183 @@
 ﻿@model SAS.Models.Hotel_comment_info
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "评论管理";
+    ViewBag.query_comment = "set";
+    ViewBag.url = "/Comment/QueryComment?hotelId=" + ViewBag.curentHotelId + "&startTime=" + ViewBag.curentstartTime + "&endTime=" + ViewBag.curentendTime + "&page=";
+
     //酒店列表
      Dictionary<string, string> hotels = ViewData["dates"] as Dictionary<string, string>;
 }
-}
 
-<h2>Create</h2>
+<div id="content" class="box_a">
+    <p id="double_date" class="input_line bill_query">
+        <span class="label" style="margin-left: 0">公寓</span>
+        <select id="comment_hotel" name="">
+            <option value="">所有公寓</option>
+            @*@foreach (var h in hotels)
+            {
+                if (h.hotel_id == ViewBag.curentHotelId)
+                {
+                <option value="@h.hotel_id" selected>@h.h_name_cn</option>
+                }
+                else
+                {
+                <option value="@h.hotel_id">@h.h_name_cn</option> 
+                }
+            }*@
+        </select>
+        <span class="label">状态</span>
+        <select id="comment_hotel" name="">
+            <option value="">全部</option>
+            <option value="">未回复</option>
+            <option value="">已回复</option>
+        </select>
+        <span class="label">点评日期</span>
+        <input class="date_start w100" type="text" name=""  value="@ViewBag.curentstartTime">
+        到
+        <input class="date_end w100" type="text" name=""  value="@ViewBag.curentendTime">
 
-@using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
+        <a href="" id="comment_btn" class="btn_b">查询</a>
+    </p>
+ <table cellspacing="0">
+        <tbody>
+            <tr>
+                <th>订单号</th>
+                <th>评价</th>
+                <th>入住人</th>
+                <th>入离店住日期及房型</th>
+                <th class="w100">操作</th>
+                <th>状态</th>
+            </tr>
+            
+            <!-- 表格数据 -->
+            <tr>
+                <td>XXXXXX</td>
+                <td class="comment_visitor">
+                    <pre >男士机械腕表，用码好男士机士机械腕表，用码好男士机士机械腕表，用码好男士机士机械腕表，用码好男士机士机械腕表，用码好男士机士机械腕表，用码好男士机士机械腕表，用码好男士机械腕表，用码好男士机械腕表，用码好</pre>
+                    <p class="comment_time">xxxx~xxx</p>
+                    <p class="comment_p">
+                        <textarea cols="50" rows="4"></textarea>
+                        <a href="" class="comment_submit_btn btn_b" comment_id="xxxx">回复</a>
+                    </p>
+                </td>
+                <td>xxxxx</td>
+                <td>
+                    <p>XXX~XXX</p>
+                    <p>XXXXXXXX</p>
+                </td>
+                <td>
+                    <a href="" class="show_comment_reply">回复</a>
+                </td>
+                <td>未回复</td>
+            </tr>
 
-    <fieldset>
-        <legend>Hotel_comment_info</legend>
+            <!-- 没有数据 -->
+            <tr>
+                <td colspan="9">没有评论</td>
+            </tr>
+        </tbody>
+    </table>
+    
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.guid)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.guid)
-            @Html.ValidationMessageFor(model => model.guid)
-        </div>
+    <!-- 分页 -->
+    <div id="page_number_box">
+        @if(Convert.ToInt32(ViewBag.curentPage)!=1){
+            <a href="@(ViewBag.url+(Convert.ToInt32(ViewBag.curentPage)-1))" class="page_n">上一页</a>
+        }
+        @if(Convert.ToInt32(ViewBag.curentPage)<5){
+            for (int i = 0; i < ((Convert.ToInt32(ViewBag.allPage)>5? 5 : Convert.ToInt32(ViewBag.allPage)-1)); i++)
+            {
+             <a href="@(ViewBag.url+(i+1))" class="page_n @(Convert.ToInt32(ViewBag.curentPage)==i+1 ? "set" : "")">@(i +1)</a>
+            }
+        }
+        @if(Convert.ToInt32(ViewBag.curentPage) > 4){
+            <a href="@(ViewBag.url+ 1)" class="page_n">1</a>
+            <span>......</span>
+            if(Convert.ToInt32(ViewBag.allPage) - Convert.ToInt32(ViewBag.curentPage) > 2){
+                for (int i = 0; i < (Convert.ToInt32(ViewBag.allPage)-3>5? 5 : Convert.ToInt32(ViewBag.allPage)-3); i++)
+                {
+                 <a href="@(ViewBag.url+(i+Convert.ToInt32(ViewBag.curentPage)-2))" class="page_n @(Convert.ToInt32(ViewBag.curentPage) == (i+Convert.ToInt32(ViewBag.curentPage)-2) ? "set" : "")">@(i+Convert.ToInt32(ViewBag.curentPage)-2)</a>
+                }
+            }else {
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.orderID)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.orderID)
-            @Html.ValidationMessageFor(model => model.orderID)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.commentSourceId)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.commentSourceId)
-            @Html.ValidationMessageFor(model => model.commentSourceId)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.content)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.content)
-            @Html.ValidationMessageFor(model => model.content)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.createTime)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.createTime)
-            @Html.ValidationMessageFor(model => model.createTime)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.locations)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.locations)
-            @Html.ValidationMessageFor(model => model.locations)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.userName)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.userName)
-            @Html.ValidationMessageFor(model => model.userName)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.tel_mobile)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.tel_mobile)
-            @Html.ValidationMessageFor(model => model.tel_mobile)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.recommendType)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.recommendType)
-            @Html.ValidationMessageFor(model => model.recommendType)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.room_id)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.room_id)
-            @Html.ValidationMessageFor(model => model.room_id)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.room_name)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.room_name)
-            @Html.ValidationMessageFor(model => model.room_name)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.title)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.title)
-            @Html.ValidationMessageFor(model => model.title)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.hotel_id)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.hotel_id)
-            @Html.ValidationMessageFor(model => model.hotel_id)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.commentTypeId)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.commentTypeId)
-            @Html.ValidationMessageFor(model => model.commentTypeId)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.approve_count)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.approve_count)
-            @Html.ValidationMessageFor(model => model.approve_count)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.status)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.status)
-            @Html.ValidationMessageFor(model => model.status)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.IsReply)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.IsReply)
-            @Html.ValidationMessageFor(model => model.IsReply)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.answer)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.answer)
-            @Html.ValidationMessageFor(model => model.answer)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.answer_time)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.answer_time)
-            @Html.ValidationMessageFor(model => model.answer_time)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.sign)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.sign)
-            @Html.ValidationMessageFor(model => model.sign)
-        </div>
-
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+                for (int i = 0; i < (Convert.ToInt32(ViewBag.allPage)>5? 4 : Convert.ToInt32(ViewBag.allPage)-1); i++)
+                {
+                 <a href="@(ViewBag.url+(Convert.ToInt32(ViewBag.allPage)-4+i))" class="page_n @(Convert.ToInt32(ViewBag.curentPage) == (Convert.ToInt32(ViewBag.allPage)-4+i) ? "set" : "")">@(Convert.ToInt32(ViewBag.allPage)-4+i)</a>
+                }
+            }
+        }
+        @if(Convert.ToInt32(ViewBag.allPage) - Convert.ToInt32(ViewBag.curentPage) > 3){
+            <span>......</span>
+        }
+        <a href="@(ViewBag.url + ViewBag.allPage)" class="page_n @(Convert.ToInt32(ViewBag.curentPage)==ViewBag.allPage ? "set" : "")">@ViewBag.allPage</a>
+        @if(Convert.ToInt32(ViewBag.curentPage)!=Convert.ToInt32(ViewBag.allPage)){
+            <a href="@(ViewBag.url+(Convert.ToInt32(ViewBag.curentPage)+1))" class="page_n">下一页</a>
+        }
+    </div>
+    
+  
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+
+<!-- 日期控件 -->
+<script type="text/javascript" src="@Url.Content("~/Content/public/script/laydate/laydate.dev.js")"></script>
+<script>
+    // 比较xxxx-xx-xx格式的日期
+    function comparisonDate(start,end) {
+        if (!start||!end) {
+            return;
+        };
+        var start_arr = start.split("-"),
+            end_arr = end.split("-"),
+            startTime = new Date(),
+            endTime = new Date();
+        startTime.setFullYear(start_arr[0]);
+        startTime.setMonth(start_arr[1]-1);
+        startTime.setDate(start_arr[2]);
+        startTime.setHours(0);
+        startTime.setMinutes(0);
+        startTime.setSeconds(0);
+        startTime = startTime.setMilliseconds(0);
+        endTime.getTime();
+        endTime.setFullYear(end_arr[0]);
+        endTime.setMonth(end_arr[1]-1);
+        endTime.setDate(end_arr[2]);
+        endTime.setHours(0);
+        endTime.setMinutes(0);
+        endTime.setSeconds(0);
+        endTime.setMilliseconds(0);
+        endTime = endTime.getTime();
+        return startTime-endTime;
+    }
+
+    var end_node = document.getElementsByClassName('date_end')[0],
+        start_node = document.getElementsByClassName('date_start')[0];
+
+    var start = {
+        elem: '#double_date .date_start',
+        //min: laydate.now(), //设定最小日期为当前日期
+        istoday: false,
+        choose: function (datas) {
+            end.min = datas; //开始日选好后，重置结束日的最小日期
+            end.start = datas //将结束日的初始值设定为开始日
+            if (comparisonDate(start_node.value,end_node.value)>0) {
+                end_node.value = start_node.value;
+            };
+        }
+    };
+    var end = {
+        elem: '#double_date .date_end',
+        //min: laydate.now(),
+        istoday: false,
+        choose: function (datas) {
+            //start.max = datas; //结束日选好后，充值开始日的最大日期
+            if (comparisonDate(start_node.value,end_node.value)>0) {
+                start_node.value = end_node.value;
+            };
+        }
+    };
+    laydate(start);
+    laydate(end);
+</script>
+</div>

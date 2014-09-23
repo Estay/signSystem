@@ -128,7 +128,7 @@ namespace SAS.help
         /// <returns></returns>
         public  string getUId()
         {
-           // return "test";
+            return "test";
             //HttpContext.Current.Session["uid"] = "admintest";
             //HttpContext.Current.Session["userName"] = "测试账号";
            // Session["uid"];
