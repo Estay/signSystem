@@ -33,7 +33,7 @@
         <a href="" id="bill_btn" class="btn_b">查询</a>
     </p>
 
-    <p><span class="label">收入总计：</span>￥<span class="col_red f_z18">XXXX</span><span class="label">拥挤总计：</span>￥<span class="col_red f_z18">XXXX</span><span class="label">担保总计：</span>￥<span class="col_red f_z18">XXXX</span></p>
+    <p><span class="label">收入总计：</span>￥<span class="col_red f_z18">@ViewBag.totalPrice</span><span class="label">拥挤总计：</span>￥<span class="col_red f_z18">@ViewBag.totalOtherPrice</span><span class="label">担保总计：</span>￥<span class="col_red f_z18">@ViewBag.totalGureetePrice</span></p>
     <table cellspacing="0">
         <tbody>
             <tr>
@@ -47,61 +47,77 @@
                 <th>佣金</th>
                 <th>担保</th>
             </tr>
-            
-            <!-- 表格数据 -->
-            <tr>
-                <td>XXXXXX</td>
-                <td>XXXX</td>
-                <td>xxxxx</td>
-                <td>xxxxx</td>
-                <td>xxxxxx</td>
-                <td>xxxxx</td>
-                <td>xxxx</td>
-                <td>xxxx</td>
-                <td>xxxx</td>
-            </tr>
+            @if (Model.OrderList.Count>0)
+            {
+              foreach (var o in Model.OrderList)
+               {
+                     <!-- 表格数据 -->
+               <tr>
+                <td>@o.o_SerialId</td>
+                <td>@o.hotel_name</td>
+                <td>@o.room_name</td>
+                <td>@o.o_user_name</td>
+                <td>@o.o_check_in_date.ToString("yyyy-MM-dd")~@o.o_check_out_date.ToString("yyyy-MM-dd")</td>
+                <td>@o.o_total_price</td>
+                <td>@o.GetMoney </td>
+                <td>@o.OtherMoney</td>
+                <td>@o.o_guaranteePrice</td>
+               </tr>
+               }
+            }
+            else
+            {
 
             <!-- 没有数据 -->
             <tr>
                 <td colspan="9">没有结算信息</td>
             </tr>
+            }
         </tbody>
     </table>
     
 
     <!-- 分页 -->
     <div id="page_number_box">
-        @if(Convert.ToInt32(ViewBag.curentPage)!=1){
-            <a href="@(ViewBag.url+(Convert.ToInt32(ViewBag.curentPage)-1))" class="page_n">上一页</a>
+        @if (Convert.ToInt32(ViewBag.curentPage) != 1)
+        {
+            <a href="@(ViewBag.url + (Convert.ToInt32(ViewBag.curentPage) - 1))" class="page_n">上一页</a>
         }
-        @if(Convert.ToInt32(ViewBag.curentPage)<5){
-            for (int i = 0; i < ((Convert.ToInt32(ViewBag.allPage)>5? 5 : Convert.ToInt32(ViewBag.allPage)-1)); i++)
+        @if (Convert.ToInt32(ViewBag.curentPage) < 5)
+        {
+            for (int i = 0; i < ((Convert.ToInt32(ViewBag.allPage) > 5 ? 5 : Convert.ToInt32(ViewBag.allPage) - 1)); i++)
             {
-             <a href="@(ViewBag.url+(i+1))" class="page_n @(Convert.ToInt32(ViewBag.curentPage)==i+1 ? "set" : "")">@(i +1)</a>
+             <a href="@(ViewBag.url + (i + 1))" class="page_n @(Convert.ToInt32(ViewBag.curentPage) == i + 1 ? "set" : "")">@(i + 1)</a>
             }
         }
-        @if(Convert.ToInt32(ViewBag.curentPage) > 4){
-            <a href="@(ViewBag.url+ 1)" class="page_n">1</a>
+        @if (Convert.ToInt32(ViewBag.curentPage) > 4)
+        {
+            <a href="@(ViewBag.url + 1)" class="page_n">1</a>
             <span>......</span>
-            if(Convert.ToInt32(ViewBag.allPage) - Convert.ToInt32(ViewBag.curentPage) > 2){
-                for (int i = 0; i < (Convert.ToInt32(ViewBag.allPage)-3>5? 5 : Convert.ToInt32(ViewBag.allPage)-3); i++)
+            if (Convert.ToInt32(ViewBag.allPage) - Convert.ToInt32(ViewBag.curentPage) > 2)
+            {
+                for (int i = 0; i < (Convert.ToInt32(ViewBag.allPage) - 3 > 5 ? 5 : Convert.ToInt32(ViewBag.allPage) - 3); i++)
                 {
-                 <a href="@(ViewBag.url+(i+Convert.ToInt32(ViewBag.curentPage)-2))" class="page_n @(Convert.ToInt32(ViewBag.curentPage) == (i+Convert.ToInt32(ViewBag.curentPage)-2) ? "set" : "")">@(i+Convert.ToInt32(ViewBag.curentPage)-2)</a>
+                 <a href="@(ViewBag.url + (i + Convert.ToInt32(ViewBag.curentPage) - 2))" class="page_n @(Convert.ToInt32(ViewBag.curentPage) == (i + Convert.ToInt32(ViewBag.curentPage) - 2) ? "set" : "")">@(i + Convert.ToInt32(ViewBag.curentPage) - 2)</a>
                 }
-            }else {
+            }
+            else
+            {
 
-                for (int i = 0; i < (Convert.ToInt32(ViewBag.allPage)>5? 4 : Convert.ToInt32(ViewBag.allPage)-1); i++)
+                for (int i = 0; i < (Convert.ToInt32(ViewBag.allPage) > 5 ? 4 : Convert.ToInt32(ViewBag.allPage) - 1); i++)
                 {
-                 <a href="@(ViewBag.url+(Convert.ToInt32(ViewBag.allPage)-4+i))" class="page_n @(Convert.ToInt32(ViewBag.curentPage) == (Convert.ToInt32(ViewBag.allPage)-4+i) ? "set" : "")">@(Convert.ToInt32(ViewBag.allPage)-4+i)</a>
+                 <a href="@(ViewBag.url + (Convert.ToInt32(ViewBag.allPage) - 4 + i))" class="page_n @(Convert.ToInt32(ViewBag.curentPage) == (Convert.ToInt32(ViewBag.allPage) - 4 + i) ? "set" : "")">@(Convert.ToInt32(ViewBag.allPage) - 4 + i)</a>
                 }
             }
         }
-        @if(Convert.ToInt32(ViewBag.allPage) - Convert.ToInt32(ViewBag.curentPage) > 3){
+        @if (Convert.ToInt32(ViewBag.allPage) - Convert.ToInt32(ViewBag.curentPage) > 3)
+        {
             <span>......</span>
         }
-        <a href="@(ViewBag.url + ViewBag.allPage)" class="page_n @(Convert.ToInt32(ViewBag.curentPage)==ViewBag.allPage ? "set" : "")">@ViewBag.allPage</a>
-        @if(Convert.ToInt32(ViewBag.curentPage)!=Convert.ToInt32(ViewBag.allPage)){
-            <a href="@(ViewBag.url+(Convert.ToInt32(ViewBag.curentPage)+1))" class="page_n">下一页</a>
+        <a href="@(ViewBag.url + ViewBag.allPage)" class="page_n @(Convert.ToInt32(ViewBag.curentPage) == ViewBag.allPage ? "set" : "")">@ViewBag.allPage</a>
+        @if (Convert.ToInt32(ViewBag.curentPage) != Convert.ToInt32(ViewBag.allPage))
+        {
+            <a href="@(ViewBag.url + (Convert.ToInt32(ViewBag.curentPage) + 1))" class="page_n">下一页</a>
         }
     </div>
     
