@@ -1262,6 +1262,28 @@
 
     });
 
+    ////////////////////////////////////////////////评论管理/////////////////////////////////////////////////////
+    $('#comment_hotel').change(function(event) {
+        window.location.href="/Comment/QueryComment?hotelId="+$(this).find("option:selected").val();
+    });
+    $('#comment_btn').click(function(event) {
+    	event.preventDefault();
+        window.location.href="/Comment/QueryComment?hotelId="+$("#comment_hotel").find("option:selected").val() + 
+        "&startTime=" + $('.date_start').val()+ "&endTime=" + $('.date_end').val();
+
+    });
+
+    $('.show_comment_reply').click(function(event) {
+    	event.preventDefault();
+    	var el = $(this);
+    	if (el.text()=="回复") {
+    		el.parents("tr").find('.comment_p').show(800);
+    		el.text('收起回复');
+    	}else {
+    		el.parents("tr").find('.comment_p').hide(800);
+    		el.text('回复');
+    	}
+    });
 
     ////////////////////////////////////////////////投诉和建议/////////////////////////////////////////////////////
     $('#complaint_contact,#complaint_content').e_input_tip();
