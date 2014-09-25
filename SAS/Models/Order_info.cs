@@ -458,6 +458,26 @@ namespace SAS.Models
         }
         #endregion Model
 
+        /// <summary>
+        /// 增加的额字段，取用作显示(佣金)
+        /// </summary>
+        private decimal otherMoney;
+          [NotMapped]
+        public decimal OtherMoney
+        {
+            get { return otherMoney; }
+            set { otherMoney = value; }
+        }
+        /// <summary>
+          /// 增加的额字段，取用作显示(纯收入)
+          /// </summary>
+          private decimal getMoney;
+          [NotMapped]
+          public decimal GetMoney
+          {
+              get { return getMoney; }
+              set { getMoney = value; }
+          }
         //[NotMapped]
         /// <summary>
         /// 账单或订单列表
@@ -534,7 +554,7 @@ namespace SAS.Models
         }
        
         /// <summary>
-        /// 订单查询
+        /// 订单查询(out decimal totalPrice,out decimal totalGureetePrice,out totalOtherPrice,out int totalPage)
         /// </summary>
         /// <param name="order"></param>
         /// <returns></returns>
@@ -542,6 +562,16 @@ namespace SAS.Models
         {
             string hho = order.o_check_in_date.ToString();
             string condition=string.Empty;
+            ////酒店ID
+            //if (order.hotel_id>0)
+            //{
+            //    if (condition == string.Empty)
+            //        condition = string.Format("hotel_id={0}", order.hotel_id);
+            //    else
+            //        condition += string.Format("and hotel_id={0}", order.hotel_id);
+
+            //}
+
             //订单编号
             if (!string.IsNullOrEmpty(order.o_SerialId ))
             {
@@ -620,6 +650,86 @@ namespace SAS.Models
               
 
         }
+        /// <summary>
+        /// 账单查询(out decimal totalPrice,out decimal totalGureetePrice,out totalOtherPrice,out int totalPage)
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns></returns>
+        public List<Order_info> getOrderInfos(Order_info order, int page, out object totalPrice, out object totalGureetePrice, out object totalOtherPrice, out object totalPage)
+        {
+            int pageSize = 30, allCount = 0, count = 0;decimal FreePercent=0;
+            object ototalPrice=0, ototalGureetePrice=0, ototalOtherPrice=0, ototalPage;
+        
+            string hho = order.o_check_in_date.ToString();
+            string condition = string.Empty;
+            List<Order_info> list = new List<Order_info>();
+            ////酒店ID
+            if (order.hotel_id > 0)
+            {
+                if (condition == string.Empty)
+                    condition = string.Format("hotel_id={0}", order.hotel_id);
+                else
+                    condition += string.Format("and hotel_id={0}", order.hotel_id);
+
+            }
+            //入住日期
+            if (order._o_check_in_date != null && order._o_check_in_date.ToString() != "0001/1/1 0:00:00")
+            {
+                if (condition == string.Empty)
+                    condition = string.Format("o_check_in_date>='{0}'", order._o_check_in_date);
+                else
+                    condition += string.Format(" and o_check_in_date>='{0}'", order._o_check_in_date);
+            }
+            //离店日期
+            if (order._o_check_out_date != null && order._o_check_out_date.ToString() != "0001/1/1 0:00:00")
+            {
+                if (condition == string.Empty)
+                    condition = string.Format("o_check_out_date<='{0}'", order._o_check_out_date);
+                else
+                    condition += string.Format(" and o_check_out_date<='{0}'", order._o_check_out_date);
+            }
+            
+
+            if (condition != string.Empty)
+            {
+                condition += string.Format("and hotel_id in(select hotel_id from hotel_info where u_id='{0}') and o_state_id=3", new HotelInfoHelp().getUId());
+                string needFild = "o_SerialId,hotel_name,o_user_name,o_user_phone,o_check_in_date,o_check_out_date,o_total_price,room_name,o_title";
+                string sql = page == 0 || page == 1 ? string.Format("select top {0} {2} from order_info where {1} ", pageSize, condition,needFild) : string.Format("select top {0} {3} from order_info where order_id>(select max(order_id) from (select top {1} order_id from order_info order by order_id where {2}) as a) where {2} order by order_id", pageSize, pageSize * page, condition,needFild);
+                string sqlSum = string.Format("select count(*),sum(o_total_price),sum(o_total_price)*(select sum(value) from temp where uid='{1}'),sum(o_guaranteeprice),(select sum(value) from temp where uid='{1}') from order_info where {0} group by hotel_id", condition, new HotelInfoHelp().getUId());
+                using (SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+                {
+                    conn.Open();
+                    using (SqlCommand cmdSum = new SqlCommand(sqlSum, conn))
+                    {
+                        using (SqlDataReader drSum = cmdSum.ExecuteReader())
+                        {
+                            while (drSum.Read())
+                            {
+                                allCount = Convert.ToInt32(drSum[0]); ototalPrice = drSum[1]; ototalOtherPrice = drSum[2]; ototalGureetePrice = drSum[3]; FreePercent = Convert.ToDecimal(drSum[4]);
+                            }
+                        }
+                    }
+
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    {
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                decimal price = Convert.ToDecimal(dr[6]);
+                                Order_info o = new Order_info() { o_SerialId = dr[0].ToString(), hotel_name = dr[1].ToString(), o_user_name = dr[2].ToString(), o_user_phone = dr[3].ToString(), o_check_in_date = Convert.ToDateTime(dr[4]), o_check_out_date = Convert.ToDateTime(dr[5]), o_total_price = price, room_name = dr[7].ToString(), _o_title = dr[8].ToString(), otherMoney = price * FreePercent, GetMoney = price - price * FreePercent };
+                                list.Add(o);
+                            }
+                        }
+                    }
+                }
+            }
+            allCount = 60;
+            totalPrice = Convert.ToDecimal(ototalPrice) - Convert.ToDecimal(ototalGureetePrice) + Convert.ToDecimal(ototalGureetePrice); totalGureetePrice = ototalGureetePrice; totalOtherPrice = ototalOtherPrice;
+            totalPage = Convert.ToDecimal(allCount) / pageSize > Convert.ToInt32(allCount / pageSize) ? Convert.ToInt32(allCount / pageSize) + 1 : Convert.ToInt32(allCount / pageSize);
+            return list;
+        }
+      
         public string convertDate(DateTime t)
         {
             return t.ToString();
