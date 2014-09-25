@@ -27,6 +27,17 @@ namespace SAS.Controllers
             return View("MyBill");
         }
 
+        // 用户管理零时页面
+        public ActionResult MyUser(string hotelId,string startTime,string endTime,string page)
+        {
+            ViewBag.allPage =10;
+            ViewBag.curentPage = page==null?"1":page;
+            ViewBag.curentHotelId = hotelId;
+            ViewBag.curentstartTime = startTime;
+            ViewBag.curentendTime = endTime;
+            return View("MyUser");
+        }
+
         //
         // GET: /Bill/Details/5
 
