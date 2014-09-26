@@ -76,7 +76,7 @@
         </tbody>
     </table>
     
-
+    @if(Convert.ToInt32(ViewBag.allPage) != 0){
     <!-- 分页 -->
     <div id="page_number_box">
         @if (Convert.ToInt32(ViewBag.curentPage) != 1)
@@ -120,10 +120,9 @@
             <a href="@(ViewBag.url + (Convert.ToInt32(ViewBag.curentPage) + 1))" class="page_n">下一页</a>
         }
     </div>
-    
+    }
   
 </div>
-
 
 <!-- 日期控件 -->
 <script type="text/javascript" src="@Url.Content("~/Content/public/script/laydate/laydate.dev.js")"></script>
