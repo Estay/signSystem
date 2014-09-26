@@ -47,6 +47,13 @@ namespace SAS.Controllers
             return View("MyUser");
         }
 
+        // 结算账户零时页面
+        public ActionResult MyBank(string hotelId,string startTime,string endTime,string page)
+        {
+            return View("MyBank");
+        }
+
+
         //
         // GET: /Bill/Details/5
 
