@@ -657,6 +657,7 @@ namespace SAS.Models
         /// <returns></returns>
         public List<Order_info> getOrderInfos(Order_info order, int page, out object totalPrice, out object totalGureetePrice, out object totalOtherPrice, out object totalPage,out List<hotel_info> ListHotels)
         {
+
             int pageSize = 30, allCount = 0, count = 0;decimal FreePercent=0;
             object ototalPrice=0, ototalGureetePrice=0, ototalOtherPrice=0, ototalPage;
             List<hotel_info> ListHotelsTemp = new List<hotel_info>();
