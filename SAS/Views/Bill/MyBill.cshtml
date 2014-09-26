@@ -5,7 +5,7 @@
     ViewBag.my_bill = "set";
     ViewBag.url = "/Bill/QureyBill?hotelId=" + ViewBag.curentHotelId + "&startTime=" + ViewBag.curentstartTime + "&endTime=" + ViewBag.curentendTime + "&page=";
     //酒店列表
-    Dictionary<string, string> hotels = ViewData["dates"] as Dictionary<string, string>;
+    List<SAS.Models.hotel_info> hotels = ViewData["hotels"] as List<SAS.Models.hotel_info>;
 
 }
 
@@ -14,7 +14,7 @@
         <span class="label" style="margin-left: 0">公寓</span>
         <select id="bill_hotel" name="">
             <option value="">所有公寓</option>
-            @*@foreach (var h in hotels)
+            @foreach (var h in hotels)
             {
                 if (h.hotel_id == ViewBag.curentHotelId)
                 {
@@ -24,12 +24,12 @@
                 {
                 <option value="@h.hotel_id">@h.h_name_cn</option> 
                 }
-            }*@
+            }
         </select>
         <span class="label">日期</span>
-        <input class="date_start w100" type="text" name=""  value="@ViewBag.curentstartTime">
+        <input class="date_start w100" type="text" name=""  value="@ViewBag.startTime">
         到
-        <input class="date_end w100" type="text" name=""  value="@ViewBag.curentendTime">
+        <input class="date_end w100" type="text" name=""  value="@ViewBag.endTime">
         <a href="" id="bill_btn" class="btn_b">查询</a>
     </p>
 

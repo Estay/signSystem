@@ -655,11 +655,12 @@ namespace SAS.Models
         /// </summary>
         /// <param name="order"></param>
         /// <returns></returns>
-        public List<Order_info> getOrderInfos(Order_info order, int page, out object totalPrice, out object totalGureetePrice, out object totalOtherPrice, out object totalPage)
+        public List<Order_info> getOrderInfos(Order_info order, int page, out object totalPrice, out object totalGureetePrice, out object totalOtherPrice, out object totalPage,out List<hotel_info> ListHotels)
         {
             int pageSize = 30, allCount = 0, count = 0;decimal FreePercent=0;
             object ototalPrice=0, ototalGureetePrice=0, ototalOtherPrice=0, ototalPage;
-        
+            List<hotel_info> ListHotelsTemp = new List<hotel_info>();
+            string sqlGetAllHotel = string.Format("select hotel_id,h_name_cn from {0}  where u_id='{1}'","hotel_info",new HotelInfoHelp().getUId());
             string hho = order.o_check_in_date.ToString();
             string condition = string.Empty;
             List<Order_info> list = new List<Order_info>();
@@ -712,7 +713,7 @@ namespace SAS.Models
                         }
                     }
 
-                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    using (SqlCommand cmd = new SqlCommand(sql + ";" + sqlGetAllHotel, conn))
                     {
                         using (SqlDataReader dr = cmd.ExecuteReader())
                         {
@@ -722,6 +723,12 @@ namespace SAS.Models
                                 Order_info o = new Order_info() { o_SerialId = dr[0].ToString(), hotel_name = dr[1].ToString(), o_user_name = dr[2].ToString(), o_user_phone = dr[3].ToString(), o_check_in_date = Convert.ToDateTime(dr[4]), o_check_out_date = Convert.ToDateTime(dr[5]), o_total_price = price, room_name = dr[7].ToString(), _o_title = dr[8].ToString(), otherMoney = price * FreePercent, GetMoney = price - price * FreePercent };
                                 list.Add(o);
                             }
+                            //读取所有酒店信息
+                            dr.NextResult();
+                            while (dr.Read())
+                            {
+                                ListHotelsTemp.Add(new hotel_info() { hotel_id=Convert.ToInt32(dr[0]),h_name_cn=dr[1].ToString()});
+                            }
                         }
                     }
                 }
@@ -729,6 +736,7 @@ namespace SAS.Models
            // allCount = 60;
             totalPrice = Convert.ToDecimal(ototalPrice) - Convert.ToDecimal(ototalGureetePrice) + Convert.ToDecimal(ototalGureetePrice); totalGureetePrice = ototalGureetePrice; totalOtherPrice = ototalOtherPrice;
             totalPage = Convert.ToDecimal(allCount) / pageSize > Convert.ToInt32(allCount / pageSize) ? Convert.ToInt32(allCount / pageSize) + 1 : Convert.ToInt32(allCount / pageSize);
+            ListHotels = ListHotelsTemp;
             return list;
         }
       
