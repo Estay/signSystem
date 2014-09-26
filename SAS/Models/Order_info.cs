@@ -688,13 +688,15 @@ namespace SAS.Models
                 else
                     condition += string.Format(" and o_check_out_date<='{0}'", order._o_check_out_date);
             }
-            
-
+            if(string.IsNullOrEmpty(condition))
+             condition += string.Format("hotel_id in(select hotel_id from hotel_info where u_id='{0}') and o_state_id=3", new HotelInfoHelp().getUId());
+            else
+             condition += string.Format("and hotel_id in(select hotel_id from hotel_info where u_id='{0}') and o_state_id=3", new HotelInfoHelp().getUId());
             if (condition != string.Empty)
             {
-                condition += string.Format("and hotel_id in(select hotel_id from hotel_info where u_id='{0}') and o_state_id=3", new HotelInfoHelp().getUId());
+                
                 string needFild = "o_SerialId,hotel_name,o_user_name,o_user_phone,o_check_in_date,o_check_out_date,o_total_price,room_name,o_title";
-                string sql = page == 0 || page == 1 ? string.Format("select top {0} {2} from order_info where {1} ", pageSize, condition,needFild) : string.Format("select top {0} {3} from order_info where order_id>(select max(order_id) from (select top {1} order_id from order_info order by order_id where {2}) as a) where {2} order by order_id", pageSize, pageSize * page, condition,needFild);
+                string sql = page == 0 || page == 1 ? string.Format("select top {0} {2} from order_info where {1} ", pageSize, condition, needFild) : string.Format("select top {0} {3} from order_info where order_id>(select max(order_id) from (select top {1} order_id from order_info where {2} order by hotel_id) as a) and {2} order by order_id", pageSize, pageSize*(page-1), condition, needFild);
                 string sqlSum = string.Format("select count(*),sum(o_total_price),sum(o_total_price)*(select sum(value) from temp where uid='{1}'),sum(o_guaranteeprice),(select sum(value) from temp where uid='{1}') from order_info where {0} group by hotel_id", condition, new HotelInfoHelp().getUId());
                 using (SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
                 {
@@ -724,7 +726,7 @@ namespace SAS.Models
                     }
                 }
             }
-            allCount = 60;
+           // allCount = 60;
             totalPrice = Convert.ToDecimal(ototalPrice) - Convert.ToDecimal(ototalGureetePrice) + Convert.ToDecimal(ototalGureetePrice); totalGureetePrice = ototalGureetePrice; totalOtherPrice = ototalOtherPrice;
             totalPage = Convert.ToDecimal(allCount) / pageSize > Convert.ToInt32(allCount / pageSize) ? Convert.ToInt32(allCount / pageSize) + 1 : Convert.ToInt32(allCount / pageSize);
             return list;

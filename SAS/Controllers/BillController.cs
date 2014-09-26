@@ -21,7 +21,7 @@ namespace SAS.Controllers
         {
 
             DateTime tempS, tempE; DateTime.TryParse(startTime, out tempS); DateTime.TryParse(endTime, out tempE); int.TryParse(hotelId, out InthotelId);
-            DateTime now = DateTime.Now.AddMonths(-1); DateTime s = startTime == null ? now.AddDays(1 - now.Day).Date :tempS; DateTime e = endTime == null? now.AddDays(1-now.Day).AddMonths(1).AddDays(-1).Date:tempE;
+            DateTime now = DateTime.Now.AddMonths(-1); DateTime s = string.IsNullOrEmpty(startTime) ? now.AddDays(1 - now.Day).Date : tempS; DateTime e = string.IsNullOrEmpty(endTime) ? now.AddDays(1 - now.Day).AddMonths(1).AddDays(-1).Date : tempE;
             //int.TryParse(hotelId,out InthotelId);int.TryParse();
             object totalPrice, totalGureetePrice, totalOtherPrice, totalPage; int cureentPage; int.TryParse(page, out cureentPage);
             Order_info order = new Order_info() { OrderList = new Order_info().getOrderInfos(new Order_info() { hotel_id = InthotelId, o_check_in_date = s, o_check_out_date = e }, cureentPage, out totalPrice, out totalGureetePrice, out totalOtherPrice, out totalPage) };
