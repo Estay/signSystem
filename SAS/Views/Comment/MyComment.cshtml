@@ -6,16 +6,15 @@
     ViewBag.url = "/Comment/QueryComment?hotelId=" + ViewBag.curentHotelId + "&startTime=" + ViewBag.curentstartTime + "&endTime=" + ViewBag.curentendTime + "&page=";
 
     //酒店列表
-     Dictionary<string, string> hotels = ViewData["dates"] as Dictionary<string, string>;
+    List<SAS.Models.hotel_info> hotels = ViewData["hotels"] as List<SAS.Models.hotel_info>;
 }
-@using (Html.BeginForm("CommentSubmit", "Comment", FormMethod.Post))
-{
+
 <div id="content" class="box_a">
     <p id="double_date" class="input_line bill_query">
         <span class="label" style="margin-left: 0">公寓</span>
         <select id="comment_hotel" name="">
             <option value="">所有公寓</option>
-            @*@foreach (var h in hotels)
+            @foreach (var h in hotels)
             {
                 if (h.hotel_id == ViewBag.curentHotelId)
                 {
@@ -25,7 +24,7 @@
                 {
                 <option value="@h.hotel_id">@h.h_name_cn</option> 
                 }
-            }*@
+            }
         </select>
         <span class="label">状态</span>
         <select id="comment_hotel" name="">
@@ -52,26 +51,35 @@
             </tr>
             
             <!-- 表格数据 -->
-            <tr>
-                <td>XXXXXX</td>
+            @foreach (var c in Model.CommnetList)
+            {
+                     <tr>
+                <td>@c.orderID</td>
                 <td class="comment_visitor">
-                    <pre >男士机械腕表，用码好男士机士机械腕表，用码好男士机士机械腕表，用码好男士机士机械腕表，用码好男士机士机械腕表，用码好男士机士机械腕表，用码好男士机士机械腕表，用码好男士机械腕表，用码好男士机械腕表，用码好</pre>
-                    <p class="comment_time">xxxx~xxx</p>
+                    <pre >@c.content</pre>
+                    <p class="comment_time">@c.createTime</p>
                     <p class="comment_p">
-                        <textarea cols="50" rows="4"></textarea>
-                        <a href="" class="comment_submit_btn btn_b" comment_id="xxxx">回复</a>
+                        @using (Html.BeginForm("CommentSubmit", "Comment", FormMethod.Post))
+{
+                        <textarea cols="50" rows="4" name="@Html.DisplayNameFor(o=>o.content)"></textarea>
+                            <input type="submit" value="Submit" />
+                        <input class="hide" name="@Html.DisplayNameFor(o=>o.commentId)" value="@c.commentId" />@*
+                        <a href="" class="comment_submit_btn btn_b" comment_id="">回复</a>*@
+                        }
                     </p>
                 </td>
-                <td>xxxxx</td>
+                <td>@c.userName</td>
                 <td>
-                    <p>XXX~XXX</p>
-                    <p>XXXXXXXX</p>
+                  @c.room_name
                 </td>
                 <td>
                     <a href="" class="show_comment_reply">回复</a>
                 </td>
                 <td>未回复</td>
             </tr>
+                
+            }
+       
 
             <!-- 没有数据 -->
             <tr>
@@ -83,44 +91,52 @@
 
     <!-- 分页 -->
     <div id="page_number_box">
-        @if(Convert.ToInt32(ViewBag.curentPage)!=1){
-            <a href="@(ViewBag.url+(Convert.ToInt32(ViewBag.curentPage)-1))" class="page_n">上一页</a>
+        @if (Convert.ToInt32(ViewBag.curentPage) != 1)
+        {
+            <a href="@(ViewBag.url + (Convert.ToInt32(ViewBag.curentPage) - 1))" class="page_n">上一页</a>
         }
-        @if(Convert.ToInt32(ViewBag.curentPage)<5){
-            for (int i = 0; i < ((Convert.ToInt32(ViewBag.allPage)>5? 5 : Convert.ToInt32(ViewBag.allPage)-1)); i++)
+        @if (Convert.ToInt32(ViewBag.curentPage) < 5)
+        {
+            for (int i = 0; i < ((Convert.ToInt32(ViewBag.allPage) > 5 ? 5 : Convert.ToInt32(ViewBag.allPage) - 1)); i++)
             {
-             <a href="@(ViewBag.url+(i+1))" class="page_n @(Convert.ToInt32(ViewBag.curentPage)==i+1 ? "set" : "")">@(i +1)</a>
+             <a href="@(ViewBag.url + (i + 1))" class="page_n @(Convert.ToInt32(ViewBag.curentPage) == i + 1 ? "set" : "")">@(i + 1)</a>
             }
         }
-        @if(Convert.ToInt32(ViewBag.curentPage) > 4){
-            <a href="@(ViewBag.url+ 1)" class="page_n">1</a>
+        @if (Convert.ToInt32(ViewBag.curentPage) > 4)
+        {
+            <a href="@(ViewBag.url + 1)" class="page_n">1</a>
             <span>......</span>
-            if(Convert.ToInt32(ViewBag.allPage) - Convert.ToInt32(ViewBag.curentPage) > 2){
-                for (int i = 0; i < (Convert.ToInt32(ViewBag.allPage)-3>5? 5 : Convert.ToInt32(ViewBag.allPage)-3); i++)
+            if (Convert.ToInt32(ViewBag.allPage) - Convert.ToInt32(ViewBag.curentPage) > 2)
+            {
+                for (int i = 0; i < (Convert.ToInt32(ViewBag.allPage) - 3 > 5 ? 5 : Convert.ToInt32(ViewBag.allPage) - 3); i++)
                 {
-                 <a href="@(ViewBag.url+(i+Convert.ToInt32(ViewBag.curentPage)-2))" class="page_n @(Convert.ToInt32(ViewBag.curentPage) == (i+Convert.ToInt32(ViewBag.curentPage)-2) ? "set" : "")">@(i+Convert.ToInt32(ViewBag.curentPage)-2)</a>
+                 <a href="@(ViewBag.url + (i + Convert.ToInt32(ViewBag.curentPage) - 2))" class="page_n @(Convert.ToInt32(ViewBag.curentPage) == (i + Convert.ToInt32(ViewBag.curentPage) - 2) ? "set" : "")">@(i + Convert.ToInt32(ViewBag.curentPage) - 2)</a>
                 }
-            }else {
+            }
+            else
+            {
 
-                for (int i = 0; i < (Convert.ToInt32(ViewBag.allPage)>5? 4 : Convert.ToInt32(ViewBag.allPage)-1); i++)
+                for (int i = 0; i < (Convert.ToInt32(ViewBag.allPage) > 5 ? 4 : Convert.ToInt32(ViewBag.allPage) - 1); i++)
                 {
-                 <a href="@(ViewBag.url+(Convert.ToInt32(ViewBag.allPage)-4+i))" class="page_n @(Convert.ToInt32(ViewBag.curentPage) == (Convert.ToInt32(ViewBag.allPage)-4+i) ? "set" : "")">@(Convert.ToInt32(ViewBag.allPage)-4+i)</a>
+                 <a href="@(ViewBag.url + (Convert.ToInt32(ViewBag.allPage) - 4 + i))" class="page_n @(Convert.ToInt32(ViewBag.curentPage) == (Convert.ToInt32(ViewBag.allPage) - 4 + i) ? "set" : "")">@(Convert.ToInt32(ViewBag.allPage) - 4 + i)</a>
                 }
             }
         }
-        @if(Convert.ToInt32(ViewBag.allPage) - Convert.ToInt32(ViewBag.curentPage) > 3){
+        @if (Convert.ToInt32(ViewBag.allPage) - Convert.ToInt32(ViewBag.curentPage) > 3)
+        {
             <span>......</span>
         }
-        <a href="@(ViewBag.url + ViewBag.allPage)" class="page_n @(Convert.ToInt32(ViewBag.curentPage)==ViewBag.allPage ? "set" : "")">@ViewBag.allPage</a>
-        @if(Convert.ToInt32(ViewBag.curentPage)!=Convert.ToInt32(ViewBag.allPage)){
-            <a href="@(ViewBag.url+(Convert.ToInt32(ViewBag.curentPage)+1))" class="page_n">下一页</a>
+        <a href="@(ViewBag.url + ViewBag.allPage)" class="page_n @(Convert.ToInt32(ViewBag.curentPage) == ViewBag.allPage ? "set" : "")">@ViewBag.allPage</a>
+        @if (Convert.ToInt32(ViewBag.curentPage) != Convert.ToInt32(ViewBag.allPage))
+        {
+            <a href="@(ViewBag.url + (Convert.ToInt32(ViewBag.curentPage) + 1))" class="page_n">下一页</a>
         }
     </div>
     
   
 </div>
 
-}
+
 <!-- 日期控件 -->
 <script type="text/javascript" src="@Url.Content("~/Content/public/script/laydate/laydate.dev.js")"></script>
 <script>

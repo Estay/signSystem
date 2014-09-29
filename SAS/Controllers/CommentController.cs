@@ -7,6 +7,8 @@ using System.Web;
 using System.Web.Mvc;
 using SAS.Models;
 using SAS.DBC;
+using SAS.help;
+using SAS.EstayMobileService;
 
 namespace SAS.Controllers
 {
@@ -17,14 +19,40 @@ namespace SAS.Controllers
         //
         // GET: /Comment/
 
-        public ActionResult QueryComment(string hotelId,string page,string startTime,string endTime)
+        public ActionResult QueryComment(string hotelId, string IsReply, string page, string startTime, string endTime)
         {
-             ViewBag.currentHotelId = hotelId;
-             ViewBag.allPage = 100;
-             ViewBag.curentPage =page;
-            return View("MyComment");
-        }
+            int currentPage = 1; int.TryParse(page, out currentPage);
+            if (currentPage < 0)
+                return View("MyComment");
 
+            List<hotel_info> list = new HotelInfoHelp().getHotlList("");
+            ViewData["hotels"] = list;
+            string hotelIds = string.Empty;
+            if (string.IsNullOrEmpty(hotelId))
+            {
+                foreach (var item in list)
+                {
+                    if (string.IsNullOrEmpty(hotelId))
+                        hotelId += item.hotel_id;
+                    else
+                        hotelId += "," + item.hotel_id;
+                }
+
+            }
+            MobileContractClient client = new MobileContractClient();
+            client.ClientCredentials.UserName.UserName = help.StringHelper.appSettings("WCFUserName");
+            client.ClientCredentials.UserName.Password = help.StringHelper.appSettings("WCFPassWord");
+            DateTime s = new HotelInfoHelp().getStartDate(startTime); DateTime e = new HotelInfoHelp().getEndDate(endTime);
+            var coments = client.GetHotelCommentList(new CommentHParamsDTO() { Hotel_id = hotelId, IsReply = false, currentPage = currentPage, pageSize = HotelInfoHelp.pageSize, StartTime = s, EndTime = e });
+            ViewBag.startTime = s.ToString("yyyy-MM-dd");
+            ViewBag.endTime = e.ToString("yyyy-MM-dd");
+            ViewBag.currentHotelId = hotelId;
+            ViewBag.allPage = 100;
+            ViewBag.curentPage = page;
+            Hotel_comment_info ment = new Hotel_comment_info();
+            return View("MyComment", ment);
+        }
+    
         //
         // GET: /Comment/Details/5
 
@@ -45,6 +73,8 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult CommentSubmit(Hotel_comment_info comment)
         {
+            var  result= new help.RefrenceHelp().GetMobileContractClientTest().ReplyReview(new ReplyReviewRequest(){commentId=comment.commentId,answer=comment.content});
+            ViewBag.sign = result.Contains("") ? 1 : 0;
             return View("MyComment");
         }
         //

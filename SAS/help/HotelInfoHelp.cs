@@ -15,6 +15,7 @@ namespace SAS.help
 
         string uId = string.Empty;
         private static HotelDBContent db =null;
+        public static int pageSize = 30;
         public HotelInfoHelp()
         {
             uId = getUId();
@@ -123,12 +124,36 @@ namespace SAS.help
             return ratePlanId;
         }
         /// <summary>
+        /// 开始时间(为空上个月的1号)
+        /// </summary>
+        /// <param name="startTime"></param>
+        /// <returns></returns>
+        public DateTime getStartDate(string startTime)
+        {
+            DateTime tempS, tempE; DateTime.TryParse(startTime, out tempS); 
+            DateTime now = DateTime.Now.AddMonths(-1);
+            return string.IsNullOrEmpty(startTime) ? now.AddDays(1 - now.Day).Date : tempS;
+          
+        }
+        /// <summary>
+        /// 结速日期(上个月的最后一天)
+        /// </summary>
+        /// <param name="endTime"></param>
+        /// <returns></returns>
+        public DateTime getEndDate(string endTime)
+        {
+            DateTime tempS, tempE;
+            DateTime.TryParse(endTime, out tempE);
+            DateTime now = DateTime.Now.AddMonths(-1);
+            return string.IsNullOrEmpty(endTime) ? now.AddDays(1 - now.Day).AddMonths(1).AddDays(-1).Date : tempE;
+        }
+        /// <summary>
         /// 或得用户账号,用于hotel_info里面的u_id字段
         /// </summary>
         /// <returns></returns>
         public  string getUId()
         {
-           return "test";
+            return "13528873363";
             //HttpContext.Current.Session["uid"] = "admintest";
             //HttpContext.Current.Session["userName"] = "测试账号";
            // Session["uid"];
