@@ -8,7 +8,8 @@
     //酒店列表
      Dictionary<string, string> hotels = ViewData["dates"] as Dictionary<string, string>;
 }
-
+@using (Html.BeginForm("CommentSubmit", "Comment", FormMethod.Post))
+{
 <div id="content" class="box_a">
     <p id="double_date" class="input_line bill_query">
         <span class="label" style="margin-left: 0">公寓</span>
@@ -119,7 +120,7 @@
   
 </div>
 
-
+}
 <!-- 日期控件 -->
 <script type="text/javascript" src="@Url.Content("~/Content/public/script/laydate/laydate.dev.js")"></script>
 <script>

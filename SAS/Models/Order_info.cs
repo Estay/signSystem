@@ -696,8 +696,8 @@ namespace SAS.Models
              condition += string.Format("and hotel_id in(select hotel_id from hotel_info where u_id='{0}') and o_state_id=3", new HotelInfoHelp().getUId());
             if (condition != string.Empty)
             {
-                
-                string needFild = "o_SerialId,hotel_name,o_user_name,o_user_phone,o_check_in_date,o_check_out_date,o_total_price,room_name,o_title";
+
+                string needFild = "o_SerialId,hotel_name,o_user_name,o_user_phone,o_check_in_date,o_check_out_date,o_total_price,room_name,o_title,o_guaranteePrice";
                 string sql = page == 0 || page == 1 ? string.Format("select top {0} {2} from order_info where {1} ", pageSize, condition, needFild) : string.Format("select top {0} {3} from order_info where order_id>(select max(order_id) from (select top {1} order_id from order_info where {2} order by hotel_id) as a) and {2} order by order_id", pageSize, pageSize*(page-1), condition, needFild);
                 string sqlSum = string.Format("select count(*),sum(o_total_price),sum(o_total_price)*(select sum(value) from temp where uid='{1}'),sum(o_guaranteeprice),(select sum(value) from temp where uid='{1}') from order_info where {0} group by hotel_id", condition, new HotelInfoHelp().getUId());
                 using (SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
@@ -721,7 +721,7 @@ namespace SAS.Models
                             while (dr.Read())
                             {
                                 decimal price = Convert.ToDecimal(dr[6]);
-                                Order_info o = new Order_info() { o_SerialId = dr[0].ToString(), hotel_name = dr[1].ToString(), o_user_name = dr[2].ToString(), o_user_phone = dr[3].ToString(), o_check_in_date = Convert.ToDateTime(dr[4]), o_check_out_date = Convert.ToDateTime(dr[5]), o_total_price = price, room_name = dr[7].ToString(), _o_title = dr[8].ToString(), otherMoney = price * FreePercent, GetMoney = price - price * FreePercent };
+                                Order_info o = new Order_info() { o_SerialId = dr[0].ToString(), hotel_name = dr[1].ToString(), o_user_name = dr[2].ToString(), o_user_phone = dr[3].ToString(), o_check_in_date = Convert.ToDateTime(dr[4]), o_check_out_date = Convert.ToDateTime(dr[5]), o_total_price = price, room_name = dr[7].ToString(), _o_title = dr[8].ToString(), otherMoney = price * FreePercent, GetMoney = price - price * FreePercent, o_guaranteePrice=Convert.ToDecimal(dr[9])};
                                 list.Add(o);
                             }
                             //读取所有酒店信息

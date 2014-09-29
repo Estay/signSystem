@@ -37,7 +37,16 @@ namespace SAS.Controllers
             }
             return View(hotel_comment_info);
         }
-
+        /// <summary>
+        /// 提交评论
+        /// </summary>
+        /// <param name="comment"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult CommentSubmit(Hotel_comment_info comment)
+        {
+            return View("MyComment");
+        }
         //
         // GET: /Comment/Create
 
