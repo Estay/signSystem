@@ -99,58 +99,52 @@
                     }
                 </tbody>
             </table>
-
-            <!-- 分页 -->
-            <div id="page_number_box">
-                @if (Convert.ToInt32(ViewBag.curentPage) != 1)
+    
+<!-- 分页 -->
+    @if(Convert.ToInt32(ViewBag.allPage) != 0){
+    <div id="page_number_box">
+        @if (Convert.ToInt32(ViewBag.curentPage) != 1)
         {
-                <a href="@(ViewBag.url + (Convert.ToInt32(ViewBag.curentPage) - 1))" class="page_n">上一页</a>
-                }
-        @if (Convert.ToInt32(ViewBag.curentPage)
-                < 5)
+            <a href="@(ViewBag.url + (Convert.ToInt32(ViewBag.curentPage) - 1))" class="page_n">上一页</a>
+        }
+        @if (Convert.ToInt32(ViewBag.curentPage) < 5)
         {
-            for (int i = 0; i < ((Convert.ToInt32(ViewBag.allPage) >
-                    5 ? 5 : Convert.ToInt32(ViewBag.allPage) - 1)); i++)
+            for (int i = 0; i < ((Convert.ToInt32(ViewBag.allPage) > 5 ? 5 : Convert.ToInt32(ViewBag.allPage) - 1)); i++)
             {
-                    <a href="@(ViewBag.url + (i + 1))" class="page_n @(Convert.ToInt32(ViewBag.curentPage) == i + 1 ? "set" : "")">@(i + 1)</a>
-                    }
+             <a href="@(ViewBag.url + (i + 1))" class="page_n @(Convert.ToInt32(ViewBag.curentPage) == i + 1 ? "set" : "")">@(i + 1)</a>
+            }
         }
         @if (Convert.ToInt32(ViewBag.curentPage) > 4)
         {
-                    <a href="@(ViewBag.url + 1)" class="page_n">1</a>
-                    <span>......</span>
-                    if (Convert.ToInt32(ViewBag.allPage) - Convert.ToInt32(ViewBag.curentPage) > 2)
+            <a href="@(ViewBag.url + 1)" class="page_n">1</a>
+            <span>......</span>
+            if (Convert.ToInt32(ViewBag.allPage) - Convert.ToInt32(ViewBag.curentPage) > 2)
             {
-                for (int i = 0; i
-                    < (Convert.ToInt32(ViewBag.allPage) - 3 >
-                        5 ? 5 : Convert.ToInt32(ViewBag.allPage) - 3); i++)
+                for (int i = 0; i < (Convert.ToInt32(ViewBag.allPage) - 3 > 5 ? 5 : Convert.ToInt32(ViewBag.allPage) - 3); i++)
                 {
-                        <a href="@(ViewBag.url + (i + Convert.ToInt32(ViewBag.curentPage) - 2))" class="page_n @(Convert.ToInt32(ViewBag.curentPage) == (i + Convert.ToInt32(ViewBag.curentPage) - 2) ? "set" : "")">@(i + Convert.ToInt32(ViewBag.curentPage) - 2)</a>
-                        }
+                 <a href="@(ViewBag.url + (i + Convert.ToInt32(ViewBag.curentPage) - 2))" class="page_n @(Convert.ToInt32(ViewBag.curentPage) == (i + Convert.ToInt32(ViewBag.curentPage) - 2) ? "set" : "")">@(i + Convert.ToInt32(ViewBag.curentPage) - 2)</a>
+                }
             }
             else
             {
 
-                for (int i = 0; i
-                        < (Convert.ToInt32(ViewBag.allPage) >
-                            5 ? 4 : Convert.ToInt32(ViewBag.allPage) - 1); i++)
+                for (int i = 0; i < (Convert.ToInt32(ViewBag.allPage) > 5 ? 4 : Convert.ToInt32(ViewBag.allPage) - 1); i++)
                 {
-                            <a href="@(ViewBag.url + (Convert.ToInt32(ViewBag.allPage) - 4 + i))" class="page_n @(Convert.ToInt32(ViewBag.curentPage) == (Convert.ToInt32(ViewBag.allPage) - 4 + i) ? "set" : "")">@(Convert.ToInt32(ViewBag.allPage) - 4 + i)</a>
-                            }
+                 <a href="@(ViewBag.url + (Convert.ToInt32(ViewBag.allPage) - 4 + i))" class="page_n @(Convert.ToInt32(ViewBag.curentPage) == (Convert.ToInt32(ViewBag.allPage) - 4 + i) ? "set" : "")">@(Convert.ToInt32(ViewBag.allPage) - 4 + i)</a>
+                }
             }
         }
         @if (Convert.ToInt32(ViewBag.allPage) - Convert.ToInt32(ViewBag.curentPage) > 3)
         {
-                            <span>......</span>
-                            }
-                            <a href="@(ViewBag.url + ViewBag.allPage)" class="page_n @(Convert.ToInt32(ViewBag.curentPage) == ViewBag.allPage ? "set" : "")">@ViewBag.allPage</a>
-                            @if (Convert.ToInt32(ViewBag.curentPage) != Convert.ToInt32(ViewBag.allPage))
+            <span>......</span>
+        }
+        <a href="@(ViewBag.url + ViewBag.allPage)" class="page_n @(Convert.ToInt32(ViewBag.curentPage) == ViewBag.allPage ? "set" : "")">@ViewBag.allPage</a>
+        @if (Convert.ToInt32(ViewBag.curentPage) != Convert.ToInt32(ViewBag.allPage))
         {
-                            <a href="@(ViewBag.url + (Convert.ToInt32(ViewBag.curentPage) + 1))" class="page_n">下一页</a>
-                            }
-                        </div>
-
-                    </div>
+            <a href="@(ViewBag.url + (Convert.ToInt32(ViewBag.curentPage) + 1))" class="page_n">下一页</a>
+        }
+    </div>
+    }
 
                 </div>
                     <!-- 日期控件 -->
