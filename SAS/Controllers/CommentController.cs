@@ -56,10 +56,11 @@ namespace SAS.Controllers
             ViewData["hotels"] = list;
             ViewBag.startTime = s.ToString("yyyy-MM-dd");
             ViewBag.endTime = e.ToString("yyyy-MM-dd");
-            ViewBag.currentHotelId = hotelId;
+            ViewBag.currentHotelId = string.IsNullOrEmpty(hotelId) ?0: Convert.ToInt32(hotelId);
             ViewBag.allPage = allpage;
-            ViewBag.curentPage = currentPage;
-            ViewBag.curentHotelId = hotelId;
+            ViewBag.IsReply = IsReply;
+            ViewBag.curentPage = currentPage == 0 ? currentPage + 1 : currentPage;
+           
             
             return ment;
         }
@@ -86,7 +87,7 @@ namespace SAS.Controllers
         {
           //  var  result= new help.RefrenceHelp().GetMobileContractClientTest().ReplyReview(new ReplyReviewRequest(){commentId=comment.commentId,answer=comment.content});
             ViewBag.sign = help.DBhelp.ExcuteTableBySQL(string.Format("update Hotel_comment_info set answer='{0}' where commentid in({1})", comment.content, comment.commentId)) > 0 ? 1 : 0;
-           
+
             return View("MyComment", getdata(comment.hotel_id.ToString(), "", page, null, null));
         }
         //
@@ -97,74 +98,7 @@ namespace SAS.Controllers
             return View();
         }
 
-        //
-        // POST: /Comment/Create
 
-        [HttpPost]
-        public ActionResult Create(Hotel_comment_info hotel_comment_info)
-        {
-            if (ModelState.IsValid)
-            {
-                db.coments.Add(hotel_comment_info);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(hotel_comment_info);
-        }
-
-        //
-        // GET: /Comment/Edit/5
-
-        public ActionResult Edit(int id = 0)
-        {
-            Hotel_comment_info hotel_comment_info = db.coments.Find(id);
-            if (hotel_comment_info == null)
-            {
-                return HttpNotFound();
-            }
-            return View(hotel_comment_info);
-        }
-
-        //
-        // POST: /Comment/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(Hotel_comment_info hotel_comment_info)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(hotel_comment_info).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(hotel_comment_info);
-        }
-
-        //
-        // GET: /Comment/Delete/5
-
-        public ActionResult Delete(int id = 0)
-        {
-            Hotel_comment_info hotel_comment_info = db.coments.Find(id);
-            if (hotel_comment_info == null)
-            {
-                return HttpNotFound();
-            }
-            return View(hotel_comment_info);
-        }
-
-        //
-        // POST: /Comment/Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Hotel_comment_info hotel_comment_info = db.coments.Find(id);
-            db.coments.Remove(hotel_comment_info);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
 
         protected override void Dispose(bool disposing)
         {
