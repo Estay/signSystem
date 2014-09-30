@@ -56,6 +56,7 @@ namespace SAS.Controllers
             ViewData["hotels"] = list;
             ViewBag.startTime = s.ToString("yyyy-MM-dd");
             ViewBag.endTime = e.ToString("yyyy-MM-dd");
+            int t = string.IsNullOrEmpty(hotelId) ? 0 : Convert.ToInt32(hotelId);
             ViewBag.currentHotelId = string.IsNullOrEmpty(hotelId) ?0: Convert.ToInt32(hotelId);
             ViewBag.allPage = allpage;
             ViewBag.IsReply = IsReply;
