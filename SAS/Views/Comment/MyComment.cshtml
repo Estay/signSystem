@@ -66,7 +66,9 @@
                             <p class="comment_time">@c.createTime.Value.ToShortDateString()</p>
                             
                         @if(c.IsReply){
-                            <p>回复：<pre class="comment_answer">@c.answer</pre></p>
+                            <div class="clear">
+                                <p class="float_l">回复：</p><pre class="comment_answer float_l">@c.answer</pre>
+                            </div>
                         }else{
                          <div class="comment_p">
                            @using (Html.BeginForm("CommentSubmit", "Comment", FormMethod.Post))
