@@ -1,4 +1,4 @@
-/*2014年9月23日13:50:58*/
+/*2014年9月30日11:30:31*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -1294,6 +1294,10 @@
             el.parents("tr").find(".comment_p").hide(800);
             el.text("回复");
         }
+    });
+    $(".comment_submit_btn").click(function(event) {
+        event.preventDefault();
+        $(this).parents("form").submit();
     });
     $("#complaint_contact,#complaint_content").e_input_tip();
     $(function() {
