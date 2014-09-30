@@ -12,7 +12,9 @@
     <SAS.Models.hotel_info>
         ;
 }
+        
         <div id="content" class="box_a">
+            <input id="sign_status" class="hide" type="text" value="@ViewBag.sign" />
             <p id="double_date" class="input_line bill_query">
                 <span class="label" style="margin-left: 0">公寓</span>
                 <select id="comment_hotel" name="">
@@ -61,8 +63,11 @@
                         <td class="comment_visitor">
                             <pre >@c.content</pre>
                             <p class="comment_time">@c.createTime</p>
-                            <div class="comment_p">
-                         
+                            
+                        @if(c.IsReply){
+                            <p>回复：<pre class="comment_answer">@c.answer</pre></p>
+                        }else{
+                         <div class="comment_p">
                            @using (Html.BeginForm("CommentSubmit", "Comment", FormMethod.Post))
                             {
                                 <input class="hide" name="@Html.DisplayNameFor(o=>o.commentId)" value="@c.commentId" />
@@ -71,20 +76,27 @@
                                 <textarea cols="50" rows="4" name="@Html.DisplayNameFor(o=>o.content)"></textarea>
                                 <a href="" class="comment_submit_btn btn_b" comment_id="">回复</a>
                             }
-                            </div>
+                        </div>
+                          }
+                            
                         </td>
                         <td>@c.userName</td>
                         <td>@c.room_name</td>
                         <td>
-                            <a href="" class="show_comment_reply">回复</a>
+                            @if(!c.IsReply){
+                                <a href="" class="show_comment_reply">回复</a>
+                            }
+                            
                         </td>
-                        <td>未回复</td>
+                        <td>@(c.IsReply?"已回复":"未回复")</td>
                     </tr>
                     }
-                    <!-- 没有数据 -->
+                    @if(Model.CommnetList.Count==0){
+                    <!-- 没有评论 -->
                     <tr>
                         <td colspan="9">没有评论</td>
                     </tr>
+                    }
                 </tbody>
             </table>
 
@@ -140,6 +152,7 @@
 
                     </div>
 
+                </div>
                     <!-- 日期控件 -->
                     <script type="text/javascript" src="@Url.Content("~/Content/public/script/laydate/laydate.dev.js")"></script>
                     <script>
@@ -199,5 +212,9 @@
     };
     laydate(start);
     laydate(end);
+
+    var action = document.getElementById('sign_status').value;
+    if(action !== ""){
+        alert(action==="0"?"提交失败":"提交失败");
+    }
 </script>
-                </div>
