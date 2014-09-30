@@ -60,9 +60,11 @@
                     <p class="comment_time">@c.createTime</p>
                     <p class="comment_p">
                         @using (Html.BeginForm("CommentSubmit", "Comment", FormMethod.Post))
-{
+{                     <input class="hide" name="page" value="1" />
                         <textarea cols="50" rows="4" name="@Html.DisplayNameFor(o=>o.content)"></textarea>
                             <input type="submit" value="Submit" />
+                          
+                           
                         <input class="hide" name="@Html.DisplayNameFor(o=>o.commentId)" value="@c.commentId" />@*
                         <a href="" class="comment_submit_btn btn_b" comment_id="">回复</a>*@
                         }
