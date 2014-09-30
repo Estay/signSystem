@@ -32,10 +32,10 @@
             }
                 </select>
                 <span class="label">状态</span>
-                <select id="comment_hotel" name="">
+                <select id="IsReply">
                     <option value="">全部</option>
-                    <option value="">未回复</option>
-                    <option value="">已回复</option>
+                    <option value="0" @(ViewBag.IsReply=="0"?"selected":"")>未回复</option>
+                    <option value="1" @(ViewBag.IsReply=="1"?"selected":"")>已回复</option>
                 </select>
                 <span class="label">点评日期</span>
                 <input class="date_start w100" type="text" name=""  value="@ViewBag.curentstartTime">
@@ -62,7 +62,7 @@
                         <td>@c.orderID</td>
                         <td class="comment_visitor">
                             <pre >@c.content</pre>
-                            <p class="comment_time">@c.createTime</p>
+                            <p class="comment_time">@c.createTime.Value.ToShortDateString()</p>
                             
                         @if(c.IsReply){
                             <p>回复：<pre class="comment_answer">@c.answer</pre></p>
@@ -209,6 +209,6 @@
 
     var action = document.getElementById('sign_status').value;
     if(action !== ""){
-        alert(action==="0"?"提交失败":"提交失败");
+        alert(action==="0"?"提交失败":"提交成功");
     }
 </script>
