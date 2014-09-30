@@ -1285,6 +1285,10 @@
     	}
     });
 
+    $('.comment_submit_btn').click(function(event) {
+    	event.preventDefault();
+    	$(this).parents("form").submit();
+    });
     ////////////////////////////////////////////////投诉和建议/////////////////////////////////////////////////////
     $('#complaint_contact,#complaint_content').e_input_tip();
 
