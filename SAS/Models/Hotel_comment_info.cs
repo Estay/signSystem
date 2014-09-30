@@ -244,9 +244,9 @@ namespace SAS.Models
             if (!string.IsNullOrEmpty(isreply))
             {
                 if (isreply == "1")
-                    condition = string.Format("IsReply={0}", hotelId);
+                    condition = string.Format("IsReply={0}", isreply);
                 else
-                    condition += string.Format("and IsReply={0}", hotelId);
+                    condition += string.Format("and IsReply={0}", isreply);
             }
             //入住日期
             if (start != null && start.ToString() != "0001/1/1 0:00:00")
@@ -272,7 +272,7 @@ namespace SAS.Models
             if (condition != string.Empty)
             {
 
-                string needFild = "orderID,content,userName,room_name,IsReply,commentid,createTime,hotel_Id";
+                string needFild = "orderID,content,userName,room_name,IsReply,commentid,createTime,hotel_Id,answer";
                 string sql = page == 0 || page == 1 ? string.Format("select top {0} {2} from {3} where {1} ", pageSize, condition, needFild, tableName) : string.Format("select top {0} {3} from {4} where commentid>(select max(commentid) from (select top {1} commentid from {4} where {2} order by commentid) as a) and {2} order by commentid", pageSize, pageSize * (page - 1), condition, needFild, tableName);
                 string sqlSum = string.Format("select count(*) from {2} where {0}", condition, new HotelInfoHelp().getUId(),tableName);
                 using (SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
@@ -296,7 +296,7 @@ namespace SAS.Models
                             while (dr.Read())
                             {
                               //  decimal price = Convert.ToDecimal(dr[6]);
-                                Hotel_comment_info o = new Hotel_comment_info() { orderID = dr[0].ToString(), content = dr[1].ToString(), userName = dr[2].ToString(), room_name = dr[3].ToString(), IsReply = Convert.ToBoolean(dr[4]),commentId=Convert.ToInt32(dr[5]),createTime=Convert.ToDateTime(dr[6]) ,hotel_id=dr[7].ToString()};
+                                Hotel_comment_info o = new Hotel_comment_info() { orderID = dr[0].ToString(), content = dr[1].ToString(), userName = dr[2].ToString(), room_name = dr[3].ToString(), IsReply = Convert.ToBoolean(dr[4]),commentId=Convert.ToInt32(dr[5]),createTime=Convert.ToDateTime(dr[6]) ,hotel_id=dr[7].ToString(),answer=dr[8].ToString()};
                                 list.Add(o);
                             }
                             //读取所有酒店信息
