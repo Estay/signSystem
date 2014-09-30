@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="077bc2ff-bc5c-46a6-a803-671290772004" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7f267843-8c8e-489b-acf9-63e879758b81" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,24 +19,25 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://wcfmobile.estay.cn/MyMobileServer.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://www.estay.cn:7085/MyMobileServer.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="MyMobileServer.xsd" MetadataType="Schema" ID="d53374b9-842c-45f4-8551-5127571edfea" SourceId="1" SourceUrl="http://wcfmobile.estay.cn/MyMobileServer.svc?xsd=xsd6" />
-    <MetadataFile FileName="MyMobileServer1.xsd" MetadataType="Schema" ID="30f2fa0b-e144-4eae-9014-bda3e8ab1edc" SourceId="1" SourceUrl="http://wcfmobile.estay.cn/MyMobileServer.svc?xsd=xsd7" />
-    <MetadataFile FileName="MyMobileServer2.xsd" MetadataType="Schema" ID="d6a8f035-7344-42bd-97df-a05b750876e5" SourceId="1" SourceUrl="http://wcfmobile.estay.cn/MyMobileServer.svc?xsd=xsd4" />
-    <MetadataFile FileName="MyMobileServer3.xsd" MetadataType="Schema" ID="c6b8369b-4ac1-4997-9389-6bf0a3b7842c" SourceId="1" SourceUrl="http://wcfmobile.estay.cn/MyMobileServer.svc?xsd=xsd5" />
-    <MetadataFile FileName="MyMobileServer4.xsd" MetadataType="Schema" ID="48c711ef-99cd-43b1-98ff-76773f4364f2" SourceId="1" SourceUrl="http://wcfmobile.estay.cn/MyMobileServer.svc?xsd=xsd12" />
-    <MetadataFile FileName="MyMobileServer5.xsd" MetadataType="Schema" ID="1f5cf9a5-2044-4f3f-9e87-993b66ed78f4" SourceId="1" SourceUrl="http://wcfmobile.estay.cn/MyMobileServer.svc?xsd=xsd8" />
-    <MetadataFile FileName="MyMobileServer6.xsd" MetadataType="Schema" ID="949416f1-8335-4072-8b98-99ede706a2b2" SourceId="1" SourceUrl="http://wcfmobile.estay.cn/MyMobileServer.svc?xsd=xsd9" />
-    <MetadataFile FileName="MyMobileServer7.xsd" MetadataType="Schema" ID="adca16c0-33b9-45e9-b297-a38eb4b0764e" SourceId="1" SourceUrl="http://wcfmobile.estay.cn/MyMobileServer.svc?xsd=xsd0" />
-    <MetadataFile FileName="MyMobileServer.disco" MetadataType="Disco" ID="f4434c79-d24f-451b-be5c-91d91a8aba2d" SourceId="1" SourceUrl="http://wcfmobile.estay.cn/MyMobileServer.svc?disco" />
-    <MetadataFile FileName="MyMobileServer8.xsd" MetadataType="Schema" ID="bd49b682-afe4-41f2-83e2-055f7605a931" SourceId="1" SourceUrl="http://wcfmobile.estay.cn/MyMobileServer.svc?xsd=xsd11" />
-    <MetadataFile FileName="MyMobileServer9.xsd" MetadataType="Schema" ID="6b86970b-d170-4319-868c-0287c35e002f" SourceId="1" SourceUrl="http://wcfmobile.estay.cn/MyMobileServer.svc?xsd=xsd10" />
-    <MetadataFile FileName="MyMobileServer10.xsd" MetadataType="Schema" ID="fe081ac9-41e1-4510-892e-f9c87079fcb8" SourceId="1" SourceUrl="http://wcfmobile.estay.cn/MyMobileServer.svc?xsd=xsd2" />
-    <MetadataFile FileName="MyMobileServer11.xsd" MetadataType="Schema" ID="d95d58a2-db15-474a-9d43-d40edf0a8cf6" SourceId="1" SourceUrl="http://wcfmobile.estay.cn/MyMobileServer.svc?xsd=xsd3" />
-    <MetadataFile FileName="MyMobileServer.wsdl" MetadataType="Wsdl" ID="7497d876-999b-4eed-9aac-cff6958b8d16" SourceId="1" SourceUrl="http://wcfmobile.estay.cn/MyMobileServer.svc?wsdl" />
-    <MetadataFile FileName="MyMobileServer12.xsd" MetadataType="Schema" ID="401526ca-7d89-408f-ada1-5fcf9a69c31e" SourceId="1" SourceUrl="http://wcfmobile.estay.cn/MyMobileServer.svc?xsd=xsd1" />
+    <MetadataFile FileName="MyMobileServer.xsd" MetadataType="Schema" ID="87029741-258e-4075-a25e-ce6e5b81f34d" SourceId="1" SourceUrl="http://www.estay.cn:7085/MyMobileServer.svc?xsd=xsd3" />
+    <MetadataFile FileName="MyMobileServer1.xsd" MetadataType="Schema" ID="b00c1500-0759-4ebb-af50-e74188c36f5a" SourceId="1" SourceUrl="http://www.estay.cn:7085/MyMobileServer.svc?xsd=xsd11" />
+    <MetadataFile FileName="MyMobileServer.wsdl" MetadataType="Wsdl" ID="c2bcbe0c-ffb2-46fa-be3a-d12c263624a9" SourceId="1" SourceUrl="http://www.estay.cn:7085/MyMobileServer.svc?wsdl" />
+    <MetadataFile FileName="MyMobileServer2.xsd" MetadataType="Schema" ID="1183d47d-71bd-4d33-a160-8b9a1a15081a" SourceId="1" SourceUrl="http://www.estay.cn:7085/MyMobileServer.svc?xsd=xsd1" />
+    <MetadataFile FileName="MyMobileServer3.xsd" MetadataType="Schema" ID="30fdfb76-ef3b-43f3-8c0e-f505bd26705f" SourceId="1" SourceUrl="http://www.estay.cn:7085/MyMobileServer.svc?xsd=xsd12" />
+    <MetadataFile FileName="MyMobileServer4.xsd" MetadataType="Schema" ID="b86bdbcf-8d46-4ae5-97a8-bccb9037fe55" SourceId="1" SourceUrl="http://www.estay.cn:7085/MyMobileServer.svc?xsd=xsd13" />
+    <MetadataFile FileName="MyMobileServer5.xsd" MetadataType="Schema" ID="cd44b563-9aca-4bd4-b3b7-074bdeecfe12" SourceId="1" SourceUrl="http://www.estay.cn:7085/MyMobileServer.svc?xsd=xsd9" />
+    <MetadataFile FileName="MyMobileServer6.xsd" MetadataType="Schema" ID="d45db105-c7f2-4044-abde-c7cff256478c" SourceId="1" SourceUrl="http://www.estay.cn:7085/MyMobileServer.svc?xsd=xsd6" />
+    <MetadataFile FileName="MyMobileServer7.xsd" MetadataType="Schema" ID="f38a98b4-6a42-4faf-bd89-f2bbd59c1a44" SourceId="1" SourceUrl="http://www.estay.cn:7085/MyMobileServer.svc?xsd=xsd7" />
+    <MetadataFile FileName="MyMobileServer8.xsd" MetadataType="Schema" ID="5327bb97-d213-4100-bd84-2e68acf21578" SourceId="1" SourceUrl="http://www.estay.cn:7085/MyMobileServer.svc?xsd=xsd4" />
+    <MetadataFile FileName="MyMobileServer9.xsd" MetadataType="Schema" ID="adcc3a01-760e-47f6-8e25-6e889433c815" SourceId="1" SourceUrl="http://www.estay.cn:7085/MyMobileServer.svc?xsd=xsd10" />
+    <MetadataFile FileName="MyMobileServer10.xsd" MetadataType="Schema" ID="48eaaa0a-1c49-41ca-b023-20c9fbef9a0f" SourceId="1" SourceUrl="http://www.estay.cn:7085/MyMobileServer.svc?xsd=xsd2" />
+    <MetadataFile FileName="MyMobileServer11.xsd" MetadataType="Schema" ID="402f1a42-acb0-417a-a96a-c46055becdc9" SourceId="1" SourceUrl="http://www.estay.cn:7085/MyMobileServer.svc?xsd=xsd0" />
+    <MetadataFile FileName="MyMobileServer.disco" MetadataType="Disco" ID="93841f1a-0dd7-4d24-a9e2-62847c608e9c" SourceId="1" SourceUrl="http://www.estay.cn:7085/MyMobileServer.svc?disco" />
+    <MetadataFile FileName="MyMobileServer12.xsd" MetadataType="Schema" ID="24458704-3d2e-4813-b2f5-f2a8e08dc509" SourceId="1" SourceUrl="http://www.estay.cn:7085/MyMobileServer.svc?xsd=xsd8" />
+    <MetadataFile FileName="MyMobileServer13.xsd" MetadataType="Schema" ID="97771fd6-2549-4e03-a163-f6c972cee300" SourceId="1" SourceUrl="http://www.estay.cn:7085/MyMobileServer.svc?xsd=xsd5" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

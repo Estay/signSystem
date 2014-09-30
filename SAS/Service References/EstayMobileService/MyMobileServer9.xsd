@@ -9,4 +9,15 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CommentParamsDTO" nillable="true" type="tns:CommentParamsDTO" />
+  <xs:complexType name="CommentHParamsDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EndTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Hotel_id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsReply" type="xs:boolean" />
+      <xs:element minOccurs="0" name="StartTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="currentPage" type="xs:int" />
+      <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CommentHParamsDTO" nillable="true" type="tns:CommentHParamsDTO" />
 </xs:schema>

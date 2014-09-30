@@ -25,31 +25,35 @@ namespace SAS.Controllers
             if (currentPage < 0)
                 return View("MyComment");
 
-            List<hotel_info> list = new HotelInfoHelp().getHotlList("");
-            ViewData["hotels"] = list;
-            string hotelIds = string.Empty;
-            if (string.IsNullOrEmpty(hotelId))
-            {
-                foreach (var item in list)
-                {
-                    if (string.IsNullOrEmpty(hotelId))
-                        hotelId += item.hotel_id;
-                    else
-                        hotelId += "," + item.hotel_id;
-                }
+            //List<hotel_info> list = new HotelInfoHelp().getHotlList("");
+            
+            //string hotelIds = string.Empty;
+            //if (string.IsNullOrEmpty(hotelId))
+            //{
+            //    foreach (var item in list)
+            //    {
+            //        if (string.IsNullOrEmpty(hotelId))
+            //            hotelId += item.hotel_id;
+            //        else
+            //            hotelId += "," + item.hotel_id;
+            //    }
 
-            }
-            MobileContractClient client = new MobileContractClient();
-            client.ClientCredentials.UserName.UserName = help.StringHelper.appSettings("WCFUserName");
-            client.ClientCredentials.UserName.Password = help.StringHelper.appSettings("WCFPassWord");
+            //}
+            //MobileContractClient client = new MobileContractClient();
+            //client.ClientCredentials.UserName.UserName = help.StringHelper.appSettings("WCFUserName");
+            //client.ClientCredentials.UserName.Password = help.StringHelper.appSettings("WCFPassWord");
             DateTime s = new HotelInfoHelp().getStartDate(startTime); DateTime e = new HotelInfoHelp().getEndDate(endTime);
-            var coments = client.GetHotelCommentList(new CommentHParamsDTO() { Hotel_id = hotelId, IsReply = false, currentPage = currentPage, pageSize = HotelInfoHelp.pageSize, StartTime = s, EndTime = e });
+            //var coments = client.GetHotelCommentList(new CommentHParamsDTO() { Hotel_id = hotelId, IsReply = false, currentPage = currentPage, pageSize = HotelInfoHelp.pageSize, StartTime = s, EndTime = e });
+            List<hotel_info> list; object allpage;
+            Hotel_comment_info ment = new Hotel_comment_info();
+            ment.CommnetList = ment.getComments(hotelId, IsReply, s, e, currentPage, out allpage, out list);
+            ViewData["hotels"] = list;
             ViewBag.startTime = s.ToString("yyyy-MM-dd");
             ViewBag.endTime = e.ToString("yyyy-MM-dd");
             ViewBag.currentHotelId = hotelId;
-            ViewBag.allPage = 100;
-            ViewBag.curentPage = page;
-            Hotel_comment_info ment = new Hotel_comment_info();
+            ViewBag.allPage = allpage;
+            ViewBag.curentPage = currentPage;
+       //     Hotel_comment_info ment = new Hotel_comment_info();
             return View("MyComment", ment);
         }
     

@@ -1,89 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MobileInter.ThirdInterface.Service" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MobileInter.ThirdInterface.Service" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:simpleType name="EnumConfirmationType">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="NoNeed" />
-      <xs:enumeration value="SMS_cn" />
-      <xs:enumeration value="SMS_en" />
-      <xs:enumeration value="Email_cn" />
-      <xs:enumeration value="Email_en" />
-      <xs:enumeration value="Phone" />
-      <xs:enumeration value="Fax" />
-      <xs:enumeration value="Fax_big5" />
-      <xs:enumeration value="SMS_cn_big5" />
-      <xs:enumeration value="Email_cn_big5" />
-      <xs:enumeration value="NotAllowedConfirm" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="EnumConfirmationType" nillable="true" type="tns:EnumConfirmationType" />
-  <xs:simpleType name="EnumCurrencyCode">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="RMB" />
-      <xs:enumeration value="USD" />
-      <xs:enumeration value="HKD" />
-      <xs:enumeration value="MOP" />
-      <xs:enumeration value="SGD" />
-      <xs:enumeration value="TWD" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="EnumCurrencyCode" nillable="true" type="tns:EnumCurrencyCode" />
-  <xs:simpleType name="EnumGuestTypeCode">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="All" />
-      <xs:enumeration value="Chinese" />
-      <xs:enumeration value="OtherForeign" />
-      <xs:enumeration value="HongKong" />
-      <xs:enumeration value="Japanese" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="EnumGuestTypeCode" nillable="true" type="tns:EnumGuestTypeCode" />
-  <xs:simpleType name="EnumPaymentType">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="All" />
-      <xs:enumeration value="SelfPay" />
-      <xs:enumeration value="Prepay" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="EnumPaymentType" nillable="true" type="tns:EnumPaymentType" />
-  <xs:simpleType name="EnumIdType">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="IdentityCard" />
-      <xs:enumeration value="Passport" />
-      <xs:enumeration value="Other" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="EnumIdType" nillable="true" type="tns:EnumIdType" />
-  <xs:simpleType name="EnumValidateResult">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="OK" />
-      <xs:enumeration value="Product" />
-      <xs:enumeration value="Inventory" />
-      <xs:enumeration value="Rate" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="EnumValidateResult" nillable="true" type="tns:EnumValidateResult" />
-  <xs:simpleType name="EnumGuaranteeChangeRule">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="NoChange" />
-      <xs:enumeration value="NeedSomeDay" />
-      <xs:enumeration value="NeedCheckinTime" />
-      <xs:enumeration value="NeedCheckin24hour" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="EnumGuaranteeChangeRule" nillable="true" type="tns:EnumGuaranteeChangeRule" />
-  <xs:simpleType name="EnumDateType">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="CheckInDay" />
-      <xs:enumeration value="StayDay" />
-      <xs:enumeration value="BookDay" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="EnumDateType" nillable="true" type="tns:EnumDateType" />
-  <xs:simpleType name="EnumGuaranteeMoneyType">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="FirstNightCost" />
-      <xs:enumeration value="FullNightCost" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="EnumGuaranteeMoneyType" nillable="true" type="tns:EnumGuaranteeMoneyType" />
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.ReviewDTO" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.ReviewDTO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ReviewKeyRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="content" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="hotel_id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="phone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="recommend_type" type="xs:boolean" />
+      <xs:element minOccurs="0" name="room_id" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReviewKeyRequest" nillable="true" type="tns:ReviewKeyRequest" />
+  <xs:complexType name="ReplyReviewRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="answer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="commentId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReplyReviewRequest" nillable="true" type="tns:ReplyReviewRequest" />
 </xs:schema>

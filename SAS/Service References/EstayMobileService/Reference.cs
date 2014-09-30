@@ -15,36 +15,21 @@ namespace SAS.EstayMobileService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UserInfoSearchParamsDTO", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.UserDTO")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="loginUserParamsDTO", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.UserDTO")]
     [System.SerializableAttribute()]
-    public partial class UserInfoSearchParamsDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class loginUserParamsDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CardNoField;
+        private string LoginUserNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string EmailField;
+        private string PpassField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MobileField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UserNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<decimal> balanceField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> createTimeBeginField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> createTimeEndField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> integralField;
+        private SAS.EstayMobileService.EnumUserSourceFrom UserSourceFromField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -57,105 +42,40 @@ namespace SAS.EstayMobileService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CardNo {
+        public string LoginUserName {
             get {
-                return this.CardNoField;
+                return this.LoginUserNameField;
             }
             set {
-                if ((object.ReferenceEquals(this.CardNoField, value) != true)) {
-                    this.CardNoField = value;
-                    this.RaisePropertyChanged("CardNo");
+                if ((object.ReferenceEquals(this.LoginUserNameField, value) != true)) {
+                    this.LoginUserNameField = value;
+                    this.RaisePropertyChanged("LoginUserName");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Email {
+        public string Ppass {
             get {
-                return this.EmailField;
+                return this.PpassField;
             }
             set {
-                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
-                    this.EmailField = value;
-                    this.RaisePropertyChanged("Email");
+                if ((object.ReferenceEquals(this.PpassField, value) != true)) {
+                    this.PpassField = value;
+                    this.RaisePropertyChanged("Ppass");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Mobile {
+        public SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom {
             get {
-                return this.MobileField;
+                return this.UserSourceFromField;
             }
             set {
-                if ((object.ReferenceEquals(this.MobileField, value) != true)) {
-                    this.MobileField = value;
-                    this.RaisePropertyChanged("Mobile");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UserName {
-            get {
-                return this.UserNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
-                    this.UserNameField = value;
-                    this.RaisePropertyChanged("UserName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<decimal> balance {
-            get {
-                return this.balanceField;
-            }
-            set {
-                if ((this.balanceField.Equals(value) != true)) {
-                    this.balanceField = value;
-                    this.RaisePropertyChanged("balance");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> createTimeBegin {
-            get {
-                return this.createTimeBeginField;
-            }
-            set {
-                if ((this.createTimeBeginField.Equals(value) != true)) {
-                    this.createTimeBeginField = value;
-                    this.RaisePropertyChanged("createTimeBegin");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> createTimeEnd {
-            get {
-                return this.createTimeEndField;
-            }
-            set {
-                if ((this.createTimeEndField.Equals(value) != true)) {
-                    this.createTimeEndField = value;
-                    this.RaisePropertyChanged("createTimeEnd");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> integral {
-            get {
-                return this.integralField;
-            }
-            set {
-                if ((this.integralField.Equals(value) != true)) {
-                    this.integralField = value;
-                    this.RaisePropertyChanged("integral");
+                if ((this.UserSourceFromField.Equals(value) != true)) {
+                    this.UserSourceFromField = value;
+                    this.RaisePropertyChanged("UserSourceFrom");
                 }
             }
         }
@@ -199,18 +119,15 @@ namespace SAS.EstayMobileService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="ResultBase", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoCollectionResult))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.SearchCntResult))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoResult))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateCodeMappingResult))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.LoginResult))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyResult))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyCollectionResult))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.CheckExistResult))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackConfigResult))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.IntegralConfigResult))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoCollectionResult))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateCollectionResult))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateResult))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.OrderGuaranteeRuleResult))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.ElongCreateOrderResult))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateOrderResult))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateCreditCardResult))]
@@ -224,7 +141,11 @@ namespace SAS.EstayMobileService {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateResult))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateCollectionResult))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.SendInfoResult))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoCollectionResult))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateResult))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoResult))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoCollectionResult))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateCollectionResult))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.OrderGuaranteeRuleResult))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.UserLevelResult))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceCollectionResult))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceResult))]
@@ -235,8 +156,7 @@ namespace SAS.EstayMobileService {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralValueResult))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackResult))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackCollectionResult))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoResult))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.SearchCntResult))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(SAS.EstayMobileService.CheckExistResult))]
     public partial class ResultBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -290,6 +210,100 @@ namespace SAS.EstayMobileService {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserInfoCollectionResult", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
+    [System.SerializableAttribute()]
+    public partial class UserInfoCollectionResult : SAS.EstayMobileService.ResultBase {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int AllRecordCntField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CurrentPageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PageSizeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SAS.EstayMobileService.UserInfoDTO[] UserInfoCollectionField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int AllRecordCnt {
+            get {
+                return this.AllRecordCntField;
+            }
+            set {
+                if ((this.AllRecordCntField.Equals(value) != true)) {
+                    this.AllRecordCntField = value;
+                    this.RaisePropertyChanged("AllRecordCnt");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CurrentPage {
+            get {
+                return this.CurrentPageField;
+            }
+            set {
+                if ((this.CurrentPageField.Equals(value) != true)) {
+                    this.CurrentPageField = value;
+                    this.RaisePropertyChanged("CurrentPage");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PageSize {
+            get {
+                return this.PageSizeField;
+            }
+            set {
+                if ((this.PageSizeField.Equals(value) != true)) {
+                    this.PageSizeField = value;
+                    this.RaisePropertyChanged("PageSize");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SAS.EstayMobileService.UserInfoDTO[] UserInfoCollection {
+            get {
+                return this.UserInfoCollectionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserInfoCollectionField, value) != true)) {
+                    this.UserInfoCollectionField = value;
+                    this.RaisePropertyChanged("UserInfoCollection");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SearchCntResult", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
+    [System.SerializableAttribute()]
+    public partial class SearchCntResult : SAS.EstayMobileService.ResultBase {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SearchRecordCntField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SearchRecordCnt {
+            get {
+                return this.SearchRecordCntField;
+            }
+            set {
+                if ((this.SearchRecordCntField.Equals(value) != true)) {
+                    this.SearchRecordCntField = value;
+                    this.RaisePropertyChanged("SearchRecordCnt");
+                }
             }
         }
     }
@@ -475,29 +489,6 @@ namespace SAS.EstayMobileService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CheckExistResult", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
-    [System.SerializableAttribute()]
-    public partial class CheckExistResult : SAS.EstayMobileService.ResultBase {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool IsExistBoolField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool IsExistBool {
-            get {
-                return this.IsExistBoolField;
-            }
-            set {
-                if ((this.IsExistBoolField.Equals(value) != true)) {
-                    this.IsExistBoolField = value;
-                    this.RaisePropertyChanged("IsExistBool");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="CashBackConfigResult", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
     [System.SerializableAttribute()]
     public partial class CashBackConfigResult : SAS.EstayMobileService.ResultBase {
@@ -537,194 +528,6 @@ namespace SAS.EstayMobileService {
                 if ((object.ReferenceEquals(this.iIntegralConfigDTOField, value) != true)) {
                     this.iIntegralConfigDTOField = value;
                     this.RaisePropertyChanged("iIntegralConfigDTO");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="OrderInfoCollectionResult", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
-    [System.SerializableAttribute()]
-    public partial class OrderInfoCollectionResult : SAS.EstayMobileService.ResultBase {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int AllRecordCntField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CurrentPageField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SAS.EstayMobileService.OrderInfoDTO[] OrderCollectionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int PageSizeField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int AllRecordCnt {
-            get {
-                return this.AllRecordCntField;
-            }
-            set {
-                if ((this.AllRecordCntField.Equals(value) != true)) {
-                    this.AllRecordCntField = value;
-                    this.RaisePropertyChanged("AllRecordCnt");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CurrentPage {
-            get {
-                return this.CurrentPageField;
-            }
-            set {
-                if ((this.CurrentPageField.Equals(value) != true)) {
-                    this.CurrentPageField = value;
-                    this.RaisePropertyChanged("CurrentPage");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public SAS.EstayMobileService.OrderInfoDTO[] OrderCollection {
-            get {
-                return this.OrderCollectionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.OrderCollectionField, value) != true)) {
-                    this.OrderCollectionField = value;
-                    this.RaisePropertyChanged("OrderCollection");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int PageSize {
-            get {
-                return this.PageSizeField;
-            }
-            set {
-                if ((this.PageSizeField.Equals(value) != true)) {
-                    this.PageSizeField = value;
-                    this.RaisePropertyChanged("PageSize");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="OrderStateCollectionResult", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
-    [System.SerializableAttribute()]
-    public partial class OrderStateCollectionResult : SAS.EstayMobileService.ResultBase {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int AllRecordCntField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CurrentPageField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SAS.EstayMobileService.OrderStateDTO[] OrderStateCollectionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int PageSizeField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int AllRecordCnt {
-            get {
-                return this.AllRecordCntField;
-            }
-            set {
-                if ((this.AllRecordCntField.Equals(value) != true)) {
-                    this.AllRecordCntField = value;
-                    this.RaisePropertyChanged("AllRecordCnt");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CurrentPage {
-            get {
-                return this.CurrentPageField;
-            }
-            set {
-                if ((this.CurrentPageField.Equals(value) != true)) {
-                    this.CurrentPageField = value;
-                    this.RaisePropertyChanged("CurrentPage");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public SAS.EstayMobileService.OrderStateDTO[] OrderStateCollection {
-            get {
-                return this.OrderStateCollectionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.OrderStateCollectionField, value) != true)) {
-                    this.OrderStateCollectionField = value;
-                    this.RaisePropertyChanged("OrderStateCollection");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int PageSize {
-            get {
-                return this.PageSizeField;
-            }
-            set {
-                if ((this.PageSizeField.Equals(value) != true)) {
-                    this.PageSizeField = value;
-                    this.RaisePropertyChanged("PageSize");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="OrderStateResult", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
-    [System.SerializableAttribute()]
-    public partial class OrderStateResult : SAS.EstayMobileService.ResultBase {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SAS.EstayMobileService.OrderStateDTO oOrderStateDTOField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public SAS.EstayMobileService.OrderStateDTO oOrderStateDTO {
-            get {
-                return this.oOrderStateDTOField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.oOrderStateDTOField, value) != true)) {
-                    this.oOrderStateDTOField = value;
-                    this.RaisePropertyChanged("oOrderStateDTO");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="OrderGuaranteeRuleResult", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
-    [System.SerializableAttribute()]
-    public partial class OrderGuaranteeRuleResult : SAS.EstayMobileService.ResultBase {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SAS.EstayMobileService.OrderGuaranteeDTO orderGuaranteeDTOField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public SAS.EstayMobileService.OrderGuaranteeDTO orderGuaranteeDTO {
-            get {
-                return this.orderGuaranteeDTOField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.orderGuaranteeDTOField, value) != true)) {
-                    this.orderGuaranteeDTOField = value;
-                    this.RaisePropertyChanged("orderGuaranteeDTO");
                 }
             }
         }
@@ -1319,9 +1122,55 @@ namespace SAS.EstayMobileService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UserInfoCollectionResult", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderStateResult", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
     [System.SerializableAttribute()]
-    public partial class UserInfoCollectionResult : SAS.EstayMobileService.ResultBase {
+    public partial class OrderStateResult : SAS.EstayMobileService.ResultBase {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SAS.EstayMobileService.OrderStateDTO oOrderStateDTOField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SAS.EstayMobileService.OrderStateDTO oOrderStateDTO {
+            get {
+                return this.oOrderStateDTOField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.oOrderStateDTOField, value) != true)) {
+                    this.oOrderStateDTOField = value;
+                    this.RaisePropertyChanged("oOrderStateDTO");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderInfoResult", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
+    [System.SerializableAttribute()]
+    public partial class OrderInfoResult : SAS.EstayMobileService.ResultBase {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SAS.EstayMobileService.OrderInfoDTO oOrderInfoDTOField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SAS.EstayMobileService.OrderInfoDTO oOrderInfoDTO {
+            get {
+                return this.oOrderInfoDTOField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.oOrderInfoDTOField, value) != true)) {
+                    this.oOrderInfoDTOField = value;
+                    this.RaisePropertyChanged("oOrderInfoDTO");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderInfoCollectionResult", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
+    [System.SerializableAttribute()]
+    public partial class OrderInfoCollectionResult : SAS.EstayMobileService.ResultBase {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int AllRecordCntField;
@@ -1330,10 +1179,10 @@ namespace SAS.EstayMobileService {
         private int CurrentPageField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int PageSizeField;
+        private SAS.EstayMobileService.OrderInfoDTO[] OrderCollectionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SAS.EstayMobileService.UserInfoDTO[] UserInfoCollectionField;
+        private int PageSizeField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public int AllRecordCnt {
@@ -1362,6 +1211,19 @@ namespace SAS.EstayMobileService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public SAS.EstayMobileService.OrderInfoDTO[] OrderCollection {
+            get {
+                return this.OrderCollectionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderCollectionField, value) != true)) {
+                    this.OrderCollectionField = value;
+                    this.RaisePropertyChanged("OrderCollection");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int PageSize {
             get {
                 return this.PageSizeField;
@@ -1373,16 +1235,97 @@ namespace SAS.EstayMobileService {
                 }
             }
         }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderStateCollectionResult", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
+    [System.SerializableAttribute()]
+    public partial class OrderStateCollectionResult : SAS.EstayMobileService.ResultBase {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int AllRecordCntField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CurrentPageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SAS.EstayMobileService.OrderStateDTO[] OrderStateCollectionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PageSizeField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SAS.EstayMobileService.UserInfoDTO[] UserInfoCollection {
+        public int AllRecordCnt {
             get {
-                return this.UserInfoCollectionField;
+                return this.AllRecordCntField;
             }
             set {
-                if ((object.ReferenceEquals(this.UserInfoCollectionField, value) != true)) {
-                    this.UserInfoCollectionField = value;
-                    this.RaisePropertyChanged("UserInfoCollection");
+                if ((this.AllRecordCntField.Equals(value) != true)) {
+                    this.AllRecordCntField = value;
+                    this.RaisePropertyChanged("AllRecordCnt");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CurrentPage {
+            get {
+                return this.CurrentPageField;
+            }
+            set {
+                if ((this.CurrentPageField.Equals(value) != true)) {
+                    this.CurrentPageField = value;
+                    this.RaisePropertyChanged("CurrentPage");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SAS.EstayMobileService.OrderStateDTO[] OrderStateCollection {
+            get {
+                return this.OrderStateCollectionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderStateCollectionField, value) != true)) {
+                    this.OrderStateCollectionField = value;
+                    this.RaisePropertyChanged("OrderStateCollection");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PageSize {
+            get {
+                return this.PageSizeField;
+            }
+            set {
+                if ((this.PageSizeField.Equals(value) != true)) {
+                    this.PageSizeField = value;
+                    this.RaisePropertyChanged("PageSize");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderGuaranteeRuleResult", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
+    [System.SerializableAttribute()]
+    public partial class OrderGuaranteeRuleResult : SAS.EstayMobileService.ResultBase {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SAS.EstayMobileService.OrderGuaranteeDTO orderGuaranteeDTOField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SAS.EstayMobileService.OrderGuaranteeDTO orderGuaranteeDTO {
+            get {
+                return this.orderGuaranteeDTOField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.orderGuaranteeDTOField, value) != true)) {
+                    this.orderGuaranteeDTOField = value;
+                    this.RaisePropertyChanged("orderGuaranteeDTO");
                 }
             }
         }
@@ -1764,45 +1707,22 @@ namespace SAS.EstayMobileService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="OrderInfoResult", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CheckExistResult", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
     [System.SerializableAttribute()]
-    public partial class OrderInfoResult : SAS.EstayMobileService.ResultBase {
+    public partial class CheckExistResult : SAS.EstayMobileService.ResultBase {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SAS.EstayMobileService.OrderInfoDTO oOrderInfoDTOField;
+        private bool IsExistBoolField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SAS.EstayMobileService.OrderInfoDTO oOrderInfoDTO {
+        public bool IsExistBool {
             get {
-                return this.oOrderInfoDTOField;
+                return this.IsExistBoolField;
             }
             set {
-                if ((object.ReferenceEquals(this.oOrderInfoDTOField, value) != true)) {
-                    this.oOrderInfoDTOField = value;
-                    this.RaisePropertyChanged("oOrderInfoDTO");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="SearchCntResult", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
-    [System.SerializableAttribute()]
-    public partial class SearchCntResult : SAS.EstayMobileService.ResultBase {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int SearchRecordCntField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int SearchRecordCnt {
-            get {
-                return this.SearchRecordCntField;
-            }
-            set {
-                if ((this.SearchRecordCntField.Equals(value) != true)) {
-                    this.SearchRecordCntField = value;
-                    this.RaisePropertyChanged("SearchRecordCnt");
+                if ((this.IsExistBoolField.Equals(value) != true)) {
+                    this.IsExistBoolField = value;
+                    this.RaisePropertyChanged("IsExistBool");
                 }
             }
         }
@@ -2794,1640 +2714,6 @@ namespace SAS.EstayMobileService {
                 if ((this.StorageRatio_ratioField.Equals(value) != true)) {
                     this.StorageRatio_ratioField = value;
                     this.RaisePropertyChanged("StorageRatio_ratio");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="OrderInfoDTO", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.OrderDTO")]
-    [System.SerializableAttribute()]
-    public partial class OrderInfoDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private decimal CashBack_priceField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<SAS.EstayMobileService.EnumCashbackStatus> CashBack_statusField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ChannelIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> EarliestArriveTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> H_room_rp_idField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SAS.EstayMobileService.EnumHotelSourceFrom HotelSourceFromField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Hotel_TelField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Hotel_addressField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Hotel_descriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Hotel_idField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Hotel_nameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool IsShowTrueHotelTelphoneField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> LastestArriveTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> O_IsInstantOrderField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string O_associateOrderIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> O_buy_timeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int O_buy_typeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime O_check_in_dateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime O_check_out_dateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime O_ctimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<decimal> O_guaranteePriceField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string O_guest_remarkField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool O_isbuyField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int O_nightField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int O_numberField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SAS.EstayMobileService.EnumOrderWay O_orderWayField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string O_other_guest_infoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string O_remarkField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> O_roomRetainField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string O_state_change_logField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int O_state_idField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string O_titleField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private decimal O_total_priceField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<decimal> O_unit_priceField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string O_user_emailField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string O_user_nameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string O_user_phoneField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SAS.EstayMobileService.EnumOrderOperateType[] OperatorTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string OrderCreateOperatorField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string OrderCreateOperatorGuidField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string OrderSerialNumField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string OrderStateNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Order_idField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> PayLasestTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> R_number_idField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Room_descriptField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int Room_idField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Room_nameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Rp_descriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Rp_nameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Rp_price_descriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> Rp_price_idField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string U_idField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SAS.EstayMobileService.EnumUserSourceFrom UserSourceFromField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public decimal CashBack_price {
-            get {
-                return this.CashBack_priceField;
-            }
-            set {
-                if ((this.CashBack_priceField.Equals(value) != true)) {
-                    this.CashBack_priceField = value;
-                    this.RaisePropertyChanged("CashBack_price");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<SAS.EstayMobileService.EnumCashbackStatus> CashBack_status {
-            get {
-                return this.CashBack_statusField;
-            }
-            set {
-                if ((this.CashBack_statusField.Equals(value) != true)) {
-                    this.CashBack_statusField = value;
-                    this.RaisePropertyChanged("CashBack_status");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ChannelID {
-            get {
-                return this.ChannelIDField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ChannelIDField, value) != true)) {
-                    this.ChannelIDField = value;
-                    this.RaisePropertyChanged("ChannelID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> EarliestArriveTime {
-            get {
-                return this.EarliestArriveTimeField;
-            }
-            set {
-                if ((this.EarliestArriveTimeField.Equals(value) != true)) {
-                    this.EarliestArriveTimeField = value;
-                    this.RaisePropertyChanged("EarliestArriveTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> H_room_rp_id {
-            get {
-                return this.H_room_rp_idField;
-            }
-            set {
-                if ((this.H_room_rp_idField.Equals(value) != true)) {
-                    this.H_room_rp_idField = value;
-                    this.RaisePropertyChanged("H_room_rp_id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public SAS.EstayMobileService.EnumHotelSourceFrom HotelSourceFrom {
-            get {
-                return this.HotelSourceFromField;
-            }
-            set {
-                if ((this.HotelSourceFromField.Equals(value) != true)) {
-                    this.HotelSourceFromField = value;
-                    this.RaisePropertyChanged("HotelSourceFrom");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Hotel_Tel {
-            get {
-                return this.Hotel_TelField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Hotel_TelField, value) != true)) {
-                    this.Hotel_TelField = value;
-                    this.RaisePropertyChanged("Hotel_Tel");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Hotel_address {
-            get {
-                return this.Hotel_addressField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Hotel_addressField, value) != true)) {
-                    this.Hotel_addressField = value;
-                    this.RaisePropertyChanged("Hotel_address");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Hotel_description {
-            get {
-                return this.Hotel_descriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Hotel_descriptionField, value) != true)) {
-                    this.Hotel_descriptionField = value;
-                    this.RaisePropertyChanged("Hotel_description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Hotel_id {
-            get {
-                return this.Hotel_idField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Hotel_idField, value) != true)) {
-                    this.Hotel_idField = value;
-                    this.RaisePropertyChanged("Hotel_id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Hotel_name {
-            get {
-                return this.Hotel_nameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Hotel_nameField, value) != true)) {
-                    this.Hotel_nameField = value;
-                    this.RaisePropertyChanged("Hotel_name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool IsShowTrueHotelTelphone {
-            get {
-                return this.IsShowTrueHotelTelphoneField;
-            }
-            set {
-                if ((this.IsShowTrueHotelTelphoneField.Equals(value) != true)) {
-                    this.IsShowTrueHotelTelphoneField = value;
-                    this.RaisePropertyChanged("IsShowTrueHotelTelphone");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> LastestArriveTime {
-            get {
-                return this.LastestArriveTimeField;
-            }
-            set {
-                if ((this.LastestArriveTimeField.Equals(value) != true)) {
-                    this.LastestArriveTimeField = value;
-                    this.RaisePropertyChanged("LastestArriveTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> O_IsInstantOrder {
-            get {
-                return this.O_IsInstantOrderField;
-            }
-            set {
-                if ((this.O_IsInstantOrderField.Equals(value) != true)) {
-                    this.O_IsInstantOrderField = value;
-                    this.RaisePropertyChanged("O_IsInstantOrder");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string O_associateOrderID {
-            get {
-                return this.O_associateOrderIDField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.O_associateOrderIDField, value) != true)) {
-                    this.O_associateOrderIDField = value;
-                    this.RaisePropertyChanged("O_associateOrderID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> O_buy_time {
-            get {
-                return this.O_buy_timeField;
-            }
-            set {
-                if ((this.O_buy_timeField.Equals(value) != true)) {
-                    this.O_buy_timeField = value;
-                    this.RaisePropertyChanged("O_buy_time");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int O_buy_type {
-            get {
-                return this.O_buy_typeField;
-            }
-            set {
-                if ((this.O_buy_typeField.Equals(value) != true)) {
-                    this.O_buy_typeField = value;
-                    this.RaisePropertyChanged("O_buy_type");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime O_check_in_date {
-            get {
-                return this.O_check_in_dateField;
-            }
-            set {
-                if ((this.O_check_in_dateField.Equals(value) != true)) {
-                    this.O_check_in_dateField = value;
-                    this.RaisePropertyChanged("O_check_in_date");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime O_check_out_date {
-            get {
-                return this.O_check_out_dateField;
-            }
-            set {
-                if ((this.O_check_out_dateField.Equals(value) != true)) {
-                    this.O_check_out_dateField = value;
-                    this.RaisePropertyChanged("O_check_out_date");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime O_ctime {
-            get {
-                return this.O_ctimeField;
-            }
-            set {
-                if ((this.O_ctimeField.Equals(value) != true)) {
-                    this.O_ctimeField = value;
-                    this.RaisePropertyChanged("O_ctime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<decimal> O_guaranteePrice {
-            get {
-                return this.O_guaranteePriceField;
-            }
-            set {
-                if ((this.O_guaranteePriceField.Equals(value) != true)) {
-                    this.O_guaranteePriceField = value;
-                    this.RaisePropertyChanged("O_guaranteePrice");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string O_guest_remark {
-            get {
-                return this.O_guest_remarkField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.O_guest_remarkField, value) != true)) {
-                    this.O_guest_remarkField = value;
-                    this.RaisePropertyChanged("O_guest_remark");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool O_isbuy {
-            get {
-                return this.O_isbuyField;
-            }
-            set {
-                if ((this.O_isbuyField.Equals(value) != true)) {
-                    this.O_isbuyField = value;
-                    this.RaisePropertyChanged("O_isbuy");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int O_night {
-            get {
-                return this.O_nightField;
-            }
-            set {
-                if ((this.O_nightField.Equals(value) != true)) {
-                    this.O_nightField = value;
-                    this.RaisePropertyChanged("O_night");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int O_number {
-            get {
-                return this.O_numberField;
-            }
-            set {
-                if ((this.O_numberField.Equals(value) != true)) {
-                    this.O_numberField = value;
-                    this.RaisePropertyChanged("O_number");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public SAS.EstayMobileService.EnumOrderWay O_orderWay {
-            get {
-                return this.O_orderWayField;
-            }
-            set {
-                if ((this.O_orderWayField.Equals(value) != true)) {
-                    this.O_orderWayField = value;
-                    this.RaisePropertyChanged("O_orderWay");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string O_other_guest_info {
-            get {
-                return this.O_other_guest_infoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.O_other_guest_infoField, value) != true)) {
-                    this.O_other_guest_infoField = value;
-                    this.RaisePropertyChanged("O_other_guest_info");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string O_remark {
-            get {
-                return this.O_remarkField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.O_remarkField, value) != true)) {
-                    this.O_remarkField = value;
-                    this.RaisePropertyChanged("O_remark");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> O_roomRetain {
-            get {
-                return this.O_roomRetainField;
-            }
-            set {
-                if ((this.O_roomRetainField.Equals(value) != true)) {
-                    this.O_roomRetainField = value;
-                    this.RaisePropertyChanged("O_roomRetain");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string O_state_change_log {
-            get {
-                return this.O_state_change_logField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.O_state_change_logField, value) != true)) {
-                    this.O_state_change_logField = value;
-                    this.RaisePropertyChanged("O_state_change_log");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int O_state_id {
-            get {
-                return this.O_state_idField;
-            }
-            set {
-                if ((this.O_state_idField.Equals(value) != true)) {
-                    this.O_state_idField = value;
-                    this.RaisePropertyChanged("O_state_id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string O_title {
-            get {
-                return this.O_titleField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.O_titleField, value) != true)) {
-                    this.O_titleField = value;
-                    this.RaisePropertyChanged("O_title");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public decimal O_total_price {
-            get {
-                return this.O_total_priceField;
-            }
-            set {
-                if ((this.O_total_priceField.Equals(value) != true)) {
-                    this.O_total_priceField = value;
-                    this.RaisePropertyChanged("O_total_price");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<decimal> O_unit_price {
-            get {
-                return this.O_unit_priceField;
-            }
-            set {
-                if ((this.O_unit_priceField.Equals(value) != true)) {
-                    this.O_unit_priceField = value;
-                    this.RaisePropertyChanged("O_unit_price");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string O_user_email {
-            get {
-                return this.O_user_emailField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.O_user_emailField, value) != true)) {
-                    this.O_user_emailField = value;
-                    this.RaisePropertyChanged("O_user_email");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string O_user_name {
-            get {
-                return this.O_user_nameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.O_user_nameField, value) != true)) {
-                    this.O_user_nameField = value;
-                    this.RaisePropertyChanged("O_user_name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string O_user_phone {
-            get {
-                return this.O_user_phoneField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.O_user_phoneField, value) != true)) {
-                    this.O_user_phoneField = value;
-                    this.RaisePropertyChanged("O_user_phone");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public SAS.EstayMobileService.EnumOrderOperateType[] OperatorType {
-            get {
-                return this.OperatorTypeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.OperatorTypeField, value) != true)) {
-                    this.OperatorTypeField = value;
-                    this.RaisePropertyChanged("OperatorType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string OrderCreateOperator {
-            get {
-                return this.OrderCreateOperatorField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.OrderCreateOperatorField, value) != true)) {
-                    this.OrderCreateOperatorField = value;
-                    this.RaisePropertyChanged("OrderCreateOperator");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string OrderCreateOperatorGuid {
-            get {
-                return this.OrderCreateOperatorGuidField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.OrderCreateOperatorGuidField, value) != true)) {
-                    this.OrderCreateOperatorGuidField = value;
-                    this.RaisePropertyChanged("OrderCreateOperatorGuid");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string OrderSerialNum {
-            get {
-                return this.OrderSerialNumField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.OrderSerialNumField, value) != true)) {
-                    this.OrderSerialNumField = value;
-                    this.RaisePropertyChanged("OrderSerialNum");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string OrderStateName {
-            get {
-                return this.OrderStateNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.OrderStateNameField, value) != true)) {
-                    this.OrderStateNameField = value;
-                    this.RaisePropertyChanged("OrderStateName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Order_id {
-            get {
-                return this.Order_idField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Order_idField, value) != true)) {
-                    this.Order_idField = value;
-                    this.RaisePropertyChanged("Order_id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> PayLasestTime {
-            get {
-                return this.PayLasestTimeField;
-            }
-            set {
-                if ((this.PayLasestTimeField.Equals(value) != true)) {
-                    this.PayLasestTimeField = value;
-                    this.RaisePropertyChanged("PayLasestTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> R_number_id {
-            get {
-                return this.R_number_idField;
-            }
-            set {
-                if ((this.R_number_idField.Equals(value) != true)) {
-                    this.R_number_idField = value;
-                    this.RaisePropertyChanged("R_number_id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Room_descript {
-            get {
-                return this.Room_descriptField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Room_descriptField, value) != true)) {
-                    this.Room_descriptField = value;
-                    this.RaisePropertyChanged("Room_descript");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Room_id {
-            get {
-                return this.Room_idField;
-            }
-            set {
-                if ((this.Room_idField.Equals(value) != true)) {
-                    this.Room_idField = value;
-                    this.RaisePropertyChanged("Room_id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Room_name {
-            get {
-                return this.Room_nameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Room_nameField, value) != true)) {
-                    this.Room_nameField = value;
-                    this.RaisePropertyChanged("Room_name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Rp_description {
-            get {
-                return this.Rp_descriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Rp_descriptionField, value) != true)) {
-                    this.Rp_descriptionField = value;
-                    this.RaisePropertyChanged("Rp_description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Rp_name {
-            get {
-                return this.Rp_nameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Rp_nameField, value) != true)) {
-                    this.Rp_nameField = value;
-                    this.RaisePropertyChanged("Rp_name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Rp_price_description {
-            get {
-                return this.Rp_price_descriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Rp_price_descriptionField, value) != true)) {
-                    this.Rp_price_descriptionField = value;
-                    this.RaisePropertyChanged("Rp_price_description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> Rp_price_id {
-            get {
-                return this.Rp_price_idField;
-            }
-            set {
-                if ((this.Rp_price_idField.Equals(value) != true)) {
-                    this.Rp_price_idField = value;
-                    this.RaisePropertyChanged("Rp_price_id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string U_id {
-            get {
-                return this.U_idField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.U_idField, value) != true)) {
-                    this.U_idField = value;
-                    this.RaisePropertyChanged("U_id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom {
-            get {
-                return this.UserSourceFromField;
-            }
-            set {
-                if ((this.UserSourceFromField.Equals(value) != true)) {
-                    this.UserSourceFromField = value;
-                    this.RaisePropertyChanged("UserSourceFrom");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="EnumCashbackStatus", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
-    public enum EnumCashbackStatus : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        prepaid = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        arrived = 1,
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="EnumHotelSourceFrom", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
-    public enum EnumHotelSourceFrom : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        ECS = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        elong = 3,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        elong_front = 4,
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="EnumOrderWay", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
-    public enum EnumOrderWay : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        web = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        tel = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        wap = 2,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        android = 3,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        ios = 4,
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="EnumOrderOperateType", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
-    public enum EnumOrderOperateType : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        CanncelOrder = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        PayOrder = 2,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        ReviewOrder = 3,
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="OrderStateDTO", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.OrderDTO")]
-    [System.SerializableAttribute()]
-    public partial class OrderStateDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> is_canReviewField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> is_waitPayStatueField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> o_IsSendMailField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> o_IsSendSMSField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> o_NeedCheckInstantOrderField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> o_autoCheckAsynField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<decimal> o_integralField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> o_isAccountOrderField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> o_isCancelOrderField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> o_isNotifyField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> o_isPassStatusField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> o_isReadyOrderField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> o_isTempField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string o_mailTemplateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string o_smsTemplateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int o_state_idField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime o_state_timeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string o_state_titleField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> sortField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> is_canReview {
-            get {
-                return this.is_canReviewField;
-            }
-            set {
-                if ((this.is_canReviewField.Equals(value) != true)) {
-                    this.is_canReviewField = value;
-                    this.RaisePropertyChanged("is_canReview");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> is_waitPayStatue {
-            get {
-                return this.is_waitPayStatueField;
-            }
-            set {
-                if ((this.is_waitPayStatueField.Equals(value) != true)) {
-                    this.is_waitPayStatueField = value;
-                    this.RaisePropertyChanged("is_waitPayStatue");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> o_IsSendMail {
-            get {
-                return this.o_IsSendMailField;
-            }
-            set {
-                if ((this.o_IsSendMailField.Equals(value) != true)) {
-                    this.o_IsSendMailField = value;
-                    this.RaisePropertyChanged("o_IsSendMail");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> o_IsSendSMS {
-            get {
-                return this.o_IsSendSMSField;
-            }
-            set {
-                if ((this.o_IsSendSMSField.Equals(value) != true)) {
-                    this.o_IsSendSMSField = value;
-                    this.RaisePropertyChanged("o_IsSendSMS");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> o_NeedCheckInstantOrder {
-            get {
-                return this.o_NeedCheckInstantOrderField;
-            }
-            set {
-                if ((this.o_NeedCheckInstantOrderField.Equals(value) != true)) {
-                    this.o_NeedCheckInstantOrderField = value;
-                    this.RaisePropertyChanged("o_NeedCheckInstantOrder");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> o_autoCheckAsyn {
-            get {
-                return this.o_autoCheckAsynField;
-            }
-            set {
-                if ((this.o_autoCheckAsynField.Equals(value) != true)) {
-                    this.o_autoCheckAsynField = value;
-                    this.RaisePropertyChanged("o_autoCheckAsyn");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<decimal> o_integral {
-            get {
-                return this.o_integralField;
-            }
-            set {
-                if ((this.o_integralField.Equals(value) != true)) {
-                    this.o_integralField = value;
-                    this.RaisePropertyChanged("o_integral");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> o_isAccountOrder {
-            get {
-                return this.o_isAccountOrderField;
-            }
-            set {
-                if ((this.o_isAccountOrderField.Equals(value) != true)) {
-                    this.o_isAccountOrderField = value;
-                    this.RaisePropertyChanged("o_isAccountOrder");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> o_isCancelOrder {
-            get {
-                return this.o_isCancelOrderField;
-            }
-            set {
-                if ((this.o_isCancelOrderField.Equals(value) != true)) {
-                    this.o_isCancelOrderField = value;
-                    this.RaisePropertyChanged("o_isCancelOrder");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> o_isNotify {
-            get {
-                return this.o_isNotifyField;
-            }
-            set {
-                if ((this.o_isNotifyField.Equals(value) != true)) {
-                    this.o_isNotifyField = value;
-                    this.RaisePropertyChanged("o_isNotify");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> o_isPassStatus {
-            get {
-                return this.o_isPassStatusField;
-            }
-            set {
-                if ((this.o_isPassStatusField.Equals(value) != true)) {
-                    this.o_isPassStatusField = value;
-                    this.RaisePropertyChanged("o_isPassStatus");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> o_isReadyOrder {
-            get {
-                return this.o_isReadyOrderField;
-            }
-            set {
-                if ((this.o_isReadyOrderField.Equals(value) != true)) {
-                    this.o_isReadyOrderField = value;
-                    this.RaisePropertyChanged("o_isReadyOrder");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> o_isTemp {
-            get {
-                return this.o_isTempField;
-            }
-            set {
-                if ((this.o_isTempField.Equals(value) != true)) {
-                    this.o_isTempField = value;
-                    this.RaisePropertyChanged("o_isTemp");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string o_mailTemplate {
-            get {
-                return this.o_mailTemplateField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.o_mailTemplateField, value) != true)) {
-                    this.o_mailTemplateField = value;
-                    this.RaisePropertyChanged("o_mailTemplate");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string o_smsTemplate {
-            get {
-                return this.o_smsTemplateField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.o_smsTemplateField, value) != true)) {
-                    this.o_smsTemplateField = value;
-                    this.RaisePropertyChanged("o_smsTemplate");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int o_state_id {
-            get {
-                return this.o_state_idField;
-            }
-            set {
-                if ((this.o_state_idField.Equals(value) != true)) {
-                    this.o_state_idField = value;
-                    this.RaisePropertyChanged("o_state_id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime o_state_time {
-            get {
-                return this.o_state_timeField;
-            }
-            set {
-                if ((this.o_state_timeField.Equals(value) != true)) {
-                    this.o_state_timeField = value;
-                    this.RaisePropertyChanged("o_state_time");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string o_state_title {
-            get {
-                return this.o_state_titleField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.o_state_titleField, value) != true)) {
-                    this.o_state_titleField = value;
-                    this.RaisePropertyChanged("o_state_title");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> sort {
-            get {
-                return this.sortField;
-            }
-            set {
-                if ((this.sortField.Equals(value) != true)) {
-                    this.sortField = value;
-                    this.RaisePropertyChanged("sort");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="OrderGuaranteeDTO", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.OrderDTO")]
-    [System.SerializableAttribute()]
-    public partial class OrderGuaranteeDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> GuaranteeChange_GuaranteeRuleTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> GuaranteeChange_NeedCheckin24hour_hoursField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> GuaranteeChange_NeedCheckinTime_hoursField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> GuaranteeChange_NeedSomeDay_timeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> GuaranteeChange__needSomeDay_dayField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> Guarantee_AmountField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> Guarantee_DateTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Guarantee_DescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> Guarantee_EndDateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> Guarantee_EndTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> Guarantee_GuaranteeTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool Guarantee_IsAmountGuaranteeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool Guarantee_IsTimeGuaranteeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> Guarantee_IsTomorrowField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> Guarantee_StartDateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> Guarantee_StartTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Guarantee_WeekSetField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> Guarantee__GuaranteePayTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int Order_idField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> GuaranteeChange_GuaranteeRuleType {
-            get {
-                return this.GuaranteeChange_GuaranteeRuleTypeField;
-            }
-            set {
-                if ((this.GuaranteeChange_GuaranteeRuleTypeField.Equals(value) != true)) {
-                    this.GuaranteeChange_GuaranteeRuleTypeField = value;
-                    this.RaisePropertyChanged("GuaranteeChange_GuaranteeRuleType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> GuaranteeChange_NeedCheckin24hour_hours {
-            get {
-                return this.GuaranteeChange_NeedCheckin24hour_hoursField;
-            }
-            set {
-                if ((this.GuaranteeChange_NeedCheckin24hour_hoursField.Equals(value) != true)) {
-                    this.GuaranteeChange_NeedCheckin24hour_hoursField = value;
-                    this.RaisePropertyChanged("GuaranteeChange_NeedCheckin24hour_hours");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> GuaranteeChange_NeedCheckinTime_hours {
-            get {
-                return this.GuaranteeChange_NeedCheckinTime_hoursField;
-            }
-            set {
-                if ((this.GuaranteeChange_NeedCheckinTime_hoursField.Equals(value) != true)) {
-                    this.GuaranteeChange_NeedCheckinTime_hoursField = value;
-                    this.RaisePropertyChanged("GuaranteeChange_NeedCheckinTime_hours");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> GuaranteeChange_NeedSomeDay_time {
-            get {
-                return this.GuaranteeChange_NeedSomeDay_timeField;
-            }
-            set {
-                if ((this.GuaranteeChange_NeedSomeDay_timeField.Equals(value) != true)) {
-                    this.GuaranteeChange_NeedSomeDay_timeField = value;
-                    this.RaisePropertyChanged("GuaranteeChange_NeedSomeDay_time");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> GuaranteeChange__needSomeDay_day {
-            get {
-                return this.GuaranteeChange__needSomeDay_dayField;
-            }
-            set {
-                if ((this.GuaranteeChange__needSomeDay_dayField.Equals(value) != true)) {
-                    this.GuaranteeChange__needSomeDay_dayField = value;
-                    this.RaisePropertyChanged("GuaranteeChange__needSomeDay_day");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> Guarantee_Amount {
-            get {
-                return this.Guarantee_AmountField;
-            }
-            set {
-                if ((this.Guarantee_AmountField.Equals(value) != true)) {
-                    this.Guarantee_AmountField = value;
-                    this.RaisePropertyChanged("Guarantee_Amount");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> Guarantee_DateType {
-            get {
-                return this.Guarantee_DateTypeField;
-            }
-            set {
-                if ((this.Guarantee_DateTypeField.Equals(value) != true)) {
-                    this.Guarantee_DateTypeField = value;
-                    this.RaisePropertyChanged("Guarantee_DateType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Guarantee_Description {
-            get {
-                return this.Guarantee_DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Guarantee_DescriptionField, value) != true)) {
-                    this.Guarantee_DescriptionField = value;
-                    this.RaisePropertyChanged("Guarantee_Description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> Guarantee_EndDate {
-            get {
-                return this.Guarantee_EndDateField;
-            }
-            set {
-                if ((this.Guarantee_EndDateField.Equals(value) != true)) {
-                    this.Guarantee_EndDateField = value;
-                    this.RaisePropertyChanged("Guarantee_EndDate");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> Guarantee_EndTime {
-            get {
-                return this.Guarantee_EndTimeField;
-            }
-            set {
-                if ((this.Guarantee_EndTimeField.Equals(value) != true)) {
-                    this.Guarantee_EndTimeField = value;
-                    this.RaisePropertyChanged("Guarantee_EndTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> Guarantee_GuaranteeType {
-            get {
-                return this.Guarantee_GuaranteeTypeField;
-            }
-            set {
-                if ((this.Guarantee_GuaranteeTypeField.Equals(value) != true)) {
-                    this.Guarantee_GuaranteeTypeField = value;
-                    this.RaisePropertyChanged("Guarantee_GuaranteeType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool Guarantee_IsAmountGuarantee {
-            get {
-                return this.Guarantee_IsAmountGuaranteeField;
-            }
-            set {
-                if ((this.Guarantee_IsAmountGuaranteeField.Equals(value) != true)) {
-                    this.Guarantee_IsAmountGuaranteeField = value;
-                    this.RaisePropertyChanged("Guarantee_IsAmountGuarantee");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool Guarantee_IsTimeGuarantee {
-            get {
-                return this.Guarantee_IsTimeGuaranteeField;
-            }
-            set {
-                if ((this.Guarantee_IsTimeGuaranteeField.Equals(value) != true)) {
-                    this.Guarantee_IsTimeGuaranteeField = value;
-                    this.RaisePropertyChanged("Guarantee_IsTimeGuarantee");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> Guarantee_IsTomorrow {
-            get {
-                return this.Guarantee_IsTomorrowField;
-            }
-            set {
-                if ((this.Guarantee_IsTomorrowField.Equals(value) != true)) {
-                    this.Guarantee_IsTomorrowField = value;
-                    this.RaisePropertyChanged("Guarantee_IsTomorrow");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> Guarantee_StartDate {
-            get {
-                return this.Guarantee_StartDateField;
-            }
-            set {
-                if ((this.Guarantee_StartDateField.Equals(value) != true)) {
-                    this.Guarantee_StartDateField = value;
-                    this.RaisePropertyChanged("Guarantee_StartDate");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> Guarantee_StartTime {
-            get {
-                return this.Guarantee_StartTimeField;
-            }
-            set {
-                if ((this.Guarantee_StartTimeField.Equals(value) != true)) {
-                    this.Guarantee_StartTimeField = value;
-                    this.RaisePropertyChanged("Guarantee_StartTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Guarantee_WeekSet {
-            get {
-                return this.Guarantee_WeekSetField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Guarantee_WeekSetField, value) != true)) {
-                    this.Guarantee_WeekSetField = value;
-                    this.RaisePropertyChanged("Guarantee_WeekSet");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> Guarantee__GuaranteePayType {
-            get {
-                return this.Guarantee__GuaranteePayTypeField;
-            }
-            set {
-                if ((this.Guarantee__GuaranteePayTypeField.Equals(value) != true)) {
-                    this.Guarantee__GuaranteePayTypeField = value;
-                    this.RaisePropertyChanged("Guarantee__GuaranteePayType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Order_id {
-            get {
-                return this.Order_idField;
-            }
-            set {
-                if ((this.Order_idField.Equals(value) != true)) {
-                    this.Order_idField = value;
-                    this.RaisePropertyChanged("Order_id");
                 }
             }
         }
@@ -5773,6 +4059,1659 @@ namespace SAS.EstayMobileService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderStateDTO", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.OrderDTO")]
+    [System.SerializableAttribute()]
+    public partial class OrderStateDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> is_canReviewField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> is_waitPayStatueField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> o_IsSendMailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> o_IsSendSMSField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> o_NeedCheckInstantOrderField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> o_autoCheckAsynField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<decimal> o_integralField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> o_isAccountOrderField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> o_isCancelOrderField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> o_isNotifyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> o_isPassStatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> o_isReadyOrderField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> o_isTempField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string o_mailTemplateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string o_smsTemplateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int o_state_idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime o_state_timeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string o_state_titleField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> sortField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> is_canReview {
+            get {
+                return this.is_canReviewField;
+            }
+            set {
+                if ((this.is_canReviewField.Equals(value) != true)) {
+                    this.is_canReviewField = value;
+                    this.RaisePropertyChanged("is_canReview");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> is_waitPayStatue {
+            get {
+                return this.is_waitPayStatueField;
+            }
+            set {
+                if ((this.is_waitPayStatueField.Equals(value) != true)) {
+                    this.is_waitPayStatueField = value;
+                    this.RaisePropertyChanged("is_waitPayStatue");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> o_IsSendMail {
+            get {
+                return this.o_IsSendMailField;
+            }
+            set {
+                if ((this.o_IsSendMailField.Equals(value) != true)) {
+                    this.o_IsSendMailField = value;
+                    this.RaisePropertyChanged("o_IsSendMail");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> o_IsSendSMS {
+            get {
+                return this.o_IsSendSMSField;
+            }
+            set {
+                if ((this.o_IsSendSMSField.Equals(value) != true)) {
+                    this.o_IsSendSMSField = value;
+                    this.RaisePropertyChanged("o_IsSendSMS");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> o_NeedCheckInstantOrder {
+            get {
+                return this.o_NeedCheckInstantOrderField;
+            }
+            set {
+                if ((this.o_NeedCheckInstantOrderField.Equals(value) != true)) {
+                    this.o_NeedCheckInstantOrderField = value;
+                    this.RaisePropertyChanged("o_NeedCheckInstantOrder");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> o_autoCheckAsyn {
+            get {
+                return this.o_autoCheckAsynField;
+            }
+            set {
+                if ((this.o_autoCheckAsynField.Equals(value) != true)) {
+                    this.o_autoCheckAsynField = value;
+                    this.RaisePropertyChanged("o_autoCheckAsyn");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> o_integral {
+            get {
+                return this.o_integralField;
+            }
+            set {
+                if ((this.o_integralField.Equals(value) != true)) {
+                    this.o_integralField = value;
+                    this.RaisePropertyChanged("o_integral");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> o_isAccountOrder {
+            get {
+                return this.o_isAccountOrderField;
+            }
+            set {
+                if ((this.o_isAccountOrderField.Equals(value) != true)) {
+                    this.o_isAccountOrderField = value;
+                    this.RaisePropertyChanged("o_isAccountOrder");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> o_isCancelOrder {
+            get {
+                return this.o_isCancelOrderField;
+            }
+            set {
+                if ((this.o_isCancelOrderField.Equals(value) != true)) {
+                    this.o_isCancelOrderField = value;
+                    this.RaisePropertyChanged("o_isCancelOrder");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> o_isNotify {
+            get {
+                return this.o_isNotifyField;
+            }
+            set {
+                if ((this.o_isNotifyField.Equals(value) != true)) {
+                    this.o_isNotifyField = value;
+                    this.RaisePropertyChanged("o_isNotify");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> o_isPassStatus {
+            get {
+                return this.o_isPassStatusField;
+            }
+            set {
+                if ((this.o_isPassStatusField.Equals(value) != true)) {
+                    this.o_isPassStatusField = value;
+                    this.RaisePropertyChanged("o_isPassStatus");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> o_isReadyOrder {
+            get {
+                return this.o_isReadyOrderField;
+            }
+            set {
+                if ((this.o_isReadyOrderField.Equals(value) != true)) {
+                    this.o_isReadyOrderField = value;
+                    this.RaisePropertyChanged("o_isReadyOrder");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> o_isTemp {
+            get {
+                return this.o_isTempField;
+            }
+            set {
+                if ((this.o_isTempField.Equals(value) != true)) {
+                    this.o_isTempField = value;
+                    this.RaisePropertyChanged("o_isTemp");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string o_mailTemplate {
+            get {
+                return this.o_mailTemplateField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.o_mailTemplateField, value) != true)) {
+                    this.o_mailTemplateField = value;
+                    this.RaisePropertyChanged("o_mailTemplate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string o_smsTemplate {
+            get {
+                return this.o_smsTemplateField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.o_smsTemplateField, value) != true)) {
+                    this.o_smsTemplateField = value;
+                    this.RaisePropertyChanged("o_smsTemplate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int o_state_id {
+            get {
+                return this.o_state_idField;
+            }
+            set {
+                if ((this.o_state_idField.Equals(value) != true)) {
+                    this.o_state_idField = value;
+                    this.RaisePropertyChanged("o_state_id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime o_state_time {
+            get {
+                return this.o_state_timeField;
+            }
+            set {
+                if ((this.o_state_timeField.Equals(value) != true)) {
+                    this.o_state_timeField = value;
+                    this.RaisePropertyChanged("o_state_time");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string o_state_title {
+            get {
+                return this.o_state_titleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.o_state_titleField, value) != true)) {
+                    this.o_state_titleField = value;
+                    this.RaisePropertyChanged("o_state_title");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> sort {
+            get {
+                return this.sortField;
+            }
+            set {
+                if ((this.sortField.Equals(value) != true)) {
+                    this.sortField = value;
+                    this.RaisePropertyChanged("sort");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderInfoDTO", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.OrderDTO")]
+    [System.SerializableAttribute()]
+    public partial class OrderInfoDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal CashBack_priceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<SAS.EstayMobileService.EnumCashbackStatus> CashBack_statusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ChannelIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> EarliestArriveTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> H_room_rp_idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HotelBelongField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SAS.EstayMobileService.EnumHotelSourceFrom HotelSourceFromField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Hotel_TelField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Hotel_addressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Hotel_descriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Hotel_idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Hotel_nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsShowTrueHotelTelphoneField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> LastestArriveTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> O_IsInstantOrderField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string O_associateOrderIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> O_buy_timeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int O_buy_typeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime O_check_in_dateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime O_check_out_dateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime O_ctimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<decimal> O_guaranteePriceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string O_guest_remarkField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool O_isbuyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int O_nightField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int O_numberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SAS.EstayMobileService.EnumOrderWay O_orderWayField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string O_other_guest_infoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string O_remarkField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> O_roomRetainField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string O_state_change_logField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int O_state_idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string O_titleField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal O_total_priceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<decimal> O_unit_priceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string O_user_emailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string O_user_nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string O_user_phoneField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SAS.EstayMobileService.EnumOrderOperateType[] OperatorTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OrderCreateOperatorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OrderCreateOperatorGuidField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OrderSerialNumField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OrderStateNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Order_idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> PayLasestTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> R_number_idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Room_descriptField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Room_idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Room_nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Rp_descriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Rp_nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Rp_price_descriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> Rp_price_idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string U_idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SAS.EstayMobileService.EnumUserSourceFrom UserSourceFromField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal CashBack_price {
+            get {
+                return this.CashBack_priceField;
+            }
+            set {
+                if ((this.CashBack_priceField.Equals(value) != true)) {
+                    this.CashBack_priceField = value;
+                    this.RaisePropertyChanged("CashBack_price");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<SAS.EstayMobileService.EnumCashbackStatus> CashBack_status {
+            get {
+                return this.CashBack_statusField;
+            }
+            set {
+                if ((this.CashBack_statusField.Equals(value) != true)) {
+                    this.CashBack_statusField = value;
+                    this.RaisePropertyChanged("CashBack_status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ChannelID {
+            get {
+                return this.ChannelIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ChannelIDField, value) != true)) {
+                    this.ChannelIDField = value;
+                    this.RaisePropertyChanged("ChannelID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> EarliestArriveTime {
+            get {
+                return this.EarliestArriveTimeField;
+            }
+            set {
+                if ((this.EarliestArriveTimeField.Equals(value) != true)) {
+                    this.EarliestArriveTimeField = value;
+                    this.RaisePropertyChanged("EarliestArriveTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> H_room_rp_id {
+            get {
+                return this.H_room_rp_idField;
+            }
+            set {
+                if ((this.H_room_rp_idField.Equals(value) != true)) {
+                    this.H_room_rp_idField = value;
+                    this.RaisePropertyChanged("H_room_rp_id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string HotelBelong {
+            get {
+                return this.HotelBelongField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HotelBelongField, value) != true)) {
+                    this.HotelBelongField = value;
+                    this.RaisePropertyChanged("HotelBelong");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SAS.EstayMobileService.EnumHotelSourceFrom HotelSourceFrom {
+            get {
+                return this.HotelSourceFromField;
+            }
+            set {
+                if ((this.HotelSourceFromField.Equals(value) != true)) {
+                    this.HotelSourceFromField = value;
+                    this.RaisePropertyChanged("HotelSourceFrom");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Hotel_Tel {
+            get {
+                return this.Hotel_TelField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Hotel_TelField, value) != true)) {
+                    this.Hotel_TelField = value;
+                    this.RaisePropertyChanged("Hotel_Tel");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Hotel_address {
+            get {
+                return this.Hotel_addressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Hotel_addressField, value) != true)) {
+                    this.Hotel_addressField = value;
+                    this.RaisePropertyChanged("Hotel_address");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Hotel_description {
+            get {
+                return this.Hotel_descriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Hotel_descriptionField, value) != true)) {
+                    this.Hotel_descriptionField = value;
+                    this.RaisePropertyChanged("Hotel_description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Hotel_id {
+            get {
+                return this.Hotel_idField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Hotel_idField, value) != true)) {
+                    this.Hotel_idField = value;
+                    this.RaisePropertyChanged("Hotel_id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Hotel_name {
+            get {
+                return this.Hotel_nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Hotel_nameField, value) != true)) {
+                    this.Hotel_nameField = value;
+                    this.RaisePropertyChanged("Hotel_name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsShowTrueHotelTelphone {
+            get {
+                return this.IsShowTrueHotelTelphoneField;
+            }
+            set {
+                if ((this.IsShowTrueHotelTelphoneField.Equals(value) != true)) {
+                    this.IsShowTrueHotelTelphoneField = value;
+                    this.RaisePropertyChanged("IsShowTrueHotelTelphone");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> LastestArriveTime {
+            get {
+                return this.LastestArriveTimeField;
+            }
+            set {
+                if ((this.LastestArriveTimeField.Equals(value) != true)) {
+                    this.LastestArriveTimeField = value;
+                    this.RaisePropertyChanged("LastestArriveTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> O_IsInstantOrder {
+            get {
+                return this.O_IsInstantOrderField;
+            }
+            set {
+                if ((this.O_IsInstantOrderField.Equals(value) != true)) {
+                    this.O_IsInstantOrderField = value;
+                    this.RaisePropertyChanged("O_IsInstantOrder");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string O_associateOrderID {
+            get {
+                return this.O_associateOrderIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.O_associateOrderIDField, value) != true)) {
+                    this.O_associateOrderIDField = value;
+                    this.RaisePropertyChanged("O_associateOrderID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> O_buy_time {
+            get {
+                return this.O_buy_timeField;
+            }
+            set {
+                if ((this.O_buy_timeField.Equals(value) != true)) {
+                    this.O_buy_timeField = value;
+                    this.RaisePropertyChanged("O_buy_time");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int O_buy_type {
+            get {
+                return this.O_buy_typeField;
+            }
+            set {
+                if ((this.O_buy_typeField.Equals(value) != true)) {
+                    this.O_buy_typeField = value;
+                    this.RaisePropertyChanged("O_buy_type");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime O_check_in_date {
+            get {
+                return this.O_check_in_dateField;
+            }
+            set {
+                if ((this.O_check_in_dateField.Equals(value) != true)) {
+                    this.O_check_in_dateField = value;
+                    this.RaisePropertyChanged("O_check_in_date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime O_check_out_date {
+            get {
+                return this.O_check_out_dateField;
+            }
+            set {
+                if ((this.O_check_out_dateField.Equals(value) != true)) {
+                    this.O_check_out_dateField = value;
+                    this.RaisePropertyChanged("O_check_out_date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime O_ctime {
+            get {
+                return this.O_ctimeField;
+            }
+            set {
+                if ((this.O_ctimeField.Equals(value) != true)) {
+                    this.O_ctimeField = value;
+                    this.RaisePropertyChanged("O_ctime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> O_guaranteePrice {
+            get {
+                return this.O_guaranteePriceField;
+            }
+            set {
+                if ((this.O_guaranteePriceField.Equals(value) != true)) {
+                    this.O_guaranteePriceField = value;
+                    this.RaisePropertyChanged("O_guaranteePrice");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string O_guest_remark {
+            get {
+                return this.O_guest_remarkField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.O_guest_remarkField, value) != true)) {
+                    this.O_guest_remarkField = value;
+                    this.RaisePropertyChanged("O_guest_remark");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool O_isbuy {
+            get {
+                return this.O_isbuyField;
+            }
+            set {
+                if ((this.O_isbuyField.Equals(value) != true)) {
+                    this.O_isbuyField = value;
+                    this.RaisePropertyChanged("O_isbuy");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int O_night {
+            get {
+                return this.O_nightField;
+            }
+            set {
+                if ((this.O_nightField.Equals(value) != true)) {
+                    this.O_nightField = value;
+                    this.RaisePropertyChanged("O_night");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int O_number {
+            get {
+                return this.O_numberField;
+            }
+            set {
+                if ((this.O_numberField.Equals(value) != true)) {
+                    this.O_numberField = value;
+                    this.RaisePropertyChanged("O_number");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SAS.EstayMobileService.EnumOrderWay O_orderWay {
+            get {
+                return this.O_orderWayField;
+            }
+            set {
+                if ((this.O_orderWayField.Equals(value) != true)) {
+                    this.O_orderWayField = value;
+                    this.RaisePropertyChanged("O_orderWay");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string O_other_guest_info {
+            get {
+                return this.O_other_guest_infoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.O_other_guest_infoField, value) != true)) {
+                    this.O_other_guest_infoField = value;
+                    this.RaisePropertyChanged("O_other_guest_info");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string O_remark {
+            get {
+                return this.O_remarkField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.O_remarkField, value) != true)) {
+                    this.O_remarkField = value;
+                    this.RaisePropertyChanged("O_remark");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> O_roomRetain {
+            get {
+                return this.O_roomRetainField;
+            }
+            set {
+                if ((this.O_roomRetainField.Equals(value) != true)) {
+                    this.O_roomRetainField = value;
+                    this.RaisePropertyChanged("O_roomRetain");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string O_state_change_log {
+            get {
+                return this.O_state_change_logField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.O_state_change_logField, value) != true)) {
+                    this.O_state_change_logField = value;
+                    this.RaisePropertyChanged("O_state_change_log");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int O_state_id {
+            get {
+                return this.O_state_idField;
+            }
+            set {
+                if ((this.O_state_idField.Equals(value) != true)) {
+                    this.O_state_idField = value;
+                    this.RaisePropertyChanged("O_state_id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string O_title {
+            get {
+                return this.O_titleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.O_titleField, value) != true)) {
+                    this.O_titleField = value;
+                    this.RaisePropertyChanged("O_title");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal O_total_price {
+            get {
+                return this.O_total_priceField;
+            }
+            set {
+                if ((this.O_total_priceField.Equals(value) != true)) {
+                    this.O_total_priceField = value;
+                    this.RaisePropertyChanged("O_total_price");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> O_unit_price {
+            get {
+                return this.O_unit_priceField;
+            }
+            set {
+                if ((this.O_unit_priceField.Equals(value) != true)) {
+                    this.O_unit_priceField = value;
+                    this.RaisePropertyChanged("O_unit_price");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string O_user_email {
+            get {
+                return this.O_user_emailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.O_user_emailField, value) != true)) {
+                    this.O_user_emailField = value;
+                    this.RaisePropertyChanged("O_user_email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string O_user_name {
+            get {
+                return this.O_user_nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.O_user_nameField, value) != true)) {
+                    this.O_user_nameField = value;
+                    this.RaisePropertyChanged("O_user_name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string O_user_phone {
+            get {
+                return this.O_user_phoneField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.O_user_phoneField, value) != true)) {
+                    this.O_user_phoneField = value;
+                    this.RaisePropertyChanged("O_user_phone");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SAS.EstayMobileService.EnumOrderOperateType[] OperatorType {
+            get {
+                return this.OperatorTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OperatorTypeField, value) != true)) {
+                    this.OperatorTypeField = value;
+                    this.RaisePropertyChanged("OperatorType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OrderCreateOperator {
+            get {
+                return this.OrderCreateOperatorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderCreateOperatorField, value) != true)) {
+                    this.OrderCreateOperatorField = value;
+                    this.RaisePropertyChanged("OrderCreateOperator");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OrderCreateOperatorGuid {
+            get {
+                return this.OrderCreateOperatorGuidField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderCreateOperatorGuidField, value) != true)) {
+                    this.OrderCreateOperatorGuidField = value;
+                    this.RaisePropertyChanged("OrderCreateOperatorGuid");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OrderSerialNum {
+            get {
+                return this.OrderSerialNumField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderSerialNumField, value) != true)) {
+                    this.OrderSerialNumField = value;
+                    this.RaisePropertyChanged("OrderSerialNum");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OrderStateName {
+            get {
+                return this.OrderStateNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderStateNameField, value) != true)) {
+                    this.OrderStateNameField = value;
+                    this.RaisePropertyChanged("OrderStateName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Order_id {
+            get {
+                return this.Order_idField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Order_idField, value) != true)) {
+                    this.Order_idField = value;
+                    this.RaisePropertyChanged("Order_id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> PayLasestTime {
+            get {
+                return this.PayLasestTimeField;
+            }
+            set {
+                if ((this.PayLasestTimeField.Equals(value) != true)) {
+                    this.PayLasestTimeField = value;
+                    this.RaisePropertyChanged("PayLasestTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> R_number_id {
+            get {
+                return this.R_number_idField;
+            }
+            set {
+                if ((this.R_number_idField.Equals(value) != true)) {
+                    this.R_number_idField = value;
+                    this.RaisePropertyChanged("R_number_id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Room_descript {
+            get {
+                return this.Room_descriptField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Room_descriptField, value) != true)) {
+                    this.Room_descriptField = value;
+                    this.RaisePropertyChanged("Room_descript");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Room_id {
+            get {
+                return this.Room_idField;
+            }
+            set {
+                if ((this.Room_idField.Equals(value) != true)) {
+                    this.Room_idField = value;
+                    this.RaisePropertyChanged("Room_id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Room_name {
+            get {
+                return this.Room_nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Room_nameField, value) != true)) {
+                    this.Room_nameField = value;
+                    this.RaisePropertyChanged("Room_name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Rp_description {
+            get {
+                return this.Rp_descriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Rp_descriptionField, value) != true)) {
+                    this.Rp_descriptionField = value;
+                    this.RaisePropertyChanged("Rp_description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Rp_name {
+            get {
+                return this.Rp_nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Rp_nameField, value) != true)) {
+                    this.Rp_nameField = value;
+                    this.RaisePropertyChanged("Rp_name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Rp_price_description {
+            get {
+                return this.Rp_price_descriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Rp_price_descriptionField, value) != true)) {
+                    this.Rp_price_descriptionField = value;
+                    this.RaisePropertyChanged("Rp_price_description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Rp_price_id {
+            get {
+                return this.Rp_price_idField;
+            }
+            set {
+                if ((this.Rp_price_idField.Equals(value) != true)) {
+                    this.Rp_price_idField = value;
+                    this.RaisePropertyChanged("Rp_price_id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string U_id {
+            get {
+                return this.U_idField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.U_idField, value) != true)) {
+                    this.U_idField = value;
+                    this.RaisePropertyChanged("U_id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom {
+            get {
+                return this.UserSourceFromField;
+            }
+            set {
+                if ((this.UserSourceFromField.Equals(value) != true)) {
+                    this.UserSourceFromField = value;
+                    this.RaisePropertyChanged("UserSourceFrom");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EnumCashbackStatus", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
+    public enum EnumCashbackStatus : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        prepaid = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        arrived = 1,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EnumHotelSourceFrom", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
+    public enum EnumHotelSourceFrom : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ECS = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        elong = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        elong_front = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        thirdContract = 5,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EnumOrderWay", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
+    public enum EnumOrderWay : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        web = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        tel = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        wap = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        android = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ios = 4,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EnumOrderOperateType", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
+    public enum EnumOrderOperateType : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        CanncelOrder = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        PayOrder = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ReviewOrder = 3,
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderGuaranteeDTO", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.OrderDTO")]
+    [System.SerializableAttribute()]
+    public partial class OrderGuaranteeDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> GuaranteeChange_GuaranteeRuleTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> GuaranteeChange_NeedCheckin24hour_hoursField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> GuaranteeChange_NeedCheckinTime_hoursField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> GuaranteeChange_NeedSomeDay_timeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> GuaranteeChange__needSomeDay_dayField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> Guarantee_AmountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> Guarantee_DateTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Guarantee_DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> Guarantee_EndDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> Guarantee_EndTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> Guarantee_GuaranteeTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool Guarantee_IsAmountGuaranteeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool Guarantee_IsTimeGuaranteeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> Guarantee_IsTomorrowField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> Guarantee_StartDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> Guarantee_StartTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Guarantee_WeekSetField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> Guarantee__GuaranteePayTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Order_idField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> GuaranteeChange_GuaranteeRuleType {
+            get {
+                return this.GuaranteeChange_GuaranteeRuleTypeField;
+            }
+            set {
+                if ((this.GuaranteeChange_GuaranteeRuleTypeField.Equals(value) != true)) {
+                    this.GuaranteeChange_GuaranteeRuleTypeField = value;
+                    this.RaisePropertyChanged("GuaranteeChange_GuaranteeRuleType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> GuaranteeChange_NeedCheckin24hour_hours {
+            get {
+                return this.GuaranteeChange_NeedCheckin24hour_hoursField;
+            }
+            set {
+                if ((this.GuaranteeChange_NeedCheckin24hour_hoursField.Equals(value) != true)) {
+                    this.GuaranteeChange_NeedCheckin24hour_hoursField = value;
+                    this.RaisePropertyChanged("GuaranteeChange_NeedCheckin24hour_hours");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> GuaranteeChange_NeedCheckinTime_hours {
+            get {
+                return this.GuaranteeChange_NeedCheckinTime_hoursField;
+            }
+            set {
+                if ((this.GuaranteeChange_NeedCheckinTime_hoursField.Equals(value) != true)) {
+                    this.GuaranteeChange_NeedCheckinTime_hoursField = value;
+                    this.RaisePropertyChanged("GuaranteeChange_NeedCheckinTime_hours");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> GuaranteeChange_NeedSomeDay_time {
+            get {
+                return this.GuaranteeChange_NeedSomeDay_timeField;
+            }
+            set {
+                if ((this.GuaranteeChange_NeedSomeDay_timeField.Equals(value) != true)) {
+                    this.GuaranteeChange_NeedSomeDay_timeField = value;
+                    this.RaisePropertyChanged("GuaranteeChange_NeedSomeDay_time");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> GuaranteeChange__needSomeDay_day {
+            get {
+                return this.GuaranteeChange__needSomeDay_dayField;
+            }
+            set {
+                if ((this.GuaranteeChange__needSomeDay_dayField.Equals(value) != true)) {
+                    this.GuaranteeChange__needSomeDay_dayField = value;
+                    this.RaisePropertyChanged("GuaranteeChange__needSomeDay_day");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Guarantee_Amount {
+            get {
+                return this.Guarantee_AmountField;
+            }
+            set {
+                if ((this.Guarantee_AmountField.Equals(value) != true)) {
+                    this.Guarantee_AmountField = value;
+                    this.RaisePropertyChanged("Guarantee_Amount");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Guarantee_DateType {
+            get {
+                return this.Guarantee_DateTypeField;
+            }
+            set {
+                if ((this.Guarantee_DateTypeField.Equals(value) != true)) {
+                    this.Guarantee_DateTypeField = value;
+                    this.RaisePropertyChanged("Guarantee_DateType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Guarantee_Description {
+            get {
+                return this.Guarantee_DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Guarantee_DescriptionField, value) != true)) {
+                    this.Guarantee_DescriptionField = value;
+                    this.RaisePropertyChanged("Guarantee_Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Guarantee_EndDate {
+            get {
+                return this.Guarantee_EndDateField;
+            }
+            set {
+                if ((this.Guarantee_EndDateField.Equals(value) != true)) {
+                    this.Guarantee_EndDateField = value;
+                    this.RaisePropertyChanged("Guarantee_EndDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Guarantee_EndTime {
+            get {
+                return this.Guarantee_EndTimeField;
+            }
+            set {
+                if ((this.Guarantee_EndTimeField.Equals(value) != true)) {
+                    this.Guarantee_EndTimeField = value;
+                    this.RaisePropertyChanged("Guarantee_EndTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Guarantee_GuaranteeType {
+            get {
+                return this.Guarantee_GuaranteeTypeField;
+            }
+            set {
+                if ((this.Guarantee_GuaranteeTypeField.Equals(value) != true)) {
+                    this.Guarantee_GuaranteeTypeField = value;
+                    this.RaisePropertyChanged("Guarantee_GuaranteeType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Guarantee_IsAmountGuarantee {
+            get {
+                return this.Guarantee_IsAmountGuaranteeField;
+            }
+            set {
+                if ((this.Guarantee_IsAmountGuaranteeField.Equals(value) != true)) {
+                    this.Guarantee_IsAmountGuaranteeField = value;
+                    this.RaisePropertyChanged("Guarantee_IsAmountGuarantee");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Guarantee_IsTimeGuarantee {
+            get {
+                return this.Guarantee_IsTimeGuaranteeField;
+            }
+            set {
+                if ((this.Guarantee_IsTimeGuaranteeField.Equals(value) != true)) {
+                    this.Guarantee_IsTimeGuaranteeField = value;
+                    this.RaisePropertyChanged("Guarantee_IsTimeGuarantee");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> Guarantee_IsTomorrow {
+            get {
+                return this.Guarantee_IsTomorrowField;
+            }
+            set {
+                if ((this.Guarantee_IsTomorrowField.Equals(value) != true)) {
+                    this.Guarantee_IsTomorrowField = value;
+                    this.RaisePropertyChanged("Guarantee_IsTomorrow");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Guarantee_StartDate {
+            get {
+                return this.Guarantee_StartDateField;
+            }
+            set {
+                if ((this.Guarantee_StartDateField.Equals(value) != true)) {
+                    this.Guarantee_StartDateField = value;
+                    this.RaisePropertyChanged("Guarantee_StartDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Guarantee_StartTime {
+            get {
+                return this.Guarantee_StartTimeField;
+            }
+            set {
+                if ((this.Guarantee_StartTimeField.Equals(value) != true)) {
+                    this.Guarantee_StartTimeField = value;
+                    this.RaisePropertyChanged("Guarantee_StartTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Guarantee_WeekSet {
+            get {
+                return this.Guarantee_WeekSetField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Guarantee_WeekSetField, value) != true)) {
+                    this.Guarantee_WeekSetField = value;
+                    this.RaisePropertyChanged("Guarantee_WeekSet");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Guarantee__GuaranteePayType {
+            get {
+                return this.Guarantee__GuaranteePayTypeField;
+            }
+            set {
+                if ((this.Guarantee__GuaranteePayTypeField.Equals(value) != true)) {
+                    this.Guarantee__GuaranteePayTypeField = value;
+                    this.RaisePropertyChanged("Guarantee__GuaranteePayType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Order_id {
+            get {
+                return this.Order_idField;
+            }
+            set {
+                if ((this.Order_idField.Equals(value) != true)) {
+                    this.Order_idField = value;
+                    this.RaisePropertyChanged("Order_id");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="UserLevelDTO", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.UserDTO")]
     [System.SerializableAttribute()]
     public partial class UserLevelDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -6545,6 +6484,753 @@ namespace SAS.EstayMobileService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserInfoSearchParamsDTO", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.UserDTO")]
+    [System.SerializableAttribute()]
+    public partial class UserInfoSearchParamsDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CardNoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MobileField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<decimal> balanceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> createTimeBeginField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> createTimeEndField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> integralField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CardNo {
+            get {
+                return this.CardNoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CardNoField, value) != true)) {
+                    this.CardNoField = value;
+                    this.RaisePropertyChanged("CardNo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Mobile {
+            get {
+                return this.MobileField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MobileField, value) != true)) {
+                    this.MobileField = value;
+                    this.RaisePropertyChanged("Mobile");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserName {
+            get {
+                return this.UserNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
+                    this.UserNameField = value;
+                    this.RaisePropertyChanged("UserName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> balance {
+            get {
+                return this.balanceField;
+            }
+            set {
+                if ((this.balanceField.Equals(value) != true)) {
+                    this.balanceField = value;
+                    this.RaisePropertyChanged("balance");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> createTimeBegin {
+            get {
+                return this.createTimeBeginField;
+            }
+            set {
+                if ((this.createTimeBeginField.Equals(value) != true)) {
+                    this.createTimeBeginField = value;
+                    this.RaisePropertyChanged("createTimeBegin");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> createTimeEnd {
+            get {
+                return this.createTimeEndField;
+            }
+            set {
+                if ((this.createTimeEndField.Equals(value) != true)) {
+                    this.createTimeEndField = value;
+                    this.RaisePropertyChanged("createTimeEnd");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> integral {
+            get {
+                return this.integralField;
+            }
+            set {
+                if ((this.integralField.Equals(value) != true)) {
+                    this.integralField = value;
+                    this.RaisePropertyChanged("integral");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EnumCashBackItem", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
+    public enum EnumCashBackItem : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ecs = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        elong = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        elong_front = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        thrid = 5,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EnumGiveIntegralItemKey", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
+    public enum EnumGiveIntegralItemKey : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        register = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        telphoneVerify = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        mailVerify = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        review = 3,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EnumCommonOrderStatus", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
+    public enum EnumCommonOrderStatus : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        tempState = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        waitpayState = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        readyState = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        comfirmState = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        canreviewState = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        cancelState = 5,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        accountState = 6,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NeedCheckInstant = 7,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EnumOperator", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
+    public enum EnumOperator : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        equal = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        less = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        more = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        lessEqual = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        moreEqual = 4,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EnumAccountType", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
+    public enum EnumAccountType : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SavingAccount = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        cashBackAccount = 1,
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ReviewKeyRequest", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.ReviewDTO")]
+    [System.SerializableAttribute()]
+    public partial class ReviewKeyRequest : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string contentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string hotel_idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string phoneField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool recommend_typeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string room_idField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string content {
+            get {
+                return this.contentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.contentField, value) != true)) {
+                    this.contentField = value;
+                    this.RaisePropertyChanged("content");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string hotel_id {
+            get {
+                return this.hotel_idField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.hotel_idField, value) != true)) {
+                    this.hotel_idField = value;
+                    this.RaisePropertyChanged("hotel_id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string phone {
+            get {
+                return this.phoneField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.phoneField, value) != true)) {
+                    this.phoneField = value;
+                    this.RaisePropertyChanged("phone");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool recommend_type {
+            get {
+                return this.recommend_typeField;
+            }
+            set {
+                if ((this.recommend_typeField.Equals(value) != true)) {
+                    this.recommend_typeField = value;
+                    this.RaisePropertyChanged("recommend_type");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string room_id {
+            get {
+                return this.room_idField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.room_idField, value) != true)) {
+                    this.room_idField = value;
+                    this.RaisePropertyChanged("room_id");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ReplyReviewRequest", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.ReviewDTO")]
+    [System.SerializableAttribute()]
+    public partial class ReplyReviewRequest : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string answerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int commentIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string answer {
+            get {
+                return this.answerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.answerField, value) != true)) {
+                    this.answerField = value;
+                    this.RaisePropertyChanged("answer");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int commentId {
+            get {
+                return this.commentIdField;
+            }
+            set {
+                if ((this.commentIdField.Equals(value) != true)) {
+                    this.commentIdField = value;
+                    this.RaisePropertyChanged("commentId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ActivityParamsDTO", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.Services.estay_ecs_Se" +
+        "rvices.ActivityService")]
+    [System.SerializableAttribute()]
+    public partial class ActivityParamsDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int clientidField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int currentPageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int pageSizeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int clientid {
+            get {
+                return this.clientidField;
+            }
+            set {
+                if ((this.clientidField.Equals(value) != true)) {
+                    this.clientidField = value;
+                    this.RaisePropertyChanged("clientid");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int currentPage {
+            get {
+                return this.currentPageField;
+            }
+            set {
+                if ((this.currentPageField.Equals(value) != true)) {
+                    this.currentPageField = value;
+                    this.RaisePropertyChanged("currentPage");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int pageSize {
+            get {
+                return this.pageSizeField;
+            }
+            set {
+                if ((this.pageSizeField.Equals(value) != true)) {
+                    this.pageSizeField = value;
+                    this.RaisePropertyChanged("pageSize");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.TestDTO")]
+    [System.SerializableAttribute()]
+    public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool BoolValueField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StringValueField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool BoolValue {
+            get {
+                return this.BoolValueField;
+            }
+            set {
+                if ((this.BoolValueField.Equals(value) != true)) {
+                    this.BoolValueField = value;
+                    this.RaisePropertyChanged("BoolValue");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StringValue {
+            get {
+                return this.StringValueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StringValueField, value) != true)) {
+                    this.StringValueField = value;
+                    this.RaisePropertyChanged("StringValue");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GuaranteeRuleChangeRule", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.BaseDTO")]
+    [System.SerializableAttribute()]
+    public partial class GuaranteeRuleChangeRule : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SAS.EstayMobileService.EnumGuaranteeChangeRule GuaranteeRuleTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int NeedCheckin24hour_hoursField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int NeedCheckinTime_hoursField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime NeedSomeDay_dayField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime NeedSomeDay_timeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SAS.EstayMobileService.EnumGuaranteeChangeRule GuaranteeRuleType {
+            get {
+                return this.GuaranteeRuleTypeField;
+            }
+            set {
+                if ((this.GuaranteeRuleTypeField.Equals(value) != true)) {
+                    this.GuaranteeRuleTypeField = value;
+                    this.RaisePropertyChanged("GuaranteeRuleType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int NeedCheckin24hour_hours {
+            get {
+                return this.NeedCheckin24hour_hoursField;
+            }
+            set {
+                if ((this.NeedCheckin24hour_hoursField.Equals(value) != true)) {
+                    this.NeedCheckin24hour_hoursField = value;
+                    this.RaisePropertyChanged("NeedCheckin24hour_hours");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int NeedCheckinTime_hours {
+            get {
+                return this.NeedCheckinTime_hoursField;
+            }
+            set {
+                if ((this.NeedCheckinTime_hoursField.Equals(value) != true)) {
+                    this.NeedCheckinTime_hoursField = value;
+                    this.RaisePropertyChanged("NeedCheckinTime_hours");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime NeedSomeDay_day {
+            get {
+                return this.NeedSomeDay_dayField;
+            }
+            set {
+                if ((this.NeedSomeDay_dayField.Equals(value) != true)) {
+                    this.NeedSomeDay_dayField = value;
+                    this.RaisePropertyChanged("NeedSomeDay_day");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime NeedSomeDay_time {
+            get {
+                return this.NeedSomeDay_timeField;
+            }
+            set {
+                if ((this.NeedSomeDay_timeField.Equals(value) != true)) {
+                    this.NeedSomeDay_timeField = value;
+                    this.RaisePropertyChanged("NeedSomeDay_time");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EnumGuaranteeChangeRule", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.ThirdInterface.Service")]
+    public enum EnumGuaranteeChangeRule : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NoChange = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NeedSomeDay = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NeedCheckinTime = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NeedCheckin24hour = 3,
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderAndStateChangeParamsDTO", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.OrderDTO")]
+    [System.SerializableAttribute()]
+    public partial class OrderAndStateChangeParamsDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int NewOrderStateInfoIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int OrderIDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int NewOrderStateInfoID {
+            get {
+                return this.NewOrderStateInfoIDField;
+            }
+            set {
+                if ((this.NewOrderStateInfoIDField.Equals(value) != true)) {
+                    this.NewOrderStateInfoIDField = value;
+                    this.RaisePropertyChanged("NewOrderStateInfoID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int OrderID {
+            get {
+                return this.OrderIDField;
+            }
+            set {
+                if ((this.OrderIDField.Equals(value) != true)) {
+                    this.OrderIDField = value;
+                    this.RaisePropertyChanged("OrderID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="OrderStateParams", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.OrderDTO")]
     [System.SerializableAttribute()]
     public partial class OrderStateParams : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -6586,35 +7272,6 @@ namespace SAS.EstayMobileService {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="EnumCommonOrderStatus", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
-    public enum EnumCommonOrderStatus : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        tempState = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        waitpayState = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        readyState = 2,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        comfirmState = 3,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        canreviewState = 4,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        cancelState = 5,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        accountState = 6,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        NeedCheckInstant = 7,
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -6870,26 +7527,6 @@ namespace SAS.EstayMobileService {
         }
     }
     
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="EnumOperator", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
-    public enum EnumOperator : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        equal = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        less = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        more = 2,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        lessEqual = 3,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        moreEqual = 4,
-    }
-    
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="OrderSearchParamsDTO", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.OrderDTO")]
@@ -6916,6 +7553,12 @@ namespace SAS.EstayMobileService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HotelBelongField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HotelIDListStrField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string Hotel_nameField;
@@ -7049,6 +7692,32 @@ namespace SAS.EstayMobileService {
                 if ((object.ReferenceEquals(this.EmailField, value) != true)) {
                     this.EmailField = value;
                     this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string HotelBelong {
+            get {
+                return this.HotelBelongField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HotelBelongField, value) != true)) {
+                    this.HotelBelongField = value;
+                    this.RaisePropertyChanged("HotelBelong");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string HotelIDListStr {
+            get {
+                return this.HotelIDListStrField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HotelIDListStrField, value) != true)) {
+                    this.HotelIDListStrField = value;
+                    this.RaisePropertyChanged("HotelIDListStr");
                 }
             }
         }
@@ -7271,67 +7940,6 @@ namespace SAS.EstayMobileService {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="OrderAndStateChangeParamsDTO", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.OrderDTO")]
-    [System.SerializableAttribute()]
-    public partial class OrderAndStateChangeParamsDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int NewOrderStateInfoIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int OrderIDField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int NewOrderStateInfoID {
-            get {
-                return this.NewOrderStateInfoIDField;
-            }
-            set {
-                if ((this.NewOrderStateInfoIDField.Equals(value) != true)) {
-                    this.NewOrderStateInfoIDField = value;
-                    this.RaisePropertyChanged("NewOrderStateInfoID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int OrderID {
-            get {
-                return this.OrderIDField;
-            }
-            set {
-                if ((this.OrderIDField.Equals(value) != true)) {
-                    this.OrderIDField = value;
-                    this.RaisePropertyChanged("OrderID");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="EnumConfirmationType", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.ThirdInterface.Service")]
     public enum EnumConfirmationType : int {
@@ -7416,23 +8024,6 @@ namespace SAS.EstayMobileService {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
         Other = 2,
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="EnumGuaranteeChangeRule", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.ThirdInterface.Service")]
-    public enum EnumGuaranteeChangeRule : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        NoChange = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        NeedSomeDay = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        NeedCheckinTime = 2,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        NeedCheckin24hour = 3,
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
@@ -8227,975 +8818,6 @@ namespace SAS.EstayMobileService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="HouseParamsDTO", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.HouseDTO")]
-    [System.SerializableAttribute()]
-    public partial class HouseParamsDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Check_inField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Check_outField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int Hotel_idField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int Room_idField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Check_in {
-            get {
-                return this.Check_inField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Check_inField, value) != true)) {
-                    this.Check_inField = value;
-                    this.RaisePropertyChanged("Check_in");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Check_out {
-            get {
-                return this.Check_outField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Check_outField, value) != true)) {
-                    this.Check_outField = value;
-                    this.RaisePropertyChanged("Check_out");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Hotel_id {
-            get {
-                return this.Hotel_idField;
-            }
-            set {
-                if ((this.Hotel_idField.Equals(value) != true)) {
-                    this.Hotel_idField = value;
-                    this.RaisePropertyChanged("Hotel_id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Room_id {
-            get {
-                return this.Room_idField;
-            }
-            set {
-                if ((this.Room_idField.Equals(value) != true)) {
-                    this.Room_idField = value;
-                    this.RaisePropertyChanged("Room_id");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="SearchParamsDTO", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.HouseDTO")]
-    [System.SerializableAttribute()]
-    public partial class SearchParamsDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string BusinessAreaIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Check_inField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Check_outField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CityIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CityNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CurrentLatField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CurrentLonField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CurrentPageField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DistrictIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FacilityIdsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int HighPriceField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int HotelSortField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string KeywordField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int LowPriceField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MaxLatField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MaxLonField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MinLatField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MinLonField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int PageSizeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string BusinessAreaId {
-            get {
-                return this.BusinessAreaIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.BusinessAreaIdField, value) != true)) {
-                    this.BusinessAreaIdField = value;
-                    this.RaisePropertyChanged("BusinessAreaId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Check_in {
-            get {
-                return this.Check_inField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Check_inField, value) != true)) {
-                    this.Check_inField = value;
-                    this.RaisePropertyChanged("Check_in");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Check_out {
-            get {
-                return this.Check_outField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Check_outField, value) != true)) {
-                    this.Check_outField = value;
-                    this.RaisePropertyChanged("Check_out");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CityId {
-            get {
-                return this.CityIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CityIdField, value) != true)) {
-                    this.CityIdField = value;
-                    this.RaisePropertyChanged("CityId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CityName {
-            get {
-                return this.CityNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CityNameField, value) != true)) {
-                    this.CityNameField = value;
-                    this.RaisePropertyChanged("CityName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CurrentLat {
-            get {
-                return this.CurrentLatField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CurrentLatField, value) != true)) {
-                    this.CurrentLatField = value;
-                    this.RaisePropertyChanged("CurrentLat");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CurrentLon {
-            get {
-                return this.CurrentLonField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CurrentLonField, value) != true)) {
-                    this.CurrentLonField = value;
-                    this.RaisePropertyChanged("CurrentLon");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CurrentPage {
-            get {
-                return this.CurrentPageField;
-            }
-            set {
-                if ((this.CurrentPageField.Equals(value) != true)) {
-                    this.CurrentPageField = value;
-                    this.RaisePropertyChanged("CurrentPage");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string DistrictId {
-            get {
-                return this.DistrictIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DistrictIdField, value) != true)) {
-                    this.DistrictIdField = value;
-                    this.RaisePropertyChanged("DistrictId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FacilityIds {
-            get {
-                return this.FacilityIdsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FacilityIdsField, value) != true)) {
-                    this.FacilityIdsField = value;
-                    this.RaisePropertyChanged("FacilityIds");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int HighPrice {
-            get {
-                return this.HighPriceField;
-            }
-            set {
-                if ((this.HighPriceField.Equals(value) != true)) {
-                    this.HighPriceField = value;
-                    this.RaisePropertyChanged("HighPrice");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int HotelSort {
-            get {
-                return this.HotelSortField;
-            }
-            set {
-                if ((this.HotelSortField.Equals(value) != true)) {
-                    this.HotelSortField = value;
-                    this.RaisePropertyChanged("HotelSort");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Keyword {
-            get {
-                return this.KeywordField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.KeywordField, value) != true)) {
-                    this.KeywordField = value;
-                    this.RaisePropertyChanged("Keyword");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int LowPrice {
-            get {
-                return this.LowPriceField;
-            }
-            set {
-                if ((this.LowPriceField.Equals(value) != true)) {
-                    this.LowPriceField = value;
-                    this.RaisePropertyChanged("LowPrice");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string MaxLat {
-            get {
-                return this.MaxLatField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MaxLatField, value) != true)) {
-                    this.MaxLatField = value;
-                    this.RaisePropertyChanged("MaxLat");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string MaxLon {
-            get {
-                return this.MaxLonField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MaxLonField, value) != true)) {
-                    this.MaxLonField = value;
-                    this.RaisePropertyChanged("MaxLon");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string MinLat {
-            get {
-                return this.MinLatField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MinLatField, value) != true)) {
-                    this.MinLatField = value;
-                    this.RaisePropertyChanged("MinLat");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string MinLon {
-            get {
-                return this.MinLonField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MinLonField, value) != true)) {
-                    this.MinLonField = value;
-                    this.RaisePropertyChanged("MinLon");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int PageSize {
-            get {
-                return this.PageSizeField;
-            }
-            set {
-                if ((this.PageSizeField.Equals(value) != true)) {
-                    this.PageSizeField = value;
-                    this.RaisePropertyChanged("PageSize");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.TestDTO")]
-    [System.SerializableAttribute()]
-    public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool BoolValueField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StringValueField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool BoolValue {
-            get {
-                return this.BoolValueField;
-            }
-            set {
-                if ((this.BoolValueField.Equals(value) != true)) {
-                    this.BoolValueField = value;
-                    this.RaisePropertyChanged("BoolValue");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string StringValue {
-            get {
-                return this.StringValueField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StringValueField, value) != true)) {
-                    this.StringValueField = value;
-                    this.RaisePropertyChanged("StringValue");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Guarantee_rule", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.RatePlanDTO")]
-    [System.SerializableAttribute()]
-    public partial class Guarantee_rule : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int AmountField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SAS.EstayMobileService.GuaranteeRuleChangeRule ChangeruleField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SAS.EstayMobileService.EnumDateType DateTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime EndDateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime EndTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SAS.EstayMobileService.Guarantee_PayTypeEnum GuaranteePayTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SAS.EstayMobileService.EnumGuaranteeMoneyType GuaranteeTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool IsAmountGuaranteeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool IsTimeGuaranteeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool IsTomorrowField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime StartDateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime StartTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string WeekSetField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Amount {
-            get {
-                return this.AmountField;
-            }
-            set {
-                if ((this.AmountField.Equals(value) != true)) {
-                    this.AmountField = value;
-                    this.RaisePropertyChanged("Amount");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public SAS.EstayMobileService.GuaranteeRuleChangeRule Changerule {
-            get {
-                return this.ChangeruleField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ChangeruleField, value) != true)) {
-                    this.ChangeruleField = value;
-                    this.RaisePropertyChanged("Changerule");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public SAS.EstayMobileService.EnumDateType DateType {
-            get {
-                return this.DateTypeField;
-            }
-            set {
-                if ((this.DateTypeField.Equals(value) != true)) {
-                    this.DateTypeField = value;
-                    this.RaisePropertyChanged("DateType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime EndDate {
-            get {
-                return this.EndDateField;
-            }
-            set {
-                if ((this.EndDateField.Equals(value) != true)) {
-                    this.EndDateField = value;
-                    this.RaisePropertyChanged("EndDate");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime EndTime {
-            get {
-                return this.EndTimeField;
-            }
-            set {
-                if ((this.EndTimeField.Equals(value) != true)) {
-                    this.EndTimeField = value;
-                    this.RaisePropertyChanged("EndTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public SAS.EstayMobileService.Guarantee_PayTypeEnum GuaranteePayType {
-            get {
-                return this.GuaranteePayTypeField;
-            }
-            set {
-                if ((this.GuaranteePayTypeField.Equals(value) != true)) {
-                    this.GuaranteePayTypeField = value;
-                    this.RaisePropertyChanged("GuaranteePayType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public SAS.EstayMobileService.EnumGuaranteeMoneyType GuaranteeType {
-            get {
-                return this.GuaranteeTypeField;
-            }
-            set {
-                if ((this.GuaranteeTypeField.Equals(value) != true)) {
-                    this.GuaranteeTypeField = value;
-                    this.RaisePropertyChanged("GuaranteeType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool IsAmountGuarantee {
-            get {
-                return this.IsAmountGuaranteeField;
-            }
-            set {
-                if ((this.IsAmountGuaranteeField.Equals(value) != true)) {
-                    this.IsAmountGuaranteeField = value;
-                    this.RaisePropertyChanged("IsAmountGuarantee");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool IsTimeGuarantee {
-            get {
-                return this.IsTimeGuaranteeField;
-            }
-            set {
-                if ((this.IsTimeGuaranteeField.Equals(value) != true)) {
-                    this.IsTimeGuaranteeField = value;
-                    this.RaisePropertyChanged("IsTimeGuarantee");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool IsTomorrow {
-            get {
-                return this.IsTomorrowField;
-            }
-            set {
-                if ((this.IsTomorrowField.Equals(value) != true)) {
-                    this.IsTomorrowField = value;
-                    this.RaisePropertyChanged("IsTomorrow");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime StartDate {
-            get {
-                return this.StartDateField;
-            }
-            set {
-                if ((this.StartDateField.Equals(value) != true)) {
-                    this.StartDateField = value;
-                    this.RaisePropertyChanged("StartDate");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime StartTime {
-            get {
-                return this.StartTimeField;
-            }
-            set {
-                if ((this.StartTimeField.Equals(value) != true)) {
-                    this.StartTimeField = value;
-                    this.RaisePropertyChanged("StartTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string WeekSet {
-            get {
-                return this.WeekSetField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.WeekSetField, value) != true)) {
-                    this.WeekSetField = value;
-                    this.RaisePropertyChanged("WeekSet");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="GuaranteeRuleChangeRule", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.BaseDTO")]
-    [System.SerializableAttribute()]
-    public partial class GuaranteeRuleChangeRule : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SAS.EstayMobileService.EnumGuaranteeChangeRule GuaranteeRuleTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int NeedCheckin24hour_hoursField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int NeedCheckinTime_hoursField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime NeedSomeDay_dayField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime NeedSomeDay_timeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public SAS.EstayMobileService.EnumGuaranteeChangeRule GuaranteeRuleType {
-            get {
-                return this.GuaranteeRuleTypeField;
-            }
-            set {
-                if ((this.GuaranteeRuleTypeField.Equals(value) != true)) {
-                    this.GuaranteeRuleTypeField = value;
-                    this.RaisePropertyChanged("GuaranteeRuleType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int NeedCheckin24hour_hours {
-            get {
-                return this.NeedCheckin24hour_hoursField;
-            }
-            set {
-                if ((this.NeedCheckin24hour_hoursField.Equals(value) != true)) {
-                    this.NeedCheckin24hour_hoursField = value;
-                    this.RaisePropertyChanged("NeedCheckin24hour_hours");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int NeedCheckinTime_hours {
-            get {
-                return this.NeedCheckinTime_hoursField;
-            }
-            set {
-                if ((this.NeedCheckinTime_hoursField.Equals(value) != true)) {
-                    this.NeedCheckinTime_hoursField = value;
-                    this.RaisePropertyChanged("NeedCheckinTime_hours");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime NeedSomeDay_day {
-            get {
-                return this.NeedSomeDay_dayField;
-            }
-            set {
-                if ((this.NeedSomeDay_dayField.Equals(value) != true)) {
-                    this.NeedSomeDay_dayField = value;
-                    this.RaisePropertyChanged("NeedSomeDay_day");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime NeedSomeDay_time {
-            get {
-                return this.NeedSomeDay_timeField;
-            }
-            set {
-                if ((this.NeedSomeDay_timeField.Equals(value) != true)) {
-                    this.NeedSomeDay_timeField = value;
-                    this.RaisePropertyChanged("NeedSomeDay_time");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Guarantee_PayTypeEnum", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.RatePlanDTO")]
-    public enum Guarantee_PayTypeEnum : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        CreditCard = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Alipay = 1,
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ReviewKeyRequest", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.ReviewDTO")]
-    [System.SerializableAttribute()]
-    public partial class ReviewKeyRequest : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string contentField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string hotel_idField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string phoneField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool recommend_typeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string room_idField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string content {
-            get {
-                return this.contentField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.contentField, value) != true)) {
-                    this.contentField = value;
-                    this.RaisePropertyChanged("content");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string hotel_id {
-            get {
-                return this.hotel_idField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.hotel_idField, value) != true)) {
-                    this.hotel_idField = value;
-                    this.RaisePropertyChanged("hotel_id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string phone {
-            get {
-                return this.phoneField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.phoneField, value) != true)) {
-                    this.phoneField = value;
-                    this.RaisePropertyChanged("phone");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool recommend_type {
-            get {
-                return this.recommend_typeField;
-            }
-            set {
-                if ((this.recommend_typeField.Equals(value) != true)) {
-                    this.recommend_typeField = value;
-                    this.RaisePropertyChanged("recommend_type");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string room_id {
-            get {
-                return this.room_idField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.room_idField, value) != true)) {
-                    this.room_idField = value;
-                    this.RaisePropertyChanged("room_id");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="CommentParamsDTO", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.CommentDTO")]
     [System.SerializableAttribute()]
     public partial class CommentParamsDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -9289,21 +8911,30 @@ namespace SAS.EstayMobileService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="loginUserParamsDTO", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.UserDTO")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CommentHParamsDTO", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.CommentDTO")]
     [System.SerializableAttribute()]
-    public partial class loginUserParamsDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class CommentHParamsDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LoginUserNameField;
+        private System.DateTime EndTimeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PpassField;
+        private string Hotel_idField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SAS.EstayMobileService.EnumUserSourceFrom UserSourceFromField;
+        private bool IsReplyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime StartTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int currentPageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int pageSizeField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -9316,40 +8947,79 @@ namespace SAS.EstayMobileService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string LoginUserName {
+        public System.DateTime EndTime {
             get {
-                return this.LoginUserNameField;
+                return this.EndTimeField;
             }
             set {
-                if ((object.ReferenceEquals(this.LoginUserNameField, value) != true)) {
-                    this.LoginUserNameField = value;
-                    this.RaisePropertyChanged("LoginUserName");
+                if ((this.EndTimeField.Equals(value) != true)) {
+                    this.EndTimeField = value;
+                    this.RaisePropertyChanged("EndTime");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Ppass {
+        public string Hotel_id {
             get {
-                return this.PpassField;
+                return this.Hotel_idField;
             }
             set {
-                if ((object.ReferenceEquals(this.PpassField, value) != true)) {
-                    this.PpassField = value;
-                    this.RaisePropertyChanged("Ppass");
+                if ((object.ReferenceEquals(this.Hotel_idField, value) != true)) {
+                    this.Hotel_idField = value;
+                    this.RaisePropertyChanged("Hotel_id");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom {
+        public bool IsReply {
             get {
-                return this.UserSourceFromField;
+                return this.IsReplyField;
             }
             set {
-                if ((this.UserSourceFromField.Equals(value) != true)) {
-                    this.UserSourceFromField = value;
-                    this.RaisePropertyChanged("UserSourceFrom");
+                if ((this.IsReplyField.Equals(value) != true)) {
+                    this.IsReplyField = value;
+                    this.RaisePropertyChanged("IsReply");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime StartTime {
+            get {
+                return this.StartTimeField;
+            }
+            set {
+                if ((this.StartTimeField.Equals(value) != true)) {
+                    this.StartTimeField = value;
+                    this.RaisePropertyChanged("StartTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int currentPage {
+            get {
+                return this.currentPageField;
+            }
+            set {
+                if ((this.currentPageField.Equals(value) != true)) {
+                    this.currentPageField = value;
+                    this.RaisePropertyChanged("currentPage");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int pageSize {
+            get {
+                return this.pageSizeField;
+            }
+            set {
+                if ((this.pageSizeField.Equals(value) != true)) {
+                    this.pageSizeField = value;
+                    this.RaisePropertyChanged("pageSize");
                 }
             }
         }
@@ -9769,17 +9439,6 @@ namespace SAS.EstayMobileService {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="EnumAccountType", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
-    public enum EnumAccountType : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        SavingAccount = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        cashBackAccount = 1,
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -10285,43 +9944,749 @@ namespace SAS.EstayMobileService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="EnumCashBackItem", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
-    public enum EnumCashBackItem : int {
+    [System.Runtime.Serialization.DataContractAttribute(Name="Guarantee_rule", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.RatePlanDTO")]
+    [System.SerializableAttribute()]
+    public partial class Guarantee_rule : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        ecs = 1,
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        elong = 3,
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int AmountField;
         
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        elong_front = 4,
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SAS.EstayMobileService.GuaranteeRuleChangeRule ChangeruleField;
         
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        thrid = 5,
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SAS.EstayMobileService.EnumDateType DateTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime EndDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime EndTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SAS.EstayMobileService.Guarantee_PayTypeEnum GuaranteePayTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SAS.EstayMobileService.EnumGuaranteeMoneyType GuaranteeTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsAmountGuaranteeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsTimeGuaranteeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsTomorrowField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime StartDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime StartTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string WeekSetField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Amount {
+            get {
+                return this.AmountField;
+            }
+            set {
+                if ((this.AmountField.Equals(value) != true)) {
+                    this.AmountField = value;
+                    this.RaisePropertyChanged("Amount");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SAS.EstayMobileService.GuaranteeRuleChangeRule Changerule {
+            get {
+                return this.ChangeruleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ChangeruleField, value) != true)) {
+                    this.ChangeruleField = value;
+                    this.RaisePropertyChanged("Changerule");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SAS.EstayMobileService.EnumDateType DateType {
+            get {
+                return this.DateTypeField;
+            }
+            set {
+                if ((this.DateTypeField.Equals(value) != true)) {
+                    this.DateTypeField = value;
+                    this.RaisePropertyChanged("DateType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime EndDate {
+            get {
+                return this.EndDateField;
+            }
+            set {
+                if ((this.EndDateField.Equals(value) != true)) {
+                    this.EndDateField = value;
+                    this.RaisePropertyChanged("EndDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime EndTime {
+            get {
+                return this.EndTimeField;
+            }
+            set {
+                if ((this.EndTimeField.Equals(value) != true)) {
+                    this.EndTimeField = value;
+                    this.RaisePropertyChanged("EndTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SAS.EstayMobileService.Guarantee_PayTypeEnum GuaranteePayType {
+            get {
+                return this.GuaranteePayTypeField;
+            }
+            set {
+                if ((this.GuaranteePayTypeField.Equals(value) != true)) {
+                    this.GuaranteePayTypeField = value;
+                    this.RaisePropertyChanged("GuaranteePayType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SAS.EstayMobileService.EnumGuaranteeMoneyType GuaranteeType {
+            get {
+                return this.GuaranteeTypeField;
+            }
+            set {
+                if ((this.GuaranteeTypeField.Equals(value) != true)) {
+                    this.GuaranteeTypeField = value;
+                    this.RaisePropertyChanged("GuaranteeType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsAmountGuarantee {
+            get {
+                return this.IsAmountGuaranteeField;
+            }
+            set {
+                if ((this.IsAmountGuaranteeField.Equals(value) != true)) {
+                    this.IsAmountGuaranteeField = value;
+                    this.RaisePropertyChanged("IsAmountGuarantee");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsTimeGuarantee {
+            get {
+                return this.IsTimeGuaranteeField;
+            }
+            set {
+                if ((this.IsTimeGuaranteeField.Equals(value) != true)) {
+                    this.IsTimeGuaranteeField = value;
+                    this.RaisePropertyChanged("IsTimeGuarantee");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsTomorrow {
+            get {
+                return this.IsTomorrowField;
+            }
+            set {
+                if ((this.IsTomorrowField.Equals(value) != true)) {
+                    this.IsTomorrowField = value;
+                    this.RaisePropertyChanged("IsTomorrow");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime StartDate {
+            get {
+                return this.StartDateField;
+            }
+            set {
+                if ((this.StartDateField.Equals(value) != true)) {
+                    this.StartDateField = value;
+                    this.RaisePropertyChanged("StartDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime StartTime {
+            get {
+                return this.StartTimeField;
+            }
+            set {
+                if ((this.StartTimeField.Equals(value) != true)) {
+                    this.StartTimeField = value;
+                    this.RaisePropertyChanged("StartTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string WeekSet {
+            get {
+                return this.WeekSetField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WeekSetField, value) != true)) {
+                    this.WeekSetField = value;
+                    this.RaisePropertyChanged("WeekSet");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="EnumGiveIntegralItemKey", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls")]
-    public enum EnumGiveIntegralItemKey : int {
+    [System.Runtime.Serialization.DataContractAttribute(Name="Guarantee_PayTypeEnum", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.RatePlanDTO")]
+    public enum Guarantee_PayTypeEnum : int {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        register = 0,
+        CreditCard = 0,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        telphoneVerify = 1,
+        Alipay = 1,
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="HouseParamsDTO", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.HouseDTO")]
+    [System.SerializableAttribute()]
+    public partial class HouseParamsDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        mailVerify = 2,
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        review = 3,
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Check_inField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Check_outField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Hotel_idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Room_idField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Check_in {
+            get {
+                return this.Check_inField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Check_inField, value) != true)) {
+                    this.Check_inField = value;
+                    this.RaisePropertyChanged("Check_in");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Check_out {
+            get {
+                return this.Check_outField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Check_outField, value) != true)) {
+                    this.Check_outField = value;
+                    this.RaisePropertyChanged("Check_out");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Hotel_id {
+            get {
+                return this.Hotel_idField;
+            }
+            set {
+                if ((this.Hotel_idField.Equals(value) != true)) {
+                    this.Hotel_idField = value;
+                    this.RaisePropertyChanged("Hotel_id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Room_id {
+            get {
+                return this.Room_idField;
+            }
+            set {
+                if ((this.Room_idField.Equals(value) != true)) {
+                    this.Room_idField = value;
+                    this.RaisePropertyChanged("Room_id");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SearchParamsDTO", Namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.HouseDTO")]
+    [System.SerializableAttribute()]
+    public partial class SearchParamsDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BusinessAreaIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Check_inField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Check_outField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CityIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CityNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CurrentLatField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CurrentLonField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CurrentPageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DistrictIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FacilityIdsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int HighPriceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int HotelSortField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string KeywordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int LowPriceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MaxLatField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MaxLonField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MinLatField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MinLonField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PageSizeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string BusinessAreaId {
+            get {
+                return this.BusinessAreaIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BusinessAreaIdField, value) != true)) {
+                    this.BusinessAreaIdField = value;
+                    this.RaisePropertyChanged("BusinessAreaId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Check_in {
+            get {
+                return this.Check_inField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Check_inField, value) != true)) {
+                    this.Check_inField = value;
+                    this.RaisePropertyChanged("Check_in");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Check_out {
+            get {
+                return this.Check_outField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Check_outField, value) != true)) {
+                    this.Check_outField = value;
+                    this.RaisePropertyChanged("Check_out");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CityId {
+            get {
+                return this.CityIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CityIdField, value) != true)) {
+                    this.CityIdField = value;
+                    this.RaisePropertyChanged("CityId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CityName {
+            get {
+                return this.CityNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CityNameField, value) != true)) {
+                    this.CityNameField = value;
+                    this.RaisePropertyChanged("CityName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CurrentLat {
+            get {
+                return this.CurrentLatField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CurrentLatField, value) != true)) {
+                    this.CurrentLatField = value;
+                    this.RaisePropertyChanged("CurrentLat");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CurrentLon {
+            get {
+                return this.CurrentLonField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CurrentLonField, value) != true)) {
+                    this.CurrentLonField = value;
+                    this.RaisePropertyChanged("CurrentLon");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CurrentPage {
+            get {
+                return this.CurrentPageField;
+            }
+            set {
+                if ((this.CurrentPageField.Equals(value) != true)) {
+                    this.CurrentPageField = value;
+                    this.RaisePropertyChanged("CurrentPage");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DistrictId {
+            get {
+                return this.DistrictIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DistrictIdField, value) != true)) {
+                    this.DistrictIdField = value;
+                    this.RaisePropertyChanged("DistrictId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FacilityIds {
+            get {
+                return this.FacilityIdsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FacilityIdsField, value) != true)) {
+                    this.FacilityIdsField = value;
+                    this.RaisePropertyChanged("FacilityIds");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int HighPrice {
+            get {
+                return this.HighPriceField;
+            }
+            set {
+                if ((this.HighPriceField.Equals(value) != true)) {
+                    this.HighPriceField = value;
+                    this.RaisePropertyChanged("HighPrice");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int HotelSort {
+            get {
+                return this.HotelSortField;
+            }
+            set {
+                if ((this.HotelSortField.Equals(value) != true)) {
+                    this.HotelSortField = value;
+                    this.RaisePropertyChanged("HotelSort");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Keyword {
+            get {
+                return this.KeywordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.KeywordField, value) != true)) {
+                    this.KeywordField = value;
+                    this.RaisePropertyChanged("Keyword");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int LowPrice {
+            get {
+                return this.LowPriceField;
+            }
+            set {
+                if ((this.LowPriceField.Equals(value) != true)) {
+                    this.LowPriceField = value;
+                    this.RaisePropertyChanged("LowPrice");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MaxLat {
+            get {
+                return this.MaxLatField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MaxLatField, value) != true)) {
+                    this.MaxLatField = value;
+                    this.RaisePropertyChanged("MaxLat");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MaxLon {
+            get {
+                return this.MaxLonField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MaxLonField, value) != true)) {
+                    this.MaxLonField = value;
+                    this.RaisePropertyChanged("MaxLon");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MinLat {
+            get {
+                return this.MinLatField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MinLatField, value) != true)) {
+                    this.MinLatField = value;
+                    this.RaisePropertyChanged("MinLat");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MinLon {
+            get {
+                return this.MinLonField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MinLonField, value) != true)) {
+                    this.MinLonField = value;
+                    this.RaisePropertyChanged("MinLon");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PageSize {
+            get {
+                return this.PageSizeField;
+            }
+            set {
+                if ((this.PageSizeField.Equals(value) != true)) {
+                    this.PageSizeField = value;
+                    this.RaisePropertyChanged("PageSize");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="EstayMobileService.MobileContract")]
     public interface MobileContract {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/LoginedUserNameAndPassWordsFormatString", ReplyAction="http://tempuri.org/MobileContract/LoginedUserNameAndPassWordsFormatStringResponse" +
+            "")]
+        string LoginedUserNameAndPassWordsFormatString(SAS.EstayMobileService.loginUserParamsDTO userParams, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/LoginedUserNameAndPassWordsFormatString", ReplyAction="http://tempuri.org/MobileContract/LoginedUserNameAndPassWordsFormatStringResponse" +
+            "")]
+        System.Threading.Tasks.Task<string> LoginedUserNameAndPassWordsFormatStringAsync(SAS.EstayMobileService.loginUserParamsDTO userParams, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CheckUserEmailIsExist", ReplyAction="http://tempuri.org/MobileContract/CheckUserEmailIsExistResponse")]
+        SAS.EstayMobileService.CheckExistResult CheckUserEmailIsExist(string email, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CheckUserEmailIsExist", ReplyAction="http://tempuri.org/MobileContract/CheckUserEmailIsExistResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.CheckExistResult> CheckUserEmailIsExistAsync(string email, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CheckUserEmailIsExistFormatString", ReplyAction="http://tempuri.org/MobileContract/CheckUserEmailIsExistFormatStringResponse")]
+        string CheckUserEmailIsExistFormatString(string email, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CheckUserEmailIsExistFormatString", ReplyAction="http://tempuri.org/MobileContract/CheckUserEmailIsExistFormatStringResponse")]
+        System.Threading.Tasks.Task<string> CheckUserEmailIsExistFormatStringAsync(string email, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CheckTelephoneIsExist", ReplyAction="http://tempuri.org/MobileContract/CheckTelephoneIsExistResponse")]
+        SAS.EstayMobileService.CheckExistResult CheckTelephoneIsExist(string telephone, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CheckTelephoneIsExist", ReplyAction="http://tempuri.org/MobileContract/CheckTelephoneIsExistResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.CheckExistResult> CheckTelephoneIsExistAsync(string telephone, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CheckTelephoneIsExistFormatString", ReplyAction="http://tempuri.org/MobileContract/CheckTelephoneIsExistFormatStringResponse")]
+        string CheckTelephoneIsExistFormatString(string telephone, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CheckTelephoneIsExistFormatString", ReplyAction="http://tempuri.org/MobileContract/CheckTelephoneIsExistFormatStringResponse")]
+        System.Threading.Tasks.Task<string> CheckTelephoneIsExistFormatStringAsync(string telephone, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUserInfoListByPage", ReplyAction="http://tempuri.org/MobileContract/SearchUserInfoListByPageResponse")]
+        SAS.EstayMobileService.UserInfoCollectionResult SearchUserInfoListByPage(SAS.EstayMobileService.UserInfoSearchParamsDTO searchParams, int currentPage, int pagesize, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUserInfoListByPage", ReplyAction="http://tempuri.org/MobileContract/SearchUserInfoListByPageResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.UserInfoCollectionResult> SearchUserInfoListByPageAsync(SAS.EstayMobileService.UserInfoSearchParamsDTO searchParams, int currentPage, int pagesize, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUserInfoListByPageFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUserInfoListByPageFormatStringResponse")]
+        string SearchUserInfoListByPageFormatString(SAS.EstayMobileService.UserInfoSearchParamsDTO searchParams, int currentPage, int pagesize, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUserInfoListByPageFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUserInfoListByPageFormatStringResponse")]
+        System.Threading.Tasks.Task<string> SearchUserInfoListByPageFormatStringAsync(SAS.EstayMobileService.UserInfoSearchParamsDTO searchParams, int currentPage, int pagesize, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUserInfoList", ReplyAction="http://tempuri.org/MobileContract/SearchUserInfoListResponse")]
+        SAS.EstayMobileService.UserInfoCollectionResult SearchUserInfoList(SAS.EstayMobileService.UserInfoSearchParamsDTO searchParams, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUserInfoList", ReplyAction="http://tempuri.org/MobileContract/SearchUserInfoListResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.UserInfoCollectionResult> SearchUserInfoListAsync(SAS.EstayMobileService.UserInfoSearchParamsDTO searchParams, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUserInfoListFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUserInfoListFormatStringResponse")]
         string SearchUserInfoListFormatString(SAS.EstayMobileService.UserInfoSearchParamsDTO searchParams, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
@@ -10390,17 +10755,80 @@ namespace SAS.EstayMobileService {
         System.Threading.Tasks.Task<string> CheckValidateAndRegisterFormatStringAsync(SAS.EstayMobileService.UserInfoDTO newEntity, string ValidateCode, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SendValidateCodeMessageByUserProof", ReplyAction="http://tempuri.org/MobileContract/SendValidateCodeMessageByUserProofResponse")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoDTO[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateParams))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateDTO[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateSearchParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumUserSourceFrom))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumReturnFormatType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CheckExistResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ResultBase))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumResultCode))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SearchCntResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSystemID))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateCodeMappingResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.LoginResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCashBackItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackConfigResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumGiveIntegralItemKey))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.IntegralConfigResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongCreateOrderResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateOrderResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateCreditCardResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EarliestLastestArriveTimeResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReviewableResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumReivewableState))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplateCategoryResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplateCategoryCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateTypeResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateTypeCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendWay))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendRuleType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SendInfoResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumAudit))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCashbackStatus))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumHotelSourceFrom))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderWay))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderOperateType[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderOperateType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCommonOrderStatus))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOperator))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderGuaranteeRuleResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserLevelResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumAccountType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCurrentBalanceResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceIncomcOutcomeSumResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCurrentIntegralResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralValueResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReviewKeyRequest))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReplyReviewRequest))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ActivityParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CompositeType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.GuaranteeRuleChangeRule))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderGuaranteeDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EarliestLastestTimeDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EarliestLastestTimeDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderSearchParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderAndStateChangeParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoDTO[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateParams))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateDTO[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateSearchParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderSearchParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumConfirmationType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCurrencyCode))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumGuestTypeCode))]
@@ -10422,24 +10850,18 @@ namespace SAS.EstayMobileService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplatesDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SendInfosDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SendRuleDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.HouseParamsDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SearchParamsDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CompositeType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.Guarantee_rule))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.Guarantee_PayTypeEnum))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.GuaranteeRuleChangeRule))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReviewKeyRequest))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CommentParamsDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoSearchParamsDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CommentHParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.loginUserParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoSearchParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoDTO[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackConfigDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.IntegralConfigDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserLevelDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceDTO[]))]
@@ -10452,64 +10874,10 @@ namespace SAS.EstayMobileService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackSearchParams))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumUserSourceFrom))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumReturnFormatType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SearchCntResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ResultBase))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumResultCode))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSystemID))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateCodeMappingResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.LoginResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CheckExistResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCashBackItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackConfigResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumGiveIntegralItemKey))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.IntegralConfigResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCashbackStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumHotelSourceFrom))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderWay))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderOperateType[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderOperateType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCommonOrderStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOperator))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderGuaranteeRuleResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongCreateOrderResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateOrderResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateCreditCardResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EarliestLastestArriveTimeResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReviewableResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumReivewableState))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplateCategoryResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplateCategoryCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateTypeResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateTypeCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendWay))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendRuleType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SendInfoResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumAudit))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserLevelResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumAccountType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCurrentBalanceResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceIncomcOutcomeSumResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCurrentIntegralResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralValueResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.Guarantee_rule))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.Guarantee_PayTypeEnum))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.HouseParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SearchParamsDTO))]
         SAS.EstayMobileService.ValidateCodeMappingResult SendValidateCodeMessageByUserProof(string UserProof, string ValidateTypeKey, SAS.EstayMobileService.EnumSystemID SystemID, object ProviderObj);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SendValidateCodeMessageByUserProof", ReplyAction="http://tempuri.org/MobileContract/SendValidateCodeMessageByUserProofResponse")]
@@ -10517,17 +10885,80 @@ namespace SAS.EstayMobileService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SendValidateCodeMessageByUserProofFormatString", ReplyAction="http://tempuri.org/MobileContract/SendValidateCodeMessageByUserProofFormatStringR" +
             "esponse")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoDTO[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateParams))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateDTO[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateSearchParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumUserSourceFrom))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumReturnFormatType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CheckExistResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ResultBase))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumResultCode))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SearchCntResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSystemID))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateCodeMappingResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.LoginResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCashBackItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackConfigResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumGiveIntegralItemKey))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.IntegralConfigResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongCreateOrderResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateOrderResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateCreditCardResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EarliestLastestArriveTimeResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReviewableResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumReivewableState))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplateCategoryResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplateCategoryCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateTypeResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateTypeCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendWay))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendRuleType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SendInfoResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumAudit))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCashbackStatus))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumHotelSourceFrom))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderWay))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderOperateType[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderOperateType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCommonOrderStatus))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOperator))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderGuaranteeRuleResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserLevelResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumAccountType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCurrentBalanceResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceIncomcOutcomeSumResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCurrentIntegralResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralValueResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReviewKeyRequest))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReplyReviewRequest))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ActivityParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CompositeType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.GuaranteeRuleChangeRule))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderGuaranteeDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EarliestLastestTimeDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EarliestLastestTimeDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderSearchParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderAndStateChangeParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoDTO[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateParams))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateDTO[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateSearchParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderSearchParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumConfirmationType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCurrencyCode))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumGuestTypeCode))]
@@ -10549,24 +10980,18 @@ namespace SAS.EstayMobileService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplatesDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SendInfosDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SendRuleDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.HouseParamsDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SearchParamsDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CompositeType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.Guarantee_rule))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.Guarantee_PayTypeEnum))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.GuaranteeRuleChangeRule))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReviewKeyRequest))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CommentParamsDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoSearchParamsDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CommentHParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.loginUserParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoSearchParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoDTO[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackConfigDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.IntegralConfigDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserLevelDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceDTO[]))]
@@ -10579,64 +11004,10 @@ namespace SAS.EstayMobileService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackSearchParams))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumUserSourceFrom))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumReturnFormatType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SearchCntResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ResultBase))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumResultCode))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSystemID))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateCodeMappingResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.LoginResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CheckExistResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCashBackItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackConfigResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumGiveIntegralItemKey))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.IntegralConfigResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCashbackStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumHotelSourceFrom))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderWay))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderOperateType[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderOperateType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCommonOrderStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOperator))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderGuaranteeRuleResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongCreateOrderResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateOrderResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateCreditCardResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EarliestLastestArriveTimeResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReviewableResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumReivewableState))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplateCategoryResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplateCategoryCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateTypeResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateTypeCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendWay))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendRuleType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SendInfoResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumAudit))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserLevelResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumAccountType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCurrentBalanceResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceIncomcOutcomeSumResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCurrentIntegralResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralValueResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.Guarantee_rule))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.Guarantee_PayTypeEnum))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.HouseParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SearchParamsDTO))]
         string SendValidateCodeMessageByUserProofFormatString(string UserProof, string ValidateTypeKey, SAS.EstayMobileService.EnumSystemID SystemID, object ProviderObj, SAS.EstayMobileService.EnumReturnFormatType returnType);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SendValidateCodeMessageByUserProofFormatString", ReplyAction="http://tempuri.org/MobileContract/SendValidateCodeMessageByUserProofFormatStringR" +
@@ -10829,260 +11200,6 @@ namespace SAS.EstayMobileService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetSearchHousesInfo", ReplyAction="http://tempuri.org/MobileContract/GetSearchHousesInfoResponse")]
         System.Threading.Tasks.Task<string> GetSearchHousesInfoAsync(SAS.EstayMobileService.SearchParamsDTO SearchParams);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnLiveOrderByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchUnLiveOrderByUserIDResponse")]
-        SAS.EstayMobileService.OrderInfoCollectionResult SearchUnLiveOrderByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnLiveOrderByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchUnLiveOrderByUserIDResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchUnLiveOrderByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnLiveOrderByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnLiveOrderByUserIDFormatStringResponse")]
-        string SearchUnLiveOrderByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnLiveOrderByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnLiveOrderByUserIDFormatStringResponse")]
-        System.Threading.Tasks.Task<string> SearchUnLiveOrderByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnLiveOrderByUserIDByPage", ReplyAction="http://tempuri.org/MobileContract/SearchUnLiveOrderByUserIDByPageResponse")]
-        SAS.EstayMobileService.OrderInfoCollectionResult SearchUnLiveOrderByUserIDByPage(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnLiveOrderByUserIDByPage", ReplyAction="http://tempuri.org/MobileContract/SearchUnLiveOrderByUserIDByPageResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchUnLiveOrderByUserIDByPageAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnLiveOrderByPageByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnLiveOrderByPageByUserIDFormatStringResp" +
-            "onse")]
-        string SearchUnLiveOrderByPageByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnLiveOrderByPageByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnLiveOrderByPageByUserIDFormatStringResp" +
-            "onse")]
-        System.Threading.Tasks.Task<string> SearchUnLiveOrderByPageByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnliveOrderCntByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchUnliveOrderCntByUserIDResponse")]
-        SAS.EstayMobileService.SearchCntResult SearchUnliveOrderCntByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnliveOrderCntByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchUnliveOrderCntByUserIDResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchUnliveOrderCntByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnliveOrderCntByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnliveOrderCntByUserIDFormatStringRespons" +
-            "e")]
-        string SearchUnliveOrderCntByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnliveOrderCntByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnliveOrderCntByUserIDFormatStringRespons" +
-            "e")]
-        System.Threading.Tasks.Task<string> SearchUnliveOrderCntByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderByUserIDResponse")]
-        SAS.EstayMobileService.OrderInfoCollectionResult SearchWaitForPayOrderByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderByUserIDResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchWaitForPayOrderByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderByUserIDFormatStringRespon" +
-            "se")]
-        string SearchWaitForPayOrderByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderByUserIDFormatStringRespon" +
-            "se")]
-        System.Threading.Tasks.Task<string> SearchWaitForPayOrderByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderByPageByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderByPageByUserIDResponse")]
-        SAS.EstayMobileService.OrderInfoCollectionResult SearchWaitForPayOrderByPageByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderByPageByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderByPageByUserIDResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchWaitForPayOrderByPageByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderByPageByUserIDFormatString" +
-            "", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderByPageByUserIDFormatString" +
-            "Response")]
-        string SearchWaitForPayOrderByPageByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderByPageByUserIDFormatString" +
-            "", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderByPageByUserIDFormatString" +
-            "Response")]
-        System.Threading.Tasks.Task<string> SearchWaitForPayOrderByPageByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderCntByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderCntByUserIDResponse")]
-        SAS.EstayMobileService.SearchCntResult SearchWaitForPayOrderCntByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderCntByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderCntByUserIDResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchWaitForPayOrderCntByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderCntByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderCntByUserIDFormatStringRes" +
-            "ponse")]
-        string SearchWaitForPayOrderCntByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderCntByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderCntByUserIDFormatStringRes" +
-            "ponse")]
-        System.Threading.Tasks.Task<string> SearchWaitForPayOrderCntByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderByUserIDResponse")]
-        SAS.EstayMobileService.OrderInfoCollectionResult SearchCanReviewOrderByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderByUserIDResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchCanReviewOrderByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderByUserIDFormatStringRespons" +
-            "e")]
-        string SearchCanReviewOrderByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderByUserIDFormatStringRespons" +
-            "e")]
-        System.Threading.Tasks.Task<string> SearchCanReviewOrderByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderByPageByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderByPageByUserIDResponse")]
-        SAS.EstayMobileService.OrderInfoCollectionResult SearchCanReviewOrderByPageByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderByPageByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderByPageByUserIDResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchCanReviewOrderByPageByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderByPageByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderByPageByUserIDFormatStringR" +
-            "esponse")]
-        string SearchCanReviewOrderByPageByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderByPageByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderByPageByUserIDFormatStringR" +
-            "esponse")]
-        System.Threading.Tasks.Task<string> SearchCanReviewOrderByPageByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderCntByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderCntByUserIDResponse")]
-        SAS.EstayMobileService.SearchCntResult SearchCanReviewOrderCntByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderCntByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderCntByUserIDResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchCanReviewOrderCntByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderCntByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderCntByUserIDFormatStringResp" +
-            "onse")]
-        string SearchCanReviewOrderCntByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderCntByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderCntByUserIDFormatStringResp" +
-            "onse")]
-        System.Threading.Tasks.Task<string> SearchCanReviewOrderCntByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByUserIDResponse")]
-        SAS.EstayMobileService.OrderInfoCollectionResult SearchUnIncludeTempOrdersByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByUserIDResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchUnIncludeTempOrdersByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByUserIDFormatStringRe" +
-            "sponse")]
-        string SearchUnIncludeTempOrdersByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByUserIDFormatStringRe" +
-            "sponse")]
-        System.Threading.Tasks.Task<string> SearchUnIncludeTempOrdersByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByPageByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByPageByUserIDResponse" +
-            "")]
-        SAS.EstayMobileService.OrderInfoCollectionResult SearchUnIncludeTempOrdersByPageByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByPageByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByPageByUserIDResponse" +
-            "")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchUnIncludeTempOrdersByPageByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByPageByUserIDFormatSt" +
-            "ring", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByPageByUserIDFormatSt" +
-            "ringResponse")]
-        string SearchUnIncludeTempOrdersByPageByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByPageByUserIDFormatSt" +
-            "ring", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByPageByUserIDFormatSt" +
-            "ringResponse")]
-        System.Threading.Tasks.Task<string> SearchUnIncludeTempOrdersByPageByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersCntByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersCntByUserIDResponse")]
-        SAS.EstayMobileService.SearchCntResult SearchUnIncludeTempOrdersCntByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersCntByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersCntByUserIDResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchUnIncludeTempOrdersCntByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersCntByUserIDFormatStrin" +
-            "g", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersCntByUserIDFormatStrin" +
-            "gResponse")]
-        string SearchUnIncludeTempOrdersCntByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersCntByUserIDFormatStrin" +
-            "g", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersCntByUserIDFormatStrin" +
-            "gResponse")]
-        System.Threading.Tasks.Task<string> SearchUnIncludeTempOrdersCntByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetSpecialOrderStateInfo", ReplyAction="http://tempuri.org/MobileContract/GetSpecialOrderStateInfoResponse")]
-        SAS.EstayMobileService.OrderStateCollectionResult GetSpecialOrderStateInfo(SAS.EstayMobileService.OrderStateParams orderStateParam);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetSpecialOrderStateInfo", ReplyAction="http://tempuri.org/MobileContract/GetSpecialOrderStateInfoResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateCollectionResult> GetSpecialOrderStateInfoAsync(SAS.EstayMobileService.OrderStateParams orderStateParam);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetSpecialOrderStateInfoFormatString", ReplyAction="http://tempuri.org/MobileContract/GetSpecialOrderStateInfoFormatStringResponse")]
-        string GetSpecialOrderStateInfoFormatString(SAS.EstayMobileService.OrderStateParams orderStateParam, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetSpecialOrderStateInfoFormatString", ReplyAction="http://tempuri.org/MobileContract/GetSpecialOrderStateInfoFormatStringResponse")]
-        System.Threading.Tasks.Task<string> GetSpecialOrderStateInfoFormatStringAsync(SAS.EstayMobileService.OrderStateParams orderStateParam, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetStateByID", ReplyAction="http://tempuri.org/MobileContract/GetStateByIDResponse")]
-        SAS.EstayMobileService.OrderStateResult GetStateByID(int stateID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetStateByID", ReplyAction="http://tempuri.org/MobileContract/GetStateByIDResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> GetStateByIDAsync(int stateID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetStateByIDFormatString", ReplyAction="http://tempuri.org/MobileContract/GetStateByIDFormatStringResponse")]
-        string GetStateByIDFormatString(int stateID, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetStateByIDFormatString", ReplyAction="http://tempuri.org/MobileContract/GetStateByIDFormatStringResponse")]
-        System.Threading.Tasks.Task<string> GetStateByIDFormatStringAsync(int stateID, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchOrderState", ReplyAction="http://tempuri.org/MobileContract/SearchOrderStateResponse")]
-        SAS.EstayMobileService.OrderStateCollectionResult SearchOrderState(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchOrderState", ReplyAction="http://tempuri.org/MobileContract/SearchOrderStateResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateCollectionResult> SearchOrderStateAsync(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchOrderStateFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchOrderStateFormatStringResponse")]
-        string SearchOrderStateFormatString(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchOrderStateFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchOrderStateFormatStringResponse")]
-        System.Threading.Tasks.Task<string> SearchOrderStateFormatStringAsync(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchOrderStateByPage", ReplyAction="http://tempuri.org/MobileContract/SearchOrderStateByPageResponse")]
-        SAS.EstayMobileService.OrderStateCollectionResult SearchOrderStateByPage(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams, int currentPage, int pagesize);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchOrderStateByPage", ReplyAction="http://tempuri.org/MobileContract/SearchOrderStateByPageResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateCollectionResult> SearchOrderStateByPageAsync(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams, int currentPage, int pagesize);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchOrderStateByPageFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchOrderStateByPageFormatStringResponse")]
-        string SearchOrderStateByPageFormatString(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchOrderStateByPageFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchOrderStateByPageFormatStringResponse")]
-        System.Threading.Tasks.Task<string> SearchOrderStateByPageFormatStringAsync(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchOrderStateCnt", ReplyAction="http://tempuri.org/MobileContract/SearchOrderStateCntResponse")]
-        SAS.EstayMobileService.SearchCntResult SearchOrderStateCnt(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchOrderStateCnt", ReplyAction="http://tempuri.org/MobileContract/SearchOrderStateCntResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchOrderStateCntAsync(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchOrderStateCntFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchOrderStateCntFormatStringResponse")]
-        string SearchOrderStateCntFormatString(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchOrderStateCntFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchOrderStateCntFormatStringResponse")]
-        System.Threading.Tasks.Task<string> SearchOrderStateCntFormatStringAsync(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetOrderGuaranteeRuleByOrderID", ReplyAction="http://tempuri.org/MobileContract/GetOrderGuaranteeRuleByOrderIDResponse")]
-        SAS.EstayMobileService.OrderGuaranteeRuleResult GetOrderGuaranteeRuleByOrderID(int orderID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetOrderGuaranteeRuleByOrderID", ReplyAction="http://tempuri.org/MobileContract/GetOrderGuaranteeRuleByOrderIDResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderGuaranteeRuleResult> GetOrderGuaranteeRuleByOrderIDAsync(int orderID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetOrderGuaranteeRuleByOrderIDFormatString", ReplyAction="http://tempuri.org/MobileContract/GetOrderGuaranteeRuleByOrderIDFormatStringRespo" +
-            "nse")]
-        string GetOrderGuaranteeRuleByOrderIDFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetOrderGuaranteeRuleByOrderIDFormatString", ReplyAction="http://tempuri.org/MobileContract/GetOrderGuaranteeRuleByOrderIDFormatStringRespo" +
-            "nse")]
-        System.Threading.Tasks.Task<string> GetOrderGuaranteeRuleByOrderIDFormatStringAsync(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/AddOrderGuaranteeRule", ReplyAction="http://tempuri.org/MobileContract/AddOrderGuaranteeRuleResponse")]
-        SAS.EstayMobileService.OrderGuaranteeRuleResult AddOrderGuaranteeRule(SAS.EstayMobileService.OrderGuaranteeDTO orderGuaranteeRule);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/AddOrderGuaranteeRule", ReplyAction="http://tempuri.org/MobileContract/AddOrderGuaranteeRuleResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderGuaranteeRuleResult> AddOrderGuaranteeRuleAsync(SAS.EstayMobileService.OrderGuaranteeDTO orderGuaranteeRule);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/AddOrderGuaranteeRuleFormatString", ReplyAction="http://tempuri.org/MobileContract/AddOrderGuaranteeRuleFormatStringResponse")]
         string AddOrderGuaranteeRuleFormatString(SAS.EstayMobileService.OrderGuaranteeDTO orderGuaranteeRule, SAS.EstayMobileService.EnumReturnFormatType returnType);
         
@@ -11181,11 +11298,23 @@ namespace SAS.EstayMobileService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetHouseCommentList", ReplyAction="http://tempuri.org/MobileContract/GetHouseCommentListResponse")]
         System.Threading.Tasks.Task<string> GetHouseCommentListAsync(SAS.EstayMobileService.CommentParamsDTO CommentParams);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetHotelCommentList", ReplyAction="http://tempuri.org/MobileContract/GetHotelCommentListResponse")]
+        string GetHotelCommentList(SAS.EstayMobileService.CommentHParamsDTO CommentHParams);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetHotelCommentList", ReplyAction="http://tempuri.org/MobileContract/GetHotelCommentListResponse")]
+        System.Threading.Tasks.Task<string> GetHotelCommentListAsync(SAS.EstayMobileService.CommentHParamsDTO CommentHParams);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/PublishReview", ReplyAction="http://tempuri.org/MobileContract/PublishReviewResponse")]
         string PublishReview(SAS.EstayMobileService.ReviewKeyRequest ReviewKeyRequest);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/PublishReview", ReplyAction="http://tempuri.org/MobileContract/PublishReviewResponse")]
         System.Threading.Tasks.Task<string> PublishReviewAsync(SAS.EstayMobileService.ReviewKeyRequest ReviewKeyRequest);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/ReplyReview", ReplyAction="http://tempuri.org/MobileContract/ReplyReviewResponse")]
+        string ReplyReview(SAS.EstayMobileService.ReplyReviewRequest ReplyReviewRequest);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/ReplyReview", ReplyAction="http://tempuri.org/MobileContract/ReplyReviewResponse")]
+        System.Threading.Tasks.Task<string> ReplyReviewAsync(SAS.EstayMobileService.ReplyReviewRequest ReplyReviewRequest);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/IsCanComment", ReplyAction="http://tempuri.org/MobileContract/IsCanCommentResponse")]
         SAS.EstayMobileService.ReviewableResult IsCanComment(string userTel, string roomID);
@@ -11422,17 +11551,80 @@ namespace SAS.EstayMobileService {
         System.Threading.Tasks.Task<SAS.EstayMobileService.ValidateCodeMappingResult> GetValidateCodeMappingByEmailAsync(string Email, int validateType);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SendVaidateCodeMessage", ReplyAction="http://tempuri.org/MobileContract/SendVaidateCodeMessageResponse")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoDTO[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateParams))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateDTO[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateSearchParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumUserSourceFrom))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumReturnFormatType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CheckExistResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ResultBase))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumResultCode))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SearchCntResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSystemID))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateCodeMappingResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.LoginResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCashBackItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackConfigResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumGiveIntegralItemKey))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.IntegralConfigResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongCreateOrderResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateOrderResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateCreditCardResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EarliestLastestArriveTimeResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReviewableResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumReivewableState))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplateCategoryResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplateCategoryCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateTypeResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateTypeCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendWay))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendRuleType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SendInfoResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumAudit))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCashbackStatus))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumHotelSourceFrom))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderWay))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderOperateType[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderOperateType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCommonOrderStatus))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOperator))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderGuaranteeRuleResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserLevelResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumAccountType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCurrentBalanceResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceIncomcOutcomeSumResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCurrentIntegralResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralValueResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReviewKeyRequest))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReplyReviewRequest))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ActivityParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CompositeType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.GuaranteeRuleChangeRule))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderGuaranteeDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EarliestLastestTimeDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EarliestLastestTimeDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderSearchParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderAndStateChangeParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoDTO[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateParams))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateDTO[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateSearchParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderSearchParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumConfirmationType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCurrencyCode))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumGuestTypeCode))]
@@ -11454,24 +11646,18 @@ namespace SAS.EstayMobileService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplatesDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SendInfosDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SendRuleDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.HouseParamsDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SearchParamsDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CompositeType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.Guarantee_rule))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.Guarantee_PayTypeEnum))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.GuaranteeRuleChangeRule))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReviewKeyRequest))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CommentParamsDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoSearchParamsDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CommentHParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.loginUserParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoSearchParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoDTO[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackConfigDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.IntegralConfigDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserLevelDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceDTO[]))]
@@ -11484,81 +11670,90 @@ namespace SAS.EstayMobileService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackSearchParams))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumUserSourceFrom))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumReturnFormatType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SearchCntResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ResultBase))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumResultCode))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSystemID))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateCodeMappingResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.LoginResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CheckExistResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCashBackItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackConfigResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumGiveIntegralItemKey))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.IntegralConfigResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCashbackStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumHotelSourceFrom))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderWay))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderOperateType[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderOperateType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCommonOrderStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOperator))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderGuaranteeRuleResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongCreateOrderResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateOrderResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateCreditCardResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EarliestLastestArriveTimeResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReviewableResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumReivewableState))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplateCategoryResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplateCategoryCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateTypeResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateTypeCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendWay))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendRuleType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SendInfoResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumAudit))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserLevelResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumAccountType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCurrentBalanceResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceIncomcOutcomeSumResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCurrentIntegralResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralValueResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.Guarantee_rule))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.Guarantee_PayTypeEnum))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.HouseParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SearchParamsDTO))]
         SAS.EstayMobileService.ValidateCodeMappingResult SendVaidateCodeMessage(string Receiver, SAS.EstayMobileService.EnumSystemID SystemID, SAS.EstayMobileService.EnumSendType SendType, string ValidateTypeKey, object ProviderObj);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SendVaidateCodeMessage", ReplyAction="http://tempuri.org/MobileContract/SendVaidateCodeMessageResponse")]
         System.Threading.Tasks.Task<SAS.EstayMobileService.ValidateCodeMappingResult> SendVaidateCodeMessageAsync(string Receiver, SAS.EstayMobileService.EnumSystemID SystemID, SAS.EstayMobileService.EnumSendType SendType, string ValidateTypeKey, object ProviderObj);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SendVaidateCodeMessageFormatString", ReplyAction="http://tempuri.org/MobileContract/SendVaidateCodeMessageFormatStringResponse")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoDTO[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateParams))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateDTO[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateSearchParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumUserSourceFrom))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumReturnFormatType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CheckExistResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ResultBase))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumResultCode))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SearchCntResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSystemID))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateCodeMappingResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.LoginResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCashBackItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackConfigResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumGiveIntegralItemKey))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.IntegralConfigResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongCreateOrderResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateOrderResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateCreditCardResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EarliestLastestArriveTimeResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReviewableResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumReivewableState))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplateCategoryResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplateCategoryCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateTypeResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateTypeCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendWay))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendRuleType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SendInfoResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumAudit))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCashbackStatus))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumHotelSourceFrom))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderWay))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderOperateType[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderOperateType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCommonOrderStatus))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOperator))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderGuaranteeRuleResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserLevelResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumAccountType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCurrentBalanceResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceIncomcOutcomeSumResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCurrentIntegralResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralValueResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReviewKeyRequest))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReplyReviewRequest))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ActivityParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CompositeType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.GuaranteeRuleChangeRule))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderGuaranteeDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EarliestLastestTimeDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EarliestLastestTimeDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderSearchParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderAndStateChangeParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoDTO[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateParams))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateDTO[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateSearchParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderSearchParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumConfirmationType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCurrencyCode))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumGuestTypeCode))]
@@ -11580,24 +11775,18 @@ namespace SAS.EstayMobileService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplatesDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SendInfosDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SendRuleDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.HouseParamsDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SearchParamsDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CompositeType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.Guarantee_rule))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.Guarantee_PayTypeEnum))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.GuaranteeRuleChangeRule))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReviewKeyRequest))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CommentParamsDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoSearchParamsDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CommentHParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.loginUserParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoSearchParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoDTO[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackConfigDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.IntegralConfigDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserLevelDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceDTO[]))]
@@ -11610,81 +11799,90 @@ namespace SAS.EstayMobileService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackSearchParams))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumUserSourceFrom))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumReturnFormatType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SearchCntResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ResultBase))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumResultCode))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSystemID))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateCodeMappingResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.LoginResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CheckExistResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCashBackItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackConfigResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumGiveIntegralItemKey))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.IntegralConfigResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCashbackStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumHotelSourceFrom))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderWay))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderOperateType[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderOperateType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCommonOrderStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOperator))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderGuaranteeRuleResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongCreateOrderResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateOrderResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateCreditCardResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EarliestLastestArriveTimeResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReviewableResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumReivewableState))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplateCategoryResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplateCategoryCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateTypeResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateTypeCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendWay))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendRuleType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SendInfoResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumAudit))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserLevelResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumAccountType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCurrentBalanceResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceIncomcOutcomeSumResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCurrentIntegralResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralValueResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.Guarantee_rule))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.Guarantee_PayTypeEnum))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.HouseParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SearchParamsDTO))]
         string SendVaidateCodeMessageFormatString(string Receiver, SAS.EstayMobileService.EnumSystemID SystemID, SAS.EstayMobileService.EnumSendType SendType, string ValidateTypeKey, object ProviderObj, SAS.EstayMobileService.EnumReturnFormatType returnType);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SendVaidateCodeMessageFormatString", ReplyAction="http://tempuri.org/MobileContract/SendVaidateCodeMessageFormatStringResponse")]
         System.Threading.Tasks.Task<string> SendVaidateCodeMessageFormatStringAsync(string Receiver, SAS.EstayMobileService.EnumSystemID SystemID, SAS.EstayMobileService.EnumSendType SendType, string ValidateTypeKey, object ProviderObj, SAS.EstayMobileService.EnumReturnFormatType returnType);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SendMessage", ReplyAction="http://tempuri.org/MobileContract/SendMessageResponse")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoDTO[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateParams))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateDTO[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateSearchParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumUserSourceFrom))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumReturnFormatType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CheckExistResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ResultBase))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumResultCode))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SearchCntResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSystemID))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateCodeMappingResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.LoginResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCashBackItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackConfigResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumGiveIntegralItemKey))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.IntegralConfigResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongCreateOrderResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateOrderResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateCreditCardResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EarliestLastestArriveTimeResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReviewableResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumReivewableState))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplateCategoryResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplateCategoryCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateTypeResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateTypeCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendWay))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendRuleType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SendInfoResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumAudit))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCashbackStatus))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumHotelSourceFrom))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderWay))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderOperateType[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderOperateType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCommonOrderStatus))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOperator))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderGuaranteeRuleResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserLevelResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumAccountType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCurrentBalanceResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceIncomcOutcomeSumResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCurrentIntegralResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralValueResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReviewKeyRequest))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReplyReviewRequest))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ActivityParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CompositeType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.GuaranteeRuleChangeRule))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderGuaranteeDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EarliestLastestTimeDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EarliestLastestTimeDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderSearchParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderAndStateChangeParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoDTO[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateParams))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateDTO[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateSearchParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderSearchParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumConfirmationType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCurrencyCode))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumGuestTypeCode))]
@@ -11706,24 +11904,18 @@ namespace SAS.EstayMobileService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplatesDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SendInfosDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SendRuleDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.HouseParamsDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SearchParamsDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CompositeType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.Guarantee_rule))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.Guarantee_PayTypeEnum))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.GuaranteeRuleChangeRule))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReviewKeyRequest))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CommentParamsDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoSearchParamsDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CommentHParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.loginUserParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoSearchParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoDTO[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackConfigDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.IntegralConfigDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserLevelDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceDTO[]))]
@@ -11736,81 +11928,90 @@ namespace SAS.EstayMobileService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackSearchParams))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumUserSourceFrom))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumReturnFormatType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SearchCntResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ResultBase))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumResultCode))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSystemID))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateCodeMappingResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.LoginResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CheckExistResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCashBackItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackConfigResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumGiveIntegralItemKey))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.IntegralConfigResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCashbackStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumHotelSourceFrom))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderWay))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderOperateType[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderOperateType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCommonOrderStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOperator))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderGuaranteeRuleResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongCreateOrderResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateOrderResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateCreditCardResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EarliestLastestArriveTimeResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReviewableResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumReivewableState))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplateCategoryResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplateCategoryCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateTypeResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateTypeCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendWay))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendRuleType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SendInfoResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumAudit))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserLevelResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumAccountType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCurrentBalanceResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceIncomcOutcomeSumResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCurrentIntegralResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralValueResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.Guarantee_rule))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.Guarantee_PayTypeEnum))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.HouseParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SearchParamsDTO))]
         SAS.EstayMobileService.SendInfoResult SendMessage(string Receiver, SAS.EstayMobileService.EnumSystemID SystemID, SAS.EstayMobileService.EnumSendType SendType, SAS.EstayMobileService.EnumSendWay SendWay, SAS.EstayMobileService.EnumSendRuleType SendRuleType, string TemplateCategoryKey, object ProviderObj);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SendMessage", ReplyAction="http://tempuri.org/MobileContract/SendMessageResponse")]
         System.Threading.Tasks.Task<SAS.EstayMobileService.SendInfoResult> SendMessageAsync(string Receiver, SAS.EstayMobileService.EnumSystemID SystemID, SAS.EstayMobileService.EnumSendType SendType, SAS.EstayMobileService.EnumSendWay SendWay, SAS.EstayMobileService.EnumSendRuleType SendRuleType, string TemplateCategoryKey, object ProviderObj);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SendMessageFormatString", ReplyAction="http://tempuri.org/MobileContract/SendMessageFormatStringResponse")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoDTO[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateParams))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateDTO[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateSearchParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumUserSourceFrom))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumReturnFormatType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CheckExistResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ResultBase))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumResultCode))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SearchCntResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSystemID))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateCodeMappingResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.LoginResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCashBackItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackConfigResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumGiveIntegralItemKey))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.IntegralConfigResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongCreateOrderResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateOrderResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateCreditCardResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EarliestLastestArriveTimeResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReviewableResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumReivewableState))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplateCategoryResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplateCategoryCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateTypeResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateTypeCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendWay))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendRuleType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SendInfoResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumAudit))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCashbackStatus))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumHotelSourceFrom))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderWay))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderOperateType[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderOperateType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCommonOrderStatus))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOperator))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderGuaranteeRuleResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserLevelResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumAccountType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCurrentBalanceResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceIncomcOutcomeSumResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCurrentIntegralResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralValueResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReviewKeyRequest))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReplyReviewRequest))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ActivityParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CompositeType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.GuaranteeRuleChangeRule))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderGuaranteeDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EarliestLastestTimeDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EarliestLastestTimeDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderSearchParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderAndStateChangeParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoDTO[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateParams))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateDTO[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateSearchParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderSearchParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumConfirmationType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCurrencyCode))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumGuestTypeCode))]
@@ -11832,24 +12033,18 @@ namespace SAS.EstayMobileService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplatesDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SendInfosDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SendRuleDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.HouseParamsDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SearchParamsDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CompositeType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.Guarantee_rule))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.Guarantee_PayTypeEnum))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.GuaranteeRuleChangeRule))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReviewKeyRequest))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CommentParamsDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoSearchParamsDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CommentHParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.loginUserParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoSearchParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoDTO[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackConfigDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.IntegralConfigDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserLevelDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceDTO[]))]
@@ -11862,81 +12057,90 @@ namespace SAS.EstayMobileService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackSearchParams))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumUserSourceFrom))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumReturnFormatType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SearchCntResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ResultBase))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumResultCode))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSystemID))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateCodeMappingResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.LoginResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CheckExistResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCashBackItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackConfigResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumGiveIntegralItemKey))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.IntegralConfigResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCashbackStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumHotelSourceFrom))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderWay))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderOperateType[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderOperateType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCommonOrderStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOperator))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderGuaranteeRuleResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongCreateOrderResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateOrderResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateCreditCardResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EarliestLastestArriveTimeResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReviewableResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumReivewableState))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplateCategoryResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplateCategoryCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateTypeResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateTypeCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendWay))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendRuleType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SendInfoResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumAudit))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserLevelResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumAccountType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCurrentBalanceResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceIncomcOutcomeSumResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCurrentIntegralResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralValueResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.Guarantee_rule))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.Guarantee_PayTypeEnum))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.HouseParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SearchParamsDTO))]
         string SendMessageFormatString(string Receiver, SAS.EstayMobileService.EnumSystemID SystemID, SAS.EstayMobileService.EnumSendType SendType, SAS.EstayMobileService.EnumSendWay SendWay, SAS.EstayMobileService.EnumSendRuleType SendRuleType, string TemplateCategoryKey, object ProviderObj, SAS.EstayMobileService.EnumReturnFormatType returnType);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SendMessageFormatString", ReplyAction="http://tempuri.org/MobileContract/SendMessageFormatStringResponse")]
         System.Threading.Tasks.Task<string> SendMessageFormatStringAsync(string Receiver, SAS.EstayMobileService.EnumSystemID SystemID, SAS.EstayMobileService.EnumSendType SendType, SAS.EstayMobileService.EnumSendWay SendWay, SAS.EstayMobileService.EnumSendRuleType SendRuleType, string TemplateCategoryKey, object ProviderObj, SAS.EstayMobileService.EnumReturnFormatType returnType);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SendTimeMessage", ReplyAction="http://tempuri.org/MobileContract/SendTimeMessageResponse")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoDTO[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateParams))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateDTO[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateSearchParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumUserSourceFrom))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumReturnFormatType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CheckExistResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ResultBase))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumResultCode))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SearchCntResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSystemID))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateCodeMappingResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.LoginResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCashBackItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackConfigResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumGiveIntegralItemKey))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.IntegralConfigResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongCreateOrderResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateOrderResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateCreditCardResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EarliestLastestArriveTimeResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReviewableResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumReivewableState))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplateCategoryResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplateCategoryCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateTypeResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateTypeCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendWay))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendRuleType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SendInfoResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumAudit))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCashbackStatus))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumHotelSourceFrom))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderWay))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderOperateType[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderOperateType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCommonOrderStatus))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOperator))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderGuaranteeRuleResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserLevelResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumAccountType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCurrentBalanceResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceIncomcOutcomeSumResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCurrentIntegralResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralValueResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReviewKeyRequest))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReplyReviewRequest))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ActivityParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CompositeType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.GuaranteeRuleChangeRule))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderGuaranteeDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EarliestLastestTimeDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EarliestLastestTimeDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderSearchParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderAndStateChangeParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoDTO[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateParams))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateDTO[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateSearchParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderSearchParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumConfirmationType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCurrencyCode))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumGuestTypeCode))]
@@ -11958,24 +12162,18 @@ namespace SAS.EstayMobileService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplatesDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SendInfosDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SendRuleDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.HouseParamsDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SearchParamsDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CompositeType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.Guarantee_rule))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.Guarantee_PayTypeEnum))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.GuaranteeRuleChangeRule))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReviewKeyRequest))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CommentParamsDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoSearchParamsDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CommentHParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.loginUserParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoSearchParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoDTO[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackConfigDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.IntegralConfigDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserLevelDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceDTO[]))]
@@ -11988,81 +12186,90 @@ namespace SAS.EstayMobileService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackSearchParams))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumUserSourceFrom))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumReturnFormatType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SearchCntResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ResultBase))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumResultCode))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSystemID))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateCodeMappingResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.LoginResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CheckExistResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCashBackItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackConfigResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumGiveIntegralItemKey))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.IntegralConfigResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCashbackStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumHotelSourceFrom))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderWay))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderOperateType[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderOperateType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCommonOrderStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOperator))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderGuaranteeRuleResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongCreateOrderResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateOrderResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateCreditCardResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EarliestLastestArriveTimeResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReviewableResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumReivewableState))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplateCategoryResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplateCategoryCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateTypeResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateTypeCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendWay))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendRuleType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SendInfoResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumAudit))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserLevelResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumAccountType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCurrentBalanceResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceIncomcOutcomeSumResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCurrentIntegralResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralValueResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.Guarantee_rule))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.Guarantee_PayTypeEnum))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.HouseParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SearchParamsDTO))]
         SAS.EstayMobileService.SendInfoResult SendTimeMessage(string Receiver, SAS.EstayMobileService.EnumSystemID SystemID, SAS.EstayMobileService.EnumSendType SendType, SAS.EstayMobileService.EnumSendWay SendWay, string TemplateCategoryKey, object ProviderObj, SAS.EstayMobileService.SendRuleDTO TimingSendRule);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SendTimeMessage", ReplyAction="http://tempuri.org/MobileContract/SendTimeMessageResponse")]
         System.Threading.Tasks.Task<SAS.EstayMobileService.SendInfoResult> SendTimeMessageAsync(string Receiver, SAS.EstayMobileService.EnumSystemID SystemID, SAS.EstayMobileService.EnumSendType SendType, SAS.EstayMobileService.EnumSendWay SendWay, string TemplateCategoryKey, object ProviderObj, SAS.EstayMobileService.SendRuleDTO TimingSendRule);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SendTimeMessageFormatString", ReplyAction="http://tempuri.org/MobileContract/SendTimeMessageFormatStringResponse")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoDTO[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateParams))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateDTO[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateSearchParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumUserSourceFrom))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumReturnFormatType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CheckExistResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ResultBase))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumResultCode))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SearchCntResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSystemID))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateCodeMappingResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.LoginResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCashBackItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackConfigResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumGiveIntegralItemKey))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.IntegralConfigResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongCreateOrderResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateOrderResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateCreditCardResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EarliestLastestArriveTimeResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReviewableResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumReivewableState))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplateCategoryResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplateCategoryCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateTypeResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateTypeCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendWay))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendRuleType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SendInfoResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumAudit))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCashbackStatus))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumHotelSourceFrom))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderWay))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderOperateType[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderOperateType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCommonOrderStatus))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOperator))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderGuaranteeRuleResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserLevelResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumAccountType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCurrentBalanceResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceIncomcOutcomeSumResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCurrentIntegralResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralValueResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackCollectionResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReviewKeyRequest))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReplyReviewRequest))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ActivityParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CompositeType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.GuaranteeRuleChangeRule))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderGuaranteeDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EarliestLastestTimeDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EarliestLastestTimeDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderSearchParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderAndStateChangeParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoDTO[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateParams))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateDTO[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateSearchParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderSearchParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumConfirmationType))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCurrencyCode))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumGuestTypeCode))]
@@ -12084,24 +12291,18 @@ namespace SAS.EstayMobileService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplatesDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SendInfosDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SendRuleDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.HouseParamsDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SearchParamsDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CompositeType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.Guarantee_rule))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.Guarantee_PayTypeEnum))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.GuaranteeRuleChangeRule))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReviewKeyRequest))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CommentParamsDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoSearchParamsDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CommentHParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.loginUserParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoSearchParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoDTO[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackConfigDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.IntegralConfigDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserLevelDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceParamsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceDTO[]))]
@@ -12114,64 +12315,10 @@ namespace SAS.EstayMobileService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackDTO[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackSearchParams))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumUserSourceFrom))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumReturnFormatType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SearchCntResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ResultBase))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumResultCode))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSystemID))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateCodeMappingResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.LoginResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserVerifyCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CheckExistResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCashBackItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.CashBackConfigResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumGiveIntegralItemKey))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.IntegralConfigResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCashbackStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumHotelSourceFrom))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderWay))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderOperateType[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOrderOperateType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumCommonOrderStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderStateResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumOperator))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderGuaranteeRuleResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongCreateOrderResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateOrderResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ElongValidateCreditCardResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EarliestLastestArriveTimeResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ReviewableResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumReivewableState))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplateCategoryResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EmailSMSTemplateCategoryCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateTypeResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.ValidateTypeCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.TemplateCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendWay))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumSendRuleType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SendInfoResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumAudit))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserInfoCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserLevelResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.EnumAccountType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCurrentBalanceResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserBalanceIncomcOutcomeSumResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCurrentIntegralResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserIntegralValueResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.UserCashBackCollectionResult))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.OrderInfoResult))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.Guarantee_rule))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.Guarantee_PayTypeEnum))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.HouseParamsDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SAS.EstayMobileService.SearchParamsDTO))]
         string SendTimeMessageFormatString(string Receiver, SAS.EstayMobileService.EnumSystemID SystemID, SAS.EstayMobileService.EnumSendType SendType, SAS.EstayMobileService.EnumSendWay SendWay, string TemplateCategoryKey, object ProviderObj, SAS.EstayMobileService.SendRuleDTO TimingSendRule, SAS.EstayMobileService.EnumReturnFormatType returnType);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SendTimeMessageFormatString", ReplyAction="http://tempuri.org/MobileContract/SendTimeMessageFormatStringResponse")]
@@ -12315,55 +12462,565 @@ namespace SAS.EstayMobileService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/LoginedUserNameAndPassWords", ReplyAction="http://tempuri.org/MobileContract/LoginedUserNameAndPassWordsResponse")]
         System.Threading.Tasks.Task<SAS.EstayMobileService.LoginResult> LoginedUserNameAndPassWordsAsync(SAS.EstayMobileService.loginUserParamsDTO userParams);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/LoginedUserNameAndPassWordsFormatString", ReplyAction="http://tempuri.org/MobileContract/LoginedUserNameAndPassWordsFormatStringResponse" +
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/ChangeOrderState", ReplyAction="http://tempuri.org/MobileContract/ChangeOrderStateResponse")]
+        SAS.EstayMobileService.OrderStateResult ChangeOrderState(SAS.EstayMobileService.OrderAndStateChangeParamsDTO orderStateChangeParams);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/ChangeOrderState", ReplyAction="http://tempuri.org/MobileContract/ChangeOrderStateResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> ChangeOrderStateAsync(SAS.EstayMobileService.OrderAndStateChangeParamsDTO orderStateChangeParams);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/ChangeOrderStateFormatString", ReplyAction="http://tempuri.org/MobileContract/ChangeOrderStateFormatStringResponse")]
+        string ChangeOrderStateFormatString(SAS.EstayMobileService.OrderAndStateChangeParamsDTO orderStateChangeParams, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/ChangeOrderStateFormatString", ReplyAction="http://tempuri.org/MobileContract/ChangeOrderStateFormatStringResponse")]
+        System.Threading.Tasks.Task<string> ChangeOrderStateFormatStringAsync(SAS.EstayMobileService.OrderAndStateChangeParamsDTO orderStateChangeParams, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/confirmOrderStatus", ReplyAction="http://tempuri.org/MobileContract/confirmOrderStatusResponse")]
+        SAS.EstayMobileService.OrderStateResult confirmOrderStatus(int orderID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/confirmOrderStatus", ReplyAction="http://tempuri.org/MobileContract/confirmOrderStatusResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> confirmOrderStatusAsync(int orderID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/confirmOrderStatusFormatString", ReplyAction="http://tempuri.org/MobileContract/confirmOrderStatusFormatStringResponse")]
+        string confirmOrderStatusFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/confirmOrderStatusFormatString", ReplyAction="http://tempuri.org/MobileContract/confirmOrderStatusFormatStringResponse")]
+        System.Threading.Tasks.Task<string> confirmOrderStatusFormatStringAsync(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SetReadyOrderStatus", ReplyAction="http://tempuri.org/MobileContract/SetReadyOrderStatusResponse")]
+        SAS.EstayMobileService.OrderStateResult SetReadyOrderStatus(int orderID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SetReadyOrderStatus", ReplyAction="http://tempuri.org/MobileContract/SetReadyOrderStatusResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> SetReadyOrderStatusAsync(int orderID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SetReadyOrderStatusFormatString", ReplyAction="http://tempuri.org/MobileContract/SetReadyOrderStatusFormatStringResponse")]
+        string SetReadyOrderStatusFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SetReadyOrderStatusFormatString", ReplyAction="http://tempuri.org/MobileContract/SetReadyOrderStatusFormatStringResponse")]
+        System.Threading.Tasks.Task<string> SetReadyOrderStatusFormatStringAsync(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SetWaitPayOrderStatus", ReplyAction="http://tempuri.org/MobileContract/SetWaitPayOrderStatusResponse")]
+        SAS.EstayMobileService.OrderStateResult SetWaitPayOrderStatus(int orderID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SetWaitPayOrderStatus", ReplyAction="http://tempuri.org/MobileContract/SetWaitPayOrderStatusResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> SetWaitPayOrderStatusAsync(int orderID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SetWaitPayOrderStatusFormatString", ReplyAction="http://tempuri.org/MobileContract/SetWaitPayOrderStatusFormatStringResponse")]
+        string SetWaitPayOrderStatusFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SetWaitPayOrderStatusFormatString", ReplyAction="http://tempuri.org/MobileContract/SetWaitPayOrderStatusFormatStringResponse")]
+        System.Threading.Tasks.Task<string> SetWaitPayOrderStatusFormatStringAsync(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/ChangeStatusOnly", ReplyAction="http://tempuri.org/MobileContract/ChangeStatusOnlyResponse")]
+        SAS.EstayMobileService.OrderStateResult ChangeStatusOnly(int orderID, int newOrderStateID, string logStr);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/ChangeStatusOnly", ReplyAction="http://tempuri.org/MobileContract/ChangeStatusOnlyResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> ChangeStatusOnlyAsync(int orderID, int newOrderStateID, string logStr);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/ChangeStatusOnlyFormatString", ReplyAction="http://tempuri.org/MobileContract/ChangeStatusOnlyFormatStringResponse")]
+        string ChangeStatusOnlyFormatString(int orderID, int newOrderStateID, string logStr, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/ChangeStatusOnlyFormatString", ReplyAction="http://tempuri.org/MobileContract/ChangeStatusOnlyFormatStringResponse")]
+        System.Threading.Tasks.Task<string> ChangeStatusOnlyFormatStringAsync(int orderID, int newOrderStateID, string logStr, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetOrderStateInfoByOrderID", ReplyAction="http://tempuri.org/MobileContract/GetOrderStateInfoByOrderIDResponse")]
+        SAS.EstayMobileService.OrderStateResult GetOrderStateInfoByOrderID(int orderID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetOrderStateInfoByOrderID", ReplyAction="http://tempuri.org/MobileContract/GetOrderStateInfoByOrderIDResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> GetOrderStateInfoByOrderIDAsync(int orderID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetOrderStateInfoByOrderIDFormatString", ReplyAction="http://tempuri.org/MobileContract/GetOrderStateInfoByOrderIDFormatStringResponse")]
+        string GetOrderStateInfoByOrderIDFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetOrderStateInfoByOrderIDFormatString", ReplyAction="http://tempuri.org/MobileContract/GetOrderStateInfoByOrderIDFormatStringResponse")]
+        System.Threading.Tasks.Task<string> GetOrderStateInfoByOrderIDFormatStringAsync(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/WaitPayStatus", ReplyAction="http://tempuri.org/MobileContract/WaitPayStatusResponse")]
+        SAS.EstayMobileService.OrderStateResult WaitPayStatus(int orderID, int lastMinutes);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/WaitPayStatus", ReplyAction="http://tempuri.org/MobileContract/WaitPayStatusResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> WaitPayStatusAsync(int orderID, int lastMinutes);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/WaitPayStatusFormatString", ReplyAction="http://tempuri.org/MobileContract/WaitPayStatusFormatStringResponse")]
+        string WaitPayStatusFormatString(int orderID, int lastMinutes, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/WaitPayStatusFormatString", ReplyAction="http://tempuri.org/MobileContract/WaitPayStatusFormatStringResponse")]
+        System.Threading.Tasks.Task<string> WaitPayStatusFormatStringAsync(int orderID, int lastMinutes, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CancelOrder", ReplyAction="http://tempuri.org/MobileContract/CancelOrderResponse")]
+        SAS.EstayMobileService.OrderStateResult CancelOrder(int orderID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CancelOrder", ReplyAction="http://tempuri.org/MobileContract/CancelOrderResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> CancelOrderAsync(int orderID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CancelOrderFormatString", ReplyAction="http://tempuri.org/MobileContract/CancelOrderFormatStringResponse")]
+        string CancelOrderFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CancelOrderFormatString", ReplyAction="http://tempuri.org/MobileContract/CancelOrderFormatStringResponse")]
+        System.Threading.Tasks.Task<string> CancelOrderFormatStringAsync(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CheckOrderCanCancel", ReplyAction="http://tempuri.org/MobileContract/CheckOrderCanCancelResponse")]
+        SAS.EstayMobileService.CheckExistResult CheckOrderCanCancel(int orderID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CheckOrderCanCancel", ReplyAction="http://tempuri.org/MobileContract/CheckOrderCanCancelResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.CheckExistResult> CheckOrderCanCancelAsync(int orderID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CheckOrderCanCancelFormatString", ReplyAction="http://tempuri.org/MobileContract/CheckOrderCanCancelFormatStringResponse")]
+        string CheckOrderCanCancelFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CheckOrderCanCancelFormatString", ReplyAction="http://tempuri.org/MobileContract/CheckOrderCanCancelFormatStringResponse")]
+        System.Threading.Tasks.Task<string> CheckOrderCanCancelFormatStringAsync(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/FillCashBackAndOperatorToOrder", ReplyAction="http://tempuri.org/MobileContract/FillCashBackAndOperatorToOrderResponse")]
+        SAS.EstayMobileService.OrderInfoResult FillCashBackAndOperatorToOrder(int orderID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/FillCashBackAndOperatorToOrder", ReplyAction="http://tempuri.org/MobileContract/FillCashBackAndOperatorToOrderResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoResult> FillCashBackAndOperatorToOrderAsync(int orderID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/FillCashBackAndOperatorToOrderFormatString", ReplyAction="http://tempuri.org/MobileContract/FillCashBackAndOperatorToOrderFormatStringRespo" +
+            "nse")]
+        string FillCashBackAndOperatorToOrderFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/FillCashBackAndOperatorToOrderFormatString", ReplyAction="http://tempuri.org/MobileContract/FillCashBackAndOperatorToOrderFormatStringRespo" +
+            "nse")]
+        System.Threading.Tasks.Task<string> FillCashBackAndOperatorToOrderFormatStringAsync(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnLiveOrder", ReplyAction="http://tempuri.org/MobileContract/SearchUnLiveOrderResponse")]
+        SAS.EstayMobileService.OrderInfoCollectionResult SearchUnLiveOrder(SAS.EstayMobileService.UserInfoDTO userInfoDTO);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnLiveOrder", ReplyAction="http://tempuri.org/MobileContract/SearchUnLiveOrderResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchUnLiveOrderAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnLiveOrderFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnLiveOrderFormatStringResponse")]
+        string SearchUnLiveOrderFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnLiveOrderFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnLiveOrderFormatStringResponse")]
+        System.Threading.Tasks.Task<string> SearchUnLiveOrderFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnLiveOrderByPage", ReplyAction="http://tempuri.org/MobileContract/SearchUnLiveOrderByPageResponse")]
+        SAS.EstayMobileService.OrderInfoCollectionResult SearchUnLiveOrderByPage(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnLiveOrderByPage", ReplyAction="http://tempuri.org/MobileContract/SearchUnLiveOrderByPageResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchUnLiveOrderByPageAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnLiveOrderByPageFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnLiveOrderByPageFormatStringResponse")]
+        string SearchUnLiveOrderByPageFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnLiveOrderByPageFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnLiveOrderByPageFormatStringResponse")]
+        System.Threading.Tasks.Task<string> SearchUnLiveOrderByPageFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnliveOrderCnt", ReplyAction="http://tempuri.org/MobileContract/SearchUnliveOrderCntResponse")]
+        SAS.EstayMobileService.SearchCntResult SearchUnliveOrderCnt(SAS.EstayMobileService.UserInfoDTO userInfoDTO);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnliveOrderCnt", ReplyAction="http://tempuri.org/MobileContract/SearchUnliveOrderCntResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchUnliveOrderCntAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnliveOrderCntFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnliveOrderCntFormatStringResponse")]
+        string SearchUnliveOrderCntFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnliveOrderCntFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnliveOrderCntFormatStringResponse")]
+        System.Threading.Tasks.Task<string> SearchUnliveOrderCntFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrder", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderResponse")]
+        SAS.EstayMobileService.OrderInfoCollectionResult SearchWaitForPayOrder(SAS.EstayMobileService.UserInfoDTO userInfoDTO);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrder", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchWaitForPayOrderAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderFormatStringResponse")]
+        string SearchWaitForPayOrderFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderFormatStringResponse")]
+        System.Threading.Tasks.Task<string> SearchWaitForPayOrderFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderByPage", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderByPageResponse")]
+        SAS.EstayMobileService.OrderInfoCollectionResult SearchWaitForPayOrderByPage(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderByPage", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderByPageResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchWaitForPayOrderByPageAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderByPageFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderByPageFormatStringResponse" +
             "")]
-        string LoginedUserNameAndPassWordsFormatString(SAS.EstayMobileService.loginUserParamsDTO userParams, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        string SearchWaitForPayOrderByPageFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/LoginedUserNameAndPassWordsFormatString", ReplyAction="http://tempuri.org/MobileContract/LoginedUserNameAndPassWordsFormatStringResponse" +
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderByPageFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderByPageFormatStringResponse" +
             "")]
-        System.Threading.Tasks.Task<string> LoginedUserNameAndPassWordsFormatStringAsync(SAS.EstayMobileService.loginUserParamsDTO userParams, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        System.Threading.Tasks.Task<string> SearchWaitForPayOrderByPageFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CheckUserEmailIsExist", ReplyAction="http://tempuri.org/MobileContract/CheckUserEmailIsExistResponse")]
-        SAS.EstayMobileService.CheckExistResult CheckUserEmailIsExist(string email, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderCnt", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderCntResponse")]
+        SAS.EstayMobileService.SearchCntResult SearchWaitForPayOrderCnt(SAS.EstayMobileService.UserInfoDTO userInfoDTO);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CheckUserEmailIsExist", ReplyAction="http://tempuri.org/MobileContract/CheckUserEmailIsExistResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.CheckExistResult> CheckUserEmailIsExistAsync(string email, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderCnt", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderCntResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchWaitForPayOrderCntAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CheckUserEmailIsExistFormatString", ReplyAction="http://tempuri.org/MobileContract/CheckUserEmailIsExistFormatStringResponse")]
-        string CheckUserEmailIsExistFormatString(string email, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderCntFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderCntFormatStringResponse")]
+        string SearchWaitForPayOrderCntFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CheckUserEmailIsExistFormatString", ReplyAction="http://tempuri.org/MobileContract/CheckUserEmailIsExistFormatStringResponse")]
-        System.Threading.Tasks.Task<string> CheckUserEmailIsExistFormatStringAsync(string email, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderCntFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderCntFormatStringResponse")]
+        System.Threading.Tasks.Task<string> SearchWaitForPayOrderCntFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CheckTelephoneIsExist", ReplyAction="http://tempuri.org/MobileContract/CheckTelephoneIsExistResponse")]
-        SAS.EstayMobileService.CheckExistResult CheckTelephoneIsExist(string telephone, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrder", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderResponse")]
+        SAS.EstayMobileService.OrderInfoCollectionResult SearchCanReviewOrder(SAS.EstayMobileService.UserInfoDTO userInfoDTO);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CheckTelephoneIsExist", ReplyAction="http://tempuri.org/MobileContract/CheckTelephoneIsExistResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.CheckExistResult> CheckTelephoneIsExistAsync(string telephone, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrder", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchCanReviewOrderAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CheckTelephoneIsExistFormatString", ReplyAction="http://tempuri.org/MobileContract/CheckTelephoneIsExistFormatStringResponse")]
-        string CheckTelephoneIsExistFormatString(string telephone, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderFormatStringResponse")]
+        string SearchCanReviewOrderFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CheckTelephoneIsExistFormatString", ReplyAction="http://tempuri.org/MobileContract/CheckTelephoneIsExistFormatStringResponse")]
-        System.Threading.Tasks.Task<string> CheckTelephoneIsExistFormatStringAsync(string telephone, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderFormatStringResponse")]
+        System.Threading.Tasks.Task<string> SearchCanReviewOrderFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUserInfoListByPage", ReplyAction="http://tempuri.org/MobileContract/SearchUserInfoListByPageResponse")]
-        SAS.EstayMobileService.UserInfoCollectionResult SearchUserInfoListByPage(SAS.EstayMobileService.UserInfoSearchParamsDTO searchParams, int currentPage, int pagesize, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderByPage", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderByPageResponse")]
+        SAS.EstayMobileService.OrderInfoCollectionResult SearchCanReviewOrderByPage(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUserInfoListByPage", ReplyAction="http://tempuri.org/MobileContract/SearchUserInfoListByPageResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.UserInfoCollectionResult> SearchUserInfoListByPageAsync(SAS.EstayMobileService.UserInfoSearchParamsDTO searchParams, int currentPage, int pagesize, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderByPage", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderByPageResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchCanReviewOrderByPageAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUserInfoListByPageFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUserInfoListByPageFormatStringResponse")]
-        string SearchUserInfoListByPageFormatString(SAS.EstayMobileService.UserInfoSearchParamsDTO searchParams, int currentPage, int pagesize, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderByPageFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderByPageFormatStringResponse")]
+        string SearchCanReviewOrderByPageFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUserInfoListByPageFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUserInfoListByPageFormatStringResponse")]
-        System.Threading.Tasks.Task<string> SearchUserInfoListByPageFormatStringAsync(SAS.EstayMobileService.UserInfoSearchParamsDTO searchParams, int currentPage, int pagesize, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderByPageFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderByPageFormatStringResponse")]
+        System.Threading.Tasks.Task<string> SearchCanReviewOrderByPageFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUserInfoList", ReplyAction="http://tempuri.org/MobileContract/SearchUserInfoListResponse")]
-        SAS.EstayMobileService.UserInfoCollectionResult SearchUserInfoList(SAS.EstayMobileService.UserInfoSearchParamsDTO searchParams, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderCnt", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderCntResponse")]
+        SAS.EstayMobileService.SearchCntResult SearchCanReviewOrderCnt(SAS.EstayMobileService.UserInfoDTO userInfoDTO);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUserInfoList", ReplyAction="http://tempuri.org/MobileContract/SearchUserInfoListResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.UserInfoCollectionResult> SearchUserInfoListAsync(SAS.EstayMobileService.UserInfoSearchParamsDTO searchParams, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderCnt", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderCntResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchCanReviewOrderCntAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderCntFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderCntFormatStringResponse")]
+        string SearchCanReviewOrderCntFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderCntFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderCntFormatStringResponse")]
+        System.Threading.Tasks.Task<string> SearchCanReviewOrderCntFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrders", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersResponse")]
+        SAS.EstayMobileService.OrderInfoCollectionResult SearchUnIncludeTempOrders(SAS.EstayMobileService.UserInfoDTO userInfoDTO);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrders", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchUnIncludeTempOrdersAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersFormatStringResponse")]
+        string SearchUnIncludeTempOrdersFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersFormatStringResponse")]
+        System.Threading.Tasks.Task<string> SearchUnIncludeTempOrdersFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByPage", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByPageResponse")]
+        SAS.EstayMobileService.OrderInfoCollectionResult SearchUnIncludeTempOrdersByPage(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByPage", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByPageResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchUnIncludeTempOrdersByPageAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByPageFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByPageFormatStringResp" +
+            "onse")]
+        string SearchUnIncludeTempOrdersByPageFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByPageFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByPageFormatStringResp" +
+            "onse")]
+        System.Threading.Tasks.Task<string> SearchUnIncludeTempOrdersByPageFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersCnt", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersCntResponse")]
+        SAS.EstayMobileService.SearchCntResult SearchUnIncludeTempOrdersCnt(SAS.EstayMobileService.UserInfoDTO userInfoDTO);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersCnt", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersCntResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchUnIncludeTempOrdersCntAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersCntFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersCntFormatStringRespons" +
+            "e")]
+        string SearchUnIncludeTempOrdersCntFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersCntFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersCntFormatStringRespons" +
+            "e")]
+        System.Threading.Tasks.Task<string> SearchUnIncludeTempOrdersCntFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnLiveOrderByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchUnLiveOrderByUserIDResponse")]
+        SAS.EstayMobileService.OrderInfoCollectionResult SearchUnLiveOrderByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnLiveOrderByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchUnLiveOrderByUserIDResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchUnLiveOrderByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnLiveOrderByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnLiveOrderByUserIDFormatStringResponse")]
+        string SearchUnLiveOrderByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnLiveOrderByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnLiveOrderByUserIDFormatStringResponse")]
+        System.Threading.Tasks.Task<string> SearchUnLiveOrderByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnLiveOrderByUserIDByPage", ReplyAction="http://tempuri.org/MobileContract/SearchUnLiveOrderByUserIDByPageResponse")]
+        SAS.EstayMobileService.OrderInfoCollectionResult SearchUnLiveOrderByUserIDByPage(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnLiveOrderByUserIDByPage", ReplyAction="http://tempuri.org/MobileContract/SearchUnLiveOrderByUserIDByPageResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchUnLiveOrderByUserIDByPageAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnLiveOrderByPageByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnLiveOrderByPageByUserIDFormatStringResp" +
+            "onse")]
+        string SearchUnLiveOrderByPageByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnLiveOrderByPageByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnLiveOrderByPageByUserIDFormatStringResp" +
+            "onse")]
+        System.Threading.Tasks.Task<string> SearchUnLiveOrderByPageByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnliveOrderCntByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchUnliveOrderCntByUserIDResponse")]
+        SAS.EstayMobileService.SearchCntResult SearchUnliveOrderCntByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnliveOrderCntByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchUnliveOrderCntByUserIDResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchUnliveOrderCntByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnliveOrderCntByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnliveOrderCntByUserIDFormatStringRespons" +
+            "e")]
+        string SearchUnliveOrderCntByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnliveOrderCntByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnliveOrderCntByUserIDFormatStringRespons" +
+            "e")]
+        System.Threading.Tasks.Task<string> SearchUnliveOrderCntByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderByUserIDResponse")]
+        SAS.EstayMobileService.OrderInfoCollectionResult SearchWaitForPayOrderByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderByUserIDResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchWaitForPayOrderByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderByUserIDFormatStringRespon" +
+            "se")]
+        string SearchWaitForPayOrderByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderByUserIDFormatStringRespon" +
+            "se")]
+        System.Threading.Tasks.Task<string> SearchWaitForPayOrderByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderByPageByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderByPageByUserIDResponse")]
+        SAS.EstayMobileService.OrderInfoCollectionResult SearchWaitForPayOrderByPageByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderByPageByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderByPageByUserIDResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchWaitForPayOrderByPageByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderByPageByUserIDFormatString" +
+            "", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderByPageByUserIDFormatString" +
+            "Response")]
+        string SearchWaitForPayOrderByPageByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderByPageByUserIDFormatString" +
+            "", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderByPageByUserIDFormatString" +
+            "Response")]
+        System.Threading.Tasks.Task<string> SearchWaitForPayOrderByPageByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderCntByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderCntByUserIDResponse")]
+        SAS.EstayMobileService.SearchCntResult SearchWaitForPayOrderCntByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderCntByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderCntByUserIDResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchWaitForPayOrderCntByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderCntByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderCntByUserIDFormatStringRes" +
+            "ponse")]
+        string SearchWaitForPayOrderCntByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderCntByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderCntByUserIDFormatStringRes" +
+            "ponse")]
+        System.Threading.Tasks.Task<string> SearchWaitForPayOrderCntByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderByUserIDResponse")]
+        SAS.EstayMobileService.OrderInfoCollectionResult SearchCanReviewOrderByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderByUserIDResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchCanReviewOrderByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderByUserIDFormatStringRespons" +
+            "e")]
+        string SearchCanReviewOrderByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderByUserIDFormatStringRespons" +
+            "e")]
+        System.Threading.Tasks.Task<string> SearchCanReviewOrderByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderByPageByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderByPageByUserIDResponse")]
+        SAS.EstayMobileService.OrderInfoCollectionResult SearchCanReviewOrderByPageByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderByPageByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderByPageByUserIDResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchCanReviewOrderByPageByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderByPageByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderByPageByUserIDFormatStringR" +
+            "esponse")]
+        string SearchCanReviewOrderByPageByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderByPageByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderByPageByUserIDFormatStringR" +
+            "esponse")]
+        System.Threading.Tasks.Task<string> SearchCanReviewOrderByPageByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderCntByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderCntByUserIDResponse")]
+        SAS.EstayMobileService.SearchCntResult SearchCanReviewOrderCntByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderCntByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderCntByUserIDResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchCanReviewOrderCntByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderCntByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderCntByUserIDFormatStringResp" +
+            "onse")]
+        string SearchCanReviewOrderCntByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderCntByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderCntByUserIDFormatStringResp" +
+            "onse")]
+        System.Threading.Tasks.Task<string> SearchCanReviewOrderCntByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByUserIDResponse")]
+        SAS.EstayMobileService.OrderInfoCollectionResult SearchUnIncludeTempOrdersByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByUserIDResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchUnIncludeTempOrdersByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByUserIDFormatStringRe" +
+            "sponse")]
+        string SearchUnIncludeTempOrdersByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByUserIDFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByUserIDFormatStringRe" +
+            "sponse")]
+        System.Threading.Tasks.Task<string> SearchUnIncludeTempOrdersByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByPageByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByPageByUserIDResponse" +
+            "")]
+        SAS.EstayMobileService.OrderInfoCollectionResult SearchUnIncludeTempOrdersByPageByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByPageByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByPageByUserIDResponse" +
+            "")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchUnIncludeTempOrdersByPageByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByPageByUserIDFormatSt" +
+            "ring", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByPageByUserIDFormatSt" +
+            "ringResponse")]
+        string SearchUnIncludeTempOrdersByPageByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByPageByUserIDFormatSt" +
+            "ring", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByPageByUserIDFormatSt" +
+            "ringResponse")]
+        System.Threading.Tasks.Task<string> SearchUnIncludeTempOrdersByPageByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersCntByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersCntByUserIDResponse")]
+        SAS.EstayMobileService.SearchCntResult SearchUnIncludeTempOrdersCntByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersCntByUserID", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersCntByUserIDResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchUnIncludeTempOrdersCntByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersCntByUserIDFormatStrin" +
+            "g", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersCntByUserIDFormatStrin" +
+            "gResponse")]
+        string SearchUnIncludeTempOrdersCntByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersCntByUserIDFormatStrin" +
+            "g", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersCntByUserIDFormatStrin" +
+            "gResponse")]
+        System.Threading.Tasks.Task<string> SearchUnIncludeTempOrdersCntByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CheckRoomSoldEnoughBetweenDate", ReplyAction="http://tempuri.org/MobileContract/CheckRoomSoldEnoughBetweenDateResponse")]
+        SAS.EstayMobileService.CheckExistResult CheckRoomSoldEnoughBetweenDate(int RoomID, int BookNum, System.DateTime CheckInDate, System.DateTime CheckOutDate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CheckRoomSoldEnoughBetweenDate", ReplyAction="http://tempuri.org/MobileContract/CheckRoomSoldEnoughBetweenDateResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.CheckExistResult> CheckRoomSoldEnoughBetweenDateAsync(int RoomID, int BookNum, System.DateTime CheckInDate, System.DateTime CheckOutDate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CheckRoomSoldEnoughBetweenDateFormatString", ReplyAction="http://tempuri.org/MobileContract/CheckRoomSoldEnoughBetweenDateFormatStringRespo" +
+            "nse")]
+        string CheckRoomSoldEnoughBetweenDateFormatString(int RoomID, int BookNum, System.DateTime CheckInDate, System.DateTime CheckOutDate, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CheckRoomSoldEnoughBetweenDateFormatString", ReplyAction="http://tempuri.org/MobileContract/CheckRoomSoldEnoughBetweenDateFormatStringRespo" +
+            "nse")]
+        System.Threading.Tasks.Task<string> CheckRoomSoldEnoughBetweenDateFormatStringAsync(int RoomID, int BookNum, System.DateTime CheckInDate, System.DateTime CheckOutDate, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/ChangeRoomSoldBedBetweenDate", ReplyAction="http://tempuri.org/MobileContract/ChangeRoomSoldBedBetweenDateResponse")]
+        SAS.EstayMobileService.ResultBase ChangeRoomSoldBedBetweenDate(int RoomID, int BookNum, System.DateTime CheckInDate, System.DateTime CheckOutDate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/ChangeRoomSoldBedBetweenDate", ReplyAction="http://tempuri.org/MobileContract/ChangeRoomSoldBedBetweenDateResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.ResultBase> ChangeRoomSoldBedBetweenDateAsync(int RoomID, int BookNum, System.DateTime CheckInDate, System.DateTime CheckOutDate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/ChangeRoomSoldBedBetweenDateFormatString", ReplyAction="http://tempuri.org/MobileContract/ChangeRoomSoldBedBetweenDateFormatStringRespons" +
+            "e")]
+        string ChangeRoomSoldBedBetweenDateFormatString(int RoomID, int BookNum, System.DateTime CheckInDate, System.DateTime CheckOutDate, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/ChangeRoomSoldBedBetweenDateFormatString", ReplyAction="http://tempuri.org/MobileContract/ChangeRoomSoldBedBetweenDateFormatStringRespons" +
+            "e")]
+        System.Threading.Tasks.Task<string> ChangeRoomSoldBedBetweenDateFormatStringAsync(int RoomID, int BookNum, System.DateTime CheckInDate, System.DateTime CheckOutDate, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetSpecialOrderStateInfo", ReplyAction="http://tempuri.org/MobileContract/GetSpecialOrderStateInfoResponse")]
+        SAS.EstayMobileService.OrderStateCollectionResult GetSpecialOrderStateInfo(SAS.EstayMobileService.OrderStateParams orderStateParam);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetSpecialOrderStateInfo", ReplyAction="http://tempuri.org/MobileContract/GetSpecialOrderStateInfoResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateCollectionResult> GetSpecialOrderStateInfoAsync(SAS.EstayMobileService.OrderStateParams orderStateParam);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetSpecialOrderStateInfoFormatString", ReplyAction="http://tempuri.org/MobileContract/GetSpecialOrderStateInfoFormatStringResponse")]
+        string GetSpecialOrderStateInfoFormatString(SAS.EstayMobileService.OrderStateParams orderStateParam, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetSpecialOrderStateInfoFormatString", ReplyAction="http://tempuri.org/MobileContract/GetSpecialOrderStateInfoFormatStringResponse")]
+        System.Threading.Tasks.Task<string> GetSpecialOrderStateInfoFormatStringAsync(SAS.EstayMobileService.OrderStateParams orderStateParam, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetStateByID", ReplyAction="http://tempuri.org/MobileContract/GetStateByIDResponse")]
+        SAS.EstayMobileService.OrderStateResult GetStateByID(int stateID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetStateByID", ReplyAction="http://tempuri.org/MobileContract/GetStateByIDResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> GetStateByIDAsync(int stateID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetStateByIDFormatString", ReplyAction="http://tempuri.org/MobileContract/GetStateByIDFormatStringResponse")]
+        string GetStateByIDFormatString(int stateID, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetStateByIDFormatString", ReplyAction="http://tempuri.org/MobileContract/GetStateByIDFormatStringResponse")]
+        System.Threading.Tasks.Task<string> GetStateByIDFormatStringAsync(int stateID, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchOrderState", ReplyAction="http://tempuri.org/MobileContract/SearchOrderStateResponse")]
+        SAS.EstayMobileService.OrderStateCollectionResult SearchOrderState(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchOrderState", ReplyAction="http://tempuri.org/MobileContract/SearchOrderStateResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateCollectionResult> SearchOrderStateAsync(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchOrderStateFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchOrderStateFormatStringResponse")]
+        string SearchOrderStateFormatString(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchOrderStateFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchOrderStateFormatStringResponse")]
+        System.Threading.Tasks.Task<string> SearchOrderStateFormatStringAsync(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchOrderStateByPage", ReplyAction="http://tempuri.org/MobileContract/SearchOrderStateByPageResponse")]
+        SAS.EstayMobileService.OrderStateCollectionResult SearchOrderStateByPage(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams, int currentPage, int pagesize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchOrderStateByPage", ReplyAction="http://tempuri.org/MobileContract/SearchOrderStateByPageResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateCollectionResult> SearchOrderStateByPageAsync(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams, int currentPage, int pagesize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchOrderStateByPageFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchOrderStateByPageFormatStringResponse")]
+        string SearchOrderStateByPageFormatString(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchOrderStateByPageFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchOrderStateByPageFormatStringResponse")]
+        System.Threading.Tasks.Task<string> SearchOrderStateByPageFormatStringAsync(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchOrderStateCnt", ReplyAction="http://tempuri.org/MobileContract/SearchOrderStateCntResponse")]
+        SAS.EstayMobileService.SearchCntResult SearchOrderStateCnt(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchOrderStateCnt", ReplyAction="http://tempuri.org/MobileContract/SearchOrderStateCntResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchOrderStateCntAsync(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchOrderStateCntFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchOrderStateCntFormatStringResponse")]
+        string SearchOrderStateCntFormatString(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchOrderStateCntFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchOrderStateCntFormatStringResponse")]
+        System.Threading.Tasks.Task<string> SearchOrderStateCntFormatStringAsync(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetOrderGuaranteeRuleByOrderID", ReplyAction="http://tempuri.org/MobileContract/GetOrderGuaranteeRuleByOrderIDResponse")]
+        SAS.EstayMobileService.OrderGuaranteeRuleResult GetOrderGuaranteeRuleByOrderID(int orderID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetOrderGuaranteeRuleByOrderID", ReplyAction="http://tempuri.org/MobileContract/GetOrderGuaranteeRuleByOrderIDResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderGuaranteeRuleResult> GetOrderGuaranteeRuleByOrderIDAsync(int orderID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetOrderGuaranteeRuleByOrderIDFormatString", ReplyAction="http://tempuri.org/MobileContract/GetOrderGuaranteeRuleByOrderIDFormatStringRespo" +
+            "nse")]
+        string GetOrderGuaranteeRuleByOrderIDFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetOrderGuaranteeRuleByOrderIDFormatString", ReplyAction="http://tempuri.org/MobileContract/GetOrderGuaranteeRuleByOrderIDFormatStringRespo" +
+            "nse")]
+        System.Threading.Tasks.Task<string> GetOrderGuaranteeRuleByOrderIDFormatStringAsync(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/AddOrderGuaranteeRule", ReplyAction="http://tempuri.org/MobileContract/AddOrderGuaranteeRuleResponse")]
+        SAS.EstayMobileService.OrderGuaranteeRuleResult AddOrderGuaranteeRule(SAS.EstayMobileService.OrderGuaranteeDTO orderGuaranteeRule);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/AddOrderGuaranteeRule", ReplyAction="http://tempuri.org/MobileContract/AddOrderGuaranteeRuleResponse")]
+        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderGuaranteeRuleResult> AddOrderGuaranteeRuleAsync(SAS.EstayMobileService.OrderGuaranteeDTO orderGuaranteeRule);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetHotClientActivity", ReplyAction="http://tempuri.org/MobileContract/GetHotClientActivityResponse")]
+        string GetHotClientActivity(SAS.EstayMobileService.ActivityParamsDTO CommentParams);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetHotClientActivity", ReplyAction="http://tempuri.org/MobileContract/GetHotClientActivityResponse")]
+        System.Threading.Tasks.Task<string> GetHotClientActivityAsync(SAS.EstayMobileService.ActivityParamsDTO CommentParams);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetCityInfoByName", ReplyAction="http://tempuri.org/MobileContract/GetCityInfoByNameResponse")]
         string GetCityInfoByName(string name);
@@ -12884,278 +13541,6 @@ namespace SAS.EstayMobileService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/EditOrderFormatString", ReplyAction="http://tempuri.org/MobileContract/EditOrderFormatStringResponse")]
         System.Threading.Tasks.Task<string> EditOrderFormatStringAsync(SAS.EstayMobileService.OrderInfoDTO newOrder, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/ChangeOrderState", ReplyAction="http://tempuri.org/MobileContract/ChangeOrderStateResponse")]
-        SAS.EstayMobileService.OrderStateResult ChangeOrderState(SAS.EstayMobileService.OrderAndStateChangeParamsDTO orderStateChangeParams);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/ChangeOrderState", ReplyAction="http://tempuri.org/MobileContract/ChangeOrderStateResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> ChangeOrderStateAsync(SAS.EstayMobileService.OrderAndStateChangeParamsDTO orderStateChangeParams);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/ChangeOrderStateFormatString", ReplyAction="http://tempuri.org/MobileContract/ChangeOrderStateFormatStringResponse")]
-        string ChangeOrderStateFormatString(SAS.EstayMobileService.OrderAndStateChangeParamsDTO orderStateChangeParams, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/ChangeOrderStateFormatString", ReplyAction="http://tempuri.org/MobileContract/ChangeOrderStateFormatStringResponse")]
-        System.Threading.Tasks.Task<string> ChangeOrderStateFormatStringAsync(SAS.EstayMobileService.OrderAndStateChangeParamsDTO orderStateChangeParams, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/confirmOrderStatus", ReplyAction="http://tempuri.org/MobileContract/confirmOrderStatusResponse")]
-        SAS.EstayMobileService.OrderStateResult confirmOrderStatus(int orderID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/confirmOrderStatus", ReplyAction="http://tempuri.org/MobileContract/confirmOrderStatusResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> confirmOrderStatusAsync(int orderID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/confirmOrderStatusFormatString", ReplyAction="http://tempuri.org/MobileContract/confirmOrderStatusFormatStringResponse")]
-        string confirmOrderStatusFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/confirmOrderStatusFormatString", ReplyAction="http://tempuri.org/MobileContract/confirmOrderStatusFormatStringResponse")]
-        System.Threading.Tasks.Task<string> confirmOrderStatusFormatStringAsync(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SetReadyOrderStatus", ReplyAction="http://tempuri.org/MobileContract/SetReadyOrderStatusResponse")]
-        SAS.EstayMobileService.OrderStateResult SetReadyOrderStatus(int orderID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SetReadyOrderStatus", ReplyAction="http://tempuri.org/MobileContract/SetReadyOrderStatusResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> SetReadyOrderStatusAsync(int orderID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SetReadyOrderStatusFormatString", ReplyAction="http://tempuri.org/MobileContract/SetReadyOrderStatusFormatStringResponse")]
-        string SetReadyOrderStatusFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SetReadyOrderStatusFormatString", ReplyAction="http://tempuri.org/MobileContract/SetReadyOrderStatusFormatStringResponse")]
-        System.Threading.Tasks.Task<string> SetReadyOrderStatusFormatStringAsync(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SetWaitPayOrderStatus", ReplyAction="http://tempuri.org/MobileContract/SetWaitPayOrderStatusResponse")]
-        SAS.EstayMobileService.OrderStateResult SetWaitPayOrderStatus(int orderID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SetWaitPayOrderStatus", ReplyAction="http://tempuri.org/MobileContract/SetWaitPayOrderStatusResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> SetWaitPayOrderStatusAsync(int orderID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SetWaitPayOrderStatusFormatString", ReplyAction="http://tempuri.org/MobileContract/SetWaitPayOrderStatusFormatStringResponse")]
-        string SetWaitPayOrderStatusFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SetWaitPayOrderStatusFormatString", ReplyAction="http://tempuri.org/MobileContract/SetWaitPayOrderStatusFormatStringResponse")]
-        System.Threading.Tasks.Task<string> SetWaitPayOrderStatusFormatStringAsync(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/ChangeStatusOnly", ReplyAction="http://tempuri.org/MobileContract/ChangeStatusOnlyResponse")]
-        SAS.EstayMobileService.OrderStateResult ChangeStatusOnly(int orderID, int newOrderStateID, string logStr);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/ChangeStatusOnly", ReplyAction="http://tempuri.org/MobileContract/ChangeStatusOnlyResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> ChangeStatusOnlyAsync(int orderID, int newOrderStateID, string logStr);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/ChangeStatusOnlyFormatString", ReplyAction="http://tempuri.org/MobileContract/ChangeStatusOnlyFormatStringResponse")]
-        string ChangeStatusOnlyFormatString(int orderID, int newOrderStateID, string logStr, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/ChangeStatusOnlyFormatString", ReplyAction="http://tempuri.org/MobileContract/ChangeStatusOnlyFormatStringResponse")]
-        System.Threading.Tasks.Task<string> ChangeStatusOnlyFormatStringAsync(int orderID, int newOrderStateID, string logStr, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetOrderStateInfoByOrderID", ReplyAction="http://tempuri.org/MobileContract/GetOrderStateInfoByOrderIDResponse")]
-        SAS.EstayMobileService.OrderStateResult GetOrderStateInfoByOrderID(int orderID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetOrderStateInfoByOrderID", ReplyAction="http://tempuri.org/MobileContract/GetOrderStateInfoByOrderIDResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> GetOrderStateInfoByOrderIDAsync(int orderID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetOrderStateInfoByOrderIDFormatString", ReplyAction="http://tempuri.org/MobileContract/GetOrderStateInfoByOrderIDFormatStringResponse")]
-        string GetOrderStateInfoByOrderIDFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetOrderStateInfoByOrderIDFormatString", ReplyAction="http://tempuri.org/MobileContract/GetOrderStateInfoByOrderIDFormatStringResponse")]
-        System.Threading.Tasks.Task<string> GetOrderStateInfoByOrderIDFormatStringAsync(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/WaitPayStatus", ReplyAction="http://tempuri.org/MobileContract/WaitPayStatusResponse")]
-        SAS.EstayMobileService.OrderStateResult WaitPayStatus(int orderID, int lastMinutes);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/WaitPayStatus", ReplyAction="http://tempuri.org/MobileContract/WaitPayStatusResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> WaitPayStatusAsync(int orderID, int lastMinutes);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/WaitPayStatusFormatString", ReplyAction="http://tempuri.org/MobileContract/WaitPayStatusFormatStringResponse")]
-        string WaitPayStatusFormatString(int orderID, int lastMinutes, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/WaitPayStatusFormatString", ReplyAction="http://tempuri.org/MobileContract/WaitPayStatusFormatStringResponse")]
-        System.Threading.Tasks.Task<string> WaitPayStatusFormatStringAsync(int orderID, int lastMinutes, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CancelOrder", ReplyAction="http://tempuri.org/MobileContract/CancelOrderResponse")]
-        SAS.EstayMobileService.OrderStateResult CancelOrder(int orderID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CancelOrder", ReplyAction="http://tempuri.org/MobileContract/CancelOrderResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> CancelOrderAsync(int orderID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CancelOrderFormatString", ReplyAction="http://tempuri.org/MobileContract/CancelOrderFormatStringResponse")]
-        string CancelOrderFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CancelOrderFormatString", ReplyAction="http://tempuri.org/MobileContract/CancelOrderFormatStringResponse")]
-        System.Threading.Tasks.Task<string> CancelOrderFormatStringAsync(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CheckOrderCanCancel", ReplyAction="http://tempuri.org/MobileContract/CheckOrderCanCancelResponse")]
-        SAS.EstayMobileService.CheckExistResult CheckOrderCanCancel(int orderID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CheckOrderCanCancel", ReplyAction="http://tempuri.org/MobileContract/CheckOrderCanCancelResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.CheckExistResult> CheckOrderCanCancelAsync(int orderID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CheckOrderCanCancelFormatString", ReplyAction="http://tempuri.org/MobileContract/CheckOrderCanCancelFormatStringResponse")]
-        string CheckOrderCanCancelFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/CheckOrderCanCancelFormatString", ReplyAction="http://tempuri.org/MobileContract/CheckOrderCanCancelFormatStringResponse")]
-        System.Threading.Tasks.Task<string> CheckOrderCanCancelFormatStringAsync(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/FillCashBackAndOperatorToOrder", ReplyAction="http://tempuri.org/MobileContract/FillCashBackAndOperatorToOrderResponse")]
-        SAS.EstayMobileService.OrderInfoResult FillCashBackAndOperatorToOrder(int orderID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/FillCashBackAndOperatorToOrder", ReplyAction="http://tempuri.org/MobileContract/FillCashBackAndOperatorToOrderResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoResult> FillCashBackAndOperatorToOrderAsync(int orderID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/FillCashBackAndOperatorToOrderFormatString", ReplyAction="http://tempuri.org/MobileContract/FillCashBackAndOperatorToOrderFormatStringRespo" +
-            "nse")]
-        string FillCashBackAndOperatorToOrderFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/FillCashBackAndOperatorToOrderFormatString", ReplyAction="http://tempuri.org/MobileContract/FillCashBackAndOperatorToOrderFormatStringRespo" +
-            "nse")]
-        System.Threading.Tasks.Task<string> FillCashBackAndOperatorToOrderFormatStringAsync(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnLiveOrder", ReplyAction="http://tempuri.org/MobileContract/SearchUnLiveOrderResponse")]
-        SAS.EstayMobileService.OrderInfoCollectionResult SearchUnLiveOrder(SAS.EstayMobileService.UserInfoDTO userInfoDTO);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnLiveOrder", ReplyAction="http://tempuri.org/MobileContract/SearchUnLiveOrderResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchUnLiveOrderAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnLiveOrderFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnLiveOrderFormatStringResponse")]
-        string SearchUnLiveOrderFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnLiveOrderFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnLiveOrderFormatStringResponse")]
-        System.Threading.Tasks.Task<string> SearchUnLiveOrderFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnLiveOrderByPage", ReplyAction="http://tempuri.org/MobileContract/SearchUnLiveOrderByPageResponse")]
-        SAS.EstayMobileService.OrderInfoCollectionResult SearchUnLiveOrderByPage(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnLiveOrderByPage", ReplyAction="http://tempuri.org/MobileContract/SearchUnLiveOrderByPageResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchUnLiveOrderByPageAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnLiveOrderByPageFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnLiveOrderByPageFormatStringResponse")]
-        string SearchUnLiveOrderByPageFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnLiveOrderByPageFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnLiveOrderByPageFormatStringResponse")]
-        System.Threading.Tasks.Task<string> SearchUnLiveOrderByPageFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnliveOrderCnt", ReplyAction="http://tempuri.org/MobileContract/SearchUnliveOrderCntResponse")]
-        SAS.EstayMobileService.SearchCntResult SearchUnliveOrderCnt(SAS.EstayMobileService.UserInfoDTO userInfoDTO);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnliveOrderCnt", ReplyAction="http://tempuri.org/MobileContract/SearchUnliveOrderCntResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchUnliveOrderCntAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnliveOrderCntFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnliveOrderCntFormatStringResponse")]
-        string SearchUnliveOrderCntFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnliveOrderCntFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnliveOrderCntFormatStringResponse")]
-        System.Threading.Tasks.Task<string> SearchUnliveOrderCntFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrder", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderResponse")]
-        SAS.EstayMobileService.OrderInfoCollectionResult SearchWaitForPayOrder(SAS.EstayMobileService.UserInfoDTO userInfoDTO);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrder", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchWaitForPayOrderAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderFormatStringResponse")]
-        string SearchWaitForPayOrderFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderFormatStringResponse")]
-        System.Threading.Tasks.Task<string> SearchWaitForPayOrderFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderByPage", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderByPageResponse")]
-        SAS.EstayMobileService.OrderInfoCollectionResult SearchWaitForPayOrderByPage(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderByPage", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderByPageResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchWaitForPayOrderByPageAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderByPageFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderByPageFormatStringResponse" +
-            "")]
-        string SearchWaitForPayOrderByPageFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderByPageFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderByPageFormatStringResponse" +
-            "")]
-        System.Threading.Tasks.Task<string> SearchWaitForPayOrderByPageFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderCnt", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderCntResponse")]
-        SAS.EstayMobileService.SearchCntResult SearchWaitForPayOrderCnt(SAS.EstayMobileService.UserInfoDTO userInfoDTO);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderCnt", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderCntResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchWaitForPayOrderCntAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderCntFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderCntFormatStringResponse")]
-        string SearchWaitForPayOrderCntFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchWaitForPayOrderCntFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchWaitForPayOrderCntFormatStringResponse")]
-        System.Threading.Tasks.Task<string> SearchWaitForPayOrderCntFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrder", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderResponse")]
-        SAS.EstayMobileService.OrderInfoCollectionResult SearchCanReviewOrder(SAS.EstayMobileService.UserInfoDTO userInfoDTO);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrder", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchCanReviewOrderAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderFormatStringResponse")]
-        string SearchCanReviewOrderFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderFormatStringResponse")]
-        System.Threading.Tasks.Task<string> SearchCanReviewOrderFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderByPage", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderByPageResponse")]
-        SAS.EstayMobileService.OrderInfoCollectionResult SearchCanReviewOrderByPage(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderByPage", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderByPageResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchCanReviewOrderByPageAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderByPageFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderByPageFormatStringResponse")]
-        string SearchCanReviewOrderByPageFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderByPageFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderByPageFormatStringResponse")]
-        System.Threading.Tasks.Task<string> SearchCanReviewOrderByPageFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderCnt", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderCntResponse")]
-        SAS.EstayMobileService.SearchCntResult SearchCanReviewOrderCnt(SAS.EstayMobileService.UserInfoDTO userInfoDTO);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderCnt", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderCntResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchCanReviewOrderCntAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderCntFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderCntFormatStringResponse")]
-        string SearchCanReviewOrderCntFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchCanReviewOrderCntFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchCanReviewOrderCntFormatStringResponse")]
-        System.Threading.Tasks.Task<string> SearchCanReviewOrderCntFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrders", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersResponse")]
-        SAS.EstayMobileService.OrderInfoCollectionResult SearchUnIncludeTempOrders(SAS.EstayMobileService.UserInfoDTO userInfoDTO);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrders", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchUnIncludeTempOrdersAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersFormatStringResponse")]
-        string SearchUnIncludeTempOrdersFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersFormatStringResponse")]
-        System.Threading.Tasks.Task<string> SearchUnIncludeTempOrdersFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByPage", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByPageResponse")]
-        SAS.EstayMobileService.OrderInfoCollectionResult SearchUnIncludeTempOrdersByPage(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByPage", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByPageResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchUnIncludeTempOrdersByPageAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByPageFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByPageFormatStringResp" +
-            "onse")]
-        string SearchUnIncludeTempOrdersByPageFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByPageFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersByPageFormatStringResp" +
-            "onse")]
-        System.Threading.Tasks.Task<string> SearchUnIncludeTempOrdersByPageFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersCnt", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersCntResponse")]
-        SAS.EstayMobileService.SearchCntResult SearchUnIncludeTempOrdersCnt(SAS.EstayMobileService.UserInfoDTO userInfoDTO);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersCnt", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersCntResponse")]
-        System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchUnIncludeTempOrdersCntAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersCntFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersCntFormatStringRespons" +
-            "e")]
-        string SearchUnIncludeTempOrdersCntFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersCntFormatString", ReplyAction="http://tempuri.org/MobileContract/SearchUnIncludeTempOrdersCntFormatStringRespons" +
-            "e")]
-        System.Threading.Tasks.Task<string> SearchUnIncludeTempOrdersCntFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -13183,6 +13568,70 @@ namespace SAS.EstayMobileService {
         
         public MobileContractClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public string LoginedUserNameAndPassWordsFormatString(SAS.EstayMobileService.loginUserParamsDTO userParams, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.LoginedUserNameAndPassWordsFormatString(userParams, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> LoginedUserNameAndPassWordsFormatStringAsync(SAS.EstayMobileService.loginUserParamsDTO userParams, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.LoginedUserNameAndPassWordsFormatStringAsync(userParams, returnType);
+        }
+        
+        public SAS.EstayMobileService.CheckExistResult CheckUserEmailIsExist(string email, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom) {
+            return base.Channel.CheckUserEmailIsExist(email, sourceFrom);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.CheckExistResult> CheckUserEmailIsExistAsync(string email, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom) {
+            return base.Channel.CheckUserEmailIsExistAsync(email, sourceFrom);
+        }
+        
+        public string CheckUserEmailIsExistFormatString(string email, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.CheckUserEmailIsExistFormatString(email, sourceFrom, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> CheckUserEmailIsExistFormatStringAsync(string email, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.CheckUserEmailIsExistFormatStringAsync(email, sourceFrom, returnType);
+        }
+        
+        public SAS.EstayMobileService.CheckExistResult CheckTelephoneIsExist(string telephone, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom) {
+            return base.Channel.CheckTelephoneIsExist(telephone, sourceFrom);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.CheckExistResult> CheckTelephoneIsExistAsync(string telephone, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom) {
+            return base.Channel.CheckTelephoneIsExistAsync(telephone, sourceFrom);
+        }
+        
+        public string CheckTelephoneIsExistFormatString(string telephone, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.CheckTelephoneIsExistFormatString(telephone, sourceFrom, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> CheckTelephoneIsExistFormatStringAsync(string telephone, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.CheckTelephoneIsExistFormatStringAsync(telephone, sourceFrom, returnType);
+        }
+        
+        public SAS.EstayMobileService.UserInfoCollectionResult SearchUserInfoListByPage(SAS.EstayMobileService.UserInfoSearchParamsDTO searchParams, int currentPage, int pagesize, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom) {
+            return base.Channel.SearchUserInfoListByPage(searchParams, currentPage, pagesize, sourceFrom);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.UserInfoCollectionResult> SearchUserInfoListByPageAsync(SAS.EstayMobileService.UserInfoSearchParamsDTO searchParams, int currentPage, int pagesize, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom) {
+            return base.Channel.SearchUserInfoListByPageAsync(searchParams, currentPage, pagesize, sourceFrom);
+        }
+        
+        public string SearchUserInfoListByPageFormatString(SAS.EstayMobileService.UserInfoSearchParamsDTO searchParams, int currentPage, int pagesize, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchUserInfoListByPageFormatString(searchParams, currentPage, pagesize, sourceFrom, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> SearchUserInfoListByPageFormatStringAsync(SAS.EstayMobileService.UserInfoSearchParamsDTO searchParams, int currentPage, int pagesize, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchUserInfoListByPageFormatStringAsync(searchParams, currentPage, pagesize, sourceFrom, returnType);
+        }
+        
+        public SAS.EstayMobileService.UserInfoCollectionResult SearchUserInfoList(SAS.EstayMobileService.UserInfoSearchParamsDTO searchParams, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom) {
+            return base.Channel.SearchUserInfoList(searchParams, sourceFrom);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.UserInfoCollectionResult> SearchUserInfoListAsync(SAS.EstayMobileService.UserInfoSearchParamsDTO searchParams, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom) {
+            return base.Channel.SearchUserInfoListAsync(searchParams, sourceFrom);
         }
         
         public string SearchUserInfoListFormatString(SAS.EstayMobileService.UserInfoSearchParamsDTO searchParams, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
@@ -13521,302 +13970,6 @@ namespace SAS.EstayMobileService {
             return base.Channel.GetSearchHousesInfoAsync(SearchParams);
         }
         
-        public SAS.EstayMobileService.OrderInfoCollectionResult SearchUnLiveOrderByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom) {
-            return base.Channel.SearchUnLiveOrderByUserID(UserID, UserSourceFrom);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchUnLiveOrderByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom) {
-            return base.Channel.SearchUnLiveOrderByUserIDAsync(UserID, UserSourceFrom);
-        }
-        
-        public string SearchUnLiveOrderByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchUnLiveOrderByUserIDFormatString(UserID, UserSourceFrom, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> SearchUnLiveOrderByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchUnLiveOrderByUserIDFormatStringAsync(UserID, UserSourceFrom, returnType);
-        }
-        
-        public SAS.EstayMobileService.OrderInfoCollectionResult SearchUnLiveOrderByUserIDByPage(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize) {
-            return base.Channel.SearchUnLiveOrderByUserIDByPage(UserID, UserSourceFrom, currentPage, pagesize);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchUnLiveOrderByUserIDByPageAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize) {
-            return base.Channel.SearchUnLiveOrderByUserIDByPageAsync(UserID, UserSourceFrom, currentPage, pagesize);
-        }
-        
-        public string SearchUnLiveOrderByPageByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchUnLiveOrderByPageByUserIDFormatString(UserID, UserSourceFrom, currentPage, pagesize, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> SearchUnLiveOrderByPageByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchUnLiveOrderByPageByUserIDFormatStringAsync(UserID, UserSourceFrom, currentPage, pagesize, returnType);
-        }
-        
-        public SAS.EstayMobileService.SearchCntResult SearchUnliveOrderCntByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom) {
-            return base.Channel.SearchUnliveOrderCntByUserID(UserID, UserSourceFrom);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchUnliveOrderCntByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom) {
-            return base.Channel.SearchUnliveOrderCntByUserIDAsync(UserID, UserSourceFrom);
-        }
-        
-        public string SearchUnliveOrderCntByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchUnliveOrderCntByUserIDFormatString(UserID, UserSourceFrom, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> SearchUnliveOrderCntByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchUnliveOrderCntByUserIDFormatStringAsync(UserID, UserSourceFrom, returnType);
-        }
-        
-        public SAS.EstayMobileService.OrderInfoCollectionResult SearchWaitForPayOrderByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom) {
-            return base.Channel.SearchWaitForPayOrderByUserID(UserID, UserSourceFrom);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchWaitForPayOrderByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom) {
-            return base.Channel.SearchWaitForPayOrderByUserIDAsync(UserID, UserSourceFrom);
-        }
-        
-        public string SearchWaitForPayOrderByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchWaitForPayOrderByUserIDFormatString(UserID, UserSourceFrom, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> SearchWaitForPayOrderByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchWaitForPayOrderByUserIDFormatStringAsync(UserID, UserSourceFrom, returnType);
-        }
-        
-        public SAS.EstayMobileService.OrderInfoCollectionResult SearchWaitForPayOrderByPageByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize) {
-            return base.Channel.SearchWaitForPayOrderByPageByUserID(UserID, UserSourceFrom, currentPage, pagesize);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchWaitForPayOrderByPageByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize) {
-            return base.Channel.SearchWaitForPayOrderByPageByUserIDAsync(UserID, UserSourceFrom, currentPage, pagesize);
-        }
-        
-        public string SearchWaitForPayOrderByPageByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchWaitForPayOrderByPageByUserIDFormatString(UserID, UserSourceFrom, currentPage, pagesize, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> SearchWaitForPayOrderByPageByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchWaitForPayOrderByPageByUserIDFormatStringAsync(UserID, UserSourceFrom, currentPage, pagesize, returnType);
-        }
-        
-        public SAS.EstayMobileService.SearchCntResult SearchWaitForPayOrderCntByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom) {
-            return base.Channel.SearchWaitForPayOrderCntByUserID(UserID, UserSourceFrom);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchWaitForPayOrderCntByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom) {
-            return base.Channel.SearchWaitForPayOrderCntByUserIDAsync(UserID, UserSourceFrom);
-        }
-        
-        public string SearchWaitForPayOrderCntByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchWaitForPayOrderCntByUserIDFormatString(UserID, UserSourceFrom, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> SearchWaitForPayOrderCntByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchWaitForPayOrderCntByUserIDFormatStringAsync(UserID, UserSourceFrom, returnType);
-        }
-        
-        public SAS.EstayMobileService.OrderInfoCollectionResult SearchCanReviewOrderByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom) {
-            return base.Channel.SearchCanReviewOrderByUserID(UserID, UserSourceFrom);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchCanReviewOrderByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom) {
-            return base.Channel.SearchCanReviewOrderByUserIDAsync(UserID, UserSourceFrom);
-        }
-        
-        public string SearchCanReviewOrderByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchCanReviewOrderByUserIDFormatString(UserID, UserSourceFrom, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> SearchCanReviewOrderByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchCanReviewOrderByUserIDFormatStringAsync(UserID, UserSourceFrom, returnType);
-        }
-        
-        public SAS.EstayMobileService.OrderInfoCollectionResult SearchCanReviewOrderByPageByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize) {
-            return base.Channel.SearchCanReviewOrderByPageByUserID(UserID, UserSourceFrom, currentPage, pagesize);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchCanReviewOrderByPageByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize) {
-            return base.Channel.SearchCanReviewOrderByPageByUserIDAsync(UserID, UserSourceFrom, currentPage, pagesize);
-        }
-        
-        public string SearchCanReviewOrderByPageByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchCanReviewOrderByPageByUserIDFormatString(UserID, UserSourceFrom, currentPage, pagesize, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> SearchCanReviewOrderByPageByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchCanReviewOrderByPageByUserIDFormatStringAsync(UserID, UserSourceFrom, currentPage, pagesize, returnType);
-        }
-        
-        public SAS.EstayMobileService.SearchCntResult SearchCanReviewOrderCntByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom) {
-            return base.Channel.SearchCanReviewOrderCntByUserID(UserID, UserSourceFrom);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchCanReviewOrderCntByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom) {
-            return base.Channel.SearchCanReviewOrderCntByUserIDAsync(UserID, UserSourceFrom);
-        }
-        
-        public string SearchCanReviewOrderCntByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchCanReviewOrderCntByUserIDFormatString(UserID, UserSourceFrom, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> SearchCanReviewOrderCntByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchCanReviewOrderCntByUserIDFormatStringAsync(UserID, UserSourceFrom, returnType);
-        }
-        
-        public SAS.EstayMobileService.OrderInfoCollectionResult SearchUnIncludeTempOrdersByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom) {
-            return base.Channel.SearchUnIncludeTempOrdersByUserID(UserID, UserSourceFrom);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchUnIncludeTempOrdersByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom) {
-            return base.Channel.SearchUnIncludeTempOrdersByUserIDAsync(UserID, UserSourceFrom);
-        }
-        
-        public string SearchUnIncludeTempOrdersByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchUnIncludeTempOrdersByUserIDFormatString(UserID, UserSourceFrom, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> SearchUnIncludeTempOrdersByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchUnIncludeTempOrdersByUserIDFormatStringAsync(UserID, UserSourceFrom, returnType);
-        }
-        
-        public SAS.EstayMobileService.OrderInfoCollectionResult SearchUnIncludeTempOrdersByPageByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize) {
-            return base.Channel.SearchUnIncludeTempOrdersByPageByUserID(UserID, UserSourceFrom, currentPage, pagesize);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchUnIncludeTempOrdersByPageByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize) {
-            return base.Channel.SearchUnIncludeTempOrdersByPageByUserIDAsync(UserID, UserSourceFrom, currentPage, pagesize);
-        }
-        
-        public string SearchUnIncludeTempOrdersByPageByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchUnIncludeTempOrdersByPageByUserIDFormatString(UserID, UserSourceFrom, currentPage, pagesize, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> SearchUnIncludeTempOrdersByPageByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchUnIncludeTempOrdersByPageByUserIDFormatStringAsync(UserID, UserSourceFrom, currentPage, pagesize, returnType);
-        }
-        
-        public SAS.EstayMobileService.SearchCntResult SearchUnIncludeTempOrdersCntByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom) {
-            return base.Channel.SearchUnIncludeTempOrdersCntByUserID(UserID, UserSourceFrom);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchUnIncludeTempOrdersCntByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom) {
-            return base.Channel.SearchUnIncludeTempOrdersCntByUserIDAsync(UserID, UserSourceFrom);
-        }
-        
-        public string SearchUnIncludeTempOrdersCntByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchUnIncludeTempOrdersCntByUserIDFormatString(UserID, UserSourceFrom, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> SearchUnIncludeTempOrdersCntByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchUnIncludeTempOrdersCntByUserIDFormatStringAsync(UserID, UserSourceFrom, returnType);
-        }
-        
-        public SAS.EstayMobileService.OrderStateCollectionResult GetSpecialOrderStateInfo(SAS.EstayMobileService.OrderStateParams orderStateParam) {
-            return base.Channel.GetSpecialOrderStateInfo(orderStateParam);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateCollectionResult> GetSpecialOrderStateInfoAsync(SAS.EstayMobileService.OrderStateParams orderStateParam) {
-            return base.Channel.GetSpecialOrderStateInfoAsync(orderStateParam);
-        }
-        
-        public string GetSpecialOrderStateInfoFormatString(SAS.EstayMobileService.OrderStateParams orderStateParam, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.GetSpecialOrderStateInfoFormatString(orderStateParam, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> GetSpecialOrderStateInfoFormatStringAsync(SAS.EstayMobileService.OrderStateParams orderStateParam, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.GetSpecialOrderStateInfoFormatStringAsync(orderStateParam, returnType);
-        }
-        
-        public SAS.EstayMobileService.OrderStateResult GetStateByID(int stateID) {
-            return base.Channel.GetStateByID(stateID);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> GetStateByIDAsync(int stateID) {
-            return base.Channel.GetStateByIDAsync(stateID);
-        }
-        
-        public string GetStateByIDFormatString(int stateID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.GetStateByIDFormatString(stateID, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> GetStateByIDFormatStringAsync(int stateID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.GetStateByIDFormatStringAsync(stateID, returnType);
-        }
-        
-        public SAS.EstayMobileService.OrderStateCollectionResult SearchOrderState(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams) {
-            return base.Channel.SearchOrderState(SearchParams);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateCollectionResult> SearchOrderStateAsync(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams) {
-            return base.Channel.SearchOrderStateAsync(SearchParams);
-        }
-        
-        public string SearchOrderStateFormatString(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchOrderStateFormatString(SearchParams, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> SearchOrderStateFormatStringAsync(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchOrderStateFormatStringAsync(SearchParams, returnType);
-        }
-        
-        public SAS.EstayMobileService.OrderStateCollectionResult SearchOrderStateByPage(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams, int currentPage, int pagesize) {
-            return base.Channel.SearchOrderStateByPage(SearchParams, currentPage, pagesize);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateCollectionResult> SearchOrderStateByPageAsync(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams, int currentPage, int pagesize) {
-            return base.Channel.SearchOrderStateByPageAsync(SearchParams, currentPage, pagesize);
-        }
-        
-        public string SearchOrderStateByPageFormatString(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchOrderStateByPageFormatString(SearchParams, currentPage, pagesize, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> SearchOrderStateByPageFormatStringAsync(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchOrderStateByPageFormatStringAsync(SearchParams, currentPage, pagesize, returnType);
-        }
-        
-        public SAS.EstayMobileService.SearchCntResult SearchOrderStateCnt(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams) {
-            return base.Channel.SearchOrderStateCnt(SearchParams);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchOrderStateCntAsync(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams) {
-            return base.Channel.SearchOrderStateCntAsync(SearchParams);
-        }
-        
-        public string SearchOrderStateCntFormatString(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchOrderStateCntFormatString(SearchParams, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> SearchOrderStateCntFormatStringAsync(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchOrderStateCntFormatStringAsync(SearchParams, returnType);
-        }
-        
-        public SAS.EstayMobileService.OrderGuaranteeRuleResult GetOrderGuaranteeRuleByOrderID(int orderID) {
-            return base.Channel.GetOrderGuaranteeRuleByOrderID(orderID);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderGuaranteeRuleResult> GetOrderGuaranteeRuleByOrderIDAsync(int orderID) {
-            return base.Channel.GetOrderGuaranteeRuleByOrderIDAsync(orderID);
-        }
-        
-        public string GetOrderGuaranteeRuleByOrderIDFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.GetOrderGuaranteeRuleByOrderIDFormatString(orderID, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> GetOrderGuaranteeRuleByOrderIDFormatStringAsync(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.GetOrderGuaranteeRuleByOrderIDFormatStringAsync(orderID, returnType);
-        }
-        
-        public SAS.EstayMobileService.OrderGuaranteeRuleResult AddOrderGuaranteeRule(SAS.EstayMobileService.OrderGuaranteeDTO orderGuaranteeRule) {
-            return base.Channel.AddOrderGuaranteeRule(orderGuaranteeRule);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderGuaranteeRuleResult> AddOrderGuaranteeRuleAsync(SAS.EstayMobileService.OrderGuaranteeDTO orderGuaranteeRule) {
-            return base.Channel.AddOrderGuaranteeRuleAsync(orderGuaranteeRule);
-        }
-        
         public string AddOrderGuaranteeRuleFormatString(SAS.EstayMobileService.OrderGuaranteeDTO orderGuaranteeRule, SAS.EstayMobileService.EnumReturnFormatType returnType) {
             return base.Channel.AddOrderGuaranteeRuleFormatString(orderGuaranteeRule, returnType);
         }
@@ -13945,12 +14098,28 @@ namespace SAS.EstayMobileService {
             return base.Channel.GetHouseCommentListAsync(CommentParams);
         }
         
+        public string GetHotelCommentList(SAS.EstayMobileService.CommentHParamsDTO CommentHParams) {
+            return base.Channel.GetHotelCommentList(CommentHParams);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetHotelCommentListAsync(SAS.EstayMobileService.CommentHParamsDTO CommentHParams) {
+            return base.Channel.GetHotelCommentListAsync(CommentHParams);
+        }
+        
         public string PublishReview(SAS.EstayMobileService.ReviewKeyRequest ReviewKeyRequest) {
             return base.Channel.PublishReview(ReviewKeyRequest);
         }
         
         public System.Threading.Tasks.Task<string> PublishReviewAsync(SAS.EstayMobileService.ReviewKeyRequest ReviewKeyRequest) {
             return base.Channel.PublishReviewAsync(ReviewKeyRequest);
+        }
+        
+        public string ReplyReview(SAS.EstayMobileService.ReplyReviewRequest ReplyReviewRequest) {
+            return base.Channel.ReplyReview(ReplyReviewRequest);
+        }
+        
+        public System.Threading.Tasks.Task<string> ReplyReviewAsync(SAS.EstayMobileService.ReplyReviewRequest ReplyReviewRequest) {
+            return base.Channel.ReplyReviewAsync(ReplyReviewRequest);
         }
         
         public SAS.EstayMobileService.ReviewableResult IsCanComment(string userTel, string roomID) {
@@ -14481,68 +14650,692 @@ namespace SAS.EstayMobileService {
             return base.Channel.LoginedUserNameAndPassWordsAsync(userParams);
         }
         
-        public string LoginedUserNameAndPassWordsFormatString(SAS.EstayMobileService.loginUserParamsDTO userParams, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.LoginedUserNameAndPassWordsFormatString(userParams, returnType);
+        public SAS.EstayMobileService.OrderStateResult ChangeOrderState(SAS.EstayMobileService.OrderAndStateChangeParamsDTO orderStateChangeParams) {
+            return base.Channel.ChangeOrderState(orderStateChangeParams);
         }
         
-        public System.Threading.Tasks.Task<string> LoginedUserNameAndPassWordsFormatStringAsync(SAS.EstayMobileService.loginUserParamsDTO userParams, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.LoginedUserNameAndPassWordsFormatStringAsync(userParams, returnType);
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> ChangeOrderStateAsync(SAS.EstayMobileService.OrderAndStateChangeParamsDTO orderStateChangeParams) {
+            return base.Channel.ChangeOrderStateAsync(orderStateChangeParams);
         }
         
-        public SAS.EstayMobileService.CheckExistResult CheckUserEmailIsExist(string email, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom) {
-            return base.Channel.CheckUserEmailIsExist(email, sourceFrom);
+        public string ChangeOrderStateFormatString(SAS.EstayMobileService.OrderAndStateChangeParamsDTO orderStateChangeParams, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.ChangeOrderStateFormatString(orderStateChangeParams, returnType);
         }
         
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.CheckExistResult> CheckUserEmailIsExistAsync(string email, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom) {
-            return base.Channel.CheckUserEmailIsExistAsync(email, sourceFrom);
+        public System.Threading.Tasks.Task<string> ChangeOrderStateFormatStringAsync(SAS.EstayMobileService.OrderAndStateChangeParamsDTO orderStateChangeParams, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.ChangeOrderStateFormatStringAsync(orderStateChangeParams, returnType);
         }
         
-        public string CheckUserEmailIsExistFormatString(string email, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.CheckUserEmailIsExistFormatString(email, sourceFrom, returnType);
+        public SAS.EstayMobileService.OrderStateResult confirmOrderStatus(int orderID) {
+            return base.Channel.confirmOrderStatus(orderID);
         }
         
-        public System.Threading.Tasks.Task<string> CheckUserEmailIsExistFormatStringAsync(string email, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.CheckUserEmailIsExistFormatStringAsync(email, sourceFrom, returnType);
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> confirmOrderStatusAsync(int orderID) {
+            return base.Channel.confirmOrderStatusAsync(orderID);
         }
         
-        public SAS.EstayMobileService.CheckExistResult CheckTelephoneIsExist(string telephone, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom) {
-            return base.Channel.CheckTelephoneIsExist(telephone, sourceFrom);
+        public string confirmOrderStatusFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.confirmOrderStatusFormatString(orderID, returnType);
         }
         
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.CheckExistResult> CheckTelephoneIsExistAsync(string telephone, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom) {
-            return base.Channel.CheckTelephoneIsExistAsync(telephone, sourceFrom);
+        public System.Threading.Tasks.Task<string> confirmOrderStatusFormatStringAsync(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.confirmOrderStatusFormatStringAsync(orderID, returnType);
         }
         
-        public string CheckTelephoneIsExistFormatString(string telephone, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.CheckTelephoneIsExistFormatString(telephone, sourceFrom, returnType);
+        public SAS.EstayMobileService.OrderStateResult SetReadyOrderStatus(int orderID) {
+            return base.Channel.SetReadyOrderStatus(orderID);
         }
         
-        public System.Threading.Tasks.Task<string> CheckTelephoneIsExistFormatStringAsync(string telephone, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.CheckTelephoneIsExistFormatStringAsync(telephone, sourceFrom, returnType);
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> SetReadyOrderStatusAsync(int orderID) {
+            return base.Channel.SetReadyOrderStatusAsync(orderID);
         }
         
-        public SAS.EstayMobileService.UserInfoCollectionResult SearchUserInfoListByPage(SAS.EstayMobileService.UserInfoSearchParamsDTO searchParams, int currentPage, int pagesize, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom) {
-            return base.Channel.SearchUserInfoListByPage(searchParams, currentPage, pagesize, sourceFrom);
+        public string SetReadyOrderStatusFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SetReadyOrderStatusFormatString(orderID, returnType);
         }
         
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.UserInfoCollectionResult> SearchUserInfoListByPageAsync(SAS.EstayMobileService.UserInfoSearchParamsDTO searchParams, int currentPage, int pagesize, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom) {
-            return base.Channel.SearchUserInfoListByPageAsync(searchParams, currentPage, pagesize, sourceFrom);
+        public System.Threading.Tasks.Task<string> SetReadyOrderStatusFormatStringAsync(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SetReadyOrderStatusFormatStringAsync(orderID, returnType);
         }
         
-        public string SearchUserInfoListByPageFormatString(SAS.EstayMobileService.UserInfoSearchParamsDTO searchParams, int currentPage, int pagesize, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchUserInfoListByPageFormatString(searchParams, currentPage, pagesize, sourceFrom, returnType);
+        public SAS.EstayMobileService.OrderStateResult SetWaitPayOrderStatus(int orderID) {
+            return base.Channel.SetWaitPayOrderStatus(orderID);
         }
         
-        public System.Threading.Tasks.Task<string> SearchUserInfoListByPageFormatStringAsync(SAS.EstayMobileService.UserInfoSearchParamsDTO searchParams, int currentPage, int pagesize, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchUserInfoListByPageFormatStringAsync(searchParams, currentPage, pagesize, sourceFrom, returnType);
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> SetWaitPayOrderStatusAsync(int orderID) {
+            return base.Channel.SetWaitPayOrderStatusAsync(orderID);
         }
         
-        public SAS.EstayMobileService.UserInfoCollectionResult SearchUserInfoList(SAS.EstayMobileService.UserInfoSearchParamsDTO searchParams, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom) {
-            return base.Channel.SearchUserInfoList(searchParams, sourceFrom);
+        public string SetWaitPayOrderStatusFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SetWaitPayOrderStatusFormatString(orderID, returnType);
         }
         
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.UserInfoCollectionResult> SearchUserInfoListAsync(SAS.EstayMobileService.UserInfoSearchParamsDTO searchParams, SAS.EstayMobileService.EnumUserSourceFrom sourceFrom) {
-            return base.Channel.SearchUserInfoListAsync(searchParams, sourceFrom);
+        public System.Threading.Tasks.Task<string> SetWaitPayOrderStatusFormatStringAsync(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SetWaitPayOrderStatusFormatStringAsync(orderID, returnType);
+        }
+        
+        public SAS.EstayMobileService.OrderStateResult ChangeStatusOnly(int orderID, int newOrderStateID, string logStr) {
+            return base.Channel.ChangeStatusOnly(orderID, newOrderStateID, logStr);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> ChangeStatusOnlyAsync(int orderID, int newOrderStateID, string logStr) {
+            return base.Channel.ChangeStatusOnlyAsync(orderID, newOrderStateID, logStr);
+        }
+        
+        public string ChangeStatusOnlyFormatString(int orderID, int newOrderStateID, string logStr, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.ChangeStatusOnlyFormatString(orderID, newOrderStateID, logStr, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> ChangeStatusOnlyFormatStringAsync(int orderID, int newOrderStateID, string logStr, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.ChangeStatusOnlyFormatStringAsync(orderID, newOrderStateID, logStr, returnType);
+        }
+        
+        public SAS.EstayMobileService.OrderStateResult GetOrderStateInfoByOrderID(int orderID) {
+            return base.Channel.GetOrderStateInfoByOrderID(orderID);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> GetOrderStateInfoByOrderIDAsync(int orderID) {
+            return base.Channel.GetOrderStateInfoByOrderIDAsync(orderID);
+        }
+        
+        public string GetOrderStateInfoByOrderIDFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.GetOrderStateInfoByOrderIDFormatString(orderID, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetOrderStateInfoByOrderIDFormatStringAsync(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.GetOrderStateInfoByOrderIDFormatStringAsync(orderID, returnType);
+        }
+        
+        public SAS.EstayMobileService.OrderStateResult WaitPayStatus(int orderID, int lastMinutes) {
+            return base.Channel.WaitPayStatus(orderID, lastMinutes);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> WaitPayStatusAsync(int orderID, int lastMinutes) {
+            return base.Channel.WaitPayStatusAsync(orderID, lastMinutes);
+        }
+        
+        public string WaitPayStatusFormatString(int orderID, int lastMinutes, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.WaitPayStatusFormatString(orderID, lastMinutes, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> WaitPayStatusFormatStringAsync(int orderID, int lastMinutes, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.WaitPayStatusFormatStringAsync(orderID, lastMinutes, returnType);
+        }
+        
+        public SAS.EstayMobileService.OrderStateResult CancelOrder(int orderID) {
+            return base.Channel.CancelOrder(orderID);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> CancelOrderAsync(int orderID) {
+            return base.Channel.CancelOrderAsync(orderID);
+        }
+        
+        public string CancelOrderFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.CancelOrderFormatString(orderID, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> CancelOrderFormatStringAsync(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.CancelOrderFormatStringAsync(orderID, returnType);
+        }
+        
+        public SAS.EstayMobileService.CheckExistResult CheckOrderCanCancel(int orderID) {
+            return base.Channel.CheckOrderCanCancel(orderID);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.CheckExistResult> CheckOrderCanCancelAsync(int orderID) {
+            return base.Channel.CheckOrderCanCancelAsync(orderID);
+        }
+        
+        public string CheckOrderCanCancelFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.CheckOrderCanCancelFormatString(orderID, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> CheckOrderCanCancelFormatStringAsync(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.CheckOrderCanCancelFormatStringAsync(orderID, returnType);
+        }
+        
+        public SAS.EstayMobileService.OrderInfoResult FillCashBackAndOperatorToOrder(int orderID) {
+            return base.Channel.FillCashBackAndOperatorToOrder(orderID);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoResult> FillCashBackAndOperatorToOrderAsync(int orderID) {
+            return base.Channel.FillCashBackAndOperatorToOrderAsync(orderID);
+        }
+        
+        public string FillCashBackAndOperatorToOrderFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.FillCashBackAndOperatorToOrderFormatString(orderID, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> FillCashBackAndOperatorToOrderFormatStringAsync(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.FillCashBackAndOperatorToOrderFormatStringAsync(orderID, returnType);
+        }
+        
+        public SAS.EstayMobileService.OrderInfoCollectionResult SearchUnLiveOrder(SAS.EstayMobileService.UserInfoDTO userInfoDTO) {
+            return base.Channel.SearchUnLiveOrder(userInfoDTO);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchUnLiveOrderAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO) {
+            return base.Channel.SearchUnLiveOrderAsync(userInfoDTO);
+        }
+        
+        public string SearchUnLiveOrderFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchUnLiveOrderFormatString(userInfoDTO, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> SearchUnLiveOrderFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchUnLiveOrderFormatStringAsync(userInfoDTO, returnType);
+        }
+        
+        public SAS.EstayMobileService.OrderInfoCollectionResult SearchUnLiveOrderByPage(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize) {
+            return base.Channel.SearchUnLiveOrderByPage(userInfoDTO, currentPage, pagesize);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchUnLiveOrderByPageAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize) {
+            return base.Channel.SearchUnLiveOrderByPageAsync(userInfoDTO, currentPage, pagesize);
+        }
+        
+        public string SearchUnLiveOrderByPageFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchUnLiveOrderByPageFormatString(userInfoDTO, currentPage, pagesize, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> SearchUnLiveOrderByPageFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchUnLiveOrderByPageFormatStringAsync(userInfoDTO, currentPage, pagesize, returnType);
+        }
+        
+        public SAS.EstayMobileService.SearchCntResult SearchUnliveOrderCnt(SAS.EstayMobileService.UserInfoDTO userInfoDTO) {
+            return base.Channel.SearchUnliveOrderCnt(userInfoDTO);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchUnliveOrderCntAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO) {
+            return base.Channel.SearchUnliveOrderCntAsync(userInfoDTO);
+        }
+        
+        public string SearchUnliveOrderCntFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchUnliveOrderCntFormatString(userInfoDTO, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> SearchUnliveOrderCntFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchUnliveOrderCntFormatStringAsync(userInfoDTO, returnType);
+        }
+        
+        public SAS.EstayMobileService.OrderInfoCollectionResult SearchWaitForPayOrder(SAS.EstayMobileService.UserInfoDTO userInfoDTO) {
+            return base.Channel.SearchWaitForPayOrder(userInfoDTO);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchWaitForPayOrderAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO) {
+            return base.Channel.SearchWaitForPayOrderAsync(userInfoDTO);
+        }
+        
+        public string SearchWaitForPayOrderFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchWaitForPayOrderFormatString(userInfoDTO, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> SearchWaitForPayOrderFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchWaitForPayOrderFormatStringAsync(userInfoDTO, returnType);
+        }
+        
+        public SAS.EstayMobileService.OrderInfoCollectionResult SearchWaitForPayOrderByPage(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize) {
+            return base.Channel.SearchWaitForPayOrderByPage(userInfoDTO, currentPage, pagesize);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchWaitForPayOrderByPageAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize) {
+            return base.Channel.SearchWaitForPayOrderByPageAsync(userInfoDTO, currentPage, pagesize);
+        }
+        
+        public string SearchWaitForPayOrderByPageFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchWaitForPayOrderByPageFormatString(userInfoDTO, currentPage, pagesize, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> SearchWaitForPayOrderByPageFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchWaitForPayOrderByPageFormatStringAsync(userInfoDTO, currentPage, pagesize, returnType);
+        }
+        
+        public SAS.EstayMobileService.SearchCntResult SearchWaitForPayOrderCnt(SAS.EstayMobileService.UserInfoDTO userInfoDTO) {
+            return base.Channel.SearchWaitForPayOrderCnt(userInfoDTO);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchWaitForPayOrderCntAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO) {
+            return base.Channel.SearchWaitForPayOrderCntAsync(userInfoDTO);
+        }
+        
+        public string SearchWaitForPayOrderCntFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchWaitForPayOrderCntFormatString(userInfoDTO, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> SearchWaitForPayOrderCntFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchWaitForPayOrderCntFormatStringAsync(userInfoDTO, returnType);
+        }
+        
+        public SAS.EstayMobileService.OrderInfoCollectionResult SearchCanReviewOrder(SAS.EstayMobileService.UserInfoDTO userInfoDTO) {
+            return base.Channel.SearchCanReviewOrder(userInfoDTO);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchCanReviewOrderAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO) {
+            return base.Channel.SearchCanReviewOrderAsync(userInfoDTO);
+        }
+        
+        public string SearchCanReviewOrderFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchCanReviewOrderFormatString(userInfoDTO, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> SearchCanReviewOrderFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchCanReviewOrderFormatStringAsync(userInfoDTO, returnType);
+        }
+        
+        public SAS.EstayMobileService.OrderInfoCollectionResult SearchCanReviewOrderByPage(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize) {
+            return base.Channel.SearchCanReviewOrderByPage(userInfoDTO, currentPage, pagesize);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchCanReviewOrderByPageAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize) {
+            return base.Channel.SearchCanReviewOrderByPageAsync(userInfoDTO, currentPage, pagesize);
+        }
+        
+        public string SearchCanReviewOrderByPageFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchCanReviewOrderByPageFormatString(userInfoDTO, currentPage, pagesize, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> SearchCanReviewOrderByPageFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchCanReviewOrderByPageFormatStringAsync(userInfoDTO, currentPage, pagesize, returnType);
+        }
+        
+        public SAS.EstayMobileService.SearchCntResult SearchCanReviewOrderCnt(SAS.EstayMobileService.UserInfoDTO userInfoDTO) {
+            return base.Channel.SearchCanReviewOrderCnt(userInfoDTO);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchCanReviewOrderCntAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO) {
+            return base.Channel.SearchCanReviewOrderCntAsync(userInfoDTO);
+        }
+        
+        public string SearchCanReviewOrderCntFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchCanReviewOrderCntFormatString(userInfoDTO, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> SearchCanReviewOrderCntFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchCanReviewOrderCntFormatStringAsync(userInfoDTO, returnType);
+        }
+        
+        public SAS.EstayMobileService.OrderInfoCollectionResult SearchUnIncludeTempOrders(SAS.EstayMobileService.UserInfoDTO userInfoDTO) {
+            return base.Channel.SearchUnIncludeTempOrders(userInfoDTO);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchUnIncludeTempOrdersAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO) {
+            return base.Channel.SearchUnIncludeTempOrdersAsync(userInfoDTO);
+        }
+        
+        public string SearchUnIncludeTempOrdersFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchUnIncludeTempOrdersFormatString(userInfoDTO, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> SearchUnIncludeTempOrdersFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchUnIncludeTempOrdersFormatStringAsync(userInfoDTO, returnType);
+        }
+        
+        public SAS.EstayMobileService.OrderInfoCollectionResult SearchUnIncludeTempOrdersByPage(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize) {
+            return base.Channel.SearchUnIncludeTempOrdersByPage(userInfoDTO, currentPage, pagesize);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchUnIncludeTempOrdersByPageAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize) {
+            return base.Channel.SearchUnIncludeTempOrdersByPageAsync(userInfoDTO, currentPage, pagesize);
+        }
+        
+        public string SearchUnIncludeTempOrdersByPageFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchUnIncludeTempOrdersByPageFormatString(userInfoDTO, currentPage, pagesize, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> SearchUnIncludeTempOrdersByPageFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchUnIncludeTempOrdersByPageFormatStringAsync(userInfoDTO, currentPage, pagesize, returnType);
+        }
+        
+        public SAS.EstayMobileService.SearchCntResult SearchUnIncludeTempOrdersCnt(SAS.EstayMobileService.UserInfoDTO userInfoDTO) {
+            return base.Channel.SearchUnIncludeTempOrdersCnt(userInfoDTO);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchUnIncludeTempOrdersCntAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO) {
+            return base.Channel.SearchUnIncludeTempOrdersCntAsync(userInfoDTO);
+        }
+        
+        public string SearchUnIncludeTempOrdersCntFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchUnIncludeTempOrdersCntFormatString(userInfoDTO, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> SearchUnIncludeTempOrdersCntFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchUnIncludeTempOrdersCntFormatStringAsync(userInfoDTO, returnType);
+        }
+        
+        public SAS.EstayMobileService.OrderInfoCollectionResult SearchUnLiveOrderByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom) {
+            return base.Channel.SearchUnLiveOrderByUserID(UserID, UserSourceFrom);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchUnLiveOrderByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom) {
+            return base.Channel.SearchUnLiveOrderByUserIDAsync(UserID, UserSourceFrom);
+        }
+        
+        public string SearchUnLiveOrderByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchUnLiveOrderByUserIDFormatString(UserID, UserSourceFrom, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> SearchUnLiveOrderByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchUnLiveOrderByUserIDFormatStringAsync(UserID, UserSourceFrom, returnType);
+        }
+        
+        public SAS.EstayMobileService.OrderInfoCollectionResult SearchUnLiveOrderByUserIDByPage(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize) {
+            return base.Channel.SearchUnLiveOrderByUserIDByPage(UserID, UserSourceFrom, currentPage, pagesize);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchUnLiveOrderByUserIDByPageAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize) {
+            return base.Channel.SearchUnLiveOrderByUserIDByPageAsync(UserID, UserSourceFrom, currentPage, pagesize);
+        }
+        
+        public string SearchUnLiveOrderByPageByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchUnLiveOrderByPageByUserIDFormatString(UserID, UserSourceFrom, currentPage, pagesize, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> SearchUnLiveOrderByPageByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchUnLiveOrderByPageByUserIDFormatStringAsync(UserID, UserSourceFrom, currentPage, pagesize, returnType);
+        }
+        
+        public SAS.EstayMobileService.SearchCntResult SearchUnliveOrderCntByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom) {
+            return base.Channel.SearchUnliveOrderCntByUserID(UserID, UserSourceFrom);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchUnliveOrderCntByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom) {
+            return base.Channel.SearchUnliveOrderCntByUserIDAsync(UserID, UserSourceFrom);
+        }
+        
+        public string SearchUnliveOrderCntByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchUnliveOrderCntByUserIDFormatString(UserID, UserSourceFrom, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> SearchUnliveOrderCntByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchUnliveOrderCntByUserIDFormatStringAsync(UserID, UserSourceFrom, returnType);
+        }
+        
+        public SAS.EstayMobileService.OrderInfoCollectionResult SearchWaitForPayOrderByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom) {
+            return base.Channel.SearchWaitForPayOrderByUserID(UserID, UserSourceFrom);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchWaitForPayOrderByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom) {
+            return base.Channel.SearchWaitForPayOrderByUserIDAsync(UserID, UserSourceFrom);
+        }
+        
+        public string SearchWaitForPayOrderByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchWaitForPayOrderByUserIDFormatString(UserID, UserSourceFrom, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> SearchWaitForPayOrderByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchWaitForPayOrderByUserIDFormatStringAsync(UserID, UserSourceFrom, returnType);
+        }
+        
+        public SAS.EstayMobileService.OrderInfoCollectionResult SearchWaitForPayOrderByPageByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize) {
+            return base.Channel.SearchWaitForPayOrderByPageByUserID(UserID, UserSourceFrom, currentPage, pagesize);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchWaitForPayOrderByPageByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize) {
+            return base.Channel.SearchWaitForPayOrderByPageByUserIDAsync(UserID, UserSourceFrom, currentPage, pagesize);
+        }
+        
+        public string SearchWaitForPayOrderByPageByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchWaitForPayOrderByPageByUserIDFormatString(UserID, UserSourceFrom, currentPage, pagesize, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> SearchWaitForPayOrderByPageByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchWaitForPayOrderByPageByUserIDFormatStringAsync(UserID, UserSourceFrom, currentPage, pagesize, returnType);
+        }
+        
+        public SAS.EstayMobileService.SearchCntResult SearchWaitForPayOrderCntByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom) {
+            return base.Channel.SearchWaitForPayOrderCntByUserID(UserID, UserSourceFrom);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchWaitForPayOrderCntByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom) {
+            return base.Channel.SearchWaitForPayOrderCntByUserIDAsync(UserID, UserSourceFrom);
+        }
+        
+        public string SearchWaitForPayOrderCntByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchWaitForPayOrderCntByUserIDFormatString(UserID, UserSourceFrom, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> SearchWaitForPayOrderCntByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchWaitForPayOrderCntByUserIDFormatStringAsync(UserID, UserSourceFrom, returnType);
+        }
+        
+        public SAS.EstayMobileService.OrderInfoCollectionResult SearchCanReviewOrderByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom) {
+            return base.Channel.SearchCanReviewOrderByUserID(UserID, UserSourceFrom);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchCanReviewOrderByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom) {
+            return base.Channel.SearchCanReviewOrderByUserIDAsync(UserID, UserSourceFrom);
+        }
+        
+        public string SearchCanReviewOrderByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchCanReviewOrderByUserIDFormatString(UserID, UserSourceFrom, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> SearchCanReviewOrderByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchCanReviewOrderByUserIDFormatStringAsync(UserID, UserSourceFrom, returnType);
+        }
+        
+        public SAS.EstayMobileService.OrderInfoCollectionResult SearchCanReviewOrderByPageByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize) {
+            return base.Channel.SearchCanReviewOrderByPageByUserID(UserID, UserSourceFrom, currentPage, pagesize);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchCanReviewOrderByPageByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize) {
+            return base.Channel.SearchCanReviewOrderByPageByUserIDAsync(UserID, UserSourceFrom, currentPage, pagesize);
+        }
+        
+        public string SearchCanReviewOrderByPageByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchCanReviewOrderByPageByUserIDFormatString(UserID, UserSourceFrom, currentPage, pagesize, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> SearchCanReviewOrderByPageByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchCanReviewOrderByPageByUserIDFormatStringAsync(UserID, UserSourceFrom, currentPage, pagesize, returnType);
+        }
+        
+        public SAS.EstayMobileService.SearchCntResult SearchCanReviewOrderCntByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom) {
+            return base.Channel.SearchCanReviewOrderCntByUserID(UserID, UserSourceFrom);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchCanReviewOrderCntByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom) {
+            return base.Channel.SearchCanReviewOrderCntByUserIDAsync(UserID, UserSourceFrom);
+        }
+        
+        public string SearchCanReviewOrderCntByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchCanReviewOrderCntByUserIDFormatString(UserID, UserSourceFrom, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> SearchCanReviewOrderCntByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchCanReviewOrderCntByUserIDFormatStringAsync(UserID, UserSourceFrom, returnType);
+        }
+        
+        public SAS.EstayMobileService.OrderInfoCollectionResult SearchUnIncludeTempOrdersByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom) {
+            return base.Channel.SearchUnIncludeTempOrdersByUserID(UserID, UserSourceFrom);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchUnIncludeTempOrdersByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom) {
+            return base.Channel.SearchUnIncludeTempOrdersByUserIDAsync(UserID, UserSourceFrom);
+        }
+        
+        public string SearchUnIncludeTempOrdersByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchUnIncludeTempOrdersByUserIDFormatString(UserID, UserSourceFrom, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> SearchUnIncludeTempOrdersByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchUnIncludeTempOrdersByUserIDFormatStringAsync(UserID, UserSourceFrom, returnType);
+        }
+        
+        public SAS.EstayMobileService.OrderInfoCollectionResult SearchUnIncludeTempOrdersByPageByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize) {
+            return base.Channel.SearchUnIncludeTempOrdersByPageByUserID(UserID, UserSourceFrom, currentPage, pagesize);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchUnIncludeTempOrdersByPageByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize) {
+            return base.Channel.SearchUnIncludeTempOrdersByPageByUserIDAsync(UserID, UserSourceFrom, currentPage, pagesize);
+        }
+        
+        public string SearchUnIncludeTempOrdersByPageByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchUnIncludeTempOrdersByPageByUserIDFormatString(UserID, UserSourceFrom, currentPage, pagesize, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> SearchUnIncludeTempOrdersByPageByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchUnIncludeTempOrdersByPageByUserIDFormatStringAsync(UserID, UserSourceFrom, currentPage, pagesize, returnType);
+        }
+        
+        public SAS.EstayMobileService.SearchCntResult SearchUnIncludeTempOrdersCntByUserID(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom) {
+            return base.Channel.SearchUnIncludeTempOrdersCntByUserID(UserID, UserSourceFrom);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchUnIncludeTempOrdersCntByUserIDAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom) {
+            return base.Channel.SearchUnIncludeTempOrdersCntByUserIDAsync(UserID, UserSourceFrom);
+        }
+        
+        public string SearchUnIncludeTempOrdersCntByUserIDFormatString(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchUnIncludeTempOrdersCntByUserIDFormatString(UserID, UserSourceFrom, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> SearchUnIncludeTempOrdersCntByUserIDFormatStringAsync(string UserID, SAS.EstayMobileService.EnumUserSourceFrom UserSourceFrom, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchUnIncludeTempOrdersCntByUserIDFormatStringAsync(UserID, UserSourceFrom, returnType);
+        }
+        
+        public SAS.EstayMobileService.CheckExistResult CheckRoomSoldEnoughBetweenDate(int RoomID, int BookNum, System.DateTime CheckInDate, System.DateTime CheckOutDate) {
+            return base.Channel.CheckRoomSoldEnoughBetweenDate(RoomID, BookNum, CheckInDate, CheckOutDate);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.CheckExistResult> CheckRoomSoldEnoughBetweenDateAsync(int RoomID, int BookNum, System.DateTime CheckInDate, System.DateTime CheckOutDate) {
+            return base.Channel.CheckRoomSoldEnoughBetweenDateAsync(RoomID, BookNum, CheckInDate, CheckOutDate);
+        }
+        
+        public string CheckRoomSoldEnoughBetweenDateFormatString(int RoomID, int BookNum, System.DateTime CheckInDate, System.DateTime CheckOutDate, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.CheckRoomSoldEnoughBetweenDateFormatString(RoomID, BookNum, CheckInDate, CheckOutDate, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> CheckRoomSoldEnoughBetweenDateFormatStringAsync(int RoomID, int BookNum, System.DateTime CheckInDate, System.DateTime CheckOutDate, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.CheckRoomSoldEnoughBetweenDateFormatStringAsync(RoomID, BookNum, CheckInDate, CheckOutDate, returnType);
+        }
+        
+        public SAS.EstayMobileService.ResultBase ChangeRoomSoldBedBetweenDate(int RoomID, int BookNum, System.DateTime CheckInDate, System.DateTime CheckOutDate) {
+            return base.Channel.ChangeRoomSoldBedBetweenDate(RoomID, BookNum, CheckInDate, CheckOutDate);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.ResultBase> ChangeRoomSoldBedBetweenDateAsync(int RoomID, int BookNum, System.DateTime CheckInDate, System.DateTime CheckOutDate) {
+            return base.Channel.ChangeRoomSoldBedBetweenDateAsync(RoomID, BookNum, CheckInDate, CheckOutDate);
+        }
+        
+        public string ChangeRoomSoldBedBetweenDateFormatString(int RoomID, int BookNum, System.DateTime CheckInDate, System.DateTime CheckOutDate, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.ChangeRoomSoldBedBetweenDateFormatString(RoomID, BookNum, CheckInDate, CheckOutDate, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> ChangeRoomSoldBedBetweenDateFormatStringAsync(int RoomID, int BookNum, System.DateTime CheckInDate, System.DateTime CheckOutDate, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.ChangeRoomSoldBedBetweenDateFormatStringAsync(RoomID, BookNum, CheckInDate, CheckOutDate, returnType);
+        }
+        
+        public SAS.EstayMobileService.OrderStateCollectionResult GetSpecialOrderStateInfo(SAS.EstayMobileService.OrderStateParams orderStateParam) {
+            return base.Channel.GetSpecialOrderStateInfo(orderStateParam);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateCollectionResult> GetSpecialOrderStateInfoAsync(SAS.EstayMobileService.OrderStateParams orderStateParam) {
+            return base.Channel.GetSpecialOrderStateInfoAsync(orderStateParam);
+        }
+        
+        public string GetSpecialOrderStateInfoFormatString(SAS.EstayMobileService.OrderStateParams orderStateParam, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.GetSpecialOrderStateInfoFormatString(orderStateParam, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetSpecialOrderStateInfoFormatStringAsync(SAS.EstayMobileService.OrderStateParams orderStateParam, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.GetSpecialOrderStateInfoFormatStringAsync(orderStateParam, returnType);
+        }
+        
+        public SAS.EstayMobileService.OrderStateResult GetStateByID(int stateID) {
+            return base.Channel.GetStateByID(stateID);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> GetStateByIDAsync(int stateID) {
+            return base.Channel.GetStateByIDAsync(stateID);
+        }
+        
+        public string GetStateByIDFormatString(int stateID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.GetStateByIDFormatString(stateID, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetStateByIDFormatStringAsync(int stateID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.GetStateByIDFormatStringAsync(stateID, returnType);
+        }
+        
+        public SAS.EstayMobileService.OrderStateCollectionResult SearchOrderState(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams) {
+            return base.Channel.SearchOrderState(SearchParams);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateCollectionResult> SearchOrderStateAsync(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams) {
+            return base.Channel.SearchOrderStateAsync(SearchParams);
+        }
+        
+        public string SearchOrderStateFormatString(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchOrderStateFormatString(SearchParams, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> SearchOrderStateFormatStringAsync(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchOrderStateFormatStringAsync(SearchParams, returnType);
+        }
+        
+        public SAS.EstayMobileService.OrderStateCollectionResult SearchOrderStateByPage(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams, int currentPage, int pagesize) {
+            return base.Channel.SearchOrderStateByPage(SearchParams, currentPage, pagesize);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateCollectionResult> SearchOrderStateByPageAsync(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams, int currentPage, int pagesize) {
+            return base.Channel.SearchOrderStateByPageAsync(SearchParams, currentPage, pagesize);
+        }
+        
+        public string SearchOrderStateByPageFormatString(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchOrderStateByPageFormatString(SearchParams, currentPage, pagesize, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> SearchOrderStateByPageFormatStringAsync(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchOrderStateByPageFormatStringAsync(SearchParams, currentPage, pagesize, returnType);
+        }
+        
+        public SAS.EstayMobileService.SearchCntResult SearchOrderStateCnt(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams) {
+            return base.Channel.SearchOrderStateCnt(SearchParams);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchOrderStateCntAsync(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams) {
+            return base.Channel.SearchOrderStateCntAsync(SearchParams);
+        }
+        
+        public string SearchOrderStateCntFormatString(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchOrderStateCntFormatString(SearchParams, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> SearchOrderStateCntFormatStringAsync(SAS.EstayMobileService.OrderStateSearchParamsDTO SearchParams, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.SearchOrderStateCntFormatStringAsync(SearchParams, returnType);
+        }
+        
+        public SAS.EstayMobileService.OrderGuaranteeRuleResult GetOrderGuaranteeRuleByOrderID(int orderID) {
+            return base.Channel.GetOrderGuaranteeRuleByOrderID(orderID);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderGuaranteeRuleResult> GetOrderGuaranteeRuleByOrderIDAsync(int orderID) {
+            return base.Channel.GetOrderGuaranteeRuleByOrderIDAsync(orderID);
+        }
+        
+        public string GetOrderGuaranteeRuleByOrderIDFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.GetOrderGuaranteeRuleByOrderIDFormatString(orderID, returnType);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetOrderGuaranteeRuleByOrderIDFormatStringAsync(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
+            return base.Channel.GetOrderGuaranteeRuleByOrderIDFormatStringAsync(orderID, returnType);
+        }
+        
+        public SAS.EstayMobileService.OrderGuaranteeRuleResult AddOrderGuaranteeRule(SAS.EstayMobileService.OrderGuaranteeDTO orderGuaranteeRule) {
+            return base.Channel.AddOrderGuaranteeRule(orderGuaranteeRule);
+        }
+        
+        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderGuaranteeRuleResult> AddOrderGuaranteeRuleAsync(SAS.EstayMobileService.OrderGuaranteeDTO orderGuaranteeRule) {
+            return base.Channel.AddOrderGuaranteeRuleAsync(orderGuaranteeRule);
+        }
+        
+        public string GetHotClientActivity(SAS.EstayMobileService.ActivityParamsDTO CommentParams) {
+            return base.Channel.GetHotClientActivity(CommentParams);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetHotClientActivityAsync(SAS.EstayMobileService.ActivityParamsDTO CommentParams) {
+            return base.Channel.GetHotClientActivityAsync(CommentParams);
         }
         
         public string GetCityInfoByName(string name) {
@@ -15215,358 +16008,6 @@ namespace SAS.EstayMobileService {
         
         public System.Threading.Tasks.Task<string> EditOrderFormatStringAsync(SAS.EstayMobileService.OrderInfoDTO newOrder, SAS.EstayMobileService.EnumReturnFormatType returnType) {
             return base.Channel.EditOrderFormatStringAsync(newOrder, returnType);
-        }
-        
-        public SAS.EstayMobileService.OrderStateResult ChangeOrderState(SAS.EstayMobileService.OrderAndStateChangeParamsDTO orderStateChangeParams) {
-            return base.Channel.ChangeOrderState(orderStateChangeParams);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> ChangeOrderStateAsync(SAS.EstayMobileService.OrderAndStateChangeParamsDTO orderStateChangeParams) {
-            return base.Channel.ChangeOrderStateAsync(orderStateChangeParams);
-        }
-        
-        public string ChangeOrderStateFormatString(SAS.EstayMobileService.OrderAndStateChangeParamsDTO orderStateChangeParams, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.ChangeOrderStateFormatString(orderStateChangeParams, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> ChangeOrderStateFormatStringAsync(SAS.EstayMobileService.OrderAndStateChangeParamsDTO orderStateChangeParams, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.ChangeOrderStateFormatStringAsync(orderStateChangeParams, returnType);
-        }
-        
-        public SAS.EstayMobileService.OrderStateResult confirmOrderStatus(int orderID) {
-            return base.Channel.confirmOrderStatus(orderID);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> confirmOrderStatusAsync(int orderID) {
-            return base.Channel.confirmOrderStatusAsync(orderID);
-        }
-        
-        public string confirmOrderStatusFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.confirmOrderStatusFormatString(orderID, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> confirmOrderStatusFormatStringAsync(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.confirmOrderStatusFormatStringAsync(orderID, returnType);
-        }
-        
-        public SAS.EstayMobileService.OrderStateResult SetReadyOrderStatus(int orderID) {
-            return base.Channel.SetReadyOrderStatus(orderID);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> SetReadyOrderStatusAsync(int orderID) {
-            return base.Channel.SetReadyOrderStatusAsync(orderID);
-        }
-        
-        public string SetReadyOrderStatusFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SetReadyOrderStatusFormatString(orderID, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> SetReadyOrderStatusFormatStringAsync(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SetReadyOrderStatusFormatStringAsync(orderID, returnType);
-        }
-        
-        public SAS.EstayMobileService.OrderStateResult SetWaitPayOrderStatus(int orderID) {
-            return base.Channel.SetWaitPayOrderStatus(orderID);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> SetWaitPayOrderStatusAsync(int orderID) {
-            return base.Channel.SetWaitPayOrderStatusAsync(orderID);
-        }
-        
-        public string SetWaitPayOrderStatusFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SetWaitPayOrderStatusFormatString(orderID, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> SetWaitPayOrderStatusFormatStringAsync(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SetWaitPayOrderStatusFormatStringAsync(orderID, returnType);
-        }
-        
-        public SAS.EstayMobileService.OrderStateResult ChangeStatusOnly(int orderID, int newOrderStateID, string logStr) {
-            return base.Channel.ChangeStatusOnly(orderID, newOrderStateID, logStr);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> ChangeStatusOnlyAsync(int orderID, int newOrderStateID, string logStr) {
-            return base.Channel.ChangeStatusOnlyAsync(orderID, newOrderStateID, logStr);
-        }
-        
-        public string ChangeStatusOnlyFormatString(int orderID, int newOrderStateID, string logStr, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.ChangeStatusOnlyFormatString(orderID, newOrderStateID, logStr, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> ChangeStatusOnlyFormatStringAsync(int orderID, int newOrderStateID, string logStr, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.ChangeStatusOnlyFormatStringAsync(orderID, newOrderStateID, logStr, returnType);
-        }
-        
-        public SAS.EstayMobileService.OrderStateResult GetOrderStateInfoByOrderID(int orderID) {
-            return base.Channel.GetOrderStateInfoByOrderID(orderID);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> GetOrderStateInfoByOrderIDAsync(int orderID) {
-            return base.Channel.GetOrderStateInfoByOrderIDAsync(orderID);
-        }
-        
-        public string GetOrderStateInfoByOrderIDFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.GetOrderStateInfoByOrderIDFormatString(orderID, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> GetOrderStateInfoByOrderIDFormatStringAsync(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.GetOrderStateInfoByOrderIDFormatStringAsync(orderID, returnType);
-        }
-        
-        public SAS.EstayMobileService.OrderStateResult WaitPayStatus(int orderID, int lastMinutes) {
-            return base.Channel.WaitPayStatus(orderID, lastMinutes);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> WaitPayStatusAsync(int orderID, int lastMinutes) {
-            return base.Channel.WaitPayStatusAsync(orderID, lastMinutes);
-        }
-        
-        public string WaitPayStatusFormatString(int orderID, int lastMinutes, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.WaitPayStatusFormatString(orderID, lastMinutes, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> WaitPayStatusFormatStringAsync(int orderID, int lastMinutes, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.WaitPayStatusFormatStringAsync(orderID, lastMinutes, returnType);
-        }
-        
-        public SAS.EstayMobileService.OrderStateResult CancelOrder(int orderID) {
-            return base.Channel.CancelOrder(orderID);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderStateResult> CancelOrderAsync(int orderID) {
-            return base.Channel.CancelOrderAsync(orderID);
-        }
-        
-        public string CancelOrderFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.CancelOrderFormatString(orderID, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> CancelOrderFormatStringAsync(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.CancelOrderFormatStringAsync(orderID, returnType);
-        }
-        
-        public SAS.EstayMobileService.CheckExistResult CheckOrderCanCancel(int orderID) {
-            return base.Channel.CheckOrderCanCancel(orderID);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.CheckExistResult> CheckOrderCanCancelAsync(int orderID) {
-            return base.Channel.CheckOrderCanCancelAsync(orderID);
-        }
-        
-        public string CheckOrderCanCancelFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.CheckOrderCanCancelFormatString(orderID, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> CheckOrderCanCancelFormatStringAsync(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.CheckOrderCanCancelFormatStringAsync(orderID, returnType);
-        }
-        
-        public SAS.EstayMobileService.OrderInfoResult FillCashBackAndOperatorToOrder(int orderID) {
-            return base.Channel.FillCashBackAndOperatorToOrder(orderID);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoResult> FillCashBackAndOperatorToOrderAsync(int orderID) {
-            return base.Channel.FillCashBackAndOperatorToOrderAsync(orderID);
-        }
-        
-        public string FillCashBackAndOperatorToOrderFormatString(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.FillCashBackAndOperatorToOrderFormatString(orderID, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> FillCashBackAndOperatorToOrderFormatStringAsync(int orderID, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.FillCashBackAndOperatorToOrderFormatStringAsync(orderID, returnType);
-        }
-        
-        public SAS.EstayMobileService.OrderInfoCollectionResult SearchUnLiveOrder(SAS.EstayMobileService.UserInfoDTO userInfoDTO) {
-            return base.Channel.SearchUnLiveOrder(userInfoDTO);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchUnLiveOrderAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO) {
-            return base.Channel.SearchUnLiveOrderAsync(userInfoDTO);
-        }
-        
-        public string SearchUnLiveOrderFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchUnLiveOrderFormatString(userInfoDTO, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> SearchUnLiveOrderFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchUnLiveOrderFormatStringAsync(userInfoDTO, returnType);
-        }
-        
-        public SAS.EstayMobileService.OrderInfoCollectionResult SearchUnLiveOrderByPage(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize) {
-            return base.Channel.SearchUnLiveOrderByPage(userInfoDTO, currentPage, pagesize);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchUnLiveOrderByPageAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize) {
-            return base.Channel.SearchUnLiveOrderByPageAsync(userInfoDTO, currentPage, pagesize);
-        }
-        
-        public string SearchUnLiveOrderByPageFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchUnLiveOrderByPageFormatString(userInfoDTO, currentPage, pagesize, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> SearchUnLiveOrderByPageFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchUnLiveOrderByPageFormatStringAsync(userInfoDTO, currentPage, pagesize, returnType);
-        }
-        
-        public SAS.EstayMobileService.SearchCntResult SearchUnliveOrderCnt(SAS.EstayMobileService.UserInfoDTO userInfoDTO) {
-            return base.Channel.SearchUnliveOrderCnt(userInfoDTO);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchUnliveOrderCntAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO) {
-            return base.Channel.SearchUnliveOrderCntAsync(userInfoDTO);
-        }
-        
-        public string SearchUnliveOrderCntFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchUnliveOrderCntFormatString(userInfoDTO, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> SearchUnliveOrderCntFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchUnliveOrderCntFormatStringAsync(userInfoDTO, returnType);
-        }
-        
-        public SAS.EstayMobileService.OrderInfoCollectionResult SearchWaitForPayOrder(SAS.EstayMobileService.UserInfoDTO userInfoDTO) {
-            return base.Channel.SearchWaitForPayOrder(userInfoDTO);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchWaitForPayOrderAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO) {
-            return base.Channel.SearchWaitForPayOrderAsync(userInfoDTO);
-        }
-        
-        public string SearchWaitForPayOrderFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchWaitForPayOrderFormatString(userInfoDTO, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> SearchWaitForPayOrderFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchWaitForPayOrderFormatStringAsync(userInfoDTO, returnType);
-        }
-        
-        public SAS.EstayMobileService.OrderInfoCollectionResult SearchWaitForPayOrderByPage(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize) {
-            return base.Channel.SearchWaitForPayOrderByPage(userInfoDTO, currentPage, pagesize);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchWaitForPayOrderByPageAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize) {
-            return base.Channel.SearchWaitForPayOrderByPageAsync(userInfoDTO, currentPage, pagesize);
-        }
-        
-        public string SearchWaitForPayOrderByPageFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchWaitForPayOrderByPageFormatString(userInfoDTO, currentPage, pagesize, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> SearchWaitForPayOrderByPageFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchWaitForPayOrderByPageFormatStringAsync(userInfoDTO, currentPage, pagesize, returnType);
-        }
-        
-        public SAS.EstayMobileService.SearchCntResult SearchWaitForPayOrderCnt(SAS.EstayMobileService.UserInfoDTO userInfoDTO) {
-            return base.Channel.SearchWaitForPayOrderCnt(userInfoDTO);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchWaitForPayOrderCntAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO) {
-            return base.Channel.SearchWaitForPayOrderCntAsync(userInfoDTO);
-        }
-        
-        public string SearchWaitForPayOrderCntFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchWaitForPayOrderCntFormatString(userInfoDTO, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> SearchWaitForPayOrderCntFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchWaitForPayOrderCntFormatStringAsync(userInfoDTO, returnType);
-        }
-        
-        public SAS.EstayMobileService.OrderInfoCollectionResult SearchCanReviewOrder(SAS.EstayMobileService.UserInfoDTO userInfoDTO) {
-            return base.Channel.SearchCanReviewOrder(userInfoDTO);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchCanReviewOrderAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO) {
-            return base.Channel.SearchCanReviewOrderAsync(userInfoDTO);
-        }
-        
-        public string SearchCanReviewOrderFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchCanReviewOrderFormatString(userInfoDTO, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> SearchCanReviewOrderFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchCanReviewOrderFormatStringAsync(userInfoDTO, returnType);
-        }
-        
-        public SAS.EstayMobileService.OrderInfoCollectionResult SearchCanReviewOrderByPage(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize) {
-            return base.Channel.SearchCanReviewOrderByPage(userInfoDTO, currentPage, pagesize);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchCanReviewOrderByPageAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize) {
-            return base.Channel.SearchCanReviewOrderByPageAsync(userInfoDTO, currentPage, pagesize);
-        }
-        
-        public string SearchCanReviewOrderByPageFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchCanReviewOrderByPageFormatString(userInfoDTO, currentPage, pagesize, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> SearchCanReviewOrderByPageFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchCanReviewOrderByPageFormatStringAsync(userInfoDTO, currentPage, pagesize, returnType);
-        }
-        
-        public SAS.EstayMobileService.SearchCntResult SearchCanReviewOrderCnt(SAS.EstayMobileService.UserInfoDTO userInfoDTO) {
-            return base.Channel.SearchCanReviewOrderCnt(userInfoDTO);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchCanReviewOrderCntAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO) {
-            return base.Channel.SearchCanReviewOrderCntAsync(userInfoDTO);
-        }
-        
-        public string SearchCanReviewOrderCntFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchCanReviewOrderCntFormatString(userInfoDTO, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> SearchCanReviewOrderCntFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchCanReviewOrderCntFormatStringAsync(userInfoDTO, returnType);
-        }
-        
-        public SAS.EstayMobileService.OrderInfoCollectionResult SearchUnIncludeTempOrders(SAS.EstayMobileService.UserInfoDTO userInfoDTO) {
-            return base.Channel.SearchUnIncludeTempOrders(userInfoDTO);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchUnIncludeTempOrdersAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO) {
-            return base.Channel.SearchUnIncludeTempOrdersAsync(userInfoDTO);
-        }
-        
-        public string SearchUnIncludeTempOrdersFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchUnIncludeTempOrdersFormatString(userInfoDTO, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> SearchUnIncludeTempOrdersFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchUnIncludeTempOrdersFormatStringAsync(userInfoDTO, returnType);
-        }
-        
-        public SAS.EstayMobileService.OrderInfoCollectionResult SearchUnIncludeTempOrdersByPage(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize) {
-            return base.Channel.SearchUnIncludeTempOrdersByPage(userInfoDTO, currentPage, pagesize);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.OrderInfoCollectionResult> SearchUnIncludeTempOrdersByPageAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize) {
-            return base.Channel.SearchUnIncludeTempOrdersByPageAsync(userInfoDTO, currentPage, pagesize);
-        }
-        
-        public string SearchUnIncludeTempOrdersByPageFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchUnIncludeTempOrdersByPageFormatString(userInfoDTO, currentPage, pagesize, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> SearchUnIncludeTempOrdersByPageFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, int currentPage, int pagesize, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchUnIncludeTempOrdersByPageFormatStringAsync(userInfoDTO, currentPage, pagesize, returnType);
-        }
-        
-        public SAS.EstayMobileService.SearchCntResult SearchUnIncludeTempOrdersCnt(SAS.EstayMobileService.UserInfoDTO userInfoDTO) {
-            return base.Channel.SearchUnIncludeTempOrdersCnt(userInfoDTO);
-        }
-        
-        public System.Threading.Tasks.Task<SAS.EstayMobileService.SearchCntResult> SearchUnIncludeTempOrdersCntAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO) {
-            return base.Channel.SearchUnIncludeTempOrdersCntAsync(userInfoDTO);
-        }
-        
-        public string SearchUnIncludeTempOrdersCntFormatString(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchUnIncludeTempOrdersCntFormatString(userInfoDTO, returnType);
-        }
-        
-        public System.Threading.Tasks.Task<string> SearchUnIncludeTempOrdersCntFormatStringAsync(SAS.EstayMobileService.UserInfoDTO userInfoDTO, SAS.EstayMobileService.EnumReturnFormatType returnType) {
-            return base.Channel.SearchUnIncludeTempOrdersCntFormatStringAsync(userInfoDTO, returnType);
         }
     }
 }

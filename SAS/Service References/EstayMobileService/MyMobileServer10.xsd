@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.UserDTO" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.UserDTO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://wcfmobile.estay.cn/MyMobileServer.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" />
+  <xs:import schemaLocation="http://www.estay.cn:7085/MyMobileServer.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" />
+  <xs:complexType name="loginUserParamsDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LoginUserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ppass" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="UserSourceFrom" type="q1:EnumUserSourceFrom" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="loginUserParamsDTO" nillable="true" type="tns:loginUserParamsDTO" />
   <xs:complexType name="UserInfoSearchParamsDTO">
     <xs:sequence>
       <xs:element minOccurs="0" name="CardNo" nillable="true" type="xs:string" />
@@ -14,6 +22,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="UserInfoSearchParamsDTO" nillable="true" type="tns:UserInfoSearchParamsDTO" />
+  <xs:complexType name="ArrayOfUserInfoDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserInfoDTO" nillable="true" type="tns:UserInfoDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserInfoDTO" nillable="true" type="tns:ArrayOfUserInfoDTO" />
   <xs:complexType name="UserInfoDTO">
     <xs:sequence>
       <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
@@ -29,7 +43,7 @@
       <xs:element minOccurs="0" name="MonthIncome" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Pwd" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Sex" nillable="true" type="xs:string" />
-      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="SourceFrom" type="q1:EnumUserSourceFrom" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="SourceFrom" type="q2:EnumUserSourceFrom" />
       <xs:element minOccurs="0" name="UserEmail" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="UserLevelID" nillable="true" type="xs:int" />
@@ -41,14 +55,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="UserInfoDTO" nillable="true" type="tns:UserInfoDTO" />
-  <xs:complexType name="loginUserParamsDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="LoginUserName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Ppass" nillable="true" type="xs:string" />
-      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="UserSourceFrom" type="q2:EnumUserSourceFrom" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="loginUserParamsDTO" nillable="true" type="tns:loginUserParamsDTO" />
   <xs:complexType name="UserVerifyDTO">
     <xs:sequence>
       <xs:element minOccurs="0" name="CheckMailTime" nillable="true" type="xs:dateTime" />
@@ -129,12 +135,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="UserIntegralDTO" nillable="true" type="tns:UserIntegralDTO" />
-  <xs:complexType name="ArrayOfUserInfoDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserInfoDTO" nillable="true" type="tns:UserInfoDTO" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfUserInfoDTO" nillable="true" type="tns:ArrayOfUserInfoDTO" />
   <xs:complexType name="UserLevelDTO">
     <xs:sequence>
       <xs:element minOccurs="0" name="BetweenIntegral" nillable="true" type="xs:string" />

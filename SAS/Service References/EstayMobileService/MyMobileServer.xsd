@@ -1,200 +1,738 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.OrderDTO" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.OrderDTO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://wcfmobile.estay.cn/MyMobileServer.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" />
-  <xs:import schemaLocation="http://wcfmobile.estay.cn/MyMobileServer.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/MobileInter.ThirdInterface.Service" />
-  <xs:complexType name="ArrayOfOrderInfoDTO">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://www.estay.cn:7085/MyMobileServer.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://www.estay.cn:7085/MyMobileServer.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.UserDTO" />
+  <xs:import schemaLocation="http://www.estay.cn:7085/MyMobileServer.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.ThirdInterfaceDTO" />
+  <xs:import schemaLocation="http://www.estay.cn:7085/MyMobileServer.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/MobileInter.ThirdInterface.Service" />
+  <xs:import schemaLocation="http://www.estay.cn:7085/MyMobileServer.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.OrderDTO" />
+  <xs:simpleType name="EnumUserSourceFrom">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ECS">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ANYHOME">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="All">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">10</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumUserSourceFrom" nillable="true" type="tns:EnumUserSourceFrom" />
+  <xs:simpleType name="EnumReturnFormatType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="xml">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="json">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumReturnFormatType" nillable="true" type="tns:EnumReturnFormatType" />
+  <xs:complexType name="CheckExistResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IsExistBool" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CheckExistResult" nillable="true" type="tns:CheckExistResult" />
+  <xs:complexType name="ResultBase">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderInfoDTO" nillable="true" type="tns:OrderInfoDTO" />
+      <xs:element minOccurs="0" name="ResultCode" type="tns:EnumResultCode" />
+      <xs:element minOccurs="0" name="msg" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfOrderInfoDTO" nillable="true" type="tns:ArrayOfOrderInfoDTO" />
-  <xs:complexType name="OrderInfoDTO">
+  <xs:element name="ResultBase" nillable="true" type="tns:ResultBase" />
+  <xs:simpleType name="EnumResultCode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Fail" />
+      <xs:enumeration value="Success" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumResultCode" nillable="true" type="tns:EnumResultCode" />
+  <xs:complexType name="UserInfoCollectionResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllRecordCnt" type="xs:int" />
+          <xs:element minOccurs="0" name="CurrentPage" type="xs:int" />
+          <xs:element minOccurs="0" name="PageSize" type="xs:int" />
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.UserDTO" minOccurs="0" name="UserInfoCollection" nillable="true" type="q1:ArrayOfUserInfoDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserInfoCollectionResult" nillable="true" type="tns:UserInfoCollectionResult" />
+  <xs:complexType name="SearchCntResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SearchRecordCnt" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SearchCntResult" nillable="true" type="tns:SearchCntResult" />
+  <xs:complexType name="UserInfoResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.UserDTO" minOccurs="0" name="UserInfoDTO" nillable="true" type="q2:UserInfoDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserInfoResult" nillable="true" type="tns:UserInfoResult" />
+  <xs:simpleType name="EnumSystemID">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Android">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IOS">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Wap">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PC">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumSystemID" nillable="true" type="tns:EnumSystemID" />
+  <xs:complexType name="ValidateCodeMappingResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.ThirdInterfaceDTO" minOccurs="0" name="vValidateCodeMappingDTO" nillable="true" type="q3:ValidateCodeMappingDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ValidateCodeMappingResult" nillable="true" type="tns:ValidateCodeMappingResult" />
+  <xs:simpleType name="EnumSendType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SMS">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Email">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumSendType" nillable="true" type="tns:EnumSendType" />
+  <xs:complexType name="LoginResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IsPassBool" type="xs:boolean" />
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.UserDTO" minOccurs="0" name="LoginUserInfo" nillable="true" type="q4:UserInfoDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LoginResult" nillable="true" type="tns:LoginResult" />
+  <xs:complexType name="UserVerifyResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.UserDTO" minOccurs="0" name="uUserVerifyDTO" nillable="true" type="q5:UserVerifyDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserVerifyResult" nillable="true" type="tns:UserVerifyResult" />
+  <xs:complexType name="UserVerifyCollectionResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllRecordCnt" type="xs:int" />
+          <xs:element minOccurs="0" name="CurrentPage" type="xs:int" />
+          <xs:element minOccurs="0" name="PageSize" type="xs:int" />
+          <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.UserDTO" minOccurs="0" name="UserVerifyDTOs" nillable="true" type="q6:ArrayOfUserVerifyDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserVerifyCollectionResult" nillable="true" type="tns:UserVerifyCollectionResult" />
+  <xs:simpleType name="EnumCashBackItem">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ecs">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="elong">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="elong_front">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="thrid">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumCashBackItem" nillable="true" type="tns:EnumCashBackItem" />
+  <xs:complexType name="CashBackConfigResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.UserDTO" minOccurs="0" name="cCashBackConfigDTO" nillable="true" type="q7:CashBackConfigDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CashBackConfigResult" nillable="true" type="tns:CashBackConfigResult" />
+  <xs:simpleType name="EnumGiveIntegralItemKey">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="register" />
+      <xs:enumeration value="telphoneVerify" />
+      <xs:enumeration value="mailVerify" />
+      <xs:enumeration value="review" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumGiveIntegralItemKey" nillable="true" type="tns:EnumGiveIntegralItemKey" />
+  <xs:complexType name="IntegralConfigResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.UserDTO" minOccurs="0" name="iIntegralConfigDTO" nillable="true" type="q8:IntegralConfigDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="IntegralConfigResult" nillable="true" type="tns:IntegralConfigResult" />
+  <xs:complexType name="ElongCreateOrderResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CancelTime" type="xs:dateTime" />
+          <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/MobileInter.ThirdInterface.Service" minOccurs="0" name="CurrencyCode" type="q9:EnumCurrencyCode" />
+          <xs:element minOccurs="0" name="GuaranteeAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="OrderId" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ElongCreateOrderResult" nillable="true" type="tns:ElongCreateOrderResult" />
+  <xs:complexType name="ElongValidateOrderResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CancelTime" type="xs:dateTime" />
+          <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/MobileInter.ThirdInterface.Service" minOccurs="0" name="CurrencyCode" type="q10:EnumCurrencyCode" />
+          <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="GuaranteeRate" type="xs:decimal" />
+          <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/MobileInter.ThirdInterface.Service" minOccurs="0" name="ValidateResultCode" type="q11:EnumValidateResult" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ElongValidateOrderResult" nillable="true" type="tns:ElongValidateOrderResult" />
+  <xs:complexType name="ElongValidateCreditCardResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IsNeedVerifyCode" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsValid" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ElongValidateCreditCardResult" nillable="true" type="tns:ElongValidateCreditCardResult" />
+  <xs:complexType name="EarliestLastestArriveTimeResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.OrderDTO" minOccurs="0" name="EarliestLasterTimeDTOCollection" nillable="true" type="q12:ArrayOfEarliestLastestTimeDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EarliestLastestArriveTimeResult" nillable="true" type="tns:EarliestLastestArriveTimeResult" />
+  <xs:complexType name="ReviewableResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CanReviewable" type="tns:EnumReivewableState" />
+          <xs:element minOccurs="0" name="OrderID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ReviewableResult" nillable="true" type="tns:ReviewableResult" />
+  <xs:simpleType name="EnumReivewableState">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NoneOrder" />
+      <xs:enumeration value="NoEnoughOrder">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CanComment">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumReivewableState" nillable="true" type="tns:EnumReivewableState" />
+  <xs:complexType name="UserIntegralResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.UserDTO" minOccurs="0" name="IntegralDTO" nillable="true" type="q13:UserIntegralDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserIntegralResult" nillable="true" type="tns:UserIntegralResult" />
+  <xs:complexType name="EmailSMSTemplateCategoryResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.ThirdInterfaceDTO" minOccurs="0" name="_templateCategoryDTO" nillable="true" type="q14:EmailSMSTemplateCategoryDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EmailSMSTemplateCategoryResult" nillable="true" type="tns:EmailSMSTemplateCategoryResult" />
+  <xs:complexType name="EmailSMSTemplateCategoryCollectionResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllRecordCnt" type="xs:int" />
+          <xs:element minOccurs="0" name="CurrentPage" type="xs:int" />
+          <xs:element minOccurs="0" name="PageSize" type="xs:int" />
+          <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.ThirdInterfaceDTO" minOccurs="0" name="_templateCategoryCollection" nillable="true" type="q15:ArrayOfEmailSMSTemplateCategoryDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EmailSMSTemplateCategoryCollectionResult" nillable="true" type="tns:EmailSMSTemplateCategoryCollectionResult" />
+  <xs:complexType name="ValidateTypeResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.ThirdInterfaceDTO" minOccurs="0" name="vValidateTypeDTO" nillable="true" type="q16:ValidateTypeDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ValidateTypeResult" nillable="true" type="tns:ValidateTypeResult" />
+  <xs:complexType name="ValidateTypeCollectionResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllRecordCnt" type="xs:int" />
+          <xs:element minOccurs="0" name="CurrentPage" type="xs:int" />
+          <xs:element minOccurs="0" name="PageSize" type="xs:int" />
+          <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.ThirdInterfaceDTO" minOccurs="0" name="ValidateTypeCollection" nillable="true" type="q17:ArrayOfValidateTypeDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ValidateTypeCollectionResult" nillable="true" type="tns:ValidateTypeCollectionResult" />
+  <xs:complexType name="TemplateResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.ThirdInterfaceDTO" minOccurs="0" name="tTemplateDTO" nillable="true" type="q18:EmailSMSTemplatesDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TemplateResult" nillable="true" type="tns:TemplateResult" />
+  <xs:complexType name="TemplateCollectionResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllRecordCnt" type="xs:int" />
+          <xs:element minOccurs="0" name="CurrentPage" type="xs:int" />
+          <xs:element minOccurs="0" name="PageSize" type="xs:int" />
+          <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.ThirdInterfaceDTO" minOccurs="0" name="TemplatesCollection" nillable="true" type="q19:ArrayOfEmailSMSTemplatesDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TemplateCollectionResult" nillable="true" type="tns:TemplateCollectionResult" />
+  <xs:simpleType name="EnumSendWay">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="auto" />
+      <xs:enumeration value="manual" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumSendWay" nillable="true" type="tns:EnumSendWay" />
+  <xs:simpleType name="EnumSendRuleType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CanNotAllowSend" />
+      <xs:enumeration value="AllowSend" />
+      <xs:enumeration value="TimingSend" />
+      <xs:enumeration value="LoopSend" />
+      <xs:enumeration value="immediately" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumSendRuleType" nillable="true" type="tns:EnumSendRuleType" />
+  <xs:complexType name="SendInfoResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.ThirdInterfaceDTO" minOccurs="0" name="sSendInfosDTO" nillable="true" type="q20:SendInfosDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SendInfoResult" nillable="true" type="tns:SendInfoResult" />
+  <xs:simpleType name="EnumAudit">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NotAudit" />
+      <xs:enumeration value="Audited" />
+      <xs:enumeration value="AuditNotPass" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumAudit" nillable="true" type="tns:EnumAudit" />
+  <xs:complexType name="OrderStateResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.OrderDTO" minOccurs="0" name="oOrderStateDTO" nillable="true" type="q21:OrderStateDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OrderStateResult" nillable="true" type="tns:OrderStateResult" />
+  <xs:complexType name="OrderInfoResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.OrderDTO" minOccurs="0" name="oOrderInfoDTO" nillable="true" type="q22:OrderInfoDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OrderInfoResult" nillable="true" type="tns:OrderInfoResult" />
+  <xs:simpleType name="EnumCashbackStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="prepaid" />
+      <xs:enumeration value="arrived" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumCashbackStatus" nillable="true" type="tns:EnumCashbackStatus" />
+  <xs:simpleType name="EnumHotelSourceFrom">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ECS">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="elong">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="elong_front">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="thirdContract">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumHotelSourceFrom" nillable="true" type="tns:EnumHotelSourceFrom" />
+  <xs:simpleType name="EnumOrderWay">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="web" />
+      <xs:enumeration value="tel" />
+      <xs:enumeration value="wap" />
+      <xs:enumeration value="android" />
+      <xs:enumeration value="ios" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumOrderWay" nillable="true" type="tns:EnumOrderWay" />
+  <xs:complexType name="ArrayOfEnumOrderOperateType">
     <xs:sequence>
-      <xs:element minOccurs="0" name="CashBack_price" type="xs:decimal" />
-      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="CashBack_status" nillable="true" type="q1:EnumCashbackStatus" />
-      <xs:element minOccurs="0" name="ChannelID" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="EarliestArriveTime" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="H_room_rp_id" nillable="true" type="xs:int" />
-      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="HotelSourceFrom" type="q2:EnumHotelSourceFrom" />
-      <xs:element minOccurs="0" name="Hotel_Tel" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Hotel_address" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Hotel_description" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Hotel_id" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Hotel_name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IsShowTrueHotelTelphone" type="xs:boolean" />
-      <xs:element minOccurs="0" name="LastestArriveTime" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="O_IsInstantOrder" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="O_associateOrderID" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="O_buy_time" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="O_buy_type" type="xs:int" />
-      <xs:element minOccurs="0" name="O_check_in_date" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="O_check_out_date" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="O_ctime" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="O_guaranteePrice" nillable="true" type="xs:decimal" />
-      <xs:element minOccurs="0" name="O_guest_remark" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="O_isbuy" type="xs:boolean" />
-      <xs:element minOccurs="0" name="O_night" type="xs:int" />
-      <xs:element minOccurs="0" name="O_number" type="xs:int" />
-      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="O_orderWay" type="q3:EnumOrderWay" />
-      <xs:element minOccurs="0" name="O_other_guest_info" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="O_remark" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="O_roomRetain" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="O_state_change_log" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="O_state_id" type="xs:int" />
-      <xs:element minOccurs="0" name="O_title" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="O_total_price" type="xs:decimal" />
-      <xs:element minOccurs="0" name="O_unit_price" nillable="true" type="xs:decimal" />
-      <xs:element minOccurs="0" name="O_user_email" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="O_user_name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="O_user_phone" nillable="true" type="xs:string" />
-      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="OperatorType" nillable="true" type="q4:ArrayOfEnumOrderOperateType" />
-      <xs:element minOccurs="0" name="OrderCreateOperator" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="OrderCreateOperatorGuid" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="OrderSerialNum" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="OrderStateName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Order_id" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="PayLasestTime" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="R_number_id" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="Room_descript" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Room_id" type="xs:int" />
-      <xs:element minOccurs="0" name="Room_name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Rp_description" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Rp_name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Rp_price_description" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Rp_price_id" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="U_id" nillable="true" type="xs:string" />
-      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="UserSourceFrom" type="q5:EnumUserSourceFrom" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EnumOrderOperateType" type="tns:EnumOrderOperateType" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="OrderInfoDTO" nillable="true" type="tns:OrderInfoDTO" />
-  <xs:complexType name="OrderStateParams">
-    <xs:sequence>
-      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="OrderStateCommon" type="q6:EnumCommonOrderStatus" />
-    </xs:sequence>
+  <xs:element name="ArrayOfEnumOrderOperateType" nillable="true" type="tns:ArrayOfEnumOrderOperateType" />
+  <xs:simpleType name="EnumOrderOperateType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CanncelOrder">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PayOrder">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ReviewOrder">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumOrderOperateType" nillable="true" type="tns:EnumOrderOperateType" />
+  <xs:complexType name="OrderInfoCollectionResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllRecordCnt" type="xs:int" />
+          <xs:element minOccurs="0" name="CurrentPage" type="xs:int" />
+          <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.OrderDTO" minOccurs="0" name="OrderCollection" nillable="true" type="q23:ArrayOfOrderInfoDTO" />
+          <xs:element minOccurs="0" name="PageSize" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
-  <xs:element name="OrderStateParams" nillable="true" type="tns:OrderStateParams" />
-  <xs:complexType name="ArrayOfOrderStateDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderStateDTO" nillable="true" type="tns:OrderStateDTO" />
-    </xs:sequence>
+  <xs:element name="OrderInfoCollectionResult" nillable="true" type="tns:OrderInfoCollectionResult" />
+  <xs:simpleType name="EnumCommonOrderStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="tempState" />
+      <xs:enumeration value="waitpayState" />
+      <xs:enumeration value="readyState" />
+      <xs:enumeration value="comfirmState" />
+      <xs:enumeration value="canreviewState" />
+      <xs:enumeration value="cancelState" />
+      <xs:enumeration value="accountState" />
+      <xs:enumeration value="NeedCheckInstant" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumCommonOrderStatus" nillable="true" type="tns:EnumCommonOrderStatus" />
+  <xs:complexType name="OrderStateCollectionResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllRecordCnt" type="xs:int" />
+          <xs:element minOccurs="0" name="CurrentPage" type="xs:int" />
+          <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.OrderDTO" minOccurs="0" name="OrderStateCollection" nillable="true" type="q24:ArrayOfOrderStateDTO" />
+          <xs:element minOccurs="0" name="PageSize" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
-  <xs:element name="ArrayOfOrderStateDTO" nillable="true" type="tns:ArrayOfOrderStateDTO" />
-  <xs:complexType name="OrderStateDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="is_canReview" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="is_waitPayStatue" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="o_IsSendMail" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="o_IsSendSMS" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="o_NeedCheckInstantOrder" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="o_autoCheckAsyn" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="o_integral" nillable="true" type="xs:decimal" />
-      <xs:element minOccurs="0" name="o_isAccountOrder" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="o_isCancelOrder" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="o_isNotify" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="o_isPassStatus" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="o_isReadyOrder" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="o_isTemp" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="o_mailTemplate" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="o_smsTemplate" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="o_state_id" type="xs:int" />
-      <xs:element minOccurs="0" name="o_state_time" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="o_state_title" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="sort" nillable="true" type="xs:int" />
-    </xs:sequence>
+  <xs:element name="OrderStateCollectionResult" nillable="true" type="tns:OrderStateCollectionResult" />
+  <xs:simpleType name="EnumOperator">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="equal" />
+      <xs:enumeration value="less" />
+      <xs:enumeration value="more" />
+      <xs:enumeration value="lessEqual" />
+      <xs:enumeration value="moreEqual" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumOperator" nillable="true" type="tns:EnumOperator" />
+  <xs:complexType name="OrderGuaranteeRuleResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.OrderDTO" minOccurs="0" name="orderGuaranteeDTO" nillable="true" type="q25:OrderGuaranteeDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
-  <xs:element name="OrderStateDTO" nillable="true" type="tns:OrderStateDTO" />
-  <xs:complexType name="OrderStateSearchParamsDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Integral" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="_keyword" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="isAccount" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="isAutoAnsy" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="isCanReview" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="isCancel" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="isConfirm" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="isInstant" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="isNotify" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="isReady" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="isSendMail" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="isSendSms" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="isTemp" nillable="true" type="xs:boolean" />
-      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="oper" type="q7:EnumOperator" />
-    </xs:sequence>
+  <xs:element name="OrderGuaranteeRuleResult" nillable="true" type="tns:OrderGuaranteeRuleResult" />
+  <xs:complexType name="UserLevelResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.UserDTO" minOccurs="0" name="uUserLevelDTO" nillable="true" type="q26:UserLevelDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
-  <xs:element name="OrderStateSearchParamsDTO" nillable="true" type="tns:OrderStateSearchParamsDTO" />
-  <xs:complexType name="OrderGuaranteeDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="GuaranteeChange_GuaranteeRuleType" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="GuaranteeChange_NeedCheckin24hour_hours" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="GuaranteeChange_NeedCheckinTime_hours" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="GuaranteeChange_NeedSomeDay_time" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="GuaranteeChange__needSomeDay_day" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="Guarantee_Amount" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="Guarantee_DateType" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="Guarantee_Description" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Guarantee_EndDate" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="Guarantee_EndTime" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="Guarantee_GuaranteeType" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="Guarantee_IsAmountGuarantee" type="xs:boolean" />
-      <xs:element minOccurs="0" name="Guarantee_IsTimeGuarantee" type="xs:boolean" />
-      <xs:element minOccurs="0" name="Guarantee_IsTomorrow" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="Guarantee_StartDate" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="Guarantee_StartTime" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="Guarantee_WeekSet" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Guarantee__GuaranteePayType" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="Order_id" type="xs:int" />
-    </xs:sequence>
+  <xs:element name="UserLevelResult" nillable="true" type="tns:UserLevelResult" />
+  <xs:complexType name="UserBalanceCollectionResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllRecordCnt" type="xs:int" />
+          <xs:element minOccurs="0" name="CurrentPage" type="xs:int" />
+          <xs:element minOccurs="0" name="PageSize" type="xs:int" />
+          <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.UserDTO" minOccurs="0" name="UserBalanceCollection" nillable="true" type="q27:ArrayOfUserBalanceDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
-  <xs:element name="OrderGuaranteeDTO" nillable="true" type="tns:OrderGuaranteeDTO" />
-  <xs:complexType name="ArrayOfEarliestLastestTimeDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="EarliestLastestTimeDTO" nillable="true" type="tns:EarliestLastestTimeDTO" />
-    </xs:sequence>
+  <xs:element name="UserBalanceCollectionResult" nillable="true" type="tns:UserBalanceCollectionResult" />
+  <xs:simpleType name="EnumAccountType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SavingAccount" />
+      <xs:enumeration value="cashBackAccount" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumAccountType" nillable="true" type="tns:EnumAccountType" />
+  <xs:complexType name="UserBalanceResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.UserDTO" minOccurs="0" name="BalanceDTO" nillable="true" type="q28:UserBalanceDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
-  <xs:element name="ArrayOfEarliestLastestTimeDTO" nillable="true" type="tns:ArrayOfEarliestLastestTimeDTO" />
-  <xs:complexType name="EarliestLastestTimeDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="EarliestArriveTime" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="GarateePrice" type="xs:decimal" />
-      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/MobileInter.ThirdInterface.Service" minOccurs="0" name="GuarateeType" nillable="true" type="q8:EnumGuaranteeMoneyType" />
-      <xs:element minOccurs="0" name="IsNeedGuaratee" type="xs:boolean" />
-      <xs:element minOccurs="0" name="LastestArriveTime" type="xs:dateTime" />
-    </xs:sequence>
+  <xs:element name="UserBalanceResult" nillable="true" type="tns:UserBalanceResult" />
+  <xs:complexType name="UserCurrentBalanceResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CurrentAccountBalance" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
-  <xs:element name="EarliestLastestTimeDTO" nillable="true" type="tns:EarliestLastestTimeDTO" />
-  <xs:complexType name="OrderSearchParamsDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="CheckTimeBegin" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="CheckTimeEnd" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="CreateTimeBegin" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="CreateTimeEnd" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="DayNight" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Hotel_name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Keyword" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="LastestPayTimeEnd" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="LastestPayTimeStart" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="Mobile" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="OrderNum" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="Order_from" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="Order_status" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="PayStatus" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="Room_name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Rp_name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="SerialId" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="TotalPriceMax" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="TotalPriceMin" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="User_id" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="User_name" nillable="true" type="xs:string" />
-    </xs:sequence>
+  <xs:element name="UserCurrentBalanceResult" nillable="true" type="tns:UserCurrentBalanceResult" />
+  <xs:complexType name="UserBalanceIncomcOutcomeSumResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.UserDTO" minOccurs="0" name="uUserBalanceIncomcOutcomeSumDTO" nillable="true" type="q29:UserBalanceIncomcOutcomeSumDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
-  <xs:element name="OrderSearchParamsDTO" nillable="true" type="tns:OrderSearchParamsDTO" />
-  <xs:complexType name="OrderAndStateChangeParamsDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="NewOrderStateInfoID" type="xs:int" />
-      <xs:element minOccurs="0" name="OrderID" type="xs:int" />
-    </xs:sequence>
+  <xs:element name="UserBalanceIncomcOutcomeSumResult" nillable="true" type="tns:UserBalanceIncomcOutcomeSumResult" />
+  <xs:complexType name="UserIntegralCollectionResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllRecordCnt" type="xs:int" />
+          <xs:element minOccurs="0" name="CurrentPage" type="xs:int" />
+          <xs:element minOccurs="0" name="PageSize" type="xs:int" />
+          <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.UserDTO" minOccurs="0" name="userIntegralCollection" nillable="true" type="q30:ArrayOfUserIntegralDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
-  <xs:element name="OrderAndStateChangeParamsDTO" nillable="true" type="tns:OrderAndStateChangeParamsDTO" />
+  <xs:element name="UserIntegralCollectionResult" nillable="true" type="tns:UserIntegralCollectionResult" />
+  <xs:complexType name="UserCurrentIntegralResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="UserCurrentIntegral" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserCurrentIntegralResult" nillable="true" type="tns:UserCurrentIntegralResult" />
+  <xs:complexType name="UserIntegralValueResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IntegralValue" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserIntegralValueResult" nillable="true" type="tns:UserIntegralValueResult" />
+  <xs:complexType name="UserCashBackResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.UserDTO" minOccurs="0" name="cCashBackDTO" nillable="true" type="q31:CashBackDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserCashBackResult" nillable="true" type="tns:UserCashBackResult" />
+  <xs:complexType name="UserCashBackCollectionResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllRecordCnt" type="xs:int" />
+          <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.UserDTO" minOccurs="0" name="CashBackDTOCollection" nillable="true" type="q32:ArrayOfCashBackDTO" />
+          <xs:element minOccurs="0" name="CurrentPage" type="xs:int" />
+          <xs:element minOccurs="0" name="PageSize" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserCashBackCollectionResult" nillable="true" type="tns:UserCashBackCollectionResult" />
 </xs:schema>
