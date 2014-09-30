@@ -1,4 +1,4 @@
-/*2014年9月30日11:47:46*/
+/*2014年9月30日11:57:57*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -1282,7 +1282,7 @@
     });
     $("#comment_btn").click(function(event) {
         event.preventDefault();
-        window.location.href = "/Comment/QueryComment?hotelId=" + $("#comment_hotel").find("option:selected").val() + "&startTime=" + $(".date_start").val() + "&endTime=" + $(".date_end").val() + "&IsReply" + $("#IsReply").val();
+        window.location.href = "/Comment/QueryComment?hotelId=" + $("#comment_hotel").find("option:selected").val() + "&startTime=" + $(".date_start").val() + "&endTime=" + $(".date_end").val() + "&IsReply=" + $("#IsReply").val();
     });
     $(".show_comment_reply").click(function(event) {
         event.preventDefault();

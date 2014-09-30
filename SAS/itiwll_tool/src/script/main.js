@@ -1269,7 +1269,7 @@
     $('#comment_btn').click(function(event) {
     	event.preventDefault();
         window.location.href="/Comment/QueryComment?hotelId="+$("#comment_hotel").find("option:selected").val() + 
-        "&startTime=" + $('.date_start').val()+ "&endTime=" + $('.date_end').val() + "&IsReply" + $('#IsReply').val();
+        "&startTime=" + $('.date_start').val()+ "&endTime=" + $('.date_end').val() + "&IsReply=" + $('#IsReply').val();
 
     });
 
