@@ -24,9 +24,15 @@ namespace SAS.Controllers
             int currentPage = 1; int.TryParse(page, out currentPage);
             if (currentPage < 0)
                 return View("MyComment");
+       //     Hotel_comment_info ment = new Hotel_comment_info();
+            return View("MyComment", getdata(hotelId, IsReply, currentPage, startTime, endTime));
+        }
+        public Hotel_comment_info getdata(string hotelId, string IsReply, int currentPage, string startTime, string endTime)
+        {
+          
 
             //List<hotel_info> list = new HotelInfoHelp().getHotlList("");
-            
+
             //string hotelIds = string.Empty;
             //if (string.IsNullOrEmpty(hotelId))
             //{
@@ -53,8 +59,7 @@ namespace SAS.Controllers
             ViewBag.currentHotelId = hotelId;
             ViewBag.allPage = allpage;
             ViewBag.curentPage = currentPage;
-       //     Hotel_comment_info ment = new Hotel_comment_info();
-            return View("MyComment", ment);
+            return ment;
         }
     
         //
@@ -77,8 +82,9 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult CommentSubmit(Hotel_comment_info comment)
         {
-            var  result= new help.RefrenceHelp().GetMobileContractClientTest().ReplyReview(new ReplyReviewRequest(){commentId=comment.commentId,answer=comment.content});
-            ViewBag.sign = result.Contains("") ? 1 : 0;
+          //  var  result= new help.RefrenceHelp().GetMobileContractClientTest().ReplyReview(new ReplyReviewRequest(){commentId=comment.commentId,answer=comment.content});
+            ViewBag.sign = help.DBhelp.ExcuteTableBySQL(string.Format("update Hotel_comment_info set content='{0}' where commentid in({1})",comment.content,comment.commentId)) > 0 ? 1 : 0;
+            getdata(comment.hotel_id.ToString(),"",Convert.ToInt32(comment.room_id),null,null);
             return View("MyComment");
         }
         //
