@@ -83,7 +83,7 @@ namespace SAS.Controllers
         public ActionResult CommentSubmit(Hotel_comment_info comment,string page)
         {
           //  var  result= new help.RefrenceHelp().GetMobileContractClientTest().ReplyReview(new ReplyReviewRequest(){commentId=comment.commentId,answer=comment.content});
-            ViewBag.sign = help.DBhelp.ExcuteTableBySQL(string.Format("update Hotel_comment_info set content='{0}' where commentid in({1})",comment.content,comment.commentId)) > 0 ? 1 : 0;
+            ViewBag.sign = help.DBhelp.ExcuteTableBySQL(string.Format("update Hotel_comment_info set answer='{0}' where commentid in({1})", comment.content, comment.commentId)) > 0 ? 1 : 0;
             getdata(comment.hotel_id.ToString(), "", page, null, null);
             return View("MyComment");
         }
