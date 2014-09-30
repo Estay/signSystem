@@ -59,6 +59,8 @@ namespace SAS.Controllers
             ViewBag.currentHotelId = hotelId;
             ViewBag.allPage = allpage;
             ViewBag.curentPage = currentPage;
+            ViewBag.curentHotelId = hotelId;
+            
             return ment;
         }
     
@@ -84,8 +86,8 @@ namespace SAS.Controllers
         {
           //  var  result= new help.RefrenceHelp().GetMobileContractClientTest().ReplyReview(new ReplyReviewRequest(){commentId=comment.commentId,answer=comment.content});
             ViewBag.sign = help.DBhelp.ExcuteTableBySQL(string.Format("update Hotel_comment_info set answer='{0}' where commentid in({1})", comment.content, comment.commentId)) > 0 ? 1 : 0;
-            getdata(comment.hotel_id.ToString(), "", page, null, null);
-            return View("MyComment");
+           
+            return View("MyComment", getdata(comment.hotel_id.ToString(), "", page, null, null));
         }
         //
         // GET: /Comment/Create
