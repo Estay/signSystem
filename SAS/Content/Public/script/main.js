@@ -1,4 +1,4 @@
-/*2014年9月30日11:57:57*/
+/*2014年10月14日17:51:38*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -76,6 +76,8 @@
                         if (!ruleValidate(el, val)) {
                             event.preventDefault();
                             event.stopImmediatePropagation();
+                            console.log("没通过规则");
+                            console.log(el);
                             $("html,body").animate({
                                 scrollTop: el.offset().top
                             }, 800);
@@ -116,20 +118,28 @@
                     error(el, "不能包含“<”,“>”,“&”等特殊字符");
                     return false;
                 }
-                if (val == "" || val == settings.space) {
-                    init(el);
-                    if (settings.need) {
-                        settings.space_callback.call(el[0], settings.need_text, el);
-                        return false;
-                    } else {
-                        return true;
-                    }
-                }
                 if (!settings.rule) {
+                    if (val == "" || val == settings.space) {
+                        init(el);
+                        if (settings.need) {
+                            settings.space_callback.call(el[0], settings.need_text, el);
+                            return false;
+                        }
+                    }
                     success(el);
                     return true;
                 }
                 if (isRegExp(settings.rule)) {
+                    if (val == "" || val == settings.space) {
+                        init(el);
+                        if (settings.need) {
+                            settings.space_callback.call(el[0], settings.need_text, el);
+                            return false;
+                        } else {
+                            success(el);
+                            return true;
+                        }
+                    }
                     if (!settings.rule.exec(val)) {
                         error(el, settings.error);
                         return false;
@@ -138,10 +148,17 @@
                         return true;
                     }
                 } else if (settings.rule instanceof Function) {
-                    settings.rule.call(el[0], function(el) {
-                        success(el);
-                    }, function(error_text, el) {
-                        error(el, error_text ? error_text : settings.error);
+                    if (val == "" || val == settings.space) {
+                        init(el);
+                        if (settings.need) {
+                            settings.space_callback.call(el[0], settings.need_text, el);
+                            return false;
+                        }
+                    }
+                    return settings.rule.call(el[0], function(cb_el) {
+                        success(cb_el ? cb_el : el);
+                    }, function(error_text, cb_el) {
+                        error(cb_el ? cb_el : el, error_text ? error_text : settings.error);
                     }, el.val());
                 } else {
                     return val ? true : false;
@@ -486,18 +503,54 @@
         $("#phone").val($("#phone_area_code").val() + "-" + $("#hotel_phone").val());
     });
     (function($) {
-        var area = $("#phone_area_code"), fixed_phone = $("#hotel_phone");
+        var area = $("#phone_area_code"), fixed_phone = $("#hotel_phone"), area_space = "区号", fixed_phone_space = "座机号码";
         area.e_input_tip({
-            space: "区号",
-            need_text: "必填",
-            error: "错误",
-            rule: /^\d{3,4}$/
+            need: false,
+            space: area_space,
+            need_text: "请填写区号",
+            error: "格式错误",
+            rule: function(success_callback, error_callback, val) {
+                if (val == "" || val == area_space) {
+                    if (fixed_phone.val() != "" && fixed_phone.val() != fixed_phone_space) {
+                        error_callback("请填写区号");
+                        return false;
+                    } else {
+                        return true;
+                    }
+                } else {
+                    if (/^\d{3,4}$/.exec(val)) {
+                        success_callback();
+                        return true;
+                    } else {
+                        error_callback();
+                        return false;
+                    }
+                }
+            }
         });
         fixed_phone.e_input_tip({
-            space: "座机号码",
-            need_text: "必需填写",
-            error: "格式不正确",
-            rule: /^\d{7,8}$/
+            need: false,
+            space: fixed_phone_space,
+            need_text: "请填写座机号码",
+            error: "格式错误",
+            rule: function(success_callback, error_callback, val) {
+                if (val == "" || val == fixed_phone_space) {
+                    if (area.val() != "" && area.val() != area_space) {
+                        error_callback("请填写座机号码");
+                        return false;
+                    } else {
+                        return true;
+                    }
+                } else {
+                    if (/^\d{7,8}$/.exec(val)) {
+                        success_callback();
+                        return true;
+                    } else {
+                        error_callback();
+                        return false;
+                    }
+                }
+            }
         });
     })($);
     $("#hotel_fax").e_input_tip({

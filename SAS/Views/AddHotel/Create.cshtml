@@ -1,4 +1,4 @@
-﻿Ppush@*@model IEnumerable<SAS.Models.hotel_info>*@
+﻿@*@model IEnumerable<SAS.Models.hotel_info>*@
 @model SAS.Models.hotel_info
 
 @{
@@ -53,22 +53,21 @@
 			</label>
 		</p>
 		<p class="input_line">
-			<label for="@Html.DisplayNameFor(model => model.h_tel)">
-				<span class="label">电话</span>
-				<input id="phone" type="text" class="hide" name="@Html.DisplayNameFor(model => model.h_tel)">
-				<input type="text" class="only_integer" maxlength="4" id="phone_area_code">-<input type="text" class="only_integer" maxlength="8" id="hotel_phone">
-				<span class="col_red">*</span>
-                @Html.ValidationMessageFor(model => model.h_tel)
-			</label>
-			<label for="@Html.DisplayNameFor(model => model.h_fax)">
-				<span class="label">传真</span>
-				<input id="hotel_fax" type="text" name="@Html.DisplayNameFor(model => model.h_fax)">
-			</label>
 			<label for="@Html.DisplayNameFor(model => model.h_mobile_phone)">
 				<span class="label">手机号码</span>
 				<input id="mobeli_phone" class="only_integer" type="text" name="@Html.DisplayNameFor(model => model.h_mobile_phone)" maxlength="11">
 				<span class="col_red">*</span>
 				<span>接收订单提醒短信</span>
+			</label>
+			<label for="@Html.DisplayNameFor(model => model.h_tel)">
+				<span class="label">电话</span>
+				<input id="phone" type="text" class="hide" name="@Html.DisplayNameFor(model => model.h_tel)">
+				<input type="text" class="only_integer" maxlength="4" id="phone_area_code">-<input type="text" class="only_integer" maxlength="8" id="hotel_phone">
+                @Html.ValidationMessageFor(model => model.h_tel)
+			</label>
+			<label for="@Html.DisplayNameFor(model => model.h_fax)">
+				<span class="label">传真</span>
+				<input id="hotel_fax" type="text" name="@Html.DisplayNameFor(model => model.h_fax)">
 			</label>
 		</p>
 		<p class="input_line">

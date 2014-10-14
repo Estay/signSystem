@@ -147,19 +147,58 @@
 	// 固定电话提示和验证
 	(function($){
 		var area = $("#phone_area_code"),
-			fixed_phone =$("#hotel_phone");
+			fixed_phone =$("#hotel_phone"),
+			area_space = "区号",
+			fixed_phone_space = "座机号码";
 
 		area.e_input_tip({
-			space : "区号",
-			need_text : "必填",
-			error : "错误",
-			rule : /^\d{3,4}$/
+			need:false,
+			space : area_space,
+			need_text : "请填写区号",
+			error : "格式错误",
+			rule : function(success_callback,error_callback,val){
+				if(val=="" || val == area_space){
+					if(fixed_phone.val()!="" && fixed_phone.val()!=fixed_phone_space){
+						error_callback("请填写区号");
+						return false;
+					}else{
+						return true;
+					}
+				}else {
+					if(/^\d{3,4}$/.exec(val)){
+						success_callback();
+						return true;
+					}else {
+						error_callback();
+						return false;
+					}
+				}
+			} 
 		});
+
 		fixed_phone.e_input_tip({
-			space : "座机号码",
-			need_text : "必需填写",
-			error : "格式不正确",
-			rule : /^\d{7,8}$/
+			need:false,
+			space : fixed_phone_space,
+			need_text : "请填写座机号码",
+			error : "格式错误",
+			rule : function(success_callback,error_callback,val){
+				if(val=="" || val == fixed_phone_space){
+					if(area.val()!="" && area.val()!=area_space){
+						error_callback("请填写座机号码");
+						return false;
+					}else{
+						return true;
+					}
+				}else {
+					if(/^\d{7,8}$/.exec(val)){
+						success_callback();
+						return true;
+					}else {
+						error_callback();
+						return false;
+					}
+				}
+			} 
 		});
 
 	})($)

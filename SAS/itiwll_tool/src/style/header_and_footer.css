@@ -2,6 +2,7 @@
 #header {
 	color: #003897;
 	background: #FFF;
+	min-width: 1180px;
 	padding: 15px 0;
 }
 #logo_tittle {
@@ -24,7 +25,8 @@
 .warp{
 	background: #003897;
 	color: #FFF;
-	line-height: 50px;
 	height: 2px;
+	line-height: 50px;
+	min-width: 1180px;
 	width: 100%;
 }

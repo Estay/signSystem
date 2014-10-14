@@ -102,6 +102,8 @@
 						if (!ruleValidate(el, val)) {
 							event.preventDefault();
 							event.stopImmediatePropagation();
+							console.log("没通过规则");
+							console.log(el);
 							$("html,body").animate({scrollTop: el.offset().top}, 800);
 						} else {
 							if(val=="" || val == settings.space){
@@ -159,27 +161,43 @@
 					return false;
 				};
 
-				// 值为空或默认
-				if(val=="" || val == settings.space){
-					//为空回到初始状态
-					init(el);
-					//必需输入提示
-					if(settings.need){
-						settings.space_callback.call(el[0],settings.need_text,el);
-						return false;
-					}else {
-						return true;
-					}
-				}
 
 				// 没有规则
 				if (!settings.rule) {
+
+					// 值为空或默认
+					if(val=="" || val == settings.space){
+						//为空回到初始状态
+						init(el);
+						//必需输入提示
+						if(settings.need){
+							settings.space_callback.call(el[0],settings.need_text,el);
+							return false;
+						}
+					}
+
 					success(el);
 					return true;
 				};
 
 
+				// 规则为正则时
 				if(isRegExp(settings.rule)){
+
+					// 值为空或默认
+					if(val=="" || val == settings.space){
+						//为空回到初始状态
+						init(el);
+						//必需输入提示
+						if(settings.need){
+							settings.space_callback.call(el[0],settings.need_text,el);
+							return false;
+						}else {
+							success(el);
+							return true;
+						}
+					}
+
 					if (!settings.rule.exec(val)) {
 						// 没通过规则 进入错误状态
 						error(el,settings.error);
@@ -188,15 +206,29 @@
 						success(el);
 						return true;
 					}
+
+				// 规则为Function时
 				}else if(settings.rule instanceof Function){
-					settings.rule.call(
+
+					// 值为空或默认
+					if(val=="" || val == settings.space){
+						//为空回到初始状态
+						init(el);
+						//必需输入提示
+						if(settings.need){
+							settings.space_callback.call(el[0],settings.need_text,el);
+							return false;
+						}
+					}
+
+					return settings.rule.call(
 						el[0],
-						function (el) { // 验证通过 回调
-							success(el);
+						function (cb_el) { // 验证通过 回调
+							success(cb_el?cb_el:el);
 						},
-						function(error_text,el){ // 验证规则 错误回调
+						function(error_text,cb_el){ // 验证规则 错误回调
 							// 没通过规则 进入错误状态
-							error(el,error_text?error_text:settings.error);
+							error(cb_el?cb_el:el,error_text?error_text:settings.error);
 						},
 						el.val()
 					);
