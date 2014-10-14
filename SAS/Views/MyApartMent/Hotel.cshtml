@@ -74,21 +74,20 @@
 			</label>*@
 		</p>
 		<p class="input_line">
-			<label for="@Html.DisplayNameFor(model => model.h_tel)">
-				<span class="label">电话</span>
-				<input id="phone" type="text" class="hide" name="@Html.DisplayNameFor(model => model.h_tel)" value="@Model.h_tel">
-				<input type="text" id="phone_area_code" value="@Model.h_tel.Split('-')[0]">-<input type="text" id="hotel_phone" value="@Model.h_tel.Split('-')[1]">
-				<span class="col_red">*</span>
-			</label>
-			<label for="@Html.DisplayNameFor(model => model.h_fax)">
-				<span class="label">传真</span>
-				<input id="hotel_fax" type="text" name="@Html.DisplayNameFor(model => model.h_fax)" value="@Model.h_fax">
-			</label>
 			<label for="@Html.DisplayNameFor(model => model.h_mobile_phone)">
 				<span class="label">手机号码</span>
 				<input id="mobeli_phone" type="text" name="@Html.DisplayNameFor(model => model.h_mobile_phone)" value="@Model.h_mobile_phone">
 				<span class="col_red">*</span>
 				<span>接收订单提醒短信</span>
+			</label>
+			<label for="@Html.DisplayNameFor(model => model.h_tel)">
+				<span class="label">电话</span>
+				<input id="phone" type="text" class="hide" name="@Html.DisplayNameFor(model => model.h_tel)" value="@Model.h_tel">
+				<input type="text" id="phone_area_code" value="@Model.h_tel.Split('-')[0]">-<input type="text" id="hotel_phone" value="@Model.h_tel.Split('-')[1]">
+			</label>
+			<label for="@Html.DisplayNameFor(model => model.h_fax)">
+				<span class="label">传真</span>
+				<input id="hotel_fax" type="text" name="@Html.DisplayNameFor(model => model.h_fax)" value="@Model.h_fax">
 			</label>
 		</p>
 		<p class="input_line">
