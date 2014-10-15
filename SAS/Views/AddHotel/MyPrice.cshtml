@@ -1,0 +1,49 @@
+﻿@model SAS.Models.hotel_room_RP_price_info
+
+@{
+    ViewBag.Title = "录入房价";
+    ViewBag.hotel_info = "set";
+            
+    
+    //对应的所有房型
+    List<SAS.Models.hotel_room_info> roomList = ViewData["rooms"] as List<SAS.Models.hotel_room_info>;
+    int i = 0;
+}
+@using (Html.BeginForm("CreatePrice", "AddHotel", FormMethod.Post))
+{
+<div id="flag_box">
+	<a href="" class="btn_c">1 录入公寓信息</a>
+	<a href="" class="btn_c">2 录入房型</a>
+	<a href="" class="btn_c set">3 录入房价</a>
+	<a href="" class="btn_c">4 录入图片</a>
+</div>
+<!-- 录入房价 -->
+<div id="price_input" class="box_a">
+    <div class="from_path">
+        <h2>录入价格<span>如需修改价格，请再录入完成后进入<a href="">房价管理</a>修改。</span></h2>
+        @foreach (var room in roomList)
+        {
+            int index = Convert.ToInt32(@Convert.ToInt32(i++));
+        <p class="input_line">
+            <span class="input_room_rp_name">@room.h_r_name_cn</span>
+            <label for="?????">
+                <span class="label">标准价</span>
+                <input id="roomId" class="hide" type="text" name="hotel_room_RP_price_info[@index].room_id" value="@room.room_id">
+                <input id="hotelId" class="hide" type="text" name="hotel_room_RP_price_info[@index].hotel_id" value="@room.hotel_id">            
+                <input id="weekend" class="hide" type="text" name="hotel_room_RP_price_info[@index].weekend" value="120">   
+                <span class="label">每晚</span>
+                <input class="w50 room_pr" type="text" name="hotel_room_RP_price_info[@index].room_rp_price"  tabindex="true" >
+                @* <input class="w50" type="text" name="@Html.DisplayNameFor(h=>h.room_rp_price)[1]" >*@
+                <span>元</span><span class="col_red">*</span>
+            </label>
+        </p> 
+        }
+    </div>
+
+    <div class="btn_box">
+        <!-- <a href="" class="previou btn_a">上一步</a> -->
+        <a href="javascript:document.forms[0].submit()" id="save_price_info" class="btn_a btn_save_step checking_btn">保存进入下一步</a>
+    </div>
+</div>
+
+}

@@ -18,7 +18,7 @@ namespace SAS.Controllers
         { }
      
         //验证房型是否存在
-        public int isok(string text,string hotelId)
+        public int isOkRoom(string text,string hotelId)
         {
             int hotel_id = Convert.ToInt32(hotelId);
             using (db = new HotelDBContent())
@@ -28,6 +28,20 @@ namespace SAS.Controllers
                 else
                     return 1;
             }
+        }
+        /// <summary>
+        /// 验证酒店名是否存在
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public int IsOkHotel(string text)
+        {
+            
+            if ((from h in db.hotel where h.h_name_cn == text select h).Count() > 0 || (from h in new HotelDBContent("").hotel where h.h_name_cn == text select h).Count() > 0)
+                return 0;
+            else
+                return 1;
+
         }
         ///// <summary>
         ///// 验证酒店名称是否存在

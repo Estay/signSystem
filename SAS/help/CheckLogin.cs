@@ -17,6 +17,7 @@ namespace SAS.help
                 {
                     //if (filterContext.HttpContext.Session.IsNewSession)
                     //{
+                   
                         var sessionCookie = filterContext.HttpContext.Request.Headers["Cookie"];
                         if (filterContext.HttpContext.Session["uid"] == null)
                         {
