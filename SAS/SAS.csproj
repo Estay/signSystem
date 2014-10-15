@@ -188,6 +188,7 @@
     <Compile Include="Controllers\PriceController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="Controllers\RStatusController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DBC\HotelDBContent.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -492,6 +493,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Views\Bill\MyUser.cshtml" />
+    <Content Include="Views\User\MyUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
