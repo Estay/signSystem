@@ -491,6 +491,7 @@
     <Content Include="Service References\EstayMobileService\SAS.EstayMobileService.ValidateTypeResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Views\Bill\MyUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -507,19 +508,16 @@
     <Content Include="Views\Shared\_public_head.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\AddHotel\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\AddHotel\Details.cshtml" />
+    <Content Include="Views\AddHotel\MyPrice.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\AddHotel\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\AddHotel\Edit.cshtml" />
+    <Content Include="Views\AddHotel\MyImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\AddHotel\Delete.cshtml" />
+    <Content Include="Views\AddHotel\MyRoom.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_header.cshtml" />

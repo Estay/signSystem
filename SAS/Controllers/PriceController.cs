@@ -97,21 +97,9 @@ namespace SAS.Controllers
             return result;
            // return View("MyPrix", getData(id, startDate, EndDate));
         }
-        //
-        // GET: /Price/Details/5
+   
 
-        public ActionResult Details(int id = 0)
-        {
-            hotel_room_RP_price_info hotel_room_rp_price_info = db.price.Find(id);
-            if (hotel_room_rp_price_info == null)
-            {
-                return HttpNotFound();
-            }
-            return View(hotel_room_rp_price_info);
-        }
-
-        //
-        // GET: /Price/Create
+        
 
         public ActionResult Create(string hotelId)
         {
