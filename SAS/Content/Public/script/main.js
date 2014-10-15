@@ -1,4 +1,4 @@
-/*2014年10月14日17:51:38*/
+/*2014年10月15日11:48:37*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -479,7 +479,7 @@
                 return;
             }
             $.ajax({
-                url: "/AddHotel/IsOk/",
+                url: "/Common/IsOkHotel",
                 dataType: "text",
                 data: {
                     text: val
@@ -821,7 +821,7 @@
                 return;
             }
             $.ajax({
-                url: "/Common/isok",
+                url: "/Common/isOkRoom",
                 dataType: "text",
                 data: {
                     text: val,
