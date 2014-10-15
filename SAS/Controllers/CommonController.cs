@@ -36,11 +36,13 @@ namespace SAS.Controllers
         /// <returns></returns>
         public int IsOkHotel(string text)
         {
-            
-            if ((from h in db.hotel where h.h_name_cn == text select h).Count() > 0 || (from h in new HotelDBContent("").hotel where h.h_name_cn == text select h).Count() > 0)
-                return 0;
-            else
-                return 1;
+            using (db = new HotelDBContent())
+            {
+                if ((from h in db.hotel where h.h_name_cn == text select h).Count() > 0 || (from h in new HotelDBContent("").hotel where h.h_name_cn == text select h).Count() > 0)
+                    return 0;
+                else
+                    return 1;
+            }
 
         }
         ///// <summary>
