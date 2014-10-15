@@ -114,7 +114,7 @@
 
 
 			$.ajax({
-				url: '/AddHotel/IsOk/',
+				url: '/Common/IsOkHotel',
 				dataType: 'text',
 				data: {text:val }
 			})
@@ -594,7 +594,7 @@
 
 
 			$.ajax({
-				url: '/Common/isok',
+				url: '/Common/isOkRoom',
 				dataType: 'text',
 				data: {
 					text:val,
