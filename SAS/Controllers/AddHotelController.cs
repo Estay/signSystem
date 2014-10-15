@@ -86,7 +86,7 @@ namespace SAS.Controllers
         /// <param name="hotel_info"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult Create(hotel_info hotel_info)
+        public ActionResult CreateHotel(hotel_info hotel_info)
         {
             hotel_info.u_id = new HotelInfoHelp().getUId();
             hotel_info.source_id =Convert.ToInt32(help.StringHelper.appSettings("source_id")); ;
@@ -167,7 +167,7 @@ namespace SAS.Controllers
             getRooms(Convert.ToInt32(hotelId));
             string f = hotelId;
             getfacilities();
-            return View(new hotel_room_info());
+            return View("MyRoom",new hotel_room_info());
         }
 
         //修改房型
@@ -182,7 +182,7 @@ namespace SAS.Controllers
             hotel_room_info room = (from h in db.rooms where h.room_id == RId select h).Single();
             getRooms(room.hotel_id);
             ViewBag.HoltelId = room.hotel_id;
-            return View("Create", room);
+            return View("MyRoom", room);
         }
 
         //删除房型
@@ -205,7 +205,7 @@ namespace SAS.Controllers
             }
             ViewBag.HoltelId = room.hotel_id;
             getRooms(room.hotel_id);
-            return View("Create", new hotel_room_info());
+            return View("MyRoom", new hotel_room_info());
         }
         //验证房型是否存在
         public int IsOk(string hotelId, string text)
@@ -262,7 +262,7 @@ namespace SAS.Controllers
             getRooms(hotel_room_info.hotel_id);
             ViewBag.sign = sign;
 
-            return View(new hotel_room_info());
+            return View("MyRoom",new hotel_room_info());
         }
         /// <summary>
         /// 
@@ -301,7 +301,7 @@ namespace SAS.Controllers
         public ActionResult price(string hotelId)
         {
             getRooms(Convert.ToInt32(hotelId));
-            return View();
+            return View("Myprice");
         }
 
 
@@ -339,13 +339,18 @@ namespace SAS.Controllers
         #endregion
         ///////////////////////////////////////////////房价部份结束
 
-
+       
 
 
 
         ///////////////////////////////////////////////新建公寓图片开始
 
         #region
+
+        public ActionResult Image(string hotelId)
+        {
+            return View("MyImage");
+        }
         /// <summary>
         /// 图片提交
         /// </summary>
