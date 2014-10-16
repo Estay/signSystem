@@ -92,7 +92,6 @@ namespace SAS.Controllers
             List<Merchant_info> list_Mer = new List<Merchant_info>(); List<SasMenu> list_Menu = new List<SasMenu>(); List<hotel_info> list_hotel = new List<hotel_info>();
             mer.getMemberInfo(out list_Mer, out list_Menu, out list_hotel);
             mer.List_hotel = list_hotel; mer.List_Menu = list_Menu; mer.List_Mer = list_Mer;
-
             return View("MyUser", mer);
         }
 
