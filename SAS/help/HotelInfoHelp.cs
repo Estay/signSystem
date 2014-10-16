@@ -7,6 +7,7 @@ using SAS.Models;
 using System.Web.Mvc;
 using System.Web.WebPages;
 using System.Web.SessionState;
+using System.Data.SqlClient;
 
 namespace SAS.help
 {
@@ -148,7 +149,7 @@ namespace SAS.help
             return string.IsNullOrEmpty(endTime) ? now.AddDays(1 - now.Day).AddMonths(1).AddDays(-1).Date : tempE;
         }
         /// <summary>
-        /// 或得用户账号,用于hotel_info里面的u_id字段
+        /// 获得用户账号,用于hotel_info里面的u_id字段
         /// </summary>
         /// <returns></returns>
         public  string getUId()
@@ -160,6 +161,47 @@ namespace SAS.help
            
             //return HttpContext.Current.Session["uid"].ToString();
            // return Session["uid"].ToString();
+        }
+
+
+        /// <summary>
+        /// 获得根限
+        /// </summary>
+        /// <returns></returns>
+        public List<SasMenu> GetLimit(Merchant_info mer,out string limit)
+        {
+
+            List<SasMenu> list_Menu = new List<SasMenu>(); string _limit = string.Empty, sqlMenu = string.Format("select id,title,controleName,url,parent from sasMenu"), sql = mer.admin == true ? sqlMenu : string.Format("{1} where id in({0}) and status=1", mer.limit, sqlMenu);
+            
+         
+            
+            using (SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                conn.Open();
+                
+               // string temp = string.Format("select id,title,controleName,url,parent from sasMenu where id in({0}) and status=1", mer.limit);
+                
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        //while (dr.Read()) //读取菜单
+                        //{
+
+                        //}
+                        //dr.NextResult();
+                        while (dr.Read()) //读取菜单
+                        {
+                             _limit += dr[2].ToString()+",";
+                            list_Menu.Add(new SasMenu() { id = Convert.ToInt32(dr[0]), title = dr[1].ToString(),url = dr[3].ToString(), parent = Convert.ToInt32(dr[4]) });
+                            //dic.Add(dr[2].ToString(),list_Menu.Add(new SasMenu()));
+                        }
+                    }
+                }
+            }
+            limit = _limit;
+            return list_Menu;
+          
         }
     }
 

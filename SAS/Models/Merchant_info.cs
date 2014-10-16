@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.SqlClient;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace SAS.Models
         public Merchant_info()
         { }
         #region Model
-        private string _id;
+        private int _id;
         private string _guid;
         private string _name;
         private string _password;
@@ -29,8 +30,8 @@ namespace SAS.Models
         private bool _display = true;
         private bool _admin;
         private string _parents;
-        private int _starttime;
-        private int _endtime;
+        private string _starttime;
+        private string _endtime;
         private string _limit;
         private string _limitname;
         private string _limithotelname;
@@ -45,7 +46,8 @@ namespace SAS.Models
         /// <summary>
         /// 商户编号
         /// </summary>
-        public string id
+          [KeyAttribute]
+        public int id
         {
             set { _id = value; }
             get { return _id; }
@@ -181,7 +183,7 @@ namespace SAS.Models
         /// <summary>
         /// 
         /// </summary>
-        public int startTime
+        public string startTime
         {
             set { _starttime = value; }
             get { return _starttime; }
@@ -189,7 +191,7 @@ namespace SAS.Models
         /// <summary>
         /// 
         /// </summary>
-        public int endTime
+        public string endTime
         {
             set { _endtime = value; }
             get { return _endtime; }
@@ -269,7 +271,7 @@ namespace SAS.Models
         {
             List<Merchant_info> List_Mer=new List<Merchant_info>(); List<SasMenu> list_Menu=new List<SasMenu>();List<hotel_info> list_hotel=new List<hotel_info>();
             string uId=new help.HotelInfoHelp().getUId();
-            string sqlMer=string.Format("select name,tel,limit,limithotelName from  merchant_info where parents='{0}'",uId), sqlHotel=string.Format("select hotel_Id,h_name_cn from hotel_info where u_id='{0}'",uId),sqlmenu=string.Format("select id,title,controlename from sasMenu",uId);
+            string sqlMer = string.Format("select name,tel,limitName,limithotelName,id,limit from  merchant_info where operator_id='{0}'", uId), sqlHotel = string.Format("select hotel_Id,h_name_cn from hotel_info where u_id='{0}'", uId), sqlmenu = string.Format("select id,title,controlename from sasMenu", uId);
            
                 using (SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
                 {
@@ -289,7 +291,7 @@ namespace SAS.Models
                             dr.NextResult(); 
                             while (dr.Read()) //读取用户
                             {
-                                List_Mer.Add(new Merchant_info() { name=dr[0].ToString(),tel=dr[1].ToString(),limit=dr[3].ToString(),limitHotelName=dr[4].ToString() });
+                                List_Mer.Add(new Merchant_info() { name = dr[0].ToString(), tel = dr[1].ToString(), limitName = dr[2].ToString(), limitHotelName = dr[3].ToString(), id = Convert.ToInt32(dr[4]), limit =dr[5].ToString()});
                             }
                             dr.NextResult();
                              while (dr.Read()) //读取菜单

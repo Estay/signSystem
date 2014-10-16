@@ -16,7 +16,7 @@ namespace SAS.Controllers
 
         //
         // GET: /User/
-        int result = 1;
+        int result = 1,Id=0;
         public ActionResult queryUser()
         {
 
@@ -38,40 +38,29 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult CreateUser(Merchant_info merchant_info)
         {
-            if(string.IsNullOrEmpty(merchant_info.id))
+            if(merchant_info.id>0)
             {
               
-                if (ModelState.IsValid)
-                {
-                    merchant_info.ctime = DateTime.Now;
-                    using (db=new HotelDBContent())
-                    {
-                      db.Merchant_infos.Add(merchant_info);
-                      result=db.SaveChanges()>0?1:0;
-                    }
-                    
-                }
+             
             }else
             {
-                 
+                if (ModelState.IsValid)
+                {
+                    merchant_info.ctime = DateTime.Now; merchant_info.status = true; merchant_info.guid = Guid.NewGuid().ToString(); merchant_info.operator_id = new help.HotelInfoHelp().getUId();
+                    //using (db=new HotelDBContent())
+                    //{
+                    db.Merchant_infos.Add(merchant_info);
+                    result = db.SaveChanges() > 0 ? 1 : 0;
+                    //}
+
+                }
             }
            
 
             return View("MyUser", getData());
         }
 
-        //
-        // GET: /User/Edit/5
 
-        public ActionResult Edit(string id = null)
-        {
-            Merchant_info merchant_info = db.Merchant_infos.Find(id);
-            if (merchant_info == null)
-            {
-                return HttpNotFound();
-            }
-            return View(merchant_info);
-        }
 
       
 
@@ -94,26 +83,32 @@ namespace SAS.Controllers
         //
         // GET: /User/Delete/5
 
-        public ActionResult Delete(string id = null)
+        //修改用户
+        public ActionResult update(string id)
         {
-            Merchant_info merchant_info = db.Merchant_infos.Find(id);
-            if (merchant_info == null)
-            {
-                return HttpNotFound();
-            }
-            return View(merchant_info);
+
+            ViewBag.Tag = "修改用户资料"; int.TryParse(id, out Id);
+            Merchant_info mer = (from m in db.Merchant_infos where m.id == Id select m).Single();
+            List<Merchant_info> list_Mer = new List<Merchant_info>(); List<SasMenu> list_Menu = new List<SasMenu>(); List<hotel_info> list_hotel = new List<hotel_info>();
+            mer.getMemberInfo(out list_Mer, out list_Menu, out list_hotel);
+            mer.List_hotel = list_hotel; mer.List_Menu = list_Menu; mer.List_Mer = list_Mer;
+
+            return View("MyUser", mer);
         }
 
-        //
-        // POST: /User/Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(string id)
+        //删除用户
+        public ActionResult remove(string id)
         {
-            Merchant_info merchant_info = db.Merchant_infos.Find(id);
-            db.Merchant_infos.Remove(merchant_info);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            ViewBag.Tag = "创建用户";int.TryParse(id, out Id);
+            Merchant_info m = db.Merchant_infos.Find(Id);
+            if (m != null)
+            {
+
+                db.Merchant_infos.Remove(m);
+                ViewBag.sign=db.SaveChanges() > 0?1:0;
+                
+            }
+            return View("MyUser",getData());
         }
 
         protected override void Dispose(bool disposing)
