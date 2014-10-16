@@ -11,30 +11,92 @@
     </div>
     <div class="main_nav_item">
         <a>公寓管理</a>
-        <a class="nav_item @ViewBag.hotel_info" href="/addHotel/create">新建公寓</a>
-        <a class="nav_item @ViewBag.my_apart_ment" href="/MyApartMent/MyHotel">我的公寓</a>
-        <a class="nav_item @ViewBag.my_prix" href="/Price/myprice">房价管理</a>
-        <a class="nav_item @ViewBag.my_status" href="/rStatus/Status">房态管理</a>
-        <a class="nav_item @ViewBag.guarantees" href="/Guarantee/MyGuarantee">担保规则</a>
-        <a class="nav_item @ViewBag.drrs" href="/DrrRule/MyDrr">促销规则</a>
-        <a class="nav_item @ViewBag.gift" href="/Gift/MyGift">礼包设置</a>
+        @for (int i = 0; i < menu.Count; i++)
+        {
+            
+            switch (@menu[i].id)
+            {
+                case 1:
+                    <a class="nav_item @ViewBag.hotel_info" href="/addHotel/create">新建公寓</a>
+                break;
+                case 2:
+                    <a class="nav_item @ViewBag.my_apart_ment" href="/MyApartMent/MyHotel">我的公寓</a>
+                break;
+                case 3:
+                    <a class="nav_item @ViewBag.my_prix" href="/Price/myprice">房价管理</a>
+                break;
+                case 4:
+                    <a class="nav_item @ViewBag.my_status" href="/rStatus/Status">房态管理</a>
+                break;
+                case 5:
+                    <a class="nav_item @ViewBag.guarantees" href="/Guarantee/MyGuarantee">担保规则</a>
+                break;
+                case 6:
+                    <a class="nav_item @ViewBag.drrs" href="/DrrRule/MyDrr">促销规则</a>
+                break;
+                case 7:
+                    <a class="nav_item @ViewBag.gift" href="/Gift/MyGift">礼包设置</a>
+                break;
+            }
+        }
     </div>
     <div class="main_nav_item">
         <a>交易管理</a>
-        <a class="nav_item @ViewBag.my_oder" href="/Order/MyOrder">订单管理</a>
-        <a class="nav_item @ViewBag.my_bill" href="/Bill/QureyBill">结算管理</a>
-        <a class="nav_item @ViewBag.my_bank" href="/Bill/MyBank">结算帐户</a>
+        @for (int i = 0; i < menu.Count; i++)
+        { 
+            switch (@menu[i].id)
+            {
+                case 8 :
+                    <a class="nav_item @ViewBag.my_oder" href="/Order/MyOrder">订单管理</a>
+                break;
+                case 9 :
+                    <a class="nav_item @ViewBag.my_bill" href="/Bill/QureyBill">结算管理</a>
+                break;
+                case 10 :
+                    <a class="nav_item @ViewBag.my_bank" href="/Bill/MyBank">结算帐户</a>
+                break;
+            }
+        }
     </div>
     <div class="main_nav_item">
         <a>点评管理</a>
-        <a class="nav_item @ViewBag.query_comment" href="/Comment/QueryComment">评论管理</a>
+        @for (int i = 0; i < menu.Count; i++)
+        {
+            
+            switch (@menu[i].id)
+            {
+                case  11 :
+                    <a class="nav_item @ViewBag.query_comment" href="/Comment/QueryComment">评论管理</a>
+                break;
+            }
+        }
     </div>
     <div class="main_nav_item">
         <a href="">用户管理</a>
-        <a class="nav_item @ViewBag.my_user" href="/user/queryUser">用户管理</a>
+        @for (int i = 0; i < menu.Count; i++)
+        {
+            
+            switch (@menu[i].id)
+            {
+                case  12 :
+                     <a class="nav_item @ViewBag.my_user" href="/user/queryUser">用户管理</a>
+                break;
+            }
+        }
+       
     </div>
     <div class="main_nav_item no_bor">
         <a>沟通帮助</a>
-        <a class="nav_item @ViewBag.MyAdivise" href="/Advise/MyAdivise">投诉建议</a>
+        @for (int i = 0; i < menu.Count; i++)
+        {
+            
+            switch (@menu[i].id)
+            {
+                case  13 :
+                     <a class="nav_item @ViewBag.MyAdivise" href="/Advise/MyAdivise">投诉建议</a>
+                break;
+            }
+        }
+        
     </div>
 </div>
