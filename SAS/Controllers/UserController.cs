@@ -76,6 +76,22 @@ namespace SAS.Controllers
             return View(merchant_info);
         }
 
+        /// <summary>
+        /// 电话
+        /// </summary>
+        /// <param name="tel"></param>
+        /// <returns></returns>
+        public int isOkTel(string text)
+        {
+          // int hotel_id = Convert.ToInt32(hotelId);
+            using (db = new HotelDBContent())
+            {
+                if ((from m in db.Merchant_infos where m.tel== text  select m).Count() > 0)
+                    return 0;
+                else
+                    return 1;
+            }
+        }
         //
         // GET: /User/Delete/5
 
