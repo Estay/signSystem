@@ -49,7 +49,7 @@
 @using (Html.BeginForm("CreateUser", "user", FormMethod.Post))
 {
     <div id="editor_user" class="from_path">
-        <span class="btn_d set">XXXX</span>
+        <span class="btn_d set">创建用户</span>
         <div class="box_b">
             <!-- 隐藏input -->
             <input type="text" class="hide">
@@ -75,7 +75,7 @@
                     <select type="text" class="w150" name="" id="" name="@Html.DisplayNameFor(model => model.endTime)">
                        @for (int i = 0; i < 24; i++)
                         {
-                           <option value="i" @( Model.endTime == i? "selected" : "")>@Convert.ToInt32(i)</option> 
+                            <option value="i" @( Model.endTime == i? "selected" : "")>@Convert.ToInt32(i)</option> 
                         }
                     </select>
                 <span class="col_red">*</span>

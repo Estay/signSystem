@@ -43,6 +43,7 @@ namespace SAS.Controllers
               
                 if (ModelState.IsValid)
                 {
+                    merchant_info.ctime = DateTime.Now;
                     using (db=new HotelDBContent())
                     {
                       db.Merchant_infos.Add(merchant_info);
