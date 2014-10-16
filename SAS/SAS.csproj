@@ -238,6 +238,7 @@
     <Compile Include="Models\RoomStatus.cs" />
     <Compile Include="Models\RoomStatus_batch.cs" />
     <Compile Include="Models\Room_status_info.cs" />
+    <Compile Include="Models\SasMenu.cs" />
     <Compile Include="Models\Source_type_info.cs" />
     <Compile Include="Models\TempAdvise.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
