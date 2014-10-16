@@ -1333,7 +1333,75 @@
     	event.preventDefault();
     	$(this).parents("form").submit();
     });
+
+	////////////////////////////////////////////////用户管理/////////////////////////////////////////////////////
+	$('#input_user_name').e_input_tip({
+		need: true,
+		space: "用户姓名(18个字符内)",
+		rule: /^[\s\S]{1,18}$/
+	})
+
+	$('#input_user_password').e_input_tip({
+		need: true,
+		space: "",
+		rule: /^[\s\S]{6,18}$/,
+		space_callback: function(need_text, el) {
+			el.hide().next().show()
+			.e_window({
+				top: 5,
+				width: "auto",
+				html: "<div class='red_tip_box'>" + need_text + "</div>"
+			});
+		},
+		success_callback: function(el) {
+			el.e_window_kill();
+			el.next().e_window_kill();
+		}
+	})
+
+	$('#input_user_password_checkin').e_input_tip({
+		need: true,
+		space: "",
+		rule: function (success_callback,error_callback,val) {
+			if(!/^[\s\S]{6,18}$/.exec(val)){
+				error_callback();
+				return false;
+			}
+
+			if (val != $('#input_user_password').val()) {
+				error_callback("两次输入密码不一致");
+				return false
+			};
+
+			return true;
+		},
+		space_callback: function(need_text, el) {
+			el.hide().next().show()
+			.e_window({
+				top: 5,
+				width: "auto",
+				html: "<div class='red_tip_box'>" + need_text + "</div>"
+			});
+		},
+		success_callback: function(el) {
+			el.e_window_kill();
+			el.next().e_window_kill();
+		}
+	})
+
+	$('.show_password_input').click(function(event) {
+		$(this).hide();
+		$(this).prev().show().focus();
+	});
+
+
+	$('#user_phone').e_input_tip({
+		need : true,
+		space : "11位手机号码",
+		rule : /^\d{11}$/
+	});
     ////////////////////////////////////////////////投诉和建议/////////////////////////////////////////////////////
+
     $('#complaint_contact,#complaint_content').e_input_tip();
 
 
@@ -1437,7 +1505,7 @@
 			checkbox_box.find('.multiple2').each(function(index, el) {
 				if ($(this).attr('checked')) {
 					vals += ($(this).val()+",");
-					texts += ($(this).next().text()+"、");
+					texts += ($(this).next().text()+",");
 				};
 			});
 			vals = vals.slice(0, -1);
@@ -1464,6 +1532,31 @@
 				$(this).change();
 			});
 		});
+
+		// 回显
+		function setInputValues (vals_input,texts_input) {
+			var checkbox_box = input.parents(".checkbox_box"),
+				data_arr = input.val().split(","),
+				multiple = checkbox_box.find('.multiples2');
+			for (var i = 0; i < data_arr.length; i++) {
+				var val = data_arr[i];
+				multiple.filter('[value='+val+']').attr('checked', 'true');
+			};
+			// if(texts_input.length){
+			// 	var data_arr = texts_input.val().split(",");
+			// 	for (var i = 0; i < data_arr.length; i++) {
+			// 		var val = data_arr[i];
+			// 		label.filter(function(){
+			// 		   return $(this).text() == val;
+			// 		}).prev().attr('checked', 'true');
+			// 	};
+			// }	
+		}
+
+		$('.multiple_values').each(function(index, el) {
+			setInputValues(el);
+		});
+
 	})($)
 
 	// class only_number 只能输入数字
