@@ -227,7 +227,9 @@ namespace SAS.Models
             get { return _limithotelid; }
         }
         #endregion Model
-
+        /// <summary>
+        /// 用户列表
+        /// </summary>
         List<Merchant_info> list_Mer = new List<Merchant_info>();
         [NotMapped]
         public List<Merchant_info> List_Mer
@@ -235,6 +237,9 @@ namespace SAS.Models
             get { return list_Mer; }
             set { list_Mer = value; }
         }
+        /// <summary>
+        /// 菜单列表
+        /// </summary>
         List<SasMenu> list_Menu = new List<SasMenu>();
         [NotMapped]
         public List<SasMenu> List_Menu
@@ -242,6 +247,9 @@ namespace SAS.Models
             get { return list_Menu; }
             set { list_Menu = value; }
         }
+        /// <summary>
+        /// 酒地列表
+        /// </summary>
         List<hotel_info> list_hotel = new List<hotel_info>();
         [NotMapped]
         public List<hotel_info> List_hotel
