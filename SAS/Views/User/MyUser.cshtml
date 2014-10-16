@@ -57,75 +57,32 @@
             <input type="text" class="hide">
 
             <p class="input_line">
-                <label><span class="label">真实姓名</span><input type="text" name="@Html.DisplayNameFor(model => model.name)" class="w150"><span class="col_red">*</span></label>
-                <label><span class="label">登录密码</span><input type="password"  name="@Html.DisplayNameFor(model => model.password)" class="w150"><span class="col_red">*</span></label>
-                <label><span class="label">确认登录密码</span><input type="password"  name="@Html.DisplayNameFor(model => model.password)"  class="w150"><span class="col_red">*</span></label>
+                <label><span class="label">真实姓名</span><input type="text" name="@Html.DisplayNameFor(model => model.name)" class="w150" value="@Model.name"><span class="col_red">*</span></label>
+                <label><span class="label">登录密码</span><input type="password"  name="@Html.DisplayNameFor(model => model.password)" class="w150" value="@(Model.password == "" ? "" : "******")"><span class="col_red">*</span></label>
+                <label><span class="label">确认登录密码</span><input type="password"  name="@Html.DisplayNameFor(model => model.password)"  class="w150" value="@(Model.password == "" ? "" : "******")"><span class="col_red">*</span></label>
             </p>
             <p class="input_line">
-         @*       <label><span class="label">真实姓名</span><input type="text" class="w150"><span class="col_red">*</span></label>*@
-                <label><span class="label">电话号码</span><input type="text" class="w150" name="@Html.DisplayNameFor(model => model.tel)"><span class="col_red">*</span></label>
+                <label><span class="label">电话号码</span><input type="text" class="w150" name="@Html.DisplayNameFor(model => model.tel)" value="@Model.tel"><span class="col_red">*</span></label>
                 <span class="label">短信接收时间</span>
-                <select type="text" class="w150" name="@Html.DisplayNameFor(model => model.startTime)"id="">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                            <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                        <option value="16">16</option>
-                        <option value="17">17</option>
-                        <option value="18">18</option>
-                        <option value="19">19</option>
-                        <option value="20">20</option>
-                        <option value="21">21</option>
-                        <option value="22">22</option>
-                        <option value="23">23</option>
+                <select type="text" class="w150" name="@Html.DisplayNameFor(model => model.startTime)" id="">
+                        @for (int i = 0; i < 24; i++)
+                        {
+                           <option value="i" @( Model.startTime.Value.Hour == i? "selected" : "")>i</option> 
+                        }
                     </select>
                     <span>到</span>
                     <select type="text" class="w150" name="" id="" name="@Html.DisplayNameFor(model => model.endTime)">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">10</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                        <option value="16">16</option>
-                        <option value="17">17</option>
-                        <option value="18">18</option>
-                        <option value="19">19</option>
-                        <option value="20">20</option>
-                        <option value="21">21</option>
-                        <option value="22">22</option>
-                        <option value="23">23</option>
+                       @for (int i = 0; i < 24; i++)
+                        {
+                           <option value="i" @( Model.endTime.Value.Hour == i? "selected" : "")>i</option> 
+                        }
                     </select>
                 <span class="col_red">*</span>
             </p>
             <p class="input_line">
                 <span class="label">性别</span>
-                <label><input type="radio" checked="@Html.DisplayNameFor(model => model.Sex)"><span>男</span></label>
-                <label><input type="radio" name="@Html.DisplayNameFor(model => model.Sex)"><span>女</span></label>
+                <label><input type="radio" @((Model.Sex == "" || Model.Sex == "0")? "checked" : "" ) name="@Html.DisplayNameFor(model => model.Sex)" value="0"><span>男</span></label>
+                <label><input type="radio" @(Model.Sex == "1"?"checked":"") name="@Html.DisplayNameFor(model => model.Sex)" value="1"><span>女</span></label>
             </p>
             <div class="clear">
                 <div class="float_l">
@@ -136,19 +93,16 @@
                     <div class="float_l checkbox_box">
                     <p class="input_line"><a class="all_set" href="">全选</a><a class="reverse_set" href="">反选</a></p>
                     <!-- 公寓权限input -->
-                    <input class="hide" type="text" name="" value="">
+                    <input class="hide multiple_values" type="text" name="@Html.DisplayNameFor(model => model.limitHotelId)" value="@Model.limitHotelId">
+                    <input class="hide multiple_texts" type="text" name="@Html.DisplayNameFor(model => model.limitHotelName)" value="@Model.limitHotelName">
                     <p class="input_line">
                         <!-- 列出公寓 -->
                         @foreach (var h in Model.List_hotel)
                         {
                           <label class="w_sn">
-                            <input class="multiple" type="checkbox" name="h" value="xxx"><span title="XXXXX公寓">@h.h_name_cn</span>
+                            <input class="multiple2" type="checkbox" name="h" value="@h.hotel_id")><span title="@h.h_name_cn">@h.h_name_cn</span>
                          </label>
                         }
-                   
-                        @*<label class="w_sn">
-                            <input class="multiple" type="checkbox" name="h" value="xxx"><span title="XXXXX公寓">XXXXX公寓</span>
-                        </label>*@
                     </p>
                 </div>
             </div>
@@ -161,19 +115,16 @@
                 <div class="float_l checkbox_box">
                     <p class="input_line"><a class="all_set" href="">全选</a><a class="reverse_set" href="">反选</a></p>
                     <!-- 操作权限input -->
-                    <input class="hide" type="text" name="" value="">
+                    <input class="hide multiple_values" type="text" name="@Html.DisplayNameFor(model => model.limit)" value="@Model.limit">
+                    <input class="hide multiple_texts" type="text" name="@Html.DisplayNameFor(model => model.limitName)" value="@Model.limitName">
                     <p class="input_line">
                         @foreach (var m in Model.List_Menu)
                         {
                              <!-- 列出操作 -->
                         <label class="w_sn">
-                            <input class="multiple" type="checkbox" name="c" value="xxx"><span title="操作XXX1">@m.title</span>
+                            <input class="multiple2" type="checkbox" name="c" value="@m.id"><span title="@m.title">@m.title</span>
                         </label>
                         }
-                       
-                    @*    <label class="w_sn">
-                            <input class="multiple" type="checkbox" name="c" value="xxx"><span title="操作XXX2">操作XXX2</span>
-                        </label>*@
                     </p>
                 </div>
             </div>

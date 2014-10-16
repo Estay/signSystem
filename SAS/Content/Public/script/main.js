@@ -1,4 +1,4 @@
-/*2014年10月16日10:19:33*/
+/*2014年10月16日11:06:45*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -1419,6 +1419,38 @@
             $(this).change();
         });
     });
+    (function($) {
+        $(".multiple2").change(function(event) {
+            var checkbox_box = $(this).parents(".checkbox_box"), input_values = checkbox_box.find(".multiple_values"), input_texts = checkbox_box.find(".multiple_texts"), vals = "", texts = "";
+            checkbox_box.find(".multiple2").each(function(index, el) {
+                if ($(this).attr("checked")) {
+                    vals += $(this).val() + ",";
+                    texts += $(this).next().text() + "、";
+                }
+            });
+            vals = vals.slice(0, -1);
+            texts = texts.slice(0, -1);
+            input_values.val(vals);
+            input_texts.val(texts);
+        });
+        $(".all_set").click(function(event) {
+            event.preventDefault();
+            $(this).parents(".checkbox_box").find(".multiple2").each(function(index, el) {
+                $(this).attr("checked", "").change();
+            });
+        });
+        $(".reverse_set").click(function(event) {
+            event.preventDefault();
+            $(this).parents(".checkbox_box").find(".multiple2").each(function(index, el) {
+                if ($(this).attr("checked")) {
+                    $(this).removeAttr("checked");
+                } else {
+                    $(this).attr("checked", "");
+                }
+                $(this).change();
+            });
+        });
+    })($);
     $("body").on("keypress", ".only_integer", function(event) {
         var key_code = event.keyCode == 0 ? event.which : event.keyCode;
         console.log(key_code);

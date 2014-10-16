@@ -1426,6 +1426,45 @@
 		});
 	});
 
+	// 多选模块升级
+	(function($) {
+		$(".multiple2").change(function(event) {
+			var checkbox_box = $(this).parents(".checkbox_box"),
+				input_values = checkbox_box.find('.multiple_values'),
+				input_texts = checkbox_box.find('.multiple_texts'),
+				vals = "",
+				texts = "";
+			checkbox_box.find('.multiple2').each(function(index, el) {
+				if ($(this).attr('checked')) {
+					vals += ($(this).val()+",");
+					texts += ($(this).next().text()+"、");
+				};
+			});
+			vals = vals.slice(0, -1);
+			texts = texts.slice(0, -1);
+			input_values.val(vals);
+			input_texts.val(texts);
+		});
+		// 全选
+		$(".all_set").click(function(event) {
+			event.preventDefault();
+			$(this).parents(".checkbox_box").find('.multiple2').each(function(index, el) {
+				$(this).attr('checked',"").change();
+			});
+		});
+		// 反选
+		$(".reverse_set").click(function(event) {
+			event.preventDefault();
+			$(this).parents(".checkbox_box").find('.multiple2').each(function(index, el) {
+				if($(this).attr('checked')){
+					$(this).removeAttr('checked');
+				}else {
+					$(this).attr('checked',"");
+				}
+				$(this).change();
+			});
+		});
+	})($)
 
 	// class only_number 只能输入数字
 	$("body").on("keypress",".only_integer",function(event) {
