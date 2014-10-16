@@ -64,7 +64,7 @@
             <p class="input_line">
                 <label><span class="label">电话号码</span><input type="text" class="w150" name="@Html.DisplayNameFor(model => model.tel)" value="@Model.tel"><span class="col_red">*</span></label>
                 <span class="label">短信接收时间</span>
-                <select type="text" class="w150" name="@Html.DisplayNameFor(model => model.startTime)" id="">
+                <select class="w150" name="@Html.DisplayNameFor(model => model.startTime)">
                     
                         @for (int i = 0; i < 24; i++)
                         {
@@ -72,7 +72,7 @@
                         }
                     </select>
                     <span>到</span>
-                    <select type="text" class="w150" name="" id="" name="@Html.DisplayNameFor(model => model.endTime)">
+                    <select class="w150" name="@Html.DisplayNameFor(model => model.endTime)">
                        @for (int i = 0; i < 24; i++)
                         {
                             <option value="i" @( Model.endTime == i? "selected" : "")>@Convert.ToInt32(i)</option> 
