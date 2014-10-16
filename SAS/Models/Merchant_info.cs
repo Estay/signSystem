@@ -29,8 +29,8 @@ namespace SAS.Models
         private bool _display = true;
         private bool _admin;
         private string _parents;
-        private DateTime? _starttime;
-        private DateTime? _endtime;
+        private int _starttime;
+        private int _endtime;
         private string _limit;
         private string _limitname;
         private string _limithotelname;
@@ -181,7 +181,7 @@ namespace SAS.Models
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? startTime
+        public int startTime
         {
             set { _starttime = value; }
             get { return _starttime; }
@@ -189,7 +189,7 @@ namespace SAS.Models
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? endTime
+        public int endTime
         {
             set { _endtime = value; }
             get { return _endtime; }

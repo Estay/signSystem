@@ -58,23 +58,24 @@
 
             <p class="input_line">
                 <label><span class="label">真实姓名</span><input type="text" name="@Html.DisplayNameFor(model => model.name)" class="w150" value="@Model.name"><span class="col_red">*</span></label>
-                <label><span class="label">登录密码</span><input type="password"  name="@Html.DisplayNameFor(model => model.password)" class="w150" value="@(Model.password == "" ? "" : "******")"><span class="col_red">*</span></label>
-                <label><span class="label">确认登录密码</span><input type="password"  name="@Html.DisplayNameFor(model => model.password)"  class="w150" value="@(Model.password == "" ? "" : "******")"><span class="col_red">*</span></label>
+                <label><span class="label">登录密码</span><input type="password"  name="@Html.DisplayNameFor(model => model.password)" class="w150" value="@(Model.password == "" ||Model.password==null? "" : "******")"><span class="col_red">*</span></label>
+                <label><span class="label">确认登录密码</span><input type="password"  name="@Html.DisplayNameFor(model => model.password)"  class="w150" value="@(Model.password == "" || Model.password==null ? "" : "******")"><span class="col_red">*</span></label>
             </p>
             <p class="input_line">
                 <label><span class="label">电话号码</span><input type="text" class="w150" name="@Html.DisplayNameFor(model => model.tel)" value="@Model.tel"><span class="col_red">*</span></label>
                 <span class="label">短信接收时间</span>
                 <select type="text" class="w150" name="@Html.DisplayNameFor(model => model.startTime)" id="">
+                    
                         @for (int i = 0; i < 24; i++)
                         {
-                           <option value="i" @( Model.startTime.Value.Hour == i? "selected" : "")>i</option> 
+                           <option value="i" @( Model.startTime == i? "selected" : "")>@Convert.ToInt32(i)</option> 
                         }
                     </select>
                     <span>到</span>
                     <select type="text" class="w150" name="" id="" name="@Html.DisplayNameFor(model => model.endTime)">
                        @for (int i = 0; i < 24; i++)
                         {
-                           <option value="i" @( Model.endTime.Value.Hour == i? "selected" : "")>i</option> 
+                           <option value="i" @( Model.endTime == i? "selected" : "")>@Convert.ToInt32(i)</option> 
                         }
                     </select>
                 <span class="col_red">*</span>

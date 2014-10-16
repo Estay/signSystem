@@ -16,7 +16,7 @@ namespace SAS.Controllers
 
         //
         // GET: /User/
-
+        int result = 1;
         public ActionResult queryUser()
         {
 
@@ -38,14 +38,25 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult CreateUser(Merchant_info merchant_info)
         {
-            if (ModelState.IsValid)
+            if(string.IsNullOrEmpty(merchant_info.id))
             {
-                db.Merchant_infos.Add(merchant_info);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+              
+                if (ModelState.IsValid)
+                {
+                    using (db=new HotelDBContent())
+                    {
+                      db.Merchant_infos.Add(merchant_info);
+                      result=db.SaveChanges()>0?1:0;
+                    }
+                    
+                }
+            }else
+            {
+                 
             }
+           
 
-            return View(merchant_info);
+            return View("MyUser", getData());
         }
 
         //
@@ -61,20 +72,7 @@ namespace SAS.Controllers
             return View(merchant_info);
         }
 
-        //
-        // POST: /User/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(Merchant_info merchant_info)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(merchant_info).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(merchant_info);
-        }
+      
 
         /// <summary>
         /// 电话
