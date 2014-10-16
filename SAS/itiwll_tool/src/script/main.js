@@ -1394,6 +1394,12 @@
 		$(this).prev().show().focus();
 	});
 
+	// 密码回显
+	if($('#input_user_password').val()){
+		$('.show_password_input').hide();
+		$('#input_user_password').add('#input_user_password_checkin').show();
+	}
+
 
 	$('#user_phone').e_input_tip({
 		need : true,
@@ -1535,9 +1541,9 @@
 
 		// 回显
 		function setInputValues (vals_input,texts_input) {
-			var checkbox_box = input.parents(".checkbox_box"),
-				data_arr = input.val().split(","),
-				multiple = checkbox_box.find('.multiples2');
+			var checkbox_box = vals_input.parents(".checkbox_box"),
+				data_arr = vals_input.val().split(","),
+				multiple = checkbox_box.find('.multiple2');
 			for (var i = 0; i < data_arr.length; i++) {
 				var val = data_arr[i];
 				multiple.filter('[value='+val+']').attr('checked', 'true');
@@ -1554,7 +1560,7 @@
 		}
 
 		$('.multiple_values').each(function(index, el) {
-			setInputValues(el);
+			setInputValues($(this));
 		});
 
 	})($)
