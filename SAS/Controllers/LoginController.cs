@@ -76,6 +76,11 @@ namespace SAS.Controllers
                     {
                         if (mer.password == merchant_info.password)
                         {
+                           
+                            string limit = string.Empty;
+                            Session["menu"] = new help.HotelInfoHelp().GetLimit(mer, out limit); Session["limit"] = limit;
+                               
+                            
 
                             Session["userName"] = mer.name;
                             Session["uid"] = mer.tel;
@@ -94,6 +99,7 @@ namespace SAS.Controllers
             Session.Remove("code");
             return View("signLogin");;
         }
+      
         public ActionResult temp()
         {
             ViewBag.username = Session["username"];
