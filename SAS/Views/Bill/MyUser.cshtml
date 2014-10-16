@@ -1,4 +1,4 @@
-﻿@model SAS.Models.Order_info
+﻿@model SAS.Models.Merchant_info
 
 @{
     ViewBag.Title = "用户管理";
@@ -8,7 +8,8 @@
     Dictionary<string, string> hotels = ViewData["dates"] as Dictionary<string, string>;
 
 }
-
+ @using (Html.BeginForm("CreateUser", "User", FormMethod.Post))
+ {
 <div id="content" class="box_a">
     <div class="from_path">
         <table cellspacing="0">
@@ -19,17 +20,20 @@
                     <th>模块权限</th>
                     <th>操作</th>
                 </tr>
-                
-                <!-- 表格数据 -->
-                <tr>
-                    <td>XXXXXX</td>
-                    <td>XXXX,xxxxxx,xxxxx</td>
-                    <td>xxxx,xxxxxx,xxxxxxxx,</td>
+                @foreach (var m in Model.List_Mer)
+                {
+                        <!-- 表格数据 -->
+                 <tr>
+                    <td>@m.name</td>
+                    <td>@m.limitHotelName</td>
+                    <td>@m.limitName</td>
                     <td>
                         <a href="">修改</a>&#124;<a href="">删除</a>
                     </td>
-                </tr>
+                 </tr>
         
+                }
+            
                 <!-- 没有数据 -->
                 <tr>
                     <td colspan="4">没有用户</td>
@@ -84,7 +88,7 @@
                         <option value="22">22</option>
                         <option value="23">23</option>
                     </select>
-                    到
+                   <span> 到</span>
                     <select type="text" class="w150" name="" id="">
                         <option value="0">0</option>
                         <option value="1">1</option>
@@ -167,9 +171,9 @@
         </div>
         
     </div>
-  
+ 
 </div>
-
+ }
 
 <!-- 日期控件 -->
 <script type="text/javascript" src="@Url.Content("~/Content/public/script/laydate/laydate.dev.js")"></script>

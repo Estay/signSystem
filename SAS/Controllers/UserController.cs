@@ -19,35 +19,24 @@ namespace SAS.Controllers
 
         public ActionResult queryUser()
         {
-            return View("MyUser");
+
+            return View("MyUser", getData());
         }
-
-        //
-        // GET: /User/Details/5
-
-        public ActionResult Details(string id = null)
+        public Merchant_info getData()
         {
-            Merchant_info merchant_info = db.Merchant_infos.Find(id);
-            if (merchant_info == null)
-            {
-                return HttpNotFound();
-            }
-            return View(merchant_info);
+            List<Merchant_info> list_Mer = new List<Merchant_info>(); List<SasMenu> list_Menu = new List<SasMenu>(); List<hotel_info> list_hotel = new List<hotel_info>();
+
+            Merchant_info mermber = new Merchant_info();
+            mermber.getMemberInfo(out list_Mer, out list_Menu, out list_hotel);
+            mermber.List_hotel = list_hotel; mermber.List_Menu = list_Menu; mermber.List_Mer = list_Mer;
+            return mermber;
         }
 
-        //
-        // GET: /User/Create
-
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        //
-        // POST: /User/Create
-
+       
+  
+       
         [HttpPost]
-        public ActionResult Create(Merchant_info merchant_info)
+        public ActionResult CreateUser(Merchant_info merchant_info)
         {
             if (ModelState.IsValid)
             {

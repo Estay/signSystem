@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -33,6 +35,13 @@ namespace SAS.Models
         private string _limitname;
         private string _limithotelname;
         private string _limithotelid;
+        private string sex;
+
+        public string Sex
+        {
+            get { return sex; }
+            set { sex = value; }
+        }
         /// <summary>
         /// 商户编号
         /// </summary>
@@ -186,7 +195,7 @@ namespace SAS.Models
             get { return _endtime; }
         }
         /// <summary>
-        /// 
+        /// 菜单ID，对应sasMenu里面的ID，以逗号分隔
         /// </summary>
         public string limit
         {
@@ -194,7 +203,7 @@ namespace SAS.Models
             get { return _limit; }
         }
         /// <summary>
-        /// 
+        /// 菜单名称，对应sasMenu里面的title，以逗号分隔
         /// </summary>
         public string limitName
         {
@@ -202,7 +211,7 @@ namespace SAS.Models
             get { return _limitname; }
         }
         /// <summary>
-        /// 
+        /// 操作的酒店名称,对应的酒店名称,以逗号分隔
         /// </summary>
         public string limitHotelName
         {
@@ -210,7 +219,7 @@ namespace SAS.Models
             get { return _limithotelname; }
         }
         /// <summary>
-        /// 
+        /// 操作的酒店Id,对应的酒店id,以逗号分隔
         /// </summary>
         public string limitHotelId
         {
@@ -219,5 +228,71 @@ namespace SAS.Models
         }
         #endregion Model
 
-    }
+        List<Merchant_info> list_Mer = new List<Merchant_info>();
+        [NotMapped]
+        public List<Merchant_info> List_Mer
+        {
+            get { return list_Mer; }
+            set { list_Mer = value; }
+        }
+        List<SasMenu> list_Menu = new List<SasMenu>();
+        [NotMapped]
+        public List<SasMenu> List_Menu
+        {
+            get { return list_Menu; }
+            set { list_Menu = value; }
+        }
+        List<hotel_info> list_hotel = new List<hotel_info>();
+        [NotMapped]
+        public List<hotel_info> List_hotel
+        {
+            get { return list_hotel; }
+            set { list_hotel = value; }
+        }
+        
+
+        /// <summary>
+        /// 读取酒店，用户，菜单数据
+        /// </summary>
+        /// <param name="listMer"></param>
+        /// <param name="listMenu"></param>
+        /// <param name="listHotel"></param>
+        public void getMemberInfo(out List<Merchant_info> listMer,out List<SasMenu> listMenu,out List<hotel_info> listHotel)
+        {
+            List<Merchant_info> List_Mer=new List<Merchant_info>(); List<SasMenu> list_Menu=new List<SasMenu>();List<hotel_info> list_hotel=new List<hotel_info>();
+            string uId=new help.HotelInfoHelp().getUId();
+            string sqlMer=string.Format("select name,tel,limit,limithotelName from  merchant_info where parents='{0}'",uId), sqlHotel=string.Format("select hotel_Id,h_name_cn from hotel_info where u_id='{0}'",uId),sqlmenu=string.Format("select id,title,controlename from sasMenu",uId);
+           
+                using (SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+                {
+                    conn.Open();
+                  
+
+                    using (SqlCommand cmd = new SqlCommand(sqlHotel + ";" + sqlMer+";"+sqlmenu, conn))
+                    {
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            while (dr.Read())//读取所有酒店信息
+                            {
+                              //  decimal price = Convert.ToDecimal(dr[6]);
+                                 list_hotel.Add(new hotel_info() { hotel_id=Convert.ToInt32(dr[0]),h_name_cn=dr[1].ToString() });
+                            }
+                            
+                            dr.NextResult(); 
+                            while (dr.Read()) //读取用户
+                            {
+                                List_Mer.Add(new Merchant_info() { name=dr[0].ToString(),tel=dr[1].ToString(),limit=dr[3].ToString(),limitHotelName=dr[4].ToString() });
+                            }
+                            dr.NextResult();
+                             while (dr.Read()) //读取菜单
+                            {
+                                list_Menu.Add(new SasMenu() {id=Convert.ToInt32(dr[0]), title=dr[1].ToString(),controleName =dr[2].ToString() });
+                            }
+                        }
+                    }
+                }
+                listMer = List_Mer; listMenu = list_Menu; listHotel = list_hotel;
+            }
+        }
+    
 }
