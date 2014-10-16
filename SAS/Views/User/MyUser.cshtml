@@ -57,17 +57,55 @@
             <input type="text" class="hide">
 
             <p class="input_line">
-                <label><span class="label">真实姓名</span><input type="text" name="@Html.DisplayNameFor(model => model.name)" class="w150" value="@Model.name"><span class="col_red">*</span></label>
-                <label><span class="label">登录密码</span><input type="password"  name="@Html.DisplayNameFor(model => model.password)" class="w150" value="@(Model.password == "" ||Model.password==null? "" : "******")"><span class="col_red">*</span></label>
-                <label><span class="label">确认登录密码</span><input type="password"  name="@Html.DisplayNameFor(model => model.password)"  class="w150" value="@(Model.password == "" || Model.password==null ? "" : "******")"><span class="col_red">*</span></label>
+                <label>
+                    <span class="label">真实姓名</span>
+                    <input id="input_user_name" type="text" name="@Html.DisplayNameFor(model =>                
+                    model.name)" class="w150" value="@Model.name">
+                    <span class="col_red">*</span>
+                </label>
+                <label>
+                    <span class="label">登录密码</span>
+                    <input id="input_user_password" type="password"  name="@Html.DisplayNameFor(model =>                
+                    model.password)" class="w150 hide" value="@Model.password">
+                    <input type="text" class="show_password_input col_gray" value="6至18位字符">
+                    <span class="col_red">*</span>
+                </label>
+                <label>
+                    <span class="label">确认登录密码</span>
+                    <input id="input_user_password_checkin" class="hide" type="password"  name="@Html.DisplayNameFor(model =>                
+                    model.password)"  class="w150" value="@Model.password">
+                    <input type="text" class="show_password_input col_gray" value="再次输入密码">
+                    <span class="col_red">*</span>
+                </label>
             </p>
             <p class="input_line">
-                <label><span class="label">电话号码</span><input type="text" class="w150" name="@Html.DisplayNameFor(model => model.tel)" value="@Model.tel"><span class="col_red">*</span></label>
+                <label>
+                    <span class="label">电话号码</span>
+                    <input id="user_phone" type="text" class="only_integer w150" name="@Html.DisplayNameFor(model =>                
+                    model.tel)" value="@Model.tel">
+                    <span class="col_red">*</span>
+                </label>
                 <span class="label">短信接收时间</span>
-                <select class="w150" name="@Html.DisplayNameFor(model => model.startTime)">
+                <select class="w150" name="@Html.DisplayNameFor(model =>
+                    model.startTime)">
                     
-                        @for (int i = 0; i < 24; i++)
+                        @for (int i = 0; i
+                    < 24; i++)
                         {
+<<<<<<< HEAD
+                           <option value="@i" @( Model.startTime == i? "selected" : "")>@Convert.ToInt32(i)</option>
+                    }
+                </select>
+                <span>到</span>
+                <select class="w150" name="@Html.DisplayNameFor(model =>
+                    model.endTime)">
+                       @for (int i = 0; i
+                    < 24; i++)
+                        {
+                            <option value="@i" @( Model.endTime == i? "selected" : "")>@Convert.ToInt32(i)</option>
+                    }
+                </select>
+=======
                            <option value="@i" @( Model.startTime == i.ToString()? "selected" : "")>@Convert.ToInt32(i)</option> 
                         }
                     </select>
@@ -78,11 +116,12 @@
                             <option value="@i" @( Model.endTime == i.ToString()? "selected" : "")>@Convert.ToInt32(i)</option> 
                         }
                     </select>
+>>>>>>> ee91e29cc0df2e87331248c084db7cc8fedf9ca0
                 <span class="col_red">*</span>
             </p>
             <p class="input_line">
                 <span class="label">性别</span>
-                <label><input type="radio" @((Model.Sex == "" || Model.Sex == "0")? "checked" : "" ) name="@Html.DisplayNameFor(model => model.Sex)" value="0"><span>男</span></label>
+                <label><input type="radio" @((Model.Sex == "" || Model.Sex == "0" || Model.Sex == null)? "checked" : "" ) name="@Html.DisplayNameFor(model => model.Sex)" value="0"><span>男</span></label>
                 <label><input type="radio" @(Model.Sex == "1"?"checked":"") name="@Html.DisplayNameFor(model => model.Sex)" value="1"><span>女</span></label>
             </p>
             <div class="clear">
