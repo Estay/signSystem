@@ -24,7 +24,7 @@
 	             'table', 'time', 'timeEnd', 'timeStamp', 'trace', 'warn'];  
 	for(var i=0,l=funcs.length;i<l;i++) {  
 	    var func = funcs[i];  
-	    if(!console[func])  
+	    if(!console[func])
 	        console[func] = function(){};  
 	}  
 	if(!console.memory)  
@@ -311,6 +311,11 @@
 
 					//地图同步
 					map.centerAndZoom(city.find(':selected').text());
+					// todo 地图查询酒店
+					// var hotel_name = $("#hotel_name").val();
+					// if(hotel_name){
+					// 	new BMap.LocalSearch
+					// }
 
 
 					// 加载行政区数据
