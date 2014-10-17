@@ -65,7 +65,7 @@
         }
     </div>
     <div class="main_nav_item">
-         @if (menu.Select(o => o.parent= 3).Count()<0){
+         @if (menu.Select(o => o.parent= 3).Count()>0){
              <a>点评管理</a>
          }
         @for (int i = 0; i < menu.Count; i++)
@@ -80,7 +80,7 @@
         }
     </div>
     <div class="main_nav_item">
-         @if (menu.Select(o => o.parent= 4).Count()<0){
+         @if (menu.Select(o => o.parent== 4).Count()>0){
              <a>用户管理</a>
          }
         @for (int i = 0; i < menu.Count; i++)
@@ -96,7 +96,7 @@
        
     </div>
     <div class="main_nav_item no_bor">
-         @if (menu.Select(o => o.parent!= 5).Count()<0){
+         @if (menu.Select(o => o.parent== 5).Count()>0){
              <a>沟通帮助</a>
          }
         
