@@ -67,6 +67,7 @@
 #main_nav {
 	background: #E8E8EC;
 	border: #595757 solid 1px;
+	border-bottom: none;
 	margin-right: 6px;
 }
 .main_nav_item {

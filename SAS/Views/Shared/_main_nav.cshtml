@@ -9,11 +9,10 @@
     <div class="main_nav_item">
         <a href="/Order/MyOrder">首&nbsp;&nbsp;&nbsp;&nbsp;页</a>
     </div>
-    <div class="main_nav_item">
          @if (menu.Where(o => o.parent == 1).Count() > 0)
          {
+    <div class="main_nav_item">
              <a>公寓管理</a>
-         }
         
         @for (int i = 0; i < menu.Count; i++)
         {
@@ -44,11 +43,11 @@
             }
         }
     </div>
+     }
+     @if (menu.Where(o => o.parent== 2).Count()>0){
     <div class="main_nav_item">
         
-         @if (menu.Where(o => o.parent== 2).Count()>0){
              <a>交易管理</a>
-         }
         @for (int i = 0; i < menu.Count; i++)
         { 
             switch (@menu[i].id)
@@ -65,11 +64,11 @@
             }
         }
     </div>
-    <div class="main_nav_item">
+         }
          @if (menu.Where(o => o.parent == 3).Count() > 0)
          {
+    <div class="main_nav_item">
              <a>点评管理</a>
-         }
         @for (int i = 0; i < menu.Count; i++)
         {
             
@@ -81,11 +80,11 @@
             }
         }
     </div>
-    <div class="main_nav_item">
+         }
          @if (menu.Where(o => o.parent == 4).Count() > 0)
          {
+    <div class="main_nav_item">
              <a>用户管理</a>
-         }
         @for (int i = 0; i < menu.Count; i++)
         {
             
@@ -98,10 +97,11 @@
         }
        
     </div>
-    <div class="main_nav_item no_bor">
-         @if (menu.Where(o => o.parent== 5).Count()>0){
-             <a>沟通帮助</a>
          }
+         @if (menu.Where(o => o.parent == 5).Count() > 0)
+         {
+    <div class="main_nav_item">
+             <a>沟通帮助</a>
         
         @for (int i = 0; i < menu.Count; i++)
         {
@@ -115,4 +115,5 @@
         }
         
     </div>
+         }
 </div>
