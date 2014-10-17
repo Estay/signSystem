@@ -38,21 +38,26 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult CreateUser(Merchant_info merchant_info)
         {
-            if(merchant_info.id>0)
+            using (db = new HotelDBContent())
             {
-              
-             
-            }else
-            {
-                if (ModelState.IsValid)
+                if (merchant_info.id > 0)
                 {
-                    merchant_info.ctime = DateTime.Now; merchant_info.status = true; merchant_info.guid = Guid.NewGuid().ToString(); merchant_info.operator_id = new help.HotelInfoHelp().getUId();
-                    //using (db=new HotelDBContent())
-                    //{
-                    db.Merchant_infos.Add(merchant_info);
-                    result = db.SaveChanges() > 0 ? 1 : 0;
-                    //}
+                     //if(merchant_info.password=="******")
 
+                    merchant_info.updateUser(merchant_info);
+                }
+                else
+                {
+                    if (ModelState.IsValid)
+                    {
+                        merchant_info.ctime = DateTime.Now; merchant_info.status = true; merchant_info.guid = Guid.NewGuid().ToString(); merchant_info.operator_id = new help.HotelInfoHelp().getUId();
+                        //using (db=new HotelDBContent())
+                        //{
+                        db.Merchant_infos.Add(merchant_info);
+                        result = db.SaveChanges() > 0 ? 1 : 0;
+                        //}
+
+                    }
                 }
             }
            

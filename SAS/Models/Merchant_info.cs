@@ -259,7 +259,40 @@ namespace SAS.Models
             get { return list_hotel; }
             set { list_hotel = value; }
         }
-        
+        /// <summary>
+        /// 修改用户
+        /// </summary>
+        /// <param name="room_id"></param>
+        /// <param name="hotel_room_info"></param>
+        /// <returns></returns>
+        public int updateUser(Merchant_info mer)
+        {
+            int result = 0;
+            try
+            {
+                using (DBC.HotelDBContent db = new DBC.HotelDBContent())
+                {
+                    var merchant = (from m in db.Merchant_infos where m.id == mer.id select m).Single();
+                    if (merchant != null)
+                    {
+                        Merchant_info m = new Merchant_info();
+                        if (merchant.password != "******")
+
+                            merchant.password = mer.password != "******" ? new help.HotelInfoHelp().Md5(mer.password) : merchant.password;
+                            merchant.name = mer.name; merchant.tel = mer.tel; merchant.sex = mer.sex; merchant.startTime = mer.startTime; merchant.endTime = mer.endTime; merchant.limit = mer.limit; merchant.limitName = mer.limitName; merchant.limitHotelId = mer.limitHotelId; merchant.limitHotelName = mer.limitHotelName; 
+                      
+                        result = db.SaveChanges() > 0 ? 1 : 0; ;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                result = 0;
+                throw;
+            }
+            return result;
+
+        }
 
         /// <summary>
         /// 读取酒店，用户，菜单数据
