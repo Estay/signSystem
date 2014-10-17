@@ -304,7 +304,7 @@ namespace SAS.Models
         {
             List<Merchant_info> List_Mer=new List<Merchant_info>(); List<SasMenu> list_Menu=new List<SasMenu>();List<hotel_info> list_hotel=new List<hotel_info>();
             string uId=new help.HotelInfoHelp().getUId();
-            string sqlMer = string.Format("select name,tel,limitName,limithotelName,id,limit from  merchant_info where operator_id='{0}'", uId), sqlHotel = string.Format("select hotel_Id,h_name_cn from hotel_info where u_id='{0}'", uId), sqlmenu = string.Format("select id,title,controlename from sasMenu", uId);
+            string sqlMer = string.Format("select name,tel,limitName,limithotelName,id,limit,admin from  merchant_info where operator_id='{0}' or tel='{0}'", uId), sqlHotel = string.Format("select hotel_Id,h_name_cn from hotel_info where u_id='{0}'", uId), sqlmenu = string.Format("select id,title,controlename from sasMenu", uId);
            
                 using (SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
                 {
@@ -324,7 +324,7 @@ namespace SAS.Models
                             dr.NextResult(); 
                             while (dr.Read()) //读取用户
                             {
-                                List_Mer.Add(new Merchant_info() { name = dr[0].ToString(), tel = dr[1].ToString(), limitName = dr[2].ToString(), limitHotelName = dr[3].ToString(), id = Convert.ToInt32(dr[4]), limit =dr[5].ToString()});
+                                List_Mer.Add(new Merchant_info() { name = dr[0].ToString(), tel = dr[1].ToString(), limitName = dr[2].ToString(), limitHotelName = dr[3].ToString(), id = Convert.ToInt32(dr[4]), limit =dr[5].ToString(),admin=Convert.ToInt32(dr[6])==1?true:false});
                             }
                             dr.NextResult();
                              while (dr.Read()) //读取菜单

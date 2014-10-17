@@ -239,7 +239,7 @@ namespace SAS.Controllers
             int sign = 0;
             if (hotel_room_info.room_id > 0)
             {
-
+                
                 sign = hotel_room_info.updateRoom(hotel_room_info) == true ? 1 : 0; ;
 
             }

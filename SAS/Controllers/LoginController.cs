@@ -76,11 +76,11 @@ namespace SAS.Controllers
                     {
                       //  new help.HotelInfoHelp().Md5(merchant_info.password);
                         //  if (mer.password == merchant_info.password)
-                        if (mer.password == new help.HotelInfoHelp("").Md5(merchant_info.password))
+                        if (mer.password == merchant_info.password)
                         {
 
                             string limit = string.Empty;
-                            Session["menu"] = new help.HotelInfoHelp().GetLimit(mer, out limit); Session["limit"] = limit;
+                            Session["menu"] = new help.HotelInfoHelp().GetLimit(mer, out limit); Session["limit"] = limit; Session["limitHotelId"] = mer.limitHotelId;
 
 
 

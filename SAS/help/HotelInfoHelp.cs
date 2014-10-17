@@ -187,7 +187,7 @@ namespace SAS.help
 
 
         /// <summary>
-        /// 获得根限
+        /// 获得权限
         /// </summary>
         /// <returns></returns>
         public List<SasMenu> GetLimit(Merchant_info mer,out string limit)
@@ -221,7 +221,9 @@ namespace SAS.help
                     }
                 }
             }
-            limit = _limit;
+           
+
+            limit =mer.admin?"all":_limit;
             return list_Menu;
           
         }
