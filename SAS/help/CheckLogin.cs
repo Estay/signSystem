@@ -37,6 +37,7 @@ namespace SAS.help
                                 if (!filterContext.HttpContext.Session["limit"].ToString().ToLower().Contains(f))
                                 {
                                     filterContext.HttpContext.Session.Remove("uid");
+                                    filterContext.HttpContext.Session.Remove("userName");
                                     filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(new { Controller = "Login", Action = "MyLogin" }));//这里是跳转到Account下的LogOff,自己定义
                                 }
                                 else
@@ -54,6 +55,8 @@ namespace SAS.help
                                                     string limitHotelId = string.Empty;
                                                     if (filterContext.HttpContext.Session["limitHotelId"] != null)
                                                         limitHotelId = filterContext.HttpContext.Session["limitHotelId"].ToString();
+                                                    if(string.IsNullOrEmpty(limitHotelId))
+                                                        return;
                                                     if (!limitHotelId.Contains(a.Value.ToString()))
                                                     {
                                                         filterContext.HttpContext.Session.Remove("uid");
