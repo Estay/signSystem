@@ -1,4 +1,4 @@
-/*2014年10月16日17:42:06*/
+/*2014年10月17日10:37:11*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -443,6 +443,10 @@
     $("#login_btn").click(function(event) {
         event.preventDefault();
         $(this).parents("form").submit();
+    });
+    $("#re_vali_code").click(function(event) {
+        event.preventDefault();
+        var img = $(this).find("img").attr("src", "/Login/builImage/?date=" + new Date().getTime());
     });
     $(".del_hotel").click(function(event) {
         var el = $(this);

@@ -67,6 +67,12 @@
 		$(this).parents("form").submit();
 	});
 
+	$('#re_vali_code').click(function(event) {
+		event.preventDefault();
+		var img = $(this).find('img').attr('src', '/Login/builImage/?date='+new Date().getTime());
+		
+	});
+
 	//////////////////////////////////公寓列表/////////////////////////////////////////////
 	$('.del_hotel').click(function(event) {
 		var el = $(this);
