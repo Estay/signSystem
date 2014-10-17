@@ -64,13 +64,13 @@
                 </label>
                 <label>
                     <span class="label">登录密码</span>
-                    <input id="input_user_password" type="password"  name="@Html.DisplayNameFor(model => model.password)" class="w150 hide" value="@Model.password">
+                    <input id="input_user_password" type="password"  name="@Html.DisplayNameFor(model => model.password)" class="w150 hide" value="@(Model.password == "" ||Model.password==null? "" : "******")">
                     <input type="text" class="show_password_input col_gray" value="6至18位字符">
                     <span class="col_red">*</span>
                 </label>
                 <label>
                     <span class="label">确认登录密码</span>
-                    <input id="input_user_password_checkin" class="hide" type="password"  name="@Html.DisplayNameFor(model =>   model.password)"  class="w150" value="@Model.password">
+                    <input id="input_user_password_checkin" class="hide" type="password"  name="@Html.DisplayNameFor(model =>   model.password)"  class="w150" value="@(Model.password == "" ||Model.password==null? "" : "******")">
                     <input type="text" class="show_password_input col_gray" value="再次输入密码">
                     <span class="col_red">*</span>
                 </label>
