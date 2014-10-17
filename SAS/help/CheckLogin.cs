@@ -35,6 +35,11 @@ namespace SAS.help
                                     filterContext.HttpContext.Session.Remove("uid");
                                     filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(new { Controller = "Login", Action = "MyLogin" }));//这里是跳转到Account下的LogOff,自己定义
                                 }
+                                else
+                                {
+                                   
+                                }
+                               
                      
                             }
                         }

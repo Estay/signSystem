@@ -38,6 +38,7 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult CreateUser(Merchant_info merchant_info)
         {
+            merchant_info.status = true;
             using (db = new HotelDBContent())
             {
                 if (merchant_info.id > 0)
@@ -50,7 +51,7 @@ namespace SAS.Controllers
                 {
                     if (ModelState.IsValid)
                     {
-                        merchant_info.ctime = DateTime.Now; merchant_info.status = true; merchant_info.guid = Guid.NewGuid().ToString(); merchant_info.operator_id = new help.HotelInfoHelp().getUId();
+                        merchant_info.ctime = DateTime.Now; merchant_info.status = true; merchant_info.guid = Guid.NewGuid().ToString(); merchant_info.operator_id = new help.HotelInfoHelp().getUId(); merchant_info.status = true;
                         //using (db=new HotelDBContent())
                         //{
                         db.Merchant_infos.Add(merchant_info);

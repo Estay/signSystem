@@ -75,29 +75,35 @@ namespace SAS.Controllers
                     if (mer != null)
                     {
                       //  new help.HotelInfoHelp().Md5(merchant_info.password);
-                        if (mer.password == merchant_info.password)
+                        //  if (mer.password == merchant_info.password)
+                        if (mer.password == new help.HotelInfoHelp("").Md5(merchant_info.password))
                         {
-                           
+
                             string limit = string.Empty;
                             Session["menu"] = new help.HotelInfoHelp().GetLimit(mer, out limit); Session["limit"] = limit;
-                               
-                            
+
+
 
                             Session["userName"] = mer.name;
                             Session["uid"] = mer.tel;
                             Session.Remove("code");
                             return RedirectToAction("create", "addHotel");
                         }
+                        else
+                        {
+                            ViewBag.LoginInfo = "用户名或者密码错误";
+                        }
                     }
                     else
                     {
                         ViewBag.LoginInfo = "用户名或者密码错误";
                     }
-
+                    
                 }
             }else
                 ViewBag.LoginInfo = "验证码错误,请输入正确的验证码";
             Session.Remove("code");
+            ViewBag.userName = merchant_info.name; ViewBag.pass = merchant_info.password;
             return View("signLogin");;
         }
       

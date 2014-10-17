@@ -275,10 +275,10 @@ namespace SAS.Models
                     var merchant = (from m in db.Merchant_infos where m.id == mer.id select m).Single();
                     if (merchant != null)
                     {
-                        Merchant_info m = new Merchant_info();
-                        if (merchant.password != "******")
+                        //Merchant_info m = new Merchant_info();
 
-                            merchant.password = mer.password != "******" ? new help.HotelInfoHelp().Md5(mer.password) : merchant.password;
+                          // string f = mer.password != "******" ? new help.HotelInfoHelp().Md5(mer.password) : merchant.password; merchant.utime = DateTime.Now;
+                            merchant.password = mer.password != "******" ? new help.HotelInfoHelp().Md5(mer.password) : merchant.password; merchant.utime = DateTime.Now;
                             merchant.name = mer.name; merchant.tel = mer.tel; merchant.sex = mer.sex; merchant.startTime = mer.startTime; merchant.endTime = mer.endTime; merchant.limit = mer.limit; merchant.limitName = mer.limitName; merchant.limitHotelId = mer.limitHotelId; merchant.limitHotelName = mer.limitHotelName; 
                       
                         result = db.SaveChanges() > 0 ? 1 : 0; ;
