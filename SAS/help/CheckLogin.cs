@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Web.Routing;
 
@@ -28,13 +29,51 @@ namespace SAS.help
                         {
                             string f = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName.ToLower();
                             string c = filterContext.HttpContext.Session["limit"].ToString().ToLower();
+                            if(c=="all")
+                               return;
+
                             if (!f.ToLower().Contains("login".ToLower()))
                             {
                                 if (!filterContext.HttpContext.Session["limit"].ToString().ToLower().Contains(f))
                                 {
                                     filterContext.HttpContext.Session.Remove("uid");
+                                    filterContext.HttpContext.Session.Remove("userName");
                                     filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(new { Controller = "Login", Action = "MyLogin" }));//这里是跳转到Account下的LogOff,自己定义
                                 }
+                                else
+                                {
+                                    
+                                    if (filterContext.ActionParameters.Count > 0)
+                                    {
+                                        //for (int i = 0; i < filterContext.ActionParameters.Count; i++)
+                                        //{
+                                            Dictionary<string, object> dic = filterContext.ActionParameters as Dictionary<string, object>;
+                                            foreach (var a in dic)
+                                            {
+                                                if ((a.Key.Contains("id") || (a.Key.Contains("Id") || a.Key.Contains("hotelId") || a.Key.Contains("hotelId")) && a.Value != null))
+                                                {
+                                                    string limitHotelId = string.Empty;
+                                                    if (filterContext.HttpContext.Session["limitHotelId"] != null)
+                                                        limitHotelId = filterContext.HttpContext.Session["limitHotelId"].ToString();
+                                                    if(string.IsNullOrEmpty(limitHotelId))
+                                                        return;
+                                                    if (!limitHotelId.Contains(a.Value.ToString()))
+                                                    {
+                                                        filterContext.HttpContext.Session.Remove("uid");
+                                                          filterContext.HttpContext.Session.Remove("userName");
+                                                      
+                                                        filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(new { Controller = "Login", Action = "MyLogin" }));//这里是跳转到Account下的LogOff,自己定义
+
+                                                    }
+
+                                                }
+                                                else
+                                                    break;
+                                            }
+                                        //}
+                                    }
+                                }
+                               
                      
                             }
                         }
@@ -43,6 +82,10 @@ namespace SAS.help
                 }
        
             }
+        }
+        public void ReMoveSession(ActionExecutingContext filterContext)
+        {
+                       
         }
     }
 }

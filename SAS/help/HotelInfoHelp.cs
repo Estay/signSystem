@@ -22,6 +22,10 @@ namespace SAS.help
         {
             uId = getUId();
         }
+        public HotelInfoHelp(string tel)
+        {
+            
+        }
 
         //酒店的房型列表
         public static List<hotel_room_info> getRooms(int hotelId)
@@ -42,7 +46,26 @@ namespace SAS.help
            // uId=
             using (db = new HotelDBContent())
             {
-                return (from h in db.hotel where h.u_id == uId && h.h_state == true select h).ToList();
+                var member =(from m in db.Merchant_infos where m.tel == uId select m).SingleOrDefault();
+                if (member.admin)
+                {
+                    return (from h in db.hotel where h.u_id == uId && h.h_state == true select h).ToList();
+                }
+                else
+                {
+                    {
+
+                        string[] str = string.IsNullOrEmpty(member.limitHotelId) ? new string []{"1" } : member.limitHotelId.Split(',');
+                        int[] strHotelId = new int[str.Length];
+                        for (int i = 0; i < str.Length; i++)
+                        {
+                            strHotelId[i] = Convert.ToInt32(str[i]);
+                        }
+                        return (from h in db.hotel where h.u_id == uId && h.h_state == true && strHotelId.Contains(h.hotel_id) select h).ToList();
+                    }
+            
+                }
+                  
             }
         }
 
@@ -155,18 +178,20 @@ namespace SAS.help
         /// <returns></returns>
         public  string getUId()
         {
-            return "13528873363";
+            //return "13528873363";
             //HttpContext.Current.Session["uid"] = "admintest";
             //HttpContext.Current.Session["userName"] = "测试账号";
            // Session["uid"];
-           
-            //return HttpContext.Current.Session["uid"].ToString();
-           // return Session["uid"].ToString();
+            if (Session["uid"] != null)
+                //return HttpContext.Current.Session["uid"].ToString();
+                return Session["uid"].ToString();
+            else
+                return "";
         }
 
 
         /// <summary>
-        /// 获得根限
+        /// 获得权限
         /// </summary>
         /// <returns></returns>
         public List<SasMenu> GetLimit(Merchant_info mer,out string limit)
@@ -200,7 +225,9 @@ namespace SAS.help
                     }
                 }
             }
-            limit = _limit;
+           
+
+            limit =mer.admin?"all":_limit;
             return list_Menu;
           
         }
