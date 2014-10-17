@@ -53,13 +53,17 @@ namespace SAS.help
                 }
                 else
                 {
-                    string[] str = member.limitHotelId.Split(',');
-                    int[] strHotelId = new int[str.Length];
-                    for (int i = 0; i < str.Length; i++)
                     {
-                        strHotelId[i]=Convert.ToInt32(str[i]);
+
+                        string[] str = string.IsNullOrEmpty(member.limitHotelId) ? new string []{"1" } : member.limitHotelId.Split(',');
+                        int[] strHotelId = new int[str.Length];
+                        for (int i = 0; i < str.Length; i++)
+                        {
+                            strHotelId[i] = Convert.ToInt32(str[i]);
+                        }
+                        return (from h in db.hotel where h.u_id == uId && h.h_state == true && strHotelId.Contains(h.hotel_id) select h).ToList();
                     }
-                    return (from h in db.hotel where h.u_id == uId && h.h_state == true && strHotelId.Contains(h.hotel_id) select h).ToList();
+            
                 }
                   
             }

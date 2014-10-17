@@ -304,7 +304,7 @@ namespace SAS.Models
         {
             List<Merchant_info> List_Mer=new List<Merchant_info>(); List<SasMenu> list_Menu=new List<SasMenu>();List<hotel_info> list_hotel=new List<hotel_info>();
             string uId=new help.HotelInfoHelp().getUId();
-            string sqlMer = string.Format("select name,tel,limitName,limithotelName,id,limit,admin from  merchant_info where operator_id='{0}' or tel='{0}'", uId), sqlHotel = string.Format("select hotel_Id,h_name_cn from hotel_info where u_id='{0}'", uId), sqlmenu = string.Format("select id,title,controlename from sasMenu", uId);
+            string sqlMer = string.Format("select name,tel,limitName,limithotelName,id,limit,admin from  merchant_info where operator_id='{0}' or tel='{0}'", uId), sqlHotel = string.Format("select hotel_Id,h_name_cn from hotel_info where u_id='{0}'", uId), sqlmenu = string.Format("select id,title,controlename from sasMenu where id!=11", uId);
            
                 using (SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
                 {
