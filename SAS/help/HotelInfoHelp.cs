@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Web.WebPages;
 using System.Web.SessionState;
 using System.Data.SqlClient;
+using System.Web.Security;
 
 namespace SAS.help
 {
@@ -202,6 +203,10 @@ namespace SAS.help
             limit = _limit;
             return list_Menu;
           
+        }
+        public string Md5(string pass)
+        {
+            return FormsAuthentication.HashPasswordForStoringInConfigFile(pass.Trim(), "MD5");
         }
     }
 

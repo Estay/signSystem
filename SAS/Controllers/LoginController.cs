@@ -74,6 +74,7 @@ namespace SAS.Controllers
                     Merchant_info mer = (from m in db.Merchant_infos where m.tel == merchant_info.tel &&m.status==true select m).SingleOrDefault();
                     if (mer != null)
                     {
+                      //  new help.HotelInfoHelp().Md5(merchant_info.password);
                         if (mer.password == merchant_info.password)
                         {
                            
