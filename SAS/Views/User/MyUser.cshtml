@@ -104,7 +104,7 @@
                 <label><input type="radio" @((Model.Sex == "" || Model.Sex == "0" || Model.Sex == null)? "checked" : "" ) name="@Html.DisplayNameFor(model => model.Sex)" value="0"><span>男</span></label>
                 <label><input type="radio" @(Model.Sex == "1"?"checked":"") name="@Html.DisplayNameFor(model => model.Sex)" value="1"><span>女</span></label>
             </p>
-              @if (Model.admin)
+              @if(!Model.admin)
               {
             <div class="clear">
                 <div class="float_l">

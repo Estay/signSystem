@@ -101,7 +101,7 @@ namespace SAS.Controllers
             }else
                 ViewBag.LoginInfo = "验证码错误,请输入正确的验证码";
             Session.Remove("code");
-            ViewBag.userName = merchant_info.name; ViewBag.pass = merchant_info.password;
+            ViewBag.userName = merchant_info.tel; ViewBag.pass = merchant_info.password;
             return View("signLogin");;
         }
       
