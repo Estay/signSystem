@@ -119,6 +119,26 @@ namespace SAS.Controllers
         {
             return View();
         }
+
+
+        /// <summary>
+        /// 首页数据统计
+        /// </summary>
+        public void getIndexData()
+        {
+            object orderCount = null, noreplyComment = null, totalPrice = null, commission = null, guranteePrice = null;
+            new DBhelp().getIndexData(out  orderCount,out  noreplyComment,out  totalPrice,out  commission,out  guranteePrice);
+
+
+            ViewBag.newOrder = orderCount;   //新单
+
+            ViewBag.NewComment = noreplyComment; //未回复的评论
+
+            ViewBag.totalpPrice = totalPrice;  //上个月总收入
+            ViewBag.commission = commission;   //佣金
+
+            ViewBag.guranteePrice = guranteePrice; //担保金额
+        }
         public ActionResult Logout()
         {
             if (Session["uid"] != null)
