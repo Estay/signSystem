@@ -70,6 +70,15 @@
 	border-bottom: none;
 	margin-right: 6px;
 }
+#main_nav_index {
+	
+}
+#main_nav_index.set {
+	background-color: #003C8F;
+}
+#main_nav_index.set a {
+	color: #FFF;
+}
 .main_nav_item {
 	font-size: 16px;
 	font-weight: bold;
