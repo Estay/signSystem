@@ -27,14 +27,17 @@ namespace SAS.help
                         }
                         else
                         {
-                            string f = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName.ToLower();
-                            string c = filterContext.HttpContext.Session["limit"].ToString().ToLower();
-                            if(c=="all")
+                            //控制器名称
+                            string controllerName = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName.ToLower();
+                            //控制器根限
+                            string limit = filterContext.HttpContext.Session["limit"].ToString().ToLower();
+                            if (controllerName == "all")
                                return;
 
-                            if (!f.ToLower().Contains("login".ToLower()))
+                            if (!controllerName.ToLower().Contains("login".ToLower()))
                             {
-                                if (!filterContext.HttpContext.Session["limit"].ToString().ToLower().Contains(f))
+                                //如果控制器名称不在limit中
+                                if (!filterContext.HttpContext.Session["limit"].ToString().ToLower().Contains(controllerName))
                                 {
                                     filterContext.HttpContext.Session.Remove("uid");
                                     filterContext.HttpContext.Session.Remove("userName");
