@@ -85,7 +85,7 @@ namespace SAS.Controllers
                             Session["userName"] = mer.name;
                             Session["uid"] = mer.tel;
                             Session.Remove("code");
-                            return RedirectToAction("create", "addHotel");
+                            return RedirectToAction("index", "login");
                         }
                         else
                         {
