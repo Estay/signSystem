@@ -117,6 +117,7 @@ namespace SAS.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
+            getIndexData();
             return View();
         }
 

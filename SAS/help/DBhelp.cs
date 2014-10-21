@@ -273,7 +273,7 @@ namespace SAS.help
               DateTime now = DateTime.Now.AddMonths(-1); DateTime s = now.AddDays(1 - now.Day).Date ;DateTime e = now.AddDays(1 - now.Day).AddMonths(1).AddDays(-1).Date;
               string sql_order=string.Format("select count(*) from order_info where hotel_id in(select hotel_id from hotel_info where u_id='{0}') and o_state_id=1",uId);
               string sql_comment=string.Format("select count(*) from hotel_comment_info where  hotel_id in(select hotel_id from hotel_info where u_id='{0}') and IsReply=0",uId);
-              string sql_bill=string.Format("select count(*),sum(o_total_price),sum(o_total_price)*(select sum(value) from temp where uid='{1}'),sum(o_guaranteeprice),(select sum(value) from temp where uid='{1}') from order_info where {0} group by hotel_id",uId);
+              string sql_bill = string.Format("select count(*),sum(o_total_price),sum(o_total_price)*(select sum(value) from temp where uid='{0}'),sum(o_guaranteeprice),(select sum(value) from temp where uid='{0}') from order_info where o_check_in_date>='{1}' and o_check_out_date<='{2}' and (o_state_id= 3 or o_state_id =4 or o_state_id=6) group by hotel_id", uId, s, e);
                using (SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
                 {
                     conn.Open();
@@ -296,7 +296,7 @@ namespace SAS.help
                             dr.NextResult();
                              while (dr.Read()) //读取菜单
                             {
-                                _totalPrice=dr[0];commission=dr[1];_guranteePrice=dr[2];
+                                _totalPrice=dr[1];commission=dr[2];_guranteePrice=dr[3];
                             }
                         }
                     }
