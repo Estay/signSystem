@@ -111,6 +111,14 @@ namespace SAS.Controllers
             ViewBag.code = Session["code"];
             return View();
         }
+        /// <summary>
+        /// 首页加载
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Index()
+        {
+            return View();
+        }
         public ActionResult Logout()
         {
             if (Session["uid"] != null)
