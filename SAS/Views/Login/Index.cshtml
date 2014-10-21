@@ -16,7 +16,7 @@
 
     
     ViewBag.index = "set";
-    string limit = Session["limit"].ToString();
+    string limit =Session["limit"]!=null? Session["limit"].ToString():"";
         
 }
 
