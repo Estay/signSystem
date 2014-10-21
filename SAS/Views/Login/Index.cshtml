@@ -45,34 +45,34 @@
         {
             if (limit.Contains("MyApartMent".ToLower()))
             {
-                 	<div class="box_a index_mod">
-			<h2>订单（@ViewBag.newOrder）<a href="/Order/MyOrder" class="float_r">查看详情</a></h2>
-			<p>有<span class="col_blue"><b>@ViewBag.newOrder</b></span>张未处理订单</p>
-		</div>
-		<div class="box_a index_mod">
-			<h2>点评（@ViewBag.NewComment）<a href="/Comment/QueryComment" class="float_r">查看详情</a></h2>
-			<p>有<span class="col_blue"><b>@ViewBag.newOrder</b></span>点评未回复</p>
-		</div>
+              	<div class="box_a index_mod">
+			      <h2>订单（@ViewBag.newOrder）<a href="/Order/MyOrder" class="float_r">查看详情</a></h2>
+		 	      <p>有<span class="col_blue"><b>@ViewBag.newOrder</b></span>张未处理订单</p>
+	     	    </div>
+		       <div class="box_a index_mod">
+			     <h2>点评（@ViewBag.NewComment）<a href="/Comment/QueryComment" class="float_r">查看详情</a></h2>
+			     <p>有<span class="col_blue"><b>@ViewBag.newOrder</b></span>点评未回复</p>
+		        </div>
             }
             else if (limit.Contains("Comment".ToLower()))
             {
-                <div class="box_a index_mod">
-			<h2>点评（@ViewBag.NewComment）<a href="/Comment/QueryComment" class="float_r">查看详情</a></h2>
-			<p>有<span class="col_blue"><b>@ViewBag.newOrder</b></span>点评未回复</p>
-		    </div>
+                  <div class="box_a index_mod">
+		            <h2>点评（@ViewBag.NewComment）<a href="/Comment/QueryComment" class="float_r">查看详情</a></h2>
+			       <p>有<span class="col_blue"><b>@ViewBag.newOrder</b></span>点评未回复</p>
+		          </div>
             }
             else if (limit.Contains("bill".ToLower()))
             {
                 <div class="box_a index_mod">
-			<h2>订单（@ViewBag.newOrder）<a href="/Bill/QureyBill" class="float_r">查看详情</a></h2>
-			<p>
-				上月账单已出 &nbsp;&nbsp;&nbsp;&nbsp;
-				共计：收入￥<span class="col_red">@ViewBag.totalpPrice</span>&nbsp;&nbsp;
-				佣金￥<span class="col_red">@ViewBag.commission</span>&nbsp;&nbsp;
-				担保￥<span class="col_red">@ViewBag.guranteePrice</span>&nbsp;&nbsp;
-			</p>
+			    <h2>订单（@ViewBag.newOrder）<a href="/Bill/QureyBill" class="float_r">查看详情</a></h2>
+			    <p>
+			 	  上月账单已出 &nbsp;&nbsp;&nbsp;&nbsp;
+				  共计：收入￥<span class="col_red">@ViewBag.totalpPrice</span>&nbsp;&nbsp;
+				  佣金￥<span class="col_red">@ViewBag.commission</span>&nbsp;&nbsp;
+				  担保￥<span class="col_red">@ViewBag.guranteePrice</span>&nbsp;&nbsp;
+			   </p>
 			
-		</div>
+		      </div>
             }
         }
 	</div>
