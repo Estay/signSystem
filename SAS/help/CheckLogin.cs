@@ -31,7 +31,7 @@ namespace SAS.help
                             string controllerName = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName.ToLower();
                             //控制器根限
                             string limit = filterContext.HttpContext.Session["limit"].ToString().ToLower();
-                            if (controllerName == "all")
+                            if (limit == "all")
                                return;
 
                             if (!controllerName.ToLower().Contains("login".ToLower()))

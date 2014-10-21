@@ -136,7 +136,7 @@ namespace SAS.Controllers
             ViewBag.NewComment = noreplyComment; //未回复的评论
 
             ViewBag.totalpPrice = totalPrice;  //上个月总收入
-            ViewBag.commission = commission;   //佣金
+            ViewBag.commission = 0;   //佣金
 
             ViewBag.guranteePrice = guranteePrice; //担保金额
         }
