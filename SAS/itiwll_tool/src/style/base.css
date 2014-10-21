@@ -358,6 +358,9 @@ input[type="checkbox"]:checked + span {
 .col_orange {
   color: #F09401;
 }
+.col_blue {
+  color: #003C91;
+}
 .f_z18 {
   font-size: 18px;
 }

@@ -1,20 +1,48 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "一呆公寓管理系统";
     
     
     //login/Index/ 控制器地址
     
-    ViewBag.newOrder;   //新单
+    // ViewBag.newOrder;   //新单
     
 
-    ViewBag.NewComment; //未回复的评论
+    // ViewBag.NewComment; //未回复的评论
 
-    ViewBag.totalpPrice;  //上个月总收入
-    ViewBag.commission;   //佣金
+    // ViewBag.totalpPrice;  //上个月总收入
+    // ViewBag.commission;   //佣金
      
-    ViewBag.guranteePrice; //担保金额
+    // ViewBag.guranteePrice; //担保金额
         
         
 }
 
-<h2>Index</h2>
+
+<div id="content" class="clear">
+	<div class="float_l">
+		<div class="box_a index_mod">
+			<h2>订单（@ViewBag.newOrder）<a href="/Order/MyOrder" class="float_r">查看详情</a></h2>
+			<p>有<span class="col_blue"><b>@ViewBag.newOrder</b></span>张未处理订单</p>
+		</div>
+		<div class="box_a index_mod">
+			<h2>点评（@ViewBag.NewComment）<a href="/Comment/QueryComment" class="float_r">查看详情</a></h2>
+			<p>有<span class="col_blue"><b>@ViewBag.newOrder</b></span>点评未回复</p>
+		</div>
+		<div class="box_a index_mod">
+			<h2>订单（@ViewBag.newOrder）<a href="/Bill/QureyBill" class="float_r">查看详情</a></h2>
+			<p>
+				上月账单已出 &nbsp;&nbsp;&nbsp;&nbsp;
+				共计：收入￥<span class="col_red">@ViewBag.totalpPrice</span>&nbsp;&nbsp;
+				佣金￥<span class="col_red">@ViewBag.commission</span>&nbsp;&nbsp;
+				担保￥<span class="col_red">@ViewBag.guranteePrice</span>&nbsp;&nbsp;
+			</p>
+			
+		</div>
+	</div>
+	<div class="float_r">
+		<div class="box_a index_mod_b">
+			<h2>系统公告</h2>
+			<p>欢迎使用一呆公寓在线管理系统！</p>
+		</div>
+	</div>
+</div>

@@ -128,6 +128,17 @@
 	margin-right: 20px;
 }
 
+/* ---首页 --- */
+.index_mod {
+	width: 700px;
+	min-height: 120px;
+}
+.index_mod_b {
+	width: 210px;
+	min-height: 250px;
+}
+
+
 /*---添加公寓---*/
 #hotel_class,
 #hotel_theme {
