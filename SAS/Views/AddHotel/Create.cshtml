@@ -23,6 +23,12 @@
 
     Dictionary<int, String> hotel_services = ViewData["services"] as Dictionary<int, string>;
 
+    string[] tel = !string.IsNullOrEmpty(Model.h_tel) ? Model.h_tel.Split('-') : new string[]{" - "};
+   //区号   
+    string tel1 = tel.Length > 2 ? tel[0] : ""; string tel2 = tel.Length>2?tel[1]:"";//电话
+    
+     
+
 
    
 }
