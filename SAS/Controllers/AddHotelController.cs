@@ -70,7 +70,7 @@ namespace SAS.Controllers
             ViewData["services"] = DBhelp.GetSelectDataByTable("GeneralAmenities_info");//services
             ViewData["provice"] = DBhelp.GetSelectDataByTable("province_info");//provice
             if (hotel == null)
-                return View("Create", hotel);
+                return View("Create", new hotel_info());
             else
                 return View("FCreate", hotel);
             return View("Create",new hotel_info());
