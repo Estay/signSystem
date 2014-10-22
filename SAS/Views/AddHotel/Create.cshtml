@@ -26,7 +26,6 @@
 
    
 }
-
 @using (Html.BeginForm("CreateHotel", "AddHotel", FormMethod.Post))
 {
 <div id="flag_box">
@@ -35,62 +34,96 @@
 	<span href="" class="btn_c">3 录入房价</span>
 	<span href="" class="btn_c">4 录入图片</span>
 </div>
-<div class="box_a">
+<div class="box_a content">
 	<div class="from_path">
-		<h2>录入基本信息</h2>
+		<h2>公寓基本信息</h2>
 		<p class="input_line">
-			<label for="hotel_name"><span class="label">名称</span><input name="@Html.DisplayNameFor(model => model.h_name_cn)" type="text"  value="@Model.h_name_cn" id="hotel_name"><span class="col_red">*</span></label>
-             @Html.ValidationMessageFor(model => model.h_name_cn)
+			<label for="hotel_name"><span class="label">名称</span><b>@Model.h_name_cn</b></label>
+			<input type="text" class="hide" name="@Html.DisplayNameFor(model => model.h_name_cn)" value="@Model.h_name_cn" >
+			<input type="text" class="hide" name="@Html.DisplayNameFor(model => model.h_id)" value="@Model.h_id" >
+			<input type="text" class="hide" name="@Html.DisplayNameFor(model => model.u_id)" value="@Model.u_id" >
+            <input class="hide" type="text" name="@Html.DisplayNameFor(model => model.h_ctime)" value="@Model.h_ctime" />
+            <input class="hide" type="text" name="@Html.DisplayNameFor(model => model.source_id)" value="@Model.source_id" />
 			<label for="hotel_class">
 				<span class="label">所属类别</span>
 				<select name="@Html.DisplayNameFor(model => model.h_t_id)" id="hotel_class">
 	                <option value="" >请选择</option>
-					@foreach(var opt in hotel_class){
-	                    <option value="@opt.Key" >@opt.Value</option>                    
-	                }
+	@foreach (var opt in hotel_class)
+     {
+          if (Model.h_t_id == opt.Key)
+         {
+	                    <option value="@opt.Key" selected>@opt.Value</option>                    
+         }
+         else
+         {
+	                    <option value="@opt.Key" >@opt.Value</option>  }                          
+     }
 				</select>
 				<span class="col_red">*</span>
 			</label>
+			@*<label for="hotel_theme">
+				<span class="label">公寓主题</span>
+                 
+
+				<select name="@Html.DisplayNameFor(model => model.hotel_theme_id)" id="hotel_theme">
+	                <option value="" >请选择</option>
+					@foreach (var opt in hotel_theme)
+     {
+                   
+    
+	                    <option value="@opt.Key">@opt.Value</option>                    
+     }
+				</select>
+				<span class="col_red">*</span>
+			</label>*@
 		</p>
 		<p class="input_line">
 			<label for="@Html.DisplayNameFor(model => model.h_mobile_phone)">
 				<span class="label">手机号码</span>
-				<input id="mobeli_phone" class="only_integer" type="text" name="@Html.DisplayNameFor(model => model.h_mobile_phone)" maxlength="11">
+				<input id="mobeli_phone" type="text" name="@Html.DisplayNameFor(model => model.h_mobile_phone)" value="@Model.h_mobile_phone">
 				<span class="col_red">*</span>
 				<span>接收订单提醒短信</span>
 			</label>
 			<label for="@Html.DisplayNameFor(model => model.h_tel)">
 				<span class="label">电话</span>
-				<input id="phone" type="text" class="hide" name="@Html.DisplayNameFor(model => model.h_tel)">
-				<input type="text" class="only_integer" maxlength="4" id="phone_area_code">-<input type="text" class="only_integer" maxlength="8" id="hotel_phone">
-                @Html.ValidationMessageFor(model => model.h_tel)
+				<input id="phone" type="text" class="hide" name="@Html.DisplayNameFor(model => model.h_tel)" value="@Model.h_tel">
+				<input type="text" id="phone_area_code" value="@Model.h_tel.Split('-')[0]">-<input type="text" id="hotel_phone" value="@Model.h_tel.Split('-')[1]">
 			</label>
 			<label for="@Html.DisplayNameFor(model => model.h_fax)">
 				<span class="label">传真</span>
-				<input id="hotel_fax" type="text" name="@Html.DisplayNameFor(model => model.h_fax)">
+				<input id="hotel_fax" type="text" name="@Html.DisplayNameFor(model => model.h_fax)" value="@Model.h_fax">
 			</label>
 		</p>
 		<p class="input_line">
-			<span class="label">城市及所在商区</span><select name="@Html.DisplayNameFor(model => model.h_province)" id="hotel_province">
+			<span class="label">城市及所在商区</span>
+            <select name="@Html.DisplayNameFor(model => model.h_province)" id="hotel_province">
 	            <option value="" >请选择</option>
-				@foreach(var opt in hotel_province){
-					<option value="@opt.Key">@opt.Value</option>                    
-				}
+				@foreach (var opt in hotel_province)
+    {
+        if (Model.h_province == opt.Key.ToString())
+        {
+					    <option value="@opt.Key" selected>@opt.Value</option>                    
+        }
+        else
+        {
+					    <option value="@opt.Key">@opt.Value</option>                    
+        }
+    }
 			</select>
-			<select id="h_city" name="@Html.DisplayNameFor(model => model.h_city)" disabled>
+			<select id="h_city" name="@Html.DisplayNameFor(model => model.h_city)" disabled original="@Model.h_city">
 	            <option value="" >所在城市</option>
 			</select>
-			<select id="h_administrative_region" name="@Html.DisplayNameFor(model => model.h_administrative_region)" disabled>
+			<select id="h_administrative_region" name="@Html.DisplayNameFor(model => model.h_administrative_region)" disabled original="@Model.h_administrative_region">
 	            <option value="" >所在行政区</option>
 			</select>
-			<select id="h_business_zone" name="@Html.DisplayNameFor(model => model.h_business_zone)" disabled>
+			<select id="h_business_zone" name="@Html.DisplayNameFor(model => model.h_business_zone)" disabled original="@Model.h_business_zone">
 	            <option value="" >所在商圈</option>
 			</select>
 			<span class="col_red">*</span>
 		</p>
 		<p class="input_line">
 			<label for="hotel_address">
-				<span class="label">详细街道地址</span><input type="text" id="hotel_address" name="@Html.DisplayNameFor(model => model.h_location_cn)">
+				<span class="label">详细街道地址</span><input type="text" id="hotel_address" name="@Html.DisplayNameFor(model => model.h_location_cn)" value="@Model.h_location_cn">
 				<span class="col_red">*</span>
 			</label>
 		</p>
@@ -102,13 +135,13 @@
 			</div>
 			<div id="location_box" class="float_l">
 				<a href="" class="e_tab btn_d set">在地图上定位</a><a href="" class="e_tab btn_d">输入经纬度定位</a>
-				<input id="map_lon_input" class="hide" type="text" name="@Html.DisplayNameFor(model => model.BaiduLon)"><input id="map_lat_input" class="hide" type="text" name="@Html.DisplayNameFor(model => model.BaiduLat)">
-				<p class="float_r"><span id="show_coordinates"></span></p>
+				<input id="map_lon_input" class="hide" type="text" name="@Html.DisplayNameFor(model => model.BaiduLon)" value="@Model.BaiduLon"><input id="map_lat_input" class="hide" type="text" name="@Html.DisplayNameFor(model => model.BaiduLat)" value="@Model.BaiduLat">
+				<p class="float_r"><span id="show_coordinates">@(Model.BaiduLon),@(Model.BaiduLat)</span></p>
 				<div class="box_b e_tab_box">
 					<div id="maps_input_box"></div>
 				</div>
 				<div id="location_input_box" class="box_b e_tab_box hide">
-					经度：<input id="map_lon" type="text">纬度：<input id="map_lat" type="text">
+					经度：<input id="map_lon" type="text" value="@Model.BaiduLon">纬度：<input id="map_lat" type="text" value="@Model.BaiduLat">
 					<br>
 					<br>
 				</div>
@@ -121,8 +154,9 @@
 			</div>
 			<div class="float_l checkbox_box">
 				<p class="input_line"><a class="all_set" href="">全选</a><a class="reverse_set" href="">反选</a></p>
-                <input class="hide" type="text" name="@Html.DisplayNameFor(model => model.hotel_theme_id)" value="" />
-                <p class="input_line">
+                <input class="hide multiple_value" type="text" name="@Html.DisplayNameFor(model => model.hotel_theme_id)" value="@Model.hotel_theme_id" />
+              
+                 <p class="input_line">
 					@foreach(var facility in hotel_theme){   
 				        <label class="w_sn"><input class="multiple" type="checkbox" name="facilit" value="@facility.Key"><span class="hotel_facility" title="@facility.Value">@facility.Value</span></label>
 	                }					
@@ -133,51 +167,18 @@
 	<div class="from_path">
 		<h2>录入详细信息</h2>
 		<p class="input_line">
-				<input  id="hotel_built_year" type="text" name="@Html.DisplayNameFor(model => model.h_opening_time)" class="hide">
-				<span class="label">开业时间</span>
-				<select class="select_yeae">
-		            <option value="" >请选择</option>
-					@foreach (var opt in DTimes)
-                    {
-						<option value="@opt">@opt</option>                    
-					}
-				</select>
-				<select class="select_month">
-		            <option value="" >请选择</option>
-					@foreach(var opt in month){
-						<option value="@opt">@opt</option>                    
-					}
-				</select>
-				<span class="col_red">*</span>
-				<input id="hotel_decoration_time_year" class="hide" type="text" name="@Html.DisplayNameFor(model => model.decorateTime)" >
-				<span class="label">装修时间</span>
-				<select class="select_yeae">
-		            <option value="" >请选择</option>
-					@foreach (var opt in DTimes)
-				    {
-						<option value="@opt">@opt</option>                 
-					}
-				</select>
-				<select class="select_month">
-		            <option value="" >请选择</option>
-					@foreach(var opt in month){
-						<option value="@opt">@opt</option>                    
-					}
-				</select>
-				<span class="col_red">*</span>
-
 			<label for="hotel_building">
-				<span class="label">公寓楼高</span><input type="text" id="hotel_building" class="only_integer" name="@Html.DisplayNameFor(model => model.floor)">
+				<span class="label">公寓楼高</span><input type="text" id="hotel_building" name="@Html.DisplayNameFor(model => model.floor)" value="@Model.floor">
 				<span class="col_red">*</span>
 			</label>
 			<label for="hotel_room_count">
 				<span class="label">房间总数</span>
-				<input type="text" id="hotel_room_count" class="only_integer" name="@Html.DisplayNameFor(model => model.h_room_count)">
+				<input type="text" id="hotel_room_count" name="@Html.DisplayNameFor(model => model.h_room_count)" value="@Model.h_room_count">
 				<span class="col_red">*</span>
 			</label>
 		</p>
 		<p class="input_line"><label for="hotel_specialty">
-				<span class="label">公寓特色</span><input type="text" id="hotel_specialty" name="@Html.DisplayNameFor(model => model.Features)">
+				<span class="label">公寓特色</span><input type="text" id="hotel_specialty" name="@Html.DisplayNameFor(model => model.Features)" value="@Model.Features">
 			</label>
 		</p>
 		<div class="clear">
@@ -188,7 +189,7 @@
 			</div>
 			<div class="float_l">
 				<p class="input_line">
-					<textarea name="@Html.DisplayNameFor(model => model.IntroEditor)" id="hotel_abstract" cols="80" rows="5"></textarea>
+					<textarea name="@Html.DisplayNameFor(model => model.IntroEditor)" id="hotel_abstract" cols="80" rows="5">@Model.IntroEditor</textarea>
 				</p>
 			</div>
 			<div class="float_l">
@@ -201,7 +202,7 @@
 			</div>
 			<div class="float_l">
 				<p class="input_line">
-					<textarea name="@Html.DisplayNameFor(model => model.h_traffic_position)" id="hotel_place" cols="80" rows="5"></textarea>
+					<textarea name="@Html.DisplayNameFor(model => model.h_traffic_position)" id="hotel_place" cols="80" rows="5">@Model.h_traffic_position</textarea>
 				</p>
 			</div>
 			<div class="float_l">
@@ -210,13 +211,13 @@
 		</div>
 		<p class="input_line checkbox_box">
 			<span class="label">可接受的信用卡</span>
-          	<input id="cards" class="hide" type="text" name="@Html.DisplayNameFor(model => model.CreditCards)" value="" />
-			<label for="visa"><input id="visa" class="multiple" type="checkbox" name="visa" value="visa"><span class="card visa" title="境外发行信用卡--威士（VISA）"></span></label>
-			<label for="master"><input id="master" class="multiple" type="checkbox" name="hotel_card" value="master"><span class="card master" title="境外发行信用卡--万事达（Master）"></span></label>
-			<label for="amex"><input id="amex" class="multiple" type="checkbox" name="hotel_card" value="amex"><span class="card amex" title="境外发行信用卡--大莱（Diners Club）"></span></label>
-			<label for="jcb"><input id="jcb" class="multiple" type="checkbox" name="hotel_card" value="jcb"><span class="card jcb" title="境外发行信用卡--JCB"></span></label>
-			<label for="unionpay"><input id="unionpay" class="multiple" type="checkbox" name="hotel_card" value="unionpay"><span class="card unionpay" title="国内发行银联卡"></span></label>
-			<label for="dinersclub"><input id="dinersclub" class="multiple" type="checkbox" name="hotel_card" value="dinersclub"><span class="card dinersclub" title="境外发行信用卡--运通（AMEX）"></span></label>
+          	<input id="cards" class="hide" type="text" name="@Html.DisplayNameFor(model => model.CreditCards)" value="@Model.CreditCards" />
+			<label for="visa"><input id="visa" class="multiple" type="checkbox" name="visa" value="visa" @if (Model.CreditCards != null) { <text>@(Model.CreditCards.IndexOf("visa") != -1 ? "checked" : "")</text> } ><span class="card visa" title="境外发行信用卡--威士（VISA）"></span></label>
+			<label for="master"><input id="master" class="multiple" type="checkbox" name="hotel_card" value="master" @if (Model.CreditCards != null) { <text>@(Model.CreditCards.IndexOf("master") != -1 ? "checked" : "")</text> }><span class="card master" title="境外发行信用卡--万事达（Master）"></span></label>
+			<label for="amex"><input id="amex" class="multiple" type="checkbox" name="hotel_card" value="amex" @if (Model.CreditCards != null) { <text>@(Model.CreditCards.IndexOf("amex") != -1 ? "checked" : "")</text> }><span class="card amex" title="境外发行信用卡--大莱（Diners Club）"></span></label>
+			<label for="jcb"><input id="jcb" class="multiple" type="checkbox" name="hotel_card" value="jcb" @if (Model.CreditCards != null) { <text>@(Model.CreditCards.IndexOf("jcb") != -1 ? "checked" : "")</text> }><span class="card jcb" title="境外发行信用卡--JCB"></span></label>
+			<label for="unionpay"><input id="unionpay" class="multiple" type="checkbox" name="hotel_card" value="unionpay" @if (Model.CreditCards != null) { <text>@(Model.CreditCards.IndexOf("unionpay") != -1 ? "checked" : "")</text> }><span class="card unionpay" title="国内发行银联卡"></span></label>
+			<label for="dinersclub"><input id="dinersclub" class="multiple" type="checkbox" name="hotel_card" value="dinersclub" @if (Model.CreditCards != null) { <text>@(Model.CreditCards.IndexOf("dinersclub") != -1 ? "checked" : "")</text> }><span class="card dinersclub" title="境外发行信用卡--运通（AMEX）"></span></label>
 		</p>
 	</div>
 	<div class="from_path">
@@ -227,11 +228,12 @@
 			</div>
 			<div class="float_l checkbox_box">
 				<p class="input_line"><a class="all_set" href="">全选</a><a class="reverse_set" href="">反选</a></p>
-                <input class="hide" type="text" name="@Html.DisplayNameFor(model => model.Facilities)" value="" />
+                <input id="facilities_hide" class="hide" type="text" name="@Html.DisplayNameFor(model => model.Facilities)" value="@Model.Facilities" />
                 <p class="input_line">
-					@foreach(var facility in hotel_facilitys){   
+					@foreach (var facility in hotel_facilitys)
+     {
 				        <label class="w_sn"><input class="multiple" type="checkbox" name="facilit" value="@facility.Key"><span class="hotel_facility" title="@facility.Value">@facility.Value</span></label>
-	                }					
+     }					
             	</p>
 			</div>
 		</div>
@@ -241,11 +243,12 @@
 			</div>
 			<div class="float_l checkbox_box">
 				<p class="input_line"><a class="all_set" href="">全选</a><a class="reverse_set" href="">反选</a></p>
-                <input class="hide" type="text" name="@Html.DisplayNameFor(model => model.GeneralAmenities)" value="" />
+                <input id="generalAmenities_hide" class="hide" type="text" name="@Html.DisplayNameFor(model => model.GeneralAmenities)" value="@Model.GeneralAmenities" />
 				<p class="input_line">
-					@foreach(var service in hotel_services){
+					@foreach (var service in hotel_services)
+     {
 				        <label class="w_sn"><input class="multiple" type="checkbox" name="service" value="@service.Key"><span class="hotel_service" title="@service.Value">@service.Value</span></label>
-	                }					
+     }					
 				</p>
 			</div>
 		</div>
