@@ -496,8 +496,6 @@
     <Content Include="Views\Bill\MyUser.cshtml" />
     <Content Include="Views\User\MyUser.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\AddHotel\FCreate.cshtml" />
-    <Content Include="Views\AddHotel\test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
