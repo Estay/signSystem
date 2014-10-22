@@ -75,7 +75,7 @@
 			<label for="@Html.DisplayNameFor(model => model.h_tel)">
 				<span class="label">电话</span>
 				<input id="phone" type="text" class="hide" name="@Html.DisplayNameFor(model => model.h_tel)">
-				<input type="text" class="only_integer" maxlength="4" id="phone_area_code" value="@Model.h_tel.Split('-')[0]">-<input type="text" class="only_integer" maxlength="8" id="hotel_phone" value="@Model.h_tel.Split('-')[1]">
+				<input type="text" class="only_integer" maxlength="4" id="phone_area_code" value="@tel1">-<input type="text" class="only_integer" maxlength="8" id="hotel_phone" value="@tel2">
                 @Html.ValidationMessageFor(model => model.h_tel)
 			</label>
 			<label for="@Html.DisplayNameFor(model => model.h_fax)">
