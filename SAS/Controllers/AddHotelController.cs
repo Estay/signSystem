@@ -69,10 +69,10 @@ namespace SAS.Controllers
             ViewData["facilities"] = DBhelp.GetSelectDataByTable("Facilities_info");//facilities
             ViewData["services"] = DBhelp.GetSelectDataByTable("GeneralAmenities_info");//services
             ViewData["provice"] = DBhelp.GetSelectDataByTable("province_info");//provice
-            //if(hotel==null)
-            //    return View(new hotel_info());
-            //else
-                //return View(new hotel_info());
+            if (hotel == null)
+                return View("Create", hotel);
+            else
+                return View("FCreate", hotel);
             return View("Create",new hotel_info());
         }
 
