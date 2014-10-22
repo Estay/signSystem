@@ -44,7 +44,7 @@
 				<span class="label">所属类别</span>
 				<select name="@Html.DisplayNameFor(model => model.h_t_id)" id="hotel_class">
 	                <option value="" >请选择</option>
-	@foreach (var opt in hotel_class)
+@*	@foreach (var opt in hotel_class)
      {
           if (Model.h_t_id == opt.Key)
          {
@@ -53,7 +53,7 @@
          else
          {
 	                    <option value="@opt.Key" >@opt.Value</option>  }                          
-     }
+     }*@
 				</select>
 				<span class="col_red">*</span>
 			</label>

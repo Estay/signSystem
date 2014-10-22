@@ -53,28 +53,27 @@ namespace SAS.Controllers
         {
            // ViewBag.username = "ff";
             help.DBhelp.log("add hotel Create");
+            int hotel_id = 0;
             hotel_info hotel = new hotel_info();
-            //khotel_theme_infoDBContent db = new khotel_theme_infoDBContent();
-            // var themes = db..ToList();
-            
-            //IEnumerable<hotel_theme_info> accessIDs = list;
-            if (hotelId != null)
-            {
-                int id = Convert.ToInt32(hotelId);
-                if (id > 0)
-                {
+            //if (hotelId != null)
+            //{
+            int.TryParse(hotelId, out hotel_id);
 
-                    hotel = (from h in db.hotel where h.hotel_id == id select h).Single();
+            hotel = (from h in db.hotel where h.hotel_id == hotel_id select h).SingleOrDefault();
 
-                }
-            }
+               
+           // }
             ViewData["DTime"] = new hotel_info().getDecorationTime();  //Theme
             ViewData["Themes"] = DBhelp.GetSelectDataByTable("hotel_theme_info");  //Theme
             ViewData["Category"] = DBhelp.GetSelectDataByTable("Hotel_theme_type_info"); ;//Category
             ViewData["facilities"] = DBhelp.GetSelectDataByTable("Facilities_info");//facilities
             ViewData["services"] = DBhelp.GetSelectDataByTable("GeneralAmenities_info");//services
             ViewData["provice"] = DBhelp.GetSelectDataByTable("province_info");//provice
-            return View(hotel);
+            //if(hotel==null)
+            //    return View(new hotel_info());
+            //else
+                //return View(new hotel_info());
+            return View("Create",new hotel_info());
         }
 
 

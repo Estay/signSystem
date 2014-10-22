@@ -6,7 +6,7 @@
     ViewBag.Description = "新建公寓";
     ViewBag.Keywords = "新建公寓";
     ViewBag.hotel_info = "set";    
-    string f = Model.h_name_cn;
+    string f =  Model.h_name_cn==null?"yyy":"dfdf";
     Dictionary<int, String> hotel_class = ViewData["Category"] as Dictionary<int, string>;
     
     Dictionary<int, String> hotel_theme = ViewData["Themes"] as Dictionary<int,string>;
@@ -23,11 +23,13 @@
 
     Dictionary<int, String> hotel_services = ViewData["services"] as Dictionary<int, string>;
 
-
+  // string f= Model.h_name_cn;
    
 }
 @using (Html.BeginForm("CreateHotel", "AddHotel", FormMethod.Post))
 {
+
+    
 <div id="flag_box">
 	<span href="" class="btn_c set">1 录入公寓信息</span>
 	<span href="" class="btn_c">2 录入房型</span>
@@ -38,7 +40,7 @@
 	<div class="from_path">
 		<h2>公寓基本信息</h2>
 		<p class="input_line">
-			<label for="hotel_name"><span class="label">名称</span><b>@Model.h_name_cn</b></label>
+			<label for="hotel_name"><span class="label">名称</span><b>@f</b></label>
 			<input type="text" class="hide" name="@Html.DisplayNameFor(model => model.h_name_cn)" value="@Model.h_name_cn" >
 			<input type="text" class="hide" name="@Html.DisplayNameFor(model => model.h_id)" value="@Model.h_id" >
 			<input type="text" class="hide" name="@Html.DisplayNameFor(model => model.u_id)" value="@Model.u_id" >
@@ -48,7 +50,7 @@
 				<span class="label">所属类别</span>
 				<select name="@Html.DisplayNameFor(model => model.h_t_id)" id="hotel_class">
 	                <option value="" >请选择</option>
-	@foreach (var opt in hotel_class)
+@*	@foreach (var opt in hotel_class)
      {
           if (Model.h_t_id == opt.Key)
          {
@@ -56,8 +58,9 @@
          }
          else
          {
-	                    <option value="@opt.Key" >@opt.Value</option>  }                          
-     }
+	                    <option value="@opt.Key" >@opt.Value</option> 
+         }                          
+     }*@
 				</select>
 				<span class="col_red">*</span>
 			</label>

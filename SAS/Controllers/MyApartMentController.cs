@@ -25,7 +25,11 @@ namespace SAS.Controllers
             int.TryParse(hotelId, out hotel_id);
             HelperData();
             ViewBag.HotelId = hotel_id;
-            return View(db.hotel.Single(h=>h.hotel_id==hotel_id));
+            var hotel=db.hotel.SingleOrDefault(h => h.hotel_id == hotel_id);
+            if (hotel == null)
+                return View(new hotel_info());
+            else
+                return View(hotel);
         }
 
         private void HelperData()
