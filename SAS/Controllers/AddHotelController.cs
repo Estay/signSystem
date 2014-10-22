@@ -14,7 +14,7 @@ namespace SAS.Controllers
     public class AddHotelController : Controller
     {                                        
         private HotelDBContent db = new HotelDBContent();
-
+        int result = 1;
 
         //////////////////////////////新建公寓开始
         #region
@@ -88,38 +88,55 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult CreateHotel(hotel_info hotel_info)
         {
-            hotel_info.u_id = new HotelInfoHelp().getUId();
-            hotel_info.source_id =Convert.ToInt32(help.StringHelper.appSettings("source_id")); ;
-            hotel_info.h_id = Guid.NewGuid().ToString();
-            hotel_info.h_state = true;
-            hotel_info.h_utime = DateTime.Now;
-            hotel_info.CheckState = 2;
+               
             try
             {
+                hotel_info.u_id = new HotelInfoHelp().getUId();
+                hotel_info.source_id = Convert.ToInt32(help.StringHelper.appSettings("source_id")); ;
+                hotel_info.h_id = Guid.NewGuid().ToString();
+                hotel_info.h_state = true;
+                hotel_info.h_utime = DateTime.Now;
+                hotel_info.CheckState = 2;
                 hotel_info.h_ctime = DateTime.Now;
-                var errors = ModelState.Values.SelectMany(v => v.Errors);
-                if (ModelState.IsValid)
-                {
-                    db.hotel.Add(hotel_info);
-                    db.SaveChanges();
-                  
-                   // return RedirectToAction("Room/Create/"+ddh.hotel_id);
-                 
-                }
-           
+               using(db=new HotelDBContent())
+               {
+                   if (hotel_info.hotel_id > 0)
+                   {
+                       
+                       var errors = ModelState.Values.SelectMany(v => v.Errors);
+                       if (ModelState.IsValid)
+                       {
+                           db.hotel.Add(hotel_info);
+                           
+
+                           // return RedirectToAction("Room/Create/"+ddh.hotel_id);
+                       }
+                    
+                   }
+                   else
+                   {
+
+                       db.Entry(hotel_info).State = EntityState.Modified;
+                   }
+                   result= db.SaveChanges()>0?1:0;
+                   if (result > 0)
+                   {
+                       var ddh = db.hotel.Select(h => new { h.hotel_id, h.h_id }).Single(h => h.h_id == hotel_info.h_id);
+                       return RedirectToAction("room", "AddHotel", new { hotelId = ddh.hotel_id });
+                   }
+
+                }    
 
 
             }
+         
             catch (Exception e)
             {
                 throw e;
                 help.DBhelp.log("新建公寓基本信息"+e.ToString());
              
             }
-            var ddh = db.hotel.Select(h => new { h.hotel_id, h.h_id }).Single(h => h.h_id == hotel_info.h_id);
-            db.Dispose();
-            return RedirectToAction("room", "AddHotel", new { hotelId = ddh.hotel_id });
-            
+            ViewBag.sign = result;    
             return View(hotel_info);
         }
         /// <summary>
@@ -129,20 +146,16 @@ namespace SAS.Controllers
         /// <returns></returns>
         public int IsOk(string text)
         {
-          
-            if ((from h in db.hotel where h.h_name_cn == text select h).Count() > 0 || (from h in new HotelDBContent("").hotel where h.h_name_cn == text select h).Count() > 0)
-                return 0;
-            else
-                return 1;
+            using (db = new HotelDBContent())
+            {
+                if ((from h in db.hotel where h.h_name_cn == text select h).Count() > 0 || (from h in new HotelDBContent("").hotel where h.h_name_cn == text select h).Count() > 0)
+                    return 0;
+                else
+                    return 1;
+            }
         
         }
-       //上一步
-        public ActionResult Forward(string hotelId)
-        {
-            int id = Convert.ToInt32(hotelId);
-            hotel_info hotel = (from h in db.hotel where h.hotel_id ==id select h).Single();
-            return View(hotel);
-        }
+     
         #endregion
         ////////////////////////////////////////新建公寓结束
 
@@ -275,6 +288,13 @@ namespace SAS.Controllers
             ViewData["bedTypes"] = new hotel_room_info().getBedType();
         }
 
+        //上一步
+        public ActionResult RoomForward(string hotelId)
+        {
+            //int id = Convert.ToInt32(hotelId);
+            //hotel_info hotel = (from h in db.hotel where h.hotel_id ==id select h).Single();
+            return RedirectToAction("Create", "AddHotel", new { hotelId = hotelId });
+        }
 
 
         #endregion
@@ -302,6 +322,11 @@ namespace SAS.Controllers
         {
             getRooms(Convert.ToInt32(hotelId));
             return View("Myprice");
+        }
+        public ActionResult priceForward(string hotelId)
+        {
+            getRooms(Convert.ToInt32(hotelId));
+            return RedirectToAction("Room", "AddHotel", new { hotelId = hotelId });
         }
 
 
@@ -346,10 +371,23 @@ namespace SAS.Controllers
         ///////////////////////////////////////////////新建公寓图片开始
 
         #region
+        //图片上一步
+        public ActionResult ImageForward(string hotelId)
+        {
+            getRooms(Convert.ToInt32(hotelId));
+            return RedirectToAction("price", "AddHotel", new { hotelId = hotelId });
+        }
 
         public ActionResult Image(string hotelId)
         {
-            return View("MyImage");
+            ViewBag.sign = result;
+            int hotel_id = 0;
+            int.TryParse(hotelId, out hotel_id);
+            ViewBag.HotelId = hotelId;
+            ViewData["rooms"] = DBhelp.getRooms(hotel_id);
+            ViewData["ImageTypes"] = new hotel_picture_info().getImageType();
+            int[] rf = (from r in db.rooms where r.hotel_id == hotel_id select r.room_id).ToArray();
+            return View((from image in db.roomImages where rf.Contains(image.room_id) select image).ToList());
         }
         /// <summary>
         /// 图片提交
