@@ -97,8 +97,8 @@ namespace SAS.Controllers
                 hotel_info.h_utime = DateTime.Now;
                 hotel_info.CheckState = 2;
                 hotel_info.h_ctime = DateTime.Now;
-                hotel_info.decorateTime = DateTime.Now;
-                hotel_info.h_opening_time = DateTime.Now;
+                hotel_info.decorateTime = Convert.ToDateTime("1900-01");
+                hotel_info.h_opening_time = Convert.ToDateTime("1900-01");
                using(db=new HotelDBContent())
                {
                    if (hotel_info.hotel_id > 0)

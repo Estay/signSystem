@@ -127,7 +127,7 @@ namespace SAS.Controllers
         /// </summary>
         public void getIndexData()
         {
-            object orderCount = null, noreplyComment = null, totalPrice = null, commission = null, guranteePrice = null;
+            decimal orderCount = 0, noreplyComment = 0, totalPrice = 0, commission = 0, guranteePrice = 0;
             new DBhelp().getIndexData(out  orderCount,out  noreplyComment,out  totalPrice,out  commission,out  guranteePrice);
 
 
