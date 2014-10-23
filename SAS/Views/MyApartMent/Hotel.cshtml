@@ -22,7 +22,11 @@
 
 
     Dictionary<int, String> hotel_services = ViewData["services"] as Dictionary<int, string>;
+    string[] openDate = Model.h_opening_time != Convert.ToDateTime("1900-01") || Model.h_opening_time != Convert.ToDateTime("0001/1/1 0:00:00") ? Model.h_opening_time.ToString("yyyy-M-dd").Split('-') : new string[] { "-" };
+    string[] decoDate = Model.decorateTime != Convert.ToDateTime("1900-01") || Model.h_opening_time != Convert.ToDateTime("0001/1/1 0:00:00") ? Model.decorateTime.ToString("yyyy-M-dd").Split('-') : new string[] { "-" };
 
+    string openYear = openDate.Length > 1 ? openDate[0] : "", openMonth = openDate.Length > 1 ? openDate[1] : "";
+    string decoYear = openDate.Length > 1 ? decoDate[0] : "", decoMonth = decoDate.Length > 1 ? decoDate[1] : "";
 
 }
 @using (Html.BeginForm("Hotel", "MyApartMent", FormMethod.Post))

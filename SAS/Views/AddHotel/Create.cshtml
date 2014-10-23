@@ -16,10 +16,10 @@
 
     Dictionary<int, String> hotel_province = ViewData["provice"] as Dictionary<int, string>;
 
-    Array month = new string[] { "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月" };
+    string [] month = new string[] { "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月" };
 
     Dictionary<int, String> hotel_facilitys = ViewData["facilities"] as Dictionary<int, string>;
-
+    
 
     Dictionary<int, String> hotel_services = ViewData["services"] as Dictionary<int, string>;
 
@@ -32,7 +32,7 @@
   
     string openYear = openDate.Length > 1 ? openDate[0] : "", openMonth = openDate.Length > 1 ? openDate[1] : "";
     string decoYear = openDate.Length > 1 ? decoDate[0] : "", decoMonth = decoDate.Length > 1 ? decoDate[1] : "";
-    DateTime openT=Model.h_opening_time;
+   
 
 
    
@@ -170,7 +170,7 @@
                          <option value="">请选择</option>
                          @foreach (var opt in DTimes)
                          {
-                             if (openYear+"年" == opt)
+                             if (openYear+"年"== opt)
                              {
                              <option value="@opt" selected>@opt</option>                    
                              }
@@ -184,7 +184,7 @@
                          <option value="">请选择</option>
                          @foreach (var opt in month)
                          {
-                             if (openMonth+"月" == opt)
+                             if (openMonth+"月"== opt)
                              {
                              <option value="@opt" selected>@opt</option>                    
                              }
