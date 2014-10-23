@@ -20,6 +20,9 @@
 
     Dictionary<int, String> hotel_facilitys = ViewData["facilities"] as Dictionary<int, string>;
 
+    string[] tel = !string.IsNullOrEmpty(Model.h_tel) ? Model.h_tel.Split('-') : new string[] { " - " };
+    //区号   
+    string tel1 = tel.Length > 2 ? tel[0] : ""; string tel2 = tel.Length > 2 ? tel[1] : "";//电话
 
     Dictionary<int, String> hotel_services = ViewData["services"] as Dictionary<int, string>;
     string[] openDate = Model.h_opening_time != Convert.ToDateTime("1900-01") || Model.h_opening_time != Convert.ToDateTime("0001/1/1 0:00:00") ? Model.h_opening_time.ToString("yyyy-M-dd").Split('-') : new string[] { "-" };
@@ -48,34 +51,19 @@
                     <span class="label">所属类别</span>
                     <select name="@Html.DisplayNameFor(model => model.h_t_id)" id="hotel_class">
                         <option value="">请选择</option>
-                        @*	@foreach (var opt in hotel_class)
-     {
-          if (Model.h_t_id == opt.Key)
-         {
-	                    <option value="@opt.Key" selected>@opt.Value</option>                    
-         }
-         else
-         {
-	                    <option value="@opt.Key" >@opt.Value</option>  }                          
-     }*@
+                        	@foreach (var opt in hotel_class)
+                             {
+                                  if (Model.h_t_id == opt.Key)
+                                 {
+                        	                    <option value="@opt.Key" selected>@opt.Value</option>                    
+                                 }
+                                 else
+                                 {
+                        	                    <option value="@opt.Key" >@opt.Value</option>  }                          
+                             }
                     </select>
                     <span class="col_red">*</span>
                 </label>
-                @*<label for="hotel_theme">
-				<span class="label">公寓主题</span>
-                 
-
-				<select name="@Html.DisplayNameFor(model => model.hotel_theme_id)" id="hotel_theme">
-	                <option value="" >请选择</option>
-					@foreach (var opt in hotel_theme)
-     {
-                   
-    
-	                    <option value="@opt.Key">@opt.Value</option>                    
-     }
-				</select>
-				<span class="col_red">*</span>
-			</label>*@
             </p>
             <p class="input_line">
                 <label for="@Html.DisplayNameFor(model => model.h_mobile_phone)">
@@ -87,7 +75,7 @@
                 <label for="@Html.DisplayNameFor(model => model.h_tel)">
                     <span class="label">电话</span>
                     <input id="phone" type="text" class="hide" name="@Html.DisplayNameFor(model => model.h_tel)" value="@Model.h_tel">
-                    <input type="text" id="phone_area_code" value="@Model.h_tel.Split('-')[0]">-<input type="text" id="hotel_phone" value="@Model.h_tel.Split('-')[1]">
+                    <input type="text" class="only_integer" maxlength="4" id="phone_area_code" value="@tel1">-<input type="text" class="only_integer" maxlength="8" id="hotel_phone" value="@tel2">
                 </label>
                 <label for="@Html.DisplayNameFor(model => model.h_fax)">
                     <span class="label">传真</span>
