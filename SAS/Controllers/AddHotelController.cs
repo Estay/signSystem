@@ -321,6 +321,7 @@ namespace SAS.Controllers
         /// <returns></returns>
         public ActionResult price(string hotelId)
         {
+            ViewBag.hotelId = hotelId;
             getRooms(Convert.ToInt32(hotelId));
             return View("Myprice");
         }
@@ -355,9 +356,9 @@ namespace SAS.Controllers
 
             }
             if (result == true)
-                return RedirectToAction("Create", "Image", new { hotelId = hotelId });
+                return RedirectToAction("Image", "addhotel", new { hotelId = hotelId });
             else
-                return RedirectToAction("Create", "Price", new { hotelId = hotelId });
+                return RedirectToAction("Image", "addhotel", new { hotelId = hotelId });
 
 
 
@@ -388,7 +389,8 @@ namespace SAS.Controllers
             ViewData["rooms"] = DBhelp.getRooms(hotel_id);
             ViewData["ImageTypes"] = new hotel_picture_info().getImageType();
             int[] rf = (from r in db.rooms where r.hotel_id == hotel_id select r.room_id).ToArray();
-            return View((from image in db.roomImages where rf.Contains(image.room_id) select image).ToList());
+            var ff = from image in db.roomImages where rf.Contains(image.room_id) select image;
+            return View("MyImage",(from image in db.roomImages where rf.Contains(image.room_id) select image).ToList());
         }
         /// <summary>
         /// 图片提交
