@@ -2,96 +2,102 @@
 
 @{
     ViewBag.Title = "录入图片";
-    ViewBag.hotel_info = "set";        
-    string hotelId= ViewBag.HotelId;
+    ViewBag.hotel_info = "set";
+    string hotelId = ViewBag.HotelId;
     //房型列表
     List<SAS.Models.hotel_room_info> roomList = ViewData["rooms"] as List<SAS.Models.hotel_room_info>;
     //图片类型
-    Dictionary<string, int> ImageTypes = ViewData["ImageTypes"] as  Dictionary<string, int>;
+    Dictionary<string, int> ImageTypes = ViewData["ImageTypes"] as Dictionary<string, int>;
     //上传的所有图片
     Dictionary<string, int> Images = ViewData["Image"] as Dictionary<string, int>;
 }
 
 
 <div id="flag_box">
-	<a href="" class="btn_c">1 录入公寓信息</a>
-	<a href="" class="btn_c">2 录入房型</a>
-	<a href="" class="btn_c">3 录入房价</a>
-	<a href="" class="btn_c set">4 录入图片</a>
+    <a href="" class="btn_c">1 录入公寓信息</a>
+    <a href="" class="btn_c">2 录入房型</a>
+    <a href="" class="btn_c">3 录入房价</a>
+    <a href="" class="btn_c set">4 录入图片</a>
 </div>
 <!-- 录入房型图片 -->
 <div class="box_a" id="add_img">
-	<div class="from_path">
-		<p><b>图片上传注意事项：</b></p>
-		<p>请使用现代浏览器（例：chrome、火狐、safari,IE8及IE8以上）。</p>
-		<p>为了更好的展示公寓，图片至少上传5张，包括客厅、卧室、卫生间、厨房、床。</p>
-		<br>
-		<p><b>图片上传规格：</b></p>
-		<p>图片最小宽度500px，最小高度300px。</p>
-		<p>图片格式仅限于jpeg、bmp、png</p>
-		<p>每张图片必须小于5M</p>
-	</div>
+    <div class="from_path">
+        <p><b>图片上传注意事项：</b></p>
+        <p>请使用现代浏览器（例：chrome、火狐、safari,IE8及IE8以上）。</p>
+        <p>为了更好的展示公寓，图片至少上传5张，包括客厅、卧室、卫生间、厨房、床。</p>
+        <br>
+        <p><b>图片上传规格：</b></p>
+        <p>图片最小宽度500px，最小高度300px。</p>
+        <p>图片格式仅限于jpeg、bmp、png</p>
+        <p>每张图片必须小于5M</p>
+    </div>
 
 
-	<select id="img_type_sel" class="hide">
-        <option value="" >选择类型</option>                  
+    <select id="img_type_sel" class="hide">
+        <option value="">选择类型</option>
 
-	@foreach (var opt in ImageTypes)
-	{
-	            <option value="@opt.Value" >@opt.Key</option>                    
-	}
-	</select>
+        @foreach (var opt in ImageTypes)
+ {
+            <option value="@opt.Value" >@opt.Key</option>                    
+ }
+    </select>
 
     @using (Html.BeginForm("CreateSub", "Image", FormMethod.Post))
     {
-    foreach (var room in roomList)
-	    {
-	     IEnumerable<SAS.Models.hotel_room_picture_info> Image = Model.Where(o => o.room_id == room.room_id);
-		<div class="from_path" room_id="@room.room_id">
-			<h2>@room.h_r_name_cn</h2>
-			<div class="clear room_img_item">
-				<div class="float_l">
-					<label>
-						<input type="file" name="file" multiple room_id="@room.room_id" class="upload_img_input" accept="image/gif, image/jpeg, image/bmp, image/png">
-						<span class="upload_img_btn">选择图片</span>
-					</label>
-				</div>
-				<div class="float_l">
-					<div class="clear img_show_box">
-	                    
-	                    @foreach(var i in Image)
-	                    {
-	                        string url = ".." + i.h_r_p_pic_original_url;
-	                        <div class="upload_img_box" pid="@i.h_r_p_id">
-	                            <div class="img_box">
-	                                <img class="upload_img" src="@url">
-	                            </div>
-	                            <p class="img_set">
-	                                <input type="text" class="upload_img_info" value="@i.h_r_p_title">
-	                                <select class="upload_img_type" name="img_type">
-	                                     <option value="" >选择类型</option>
+        foreach (var room in roomList)
+        {
+            IEnumerable<SAS.Models.hotel_room_picture_info> Image = Model.Where(o => o.room_id == room.room_id);
+        <div class="from_path" room_id="@room.room_id">
+            <h2>@room.h_r_name_cn</h2>
+            <div class="clear room_img_item">
+                <div class="float_l">
+                    <label>
+                        <input type="file" name="file" multiple room_id="@room.room_id" class="upload_img_input" accept="image/gif, image/jpeg, image/bmp, image/png">
+                        <span class="upload_img_btn">选择图片</span>
+                    </label>
+                </div>
+                <div class="float_l">
+                    <div class="clear img_show_box">
 
-		                            @foreach (var opt in ImageTypes)
-		                             {
-	                                     if (@i.h_r_p_type == opt.Value) { 
-		                                        <option value="@opt.Value" selected>@opt.Key</option>                                    
-	                                     } else {
-		                                        <option value="@opt.Value" >@opt.Key</option>                    
-	                                     }
-		                            }                 
-		                        </select></p><p class="img_del"><a href="/ImageProperty/ImageDel?pid=@i.h_r_p_id&text=@i.h_r_p_pic_original_url">删除</a></p></div>
-	                    }
-					</div>
-				</div>
-			</div>
-		</div>
-	    }
+                        @foreach (var i in Image)
+                     {
+                         string url = ".." + i.h_r_p_pic_original_url;
+                            <div class="upload_img_box" pid="@i.h_r_p_id">
+                                <div class="img_box">
+                                    <img class="upload_img" src="@url">
+                                </div>
+                                <p class="img_set">
+                                    <input type="text" class="upload_img_info" value="@i.h_r_p_title">
+                                    <select class="upload_img_type" name="img_type">
+                                        <option value="">选择类型</option>
 
-		<div class="btn_box">
-	        <input  type="hidden"  id="room_remarks" name="hotelId" value="@hotelId">
-	        <a href="AddHotel/price?hotelId=@hotelId" class="previou btn_a">上一步</a>
-			<a href="" id="save_room_img" class="btn_a btn_save_step checking_btn">完成</a>
-		</div>
+                                        @foreach (var opt in ImageTypes)
+                              {
+                                  if (@i.h_r_p_type == opt.Value)
+                                  { 
+                                            <option value="@opt.Value" selected>@opt.Key</option>                                    
+                                  }
+                                  else
+                                  {
+                                            <option value="@opt.Value" >@opt.Key</option>                    
+                                  }
+                              }
+                                    </select>
+                                </p>
+		                        <p class="img_del"><a href="/ImageProperty/ImageDel?pid=@i.h_r_p_id&text=@i.h_r_p_pic_original_url">删除</a></p>
+                            </div>
+                     }
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+
+        <div class="btn_box">
+            <input  type="hidden"  id="room_remarks" name="hotelId" value="@hotelId">
+            <a href="AddHotel/price?hotelId=@hotelId" class="previou btn_a">上一步</a>
+            <a href="" id="save_room_img" class="btn_a btn_save_step checking_btn">完成</a>
+        </div>
     }
 </div>
 

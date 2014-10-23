@@ -502,7 +502,8 @@
 			val = p.find('.select_yeae').val()+p.find('.select_month').val();
 		p.find('input.hide').val(val);
 	});
-	time_select.siblings('select').e_input_tip({
+	time_select.e_input_tip({
+		need : false,
 		need_text : "必需选择"
 	});
 
