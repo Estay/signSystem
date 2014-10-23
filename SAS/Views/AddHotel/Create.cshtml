@@ -163,66 +163,70 @@
         <div class="from_path">
             <h2>录入详细信息</h2>
             <p class="input_line">
-                <input  id="hotel_built_year" type="text" name="@Html.DisplayNameFor(model => model.h_opening_time)" class="hide" value="@(Model.h_opening_time.Year.ToString())年@(Model.h_opening_time.Month.ToString())月">
-                <span class="label">开业时间</span>
-                <select class="select_yeae">
-                    <option value="">请选择</option>
-                    @foreach (var opt in DTimes)
-                    {
-                        if (true)
-                        {
-                        <option value="@opt" selected>@opt</option>                    
-                        }
-                        else
-                        {
-                        <option value="@opt" >@opt</option>                    
-                        }
-                    }
-                </select>
-                <select class="select_month">
-                    <option value="">请选择</option>
-                    @foreach (var opt in month)
-                    {
-                        if (true)
-                        {
-                        <option value="@opt" selected>@opt</option>                    
-                        }
-                        else
-                        {
-                        <option value="@opt" >@opt</option>                    
-                        }
-                    }
-                </select>
-                <input id="hotel_decoration_time_year" class="hide" type="text" name="@Html.DisplayNameFor(model => model.decorateTime)"  value="@(Model.decorateTime.Year.ToString())年@(Model.decorateTime.Month.ToString())月">
-                <span class="label">装修时间</span>
-                <select class="select_yeae">
-                    <option value="">请选择</option>
-                    @foreach (var opt in DTimes)
-                    {
-                        if (true)
-                        {
-                        <option value="@opt" selected>@opt</option>                    
-                        }
-                        else
-                        {
-                        <option value="@opt" >@opt</option>                    
-                        }
-                    }
-                </select>
-                <select class="select_month">
-                    <option value="">请选择</option>
-                    @foreach (var opt in month)
-                    {
-                        if (true)
-                        {
-                        <option value="@opt" selected>@opt</option>                    
-                        }
-                        else
-                        {
-                        <option value="@opt" >@opt</option>                    
-                        }
-                    }
-                </select>
+                <span>
+                    <input  id="hotel_built_year" type="text" name="@Html.DisplayNameFor(model => model.h_opening_time)" class="hide" value="@(Model.h_opening_time.Year.ToString())年@(Model.h_opening_time.Month.ToString())月">
+                    <span class="label">开业时间</span>
+                    <select class="select_yeae">
+                         <option value="">请选择</option>
+                         @foreach (var opt in DTimes)
+                         {
+                             if (openYear+"年" == opt)
+                             {
+                             <option value="@opt" selected>@opt</option>                    
+                             }
+                             else
+                             {
+                             <option value="@opt" >@opt</option>                    
+                             }
+                         }
+                     </select>
+                     <select class="select_month">
+                         <option value="">请选择</option>
+                         @foreach (var opt in month)
+                         {
+                             if (openMonth+"月" == opt)
+                             {
+                             <option value="@opt" selected>@opt</option>                    
+                             }
+                             else
+                             {
+                             <option value="@opt" >@opt</option>                    
+                             }
+                         }
+                     </select>
+                </span> @openMonth
+                <span>
+                    <input id="hotel_decoration_time_year" class="hide" type="text" name="@Html.DisplayNameFor(model => model.decorateTime)"  value="@(Model.decorateTime.Year.ToString())年@(Model.decorateTime.Month.ToString())月">
+                    <span class="label">装修时间</span>
+                    <select class="select_yeae">
+                         <option value="">请选择</option>
+                         @foreach (var opt in DTimes)
+                         {
+                             if (decoYear+"年" == opt)
+                             {
+                             <option value="@opt" selected>@opt</option>                    
+                             }
+                             else
+                             {
+                             <option value="@opt" >@opt</option>                    
+                             }
+                         }
+                     </select>
+                     <select class="select_month">
+                         <option value="">请选择</option>
+                         @foreach (var opt in month)
+                         {
+                             if (decoMonth+"月" == opt)
+                             {
+                             <option value="@opt" selected>@opt</option>                    
+                             }
+                             else
+                             {
+                             <option value="@opt" >@opt</option>                    
+                             }
+                         }
+                     </select>
+                </span> @decoMonth
 
                 <label for="hotel_building">
                     <span class="label">公寓楼高</span><input type="text" id="hotel_building" class="only_integer" name="@Html.DisplayNameFor(model => model.floor)" value="@Model.floor">

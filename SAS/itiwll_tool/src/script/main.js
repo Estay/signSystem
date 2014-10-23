@@ -496,11 +496,12 @@
 		});
 
 	})();
-	var time_select = $("#hotel_built_year,#hotel_decoration_time_year").siblings('select');
+	var time_select = $(".select_yeae,.select_month");
 	time_select.change(function(event) {
 		var p = $(this).parent(), 
 			val = p.find('.select_yeae').val()+p.find('.select_month').val();
 		p.find('input.hide').val(val);
+		console.log(val);
 	});
 	time_select.e_input_tip({
 		need : false,
