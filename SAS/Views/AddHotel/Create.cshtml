@@ -31,7 +31,7 @@
     string[] decoDate = Model.decorateTime != Convert.ToDateTime("1900-01") ? Model.decorateTime.ToString("yyyy-MM-dd").Split('-') : new string[] { "-" };
   
     string openYear = openDate.Length > 1 ? openDate[0] : "", openMonth = openDate.Length > 1 ? openDate[1] : "";
-    string decoYear = openDate.Length > 1 ? decoDate[0] : "", decoNinth = decoDate.Length > 1 ? openDate[1] : "";
+    string decoYear = openDate.Length > 1 ? decoDate[0] : "", decoMonth = decoDate.Length > 1 ? openDate[1] : "";
     DateTime openT=Model.h_opening_time;
 
 
