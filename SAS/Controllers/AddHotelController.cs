@@ -97,25 +97,27 @@ namespace SAS.Controllers
                 hotel_info.h_utime = DateTime.Now;
                 hotel_info.CheckState = 2;
                 hotel_info.h_ctime = DateTime.Now;
+                hotel_info.decorateTime = DateTime.Now;
+                hotel_info.h_opening_time = DateTime.Now;
                using(db=new HotelDBContent())
                {
                    if (hotel_info.hotel_id > 0)
                    {
-                       
-                       var errors = ModelState.Values.SelectMany(v => v.Errors);
-                       if (ModelState.IsValid)
-                       {
-                           db.hotel.Add(hotel_info);
-                           
-
-                           // return RedirectToAction("Room/Create/"+ddh.hotel_id);
-                       }
+                       db.Entry(hotel_info).State = EntityState.Modified;
+                     
                     
                    }
                    else
                    {
 
-                       db.Entry(hotel_info).State = EntityState.Modified;
+                       var errors = ModelState.Values.SelectMany(v => v.Errors);
+                       if (ModelState.IsValid)
+                       {
+                           db.hotel.Add(hotel_info);
+
+
+                           // return RedirectToAction("Room/Create/"+ddh.hotel_id);
+                       }
                    }
                    result= db.SaveChanges()>0?1:0;
                    if (result > 0)
