@@ -97,10 +97,10 @@ namespace SAS.Controllers
                 hotel_info.h_utime = DateTime.Now;
                 hotel_info.CheckState = 2;
                 hotel_info.h_ctime = DateTime.Now;
-                hotel_info.decorateTime = Convert.ToDateTime("1900-01");
-                hotel_info.h_opening_time = Convert.ToDateTime("1900-01");
-               using(db=new HotelDBContent())
-               {
+                hotel_info.decorateTime = hotel_info.decorateTime == Convert.ToDateTime("0001/1/1 0:00:00") ? Convert.ToDateTime("1900-01") : hotel_info.decorateTime;
+                hotel_info.h_opening_time = hotel_info.h_opening_time == Convert.ToDateTime("0001/1/1 0:00:00") ? Convert.ToDateTime("1900-01") : hotel_info.h_opening_time;
+                using(db=new HotelDBContent())
+                {
                    if (hotel_info.hotel_id > 0)
                    {
                        db.Entry(hotel_info).State = EntityState.Modified;

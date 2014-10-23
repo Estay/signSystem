@@ -26,8 +26,13 @@
     string[] tel = !string.IsNullOrEmpty(Model.h_tel) ? Model.h_tel.Split('-') : new string[] { " - " };
     //区号   
     string tel1 = tel.Length > 2 ? tel[0] : ""; string tel2 = tel.Length > 2 ? tel[1] : "";//电话
-    
-     
+
+    string []openDate=Model.h_opening_time != Convert.ToDateTime("1900-01")?Model.h_opening_time.ToString("yyyy-MM-dd").Split('-'):new string[]{"-"};
+    string[] decoDate = Model.decorateTime != Convert.ToDateTime("1900-01") ? Model.decorateTime.ToString("yyyy-MM-dd").Split('-') : new string[] { "-" };
+  
+    string openYear = openDate.Length > 1 ? openDate[0] : "", openMonth = openDate.Length > 1 ? openDate[1] : "";
+    string decoYear = openDate.Length > 1 ? decoDate[0] : "", decoNinth = decoDate.Length > 1 ? openDate[1] : "";
+    DateTime openT=Model.h_opening_time;
 
 
    
@@ -164,7 +169,7 @@
                     <option value="">请选择</option>
                     @foreach (var opt in DTimes)
                     {
-                        if (Model.h_opening_time.Year.ToString() == opt.Remove(4))
+                        if (true)
                         {
                         <option value="@opt" selected>@opt</option>                    
                         }
@@ -178,7 +183,7 @@
                     <option value="">请选择</option>
                     @foreach (var opt in month)
                     {
-                        if (Model.h_opening_time.Month.ToString() == opt.Remove(opt.Length - 1))
+                        if (true)
                         {
                         <option value="@opt" selected>@opt</option>                    
                         }
@@ -194,7 +199,7 @@
                     <option value="">请选择</option>
                     @foreach (var opt in DTimes)
                     {
-                        if (Model.decorateTime.Year.ToString() == opt.Remove(4))
+                        if (true)
                         {
                         <option value="@opt" selected>@opt</option>                    
                         }
@@ -208,7 +213,7 @@
                     <option value="">请选择</option>
                     @foreach (var opt in month)
                     {
-                        if (Model.decorateTime.Month.ToString() == opt.Remove(opt.Length - 1))
+                        if (true)
                         {
                         <option value="@opt" selected>@opt</option>                    
                         }
