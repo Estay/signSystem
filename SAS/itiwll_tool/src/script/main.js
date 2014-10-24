@@ -503,7 +503,7 @@
 		p.find('input.hide').val(val);
 		console.log(val);
 	});
-	time_select.e_input_tip({
+	$('.need_yeae .need_month').e_input_tip({
 		need : false,
 		need_text : "必需选择"
 	});

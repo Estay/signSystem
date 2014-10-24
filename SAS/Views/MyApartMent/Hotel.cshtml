@@ -165,7 +165,7 @@
                 <label for="hotel_built">
                     <input  id="hotel_built_year" type="text" name="@Html.DisplayNameFor(model => model.h_opening_time)" class="hide" value="@(Model.h_opening_time.Year.ToString())年@(Model.h_opening_time.Month.ToString())月">
                     <span class="label">开业时间</span>
-                    <select class="select_yeae">
+                    <select class="select_yeae need_yeae">
                         <option value="">请选择</option>
                         @foreach (var opt in DTimes)
                         {
@@ -179,7 +179,7 @@
                             }
                         }
                     </select>
-                    <select class="select_month">
+                    <select class="select_month need_month">
                         <option value="">请选择</option>
                         @foreach (var opt in month)
                         {
