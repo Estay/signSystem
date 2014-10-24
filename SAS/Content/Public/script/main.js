@@ -1,4 +1,4 @@
-/*2014年10月24日11:23:33*/
+/*2014年10月24日15:40:40*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -750,8 +750,7 @@
         p.find("input.hide").val(val);
         console.log(val);
     });
-    $(".need_yeae .need_month").e_input_tip({
-        need: false,
+    $(".need_yeae,.need_month").e_input_tip({
         need_text: "必需选择"
     });
     $("#hotel_specialty").e_input_tip({
