@@ -1,4 +1,4 @@
-/*2014年10月23日14:49:39*/
+/*2014年10月24日11:23:33*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -718,6 +718,7 @@
         });
     })();
     $("#hotel_building,#hotel_room_count").e_input_tip({
+        need: false,
         space: "0",
         error: "格式不正确",
         rule: /^\d+$/
@@ -749,7 +750,7 @@
         p.find("input.hide").val(val);
         console.log(val);
     });
-    time_select.e_input_tip({
+    $(".need_yeae .need_month").e_input_tip({
         need: false,
         need_text: "必需选择"
     });
@@ -1210,14 +1211,21 @@
                 event.preventDefault();
                 el_ing.e_window_kill();
             });
+            var end_node = $("#set_pr_box .date_end")[0], start_node = $("#set_pr_box .date_start")[0];
             function set_date() {
                 var start = {
                     elem: "#set_pr_box .date_start",
                     min: laydate.now(),
                     istoday: false,
                     choose: function(datas) {
-                        end.min = datas;
-                        end.start = datas;
+                        if (DateTool.comparisonDate(start_node.value, end_node.value) > 0) {
+                            end_node.value = start_node.value;
+                        }
+                        if (DateTool.comparisonDate(start_node.value, end_node.value) < -365 * 24 * 60 * 60 * 1e3) {
+                            var d = DateTool.timeToStrimg(Date.parse(start_node.value) + 365 * 24 * 60 * 60 * 1e3);
+                            end_node.value = d;
+                            alert("单次设置的限制范围为365天!\n已将结束日期设为" + d);
+                        }
                     }
                 };
                 var end = {
@@ -1225,7 +1233,14 @@
                     min: laydate.now(),
                     istoday: false,
                     choose: function(datas) {
-                        start.max = datas;
+                        if (DateTool.comparisonDate(start_node.value, end_node.value) > 0) {
+                            start_node.value = end_node.value;
+                        }
+                        if (DateTool.comparisonDate(start_node.value, end_node.value) < -365 * 24 * 60 * 60 * 1e3) {
+                            var d = DateTool.timeToStrimg(Date.parse(start_node.value) + 365 * 24 * 60 * 60 * 1e3);
+                            end_node.value = d;
+                            alert("单次设置的限制范围为365天!\n已将结束日期设为" + d);
+                        }
                     }
                 };
                 laydate(start);
@@ -1585,5 +1600,34 @@
             return strUrl;
         }
     }
+    var DateTool = {
+        comparisonDate: function(start, end) {
+            if (!start || !end) {
+                return;
+            }
+            var start_arr = start.split("-"), end_arr = end.split("-"), startTime = new Date(), endTime = new Date();
+            startTime.setFullYear(start_arr[0]);
+            startTime.setMonth(start_arr[1] - 1);
+            startTime.setDate(start_arr[2]);
+            startTime.setHours(0);
+            startTime.setMinutes(0);
+            startTime.setSeconds(0);
+            startTime = startTime.setMilliseconds(0);
+            endTime.getTime();
+            endTime.setFullYear(end_arr[0]);
+            endTime.setMonth(end_arr[1] - 1);
+            endTime.setDate(end_arr[2]);
+            endTime.setHours(0);
+            endTime.setMinutes(0);
+            endTime.setSeconds(0);
+            endTime.setMilliseconds(0);
+            endTime = endTime.getTime();
+            return startTime - endTime;
+        },
+        timeToStrimg: function(time) {
+            var date = new Date(time);
+            return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+        }
+    };
 })(jQuery);
 //# sourceMappingURL=main.map

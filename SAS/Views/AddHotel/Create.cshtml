@@ -194,6 +194,7 @@
                              }
                          }
                      </select>
+                     <span class="col_red">*</span>
                 </span>
                 <span>
                     <input id="hotel_decoration_time_year" class="hide" type="text" name="@Html.DisplayNameFor(model => model.decorateTime)"  value="@(Model.decorateTime.Year.ToString())年@(Model.decorateTime.Month.ToString())月">
@@ -228,14 +229,13 @@
                      </select>
                 </span>
 
-                <label for="hotel_building">
-                    <span class="label">公寓楼高</span><input type="text" id="hotel_building" class="only_integer" name="@Html.DisplayNameFor(model => model.floor)" value="@Model.floor">
-                    <span class="col_red">*</span>
-                </label>
                 <label for="hotel_room_count">
                     <span class="label">房间总数</span>
                     <input type="text" id="hotel_room_count" class="only_integer" name="@Html.DisplayNameFor(model => model.h_room_count)" value="@Model.h_room_count">
                     <span class="col_red">*</span>
+                </label>
+                <label for="hotel_building">
+                    <span class="label">公寓楼高</span><input type="text" id="hotel_building" class="only_integer" name="@Html.DisplayNameFor(model => model.floor)" value="@Model.floor">
                 </label>
             </p>
             <p class="input_line">
