@@ -1,4 +1,4 @@
-/*2014年10月24日15:40:40*/
+/*2014年10月24日15:59:26*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -718,7 +718,6 @@
         });
     })();
     $("#hotel_building,#hotel_room_count").e_input_tip({
-        need: false,
         space: "0",
         error: "格式不正确",
         rule: /^\d+$/
