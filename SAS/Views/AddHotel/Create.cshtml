@@ -27,8 +27,10 @@
     //区号   
     string tel1 = tel.Length > 2 ? tel[0] : ""; string tel2 = tel.Length > 2 ? tel[1] : "";//电话
 
+    
+    
     string []openDate=Model.h_opening_time != Convert.ToDateTime("1900-01")&&Model.h_opening_time != Convert.ToDateTime("0001/1/1 0:00:00")?Model.h_opening_time.ToString("yyyy-M-dd").Split('-'):new string[]{"-"};
-    string[] decoDate = Model.decorateTime != Convert.ToDateTime("1900-01") && Model.h_opening_time != Convert.ToDateTime("0001/1/1 0:00:00") ? Model.decorateTime.ToString("yyyy-M-dd").Split('-') : new string[] { "-" };
+    string[] decoDate = Model.decorateTime != Convert.ToDateTime("1900-01") && Model.decorateTime != Convert.ToDateTime("0001/1/1 0:00:00") && Model .decorateTime!=null? Model.decorateTime.Value.ToString("yyyy-M-dd").Split('-') : new string[] { "-" };
   
     string openYear = openDate.Length > 1 ? openDate[0] : "", openMonth = openDate.Length > 1 ? openDate[1] : "";
     string decoYear = openDate.Length > 1 ? decoDate[0] : "", decoMonth = decoDate.Length > 1 ? decoDate[1] : "";
@@ -71,9 +73,10 @@
                     <span class="col_red">*</span>
                 </label>
             </p>
+            
             <p class="input_line">
                 <label for="@Html.DisplayNameFor(model => model.h_mobile_phone)">
-                    <span class="label">手机号码</span>
+                    <span class="label">商户手机号码</span>
                     <input id="mobeli_phone" class="only_integer" type="text" name="@Html.DisplayNameFor(model => model.h_mobile_phone)" maxlength="11" value="@Model.h_mobile_phone">
                     <span class="col_red">*</span>
                     <span>接收订单提醒短信</span>
@@ -164,7 +167,7 @@
             <h2>录入详细信息</h2>
             <p class="input_line">
                 <span>
-                    <input  id="hotel_built_year" type="text" name="@Html.DisplayNameFor(model => model.h_opening_time)" class="hide" value="@(Model.h_opening_time.Year.ToString())年@(Model.h_opening_time.Month.ToString())月">
+                    <input  id="hotel_built_year" type="text" name="@Html.DisplayNameFor(model => model.h_opening_time)" class="hide" value="@(openYear)年@(openMonth)月">
                     <span class="label">开业时间</span>
                     <select class="select_yeae need_yeae">
                          <option value="">请选择</option>
@@ -197,7 +200,7 @@
                      <span class="col_red">*</span>
                 </span>
                 <span>
-                    <input id="hotel_decoration_time_year" class="hide" type="text" name="@Html.DisplayNameFor(model => model.decorateTime)"  value="@(Model.decorateTime.Year.ToString())年@(Model.decorateTime.Month.ToString())月">
+                    <input id="hotel_decoration_time_year" class="hide" type="text" name="@Html.DisplayNameFor(model => model.decorateTime)"  value="@(decoYear)年@(decoMonth)月">
                     <span class="label">装修时间</span>
                     <select class="select_yeae">
                          <option value="">请选择</option>

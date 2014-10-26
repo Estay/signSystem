@@ -38,7 +38,7 @@ namespace SAS.Models
         private string _h_check_in;
         private string _h_check_out;
         private DateTime _h_opening_time;
-        private DateTime _decoratetime;
+        private DateTime ?_decoratetime;
         private int _h_room_count=0;
         private string _h_province;
         private string _h_city;
@@ -73,7 +73,7 @@ namespace SAS.Models
         private string _features;
         private string _helpfultips;
         private string _hotel_theme_id;
-        private int _floor=0;
+        private int? _floor=0;
         private int _checkState;
 
         /// <summary>
@@ -280,7 +280,7 @@ namespace SAS.Models
         /// <summary>
         /// 装修时间
         /// </summary>
-        public DateTime decorateTime
+        public DateTime? decorateTime
         {
             set { _decoratetime = value; }
             get { return _decoratetime; }
@@ -560,7 +560,7 @@ namespace SAS.Models
         /// <summary>
         /// 楼层
         /// </summary>
-        public int floor
+        public int? floor
         {
             set { _floor = value; }
             get { return _floor; }

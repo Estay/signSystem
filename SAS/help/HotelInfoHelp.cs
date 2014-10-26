@@ -197,9 +197,9 @@ namespace SAS.help
         public List<SasMenu> GetLimit(Merchant_info mer,out string limit)
         {
 
-            List<SasMenu> list_Menu = new List<SasMenu>(); string _limit = string.Empty, sqlMenu = string.Format("select id,title,controleName,url,parent from sasMenu"), sql = mer.admin == true ? sqlMenu + " where id!=1" : string.Format("{1} where id in({0}) and status=1 and id!=1", mer.limit, sqlMenu);
-            
-         
+            List<SasMenu> list_Menu = new List<SasMenu>(); string _limit = string.Empty, sqlMenu = string.Format("select id,title,controleName,url,parent from sasMenu"), sql = mer.name == "admin" ? sqlMenu+" where id=1": mer.admin == true ? sqlMenu + " where id!=1" : string.Format("{1} where id in({0}) and status=1 and id!=1", mer.limit, sqlMenu);
+           
+           // string _limit = string.Empty, sqlMenu = string.Format("select id,title,controleName,url,parent from sasMenu"), sql = mer.admin == true ? sqlMenu : string.Format("{1} where id in({0}) and status=1 and id!=1", mer.limit, sqlMenu);
             
             using (SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {

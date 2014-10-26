@@ -63,17 +63,22 @@ namespace SAS.Controllers
 
                
            // }
+            getHelpData();
+            if (hotel == null)
+                return View("create", new hotel_info());
+            else
+                return View("create", hotel);
+            return View("Create",new hotel_info());
+        }
+
+        private void getHelpData()
+        {
             ViewData["DTime"] = new hotel_info().getDecorationTime();  //Theme
             ViewData["Themes"] = DBhelp.GetSelectDataByTable("hotel_theme_info");  //Theme
             ViewData["Category"] = DBhelp.GetSelectDataByTable("Hotel_theme_type_info"); ;//Category
             ViewData["facilities"] = DBhelp.GetSelectDataByTable("Facilities_info");//facilities
             ViewData["services"] = DBhelp.GetSelectDataByTable("GeneralAmenities_info");//services
             ViewData["provice"] = DBhelp.GetSelectDataByTable("province_info");//provice
-            if (hotel == null)
-                return View("create", new hotel_info());
-            else
-                return View("create", hotel);
-            return View("Create",new hotel_info());
         }
 
 
@@ -90,15 +95,18 @@ namespace SAS.Controllers
                
             try
             {
-                hotel_info.u_id = new HotelInfoHelp().getUId();
+               
+                //hotel_info.u_id = new HotelInfoHelp().getUId();
                 hotel_info.source_id = Convert.ToInt32(help.StringHelper.appSettings("source_id")); ;
                 hotel_info.h_id = Guid.NewGuid().ToString();
                 hotel_info.h_state = true;
                 hotel_info.h_utime = DateTime.Now;
                 hotel_info.CheckState = 2;
                 hotel_info.h_ctime = DateTime.Now;
-                hotel_info.decorateTime = hotel_info.decorateTime == Convert.ToDateTime("0001/1/1 0:00:00") ? Convert.ToDateTime("1900-01") : hotel_info.decorateTime;
+                hotel_info.decorateTime = hotel_info.decorateTime == Convert.ToDateTime("0001/1/1 0:00:00") || hotel_info.decorateTime ==null? Convert.ToDateTime("1900-01") : hotel_info.decorateTime;
                 hotel_info.h_opening_time = hotel_info.h_opening_time == Convert.ToDateTime("0001/1/1 0:00:00") ? Convert.ToDateTime("1900-01") : hotel_info.h_opening_time;
+                //hotel_info.h_room_count = hotel_info.h_room_count == 0 ? 1 : hotel_info.h_room_count;
+                hotel_info.u_id = hotel_info.h_mobile_phone;
                 using(db=new HotelDBContent())
                 {
                    if (hotel_info.hotel_id > 0)
@@ -111,13 +119,13 @@ namespace SAS.Controllers
                    {
 
                        var errors = ModelState.Values.SelectMany(v => v.Errors);
-                       if (ModelState.IsValid)
-                       {
+                       //if (ModelState.IsValid)
+                       //{
                            db.hotel.Add(hotel_info);
 
 
                            // return RedirectToAction("Room/Create/"+ddh.hotel_id);
-                       }
+                       //}
                    }
                    result= db.SaveChanges()>0?1:0;
                    if (result > 0)
@@ -137,8 +145,8 @@ namespace SAS.Controllers
                 help.DBhelp.log("新建公寓基本信息"+e.ToString());
              
             }
-            ViewBag.sign = result;    
-            return View(hotel_info);
+            ViewBag.sign = result; getHelpData();
+            return View("Create", hotel_info);
         }
         /// <summary>
         /// 验证酒店名是否存在
