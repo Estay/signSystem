@@ -28,7 +28,7 @@
 {
 
 <div id="flag_box">
-	<a href="" class="btn_c set">修改房型</a>
+	<a class="btn_c set">修改房型</a>
 </div>
 <!-- 录入房型 -->
 <div class="box_a">
@@ -53,7 +53,7 @@
 				        <tr class="room_item">                  
                             <td>@Convert.ToInt32(identity++)</td>
 					        <td>@item.h_r_name_cn</td>
-					        <td><a href="/MyApartMent/update?roomId=@item.room_id#editor_room">修改</a>|<a href="/MyApartMent/remove?roomId=@item.room_id">删除</a></td>
+					        <td><a href="/MyApartMent/update?roomId=@item.room_id#editor_room">修改</a>|<a href="/MyApartMent/remove?roomId=@item.room_id">删除</a>|<a href="/MyApartMent/copy?roomId=@item.room_id#editor_room">复制</a></td>
 				        </tr>
                     }
                 }
@@ -69,19 +69,21 @@
                 <input class="hide" type="text" name="@Html.DisplayNameFor(model=>model.hotel_id)" value="@ViewBag.HoltelId" />
     			<label for="room_name"> 
                     <span class="label">房型名称</span>
-                    @if(Model.h_r_name_cn!=null){
+                    @if (ViewBag.sign != 2)
+                    {
                         <b>@Model.h_r_name_cn</b>
                         <input type="text" id="room_name" class="hide" name="@Html.DisplayNameFor(model => model.h_r_name_cn)" value="@Model.h_r_name_cn">
                     }else{
                         <input type="text" id="room_name" name="@Html.DisplayNameFor(model => model.h_r_name_cn)" value="@Model.h_r_name_cn"><span class="col_red">*</span>
                     }
                     </label>
-    			<label>
-    				<span class="label">数量</span>
-    				<input type="text" id="room_count" name="@Html.DisplayNameFor(model => model.h_r_house_number)" value="@Model.h_r_house_number">
-    				<span class="col_red">*</span>
-    				<span>将会设置房量的默认值</span>
-    			</label>
+                <br>
+                <label>
+                    <span class="label">数量</span>
+                    <input type="text" id="room_count" name="@Html.DisplayNameFor(model => model.h_r_house_number)" value="@Model.h_r_house_number">
+                    <span class="col_red">*</span>
+                    <span>将会设置房量的默认值</span>
+                </label>
    			    <label>
     				<span class="label">默认房价</span>
     				<input type="text" id="default_price" class="w50 only_float" name="@Html.DisplayNameFor(model => model.DefaultPrice)" value="@Model.DefaultPrice">
