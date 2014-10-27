@@ -214,11 +214,6 @@
     </Compile>
     <Compile Include="help\RefrenceHelp.cs" />
     <Compile Include="help\StringHelper.cs" />
-    <Compile Include="Migrations\201410260241570_h.cs" />
-    <Compile Include="Migrations\201410260241570_h.Designer.cs">
-      <DependentUpon>201410260241570_h.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DrrModes.cs" />
     <Compile Include="Models\DrrRules.cs" />
     <Compile Include="Models\Gift.cs" />
@@ -613,11 +608,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\EstayMobileService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201410260241570_h.resx">
-      <DependentUpon>201410260241570_h.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
