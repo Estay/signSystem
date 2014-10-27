@@ -135,7 +135,10 @@
 				alert("服务器验证公寓名称失败");
 			});	
 		}
-	});
+	})
+	// 匹配库中的公寓
+	// todo
+	.autoComplete();
 
 	// 所属类别 公寓主题 地址及所在商区 选择验证和提示
 	$("#hotel_class,#hotel_theme,#hotel_province,#h_city,#h_administrative_region,#h_business_zone").e_input_tip({
