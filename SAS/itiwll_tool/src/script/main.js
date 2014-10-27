@@ -461,7 +461,6 @@
 
 	// 公寓楼高 房间总数
 	$("#hotel_building,#hotel_room_count").e_input_tip({
-		need:false,
 		space : "0",
 		error : "格式不正确",
 		rule : /^\d+$/
