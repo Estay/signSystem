@@ -273,13 +273,14 @@ namespace SAS.help
               DateTime now = DateTime.Now.AddMonths(-1); DateTime s = now.AddDays(1 - now.Day).Date ;DateTime e = now.AddDays(1 - now.Day).AddMonths(1).AddDays(-1).Date;
               string sql_order=string.Format("select count(*) from order_info where hotel_id in(select hotel_id from hotel_info where u_id='{0}') and o_state_id=1",uId);
               string sql_comment=string.Format("select count(*) from hotel_comment_info where  hotel_id in(select hotel_id from hotel_info where u_id='{0}') and IsReply=0",uId);
-              string sql_bill = string.Format("select count(*),sum(o_total_price),sum(o_total_price)*(select sum(value) from temp where uid='{0}'),sum(o_guaranteeprice),(select sum(value) from temp where uid='{0}') from order_info where o_check_in_date>='{1}' and o_check_out_date<='{2}' and (o_state_id= 3 or o_state_id =4 or o_state_id=6) and hotel_id in(select hotel_id from hotel_info where u_id='{0}')  group by hotel_id", uId, s, e);
+              string sql_bill = string.Format("select count(*),sum(o_total_price),sum(o_total_price)*(select sum(value) from temp where uid='{0}'),sum(o_guaranteeprice),(select sum(value) from temp where uid='{0}') from order_info where o_check_in_date>='{1}' and o_check_out_date<='{2}' and (o_state_id= 3 or o_state_id =4 or o_state_id=6) and hotel_id in(select hotel_id from hotel_info where u_id='{0}' and  source_id=5)   group by hotel_id", uId, s, e);
                using (SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
                 {
                     conn.Open();
                   
 
-                    using (SqlCommand cmd = new SqlCommand(sql_order + ";" + sql_comment+";"+sql_bill, conn))
+                    //using (SqlCommand cmd = new SqlCommand(sql_order + ";" + sql_comment+";"+sql_bill, conn))
+                    using (SqlCommand cmd = new SqlCommand(sql_order + ";" + sql_bill, conn))
                     {
                         using (SqlDataReader dr = cmd.ExecuteReader())
                         {
@@ -288,11 +289,11 @@ namespace SAS.help
                               _orderCount=Convert.ToDecimal(dr[0]);
                             }
                             
-                            dr.NextResult(); 
-                            while (dr.Read()) //读取用户
-                            {
-                                _noreplyComment = Convert.ToDecimal(dr[0]);
-                            }
+                            //dr.NextResult(); 
+                            //while (dr.Read()) //读取用户
+                            //{
+                            //    _noreplyComment = Convert.ToDecimal(dr[0]);
+                            //}
                             dr.NextResult();
                              while (dr.Read()) //读取菜单
                             {

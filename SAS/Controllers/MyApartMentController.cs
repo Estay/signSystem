@@ -80,15 +80,30 @@ namespace SAS.Controllers
         }
 
         //修改房型
-        public ActionResult update(string roomId)
+        public ActionResult update(string roomId,string value)
         {
-
+            ViewBag.sign = 1;
             ViewBag.Tag = "修改房型";
             int RId = Convert.ToInt32(roomId);
             //getRooms(Convert.ToInt32(hotelId));
             //string f = hotelId;
             getfacilities();
             hotel_room_info room = (from h in db.rooms where h.room_id == RId select h).Single();
+            getRooms(room.hotel_id);
+            ViewBag.HoltelId = room.hotel_id;
+            return View("Room", room);
+        }
+                 //复制房型
+        public ActionResult copy(string roomId)
+        {
+            ViewBag.sign = 2;
+            ViewBag.Tag = "修改房型";
+            int RId = Convert.ToInt32(roomId);
+            //getRooms(Convert.ToInt32(hotelId));
+            //string f = hotelId;
+            getfacilities();
+            hotel_room_info room = (from h in db.rooms where h.room_id == RId select h).SingleOrDefault();
+            room.h_r_name_cn = string.Empty;
             getRooms(room.hotel_id);
             ViewBag.HoltelId = room.hotel_id;
             return View("Room", room);
