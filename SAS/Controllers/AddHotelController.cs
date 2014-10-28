@@ -174,7 +174,10 @@ namespace SAS.Controllers
            hotel_info hotel=null;
             using (db = new HotelDBContent())
             {
-                hotel = (from h in db.hotel where h.h_name_cn == text.Trim() select h).SingleOrDefault();
+                hotel = (from h in db.hotel where h.h_name_cn == text.Trim() && h.source_id==4 select h).SingleOrDefault();
+                 var tempHotel=(from h1 in db.hotel where h1.h_name_cn==text.Trim() && h1.source_id==5 select h1).Count();
+                  ViewBag.exit = tempHotel > 0 ? 1 : 0;
+                
             }
             if(hotel!=null)
                 return View("Create", hotel);

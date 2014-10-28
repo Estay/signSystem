@@ -17,18 +17,27 @@ namespace SAS.Controllers
         public CommonController()
         { }
      
-        //验证房型是否存在
-        public int isOkRoom(string text,string hotelId)
+        //模糊查找艺龙对应的房型
+        public string isOkRoom(string text,string hotelId)
         {
             int hotel_id = Convert.ToInt32(hotelId);
+            string strRooms = string.Empty;
             using (db = new HotelDBContent())
             {
-                if ((from h in db.rooms where h.h_r_name_cn == text && h.hotel_id == hotel_id select h).Count() > 0)
-                    return 0;
-                else
-                    return 1;
+                var f= (from helong in db.hotel where (from o in db.hotel where o.hotel_id==hotel_id select o.h_name_cn).Contains(helong.h_name_cn) where helong.source_id==4 select helong).SingleOrDefault();
+                if (f != null)
+                {
+                    var room = from o in db.rooms where o.h_r_name_cn.Contains(text.Trim()) && o.hotel_id == f.hotel_id select o;
+                    foreach (var r in room)
+                    {
+                        strRooms += string.Format("{0},{1}",r.h_r_name_cn,r.room_id) + "|";
+                    }
+                }
+              
             }
+            return strRooms;
         }
+   
         ///// <summary>
         ///// 验证酒店名是否存在
         ///// </summary>
@@ -56,9 +65,10 @@ namespace SAS.Controllers
             using (db = new HotelDBContent())
             {
                
-                var result = from h in db.hotel join b in db.citys on h.h_city equals b.City_id where h.h_name_cn.Contains(text.Trim()) select new { name = h.h_name_cn, city = b.City_name };
+                var result = from h in db.hotel join b in db.citys on h.h_city equals b.City_id where h.h_name_cn.Contains(text.Trim())&& h.source_id==4 select new { name = h.h_name_cn, city = b.City_name,f=h.source_id };
                 foreach (var r in result)
                 {
+                   
                     strResult += string.Format("{0}[{1}])",r.name,r.city)+"|";
                 }
             }

@@ -78,6 +78,7 @@ namespace SAS.Controllers
             ViewBag.HoltelId = hotel_id;
             return View(new hotel_room_info());
         }
+ 
 
         //修改房型
         public ActionResult update(string roomId,string value)
@@ -130,6 +131,26 @@ namespace SAS.Controllers
             getRooms(room.hotel_id);
             return View("room", new hotel_room_info());
         }
+        //验证相同房房型是否存在()
+        public ActionResult selectedRoom(string roomId, string name,string hotelId)
+        {
+            int room_id = 0; int.TryParse(roomId, out room_id);//   int hotel_id = Convert.ToInt32(hotelId);
+            int hotel_Id = 0; int.TryParse(hotelId,out hotel_Id);
+            hotel_room_info room = new hotel_room_info();
+            using (db = new HotelDBContent())
+            {
+               
+                    room = (from r in db.rooms where r.room_id == room_id select r).SingleOrDefault();
+
+
+                    var tempRoom = ((from o in db.rooms where o.h_r_name_cn == name.Trim() && o.hotel_id == hotel_Id select o).Count());
+                    ViewBag.exit = tempRoom > 0 ? 1 : 0;
+                
+            }
+
+            return View("room",room);
+        }
+
         public void getfacilities()
         {
             ViewData["facilities"] = DBhelp.GetSelectDataByTable("Facilities_info");//facilities
