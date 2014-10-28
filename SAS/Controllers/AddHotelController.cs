@@ -171,11 +171,14 @@ namespace SAS.Controllers
         /// <returns></returns>
         public ActionResult FindHotel(string text)
         {
-            //using (db = new HotelDBContent())
-            //{
-            //    var f = from h in db.hotel where h.h_name_cn.Contains(text) select new { f = h.h_name_cn, city = from c in db.citys where c.City_id == h.h_city select c.City_name };
-            //}
-            //return "";
+           hotel_info hotel=null;
+            using (db = new HotelDBContent())
+            {
+                hotel = (from h in db.hotel where h.h_name_cn == text.Trim() select h).SingleOrDefault();
+            }
+            if(hotel!=null)
+                return View("Create", hotel);
+            else
             return View("Create",new hotel_info());
         }
      
