@@ -1,4 +1,4 @@
-/*2014年10月24日15:59:26*/
+/*2014年10月27日15:57:51*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -403,6 +403,33 @@
     };
 })(jQuery);
 
+(function($) {
+    $.fn.autoComplete = function(options) {
+        if (!this.length) {
+            return this;
+        }
+        var opts = $.extend(true, {}, $.fn.autoComplete.defaults, options);
+        this.each(function() {
+            var $this = $(this), timeout;
+            $this.keyup(function(event) {
+                clearTimeout(timeout);
+                if ($this != "") {
+                    timeout = setTimeout(function() {
+                        opts.callblack.call($this[0], $this.val());
+                    }, opts.time);
+                }
+            });
+        });
+        return this;
+    };
+    $.fn.autoComplete.defaults = {
+        time: 500,
+        callblack: function(text) {
+            console.log("已输入" + text);
+        }
+    };
+})(jQuery);
+
 (function() {})();
 
 (function($) {
@@ -498,7 +525,7 @@
                 alert("服务器验证公寓名称失败");
             });
         }
-    });
+    }).autoComplete();
     $("#hotel_class,#hotel_theme,#hotel_province,#h_city,#h_administrative_region,#h_business_zone").e_input_tip({
         need_text: "必需选择"
     });

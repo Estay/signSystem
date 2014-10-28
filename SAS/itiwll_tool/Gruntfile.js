@@ -9,6 +9,7 @@ module.exports = function(grunt) {
 				"src/script/plug-in/tab_switch.js",
 				"src/script/plug-in/e_window.js",
 				"src/script/plug-in/jquery.ajaxfileupload.js",
+				"src/script/plug-in/autoComplete.js",
 				"src/script/main.js"
 			],
 		css_files = {
