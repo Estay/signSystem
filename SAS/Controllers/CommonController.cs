@@ -29,22 +29,43 @@ namespace SAS.Controllers
                     return 1;
             }
         }
+        ///// <summary>
+        ///// 验证酒店名是否存在
+        ///// </summary>
+        ///// <param name="text"></param>
+        ///// <returns></returns>
+        //public int IsOkHotel(string text)
+        //{
+        //    using (db = new HotelDBContent())
+        //    {
+        //        if ((from h in db.hotel where h.h_name_cn == text select h).Count() > 0 || (from h in new HotelDBContent("").hotel where h.h_name_cn == text select h).Count() > 0)
+        //            return 0;
+        //        else
+        //            return 1;
+        //    }
+
+        //}
         /// <summary>
         /// 验证酒店名是否存在
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
-        public int IsOkHotel(string text)
+        public string IsOkHotel(string text)
         {
+            string strResult = string.Empty;
             using (db = new HotelDBContent())
             {
-                if ((from h in db.hotel where h.h_name_cn == text select h).Count() > 0 || (from h in new HotelDBContent("").hotel where h.h_name_cn == text select h).Count() > 0)
-                    return 0;
-                else
-                    return 1;
+               
+                var result = from h in db.hotel join b in db.citys on h.h_city equals b.City_id where h.h_name_cn.Contains(text.Trim()) select new { name = h.h_name_cn, city = b.City_name };
+                foreach (var r in result)
+                {
+                    strResult += string.Format("{0}[{1}])",r.name,r.city)+"|";
+                }
             }
+            return strResult;
 
         }
+
         ///// <summary>
         ///// 验证酒店名称是否存在
         ///// </summary>

@@ -97,7 +97,7 @@ namespace SAS.Controllers
         public ActionResult copy(string roomId)
         {
             ViewBag.sign = 2;
-            ViewBag.Tag = "修改房型";
+            ViewBag.Tag = "增加房型";
             int RId = Convert.ToInt32(roomId);
             //getRooms(Convert.ToInt32(hotelId));
             //string f = hotelId;

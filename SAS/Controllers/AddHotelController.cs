@@ -148,21 +148,35 @@ namespace SAS.Controllers
             ViewBag.sign = result; getHelpData();
             return View("Create", hotel_info);
         }
+        ///// <summary>
+        ///// 验证酒店名是否存在
+        ///// </summary>
+        ///// <param name="text"></param>
+        ///// <returns></returns>
+        //public int IsOk(string text)
+        //{
+        //    using (db = new HotelDBContent())
+        //    {
+        //        if ((from h in db.hotel where h.h_name_cn == text select h).Count() > 0 || (from h in new HotelDBContent("").hotel where h.h_name_cn == text select h).Count() > 0)
+        //            return 0;
+        //        else
+        //            return 1;
+        //    }
+        
+        //}
         /// <summary>
-        /// 验证酒店名是否存在
+        /// 模糊查询公寓
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
-        public int IsOk(string text)
+        public ActionResult FindHotel(string text)
         {
-            using (db = new HotelDBContent())
-            {
-                if ((from h in db.hotel where h.h_name_cn == text select h).Count() > 0 || (from h in new HotelDBContent("").hotel where h.h_name_cn == text select h).Count() > 0)
-                    return 0;
-                else
-                    return 1;
-            }
-        
+            //using (db = new HotelDBContent())
+            //{
+            //    var f = from h in db.hotel where h.h_name_cn.Contains(text) select new { f = h.h_name_cn, city = from c in db.citys where c.City_id == h.h_city select c.City_name };
+            //}
+            //return "";
+            return View("Create",new hotel_info());
         }
      
         #endregion

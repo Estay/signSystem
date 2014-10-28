@@ -214,6 +214,7 @@
     </Compile>
     <Compile Include="help\RefrenceHelp.cs" />
     <Compile Include="help\StringHelper.cs" />
+    <Compile Include="Models\City_info.cs" />
     <Compile Include="Models\DrrModes.cs" />
     <Compile Include="Models\DrrRules.cs" />
     <Compile Include="Models\Gift.cs" />
