@@ -141,8 +141,6 @@ namespace SAS.Controllers
             {
                
                     room = (from r in db.rooms where r.room_id == room_id select r).SingleOrDefault();
-
-
                     var tempRoom = ((from o in db.rooms where o.h_r_name_cn == name.Trim() && o.hotel_id == hotel_Id select o).Count());
                     ViewBag.exit = tempRoom > 0 ? 1 : 0;
                 

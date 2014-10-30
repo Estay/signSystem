@@ -31,25 +31,26 @@ namespace SAS.help
                             string controllerName = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName.ToLower();
                             //控制器根限
                             string limit = filterContext.HttpContext.Session["limit"].ToString().ToLower();
-                            if (limit == "all")
-                               return;
-
-                            if (!controllerName.ToLower().Contains("login".ToLower()))
+                            if (limit != "all")
                             {
-                                //如果控制器名称不在limit中
-                                if (!filterContext.HttpContext.Session["limit"].ToString().ToLower().Contains(controllerName))
+
+                                if (!controllerName.ToLower().Contains("login".ToLower()))
                                 {
-                                    filterContext.HttpContext.Session.Remove("uid");
-                                    filterContext.HttpContext.Session.Remove("userName");
-                                    filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(new { Controller = "Login", Action = "MyLogin" }));//这里是跳转到Account下的LogOff,自己定义
-                                }
-                                else
-                                {
-                                    
-                                    if (filterContext.ActionParameters.Count > 0)
+                                    #region
+                                    //如果控制器名称不在limit中
+                                    if (!filterContext.HttpContext.Session["limit"].ToString().ToLower().Contains(controllerName))
                                     {
-                                        //for (int i = 0; i < filterContext.ActionParameters.Count; i++)
-                                        //{
+                                        filterContext.HttpContext.Session.Remove("uid");
+                                        filterContext.HttpContext.Session.Remove("userName");
+                                        filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(new { Controller = "Login", Action = "MyLogin" }));//这里是跳转到Account下的LogOff,自己定义
+                                    }
+                                    else
+                                    {
+                                        #region
+                                        if (filterContext.ActionParameters.Count > 0)
+                                        {
+                                            //for (int i = 0; i < filterContext.ActionParameters.Count; i++)
+                                            //{
                                             Dictionary<string, object> dic = filterContext.ActionParameters as Dictionary<string, object>;
                                             foreach (var a in dic)
                                             {
@@ -58,13 +59,13 @@ namespace SAS.help
                                                     string limitHotelId = string.Empty;
                                                     if (filterContext.HttpContext.Session["limitHotelId"] != null)
                                                         limitHotelId = filterContext.HttpContext.Session["limitHotelId"].ToString();
-                                                    if(string.IsNullOrEmpty(limitHotelId))
+                                                    if (string.IsNullOrEmpty(limitHotelId))
                                                         return;
                                                     if (!limitHotelId.Contains(a.Value.ToString()))
                                                     {
                                                         filterContext.HttpContext.Session.Remove("uid");
-                                                          filterContext.HttpContext.Session.Remove("userName");
-                                                      
+                                                        filterContext.HttpContext.Session.Remove("userName");
+
                                                         filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(new { Controller = "Login", Action = "MyLogin" }));//这里是跳转到Account下的LogOff,自己定义
 
                                                     }
@@ -73,11 +74,14 @@ namespace SAS.help
                                                 else
                                                     break;
                                             }
-                                        //}
+                                            //}
+                                        }
+                                        #endregion
                                     }
+
+                                    #endregion
                                 }
-                               
-                     
+                                   
                             }
                         }
                    // }
