@@ -131,22 +131,33 @@ namespace SAS.Controllers
             getRooms(room.hotel_id);
             return View("room", new hotel_room_info());
         }
-        //验证相同房房型是否存在()
-        public ActionResult selectedRoom(string roomId, string name,string hotelId)
+
+        /// <summary>
+        /// //匹配房型
+        /// </summary>
+        /// <param name="roomId"></param>
+        /// <param name="name"></param>
+        /// <param name="hotelId"></param>
+        /// <returns></returns>
+        public ActionResult selectedRoom(string roomId, string name, string hotelId)
         {
             int room_id = 0; int.TryParse(roomId, out room_id);//   int hotel_id = Convert.ToInt32(hotelId);
-            int hotel_Id = 0; int.TryParse(hotelId,out hotel_Id);
+            int hotel_Id = 0; int.TryParse(hotelId, out hotel_Id);
             hotel_room_info room = new hotel_room_info();
             using (db = new HotelDBContent())
             {
-               
-                    room = (from r in db.rooms where r.room_id == room_id select r).SingleOrDefault();
-                    var tempRoom = ((from o in db.rooms where o.h_r_name_cn == name.Trim() && o.hotel_id == hotel_Id select o).Count());
-                    ViewBag.exit = tempRoom > 0 ? 1 : 0;
-                
+
+                room = (from r in db.rooms where r.room_id == room_id select r).SingleOrDefault();
+                //var tempRoom = ((from o in db.rooms where o.h_r_name_cn == name.Trim() && o.hotel_id == hotel_Id select o).Count());
+                //ViewBag.exit = tempRoom > 0 ? 1 : 0;
+
             }
 
-            return View("room",room);
+            helpData(hotel_Id);
+            if (room != null)
+                return View("MyRoom", room);
+            else
+                return View("MyRoom", new hotel_room_info());
         }
 
         public void getfacilities()
@@ -203,12 +214,18 @@ namespace SAS.Controllers
                 
             }
 
-            getfacilities();
-            getRooms(hotel_room_info.hotel_id);
+           
             ViewBag.sign = sign;
             ViewBag.Tag = "增加房型";
-            ViewBag.HoltelId = hotel_room_info.hotel_id;
+            helpData(hotel_room_info.hotel_id);
             return View("Room", new hotel_room_info());
+        }
+
+        private void helpData(int hotel_id)
+        {
+            getfacilities();
+            getRooms(hotel_id);
+            ViewBag.HoltelId = hotel_id;
         }
 
   
