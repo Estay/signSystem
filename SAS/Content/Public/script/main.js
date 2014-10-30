@@ -1,4 +1,4 @@
-/*2014年10月27日15:57:51*/
+/*2014年10月30日18:02:50*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -237,6 +237,7 @@
             width: "400",
             marginTop: 0,
             marginRight: 0,
+            layer: false,
             box_id: "",
             html: "<p>弹出层 by itiwll@estay</p>"
         }, opt = $.extend(defaults, options);
@@ -270,6 +271,9 @@
                 marginLight: opt.marginLight,
                 width: opt.width
             }).html(opt.html).appendTo("body");
+            if (opt.layer) {
+                $('<div style="width: 100%;height: 100%;position: fixed;background: #000;"></div>').appendTo("body");
+            }
             if (opt.position_mod == "center") win_box.find("img").load(function() {
                 win_box.css("top", $(window).height() / 2 - win_box.height() / 2);
             });
@@ -296,10 +300,16 @@
             }
         });
     };
-    $.fn.e_window_kill = function() {
+    $.fn.e_window_kill = function(not_kill_list) {
+        var all = all ? true : false;
         return this.each(function() {
-            $("#" + $(this).attr("e_tip_id")).remove();
-            $(this).removeAttr("e_tip_id");
+            if (not_kill_list) {
+                $("#" + $(this).attr("e_tip_id")).remove();
+                $(this).removeAttr("e_tip_id");
+            } else {
+                $("#" + $(this).attr("e_tip_id")).not("[id*='list']").remove();
+                $(this).removeAttr("e_tip_id");
+            }
         });
     };
 })(jQuery);
@@ -410,12 +420,35 @@
         }
         var opts = $.extend(true, {}, $.fn.autoComplete.defaults, options);
         this.each(function() {
-            var $this = $(this), timeout;
+            var $this = $(this), loading = false, tmp = $this.val(), timeout;
             $this.keyup(function(event) {
                 clearTimeout(timeout);
-                if ($this != "") {
+                var text = $this.val();
+                if (tmp == text || text.length < 3) {
+                    return;
+                }
+                tmp = text;
+                if ($this.val(text) != "") {
                     timeout = setTimeout(function() {
-                        opts.callblack.call($this[0], $this.val());
+                        if (loading) {
+                            return;
+                        }
+                        loading = true;
+                        $.ajax({
+                            url: opts.url,
+                            data: {
+                                text: tmp
+                            }
+                        }).done(function(data) {
+                            if (data) {
+                                console.log(data);
+                                opts.callblack.call($this[0], data);
+                            }
+                        }).fail(function() {
+                            console.log("获取匹配列表error");
+                        }).always(function() {
+                            loading = false;
+                        });
                     }, opts.time);
                 }
             });
@@ -424,9 +457,8 @@
     };
     $.fn.autoComplete.defaults = {
         time: 500,
-        callblack: function(text) {
-            console.log("已输入" + text);
-        }
+        url: "",
+        callblack: function(text) {}
     };
 })(jQuery);
 
@@ -525,7 +557,29 @@
                 alert("服务器验证公寓名称失败");
             });
         }
-    }).autoComplete();
+    }).autoComplete({
+        url: "/common/queryHotel",
+        callblack: function(data) {
+            var arr = data.split("|"), html = "";
+            for (var i = 0; i < arr.length; i++) {
+                var h = arr[i], text = h.slice(0, h.indexOf("["));
+                console.log(h);
+                html = html + '<p><a href="/addhotel/FindHotel?text=' + text + '">' + h + "</a></p>";
+            }
+            $(this).e_window({
+                position_mod: "relative",
+                relative_mod: "bottom",
+                top: 5,
+                left: 0,
+                width: "auto",
+                marginTop: 0,
+                marginRight: 0,
+                layer: false,
+                box_id: "h_list",
+                html: html
+            });
+        }
+    });
     $("#hotel_class,#hotel_theme,#hotel_province,#h_city,#h_administrative_region,#h_business_zone").e_input_tip({
         need_text: "必需选择"
     });

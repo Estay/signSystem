@@ -138,7 +138,33 @@
 	})
 	// 匹配库中的公寓
 	// todo
-	.autoComplete();
+	.autoComplete({
+		url : "/common/queryHotel",
+		callblack : function(data) {
+			var arr = data.split("|"),
+				html = "";
+
+			for (var i = 0; i < arr.length; i++) {
+				var h = arr[i],
+					text = h.slice(0, h.indexOf("["));
+				console.log(h);
+
+				html = html + '<p><a href="/addhotel/FindHotel?text='+ text +'">' + h + '</a></p>';
+			};
+			$(this).e_window({
+				position_mod: "relative", //位置模式 居中：center 相对元素 ：relative  相对窗口：absolute
+				relative_mod: "bottom", //bottom right top left
+				top: 5,
+				left: 0,
+				width: "auto",
+				marginTop: 0,
+				marginRight: 0,
+				layer : false,
+				box_id: "h_list",
+				html: html
+			})
+		}
+	});
 
 	// 所属类别 公寓主题 地址及所在商区 选择验证和提示
 	$("#hotel_class,#hotel_theme,#hotel_province,#h_city,#h_administrative_region,#h_business_zone").e_input_tip({

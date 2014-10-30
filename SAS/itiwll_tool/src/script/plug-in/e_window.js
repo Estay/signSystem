@@ -9,6 +9,7 @@
 			width: "400",
 			marginTop: 0,
 			marginRight: 0,
+			layer : false,
 			box_id: "",
 			html: "<p>弹出层 by itiwll@estay</p>"
 		},
@@ -57,6 +58,10 @@
 					width: opt.width
 				}).html(opt.html)
 				.appendTo('body');
+			if (opt.layer) {
+				$('<div style="width: 100%;height: 100%;position: fixed;background: #000;"></div>')
+				.appendTo('body');
+			};
 			
 			// 有高宽后 调整层位置
 			if (opt.position_mod == "center")
@@ -89,10 +94,16 @@
 			}
 		});
 	}
-	$.fn.e_window_kill = function () {
+	$.fn.e_window_kill = function (not_kill_list) {
+		var all = all?true:false;
 		return this.each(function() {
-			$("#"+$(this).attr('e_tip_id')).remove();
-			$(this).removeAttr('e_tip_id');
+			if(not_kill_list){
+				$("#"+$(this).attr('e_tip_id')).remove();
+				$(this).removeAttr('e_tip_id');
+			}else {
+				$("#"+$(this).attr('e_tip_id')).not("[id*='list']").remove();
+				$(this).removeAttr('e_tip_id');
+			}
 		});
 	}
 })(jQuery);
