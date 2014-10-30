@@ -175,8 +175,8 @@ namespace SAS.Controllers
             using (db = new HotelDBContent())
             {
                 hotel = (from h in db.hotel where h.h_name_cn == text.Trim() && h.source_id==4 select h).SingleOrDefault();
-                 var tempHotel=(from h1 in db.hotel where h1.h_name_cn==text.Trim() && h1.source_id==5 select h1).Count();
-                  ViewBag.exit = tempHotel > 0 ? 1 : 0;
+                 //var tempHotel=(from h1 in db.hotel where h1.h_name_cn==text.Trim() && h1.source_id==5 select h1).Count();
+                 // ViewBag.exit = tempHotel > 0 ? 1 : 0;
                 
             }
             if(hotel!=null)
@@ -297,14 +297,19 @@ namespace SAS.Controllers
                 sign = db.SaveChanges() > 0 ? 1 : 0; ;
             }
 
-            getfacilities();
-            getRooms(hotel_room_info.hotel_id);
-            ViewBag.HoltelId = hotel_room_info.hotel_id;
-            ViewBag.Tag = "增加房型";
-            getRooms(hotel_room_info.hotel_id);
+            helpdata(hotel_room_info.hotel_id);
+           
             ViewBag.sign = sign;
 
             return View("MyRoom",new hotel_room_info());
+        }
+
+        private void helpdata(int hotel_id)
+        {
+            getfacilities();
+            getRooms(hotel_id);
+            ViewBag.HoltelId = hotel_id;
+            ViewBag.Tag = "增加房型";
         }
         /// <summary>
         /// 
@@ -325,7 +330,34 @@ namespace SAS.Controllers
             return RedirectToAction("Create", "AddHotel", new { hotelId = hotelId });
         }
 
+       
+        /// <summary>
+        /// //匹配房型
+        /// </summary>
+        /// <param name="roomId"></param>
+        /// <param name="name"></param>
+        /// <param name="hotelId"></param>
+        /// <returns></returns>
+        public ActionResult selectedRoom(string roomId, string name, string hotelId)
+        {
+            int room_id = 0; int.TryParse(roomId, out room_id);//   int hotel_id = Convert.ToInt32(hotelId);
+            int hotel_Id = 0; int.TryParse(hotelId, out hotel_Id);
+            hotel_room_info room = new hotel_room_info();
+            using (db = new HotelDBContent())
+            {
 
+                room = (from r in db.rooms where r.room_id == room_id select r).SingleOrDefault();
+                //var tempRoom = ((from o in db.rooms where o.h_r_name_cn == name.Trim() && o.hotel_id == hotel_Id select o).Count());
+                //ViewBag.exit = tempRoom > 0 ? 1 : 0;
+
+            }
+            helpdata(hotel_Id);
+            
+            if(room!=null)
+             return View("MyRoom", room);
+            else
+              return View("MyRoom", new hotel_room_info());
+        }
         #endregion
 
         ////////////////////////////////////房型结束
