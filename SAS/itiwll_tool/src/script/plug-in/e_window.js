@@ -58,6 +58,8 @@
 					width: opt.width
 				}).html(opt.html)
 				.appendTo('body');
+
+			// todo 背景遮罩
 			if (opt.layer) {
 				$('<div style="width: 100%;height: 100%;position: fixed;background: #000;"></div>')
 				.appendTo('body');
