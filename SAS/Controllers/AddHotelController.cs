@@ -112,7 +112,7 @@ namespace SAS.Controllers
                    if (hotel_info.hotel_id > 0)
                    {
                        db.Entry(hotel_info).State = EntityState.Modified;
-                     
+                       
                     
                    }
                    else
@@ -122,12 +122,16 @@ namespace SAS.Controllers
                        //if (ModelState.IsValid)
                        //{
                            db.hotel.Add(hotel_info);
-
-
+                          // result = db.SaveChanges() > 0 ? 1 : 0;
+                        
+                           var f = (from h in db.hotel where h.h_name_cn == hotel_info.h_name_cn && h.source_id == 4 select h).FirstOrDefault(); 
+                           if (f != null)
+                               f.h_state = false; //把对应艺龙的酒店干掉
+                             
                            // return RedirectToAction("Room/Create/"+ddh.hotel_id);
                        //}
                    }
-                   result= db.SaveChanges()>0?1:0;
+                   result = db.SaveChanges() > 0 ? 1 : 0;
                    if (result > 0)
                    {
                        var ddh = db.hotel.Select(h => new { h.hotel_id, h.h_id }).Single(h => h.h_id == hotel_info.h_id);
@@ -175,7 +179,8 @@ namespace SAS.Controllers
             using (db = new HotelDBContent())
             {
              //   hotel = (from h in db.hotel where h.h_name_cn == text.Trim() && h.source_id == 4 select new { h=h.h_name_cn,name=h.h_city});
-                hotel = (from h in db.hotel where h.h_name_cn == text.Trim() && h.source_id == 4 select h).SingleOrDefault();
+                hotel = (from h in db.hotel where h.h_name_cn == text.Trim() && h.source_id == 4 select h).FirstOrDefault();
+                hotel.hotel_id = 0;
                  //var tempHotel=(from h1 in db.hotel where h1.h_name_cn==text.Trim() && h1.source_id==5 select h1).Count();
                  // ViewBag.exit = tempHotel > 0 ? 1 : 0;
                 hotel.h_province = (from c in db.citys where c.City_id == hotel.h_city select c.Province_id).SingleOrDefault();
@@ -350,6 +355,8 @@ namespace SAS.Controllers
             {
 
                 room = (from r in db.rooms where r.room_id == room_id select r).SingleOrDefault();
+                room.room_id = 0;
+                room.hotel_id = 0;
                 //var tempRoom = ((from o in db.rooms where o.h_r_name_cn == name.Trim() && o.hotel_id == hotel_Id select o).Count());
                 //ViewBag.exit = tempRoom > 0 ? 1 : 0;
 

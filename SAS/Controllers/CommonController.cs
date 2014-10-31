@@ -54,7 +54,7 @@ namespace SAS.Controllers
             using (db = new HotelDBContent())
             {
                //var ff=(from o in db.hotel where o.hotel_id == hotel_id select o.h_name_cn).FirstOrDefault();
-                var f = (from helong in db.hotel where ((from o in db.hotel where o.hotel_id == hotel_id select o.h_name_cn).FirstOrDefault()).Contains(helong.h_name_cn) where helong.source_id == 4 select helong).SingleOrDefault();
+                var f = (from helong in db.hotel where ((from o in db.hotel where o.hotel_id == hotel_id select o.h_name_cn).FirstOrDefault()).Contains(helong.h_name_cn) where helong.source_id == 4 select helong).FirstOrDefault();
                 if (f != null)
                 {
                     var room = from o in db.rooms where o.h_r_name_cn.Contains(text.Trim()) && o.hotel_id == f.hotel_id select o;
@@ -121,6 +121,7 @@ namespace SAS.Controllers
         /// <returns></returns>
         public string queryHotel(string text)
         {
+        
             string strResult = string.Empty;
             using (db = new HotelDBContent())
             {
