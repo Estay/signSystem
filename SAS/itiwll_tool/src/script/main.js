@@ -665,14 +665,14 @@
 		number:  0,
 		callblack : function(data) {
 			var arr = data.split("|"),
+				hotel_id = $('#hotelId_input').val(),
 				html = "";
 
 			for (var i = 0; i < arr.length; i++) {
-				var h = arr[i],
-					text = h.slice(0, h.indexOf("["));
-				console.log(h);
-
-				html = html + '<p><a href="/myapartment/selectedRoom?text='+ text +'">' + h + '</a></p>';
+				var r = arr[i],
+					room_id = r.slice(r.indexOf(",")),
+					name = r.slice(0,r.indexOf(","));
+				html = html + '<p><a href="/myapartment/selectedRoom?roomId='+ room_id +'&hotelId=' + hotel_id + '">' + name + '</a></p>';
 			};
 			$(this).e_window({
 				position_mod: "relative", //位置模式 居中：center 相对元素 ：relative  相对窗口：absolute
