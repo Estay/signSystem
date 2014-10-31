@@ -1,4 +1,4 @@
-/*2014年10月30日18:02:50*/
+/*2014年10月31日09:15:16*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -456,7 +456,7 @@
         return this;
     };
     $.fn.autoComplete.defaults = {
-        time: 500,
+        time: 300,
         url: "",
         callblack: function(text) {}
     };
@@ -798,7 +798,13 @@
             }
         });
     })();
-    $("#hotel_building,#hotel_room_count").e_input_tip({
+    $("#hotel_building").e_input_tip({
+        need: false,
+        space: "0",
+        error: "格式不正确",
+        rule: /^\d+$/
+    });
+    $(".hotel_room_count").e_input_tip({
         space: "0",
         error: "格式不正确",
         rule: /^\d+$/
@@ -921,6 +927,28 @@
                 }
             }).fail(function() {
                 alert("服务器验证公寓名称失败");
+            });
+        }
+    }).autoComplete({
+        url: "/common/qureyRoom",
+        callblack: function(data) {
+            var arr = data.split("|"), html = "";
+            for (var i = 0; i < arr.length; i++) {
+                var h = arr[i], text = h.slice(0, h.indexOf("["));
+                console.log(h);
+                html = html + '<p><a href="/myapartment/selectedRoom?text=' + text + '">' + h + "</a></p>";
+            }
+            $(this).e_window({
+                position_mod: "relative",
+                relative_mod: "bottom",
+                top: 5,
+                left: 0,
+                width: "auto",
+                marginTop: 0,
+                marginRight: 0,
+                layer: false,
+                box_id: "h_list",
+                html: html
             });
         }
     });

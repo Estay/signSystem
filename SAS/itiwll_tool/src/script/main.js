@@ -489,7 +489,13 @@
 	// });
 
 	// 公寓楼高 房间总数
-	$("#hotel_building,#hotel_room_count").e_input_tip({
+	$("#hotel_building").e_input_tip({
+		need : false,
+		space : "0",
+		error : "格式不正确",
+		rule : /^\d+$/
+	});
+	$('.hotel_room_count').e_input_tip({
 		space : "0",
 		error : "格式不正确",
 		rule : /^\d+$/
@@ -652,6 +658,33 @@
 			.fail(function() {
 				alert("服务器验证公寓名称失败");
 			});	
+		}
+	})
+	.autoComplete({
+		url : "/common/qureyRoom",
+		callblack : function(data) {
+			var arr = data.split("|"),
+				html = "";
+
+			for (var i = 0; i < arr.length; i++) {
+				var h = arr[i],
+					text = h.slice(0, h.indexOf("["));
+				console.log(h);
+
+				html = html + '<p><a href="/myapartment/selectedRoom?text='+ text +'">' + h + '</a></p>';
+			};
+			$(this).e_window({
+				position_mod: "relative", //位置模式 居中：center 相对元素 ：relative  相对窗口：absolute
+				relative_mod: "bottom", //bottom right top left
+				top: 5,
+				left: 0,
+				width: "auto",
+				marginTop: 0,
+				marginRight: 0,
+				layer : false,
+				box_id: "h_list",
+				html: html
+			})
 		}
 	});
 
