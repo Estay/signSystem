@@ -178,6 +178,7 @@ namespace SAS.Controllers
                 hotel = (from h in db.hotel where h.h_name_cn == text.Trim() && h.source_id == 4 select h).SingleOrDefault();
                  //var tempHotel=(from h1 in db.hotel where h1.h_name_cn==text.Trim() && h1.source_id==5 select h1).Count();
                  // ViewBag.exit = tempHotel > 0 ? 1 : 0;
+                hotel.h_province = (from c in db.citys where c.City_id == hotel.h_city select c.Province_id).SingleOrDefault();
                 
             }
             getHelpData();
