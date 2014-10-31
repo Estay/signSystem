@@ -670,7 +670,7 @@
 
 			for (var i = 0; i < arr.length; i++) {
 				var r = arr[i],
-					room_id = r.slice(r.indexOf(",")),
+					room_id = r.slice(r.indexOf(",")+1),
 					name = r.slice(0,r.indexOf(","));
 				html = html + '<p><a href="/myapartment/selectedRoom?roomId='+ room_id +'&hotelId=' + hotel_id + '">' + name + '</a></p>';
 			};
