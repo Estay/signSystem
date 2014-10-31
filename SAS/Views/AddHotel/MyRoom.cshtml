@@ -22,7 +22,7 @@
 
 @using (Html.BeginForm("Create", "AddHotel", FormMethod.Post))
 {
-
+<input id="hotelId_input" type="text" class="hide" name="@Html.DisplayNameFor(model => model.hotel_id)" value="@hotelId">
 <div id="flag_box">
 	<a href="" class="btn_c">1 录入公寓信息</a>
 	<a href="" class="btn_c set">2 录入房型</a>
@@ -185,7 +185,6 @@
                 </div>
                 <div class="float_l">
                     <input id="bed_input" type="text" class="hide" name="@Html.DisplayNameFor(model => model.h_r_bed_type)" value="@Model.h_r_bed_type">
-                    <input id="hotelId_input" type="text" class="hide" name="@Html.DisplayNameFor(model => model.hotel_id)" value="@hotelId">
                     <div id="bed_box">
                         <div class="bed_item hide">
                             <select class="bed">

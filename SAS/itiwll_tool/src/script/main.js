@@ -662,6 +662,7 @@
 	})
 	.autoComplete({
 		url : "/common/qureyRoom",
+		number:  0,
 		callblack : function(data) {
 			var arr = data.split("|"),
 				html = "";

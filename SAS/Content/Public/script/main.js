@@ -1,4 +1,4 @@
-/*2014年10月31日09:15:16*/
+/*2014年10月31日10:05:32*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -424,32 +424,36 @@
             $this.keyup(function(event) {
                 clearTimeout(timeout);
                 var text = $this.val();
-                if (tmp == text || text.length < 3) {
-                    return;
-                }
-                tmp = text;
-                if ($this.val(text) != "") {
-                    timeout = setTimeout(function() {
-                        if (loading) {
-                            return;
+                setTimeout(function() {
+                    if (tmp == text || text.length < opts.number) {
+                        return;
+                    }
+                    tmp = text;
+                    if ($this.val(text) != "") {
+                        timeout = setTimeout(complete, opts.time);
+                    }
+                }, 100);
+                function complete() {
+                    if (loading) {
+                        return;
+                    }
+                    loading = true;
+                    $.ajax({
+                        url: opts.url,
+                        data: {
+                            text: tmp,
+                            hotelId: $("#hotelId_input").val()
                         }
-                        loading = true;
-                        $.ajax({
-                            url: opts.url,
-                            data: {
-                                text: tmp
-                            }
-                        }).done(function(data) {
-                            if (data) {
-                                console.log(data);
-                                opts.callblack.call($this[0], data);
-                            }
-                        }).fail(function() {
-                            console.log("获取匹配列表error");
-                        }).always(function() {
-                            loading = false;
-                        });
-                    }, opts.time);
+                    }).done(function(data) {
+                        if (data) {
+                            console.log(data);
+                            opts.callblack.call($this[0], data);
+                        }
+                    }).fail(function() {
+                        console.log("获取匹配列表error");
+                    }).always(function() {
+                        loading = false;
+                    });
                 }
             });
         });
@@ -458,6 +462,7 @@
     $.fn.autoComplete.defaults = {
         time: 300,
         url: "",
+        number: 3,
         callblack: function(text) {}
     };
 })(jQuery);
@@ -931,6 +936,7 @@
         }
     }).autoComplete({
         url: "/common/qureyRoom",
+        number: 0,
         callblack: function(data) {
             var arr = data.split("|"), html = "";
             for (var i = 0; i < arr.length; i++) {
