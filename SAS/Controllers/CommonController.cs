@@ -45,10 +45,14 @@ namespace SAS.Controllers
         /// <returns></returns>
         public string qureyRoom(string text, string hotelId)
         {
-            int hotel_id = Convert.ToInt32(hotelId);
+            text = "IW1号测试房";
+            int hotel_id=0;int.TryParse(hotelId,out hotel_id); 
             string strRooms = string.Empty;
+
+           
             using (db = new HotelDBContent())
             {
+               
                 var f = (from helong in db.hotel where (from o in db.hotel where o.hotel_id == hotel_id select o.h_name_cn).Contains(helong.h_name_cn) where helong.source_id == 4 select helong).SingleOrDefault();
                 if (f != null)
                 {
