@@ -167,5 +167,16 @@ UpgradeLog*.XML
 
 /SAS/itiwll_tool/node_modules
 SAS/bin/SAS.dll
+SAS/bin/*
 SAS/UploadFiles/
 SAS/admin/UploadFiles/TitleImage/
+SAS/bin/System.Net.Http.Formatting.dll
+SAS/bin/System.Net.Http.Formatting.xml
+SAS/bin/System.Web.Http.dll
+SAS/bin/System.Web.Http.WebHost.dll
+SAS/bin/System.Web.Http.WebHost.xml
+SAS/bin/System.Web.Http.xml
+SAS/bin/System.Web.Http.xml
+SAS/bin/zh-Hans/System.Net.Http.Formatting.resources.dll
+SAS/bin/zh-Hans/System.Web.Http.resources.dll
+SAS/bin/zh-Hans/System.Web.Http.WebHost.resources.dll
