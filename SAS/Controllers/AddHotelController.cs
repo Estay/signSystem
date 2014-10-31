@@ -341,7 +341,7 @@ namespace SAS.Controllers
         /// <param name="name"></param>
         /// <param name="hotelId"></param>
         /// <returns></returns>
-        public ActionResult selectedRoom(string roomId, string name, string hotelId)
+        public ActionResult selectedRoom(string roomId, string hotelId)
         {
             int room_id = 0; int.TryParse(roomId, out room_id);//   int hotel_id = Convert.ToInt32(hotelId);
             int hotel_Id = 0; int.TryParse(hotelId, out hotel_Id);
