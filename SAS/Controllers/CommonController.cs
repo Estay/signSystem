@@ -49,10 +49,11 @@ namespace SAS.Controllers
             int hotel_id=0;int.TryParse(hotelId,out hotel_id); 
             string strRooms = string.Empty;
 
-           
+            if (string.IsNullOrEmpty(text))
+                return strRooms;
             using (db = new HotelDBContent())
             {
-               
+               //var ff=(from o in db.hotel where o.hotel_id == hotel_id select o.h_name_cn).FirstOrDefault();
                 var f = (from helong in db.hotel where ((from o in db.hotel where o.hotel_id == hotel_id select o.h_name_cn).FirstOrDefault()).Contains(helong.h_name_cn) where helong.source_id == 4 select helong).SingleOrDefault();
                 if (f != null)
                 {
@@ -66,7 +67,16 @@ namespace SAS.Controllers
             }
             return strRooms;
         }
-   
+        public int validateSASUser(string tel)
+        {
+            using (db = new HotelDBContent())
+            {
+                if ((from u in db.Merchant_infos where u.tel == tel select u.tel).Count() > 0)
+                    return 1;
+                else
+                    return 0;
+            }
+        }
         ///// <summary>
         ///// 验证酒店名是否存在
         ///// </summary>

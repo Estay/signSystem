@@ -941,7 +941,7 @@
             var arr = data.split("|"), hotel_id = $("#hotelId_input").val(), html = "";
             for (var i = 0; i < arr.length; i++) {
                 var r = arr[i], room_id = r.slice(r.indexOf(",") + 1), name = r.slice(0, r.indexOf(","));
-                html = html + '<p><a href="/myapartment/selectedRoom?roomId=' + room_id + "&hotelId=" + hotel_id + '">' + name + "</a></p>";
+                html = html + '<p><a href="/addhotel/selectedRoom?roomId=' + room_id + "&hotelId=" + hotel_id + '">' + name + "</a></p>";
             }
             $(this).e_window({
                 position_mod: "relative",
