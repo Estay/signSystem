@@ -5,6 +5,7 @@ using System.Web;
 using System.Data.Entity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.SqlClient;
 
 namespace SAS.Models
 {
@@ -600,6 +601,26 @@ namespace SAS.Models
             return list;
         }
 
+        public hotel_info FindElongHotel(string name)
+        {
+            string sqlSum = "select * from ";
+            using (SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                conn.Open();
+                using (SqlCommand cmdSum = new SqlCommand(sqlSum, conn))
+                {
+                    using (SqlDataReader drSum = cmdSum.ExecuteReader())
+                    {
+                        while (drSum.Read())
+                        {
+                           
+                        }
+                    }
+                }
+            }
+            return null;
+ 
+        }
     }
 
 }
