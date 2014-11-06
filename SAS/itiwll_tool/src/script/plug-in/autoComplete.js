@@ -47,7 +47,7 @@
             }
           })
           .done(function(data) {
-            if (data) {
+            if (data != null && data != "" && jQuery.type(data) === "string" ) {
               console.log(data);
               opts.callblack.call($this[0], data);
             }

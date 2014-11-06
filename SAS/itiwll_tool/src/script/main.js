@@ -149,7 +149,7 @@
 					text = h.slice(0, h.indexOf("["));
 				console.log(h);
 
-				html = html + '<p><a href="/addhotel/FindHotel?text='+ text +'">' + h + '</a></p>';
+				html = html + '<p style="background: #FFF;border-bottom: 1px solid #999;"><a href="/addhotel/FindHotel?text='+ text +'">' + h + '</a></p>';
 			};
 			$(this).e_window({
 				position_mod: "relative", //位置模式 居中：center 相对元素 ：relative  相对窗口：absolute
@@ -164,7 +164,9 @@
 				html: html
 			})
 		}
-	});
+	}).keydown(function(event) {
+		$(this).e_window_kill(true);
+	});;
 
 	// 所属类别 公寓主题 地址及所在商区 选择验证和提示
 	$("#hotel_class,#hotel_theme,#hotel_province,#h_city,#h_administrative_region,#h_business_zone").e_input_tip({

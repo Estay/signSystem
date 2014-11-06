@@ -1,4 +1,4 @@
-/*2014年10月31日10:33:17*/
+/*2014年11月3日15:55:56*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -445,7 +445,7 @@
                             hotelId: $("#hotelId_input").val()
                         }
                     }).done(function(data) {
-                        if (data) {
+                        if (data != null && data != "" && jQuery.type(data) === "string") {
                             console.log(data);
                             opts.callblack.call($this[0], data);
                         }
@@ -569,7 +569,7 @@
             for (var i = 0; i < arr.length; i++) {
                 var h = arr[i], text = h.slice(0, h.indexOf("["));
                 console.log(h);
-                html = html + '<p><a href="/addhotel/FindHotel?text=' + text + '">' + h + "</a></p>";
+                html = html + '<p style="background: #FFF;border-bottom: 1px solid #999;"><a href="/addhotel/FindHotel?text=' + text + '">' + h + "</a></p>";
             }
             $(this).e_window({
                 position_mod: "relative",
@@ -584,6 +584,8 @@
                 html: html
             });
         }
+    }).keydown(function(event) {
+        $(this).e_window_kill(true);
     });
     $("#hotel_class,#hotel_theme,#hotel_province,#h_city,#h_administrative_region,#h_business_zone").e_input_tip({
         need_text: "必需选择"
@@ -941,7 +943,7 @@
             var arr = data.split("|"), hotel_id = $("#hotelId_input").val(), html = "";
             for (var i = 0; i < arr.length; i++) {
                 var r = arr[i], room_id = r.slice(r.indexOf(",") + 1), name = r.slice(0, r.indexOf(","));
-                html = html + '<p><a href="/addhotel/selectedRoom?roomId=' + room_id + "&hotelId=" + hotel_id + '">' + name + "</a></p>";
+                html = html + '<p><a href="/myapartment/selectedRoom?roomId=' + room_id + "&hotelId=" + hotel_id + '">' + name + "</a></p>";
             }
             $(this).e_window({
                 position_mod: "relative",
