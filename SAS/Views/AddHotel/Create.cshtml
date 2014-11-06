@@ -391,13 +391,15 @@
 
     </script>
     <!-- 有重复公寓提示 -->
-    <script>
-    (function(){
-        var have =  @ViewBag.exit;
-        if (have == 0) {
+<input id ="have"  class="hide" value="@ViewBag.exit" />
+
+<script>
+    (function () {
+        var have = document.getElementById("have").value; 
+           if (have+0 === 0) {
             alert("此公寓已存在");
-        };
+            };
     })();
-    </script>
+</script>
 
 }
