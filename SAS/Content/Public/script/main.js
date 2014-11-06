@@ -1,4 +1,4 @@
-/*2014年11月3日15:55:56*/
+/*2014年11月6日11:36:20*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -422,6 +422,7 @@
         this.each(function() {
             var $this = $(this), loading = false, tmp = $this.val(), timeout;
             $this.keyup(function(event) {
+                $this.e_window_kill(true);
                 clearTimeout(timeout);
                 var text = $this.val();
                 setTimeout(function() {
@@ -482,7 +483,7 @@
         space: "用户名",
         need: true
     });
-    $("#login_password_input_show").click(function(event) {
+    $("#login_password_input_show").focusin(function(event) {
         $(this).hide();
         $(this).prev().show().focus();
     });
@@ -584,8 +585,6 @@
                 html: html
             });
         }
-    }).keydown(function(event) {
-        $(this).e_window_kill(true);
     });
     $("#hotel_class,#hotel_theme,#hotel_province,#h_city,#h_administrative_region,#h_business_zone").e_input_tip({
         need_text: "必需选择"

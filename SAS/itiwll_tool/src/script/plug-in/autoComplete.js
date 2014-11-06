@@ -14,6 +14,8 @@
         tmp = $this.val(),
         timeout;
       $this.keyup(function(event) {
+        $this.e_window_kill(true);
+        
         clearTimeout(timeout);
         var text = $this.val();
 

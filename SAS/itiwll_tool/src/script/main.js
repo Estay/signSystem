@@ -38,7 +38,7 @@
 
 
 
-	$("#login_password_input_show").click(function(event) {
+	$("#login_password_input_show").focusin(function(event) {
 		$(this).hide();
 		$(this).prev().show().focus();
 	});
@@ -164,9 +164,7 @@
 				html: html
 			})
 		}
-	}).keydown(function(event) {
-		$(this).e_window_kill(true);
-	});;
+	});
 
 	// 所属类别 公寓主题 地址及所在商区 选择验证和提示
 	$("#hotel_class,#hotel_theme,#hotel_province,#h_city,#h_administrative_region,#h_business_zone").e_input_tip({
