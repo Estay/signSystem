@@ -28,7 +28,7 @@
 
             tmp = text;
 
-            if ($this.val(text) != "") {
+            if ($this.val() != "") {
               // 计时 
               timeout = setTimeout(complete, opts.time);
             }
