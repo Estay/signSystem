@@ -197,6 +197,8 @@ namespace SAS.Controllers
                     GIds += item + ",";
                 }
                 hotel.GeneralAmenities = GIds;
+                var tempRoom = ((from o in db.hotel where o.h_name_cn == text.Trim() && o.source_id==5 && o.h_state==true select o).Count());
+                ViewBag.exit = tempRoom > 0 ? 0 : 1;
             }
             getHelpData();
             if(hotel!=null)
@@ -358,7 +360,7 @@ namespace SAS.Controllers
         /// <param name="name"></param>
         /// <param name="hotelId"></param>
         /// <returns></returns>
-        public ActionResult selectedRoom(string roomId, string hotelId)
+        public ActionResult selectedRoom(string name,string roomId, string hotelId)
         {
             int room_id = 0; int.TryParse(roomId, out room_id);//   int hotel_id = Convert.ToInt32(hotelId);
             int hotel_Id = 0; int.TryParse(hotelId, out hotel_Id);
@@ -367,10 +369,10 @@ namespace SAS.Controllers
             {
 
                 room = (from r in db.rooms where r.room_id == room_id select r).SingleOrDefault();
-                room.room_id = 0;
-                room.hotel_id = 0;
-                //var tempRoom = ((from o in db.rooms where o.h_r_name_cn == name.Trim() && o.hotel_id == hotel_Id select o).Count());
-                //ViewBag.exit = tempRoom > 0 ? 1 : 0;
+                room.room_id = 0; room.hotel_id = 0;
+
+                var tempRoom = ((from o in db.rooms where o.h_r_name_cn == name.Trim() && o.hotel_id == hotel_Id select o).Count());
+                ViewBag.exit = tempRoom > 0 ? 0 : 1;
 
             }
             helpdata(hotel_Id);
