@@ -390,5 +390,14 @@
         }
 
     </script>
+    <!-- 有重复公寓提示 -->
+    <script>
+    (function(){
+        var have =  @ViewBag.exit;
+        if (have == 0) {
+            alert("此公寓已存在");
+        };
+    })();
+    </script>
 
 }

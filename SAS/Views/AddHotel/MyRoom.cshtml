@@ -284,7 +284,15 @@
     
 </div>
     
-
+<!-- 有重复房型提示 -->
+<script>
+(function(){
+    var have =  @ViewBag.exit;
+    if (have == 0) {
+        alert("此房型已存在");
+    };
+})();
+</script>
 
 
 }

@@ -1,4 +1,4 @@
-/*2014年11月6日13:47:27*/
+/*2014年11月6日16:00:37*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -430,7 +430,7 @@
                         return;
                     }
                     tmp = text;
-                    if ($this.val(text) != "") {
+                    if ($this.val() != "") {
                         timeout = setTimeout(complete, opts.time);
                     }
                 }, 100);
@@ -943,7 +943,7 @@
             action_url = $("#action").val() == "addhotel" ? "/addhotel/selectedRoom" : "/myapartment/selectedRoom";
             for (var i = 0; i < arr.length; i++) {
                 var r = arr[i], room_id = r.slice(r.indexOf(",") + 1), name = r.slice(0, r.indexOf(","));
-                html = html + '<p><a href="' + action_url + "?roomId=" + room_id + "&hotelId=" + hotel_id + '">' + name + "</a></p>";
+                html = html + '<p><a href="' + action_url + "?roomId=" + room_id + "&hotelId=" + hotel_id + '&name="' + name + '">' + name + "</a></p>";
             }
             $(this).e_window({
                 position_mod: "relative",
