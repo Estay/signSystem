@@ -104,7 +104,7 @@ namespace SAS.Controllers
             using (db = new HotelDBContent())
             {
                
-                if((from h in db.hotel where  h.h_name_cn==text.Trim() select h).Count()>0)
+                if((from h in db.hotel where  h.h_name_cn==text.Trim() && h.source_id==5 && h.h_state==true select h).Count()>0)
                 return 0;
                 else
                 return 1;

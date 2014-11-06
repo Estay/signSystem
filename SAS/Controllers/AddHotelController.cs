@@ -184,7 +184,19 @@ namespace SAS.Controllers
                  //var tempHotel=(from h1 in db.hotel where h1.h_name_cn==text.Trim() && h1.source_id==5 select h1).Count();
                  // ViewBag.exit = tempHotel > 0 ? 1 : 0;
                 hotel.h_province = (from c in db.citys where c.City_id == hotel.h_city select c.Province_id).SingleOrDefault();
-                
+                string []serveice = hotel.GeneralAmenities.Split('、');
+                string[] temp = new string[serveice.Length];
+                for (int i = 0; i < serveice.Length; i++)
+                {
+                      temp[i]=serveice[i];
+                }
+                var GeneraIds = from g in db.general where temp.Contains(g.Title) select g.Id;
+                string GIds = string.Empty;
+                foreach (var item in GeneraIds)
+                {
+                    GIds += item + ",";
+                }
+                hotel.GeneralAmenities = GIds;
             }
             getHelpData();
             if(hotel!=null)
@@ -272,7 +284,7 @@ namespace SAS.Controllers
 
         public void getfacilities()
         {
-            ViewData["facilities"] = DBhelp.GetSelectDataByTable("Facilities_info");//facilities
+            ViewData["facilities"] = DBhelp.GetSelectDataByTable("RoomAmenities_info");//facilities
         }
         //
         // POST: /Room/Create
@@ -362,7 +374,6 @@ namespace SAS.Controllers
 
             }
             helpdata(hotel_Id);
-            
             if(room!=null)
              return View("MyRoom", room);
             else

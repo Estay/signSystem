@@ -217,6 +217,7 @@
     <Compile Include="Models\City_info.cs" />
     <Compile Include="Models\DrrModes.cs" />
     <Compile Include="Models\DrrRules.cs" />
+    <Compile Include="Models\GeneralAmenities_info.cs" />
     <Compile Include="Models\Gift.cs" />
     <Compile Include="Models\GuaranteeRule.cs" />
     <Compile Include="Models\Hotel_comment_info.cs" />

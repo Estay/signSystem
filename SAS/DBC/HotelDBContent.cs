@@ -42,5 +42,6 @@ namespace SAS.DBC
 
         public DbSet<TempAdvise> TempAdvises { get; set; }
         public DbSet<City_info> citys { get; set; }
+        public DbSet<GeneralAmenities_info> general { get; set; }
     }
 }
