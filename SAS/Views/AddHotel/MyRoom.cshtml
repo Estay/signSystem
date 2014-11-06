@@ -23,6 +23,7 @@
 @using (Html.BeginForm("Create", "AddHotel", FormMethod.Post))
 {
 <input id="hotelId_input" type="text" class="hide" name="@Html.DisplayNameFor(model => model.hotel_id)" value="@hotelId">
+<input id="action" type="text" class="hide" value="addhotel">
 <div id="flag_box">
 	<a href="" class="btn_c">1 录入公寓信息</a>
 	<a href="" class="btn_c set">2 录入房型</a>

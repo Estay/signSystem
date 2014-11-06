@@ -1,4 +1,4 @@
-/*2014年11月6日11:36:20*/
+/*2014年11月6日13:47:27*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -940,9 +940,10 @@
         number: 0,
         callblack: function(data) {
             var arr = data.split("|"), hotel_id = $("#hotelId_input").val(), html = "";
+            action_url = $("#action").val() == "addhotel" ? "/addhotel/selectedRoom" : "/myapartment/selectedRoom";
             for (var i = 0; i < arr.length; i++) {
                 var r = arr[i], room_id = r.slice(r.indexOf(",") + 1), name = r.slice(0, r.indexOf(","));
-                html = html + '<p><a href="/myapartment/selectedRoom?roomId=' + room_id + "&hotelId=" + hotel_id + '">' + name + "</a></p>";
+                html = html + '<p><a href="' + action_url + "?roomId=" + room_id + "&hotelId=" + hotel_id + '">' + name + "</a></p>";
             }
             $(this).e_window({
                 position_mod: "relative",
