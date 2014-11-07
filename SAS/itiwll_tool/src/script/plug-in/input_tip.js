@@ -19,6 +19,7 @@
 					width: "auto",
 					html: "<div class='red_tip_box'>"+error+"</div>"
 				})
+				.attr('rules_error', true);
 			},
 			space_callback : function(need_text,el) {
 				$(this).e_window({
@@ -26,6 +27,7 @@
 					width: "auto",
 					html: "<div class='red_tip_box'>"+need_text+"</div>"
 				})
+				.attr('rules_error', true);
 			},
 			success_callback : function(el) {
 				el.e_window_kill();
