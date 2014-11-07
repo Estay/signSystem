@@ -39,8 +39,11 @@
 
 			if (!el.val()) {
 				init(el);
-			};
-
+			}else {				
+				if (settings.check) {	
+					ruleValidate(el,el.val());
+				};
+			}
 
 
 			// 获得焦点

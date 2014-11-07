@@ -1,4 +1,4 @@
-/*2014年11月6日16:19:53*/
+/*2014年11月7日10:42:45*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -33,6 +33,10 @@
             var el = $(this), form = el.parents("form");
             if (!el.val()) {
                 init(el);
+            } else {
+                if (settings.check) {
+                    ruleValidate(el, el.val());
+                }
             }
             el.focusin(function(event) {
                 var el = $(this);
@@ -556,6 +560,7 @@
             }).done(function(data) {
                 if (data == 0) {
                     error_callback("此公寓已存在", el);
+                    el.attr("rules_error", true);
                 } else {
                     success_callback(el);
                 }
