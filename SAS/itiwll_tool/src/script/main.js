@@ -127,7 +127,6 @@
 			.done(function(data) {
 				if(data==0){
 					error_callback("此公寓已存在",el);
-					el.attr("rules_error",true);
 				}else{
 					success_callback(el);
 				}

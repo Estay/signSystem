@@ -1,4 +1,4 @@
-/*2014年11月7日10:42:45*/
+/*2014年11月7日10:46:50*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -14,14 +14,14 @@
                     top: 5,
                     width: "auto",
                     html: "<div class='red_tip_box'>" + error + "</div>"
-                });
+                }).attr("rules_error", true);
             },
             space_callback: function(need_text, el) {
                 $(this).e_window({
                     top: 5,
                     width: "auto",
                     html: "<div class='red_tip_box'>" + need_text + "</div>"
-                });
+                }).attr("rules_error", true);
             },
             success_callback: function(el) {
                 el.e_window_kill();
@@ -560,7 +560,6 @@
             }).done(function(data) {
                 if (data == 0) {
                     error_callback("此公寓已存在", el);
-                    el.attr("rules_error", true);
                 } else {
                     success_callback(el);
                 }
