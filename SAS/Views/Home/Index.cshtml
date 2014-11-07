@@ -1,105 +1,88 @@
 ﻿@{
-    Layout = "~/Views/Shared/_Index_Layout.cshtml";
-    ViewBag.Title = "主页";
-    ViewBag.Description = "主页";
-    ViewBag.Keywords = "主页";
+    ViewBag.Title = "一呆公寓管理系统";
     
+    
+    //login/Index/ 控制器地址
+    
+    // ViewBag.newOrder;   //新单
+    
+
+    // ViewBag.NewComment; //未回复的评论
+
+    // ViewBag.totalpPrice;  //上个月总收入
+    // ViewBag.commission;   //佣金
+     
+    // ViewBag.guranteePrice; //担保金额
+
+    
+    ViewBag.index = "set";
+    string limit =Session["limit"]!=null? Session["limit"].ToString():"";
+        
 }
 
-<div class="mainlayout">
-	<style>
-/*		a,input,select {
-			margin: 10px;
-		}*/
-	</style>
 
-	<h1>欢迎使用一呆公寓管理系统</h1>
-
-	<p>默认文字大小行高</p>
-	<p>默认文字大小行高</p>
-	<br>
-	<br>
-	<br>
-	<p>
-		<a href="#" class="btn_a">方形按钮</a>
-		&nbsp;
-		<a href="" class="btn_a btn_Disabled">禁用</a>
-	</p>
-	<br>
-	<p>
-		<a href="#" class="btn_b">圆角按钮</a>
-		<a href="#" class="btn_b btn_Disabled">禁用</a>
-	</p>
-	<br>
-	<p>
-		<a href="" class="btn_c">第三类按钮</a>
-		&nbsp;
-		<a href="" class="btn_c set">选中</a>
-	</p>
-	<p>
-		<a href="" class="btn_d">第四类按钮</a>
-		&nbsp;
-		<a href="" class="btn_d set">选中</a>
-	</p>
-	<br>
-	<br>
-	<br>
-	<p>
-		<label >输入<input type="text"></label>
-		<label >输入<input type="password"></label>
-	</p>
-	<p>
-		<label class="checkbox"><input name="dx" type="checkbox">多选</label>
-		<label class="checkbox"><input name="dx" type="checkbox">多选</label>
-		<label class="checkbox"><input name="dx" type="checkbox">多选</label>
-		<label class="checkbox"><input name="dx" type="checkbox">多选</label>
-	</p>
-	<p>
-		<label >
-			下拉选框
-			<select name="select" id="">
-				<option value="值一">值一</option>
-				<option value="值一">值一</option>
-				<option value="值一">值一</option>
-				<option value="值一">值一</option>
-			</select>
-		</label>
-	</p>
-	<br>
-	<br>
-	<br>
-	<div class="box_a">
-		<h2>
-			box_a
-			<a href="#" class="float_r">查睦详情</a>
-		</h2>
+<div id="content" class="clear">
+	<div class="float_l">
+        @if(limit=="all")
+        {
+		<div class="box_a index_mod">
+			<h2>订单（@ViewBag.newOrder）<a href="/Order/MyOrder" class="float_r">查看详情</a></h2>
+			<p>有<span class="col_blue"><b>@ViewBag.newOrder</b></span>张未处理订单</p>
+		</div>
+		<div class="box_a index_mod">
+			<h2>点评（@ViewBag.NewComment）<a href="/Comment/QueryComment" class="float_r">查看详情</a></h2>
+			<p>有<span class="col_blue"><b>@ViewBag.newOrder</b></span>点评未回复</p>
+		</div>
+		<div class="box_a index_mod">
+			<h2>订单（@ViewBag.newOrder）<a href="/Bill/QureyBill" class="float_r">查看详情</a></h2>
+			<p>
+				上月账单已出 &nbsp;&nbsp;&nbsp;&nbsp;
+				共计：收入￥<span class="col_red">@ViewBag.totalpPrice</span>&nbsp;&nbsp;
+				佣金￥<span class="col_red">@ViewBag.commission</span>&nbsp;&nbsp;
+				担保￥<span class="col_red">@ViewBag.guranteePrice</span>&nbsp;&nbsp;
+			</p>
+			
+		</div>
+        }
+        else
+        {
+            if (limit.Contains("MyApartMent".ToLower()))
+            {
+              	<div class="box_a index_mod">
+			      <h2>订单（@ViewBag.newOrder）<a href="/Order/MyOrder" class="float_r">查看详情</a></h2>
+		 	      <p>有<span class="col_blue"><b>@ViewBag.newOrder</b></span>张未处理订单</p>
+	     	    </div>
+		       <div class="box_a index_mod">
+			     <h2>点评（@ViewBag.NewComment）<a href="/Comment/QueryComment" class="float_r">查看详情</a></h2>
+			     <p>有<span class="col_blue"><b>@ViewBag.newOrder</b></span>点评未回复</p>
+		        </div>
+            }
+            else if (limit.Contains("Comment".ToLower()))
+            {
+                  <div class="box_a index_mod">
+		            <h2>点评（@ViewBag.NewComment）<a href="/Comment/QueryComment" class="float_r">查看详情</a></h2>
+			       <p>有<span class="col_blue"><b>@ViewBag.newOrder</b></span>点评未回复</p>
+		          </div>
+            }
+            else if (limit.Contains("bill".ToLower()))
+            {
+                <div class="box_a index_mod">
+			    <h2>订单（@ViewBag.newOrder）<a href="/Bill/QureyBill" class="float_r">查看详情</a></h2>
+			    <p>
+			 	  上月账单已出 &nbsp;&nbsp;&nbsp;&nbsp;
+				  共计：收入￥<span class="col_red">@ViewBag.totalpPrice</span>&nbsp;&nbsp;
+				  佣金￥<span class="col_red">@ViewBag.commission</span>&nbsp;&nbsp;
+				  担保￥<span class="col_red">@ViewBag.guranteePrice</span>&nbsp;&nbsp;
+			   </p>
+			
+		      </div>
+            }
+        }
 	</div>
-	<br>
-	<br>
-	<br>
-		<a href="" class="btn_d set">1</a><a href="" class="btn_c">2</a>
-		<div class="box_b">
-		<h2>
-			box_b
-		</h2>
+	<div class="float_r">
+		<div class="box_a index_mod_b">
+			<h2>系统公告</h2>
+			<p>欢迎使用一呆公寓在线管理系统！</p>
+		</div>
 	</div>
-	<br>
-	<br>
-	<br>
-	<table cellspacing="0">
-		<tbody>
-			<tr>
-				<th>th</th>
-				<th>th</th>
-			</tr>
-			<tr>
-				<td>td</td>
-				<td>td</td>
-			</tr>
-			<tr>
-				<td>td</td>
-				<td>td</td>
-			</tr>
-		</tbody>
-	</table>
 </div>

@@ -71,7 +71,7 @@ namespace SAS.Controllers
             {
                 using (db = new HotelDBContent())
                 {
-                    Merchant_info mer = (from m in db.Merchant_infos where m.tel == merchant_info.tel &&m.status==true select m).SingleOrDefault();
+                    Merchant_info mer = (from m in db.Merchant_infos where m.mobliephone == merchant_info.tel &&m.status==true select m).SingleOrDefault();
                     if (mer != null)
                     {
                       //  new help.HotelInfoHelp().Md5(merchant_info.password);
@@ -83,9 +83,9 @@ namespace SAS.Controllers
                             Session["menu"] = new help.HotelInfoHelp().GetLimit(mer, out limit); Session["limit"] = limit; Session["limitHotelId"] = mer.limitHotelId;
 
                             Session["userName"] = mer.name;
-                            Session["uid"] = mer.tel;
+                            Session["uid"] = mer.mobliephone;
                             Session.Remove("code");
-                            return RedirectToAction("index", "login");
+                            return RedirectToAction("index", "home");
                         }
                         else
                         {
@@ -111,15 +111,15 @@ namespace SAS.Controllers
             ViewBag.code = Session["code"];
             return View();
         }
-        /// <summary>
-        /// 首页加载
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult Index()
-        {
-            getIndexData();
-            return View();
-        }
+        ///// <summary>
+        ///// 首页加载
+        ///// </summary>
+        ///// <returns></returns>
+        //public ActionResult Index()
+        //{
+        //   getIndexData();
+        //    return View();
+        //}
 
 
         /// <summary>
