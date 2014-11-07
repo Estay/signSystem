@@ -672,7 +672,7 @@
 				var r = arr[i],
 					room_id = r.slice(r.indexOf(",")+1),
 					name = r.slice(0,r.indexOf(","));
-				html = html + '<p><a href="'+action_url+'?roomId='+ room_id +'&hotelId=' + hotel_id + '&name="' + name + '">' + name + '</a></p>';
+				html = html + '<p><a href="'+action_url+'?roomId='+ room_id +'&hotelId=' + hotel_id + '">' + name + '</a></p>';
 			};
 			$(this).e_window({
 				position_mod: "relative", //位置模式 居中：center 相对元素 ：relative  相对窗口：absolute
