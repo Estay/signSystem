@@ -46,25 +46,28 @@ namespace SAS.help
            // uId=
             using (db = new HotelDBContent())
             {
-                var member =(from m in db.Merchant_infos where m.tel == uId select m).SingleOrDefault();
-                if (member.admin)
-                {
-                    return (from h in db.hotel where h.u_id == uId && h.h_state == true select h).ToList();
-                }
-                else
-                {
+                var member =(from m in db.Merchant_infos where m.mobliephone == uId select m).SingleOrDefault();
+                //if (member != null)
+                //{
+                    if (member.admin)
                     {
-
-                        string[] str = string.IsNullOrEmpty(member.limitHotelId) ? new string []{"1" } : member.limitHotelId.Split(',');
-                        int[] strHotelId = new int[str.Length];
-                        for (int i = 0; i < str.Length; i++)
-                        {
-                            strHotelId[i] = Convert.ToInt32(str[i]);
-                        }
-                        return (from h in db.hotel where h.u_id == uId && h.h_state == true && strHotelId.Contains(h.hotel_id) select h).ToList();
+                        return (from h in db.hotel where h.u_id == uId && h.h_state == true select h).ToList();
                     }
-            
-                }
+                    else
+                    {
+                        {
+
+                            string[] str = string.IsNullOrEmpty(member.limitHotelId) ? new string[] { "1" } : member.limitHotelId.Split(',');
+                            int[] strHotelId = new int[str.Length];
+                            for (int i = 0; i < str.Length; i++)
+                            {
+                                strHotelId[i] = Convert.ToInt32(str[i]);
+                            }
+                            return (from h in db.hotel where h.u_id == uId && h.h_state == true && strHotelId.Contains(h.hotel_id) select h).ToList();
+                        }
+
+                    }
+                //}
                   
             }
         }

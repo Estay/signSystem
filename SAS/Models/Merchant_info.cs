@@ -245,7 +245,7 @@ namespace SAS.Models
         /// <summary>
         /// 
         /// </summary>
-        public string sex
+        public string Sex
         {
             set { _sex = value; }
             get { return _sex; }
@@ -317,7 +317,7 @@ namespace SAS.Models
 
                           // string f = mer.password != "******" ? new help.HotelInfoHelp().Md5(mer.password) : merchant.password; merchant.utime = DateTime.Now;
                             merchant.password = mer.password != "******" ? new help.HotelInfoHelp().Md5(mer.password) : merchant.password; merchant.utime = DateTime.Now;
-                            merchant.name = mer.name; merchant.tel = mer.tel; merchant.sex = mer.sex; merchant.startTime = mer.startTime; merchant.endTime = mer.endTime; merchant.limit = mer.limit; merchant.limitName = mer.limitName; merchant.limitHotelId = mer.limitHotelId; merchant.limitHotelName = mer.limitHotelName; 
+                            merchant.name = mer.name; merchant.tel = mer.tel; merchant.Sex = mer.Sex; merchant.startTime = mer.startTime; merchant.endTime = mer.endTime; merchant.limit = mer.limit; merchant.limitName = mer.limitName; merchant.limitHotelId = mer.limitHotelId; merchant.limitHotelName = mer.limitHotelName; 
                       
                         result = db.SaveChanges() > 0 ? 1 : 0; ;
                     }
