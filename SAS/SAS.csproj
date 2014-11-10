@@ -497,7 +497,6 @@
     </Content>
     <Content Include="Views\Bill\MyUser.cshtml" />
     <Content Include="Views\User\MyUser.cshtml" />
-    <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\AddHotel\Faiture.cshtml" />
     <Content Include="Views\AddHotel\Success.cshtml" />
   </ItemGroup>

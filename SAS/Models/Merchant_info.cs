@@ -12,13 +12,16 @@ namespace SAS.Models
     {
         public Merchant_info()
         { }
+        
         #region Model
         private int _id;
         private string _guid;
+        private string _username;
         private string _name;
         private string _password;
         private string _company;
         private string _address;
+        private string _mobliephone;
         private string _tel;
         private string _email;
         private DateTime _ctime;
@@ -26,27 +29,22 @@ namespace SAS.Models
         private string _website;
         private DateTime? _deadlines;
         private string _operator_id;
+        private int? _checkstate = 2;
         private bool _status;
+        private string _notthroughexplain;
         private bool _display = true;
         private bool _admin;
         private string _parents;
-        private string _starttime;
-        private string _endtime;
         private string _limit;
         private string _limitname;
         private string _limithotelname;
         private string _limithotelid;
-        private string sex;
-
-        public string Sex
-        {
-            get { return sex; }
-            set { sex = value; }
-        }
+        private string _sex;
+        private string _starttime;
+        private string _endtime;
         /// <summary>
         /// 商户编号
         /// </summary>
-          [KeyAttribute]
         public int id
         {
             set { _id = value; }
@@ -59,6 +57,14 @@ namespace SAS.Models
         {
             set { _guid = value; }
             get { return _guid; }
+        }
+        /// <summary>
+        /// 用户名
+        /// </summary>
+        public string username
+        {
+            set { _username = value; }
+            get { return _username; }
         }
         /// <summary>
         /// 商户名
@@ -93,7 +99,15 @@ namespace SAS.Models
             get { return _address; }
         }
         /// <summary>
-        /// 联系电话
+        /// 移动电话
+        /// </summary>
+        public string mobliephone
+        {
+            set { _mobliephone = value; }
+            get { return _mobliephone; }
+        }
+        /// <summary>
+        /// 固定电话
         /// </summary>
         public string tel
         {
@@ -149,12 +163,28 @@ namespace SAS.Models
             get { return _operator_id; }
         }
         /// <summary>
-        /// 状态  true：启用| false： 待启用
+        /// 1为审核通过 0为不通过 2为正在审核中  默认2  为0则补充notThroughExplain
+        /// </summary>
+        public int? CheckState
+        {
+            set { _checkstate = value; }
+            get { return _checkstate; }
+        }
+        /// <summary>
+        /// 
         /// </summary>
         public bool status
         {
             set { _status = value; }
             get { return _status; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string notThroughExplain
+        {
+            set { _notthroughexplain = value; }
+            get { return _notthroughexplain; }
         }
         /// <summary>
         /// true：展示 | false：隐藏
@@ -183,6 +213,46 @@ namespace SAS.Models
         /// <summary>
         /// 
         /// </summary>
+        public string limit
+        {
+            set { _limit = value; }
+            get { return _limit; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string limitName
+        {
+            set { _limitname = value; }
+            get { return _limitname; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string limitHotelName
+        {
+            set { _limithotelname = value; }
+            get { return _limithotelname; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string limitHotelId
+        {
+            set { _limithotelid = value; }
+            get { return _limithotelid; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Sex
+        {
+            set { _sex = value; }
+            get { return _sex; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
         public string startTime
         {
             set { _starttime = value; }
@@ -195,38 +265,6 @@ namespace SAS.Models
         {
             set { _endtime = value; }
             get { return _endtime; }
-        }
-        /// <summary>
-        /// 菜单ID，对应sasMenu里面的ID，以逗号分隔
-        /// </summary>
-        public string limit
-        {
-            set { _limit = value; }
-            get { return _limit; }
-        }
-        /// <summary>
-        /// 菜单名称，对应sasMenu里面的title，以逗号分隔
-        /// </summary>
-        public string limitName
-        {
-            set { _limitname = value; }
-            get { return _limitname; }
-        }
-        /// <summary>
-        /// 操作的酒店名称,对应的酒店名称,以逗号分隔
-        /// </summary>
-        public string limitHotelName
-        {
-            set { _limithotelname = value; }
-            get { return _limithotelname; }
-        }
-        /// <summary>
-        /// 操作的酒店Id,对应的酒店id,以逗号分隔
-        /// </summary>
-        public string limitHotelId
-        {
-            set { _limithotelid = value; }
-            get { return _limithotelid; }
         }
         #endregion Model
         /// <summary>
@@ -279,7 +317,7 @@ namespace SAS.Models
 
                           // string f = mer.password != "******" ? new help.HotelInfoHelp().Md5(mer.password) : merchant.password; merchant.utime = DateTime.Now;
                             merchant.password = mer.password != "******" ? new help.HotelInfoHelp().Md5(mer.password) : merchant.password; merchant.utime = DateTime.Now;
-                            merchant.name = mer.name; merchant.tel = mer.tel; merchant.sex = mer.sex; merchant.startTime = mer.startTime; merchant.endTime = mer.endTime; merchant.limit = mer.limit; merchant.limitName = mer.limitName; merchant.limitHotelId = mer.limitHotelId; merchant.limitHotelName = mer.limitHotelName; 
+                            merchant.name = mer.name; merchant.tel = mer.tel; merchant.Sex = mer.Sex; merchant.startTime = mer.startTime; merchant.endTime = mer.endTime; merchant.limit = mer.limit; merchant.limitName = mer.limitName; merchant.limitHotelId = mer.limitHotelId; merchant.limitHotelName = mer.limitHotelName; 
                       
                         result = db.SaveChanges() > 0 ? 1 : 0; ;
                     }

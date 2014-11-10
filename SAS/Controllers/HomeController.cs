@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SAS.help;
 
 namespace SAS.Controllers
 {
@@ -10,9 +11,26 @@ namespace SAS.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "第三方签约";
-            ViewBag.Title = "枯在霜压顶fs";
+            getIndexData();
             return View();
+        }
+        /// <summary>
+        /// 首页数据统计
+        /// </summary>
+        public void getIndexData()
+        {
+            decimal orderCount = 0, noreplyComment = 0, totalPrice = 0, commission = 0, guranteePrice = 0;
+            new DBhelp().getIndexData(out  orderCount, out  noreplyComment, out  totalPrice, out  commission, out  guranteePrice);
+
+
+            ViewBag.newOrder = orderCount;   //新单
+
+            ViewBag.NewComment = noreplyComment; //未回复的评论
+
+            ViewBag.totalpPrice = totalPrice;  //上个月总收入
+            ViewBag.commission = 0;   //佣金
+
+            ViewBag.guranteePrice = guranteePrice; //担保金额
         }
 
         public ActionResult About()

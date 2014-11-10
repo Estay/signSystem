@@ -194,7 +194,10 @@ namespace SAS.Controllers
                 string GIds = string.Empty;
                 foreach (var item in GeneraIds)
                 {
-                    GIds += item + ",";
+                    if (string.IsNullOrEmpty(GIds))
+                       GIds += item ;
+                    else
+                        GIds += ","+item ;
                 }
                 hotel.GeneralAmenities = GIds;
                 hotel.IntroEditor = hotel.IntroEditor.TrimEnd();
