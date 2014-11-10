@@ -215,7 +215,7 @@ namespace SAS.Controllers
             }
 
            
-            ViewBag.sign = sign;
+            ViewBag.sign = 2;
             ViewBag.Tag = "增加房型";
             helpData(hotel_room_info.hotel_id);
             return View("Room", new hotel_room_info());

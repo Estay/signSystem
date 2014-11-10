@@ -574,9 +574,6 @@
     <Content Include="help\ImageDel.ashx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Public\script\main.map" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\MyApartMent\Hotel.cshtml" />
     <Content Include="Views\MyApartMent\Room.cshtml" />
     <Content Include="Views\MyApartMent\Price.cshtml" />
