@@ -266,7 +266,7 @@ namespace SAS.Controllers
             room.h_r_name_cn = string.Empty;
             getRooms(room.hotel_id);
             ViewBag.HoltelId = room.hotel_id;
-            return View("Room", room);
+            return View("MyRoom", room);
         }
         //删除房型
         public ActionResult remove(string roomId)

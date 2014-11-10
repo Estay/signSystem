@@ -52,7 +52,11 @@
 				        <tr class="room_item">                  
                             <td>@Convert.ToInt32(identity++)</td>
 					        <td>@item.h_r_name_cn</td>
-					        <td><a href="/AddHotel/update?roomId=@item.room_id#editor_room">修改</a>|<a href="/AddHotel/remove?roomId=@item.room_id">删除</a></td>
+					        <td>
+                                <a href="/AddHotel/update?roomId=@item.room_id#editor_room">修改</a>|
+                                <a href="/AddHotel/remove?roomId=@item.room_id">删除</a>|
+                                <a href="/AddHotel/copy?roomId=@item.room_id">复制</a>
+                            </td>
 				        </tr>
                     }
                 }
@@ -65,7 +69,16 @@
         <div class="box_b">
     		<p class="input_line">
                 <input class="hide" type="text" name="@Html.DisplayNameFor(model=>model.room_id)" value="@Model.room_id " />
-    			<label for="room_name"><span class="label">房型名称</span><input type="text" id="room_name" not_validate="true" name="@Html.DisplayNameFor(model => model.h_r_name_cn)" value="@Model.h_r_name_cn"><span class="col_red">*</span></label>
+    			<label for="room_name">
+                    <span class="label">房型名称</span>
+                    @if (ViewBag.sign == 1)
+                    {
+                        <b>@Model.h_r_name_cn</b>
+                        <input type="text" id="room_name" class="hide" not_validate="true" name="@Html.DisplayNameFor(model => model.h_r_name_cn)" value="@Model.h_r_name_cn">
+                    }else{
+                        <input type="text" id="room_name" name="@Html.DisplayNameFor(model => model.h_r_name_cn)" value="@Model.h_r_name_cn"><span class="col_red">*</span>
+                    }
+                </label>
     			<label>
     				<span class="label">数量</span>
     				<input type="text" id="room_count" class="only_integer" name="@Html.DisplayNameFor(model => model.h_r_house_number)" value="@Model.h_r_house_number">

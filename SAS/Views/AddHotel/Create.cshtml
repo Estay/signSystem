@@ -53,7 +53,15 @@
         <div class="from_path">
             <h2>录入基本信息</h2>
             <p class="input_line">
-                <label for="hotel_name"><span class="label">名称</span><input name="@Html.DisplayNameFor(model => model.h_name_cn)" type="text"  value="@Model.h_name_cn" id="hotel_name"><span class="col_red">*</span></label>
+                <label for="hotel_name"><span class="label">名称</span>
+                    @if (ViewBag.sign == 1)
+                    {
+                        <b>@Model.h_name_cn</b>
+                        <input class="hide" name="@Html.DisplayNameFor(model => model.h_name_cn)" type="text"  value="@Model.h_name_cn" id="hotel_name" not_validate="true">
+                    } else {
+                        <input name="@Html.DisplayNameFor(model => model.h_name_cn)" type="text"  value="@Model.h_name_cn" id="hotel_name"><span class="col_red">*</span>
+                    }
+                </label>
                 @Html.ValidationMessageFor(model => model.h_name_cn)
                 <label for="hotel_class">
                     <span class="label">所属类别</span>
