@@ -58,7 +58,8 @@ namespace SAS.Controllers
             //if (hotelId != null)
             //{
             int.TryParse(hotelId, out hotel_id);
-
+            if (hotel_id > 0)
+                ViewBag.sign = 1;
             hotel = (from h in db.hotel where h.hotel_id == hotel_id select h).SingleOrDefault();
 
                
@@ -241,7 +242,7 @@ namespace SAS.Controllers
         //修改房型
         public ActionResult update(string roomId)
         {
-
+            ViewBag.sign = 1;
             ViewBag.Tag = "修改房型";
             int RId = Convert.ToInt32(roomId);
             //getRooms(Convert.ToInt32(hotelId));
@@ -252,7 +253,21 @@ namespace SAS.Controllers
             ViewBag.HoltelId = room.hotel_id;
             return View("MyRoom", room);
         }
-
+        //复制房型
+        public ActionResult copy(string roomId)
+        {
+            ViewBag.sign = 2;
+            ViewBag.Tag = "增加房型";
+            int RId = Convert.ToInt32(roomId);
+            //getRooms(Convert.ToInt32(hotelId));
+            //string f = hotelId;
+            getfacilities();
+            hotel_room_info room = (from h in db.rooms where h.room_id == RId select h).SingleOrDefault();
+            room.h_r_name_cn = string.Empty;
+            getRooms(room.hotel_id);
+            ViewBag.HoltelId = room.hotel_id;
+            return View("Room", room);
+        }
         //删除房型
         public ActionResult remove(string roomId)
         {
@@ -325,7 +340,7 @@ namespace SAS.Controllers
 
             helpdata(hotel_room_info.hotel_id);
            
-            ViewBag.sign = sign;
+            ViewBag.sign = 2;
 
             return View("MyRoom",new hotel_room_info());
         }
@@ -353,6 +368,7 @@ namespace SAS.Controllers
         {
             //int id = Convert.ToInt32(hotelId);
             //hotel_info hotel = (from h in db.hotel where h.hotel_id ==id select h).Single();
+            ViewBag.sing = 1;
             return RedirectToAction("Create", "AddHotel", new { hotelId = hotelId });
         }
 
