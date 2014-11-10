@@ -65,7 +65,7 @@
         <div class="box_b">
     		<p class="input_line">
                 <input class="hide" type="text" name="@Html.DisplayNameFor(model=>model.room_id)" value="@Model.room_id " />
-    			<label for="room_name"><span class="label">房型名称</span><input type="text" id="room_name" name="@Html.DisplayNameFor(model => model.h_r_name_cn)" value="@Model.h_r_name_cn"><span class="col_red">*</span></label>
+    			<label for="room_name"><span class="label">房型名称</span><input type="text" id="room_name" not_validate="true" name="@Html.DisplayNameFor(model => model.h_r_name_cn)" value="@Model.h_r_name_cn"><span class="col_red">*</span></label>
     			<label>
     				<span class="label">数量</span>
     				<input type="text" id="room_count" class="only_integer" name="@Html.DisplayNameFor(model => model.h_r_house_number)" value="@Model.h_r_house_number">
