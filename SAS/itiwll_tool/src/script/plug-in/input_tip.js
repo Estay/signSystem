@@ -166,6 +166,8 @@
 					return false;
 				};
 
+				// html里有不需要验证的属性
+				if (el.attr("not_validate")) return true;
 
 				// 没有规则
 				if (!settings.rule) {

@@ -1,4 +1,4 @@
-/*2014年11月7日10:46:50*/
+/*2014年11月10日14:08:40*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -122,6 +122,7 @@
                     error(el, "不能包含“<”,“>”,“&”等特殊字符");
                     return false;
                 }
+                if (el.attr("not_validate")) return true;
                 if (!settings.rule) {
                     if (val == "" || val == settings.space) {
                         init(el);
