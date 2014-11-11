@@ -145,7 +145,7 @@
 
 			for (var i = 0; i < arr.length; i++) {
 				var h = arr[i],
-					text = h.slice(0, h.indexOf("["));
+					text = encodeURIComponent(h.slice(0, h.indexOf("[")));
 				console.log(h);
 
 				html = html + '<p style="background: #FFF;border-bottom: 1px solid #999;"><a href="/addhotel/FindHotel?text='+ text +'">' + h + '</a></p>';

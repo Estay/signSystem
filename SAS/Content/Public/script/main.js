@@ -1,4 +1,4 @@
-/*2014年11月10日14:08:40*/
+/*2014年11月11日09:31:20*/
 (function($) {
     $.fn.e_input_tip = function(options) {
         var defaults = {
@@ -573,7 +573,7 @@
         callblack: function(data) {
             var arr = data.split("|"), html = "";
             for (var i = 0; i < arr.length; i++) {
-                var h = arr[i], text = h.slice(0, h.indexOf("["));
+                var h = arr[i], text = encodeURIComponent(h.slice(0, h.indexOf("[")));
                 console.log(h);
                 html = html + '<p style="background: #FFF;border-bottom: 1px solid #999;"><a href="/addhotel/FindHotel?text=' + text + '">' + h + "</a></p>";
             }
