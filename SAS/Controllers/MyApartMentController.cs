@@ -46,16 +46,18 @@ namespace SAS.Controllers
         {
             try
             {
+                hotel_info.decorateTime = hotel_info.decorateTime == Convert.ToDateTime("0001/1/1 0:00:00") || hotel_info.decorateTime == null ? Convert.ToDateTime("1900-01") : hotel_info.decorateTime;
+                hotel_info.IntroEditor = hotel_info.IntroEditor.Trim();
                 hotel_info.source_id = Convert.ToInt32(help.StringHelper.appSettings("source_id")); hotel_info.h_id = ""; hotel_info.h_utime = DateTime.Now;
               
                 var errors = ModelState.Values.SelectMany(v => v.Errors);
-                if (ModelState.IsValid)
-                {
+                //if (ModelState.IsValid)
+                //{
                     db.Entry(hotel_info).State = EntityState.Modified;
 
                     result = db.SaveChanges() > 0 ? 0 : 1;
 
-                }
+                //}
             }
             catch (Exception e)
             {
@@ -277,15 +279,16 @@ namespace SAS.Controllers
         {
             try
             {
+                result = 1;
                 int hotel_id;
                 if (int.TryParse(hotelId, out hotel_id))
                 {
-                    if ((from h in db.hotel where h.hotel_id == hotel_id select h).Count() > 0)
-                    {
-                        string sql = string.Format("update hotel_room_picture_info set state=1 where room_id in(select room_id from hotel_room_info where hotel_id in({0}))", hotel_id);
-                        result= DBhelp.ExcuteTableBySQL(sql) > 0?1:0;                        
+                    //if ((from h in db.hotel where h.hotel_id == hotel_id select h).Count() > 0)
+                    //{
+                    //    string sql = string.Format("update hotel_room_picture_info set state=1 where room_id in(select room_id from hotel_room_info where hotel_id in({0}))", hotel_id);
+                    //    result= DBhelp.ExcuteTableBySQL(sql) > 0?1:0;                        
 
-                    }
+                    //}
                 }
                 else
                 {
@@ -299,7 +302,7 @@ namespace SAS.Controllers
                 DBhelp.log("图片提交" + ex.ToString());
                 result = 1;
             }
-            result = 0;
+          //  result = 0;
             ViewBag.sign = result;
             if(result==1)
               return RedirectToAction("MyHotel", "MyApartMent");

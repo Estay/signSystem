@@ -176,34 +176,38 @@ namespace SAS.Controllers
         /// <returns></returns>
         public ActionResult FindHotel(string text)
         {
+          //  Response.Write(text);
            hotel_info hotel=null;
             using (db = new HotelDBContent())
             {
              //   hotel = (from h in db.hotel where h.h_name_cn == text.Trim() && h.source_id == 4 select new { h=h.h_name_cn,name=h.h_city});
                 hotel = (from h in db.hotel where h.h_name_cn == text.Trim() && h.source_id == 4 select h).FirstOrDefault();
-                hotel.hotel_id = 0;
-                 //var tempHotel=(from h1 in db.hotel where h1.h_name_cn==text.Trim() && h1.source_id==5 select h1).Count();
-                 // ViewBag.exit = tempHotel > 0 ? 1 : 0;
-                hotel.h_province = (from c in db.citys where c.City_id == hotel.h_city select c.Province_id).SingleOrDefault();
-                string []serveice = hotel.GeneralAmenities.Split('、');
-                string[] temp = new string[serveice.Length];
-                for (int i = 0; i < serveice.Length; i++)
+                if (hotel != null)
                 {
-                      temp[i]=serveice[i];
+                    hotel.hotel_id = 0;
+                    //var tempHotel=(from h1 in db.hotel where h1.h_name_cn==text.Trim() && h1.source_id==5 select h1).Count();
+                    // ViewBag.exit = tempHotel > 0 ? 1 : 0;
+                    hotel.h_province = (from c in db.citys where c.City_id == hotel.h_city select c.Province_id).SingleOrDefault();
+                    string[] serveice = hotel.GeneralAmenities.Split('、');
+                    string[] temp = new string[serveice.Length];
+                    for (int i = 0; i < serveice.Length; i++)
+                    {
+                        temp[i] = serveice[i];
+                    }
+                    var GeneraIds = from g in db.general where temp.Contains(g.Title) select g.Id;
+                    string GIds = string.Empty;
+                    foreach (var item in GeneraIds)
+                    {
+                        if (string.IsNullOrEmpty(GIds))
+                            GIds += item;
+                        else
+                            GIds += "," + item;
+                    }
+                    hotel.GeneralAmenities = GIds;
+                    hotel.IntroEditor = hotel.IntroEditor.TrimEnd();
+                    var tempRoom = ((from o in db.hotel where o.h_name_cn == text.Trim() && o.source_id == 5 && o.h_state == true select o).Count());
+                    ViewBag.exit = tempRoom > 0 ? 0 : 1;
                 }
-                var GeneraIds = from g in db.general where temp.Contains(g.Title) select g.Id;
-                string GIds = string.Empty;
-                foreach (var item in GeneraIds)
-                {
-                    if (string.IsNullOrEmpty(GIds))
-                       GIds += item ;
-                    else
-                        GIds += ","+item ;
-                }
-                hotel.GeneralAmenities = GIds;
-                hotel.IntroEditor = hotel.IntroEditor.TrimEnd();
-                var tempRoom = ((from o in db.hotel where o.h_name_cn == text.Trim() && o.source_id==5 && o.h_state==true select o).Count());
-                ViewBag.exit = tempRoom > 0 ? 0 : 1;
             }
             getHelpData();
             if(hotel!=null)
@@ -263,7 +267,11 @@ namespace SAS.Controllers
             //string f = hotelId;
             getfacilities();
             hotel_room_info room = (from h in db.rooms where h.room_id == RId select h).SingleOrDefault();
-            room.h_r_name_cn = string.Empty;
+            if (room != null)
+            {
+                room.h_r_name_cn = string.Empty;
+                room.room_id = 0;
+            }
             getRooms(room.hotel_id);
             ViewBag.HoltelId = room.hotel_id;
             return View("MyRoom", room);
@@ -271,6 +279,7 @@ namespace SAS.Controllers
         //删除房型
         public ActionResult remove(string roomId)
         {
+            
             ViewBag.Tag = "增加房型";
             int RId = Convert.ToInt32(roomId);
             //getRooms(Convert.ToInt32(hotelId));
@@ -286,6 +295,7 @@ namespace SAS.Controllers
                 else
                     ViewBag.sign = 0;
             }
+            ViewBag.sign = 2;
             ViewBag.HoltelId = room.hotel_id;
             getRooms(room.hotel_id);
             return View("MyRoom", new hotel_room_info());
@@ -318,7 +328,7 @@ namespace SAS.Controllers
         [HttpPost]
         public ActionResult Create(hotel_room_info hotel_room_info)
         {
-
+           
             int sign = 0;
             if (hotel_room_info.room_id > 0)
             {
@@ -390,7 +400,16 @@ namespace SAS.Controllers
 
                 room = (from r in db.rooms where r.room_id == room_id select r).SingleOrDefault();
                 room.room_id = 0; room.hotel_id = 0;
-
+                string tempBed = string.Empty;
+                if (!string.IsNullOrEmpty(room.h_r_bed_type))
+                {
+                   string []beds= room.h_r_bed_type.Split(',');
+                   for (int i = 0; i < beds.Length; i++)
+                   {
+                       tempBed += beds[i].Contains("|") ? beds[i] : beds[i] + "|" + 1+",";
+                   }
+                }
+                room.h_r_bed_type = tempBed.LastIndexOf(",") != -1 ? tempBed.Substring(0, tempBed.Length - 1) : tempBed;
                 var tempRoom = ((from o in db.rooms where o.h_r_name_cn == room.h_r_name_cn.Trim() && o.hotel_id == hotel_Id select o).Count());
                 ViewBag.exit = tempRoom > 0 ? 0 : 1;
 

@@ -87,7 +87,7 @@ namespace SAS.help
                         }
                         string realOpath = ThumbImages_SavePath + d + "/" + "T_" + fileName1;
                         string realTpath = ThumbImages_SavePath + d + "/" + "T_" + fileName1;
-                        if (size < maxSize && w > 500 && h > 300 )
+                        if (size < maxSize && w >= 500 && h >= 300 )
                         {
                             
                           //  string message=
